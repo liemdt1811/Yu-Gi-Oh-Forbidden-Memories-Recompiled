@@ -1,0 +1,11144 @@
+{
+ "id": "real-cards",
+ "name": "Real cards",
+ "version": "0.1",
+ "author": "community",
+ "enabled": false,
+ "description": "100 real Yu-Gi-Oh! monsters the disc lacks, with fusions. Study project; art is Konami's.",
+ "cards": [
+  {
+   "id": "luster-dragon",
+   "copy": 39,
+   "name": "Luster Dragon",
+   "description": "A very beautiful\ndragon covered with\nsapphire. It does\nnot like fights, but\nhas incredibly high\nattack power.",
+   "type": "Dragon",
+   "attribute": "Wind",
+   "level": 4,
+   "attack": 1900,
+   "defense": 1600,
+   "password": "11091375",
+   "drops": true,
+   "opponents": true,
+   "art": "images/luster-dragon.png"
+  },
+  {
+   "id": "x-head-cannon",
+   "copy": 441,
+   "name": "X-Head Cannon",
+   "description": "A monster with a\nmighty cannon\nbarrel, it is able\nto integrate its\nattacks.",
+   "type": "Machine",
+   "attribute": "Light",
+   "level": 4,
+   "attack": 1800,
+   "defense": 1500,
+   "password": "62651957",
+   "drops": true,
+   "opponents": true,
+   "art": "images/x-head-cannon.png"
+  },
+  {
+   "id": "gazelle-the-king-of-mythical-beasts",
+   "copy": 597,
+   "name": "Gazelle the King of Mythical Beasts",
+   "description": "This monster moves\nso fast that it\nlooks like an\nillusion to mortal\neyes. (This card is\nalways treated as a\n\"Phantom Beast\"\ncard.)",
+   "type": "Beast",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1500,
+   "defense": 1200,
+   "password": "05818798",
+   "drops": true,
+   "opponents": true,
+   "art": "images/gazelle-the-king-of-mythical-beasts.png"
+  },
+  {
+   "id": "archfiend-soldier",
+   "copy": 85,
+   "name": "Archfiend Soldier",
+   "description": "An expert at battle\nwho belongs to a\ncrack diabolical\nunit. He's famous\nbecause he always\ngets the job done.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1900,
+   "defense": 1500,
+   "password": "49881766",
+   "drops": true,
+   "opponents": true,
+   "art": "images/archfiend-soldier.png"
+  },
+  {
+   "id": "mystical-shine-ball",
+   "copy": 130,
+   "name": "Mystical Shine Ball",
+   "description": "A soul of light\ncovered by mystical\nshine. When you see\nits beautiful shape,\nyour dream will come\ntrue.",
+   "type": "Fairy",
+   "attribute": "Light",
+   "level": 2,
+   "attack": 500,
+   "defense": 500,
+   "password": "39552864",
+   "drops": true,
+   "opponents": true,
+   "art": "images/mystical-shine-ball.png"
+  },
+  {
+   "id": "hyozanryu",
+   "copy": 386,
+   "name": "Hyozanryu",
+   "description": "A dragon created\nfrom a massive\ndiamond that\nsparkles with\nblinding light.",
+   "type": "Dragon",
+   "attribute": "Light",
+   "level": 7,
+   "attack": 2100,
+   "defense": 2800,
+   "password": "62397231",
+   "drops": true,
+   "opponents": true,
+   "art": "images/hyozanryu.png"
+  },
+  {
+   "id": "dark-blade",
+   "copy": 12,
+   "name": "Dark Blade",
+   "description": "They say he is a\ndragon-manipulating\nwarrior from the\ndark world. His\nattack is\ntremendous, using\nhis great swords\nwith vicious power.",
+   "type": "Warrior",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1800,
+   "defense": 1500,
+   "password": "11321183",
+   "drops": true,
+   "opponents": true,
+   "art": "images/dark-blade.png"
+  },
+  {
+   "id": "gagagigo",
+   "copy": 51,
+   "name": "Gagagigo",
+   "description": "This young evildoer\nused to have an evil\nheart, but by\nmeeting a special\nperson, he\ndiscovered justice.",
+   "type": "Reptile",
+   "attribute": "Water",
+   "level": 4,
+   "attack": 1850,
+   "defense": 1000,
+   "password": "49003308",
+   "drops": true,
+   "opponents": true,
+   "art": "images/gagagigo.png"
+  },
+  {
+   "id": "thousand-eyes-idol",
+   "copy": 387,
+   "name": "Thousand-Eyes Idol",
+   "description": "A wicked entity that\ncontrols the hearts\nof men, its thousand\neyes are able to see\nand expand the\nnegative influences\nin an individual's\nsoul.",
+   "type": "Spellcaster",
+   "attribute": "Dark",
+   "level": 1,
+   "attack": 0,
+   "defense": 0,
+   "password": "27125110",
+   "drops": true,
+   "opponents": true,
+   "art": "images/thousand-eyes-idol.png"
+  },
+  {
+   "id": "alpha-the-magnet-warrior",
+   "copy": 517,
+   "name": "Alpha The Magnet Warrior",
+   "description": "Alpha, Beta, and\nGamma meld as one to\nform a powerful\nmonster.",
+   "type": "Rock",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1400,
+   "defense": 1700,
+   "password": "99785935",
+   "drops": true,
+   "opponents": true,
+   "art": "images/alpha-the-magnet-warrior.png"
+  },
+  {
+   "id": "gogiga-gagagigo",
+   "copy": 400,
+   "name": "Gogiga Gagagigo",
+   "description": "His soul long-since\ncollapsed, his body\nrecklessly continues\nonward, driven by a\nlust for more power.\nHe no longer\nresembles his former\nself....",
+   "type": "Reptile",
+   "attribute": "Water",
+   "level": 8,
+   "attack": 2950,
+   "defense": 2800,
+   "password": "39674352",
+   "drops": true,
+   "opponents": true,
+   "art": "images/gogiga-gagagigo.png"
+  },
+  {
+   "id": "ryu-ran",
+   "copy": 711,
+   "name": "Ryu-Ran",
+   "description": "A vicious little\ndragon sheltered in\nan egg that looks\ndeceptively\nharmless.",
+   "type": "Dragon",
+   "attribute": "Fire",
+   "level": 7,
+   "attack": 2200,
+   "defense": 2600,
+   "password": "02964201",
+   "drops": true,
+   "opponents": true,
+   "art": "images/ryu-ran.png"
+  },
+  {
+   "id": "beta-the-magnet-warrior",
+   "copy": 632,
+   "name": "Beta The Magnet Warrior",
+   "description": "Alpha, Beta, and\nGamma meld as one to\nform a powerful\nmonster.",
+   "type": "Rock",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1700,
+   "defense": 1600,
+   "password": "39256679",
+   "drops": true,
+   "opponents": true,
+   "art": "images/beta-the-magnet-warrior.png"
+  },
+  {
+   "id": "gamma-the-magnet-warrior",
+   "copy": 74,
+   "name": "Gamma the Magnet Warrior",
+   "description": "Alpha, Beta, and\nGamma meld as one to\nform a powerful\nmonster.",
+   "type": "Rock",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1500,
+   "defense": 1800,
+   "password": "11549357",
+   "drops": true,
+   "opponents": true,
+   "art": "images/gamma-the-magnet-warrior.png"
+  },
+  {
+   "id": "humanoid-slime",
+   "copy": 89,
+   "name": "Humanoid Slime",
+   "description": "This slime\napparently has some\nhuman genes in its\ngenetic makeup.",
+   "type": "Aqua",
+   "attribute": "Water",
+   "level": 4,
+   "attack": 800,
+   "defense": 2000,
+   "password": "46821314",
+   "drops": true,
+   "opponents": true,
+   "art": "images/humanoid-slime.png"
+  },
+  {
+   "id": "ojama-black",
+   "copy": 159,
+   "name": "Ojama Black",
+   "description": "He's one of the\nOjama Trio. It's\nsaid that he butts\nin by any means\nnecessary. It's also\nsaid that when the\nthree are together,\nsomething happens.",
+   "type": "Beast",
+   "attribute": "Light",
+   "level": 2,
+   "attack": 0,
+   "defense": 1000,
+   "password": "79335209",
+   "drops": true,
+   "opponents": true,
+   "art": "images/ojama-black.png"
+  },
+  {
+   "id": "ojama-green",
+   "copy": 159,
+   "name": "Ojama Green",
+   "description": "He's one of the\nOjama Trio. It's\nsaid that he butts\nin by any means\nnecessary. It's also\nsaid that when the\nthree are together,\nsomething happens.",
+   "type": "Beast",
+   "attribute": "Light",
+   "level": 2,
+   "attack": 0,
+   "defense": 1000,
+   "password": "12482652",
+   "drops": true,
+   "opponents": true,
+   "art": "images/ojama-green.png"
+  },
+  {
+   "id": "mad-dog-of-darkness",
+   "copy": 487,
+   "name": "Mad Dog of Darkness",
+   "description": "He used to be a\nnormal dog who\nplayed around in a\npark, but was\ncorrupted by the\npowers of darkness.",
+   "type": "Beast",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1900,
+   "defense": 1400,
+   "password": "79182538",
+   "drops": true,
+   "opponents": true,
+   "art": "images/mad-dog-of-darkness.png"
+  },
+  {
+   "id": "wingweaver",
+   "copy": 90,
+   "name": "Wingweaver",
+   "description": "A six-winged fairy\nwho prays for peace\nand hope.",
+   "type": "Fairy",
+   "attribute": "Light",
+   "level": 7,
+   "attack": 2750,
+   "defense": 2400,
+   "password": "31447217",
+   "drops": true,
+   "opponents": true,
+   "art": "images/wingweaver.png"
+  },
+  {
+   "id": "earthbound-spirit",
+   "copy": 83,
+   "name": "Earthbound Spirit",
+   "description": "A vengeful creature\nformed by the\nspirits of fallen\nwarriors, it drags\nany who dare\napproach it into the\ndeepest bowels of\nthe earth.",
+   "type": "Fiend",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 500,
+   "defense": 2000,
+   "password": "67105242",
+   "drops": true,
+   "opponents": true,
+   "art": "images/earthbound-spirit.png"
+  },
+  {
+   "id": "amphibian-beast",
+   "copy": 718,
+   "name": "Amphibian Beast",
+   "description": "On land or in the\nsea, the speed of\nthis monster is\nunmatchable.",
+   "type": "Fish",
+   "attribute": "Water",
+   "level": 6,
+   "attack": 2400,
+   "defense": 2000,
+   "password": "67371383",
+   "drops": true,
+   "opponents": true,
+   "art": "images/amphibian-beast.png"
+  },
+  {
+   "id": "ojama-yellow",
+   "copy": 159,
+   "name": "Ojama Yellow",
+   "description": "He's one of the\nOjama Trio. It's\nsaid that he butts\nin by any means\nnecessary. It's also\nsaid that when the\nthree are together,\nsomething happens.",
+   "type": "Beast",
+   "attribute": "Light",
+   "level": 2,
+   "attack": 0,
+   "defense": 1000,
+   "password": "42941100",
+   "drops": true,
+   "opponents": true,
+   "art": "images/ojama-yellow.png"
+  },
+  {
+   "id": "melchid-the-four-face-beast",
+   "copy": 149,
+   "name": "Melchid the Four-Face Beast",
+   "description": "This monster has\nfour different masks\nfor four different\nattacks.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1500,
+   "defense": 1200,
+   "password": "86569121",
+   "drops": true,
+   "opponents": true,
+   "art": "images/melchid-the-four-face-beast.png"
+  },
+  {
+   "id": "sky-scout",
+   "copy": 581,
+   "name": "Sky Scout",
+   "description": "With eyes like a\nhawk and a flying\nspeed exceeding Mach\n5, this monster is a\nmaster of the sky.",
+   "type": "Winged Beast",
+   "attribute": "Wind",
+   "level": 4,
+   "attack": 1800,
+   "defense": 600,
+   "password": "30532390",
+   "drops": true,
+   "opponents": true,
+   "art": "images/sky-scout.png"
+  },
+  {
+   "id": "slot-machine",
+   "copy": 645,
+   "name": "Slot Machine",
+   "description": "The machine's\nability is said to\nvary according to\nits slot results.",
+   "type": "Machine",
+   "attribute": "Dark",
+   "level": 7,
+   "attack": 2000,
+   "defense": 2300,
+   "password": "03797883",
+   "drops": true,
+   "opponents": true,
+   "art": "images/slot-machine.png"
+  },
+  {
+   "id": "headless-knight",
+   "copy": 86,
+   "name": "Headless Knight",
+   "description": "A haunted spirit of\na falsely accused\nknight who wanders\nin search of truth\nand justice.",
+   "type": "Fiend",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1450,
+   "defense": 1700,
+   "password": "05434080",
+   "drops": true,
+   "opponents": true,
+   "art": "images/headless-knight.png"
+  },
+  {
+   "id": "twin-headed-fire-dragon",
+   "copy": 529,
+   "name": "Twin-Headed Fire Dragon",
+   "description": "Two dragons fused as\none from the effects\nof the Big Bang.",
+   "type": "Pyro",
+   "attribute": "Fire",
+   "level": 6,
+   "attack": 2200,
+   "defense": 1700,
+   "password": "78984772",
+   "drops": true,
+   "opponents": true,
+   "art": "images/twin-headed-fire-dragon.png"
+  },
+  {
+   "id": "the-gross-ghost-of-fled-dreams",
+   "copy": 84,
+   "name": "The Gross Ghost of Fled Dreams",
+   "description": "This monster feeds\non the dreams of an\nunwary sleeper,\ndragging the victim\ninto eternal\nslumber.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1300,
+   "defense": 1800,
+   "password": "68049471",
+   "drops": true,
+   "opponents": true,
+   "art": "images/the-gross-ghost-of-fled-dreams.png"
+  },
+  {
+   "id": "grand-tiki-elder",
+   "copy": 281,
+   "name": "Grand Tiki Elder",
+   "description": "A masked monster\nthat wields the most\ndeadly of curses.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1500,
+   "defense": 800,
+   "password": "13676474",
+   "drops": true,
+   "opponents": true,
+   "art": "images/grand-tiki-elder.png"
+  },
+  {
+   "id": "the-earl-of-demise",
+   "copy": 379,
+   "name": "The Earl of Demise",
+   "description": "This gentlemanly\ncreature is\nextremely wicked,\nfeared by man and\nfiend alike.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 5,
+   "attack": 2000,
+   "defense": 700,
+   "password": "66989694",
+   "drops": true,
+   "opponents": true,
+   "art": "images/the-earl-of-demise.png"
+  },
+  {
+   "id": "shining-abyss",
+   "copy": 396,
+   "name": "Shining Abyss",
+   "description": "This monster employs\nthe powers of both\nLight and Darkness.",
+   "type": "Fairy",
+   "attribute": "Light",
+   "level": 4,
+   "attack": 1600,
+   "defense": 1800,
+   "password": "87303357",
+   "drops": true,
+   "opponents": true,
+   "art": "images/shining-abyss.png"
+  },
+  {
+   "id": "red-archery-girl",
+   "copy": 71,
+   "name": "Red Archery Girl",
+   "description": "A mermaid archer\nthat hides in a\nprotective shell,\nwaiting for the\nright moment to\nstrike.",
+   "type": "Aqua",
+   "attribute": "Water",
+   "level": 4,
+   "attack": 1400,
+   "defense": 1500,
+   "password": "65570596",
+   "drops": true,
+   "opponents": true,
+   "art": "images/red-archery-girl.png"
+  },
+  {
+   "id": "swordsman-of-landstar",
+   "copy": 224,
+   "name": "Swordsman of Landstar",
+   "description": "An amateur with a\nsword, this fairy\nwarrior relies on\nits mysterious\npowers.",
+   "type": "Warrior",
+   "attribute": "Earth",
+   "level": 3,
+   "attack": 500,
+   "defense": 1200,
+   "password": "03573512",
+   "drops": true,
+   "opponents": true,
+   "art": "images/swordsman-of-landstar.png"
+  },
+  {
+   "id": "flying-kamakiri-2",
+   "copy": 55,
+   "name": "Flying Kamakiri #2",
+   "description": "A flying mantis that\nfeeds primarily on\ninsects.",
+   "type": "Insect",
+   "attribute": "Wind",
+   "level": 4,
+   "attack": 1500,
+   "defense": 800,
+   "password": "03134241",
+   "drops": true,
+   "opponents": true,
+   "art": "images/flying-kamakiri-2.png"
+  },
+  {
+   "id": "worm-drake",
+   "copy": 51,
+   "name": "Worm Drake",
+   "description": "Once this monster\nwraps itself around\na victim, there is\nno escape.",
+   "type": "Reptile",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1400,
+   "defense": 1500,
+   "password": "73216412",
+   "drops": true,
+   "opponents": true,
+   "art": "images/worm-drake.png"
+  },
+  {
+   "id": "luster-dragon-2",
+   "copy": 39,
+   "name": "Luster Dragon #2",
+   "description": "This dragon feeds on\nemerald. Enchanted\nby this monster even\nwhen attacked, few\npeople live to tell\nof its beauty.",
+   "type": "Dragon",
+   "attribute": "Wind",
+   "level": 6,
+   "attack": 2400,
+   "defense": 1400,
+   "password": "17658803",
+   "drops": true,
+   "opponents": true,
+   "art": "images/luster-dragon-2.png"
+  },
+  {
+   "id": "giga-gagagigo",
+   "copy": 400,
+   "name": "Giga Gagagigo",
+   "description": "In order to fight\ntremendous evil, he\ngained formidable\npower through body\nreconstruction, but\nlost his heart and\nhis redemption.",
+   "type": "Reptile",
+   "attribute": "Water",
+   "level": 5,
+   "attack": 2450,
+   "defense": 1500,
+   "password": "43793530",
+   "drops": true,
+   "opponents": true,
+   "art": "images/giga-gagagigo.png"
+  },
+  {
+   "id": "gadget-soldier",
+   "copy": 388,
+   "name": "Gadget Soldier",
+   "description": "A rust-free machine\nwarrior born to\nbattle.",
+   "type": "Machine",
+   "attribute": "Fire",
+   "level": 6,
+   "attack": 1800,
+   "defense": 2000,
+   "password": "86281779",
+   "drops": true,
+   "opponents": true,
+   "art": "images/gadget-soldier.png"
+  },
+  {
+   "id": "opticlops",
+   "copy": 650,
+   "name": "Opticlops",
+   "description": "A one-eyed giant\nthat serves the\n\"Dark Ruler Ha Des\",\nit skewers its\nenemies with its\nsharp horn,\nshattering them to\npieces.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1800,
+   "defense": 1700,
+   "password": "14531242",
+   "drops": true,
+   "opponents": true,
+   "art": "images/opticlops.png"
+  },
+  {
+   "id": "the-portrait-s-secret",
+   "copy": 6,
+   "name": "The Portrait's Secret",
+   "description": "A portrait cursed by\nthe artist, it is\nsaid to bring ill\nfortune to anyone\nwho owns it.",
+   "type": "Fiend",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1200,
+   "defense": 1500,
+   "password": "32541773",
+   "drops": true,
+   "opponents": true,
+   "art": "images/the-portrait-s-secret.png"
+  },
+  {
+   "id": "great-angus",
+   "copy": 23,
+   "name": "Great Angus",
+   "description": "A very violent\nbeast, it is always\nberserk. People say\nthat they have never\nseen it silent.",
+   "type": "Beast",
+   "attribute": "Fire",
+   "level": 4,
+   "attack": 1800,
+   "defense": 600,
+   "password": "11813953",
+   "drops": true,
+   "opponents": true,
+   "art": "images/great-angus.png"
+  },
+  {
+   "id": "darkfire-soldier-1",
+   "copy": 291,
+   "name": "Darkfire Soldier #1",
+   "description": "An explosive expert\nfrom a special elite\nforce.",
+   "type": "Pyro",
+   "attribute": "Fire",
+   "level": 4,
+   "attack": 1700,
+   "defense": 1150,
+   "password": "05388481",
+   "drops": true,
+   "opponents": true,
+   "art": "images/darkfire-soldier-1.png"
+  },
+  {
+   "id": "gradius",
+   "copy": 514,
+   "name": "Gradius",
+   "description": "A high-performance\njet fighter with\npower capsules for\nvariable attack\ncapabilities.",
+   "type": "Machine",
+   "attribute": "Light",
+   "level": 4,
+   "attack": 1200,
+   "defense": 800,
+   "password": "10992251",
+   "drops": true,
+   "opponents": true,
+   "art": "images/gradius.png"
+  },
+  {
+   "id": "warrior-dai-grepher",
+   "copy": 15,
+   "name": "Warrior Dai Grepher",
+   "description": "The warrior who can\nmanipulate dragons.\nNobody knows his\nmysterious past.",
+   "type": "Warrior",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1700,
+   "defense": 1600,
+   "password": "75953262",
+   "drops": true,
+   "opponents": true,
+   "art": "images/warrior-dai-grepher.png"
+  },
+  {
+   "id": "girochin-kuwagata",
+   "copy": 55,
+   "name": "Girochin Kuwagata",
+   "description": "Despite its small\nsize, this monster\nhas powerful jaws\nthat can rip metal\nto shreds.",
+   "type": "Insect",
+   "attribute": "Wind",
+   "level": 4,
+   "attack": 1700,
+   "defense": 1000,
+   "password": "84620194",
+   "drops": true,
+   "opponents": true,
+   "art": "images/girochin-kuwagata.png"
+  },
+  {
+   "id": "souls-of-the-forgotten",
+   "copy": 102,
+   "name": "Souls of the Forgotten",
+   "description": "A wicked spirit\ncreated by the\nhateful souls of\nthose who fell in\nbattle. It grows by\nassimilating the\nsouls of its\nenemies.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 2,
+   "attack": 900,
+   "defense": 200,
+   "password": "04920010",
+   "drops": true,
+   "opponents": true,
+   "art": "images/souls-of-the-forgotten.png"
+  },
+  {
+   "id": "island-turtle",
+   "copy": 89,
+   "name": "Island Turtle",
+   "description": "A huge turtle that\nis often mistaken\nfor an island.",
+   "type": "Aqua",
+   "attribute": "Water",
+   "level": 4,
+   "attack": 1100,
+   "defense": 2000,
+   "password": "04042268",
+   "drops": true,
+   "opponents": true,
+   "art": "images/island-turtle.png"
+  },
+  {
+   "id": "the-dragon-dwelling-in-the-cave",
+   "copy": 357,
+   "name": "The Dragon Dwelling in the Cave",
+   "description": "A huge dragon\ndwelling in a cave.\nIt is horrible when\nit gets angry,\nalthough it is\nusually quiet. It is\nsaid to preserve\ncertain treasures.",
+   "type": "Dragon",
+   "attribute": "Wind",
+   "level": 4,
+   "attack": 1300,
+   "defense": 2000,
+   "password": "93346024",
+   "drops": true,
+   "opponents": true,
+   "art": "images/the-dragon-dwelling-in-the-cave.png"
+  },
+  {
+   "id": "three-headed-geedo",
+   "copy": 6,
+   "name": "Three-Headed Geedo",
+   "description": "A three-headed\nnocturnal monster\nthat is absolutely\nruthless when\nfighting.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1200,
+   "defense": 1400,
+   "password": "78423643",
+   "drops": true,
+   "opponents": true,
+   "art": "images/three-headed-geedo.png"
+  },
+  {
+   "id": "overdrive",
+   "copy": 405,
+   "name": "Overdrive",
+   "description": "An all-terrain\narmored vehicle\narmed with a heavy-\nduty machine gun.",
+   "type": "Machine",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1600,
+   "defense": 1500,
+   "password": "02311603",
+   "drops": true,
+   "opponents": true,
+   "art": "images/overdrive.png"
+  },
+  {
+   "id": "darkfire-soldier-2",
+   "copy": 291,
+   "name": "Darkfire Soldier #2",
+   "description": "A warrior who gained\nimmeasurable power\nfrom the heart of a\nvolcano.",
+   "type": "Pyro",
+   "attribute": "Fire",
+   "level": 4,
+   "attack": 1700,
+   "defense": 1100,
+   "password": "78861134",
+   "drops": true,
+   "opponents": true,
+   "art": "images/darkfire-soldier-2.png"
+  },
+  {
+   "id": "mokey-mokey",
+   "copy": 395,
+   "name": "Mokey Mokey",
+   "description": "An outcast angel.\nNobody knows what he\nis thinking at all.\nSometimes he gets\nmad and that is\ndreadful.",
+   "type": "Fairy",
+   "attribute": "Light",
+   "level": 1,
+   "attack": 300,
+   "defense": 100,
+   "password": "27288416",
+   "drops": true,
+   "opponents": true,
+   "art": "images/mokey-mokey.png"
+  },
+  {
+   "id": "kabazauls",
+   "copy": 482,
+   "name": "Kabazauls",
+   "description": "A huge monster in\nthe shape of a\nhippopotamus. The\nsneezing from his\ngigantic body is so\nfierce that people\nmistake it for a\nhurricane.",
+   "type": "Dinosaur",
+   "attribute": "Water",
+   "level": 4,
+   "attack": 1700,
+   "defense": 1500,
+   "password": "51934376",
+   "drops": true,
+   "opponents": true,
+   "art": "images/kabazauls.png"
+  },
+  {
+   "id": "garnecia-elefantis",
+   "copy": 627,
+   "name": "Garnecia Elefantis",
+   "description": "A monster so heavy\nthat each step rocks\nthe earth.",
+   "type": "Beast-Warrior",
+   "attribute": "Earth",
+   "level": 7,
+   "attack": 2400,
+   "defense": 2000,
+   "password": "49888191",
+   "drops": true,
+   "opponents": true,
+   "art": "images/garnecia-elefantis.png"
+  },
+  {
+   "id": "charcoal-inpachi",
+   "copy": 40,
+   "name": "Charcoal Inpachi",
+   "description": "A wicked wooden\nspirit that has\nburned out. The\nbarbecue grilled\nwith this charcoal\nis so awesome that\neverybody thinks\nit's priceless.",
+   "type": "Pyro",
+   "attribute": "Fire",
+   "level": 1,
+   "attack": 100,
+   "defense": 2100,
+   "password": "13179332",
+   "drops": true,
+   "opponents": true,
+   "art": "images/charcoal-inpachi.png"
+  },
+  {
+   "id": "big-koala",
+   "copy": 356,
+   "name": "Big Koala",
+   "description": "A species of huge\nDes Koala. He's\nmeek, but people are\nafraid of him\nbecause he's very\npowerful.",
+   "type": "Beast",
+   "attribute": "Earth",
+   "level": 7,
+   "attack": 2700,
+   "defense": 2000,
+   "password": "42129512",
+   "drops": true,
+   "opponents": true,
+   "art": "images/big-koala.png"
+  },
+  {
+   "id": "skull-mariner",
+   "copy": 234,
+   "name": "Skull Mariner",
+   "description": "A pirate ship that\nappears out of the\nmist and sinks any\nseagoing vessels.",
+   "type": "Warrior",
+   "attribute": "Water",
+   "level": 4,
+   "attack": 1600,
+   "defense": 900,
+   "password": "05265750",
+   "drops": true,
+   "opponents": true,
+   "art": "images/skull-mariner.png"
+  },
+  {
+   "id": "terrorking-salmon",
+   "copy": 565,
+   "name": "Terrorking Salmon",
+   "description": "A feared salmon,\nmaster of the Sea of\nDarkness. Its roe is\nthe best delicacy in\nthe World of\nDarkness.",
+   "type": "Fish",
+   "attribute": "Water",
+   "level": 5,
+   "attack": 2400,
+   "defense": 1000,
+   "password": "78060096",
+   "drops": true,
+   "opponents": true,
+   "art": "images/terrorking-salmon.png"
+  },
+  {
+   "id": "blazing-inpachi",
+   "copy": 291,
+   "name": "Blazing Inpachi",
+   "description": "A wicked wooden\nspirit now burning\nin flames. Its fire\nattack is powerful,\nbut it will soon be\nnothing but ashes.",
+   "type": "Pyro",
+   "attribute": "Fire",
+   "level": 4,
+   "attack": 1850,
+   "defense": 0,
+   "password": "05464695",
+   "drops": true,
+   "opponents": true,
+   "art": "images/blazing-inpachi.png"
+  },
+  {
+   "id": "spikebot",
+   "copy": 409,
+   "name": "Spikebot",
+   "description": "A mechanical soldier\ncreated by a wicked\nsorcerer, it attacks\nwith the two steel\nballs attached to\nits arms.",
+   "type": "Machine",
+   "attribute": "Dark",
+   "level": 5,
+   "attack": 1800,
+   "defense": 1700,
+   "password": "87511987",
+   "drops": true,
+   "opponents": true,
+   "art": "images/spikebot.png"
+  },
+  {
+   "id": "mr-volcano",
+   "copy": 473,
+   "name": "Mr. Volcano",
+   "description": "This seemingly mild-\nmannered creature\nhas an extremely\nvolatile temper.",
+   "type": "Pyro",
+   "attribute": "Fire",
+   "level": 5,
+   "attack": 2100,
+   "defense": 1300,
+   "password": "31477025",
+   "drops": true,
+   "opponents": true,
+   "art": "images/mr-volcano.png"
+  },
+  {
+   "id": "metal-armored-bug",
+   "copy": 57,
+   "name": "Metal Armored Bug",
+   "description": "A gigantic insect-\nlike creature\ncovered by thick\narmor. Everything in\nhis path is\ndestroyed.",
+   "type": "Insect",
+   "attribute": "Earth",
+   "level": 8,
+   "attack": 2800,
+   "defense": 1500,
+   "password": "65957473",
+   "drops": true,
+   "opponents": true,
+   "art": "images/metal-armored-bug.png"
+  },
+  {
+   "id": "robotic-knight",
+   "copy": 423,
+   "name": "Robotic Knight",
+   "description": "The Commander of\nMachine-Types, he\nserves the Machine\nKing. He is famous\nfor the way he\ncontrols his troops.",
+   "type": "Machine",
+   "attribute": "Fire",
+   "level": 4,
+   "attack": 1600,
+   "defense": 1800,
+   "password": "44203504",
+   "drops": true,
+   "opponents": true,
+   "art": "images/robotic-knight.png"
+  },
+  {
+   "id": "oni-tank-t-34",
+   "copy": 413,
+   "name": "Oni Tank T-34",
+   "description": "An armored tank\npossessed by a fiend\nthat will pursue\nenemies until\nthey're crushed.",
+   "type": "Machine",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1400,
+   "defense": 1700,
+   "password": "66927994",
+   "drops": true,
+   "opponents": true,
+   "art": "images/oni-tank-t-34.png"
+  },
+  {
+   "id": "steel-ogre-grotto-2",
+   "copy": 645,
+   "name": "Steel Ogre Grotto #2",
+   "description": "A mechanized iron\ndoll with tremendous\nstrength.",
+   "type": "Machine",
+   "attribute": "Earth",
+   "level": 6,
+   "attack": 1900,
+   "defense": 2200,
+   "password": "90908427",
+   "drops": true,
+   "opponents": true,
+   "art": "images/steel-ogre-grotto-2.png"
+  },
+  {
+   "id": "neo-bug",
+   "copy": 375,
+   "name": "Neo Bug",
+   "description": "A huge bug-like\nmonster said to come\nfrom another planet.\nIt gathers in\nswarms.",
+   "type": "Insect",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1800,
+   "defense": 1700,
+   "password": "16587243",
+   "drops": true,
+   "opponents": true,
+   "art": "images/neo-bug.png"
+  },
+  {
+   "id": "flying-fish",
+   "copy": 247,
+   "name": "Flying Fish",
+   "description": "Three wishes are\ngranted to those\nfortunate enough to\nsee this monster in\nflight.",
+   "type": "Fish",
+   "attribute": "Wind",
+   "level": 4,
+   "attack": 800,
+   "defense": 500,
+   "password": "31987274",
+   "drops": true,
+   "opponents": true,
+   "art": "images/flying-fish.png"
+  },
+  {
+   "id": "neo-the-magic-swordsman",
+   "copy": 44,
+   "name": "Neo the Magic Swordsman",
+   "description": "A dimensional\ndrifter who not only\npractices sorcery,\nbut is also a sword\nand martial arts\nmaster.",
+   "type": "Spellcaster",
+   "attribute": "Light",
+   "level": 4,
+   "attack": 1700,
+   "defense": 1000,
+   "password": "50930991",
+   "drops": true,
+   "opponents": true,
+   "art": "images/neo-the-magic-swordsman.png"
+  },
+  {
+   "id": "sea-serpent-warrior-of-darkness",
+   "copy": 73,
+   "name": "Sea Serpent Warrior of Darkness",
+   "description": "A warrior who\ndefends the world of\nthe Sea of Darkness.\nHe prides himself on\nhis fighting prowess\nboth on the ground\nand, of course, in\nthe water.",
+   "type": "Sea Serpent",
+   "attribute": "Water",
+   "level": 4,
+   "attack": 1800,
+   "defense": 1500,
+   "password": "42071342",
+   "drops": true,
+   "opponents": true,
+   "art": "images/sea-serpent-warrior-of-darkness.png"
+  },
+  {
+   "id": "cyber-falcon",
+   "copy": 297,
+   "name": "Cyber Falcon",
+   "description": "A jet-powered hawk\nthat travels at the\nspeed of sound.",
+   "type": "Machine",
+   "attribute": "Wind",
+   "level": 4,
+   "attack": 1400,
+   "defense": 1200,
+   "password": "30655537",
+   "drops": true,
+   "opponents": true,
+   "art": "images/cyber-falcon.png"
+  },
+  {
+   "id": "master-kyonshee",
+   "copy": 596,
+   "name": "Master Kyonshee",
+   "description": "A wandering Kyonshee\nsearching for a\nstrong rival to\ndefeat. They say he\nwas known as the\nmaster of all\nmartial arts.",
+   "type": "Zombie",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1750,
+   "defense": 1000,
+   "password": "24530661",
+   "drops": true,
+   "opponents": true,
+   "art": "images/master-kyonshee.png"
+  },
+  {
+   "id": "oppressed-people",
+   "copy": 292,
+   "name": "Oppressed People",
+   "description": "They are oppressed,\nbut believe they\nwill have their\nfreedom someday.",
+   "type": "Aqua",
+   "attribute": "Water",
+   "level": 1,
+   "attack": 400,
+   "defense": 2000,
+   "password": "58538870",
+   "drops": true,
+   "opponents": true,
+   "art": "images/oppressed-people.png"
+  },
+  {
+   "id": "flame-champion",
+   "copy": 473,
+   "name": "Flame Champion",
+   "description": "A warrior protected\nby a flaming shield\nthat nullifies any\nattack.",
+   "type": "Pyro",
+   "attribute": "Fire",
+   "level": 5,
+   "attack": 1900,
+   "defense": 1300,
+   "password": "42599677",
+   "drops": true,
+   "opponents": true,
+   "art": "images/flame-champion.png"
+  },
+  {
+   "id": "empress-mantis",
+   "copy": 533,
+   "name": "Empress Mantis",
+   "description": "Queen of an army of\ngiant mantises whose\ncommand moves\nlegions.",
+   "type": "Insect",
+   "attribute": "Wind",
+   "level": 6,
+   "attack": 2200,
+   "defense": 1400,
+   "password": "58818411",
+   "drops": true,
+   "opponents": true,
+   "art": "images/empress-mantis.png"
+  },
+  {
+   "id": "aitsu",
+   "copy": 395,
+   "name": "Aitsu",
+   "description": "He seems to be very\nunreliable, but he\nmight have\nincredible\npotential.",
+   "type": "Fairy",
+   "attribute": "Fire",
+   "level": 5,
+   "attack": 100,
+   "defense": 100,
+   "password": "48202661",
+   "drops": true,
+   "opponents": true,
+   "art": "images/aitsu.png"
+  },
+  {
+   "id": "beast-of-talwar",
+   "copy": 709,
+   "name": "Beast of Talwar",
+   "description": "Only the master of\nthe sword among\nFiend-Type monsters\nis permitted to hold\nthe Talwar. (This\ncard is always\ntreated as an\n\"Archfiend\" card.)",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 6,
+   "attack": 2400,
+   "defense": 2150,
+   "password": "11761845",
+   "drops": true,
+   "opponents": true,
+   "art": "images/beast-of-talwar.png"
+  },
+  {
+   "id": "d-d-trainer",
+   "copy": 277,
+   "name": "D.D. Trainer",
+   "description": "A poor goblin that\nwas sucked into a\ndifferent dimension.\nHowever, he's doing\nhis best with his\nnew destiny.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 1,
+   "attack": 100,
+   "defense": 2000,
+   "password": "86498013",
+   "drops": true,
+   "opponents": true,
+   "art": "images/d-d-trainer.png"
+  },
+  {
+   "id": "dokuroyaiba",
+   "copy": 5,
+   "name": "Dokuroyaiba",
+   "description": "A boomerang with\nbrains that will\npursue a target to\nthe ends of the\nearth.",
+   "type": "Fiend",
+   "attribute": "Fire",
+   "level": 3,
+   "attack": 1000,
+   "defense": 400,
+   "password": "30325729",
+   "drops": true,
+   "opponents": true,
+   "art": "images/dokuroyaiba.png"
+  },
+  {
+   "id": "inpachi",
+   "copy": 438,
+   "name": "Inpachi",
+   "description": "A log that attacks\nlost travelers in\nthe forest.\nOriginally a big\ntree, it was cut\ndown and possessed\nby a wicked spirit.",
+   "type": "Machine",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1600,
+   "defense": 1900,
+   "password": "97923414",
+   "drops": true,
+   "opponents": true,
+   "art": "images/inpachi.png"
+  },
+  {
+   "id": "harpie-girl",
+   "copy": 207,
+   "name": "Harpie Girl",
+   "description": "A Harpie chick who\naspires to flit\nabout beautifully\nand gorgeously, but\nattack sharply.",
+   "type": "Winged Beast",
+   "attribute": "Wind",
+   "level": 2,
+   "attack": 500,
+   "defense": 500,
+   "password": "34100324",
+   "drops": true,
+   "opponents": true,
+   "art": "images/harpie-girl.png"
+  },
+  {
+   "id": "battle-footballer",
+   "copy": 416,
+   "name": "Battle Footballer",
+   "description": "A cyborg with high\ndefense power.\nOriginally it was\ninvented for a\nfootball machine.",
+   "type": "Machine",
+   "attribute": "Fire",
+   "level": 4,
+   "attack": 1000,
+   "defense": 2100,
+   "password": "48094997",
+   "drops": true,
+   "opponents": true,
+   "art": "images/battle-footballer.png"
+  },
+  {
+   "id": "the-all-seeing-white-tiger",
+   "copy": 47,
+   "name": "The All-Seeing White Tiger",
+   "description": "A proud ruler of the\njungle that some\nfear and others\nrespect.",
+   "type": "Beast",
+   "attribute": "Wind",
+   "level": 3,
+   "attack": 1300,
+   "defense": 500,
+   "password": "32269855",
+   "drops": true,
+   "opponents": true,
+   "art": "images/the-all-seeing-white-tiger.png"
+  },
+  {
+   "id": "the-illusory-gentleman",
+   "copy": 631,
+   "name": "The Illusory Gentleman",
+   "description": "Wearing odd\nfashions, this\ngentleman is very\nfickle. He sometimes\nsaves people and at\nother times commits\ncrimes.",
+   "type": "Spellcaster",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1500,
+   "defense": 1600,
+   "password": "83764996",
+   "drops": true,
+   "opponents": true,
+   "art": "images/the-illusory-gentleman.png"
+  },
+  {
+   "id": "neo-aqua-madoor",
+   "copy": 42,
+   "name": "Neo Aqua Madoor",
+   "description": "The true nature of\nthis wizard, who\nrules all water. It\ndefends itself with\na vast, impenetrable\nwall of ice.",
+   "type": "Spellcaster",
+   "attribute": "Water",
+   "level": 6,
+   "attack": 1200,
+   "defense": 3000,
+   "password": "49563947",
+   "drops": true,
+   "opponents": true,
+   "art": "images/neo-aqua-madoor.png"
+  },
+  {
+   "id": "soul-tiger",
+   "copy": 255,
+   "name": "Soul Tiger",
+   "description": "The soul of a tiger\nthat is said to\ndevour human souls.\nHe is a famous soul\nthat you wouldn't\nwant to run into in\na dark alley.",
+   "type": "Beast",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 0,
+   "defense": 2100,
+   "password": "15734813",
+   "drops": true,
+   "opponents": true,
+   "art": "images/soul-tiger.png"
+  },
+  {
+   "id": "wolf-axwielder",
+   "copy": 26,
+   "name": "Wolf Axwielder",
+   "description": "Once it has started\nbattle, this monster\nattacks fiercely and\ncannot stop.",
+   "type": "Beast-Warrior",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1650,
+   "defense": 1000,
+   "password": "56369281",
+   "drops": true,
+   "opponents": true,
+   "art": "images/wolf-axwielder.png"
+  },
+  {
+   "id": "bio-mage",
+   "copy": 276,
+   "name": "Bio-Mage",
+   "description": "A mysterious priest\ncreated as a result\nof the latest\nadvances in\nbiotechnology.",
+   "type": "Fairy",
+   "attribute": "Light",
+   "level": 3,
+   "attack": 1150,
+   "defense": 1000,
+   "password": "58696829",
+   "drops": true,
+   "opponents": true,
+   "art": "images/bio-mage.png"
+  },
+  {
+   "id": "robolady",
+   "copy": 417,
+   "name": "Robolady",
+   "description": "A warrior fully\ncovered with metal.\nIt upgrades by\nfusing with\n\"Roboyarou\".",
+   "type": "Machine",
+   "attribute": "Earth",
+   "level": 3,
+   "attack": 450,
+   "defense": 900,
+   "password": "92421852",
+   "drops": true,
+   "opponents": true,
+   "art": "images/robolady.png"
+  },
+  {
+   "id": "warrior-of-zera",
+   "copy": 15,
+   "name": "Warrior of Zera",
+   "description": "A wandering warrior\nwho seeks the\nsanctuary where he\ncan gain the power\nof the Archlords.",
+   "type": "Warrior",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1600,
+   "defense": 1600,
+   "password": "66073051",
+   "drops": true,
+   "opponents": true,
+   "art": "images/warrior-of-zera.png"
+  },
+  {
+   "id": "lizard-soldier",
+   "copy": 4,
+   "name": "Lizard Soldier",
+   "description": "A beast soldier\nderived from\ndragons, it is small\nfor a Dragon-Type.\nMoving very quickly,\nthis monster is an\nexcellent\nstrategist.",
+   "type": "Dragon",
+   "attribute": "Wind",
+   "level": 3,
+   "attack": 1100,
+   "defense": 800,
+   "password": "20831168",
+   "drops": true,
+   "opponents": true,
+   "art": "images/lizard-soldier.png"
+  },
+  {
+   "id": "sonic-duck",
+   "copy": 581,
+   "name": "Sonic Duck",
+   "description": "A duck which can\nwalk at a sonic\nspeed. Sometimes, he\ncannot deal with his\nincredible pace and\nloses control.",
+   "type": "Winged Beast",
+   "attribute": "Wind",
+   "level": 3,
+   "attack": 1700,
+   "defense": 700,
+   "password": "84696266",
+   "drops": true,
+   "opponents": true,
+   "art": "images/sonic-duck.png"
+  },
+  {
+   "id": "roboyarou",
+   "copy": 544,
+   "name": "Roboyarou",
+   "description": "A warrior fully\ncovered with metal.\nIt upgrades by\nfusing with\n\"Robolady\".",
+   "type": "Machine",
+   "attribute": "Earth",
+   "level": 3,
+   "attack": 900,
+   "defense": 450,
+   "password": "38916461",
+   "drops": true,
+   "opponents": true,
+   "art": "images/roboyarou.png"
+  },
+  {
+   "id": "science-soldier",
+   "copy": 226,
+   "name": "Science Soldier",
+   "description": "Soldiers equipped\nwith state-of-the-\nart weaponry to face\nunknown creatures.",
+   "type": "Warrior",
+   "attribute": "Dark",
+   "level": 3,
+   "attack": 800,
+   "defense": 800,
+   "password": "67532912",
+   "drops": true,
+   "opponents": true,
+   "art": "images/science-soldier.png"
+  },
+  {
+   "id": "dark-bat",
+   "copy": 538,
+   "name": "Dark Bat",
+   "description": "Bats from the\nnetherworld that use\ntheir hyper senses\nto detect their\nenemies.",
+   "type": "Winged Beast",
+   "attribute": "Wind",
+   "level": 3,
+   "attack": 1000,
+   "defense": 1000,
+   "password": "67049542",
+   "drops": true,
+   "opponents": true,
+   "art": "images/dark-bat.png"
+  },
+  {
+   "id": "acrobat-monkey",
+   "copy": 416,
+   "name": "Acrobat Monkey",
+   "description": "An autonomous monkey\ntype robot which was\ndeveloped with\ncutting-edge\ntechnology. It moves\nvery acrobatically.",
+   "type": "Machine",
+   "attribute": "Earth",
+   "level": 3,
+   "attack": 1000,
+   "defense": 1800,
+   "password": "47372349",
+   "drops": true,
+   "opponents": true,
+   "art": "images/acrobat-monkey.png"
+  },
+  {
+   "id": "pharaoh-s-servant",
+   "copy": 98,
+   "name": "Pharaoh's Servant",
+   "description": "An apparition of\nthose said to\nformerly serve the\nPharaoh. It has\ntremendous loyalty\nthat does not\nwaiver.",
+   "type": "Zombie",
+   "attribute": "Dark",
+   "level": 2,
+   "attack": 900,
+   "defense": 0,
+   "password": "52550973",
+   "drops": true,
+   "opponents": true,
+   "art": "images/pharaoh-s-servant.png"
+  },
+  {
+   "id": "people-running-about",
+   "copy": 101,
+   "name": "People Running About",
+   "description": "Although they always\nsuffer in silence,\nthey swear an oath\nto inevitably\nrevolt.",
+   "type": "Pyro",
+   "attribute": "Fire",
+   "level": 2,
+   "attack": 600,
+   "defense": 600,
+   "password": "12143771",
+   "drops": true,
+   "opponents": true,
+   "art": "images/people-running-about.png"
+  },
+  {
+   "id": "shapesnatch",
+   "copy": 413,
+   "name": "Shapesnatch",
+   "description": "A bow tie with\nhorrible power, it\nattacks an opponent\nby controlling\nothers.",
+   "type": "Machine",
+   "attribute": "Dark",
+   "level": 5,
+   "attack": 1200,
+   "defense": 1700,
+   "password": "04035199",
+   "drops": true,
+   "opponents": true,
+   "art": "images/shapesnatch.png"
+  },
+  {
+   "id": "united-resistance",
+   "copy": 45,
+   "name": "United Resistance",
+   "description": "The people that\ngather to swear to\nfight their\noppressors. A\nrevolution is\ncoming.",
+   "type": "Thunder",
+   "attribute": "Wind",
+   "level": 3,
+   "attack": 1000,
+   "defense": 400,
+   "password": "85936485",
+   "drops": true,
+   "opponents": true,
+   "art": "images/united-resistance.png"
+  },
+  {
+   "id": "boneheimer",
+   "copy": 606,
+   "name": "Boneheimer",
+   "description": "This monster wanders\nthe seas, sucking\ndry any creatures it\nmay encounter.",
+   "type": "Aqua",
+   "attribute": "Water",
+   "level": 3,
+   "attack": 850,
+   "defense": 400,
+   "password": "98456117",
+   "drops": true,
+   "opponents": true,
+   "art": "images/boneheimer.png"
+  }
+ ],
+ "fusions": [
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    424
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    39
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    383
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    386
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    712
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    555
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    458
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    521
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    63
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    409
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    577
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    464
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    "real-cards:x-head-cannon:1"
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    "real-cards:gazelle-the-king-of-mythical-beasts:1"
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon:1",
+    "real-cards:archfiend-soldier:1"
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    441
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    508
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    388
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    408
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    409
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    415
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    90
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    126
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    582
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    389
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    495
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    44
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    "real-cards:gazelle-the-king-of-mythical-beasts:1"
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    "real-cards:archfiend-soldier:1"
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:x-head-cannon:1",
+    "real-cards:mystical-shine-ball:1"
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    597
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    23
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    528
+   ],
+   "result": 487
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    404
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    91
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    163
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    43
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    51
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    52
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    55
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    66
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    80
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    "real-cards:archfiend-soldier:1"
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    "real-cards:mystical-shine-ball:1"
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:gazelle-the-king-of-mythical-beasts:1",
+    "real-cards:hyozanryu:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    85
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    379
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    500
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    523
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    715
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    526
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    719
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    415
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    39
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    99
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    378
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    551
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    "real-cards:mystical-shine-ball:1"
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    "real-cards:hyozanryu:1"
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:archfiend-soldier:1",
+    "real-cards:dark-blade:1"
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    264
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    492
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    130
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    192
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    208
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    134
+   ],
+   "result": 462
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    16
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    183
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    184
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    428
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    2
+   ],
+   "result": 433
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    463
+   ],
+   "result": 633
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    "real-cards:hyozanryu:1"
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    "real-cards:dark-blade:1"
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:mystical-shine-ball:1",
+    "real-cards:gagagigo:1"
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    571
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    39
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    383
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    386
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    711
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    424
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    704
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    389
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    90
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    126
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    582
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    495
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    "real-cards:dark-blade:1"
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    "real-cards:gagagigo:1"
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:hyozanryu:1",
+    "real-cards:thousand-eyes-idol:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    12
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    15
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    376
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    389
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    434
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    78
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    99
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    379
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    523
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    388
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    415
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    526
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    "real-cards:gagagigo:1"
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    "real-cards:thousand-eyes-idol:1"
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:dark-blade:1",
+    "real-cards:alpha-the-magnet-warrior:1"
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:gagagigo:1",
+    51
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:gagagigo:1",
+    630
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:gagagigo:1",
+    566
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:gagagigo:1",
+    441
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:gagagigo:1",
+    "real-cards:thousand-eyes-idol:1"
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:gagagigo:1",
+    "real-cards:alpha-the-magnet-warrior:1"
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    428
+   ],
+   "result": 9
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    387
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    16
+   ],
+   "result": 215
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    628
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    34
+   ],
+   "result": 215
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    104
+   ],
+   "result": 228
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    402
+   ],
+   "result": 9
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    24
+   ],
+   "result": 154
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    58
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    123
+   ],
+   "result": 9
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    277
+   ],
+   "result": 154
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    504
+   ],
+   "result": 215
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    "real-cards:alpha-the-magnet-warrior:1"
+   ],
+   "result": 97
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    "real-cards:gogiga-gagagigo:1"
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:thousand-eyes-idol:1",
+    "real-cards:ryu-ran:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    74
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    454
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    456
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    517
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    457
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    623
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    23
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    41
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    165
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    352
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    511
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    557
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    "real-cards:ryu-ran:1"
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:alpha-the-magnet-warrior:1",
+    "real-cards:beta-the-magnet-warrior:1"
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:gogiga-gagagigo:1",
+    "real-cards:ryu-ran:1"
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    711
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    427
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    571
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    706
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    39
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    69
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    390
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    714
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    467
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    529
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    473
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    15
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    "real-cards:beta-the-magnet-warrior:1"
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    "real-cards:gamma-the-magnet-warrior:1"
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:ryu-ran:1",
+    "real-cards:humanoid-slime:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    632
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    454
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    426
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    453
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    74
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    456
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    26
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    78
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    127
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    11
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    403
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    408
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    "real-cards:gamma-the-magnet-warrior:1"
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    "real-cards:humanoid-slime:1"
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:beta-the-magnet-warrior:1",
+    "real-cards:ojama-black:1"
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    454
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    632
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    74
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    456
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    517
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    457
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    43
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    51
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    52
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    55
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    66
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    80
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    "real-cards:humanoid-slime:1"
+   ],
+   "result": 617
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    "real-cards:ojama-black:1"
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:gamma-the-magnet-warrior:1",
+    "real-cards:ojama-green:1"
+   ],
+   "result": 495
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    177
+   ],
+   "result": 193
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    265
+   ],
+   "result": 431
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    602
+   ],
+   "result": 251
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    606
+   ],
+   "result": 431
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    615
+   ],
+   "result": 251
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    199
+   ],
+   "result": 450
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    250
+   ],
+   "result": 193
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    262
+   ],
+   "result": 138
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    381
+   ],
+   "result": 251
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    536
+   ],
+   "result": 193
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    247
+   ],
+   "result": 251
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    76
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    "real-cards:ojama-black:1"
+   ],
+   "result": 193
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    "real-cards:ojama-green:1"
+   ],
+   "result": 431
+  },
+  {
+   "with": [
+    "real-cards:humanoid-slime:1",
+    "real-cards:mad-dog-of-darkness:1"
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    527
+   ],
+   "result": 485
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    202
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    541
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    159
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    255
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    598
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    428
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    192
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    16
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    264
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    492
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    130
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    "real-cards:ojama-green:1"
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-black:1",
+    "real-cards:mad-dog-of-darkness:1"
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    527
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    202
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    541
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    159
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    255
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    598
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    428
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    192
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    16
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    264
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    492
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    130
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    "real-cards:mad-dog-of-darkness:1"
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:ojama-green:1",
+    "real-cards:earthbound-spirit:1"
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    483
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    487
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    575
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    403
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    528
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    714
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    719
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    415
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    39
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    85
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    99
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    378
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    "real-cards:wingweaver:1"
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    "real-cards:earthbound-spirit:1"
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:mad-dog-of-darkness:1",
+    "real-cards:amphibian-beast:1"
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:wingweaver:1",
+    111
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:wingweaver:1",
+    1
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:wingweaver:1",
+    358
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:wingweaver:1",
+    427
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    137
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    254
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    563
+   ],
+   "result": 610
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    173
+   ],
+   "result": 244
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    232
+   ],
+   "result": 479
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    242
+   ],
+   "result": 610
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    50
+   ],
+   "result": 479
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    56
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    105
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    159
+   ],
+   "result": 479
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    161
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    224
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    "real-cards:ojama-yellow:1"
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:earthbound-spirit:1",
+    "real-cards:melchid-the-four-face-beast:1"
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:amphibian-beast:1",
+    "real-cards:ojama-yellow:1"
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "real-cards:amphibian-beast:1",
+    "real-cards:melchid-the-four-face-beast:1"
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:amphibian-beast:1",
+    "real-cards:sky-scout:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    527
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    202
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    541
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    159
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    255
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    598
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    428
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    192
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    16
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    264
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    492
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    130
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    "real-cards:melchid-the-four-face-beast:1"
+   ],
+   "result": 495
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    "real-cards:sky-scout:1"
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:ojama-yellow:1",
+    "real-cards:slot-machine:1"
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    281
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    498
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    136
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    149
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    377
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    87
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    10
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    31
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    36
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    96
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    168
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    286
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    "real-cards:sky-scout:1"
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    "real-cards:slot-machine:1"
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:melchid-the-four-face-beast:1",
+    "real-cards:headless-knight:1"
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    464
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    577
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    491
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    521
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    63
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    522
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    409
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    106
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    424
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    458
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    383
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    386
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    "real-cards:slot-machine:1"
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    "real-cards:headless-knight:1"
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:sky-scout:1",
+    "real-cards:twin-headed-fire-dragon:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    645
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    409
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    415
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    390
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    407
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    441
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    39
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    85
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    378
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    500
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    551
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    594
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    "real-cards:headless-knight:1"
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    "real-cards:twin-headed-fire-dragon:1"
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:slot-machine:1",
+    "real-cards:the-gross-ghost-of-fled-dreams:1"
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    136
+   ],
+   "result": 650
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    149
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    281
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    84
+   ],
+   "result": 650
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    86
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    95
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    518
+   ],
+   "result": 650
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    649
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    23
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    41
+   ],
+   "result": 650
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    43
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    51
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    "real-cards:twin-headed-fire-dragon:1"
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    "real-cards:the-gross-ghost-of-fled-dreams:1"
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:headless-knight:1",
+    "real-cards:grand-tiki-elder:1"
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    529
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    473
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    291
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    133
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    176
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    101
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    390
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    714
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    467
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    15
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    68
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    555
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    "real-cards:the-gross-ghost-of-fled-dreams:1"
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    "real-cards:grand-tiki-elder:1"
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:twin-headed-fire-dragon:1",
+    "real-cards:the-earl-of-demise:1"
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    6
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    25
+   ],
+   "result": 36
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    119
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    164
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    233
+   ],
+   "result": 36
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    95
+   ],
+   "result": 97
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    115
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    351
+   ],
+   "result": 36
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    470
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    514
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    98
+   ],
+   "result": 650
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    643
+   ],
+   "result": 97
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    "real-cards:grand-tiki-elder:1"
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    "real-cards:the-earl-of-demise:1"
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:the-gross-ghost-of-fled-dreams:1",
+    "real-cards:shining-abyss:1"
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    281
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    498
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    136
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    149
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    377
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    87
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    10
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    31
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    36
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    96
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    168
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    286
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    "real-cards:the-earl-of-demise:1"
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    "real-cards:shining-abyss:1"
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:grand-tiki-elder:1",
+    "real-cards:red-archery-girl:1"
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    85
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    500
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    715
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    365
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    472
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    401
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    39
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    378
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    551
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    594
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    702
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    720
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    "real-cards:shining-abyss:1"
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    "real-cards:red-archery-girl:1"
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:the-earl-of-demise:1",
+    "real-cards:swordsman-of-landstar:1"
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    111
+   ],
+   "result": 582
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    396
+   ],
+   "result": 582
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    90
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    126
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    582
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    633
+   ],
+   "result": 582
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    44
+   ],
+   "result": 582
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    425
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    622
+   ],
+   "result": 582
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    493
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    513
+   ],
+   "result": 409
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    462
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    "real-cards:red-archery-girl:1"
+   ],
+   "result": 440
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    "real-cards:swordsman-of-landstar:1"
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:shining-abyss:1",
+    "real-cards:flying-kamakiri-2:1"
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    249
+   ],
+   "result": 448
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    430
+   ],
+   "result": 519
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    593
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    518
+   ],
+   "result": 617
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    550
+   ],
+   "result": 519
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    445
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    460
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    542
+   ],
+   "result": 519
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    543
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    77
+   ],
+   "result": 448
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    230
+   ],
+   "result": 440
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    353
+   ],
+   "result": 617
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    "real-cards:swordsman-of-landstar:1"
+   ],
+   "result": 448
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    "real-cards:flying-kamakiri-2:1"
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:red-archery-girl:1",
+    "real-cards:worm-drake:1"
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    161
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    182
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    224
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    147
+   ],
+   "result": 610
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    185
+   ],
+   "result": 244
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    586
+   ],
+   "result": 610
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    50
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    56
+   ],
+   "result": 479
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    105
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    159
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    237
+   ],
+   "result": 479
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    255
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    "real-cards:flying-kamakiri-2:1"
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    "real-cards:worm-drake:1"
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:swordsman-of-landstar:1",
+    "real-cards:luster-dragon-2:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    52
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    55
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    614
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    480
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    49
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    53
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    125
+   ],
+   "result": 409
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    466
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    581
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    7
+   ],
+   "result": 409
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    117
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    636
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    "real-cards:worm-drake:1"
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:flying-kamakiri-2:1",
+    "real-cards:luster-dragon-2:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    630
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    51
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    77
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    566
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    76
+   ],
+   "result": 448
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    400
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    23
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    41
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    165
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    352
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    511
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    557
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    "real-cards:luster-dragon-2:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:worm-drake:1",
+    "real-cards:gadget-soldier:1"
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    69
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    82
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    706
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    358
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    427
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    37
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    372
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    465
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    472
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    522
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    63
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    458
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    "real-cards:giga-gagagigo:1"
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    "real-cards:gadget-soldier:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:luster-dragon-2:1",
+    "real-cards:opticlops:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:giga-gagagigo:1",
+    "real-cards:gadget-soldier:1"
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:giga-gagagigo:1",
+    "real-cards:opticlops:1"
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    441
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    508
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    388
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    408
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    409
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    415
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    15
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    68
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    473
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    555
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    357
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    519
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    "real-cards:opticlops:1"
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    "real-cards:the-portrait-s-secret:1"
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:gadget-soldier:1",
+    "real-cards:great-angus:1"
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    379
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    523
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    526
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    204
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    650
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    87
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    99
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    388
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    415
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    124
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    419
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    545
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    "real-cards:the-portrait-s-secret:1"
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    "real-cards:great-angus:1"
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:opticlops:1",
+    "real-cards:darkfire-soldier-1:1"
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    112
+   ],
+   "result": 41
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    169
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    171
+   ],
+   "result": 23
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    194
+   ],
+   "result": 41
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    88
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    162
+   ],
+   "result": 518
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    3
+   ],
+   "result": 41
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    27
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    46
+   ],
+   "result": 23
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    47
+   ],
+   "result": 41
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    49
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    54
+   ],
+   "result": 23
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    "real-cards:great-angus:1"
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    "real-cards:darkfire-soldier-1:1"
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:the-portrait-s-secret:1",
+    "real-cards:gradius:1"
+   ],
+   "result": 23
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    487
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    575
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    403
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    483
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    528
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    597
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    15
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    68
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    473
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    555
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    357
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    519
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    "real-cards:darkfire-soldier-1:1"
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    "real-cards:gradius:1"
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:great-angus:1",
+    "real-cards:warrior-dai-grepher:1"
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    473
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    291
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    529
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    133
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    176
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    101
+   ],
+   "result": 473
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    555
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    15
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    68
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    357
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    519
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    390
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    "real-cards:gradius:1"
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    "real-cards:warrior-dai-grepher:1"
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-1:1",
+    "real-cards:girochin-kuwagata:1"
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    412
+   ],
+   "result": 41
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    283
+   ],
+   "result": 511
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    514
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    580
+   ],
+   "result": 41
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    643
+   ],
+   "result": 425
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    297
+   ],
+   "result": 97
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    109
+   ],
+   "result": 433
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    128
+   ],
+   "result": 413
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    186
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    290
+   ],
+   "result": 633
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    608
+   ],
+   "result": 425
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    612
+   ],
+   "result": 633
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    "real-cards:warrior-dai-grepher:1"
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    "real-cards:girochin-kuwagata:1"
+   ],
+   "result": 63
+  },
+  {
+   "with": [
+    "real-cards:gradius:1",
+    "real-cards:souls-of-the-forgotten:1"
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    78
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    127
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    434
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    621
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    12
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    15
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    26
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    11
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    403
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    408
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    423
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    619
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    "real-cards:girochin-kuwagata:1"
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    "real-cards:souls-of-the-forgotten:1"
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:warrior-dai-grepher:1",
+    "real-cards:island-turtle:1"
+   ],
+   "result": 520
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    375
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    614
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    52
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    55
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    533
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    480
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    106
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    491
+   ],
+   "result": 63
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    464
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    636
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    409
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    466
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    "real-cards:souls-of-the-forgotten:1"
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    "real-cards:island-turtle:1"
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:girochin-kuwagata:1",
+    "real-cards:the-dragon-dwelling-in-the-cave:1"
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    102
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    271
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    83
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    560
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    5
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    48
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    139
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    146
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    153
+   ],
+   "result": 539
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    220
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    226
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    239
+   ],
+   "result": 138
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    "real-cards:island-turtle:1"
+   ],
+   "result": 626
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    "real-cards:the-dragon-dwelling-in-the-cave:1"
+   ],
+   "result": 36
+  },
+  {
+   "with": [
+    "real-cards:souls-of-the-forgotten:1",
+    "real-cards:three-headed-geedo:1"
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    432
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    474
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    431
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    446
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    634
+   ],
+   "result": 542
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    70
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    76
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    461
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    213
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    251
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    546
+   ],
+   "result": 647
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    77
+   ],
+   "result": 230
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    "real-cards:the-dragon-dwelling-in-the-cave:1"
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    "real-cards:three-headed-geedo:1"
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:island-turtle:1",
+    "real-cards:overdrive:1"
+   ],
+   "result": 73
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    4
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    7
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    561
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    10
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    31
+   ],
+   "result": 409
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    168
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    62
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    272
+   ],
+   "result": 168
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    595
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    13
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    53
+   ],
+   "result": 168
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    117
+   ],
+   "result": 357
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    "real-cards:three-headed-geedo:1"
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    "real-cards:overdrive:1"
+   ],
+   "result": 487
+  },
+  {
+   "with": [
+    "real-cards:the-dragon-dwelling-in-the-cave:1",
+    "real-cards:darkfire-soldier-2:1"
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    112
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    169
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    171
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    194
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    88
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    162
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    30
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    42
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    132
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    241
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    115
+   ],
+   "result": 36
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    351
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    "real-cards:overdrive:1"
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    "real-cards:darkfire-soldier-2:1"
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:three-headed-geedo:1",
+    "real-cards:mokey-mokey:1"
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    438
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    648
+   ],
+   "result": 487
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    423
+   ],
+   "result": 409
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    513
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    124
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    275
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    32
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    81
+   ],
+   "result": 487
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    94
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    234
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    528
+   ],
+   "result": 487
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    614
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    "real-cards:darkfire-soldier-2:1"
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    "real-cards:mokey-mokey:1"
+   ],
+   "result": 487
+  },
+  {
+   "with": [
+    "real-cards:overdrive:1",
+    "real-cards:kabazauls:1"
+   ],
+   "result": 520
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    473
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    291
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    529
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    133
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    176
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    101
+   ],
+   "result": 473
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    555
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    15
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    68
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    357
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    519
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    390
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    "real-cards:mokey-mokey:1"
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    "real-cards:kabazauls:1"
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:darkfire-soldier-2:1",
+    "real-cards:garnecia-elefantis:1"
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    395
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    192
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    264
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    492
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    130
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    208
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    428
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    16
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    183
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    184
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    2
+   ],
+   "result": 462
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    463
+   ],
+   "result": 459
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    "real-cards:kabazauls:1"
+   ],
+   "result": 520
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    "real-cards:garnecia-elefantis:1"
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "real-cards:mokey-mokey:1",
+    "real-cards:charcoal-inpachi:1"
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    11
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    32
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    79
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    81
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    80
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    482
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    150
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    617
+   ],
+   "result": 520
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    439
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    624
+   ],
+   "result": 520
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    60
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    73
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:kabazauls:1",
+    "real-cards:charcoal-inpachi:1"
+   ],
+   "result": 520
+  },
+  {
+   "with": [
+    "real-cards:garnecia-elefantis:1",
+    68
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:garnecia-elefantis:1",
+    "real-cards:charcoal-inpachi:1"
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    40
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    644
+   ],
+   "result": 479
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    210
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    101
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    176
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    133
+   ],
+   "result": 357
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    598
+   ],
+   "result": 642
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    417
+   ],
+   "result": 643
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    142
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    357
+   ],
+   "result": 473
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    519
+   ],
+   "result": 473
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    555
+   ],
+   "result": 473
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    "real-cards:big-koala:1"
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    "real-cards:skull-mariner:1"
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:charcoal-inpachi:1",
+    "real-cards:terrorking-salmon:1"
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:big-koala:1",
+    714
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:big-koala:1",
+    "real-cards:blazing-inpachi:1"
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    234
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    369
+   ],
+   "result": 73
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    554
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    621
+   ],
+   "result": 639
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    43
+   ],
+   "result": 73
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    66
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    60
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    131
+   ],
+   "result": 73
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    438
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    448
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    507
+   ],
+   "result": 73
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    625
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    "real-cards:blazing-inpachi:1"
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:skull-mariner:1",
+    "real-cards:spikebot:1"
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:terrorking-salmon:1",
+    "real-cards:blazing-inpachi:1"
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:terrorking-salmon:1",
+    "real-cards:spikebot:1"
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:terrorking-salmon:1",
+    "real-cards:mr-volcano:1"
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    473
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    529
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    291
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    133
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    176
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    101
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    15
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    68
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    555
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    357
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    519
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    390
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    "real-cards:spikebot:1"
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    "real-cards:mr-volcano:1"
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:blazing-inpachi:1",
+    "real-cards:metal-armored-bug:1"
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    441
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    508
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    388
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    408
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    409
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    415
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    99
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    379
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    523
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    526
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    204
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    545
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    "real-cards:mr-volcano:1"
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    "real-cards:metal-armored-bug:1"
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:spikebot:1",
+    "real-cards:robotic-knight:1"
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    529
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    473
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    291
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    133
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    176
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    101
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    390
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    714
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    467
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    15
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    68
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    555
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    "real-cards:metal-armored-bug:1"
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    "real-cards:robotic-knight:1"
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:mr-volcano:1",
+    "real-cards:oni-tank-t-34:1"
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:metal-armored-bug:1",
+    407
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:metal-armored-bug:1",
+    "real-cards:robotic-knight:1"
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:metal-armored-bug:1",
+    "real-cards:oni-tank-t-34:1"
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:metal-armored-bug:1",
+    "real-cards:steel-ogre-grotto-2:1"
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    438
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    648
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    423
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    513
+   ],
+   "result": 409
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    124
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    275
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    357
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    519
+   ],
+   "result": 508
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    555
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    15
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    68
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    291
+   ],
+   "result": 409
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    "real-cards:oni-tank-t-34:1"
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    "real-cards:steel-ogre-grotto-2:1"
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:robotic-knight:1",
+    "real-cards:neo-bug:1"
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    297
+   ],
+   "result": 97
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    512
+   ],
+   "result": 377
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    557
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    405
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    643
+   ],
+   "result": 377
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    275
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    23
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    41
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    165
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    352
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    511
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    630
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    "real-cards:steel-ogre-grotto-2:1"
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    "real-cards:neo-bug:1"
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:oni-tank-t-34:1",
+    "real-cards:flying-fish:1"
+   ],
+   "result": 617
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    645
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    409
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    415
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    441
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    508
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    388
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    482
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    532
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    533
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    618
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    627
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    701
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    "real-cards:neo-bug:1"
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    "real-cards:flying-fish:1"
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:steel-ogre-grotto-2:1",
+    "real-cards:neo-the-magic-swordsman:1"
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    375
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    533
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    614
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    52
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    55
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    12
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    14
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    79
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    376
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    382
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    487
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    "real-cards:flying-fish:1"
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    "real-cards:neo-the-magic-swordsman:1"
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:neo-bug:1",
+    "real-cards:sea-serpent-warrior-of-darkness:1"
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    247
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    436
+   ],
+   "result": 193
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    251
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    546
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    626
+   ],
+   "result": 230
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    543
+   ],
+   "result": 448
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    300
+   ],
+   "result": 546
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    537
+   ],
+   "result": 251
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    122
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    144
+   ],
+   "result": 546
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    174
+   ],
+   "result": 251
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    211
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    "real-cards:neo-the-magic-swordsman:1"
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    "real-cards:sea-serpent-warrior-of-darkness:1"
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:flying-fish:1",
+    "real-cards:cyber-falcon:1"
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    106
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    495
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    619
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    44
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    622
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    493
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    513
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    90
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    126
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    425
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    582
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    389
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    "real-cards:sea-serpent-warrior-of-darkness:1"
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    "real-cards:cyber-falcon:1"
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:neo-the-magic-swordsman:1",
+    "real-cards:master-kyonshee:1"
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:sea-serpent-warrior-of-darkness:1",
+    73
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:sea-serpent-warrior-of-darkness:1",
+    448
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:sea-serpent-warrior-of-darkness:1",
+    353
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:sea-serpent-warrior-of-darkness:1",
+    400
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:sea-serpent-warrior-of-darkness:1",
+    440
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:sea-serpent-warrior-of-darkness:1",
+    441
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:sea-serpent-warrior-of-darkness:1",
+    447
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:sea-serpent-warrior-of-darkness:1",
+    150
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:sea-serpent-warrior-of-darkness:1",
+    "real-cards:cyber-falcon:1"
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:sea-serpent-warrior-of-darkness:1",
+    "real-cards:master-kyonshee:1"
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:sea-serpent-warrior-of-darkness:1",
+    "real-cards:oppressed-people:1"
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    297
+   ],
+   "result": 377
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    512
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    557
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    405
+   ],
+   "result": 650
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    643
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    275
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    7
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    117
+   ],
+   "result": 508
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    581
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    62
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    125
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    272
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    "real-cards:master-kyonshee:1"
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    "real-cards:oppressed-people:1"
+   ],
+   "result": 519
+  },
+  {
+   "with": [
+    "real-cards:cyber-falcon:1",
+    "real-cards:flame-champion:1"
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    99
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    545
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    97
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    368
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    596
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    719
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    11
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    403
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    408
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    434
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    12
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    14
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    "real-cards:oppressed-people:1"
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    "real-cards:flame-champion:1"
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:master-kyonshee:1",
+    "real-cards:empress-mantis:1"
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    289
+   ],
+   "result": 431
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    292
+   ],
+   "result": 251
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    444
+   ],
+   "result": 193
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    152
+   ],
+   "result": 431
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    398
+   ],
+   "result": 251
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    484
+   ],
+   "result": 193
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    436
+   ],
+   "result": 431
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    475
+   ],
+   "result": 251
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    589
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    250
+   ],
+   "result": 138
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    262
+   ],
+   "result": 431
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    381
+   ],
+   "result": 193
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    "real-cards:flame-champion:1"
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    "real-cards:empress-mantis:1"
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:oppressed-people:1",
+    "real-cards:aitsu:1"
+   ],
+   "result": 193
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    473
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    529
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    291
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    133
+   ],
+   "result": 390
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    176
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    101
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    15
+   ],
+   "result": 33
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    68
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    555
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    357
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    390
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    519
+   ],
+   "result": 529
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    "real-cards:empress-mantis:1"
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    "real-cards:aitsu:1"
+   ],
+   "result": 467
+  },
+  {
+   "with": [
+    "real-cards:flame-champion:1",
+    "real-cards:beast-of-talwar:1"
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    367
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    533
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    375
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    614
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    465
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    472
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    69
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    372
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    383
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    386
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    "real-cards:aitsu:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    "real-cards:beast-of-talwar:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:empress-mantis:1",
+    "real-cards:d-d-trainer:1"
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    395
+   ],
+   "result": 272
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    192
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    264
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    492
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    130
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    208
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    40
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    210
+   ],
+   "result": 633
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    598
+   ],
+   "result": 642
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    101
+   ],
+   "result": 633
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    176
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    417
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    "real-cards:beast-of-talwar:1"
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    "real-cards:d-d-trainer:1"
+   ],
+   "result": 154
+  },
+  {
+   "with": [
+    "real-cards:aitsu:1",
+    "real-cards:dokuroyaiba:1"
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    709
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    385
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    391
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    471
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    401
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    365
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    82
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    370
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    706
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    35
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    716
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    564
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    "real-cards:d-d-trainer:1"
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    "real-cards:dokuroyaiba:1"
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "real-cards:beast-of-talwar:1",
+    "real-cards:inpachi:1"
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    402
+   ],
+   "result": 9
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    58
+   ],
+   "result": 154
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    277
+   ],
+   "result": 9
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    504
+   ],
+   "result": 228
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    137
+   ],
+   "result": 154
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    254
+   ],
+   "result": 215
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    24
+   ],
+   "result": 9
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    123
+   ],
+   "result": 9
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    387
+   ],
+   "result": 2
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    548
+   ],
+   "result": 228
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    9
+   ],
+   "result": 154
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    182
+   ],
+   "result": 154
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    "real-cards:dokuroyaiba:1"
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    "real-cards:inpachi:1"
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:d-d-trainer:1",
+    "real-cards:harpie-girl:1"
+   ],
+   "result": 215
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    5
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    48
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    175
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    178
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    181
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    279
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    133
+   ],
+   "result": 377
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    142
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    176
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    417
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    101
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    291
+   ],
+   "result": 377
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    "real-cards:inpachi:1"
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    "real-cards:harpie-girl:1"
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "real-cards:dokuroyaiba:1",
+    "real-cards:battle-footballer:1"
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    438
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    648
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    423
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    513
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    124
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    275
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    32
+   ],
+   "result": 487
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    81
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    94
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    234
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    528
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    614
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    "real-cards:harpie-girl:1"
+   ],
+   "result": 487
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    "real-cards:battle-footballer:1"
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:inpachi:1",
+    "real-cards:the-all-seeing-white-tiger:1"
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    207
+   ],
+   "result": 595
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    300
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    538
+   ],
+   "result": 642
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    186
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    13
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    468
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    191
+   ],
+   "result": 610
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    200
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    609
+   ],
+   "result": 479
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    144
+   ],
+   "result": 595
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    211
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    296
+   ],
+   "result": 272
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    "real-cards:battle-footballer:1"
+   ],
+   "result": 272
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    "real-cards:the-all-seeing-white-tiger:1"
+   ],
+   "result": 487
+  },
+  {
+   "with": [
+    "real-cards:harpie-girl:1",
+    "real-cards:the-illusory-gentleman:1"
+   ],
+   "result": 495
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    406
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    283
+   ],
+   "result": 64
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    414
+   ],
+   "result": 457
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    418
+   ],
+   "result": 459
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    544
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    580
+   ],
+   "result": 456
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    133
+   ],
+   "result": 357
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    142
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    176
+   ],
+   "result": 643
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    101
+   ],
+   "result": 413
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    291
+   ],
+   "result": 413
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    210
+   ],
+   "result": 643
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    "real-cards:the-all-seeing-white-tiger:1"
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    "real-cards:the-illusory-gentleman:1"
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:battle-footballer:1",
+    "real-cards:neo-aqua-madoor:1"
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    91
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    163
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    587
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    404
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    607
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    23
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    62
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    272
+   ],
+   "result": 487
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    595
+   ],
+   "result": 409
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    4
+   ],
+   "result": 168
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    7
+   ],
+   "result": 357
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    13
+   ],
+   "result": 409
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    "real-cards:the-illusory-gentleman:1"
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    "real-cards:neo-aqua-madoor:1"
+   ],
+   "result": 230
+  },
+  {
+   "with": [
+    "real-cards:the-all-seeing-white-tiger:1",
+    "real-cards:soul-tiger:1"
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    631
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    433
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    493
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    44
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    363
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    622
+   ],
+   "result": 582
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    10
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    31
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    36
+   ],
+   "result": 495
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    96
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    168
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    281
+   ],
+   "result": 495
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    "real-cards:neo-aqua-madoor:1"
+   ],
+   "result": 495
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    "real-cards:soul-tiger:1"
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "real-cards:the-illusory-gentleman:1",
+    "real-cards:wolf-axwielder:1"
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    42
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    128
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    213
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    216
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    284
+   ],
+   "result": 23
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    115
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    70
+   ],
+   "result": 542
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    71
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    251
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    361
+   ],
+   "result": 542
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    450
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    431
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    "real-cards:soul-tiger:1"
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    "real-cards:wolf-axwielder:1"
+   ],
+   "result": 639
+  },
+  {
+   "with": [
+    "real-cards:neo-aqua-madoor:1",
+    "real-cards:bio-mage:1"
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    527
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    202
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    541
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    159
+   ],
+   "result": 479
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    255
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    598
+   ],
+   "result": 610
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    72
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    362
+   ],
+   "result": 485
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    366
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    394
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    399
+   ],
+   "result": 485
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    499
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    "real-cards:wolf-axwielder:1"
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    "real-cards:bio-mage:1"
+   ],
+   "result": 404
+  },
+  {
+   "with": [
+    "real-cards:soul-tiger:1",
+    "real-cards:robolady:1"
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    26
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    14
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    68
+   ],
+   "result": 426
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    382
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    627
+   ],
+   "result": 531
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    64
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    423
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    619
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    32
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    78
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    81
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    94
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    "real-cards:bio-mage:1"
+   ],
+   "result": 92
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    "real-cards:robolady:1"
+   ],
+   "result": 409
+  },
+  {
+   "with": [
+    "real-cards:wolf-axwielder:1",
+    "real-cards:warrior-of-zera:1"
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    109
+   ],
+   "result": 462
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    616
+   ],
+   "result": 633
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    276
+   ],
+   "result": 433
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    584
+   ],
+   "result": 462
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    608
+   ],
+   "result": 462
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    429
+   ],
+   "result": 433
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    128
+   ],
+   "result": 462
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    186
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    290
+   ],
+   "result": 41
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    612
+   ],
+   "result": 462
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    45
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    114
+   ],
+   "result": 433
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    "real-cards:robolady:1"
+   ],
+   "result": 643
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    "real-cards:warrior-of-zera:1"
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:bio-mage:1",
+    "real-cards:lizard-soldier:1"
+   ],
+   "result": 633
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    410
+   ],
+   "result": 479
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    422
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    411
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    394
+   ],
+   "result": 479
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    420
+   ],
+   "result": 244
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    421
+   ],
+   "result": 228
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    501
+   ],
+   "result": 479
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    541
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    50
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    56
+   ],
+   "result": 479
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    105
+   ],
+   "result": 100
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    159
+   ],
+   "result": 157
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    "real-cards:warrior-of-zera:1"
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    "real-cards:lizard-soldier:1"
+   ],
+   "result": 64
+  },
+  {
+   "with": [
+    "real-cards:robolady:1",
+    "real-cards:sonic-duck:1"
+   ],
+   "result": 533
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    234
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    369
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    554
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    621
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    43
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    66
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    32
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    81
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    94
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    528
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    614
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    632
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    "real-cards:lizard-soldier:1"
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    "real-cards:sonic-duck:1"
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:warrior-of-zera:1",
+    "real-cards:roboyarou:1"
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    603
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    4
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    561
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    122
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    298
+   ],
+   "result": 272
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    7
+   ],
+   "result": 409
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    13
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    53
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    181
+   ],
+   "result": 595
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    294
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    468
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    478
+   ],
+   "result": 595
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    "real-cards:sonic-duck:1"
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    "real-cards:roboyarou:1"
+   ],
+   "result": 64
+  },
+  {
+   "with": [
+    "real-cards:lizard-soldier:1",
+    "real-cards:science-soldier:1"
+   ],
+   "result": 470
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    491
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    464
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    636
+   ],
+   "result": 63
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    466
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    577
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    125
+   ],
+   "result": 63
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    106
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    409
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    424
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    458
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    7
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    383
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    "real-cards:roboyarou:1"
+   ],
+   "result": 627
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    "real-cards:science-soldier:1"
+   ],
+   "result": 458
+  },
+  {
+   "with": [
+    "real-cards:sonic-duck:1",
+    "real-cards:dark-bat:1"
+   ],
+   "result": 63
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    414
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    418
+   ],
+   "result": 138
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    544
+   ],
+   "result": 539
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    416
+   ],
+   "result": 642
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    406
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    417
+   ],
+   "result": 138
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    116
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    189
+   ],
+   "result": 138
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    195
+   ],
+   "result": 642
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    218
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    235
+   ],
+   "result": 138
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    244
+   ],
+   "result": 642
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    "real-cards:science-soldier:1"
+   ],
+   "result": 642
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    "real-cards:dark-bat:1"
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:roboyarou:1",
+    "real-cards:acrobat-monkey:1"
+   ],
+   "result": 457
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    107
+   ],
+   "result": 138
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    214
+   ],
+   "result": 215
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    231
+   ],
+   "result": 228
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    250
+   ],
+   "result": 228
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    262
+   ],
+   "result": 193
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    280
+   ],
+   "result": 228
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    103
+   ],
+   "result": 138
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    129
+   ],
+   "result": 215
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    143
+   ],
+   "result": 228
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    148
+   ],
+   "result": 138
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    222
+   ],
+   "result": 215
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    245
+   ],
+   "result": 228
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    "real-cards:dark-bat:1"
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    "real-cards:acrobat-monkey:1"
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:science-soldier:1",
+    "real-cards:pharaoh-s-servant:1"
+   ],
+   "result": 539
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    186
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    538
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    13
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    300
+   ],
+   "result": 595
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    468
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    552
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    181
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    478
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    122
+   ],
+   "result": 272
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    174
+   ],
+   "result": 595
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    266
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    298
+   ],
+   "result": 272
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    "real-cards:acrobat-monkey:1"
+   ],
+   "result": 457
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    "real-cards:pharaoh-s-servant:1"
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:dark-bat:1",
+    "real-cards:people-running-about:1"
+   ],
+   "result": 272
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    406
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    283
+   ],
+   "result": 64
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    414
+   ],
+   "result": 457
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    418
+   ],
+   "result": 459
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    544
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    580
+   ],
+   "result": 456
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    118
+   ],
+   "result": 457
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    160
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    166
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    236
+   ],
+   "result": 457
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    455
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    496
+   ],
+   "result": 457
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    "real-cards:pharaoh-s-servant:1"
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    "real-cards:people-running-about:1"
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:acrobat-monkey:1",
+    "real-cards:shapesnatch:1"
+   ],
+   "result": 41
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    139
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    146
+   ],
+   "result": 539
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    153
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    215
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    228
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    556
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    102
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    220
+   ],
+   "result": 539
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    226
+   ],
+   "result": 539
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    239
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    271
+   ],
+   "result": 539
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    544
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    "real-cards:people-running-about:1"
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    "real-cards:shapesnatch:1"
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:pharaoh-s-servant:1",
+    "real-cards:united-resistance:1"
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    210
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    101
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    176
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    644
+   ],
+   "result": 244
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    40
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    133
+   ],
+   "result": 519
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    598
+   ],
+   "result": 587
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    417
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    142
+   ],
+   "result": 133
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    357
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    519
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    555
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    "real-cards:shapesnatch:1"
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    "real-cards:united-resistance:1"
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:people-running-about:1",
+    "real-cards:boneheimer:1"
+   ],
+   "result": 431
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    412
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    283
+   ],
+   "result": 23
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    514
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    580
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    643
+   ],
+   "result": 97
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    297
+   ],
+   "result": 377
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    30
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    42
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    112
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    132
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    169
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    171
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    "real-cards:united-resistance:1"
+   ],
+   "result": 460
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    "real-cards:boneheimer:1"
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "real-cards:shapesnatch:1",
+    "real-cards:luster-dragon:1"
+   ],
+   "result": 571
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    45
+   ],
+   "result": 272
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    461
+   ],
+   "result": 272
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    610
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    459
+   ],
+   "result": 117
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    463
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    537
+   ],
+   "result": 459
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    181
+   ],
+   "result": 459
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    478
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    122
+   ],
+   "result": 459
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    174
+   ],
+   "result": 272
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    266
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    298
+   ],
+   "result": 459
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    "real-cards:boneheimer:1"
+   ],
+   "result": 450
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    "real-cards:luster-dragon:1"
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:united-resistance:1",
+    "real-cards:x-head-cannon:1"
+   ],
+   "result": 465
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    606
+   ],
+   "result": 450
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    615
+   ],
+   "result": 431
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    177
+   ],
+   "result": 251
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    199
+   ],
+   "result": 450
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    205
+   ],
+   "result": 431
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    206
+   ],
+   "result": 251
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    247
+   ],
+   "result": 450
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    250
+   ],
+   "result": 138
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    262
+   ],
+   "result": 431
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    381
+   ],
+   "result": 450
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    536
+   ],
+   "result": 431
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    76
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    "real-cards:luster-dragon:1"
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    "real-cards:x-head-cannon:1"
+   ],
+   "result": 443
+  },
+  {
+   "with": [
+    "real-cards:boneheimer:1",
+    "real-cards:gazelle-the-king-of-mythical-beasts:1"
+   ],
+   "result": 11
+  }
+ ]
+}
