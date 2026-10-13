@@ -17,14 +17,14 @@ recipes need that the disc lacks (an entry without "fusions", such as Cyber
 Dragon), which are ordinary cards like curated.json's.
 A target's "mass" rules ({"groups": [{type/attribute}, {type/attribute}], "max_atk", "min_one"}; a group may also name one card or an attribute alone) make it from
 any two such monsters, as Twin-headed Thunder Dragon is on the disc. "max_atk" caps both materials and
-"min_one" is the ATK at least one of them needs.
+"min_one" is the ATK at least one of them needs; a rule may name a middle card with "result" (a retail card, for a three-card combo), a group may also have "min_atk" for its own monsters, and "name_has" / "not_name_has" for a word in the name.
 A target's "drop" ({"weight", "from": [opponents]}) puts it in those opponents' S/A rank prize pools.
 spells.json holds Equip and Ritual cards (a copy of a retail one of the same kind; "equip":
 "add"/"bonus"/"bonus_if"/"bonus_attack"/"bonus_defense" go to the mod's "equips", "ritual": "result" and
 "tributes" to its "rituals"), with their own "drop".
 duelists.json holds opponents with their own deck and prize pools (the mod's "duelists", "decks"
 and "drops"; card names there become the mod's cards, other names the disc's), a "copy" base and
-an "unlock"; "portrait_from" names a card whose art becomes its face.
+an "unlock"; "portrait_from" names a card whose art becomes its face, "portrait_file" an image beside this script (portraits/).
 A target's "steps" are recipes for a card made of three (Alpha + Beta + Gamma):
 each [A, B, retail card] makes the card its "fusions" then take.
 """
@@ -62,7 +62,7 @@ OPPONENTS = {"Teana 2nd", "Ocean Mage", "High Mage Secmeton", "Forest Mage", "Hi
              "High Mage Atenza", "Desert Mage", "High Mage Martis", "Meadow Mage", "High Mage Kepura", "Labyrinth Mage",
              "Seto 2nd", "Guardian Sebek", "Guardian Neku", "Heishin 2nd", "Seto 3rd", "DarkNite", "Nitemare", "Duel Master K"}
 # The disc's 39 opponents a duelist may copy or be unlocked by (the ones this tool names).
-OPPONENTS_ALL = OPPONENTS | {"Seto 2nd", "Heishin 2nd", "Seto 3rd", "Heishin", "Seto", "Kaiba", "Pegasus"}
+OPPONENTS_ALL = OPPONENTS | {"Jono 2nd", "Seto 2nd", "Heishin 2nd", "Seto 3rd", "Heishin", "Seto", "Kaiba", "Pegasus"}
 RITUAL_KEYS = {"card", "type", "fusion_group", "min_attack", "max_attack", "min_defense", "max_defense", "min_level",
                "max_level", "defense_gt_attack"}
 # Fixed Cards the game treats specially; never used as a base or a fusion partner.
@@ -229,8 +229,9 @@ def mod_duelists(mod, duelists, known):
         entry = {"id": d["id"], "copy": d["copy"], "name": d["name"]}
         if "unlock" in d:
             entry["unlock"] = d["unlock"]
-        if "portrait_from" in d:
-            src = MOD / "images" / f"{slug(d['portrait_from'])}.png"
+        if "portrait_file" in d or "portrait_from" in d:
+            src = (HERE / d["portrait_file"] if "portrait_file" in d
+                   else MOD / "images" / f"{slug(d['portrait_from'])}.png")
             if src.exists():
                 (MOD / "portraits").mkdir(parents=True, exist_ok=True)
                 (MOD / "portraits" / f"{d['id']}.png").write_bytes(src.read_bytes())
@@ -331,6 +332,7 @@ def target_fusions(targets, cards, monsters, rules, pool, inter=()):
     unless the rule says "override": true, which takes the pair over."""
     ref = {c["name"]: f"{MOD_ID}:{slug(c['name'])}:1" for c in cards + targets}
     retail = {m["name"]: m["id"] for m in monsters}
+    retail.update({r["name"]: r["id"] for r in read_catalog() if r["type"] == "Equip"})   # Metalmorph fuses with a monster
 
     def card(name):
         if name in ref:
@@ -364,6 +366,8 @@ def target_fusions(targets, cards, monsters, rules, pool, inter=()):
                         ok = v in m["name"]
                     elif k == "not_name_has":
                         ok = v not in m["name"]
+                    elif k == "min_atk":
+                        ok = m["atk"] >= v
                     else:
                         ok = m[k] == v
                     if not ok:
@@ -383,7 +387,7 @@ def target_fusions(targets, cards, monsters, rules, pool, inter=()):
                     if key in taken:                 # "override": the pair's other recipe is replaced
                         rules = [r for r in rules if frozenset(map(str, r["with"])) != key]
                     taken.add(key)
-                    rules.append({"with": [a["key"], b["key"]], "result": ref[t["name"]]})
+                    rules.append({"with": [a["key"], b["key"]], "result": card(rule["result"]) if "result" in rule else ref[t["name"]]})
     return rules
 
 

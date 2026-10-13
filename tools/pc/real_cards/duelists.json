@@ -3,8 +3,8 @@
   "id": "jaden-yuki",
   "name": "Jaden Yuki",
   "copy": "Heishin 2nd",
-  "unlock": {"beat": "Seto 2nd"},
-  "portrait_from": "Elemental HERO Neos",
+  "unlock": {"beat": "Jono 2nd"},
+  "portrait_file": "portraits/jaden-yuki.png",
   "deck": {
    "Elemental HERO Avian": 120,
    "Elemental HERO Burstinatrix": 120,

@@ -1163,6 +1163,65 @@
   "date": "2002-10-20"
  },
  {
+  "password": "38033121",
+  "name": "Dark Magician Girl",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 6,
+  "attack": 2000,
+  "defense": 1700,
+  "description": "A girl who studied magic beside the Dark Magician. She is quick and fearless.",
+  "date": "2003-10-10"
+ },
+ {
+  "password": "59400890",
+  "name": "Dark Magician of Destruction",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2600,
+  "description": "The Dark Magician reborn with a power of ruin.",
+  "date": "2026-02-19",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Dark Magician"
+     },
+     {
+      "attribute": "Light"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   },
+   {
+    "groups": [
+     {
+      "name": "Dark Magician"
+     },
+     {
+      "attribute": "Dark"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
   "password": "41721210",
   "name": "Dark Magician the Dragon Knight",
   "type": "Dragon",
@@ -1490,6 +1549,18 @@
     ],
     "max_atk": 2200,
     "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "name": "Flame Cerebrus"
+     },
+     {
+      "type": "Beast"
+     }
+    ],
+    "max_atk": 2400,
+    "override": true
    }
   ],
   "drop": {
@@ -2808,39 +2879,6 @@
   }
  },
  {
-  "password": "05186893",
-  "name": "Red-Eyes Zombie Dragon",
-  "type": "Zombie",
-  "attribute": "Dark",
-  "level": 7,
-  "attack": 2400,
-  "defense": 2000,
-  "description": "The Red-Eyes Black Dragon raised from the grave. It never rests.",
-  "date": "2004-02-01",
-  "fusions": [
-   [
-    "Red-eyes B. Dragon",
-    "Dragon Zombie"
-   ],
-   [
-    "Red-eyes B. Dragon",
-    "Skelgon"
-   ],
-   [
-    "Red-eyes B. Dragon",
-    "Great Mammoth of Goldfine"
-   ]
-  ],
-  "drop": {
-   "weight": 6,
-   "from": [
-    "Seto 3rd",
-    "DarkNite",
-    "Nitemare"
-   ]
-  }
- },
- {
   "password": "04918855",
   "name": "Vampire Voivode",
   "type": "Zombie",
@@ -2886,11 +2924,11 @@
   "fusions": [
    [
     "Ryu Kokki",
-    "Red-Eyes Zombie Dragon"
+    "Great Mammoth of Goldfine"
    ],
    [
-    "Red-Eyes Zombie Dragon",
-    "Great Mammoth of Goldfine"
+    "Ryu Kokki",
+    "Dragon Zombie"
    ]
   ],
   "drop": {
@@ -2914,12 +2952,12 @@
   "date": "2005-01-01",
   "fusions": [
    [
-    "Red-Eyes Zombie Dragon",
+    "Ryu Kokki",
     "Shadow Ghoul"
    ],
    [
     "Ryu Kokki",
-    "Shadow Ghoul"
+    "Wood Remains"
    ]
   ],
   "drop": {
@@ -2947,12 +2985,12 @@
     "Skelgon"
    ],
    [
-    "Red-Eyes Zombie Dragon",
+    "Ryu Kokki",
     "Armored Zombie"
    ],
    [
     "Ryu Kokki",
-    "Armored Zombie"
+    "Blue-eyed Silver Zombie"
    ]
   ],
   "drop": {
@@ -2990,6 +3028,668 @@
   "drop": {
    "weight": 2,
    "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "28143906",
+  "name": "Roc from the Valley of Haze",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 6,
+  "attack": 2400,
+  "defense": 1400,
+  "description": "A giant bird that carries off whatever it can lift.",
+  "date": "2004-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Winged Beast"
+     },
+     {
+      "type": "Winged Beast"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "61441708",
+  "name": "Sacred Phoenix of Nephthys",
+  "type": "Winged Beast",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 2400,
+  "defense": 1600,
+  "description": "A phoenix that burns itself away and rises again from the ashes.",
+  "date": "2007-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Winged Beast"
+     },
+     {
+      "attribute": "Fire"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "73125233",
+  "name": "Raiza the Storm Monarch",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 6,
+  "attack": 2400,
+  "defense": 1000,
+  "description": "The monarch of the storm. Its gale tears everything from the field.",
+  "date": "2005-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Winged Beast"
+     },
+     {
+      "attribute": "Wind"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "69327790",
+  "name": "Raiza the Mega Monarch",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 2800,
+  "defense": 1000,
+  "description": "The storm monarch grown into a hurricane.",
+  "date": "2018-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Raiza the Storm Monarch"
+     },
+     {
+      "type": "Winged Beast"
+     }
+    ],
+    "max_atk": 2400,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "66431519",
+  "name": "Sacred Fire King Garunix",
+  "type": "Winged Beast",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 2700,
+  "defense": 1700,
+  "description": "A fire king in the shape of a bird. Its wings leave embers in the sky.",
+  "date": "2017-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Sacred Phoenix of Nephthys"
+     },
+     {
+      "type": "Winged Beast"
+     }
+    ],
+    "max_atk": 2400,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "53027855",
+  "name": "Windrose the Elemental Lord",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2200,
+  "description": "A lord of the winds. It rides the storm with its wings spread wide.",
+  "date": "2018-01-01",
+  "fusions": [
+   [
+    "Roc from the Valley of Haze",
+    "Raiza the Storm Monarch"
+   ],
+   [
+    "Roc from the Valley of Haze",
+    "Sacred Phoenix of Nephthys"
+   ],
+   [
+    "Raiza the Storm Monarch",
+    "Sacred Phoenix of Nephthys"
+   ]
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "52900000",
+  "name": "Shinobaron Peacock",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "The great peacock of the ninja. Its feathers are blades.",
+  "date": "2020-01-01",
+  "fusions": [
+   [
+    "Windrose the Elemental Lord",
+    "Raiza the Mega Monarch"
+   ],
+   [
+    "Windrose the Elemental Lord",
+    "Sacred Fire King Garunix"
+   ],
+   [
+    "Raiza the Mega Monarch",
+    "Sacred Fire King Garunix"
+   ]
+  ],
+  "drop": {
+   "weight": 3,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "50287060",
+  "name": "Archfiend of Gilfer",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 6,
+  "attack": 2200,
+  "defense": 2500,
+  "description": "A fiend that drags the souls of its foes into the dark.",
+  "date": "2005-01-01"
+ },
+ {
+  "password": "84341431",
+  "name": "Archfiend Giant",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 6,
+  "attack": 2400,
+  "defense": 1600,
+  "description": "A giant fiend that shrugs off every blow.",
+  "date": "2013-11-08"
+ },
+ {
+  "password": "17242022",
+  "name": "Red-Eyes Black Dragon Exceed",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 9,
+  "attack": 3400,
+  "defense": 3000,
+  "description": "The Red-Eyes Black Dragon pushed past its limit by the power of time.",
+  "date": "2026-10-08",
+  "fusions": [
+   [
+    "Red-eyes B. Dragon",
+    "Time Wizard"
+   ]
+  ],
+  "drop": {
+   "weight": 3,
+   "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "64335804",
+  "name": "Red-Eyes Black Metal Dragon",
+  "type": "Machine",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2400,
+  "description": "The Red-Eyes Black Dragon remade in black steel.",
+  "date": "2002-11-25",
+  "fusions": [
+   [
+    "Red-eyes B. Dragon",
+    "Metalmorph"
+   ]
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "45349196",
+  "name": "Archfiend Black Skull Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 9,
+  "attack": 3200,
+  "defense": 2500,
+  "description": "A black skull dragon fused with an archfiend. Its breath burns the soul.",
+  "date": "2015-08-06",
+  "fusions": [
+   [
+    "Red-eyes B. Dragon",
+    "Archfiend of Gilfer"
+   ],
+   [
+    "Red-eyes B. Dragon",
+    "Archfiend Giant"
+   ]
+  ],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Red-eyes B. Dragon"
+     },
+     {
+      "name_has": "Archfiend"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 3,
+   "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "37818794",
+  "name": "Red-Eyes Dark Dragoon",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "The Dark Magician joined with a dragon of great strength.",
+  "date": "2020-08-27",
+  "fusions": [
+   [
+    "Dark Magician",
+    "Red-eyes B. Dragon"
+   ]
+  ],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Dark Magician"
+     },
+     {
+      "type": "Dragon",
+      "min_atk": 2400
+     }
+    ],
+    "max_atk": 2900,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "44405066",
+  "name": "Red-Eyes Flare Metal Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 7,
+  "attack": 2800,
+  "defense": 2400,
+  "description": "A red-eyed dragon in flame-forged armor.",
+  "date": "2015-08-06",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Red-eyes B. Dragon"
+     },
+     {
+      "type": "Machine"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "21140872",
+  "name": "Red-Eyes Slash Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 7,
+  "attack": 2800,
+  "defense": 2400,
+  "description": "A red-eyed dragon that fights with a warrior's blade.",
+  "date": "2017-09-07",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Red-eyes B. Dragon"
+     },
+     {
+      "type": "Warrior"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "38192988",
+  "name": "Red-Eyes Zombie Dragon Lord",
+  "type": "Zombie",
+  "attribute": "Dark",
+  "level": 10,
+  "attack": 2800,
+  "defense": 2400,
+  "description": "The undead lord of the red-eyed dragons.",
+  "date": "2022-05-19",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Red-eyes B. Dragon"
+     },
+     {
+      "type": "Zombie"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "43892408",
+  "name": "Dark Magician Girl the Dragon Knight",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 7,
+  "attack": 2600,
+  "defense": 1700,
+  "description": "The Dark Magician Girl in dragon armor, riding a great dragon.",
+  "date": "2014-04-25",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Dark Magician Girl"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 2500,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "50237654",
+  "name": "The Dark Magicians",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2300,
+  "description": "The master and his apprentice cast side by side.",
+  "date": "2020-01-16",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Dark Magician"
+     },
+     {
+      "type": "Spellcaster"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   },
+   {
+    "groups": [
+     {
+      "name": "Dark Magician Girl"
+     },
+     {
+      "type": "Spellcaster"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "00102380",
+  "name": "Lava Golem",
+  "type": "Fiend",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "A giant of molten rock, raised by the dead. It burns everything it touches.",
+  "date": "2003-07-18",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "attribute": "Fire"
+     },
+     {
+      "type": "Rock"
+     }
+    ],
+    "max_atk": 1500,
+    "result": "Lava Battleguard"
+   },
+   {
+    "groups": [
+     {
+      "name": "Lava Battleguard"
+     },
+     {
+      "type": "Zombie"
+     }
+    ],
+    "max_atk": 1900,
+    "result": "Millennium Golem",
+    "override": true
+   },
+   {
+    "groups": [
+     {
+      "name": "Millennium Golem"
+     },
+     {
+      "attribute": "Fire"
+     }
+    ],
+    "max_atk": 2900,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
     "Nitemare",
     "Duel Master K"
    ]
