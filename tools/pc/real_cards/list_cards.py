@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Write notes/real-cards-list.md: the real-cards mod's cards and fusion formulas."""
+"""Write notes/real-cards-list.md: the "z" mod's cards and fusion formulas."""
 import csv, json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-mod = json.loads((ROOT / "mods/real-cards/mod.json").read_text(encoding="utf-8"))
+mod = json.loads((ROOT / "mods/z/mod.json").read_text(encoding="utf-8"))
 cat = {int(r["id"]): r for r in csv.DictReader(open(ROOT / "notes/card-catalog.csv", encoding="utf-8", newline=""))}
 new = {f"{mod['id']}:{c['id']}:1": c for c in mod["cards"]}
 

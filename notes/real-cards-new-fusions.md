@@ -1,6 +1,6 @@
 # Real cards: new fusion formulas
 
-What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 21 cards, 2149 new formulas and 21 changed results. `*` marks a new card; other names are retail cards. The full list is in [real-cards-list.md](real-cards-list.md).
+What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 21 cards, 2182 new formulas and 21 changed results. `*` marks a new card; other names are retail cards. The full list is in [real-cards-list.md](real-cards-list.md).
 
 ## New cards
 
@@ -62,7 +62,7 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
 - Stone D. (2000) + Beta The Magnet Warrior * (1700) = Valkyrion the Magna Warrior * (3500) (was Judge Man (2200))
 - X-Head Cannon * (1800) + Luster Dragon * (1900) = VWXYZ-Dragon Catapult Cannon * (3000) (was Punished Eagle (2100))
 
-## Added: fusion targets (2133)
+## Added: fusion targets (2166)
 
 - Beast of Talwar * (2400) + Archfiend Soldier * (1900) = Raviel, Lord of Phantasms * (4000)
 - Beast of Talwar * (2400) + Zera The Mant (2800) = Raviel, Lord of Phantasms * (4000)
@@ -79,9 +79,13 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
 - Overdrive * (1600) + Machine King (2200) = Ancient Gear Megaton Golem * (3300)
 - Steel Ogre Grotto #2 * (1900) + Inpachi * (1600) = Ancient Gear Megaton Golem * (3300)
 - Steel Ogre Grotto #2 * (1900) + Machine King (2200) = Ancient Gear Megaton Golem * (3300)
-- Sanga of the Thunder (2600) + Hyozanryu * (2100) = Thunder Dragon Titan * (3200)
-- Twin-headed Thunder Dragon (2800) + Hyozanryu * (2100) = Thunder Dragon Titan * (3200)
-- Twin-headed Thunder Dragon (2800) + Shining Abyss * (1600) = Thunder Dragon Titan * (3200)
+- **Thunder Dragon Titan * (3200): 36 formulas**, a type with a type from weak materials, e.g.:
+  - Twin-headed Thunder Dragon (2800) + B. Dragon Jungle King (2100) = Thunder Dragon Titan * (3200)
+  - Twin-headed Thunder Dragon (2800) + Baby Dragon (1200) = Thunder Dragon Titan * (3200)
+  - Twin-headed Thunder Dragon (2800) + Blackland Fire Dragon (1500) = Thunder Dragon Titan * (3200)
+  - Twin-headed Thunder Dragon (2800) + Blue-eyes White Dragon (3000) = Thunder Dragon Titan * (3200)
+  - Twin-headed Thunder Dragon (2800) + Crawling Dragon (1600) = Thunder Dragon Titan * (3200)
+  - ... and 31 more (all in real-cards-list.md)
 - **Cloudian - Eye of the Typhoon * (3000): 326 formulas**, a type with a type from weak materials, e.g.:
   - 30,000-Year White Turtle (1250) + Kaminari Attack (1900) = Cloudian - Eye of the Typhoon * (3000)
   - Akihiron (1700) + Bolt Escargot (1400) = Cloudian - Eye of the Typhoon * (3000)

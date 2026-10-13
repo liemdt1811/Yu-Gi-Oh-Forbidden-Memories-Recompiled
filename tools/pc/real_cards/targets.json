@@ -215,16 +215,22 @@
   "fusions": [
    [
     "Twin-headed Thunder Dragon",
-    "Hyozanryu"
-   ],
-   [
-    "Twin-headed Thunder Dragon",
-    "Shining Abyss"
-   ],
-   [
-    "Sanga of the Thunder",
-    "Hyozanryu"
+    "Thunder Dragon"
    ]
+  ],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Twin-headed Thunder Dragon"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 3000,
+    "override": true
+   }
   ]
  },
  {

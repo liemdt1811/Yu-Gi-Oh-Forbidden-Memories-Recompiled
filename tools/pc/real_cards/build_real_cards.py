@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Build the "real-cards" mod: real Yu-Gi-Oh! monsters the disc lacks.
+"""Build the "z" mod: real Yu-Gi-Oh! monsters the disc lacks.
 
     python tools/pc/real_cards/build_real_cards.py select   # API -> curated.json (100 cards)
-    python tools/pc/real_cards/build_real_cards.py art      # download the art into mods/real-cards/images
-    python tools/pc/real_cards/build_real_cards.py build    # curated.json + targets.json -> mods/real-cards/mod.json
+    python tools/pc/real_cards/build_real_cards.py art      # download the art into mods/z/images
+    python tools/pc/real_cards/build_real_cards.py build    # curated.json + targets.json -> mods/z/mod.json
     python tools/pc/real_cards/build_real_cards.py check    # validate mod.json
 
 Data comes from the YGOPRODeck API (https://ygoprodeck.com/api-guide/). Study
@@ -32,7 +32,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
-MOD = ROOT / "mods" / "real-cards"
+MOD = ROOT / "mods" / "z"
 CATALOG = ROOT / "notes" / "card-catalog.csv"
 DISC = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions.csv"
 DISC = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions.csv"
@@ -41,7 +41,7 @@ CURATED = HERE / "curated.json"
 TARGETS = HERE / "targets.json"
 API = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=Normal%20Monster&misc=yes"
 UA = "fm-recomp-study/1.0"
-MOD_ID = "real-cards"
+MOD_ID = "z"
 COUNT = 100
 MAX_ATK = 3000            # keeps new cards inside the disc's normal range
 ERA_END = "2005"          # TCG release date before this
@@ -181,7 +181,7 @@ def build():
         if not target:
             (nodes if c in cards else extra).append({"ref": f"{MOD_ID}:{cid}:1", "name": c["name"], "type": c["type"],
                           "attribute": c["attribute"].title(), "atk": c["attack"], "base": base["id"]})
-    mod = {"id": MOD_ID, "name": "Real cards", "version": "0.1",
+    mod = {"id": MOD_ID, "name": "Z", "version": "0.1",
            "author": "community", "enabled": False,
            "description": f"{len(entries)} real Yu-Gi-Oh! monsters the disc lacks, with fusions. "
                           "Study project; art is Konami's.",

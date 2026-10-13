@@ -6,7 +6,7 @@
     python tools/pc/real_cards/download_art.py --out some/dir "Blue-Eyes White Dragon"
 
 Each picture is saved as <out>/<slug of the card's name>.png, the file name the
-real-cards mod looks for (default <out>: mods/real-cards/images). A name must
+"z" mod looks for (default <out>: mods/z/images). A name must
 match one card exactly (case ignored); otherwise the closest names are listed.
 The art is Konami's and is fetched to your machine, not stored in git.
 """
