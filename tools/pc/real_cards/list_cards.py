@@ -23,7 +23,19 @@ out = [f"# {mod['name']}: cards and fusions", "",
 for i, c in enumerate(sorted(mod["cards"], key=lambda c: (-c["attack"], c["name"])), 1):
     out.append(f"| {i} | {c['name']} | {c['type']} | {c['attribute']} | {c['level']} | {c['attack']} | "
                f"{c['defense']} | {c['password']} | {cat[c['copy']]['name']} |")
-out += ["", "## Fusion formulas", "",
+targets = {k: c for k, c in new.items() if not c["drops"]}
+out += ["", "## Fusion targets", "",
+        "Fusion-only cards from `targets.json`: never dropped or dealt by an opponent.", ""]
+for k, c in sorted(targets.items(), key=lambda kv: (-kv[1]["attack"], kv[1]["name"])):
+    made = [r for r in mod["fusions"] if r["result"] == k]
+    out += [f"### {c['name']} ({c['attack']}) - {len(made)} formulas", ""]
+    for r in made[:12]:
+        (na, aa), (nb, ab) = label(r["with"][0]), label(r["with"][1])
+        out.append(f"- {na} ({aa}) + {nb} ({ab})")
+    if len(made) > 12:
+        out.append(f"- ... and {len(made) - 12} more of the same kinds (a type with a type, weak materials)")
+    out.append("")
+out += ["## Fusion formulas", "",
         "Each result is stronger than both materials. Format: `A (ATK) + B (ATK) = Result (ATK)`.", ""]
 by = {}
 for r in mod["fusions"]:
@@ -33,6 +45,8 @@ for r in mod["fusions"]:
             by.setdefault(k, []).append(r)
 for k, c in sorted(new.items(), key=lambda kv: kv[1]["name"]):
     rules = by.get(k, [])
+    if not rules and k in targets:
+        continue
     out += [f"### {c['name']} ({c['attack']}) - {len(rules)} formulas", ""]
     for r in rules:
         (na, aa), (nb, ab), (nr, ar) = label(r["with"][0]), label(r["with"][1]), label(r["result"])

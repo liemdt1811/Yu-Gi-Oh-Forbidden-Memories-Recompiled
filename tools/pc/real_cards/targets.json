@@ -1,0 +1,610 @@
+[
+ {
+  "password": "70095154",
+  "name": "Cyber Dragon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 5,
+  "attack": 2100,
+  "defense": 1600,
+  "description": "A mechanical dragon built for battle. Fused with its own kind, it grows a second head, then a third.",
+  "date": "2005-08-06"
+ },
+ {
+  "password": "74157028",
+  "name": "Cyber Twin Dragon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2100,
+  "description": "Two Cyber Dragons joined into one. Its twin heads fire one blast after another.",
+  "date": "2005-08-06",
+  "fusions": [
+   [
+    "Cyber Dragon",
+    "Cyber Dragon"
+   ]
+  ]
+ },
+ {
+  "password": "01546123",
+  "name": "Cyber End Dragon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 10,
+  "attack": 4000,
+  "defense": 2800,
+  "description": "A three-headed machine dragon of ultimate power. Its triple blast pierces any defense.",
+  "date": "2005-08-06",
+  "fusions": [
+   [
+    "Cyber Twin Dragon",
+    "Cyber Dragon"
+   ],
+   [
+    "Cyber Twin Dragon",
+    "Cyber Twin Dragon"
+   ]
+  ]
+ },
+ {
+  "password": "69890967",
+  "name": "Raviel, Lord of Phantasms",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 10,
+  "attack": 4000,
+  "defense": 4000,
+  "description": "The phantasm lord who rules over the demons. Its roar shakes the sky and drains the will of its foes.",
+  "date": "2006-02-18",
+  "fusions": [
+   [
+    "Beast of Talwar",
+    "Zera The Mant"
+   ],
+   [
+    "Beast of Talwar",
+    "Archfiend Soldier"
+   ],
+   [
+    "The Earl of Demise",
+    "Zera The Mant"
+   ]
+  ]
+ },
+ {
+  "password": "06150044",
+  "name": "Arcana Knight Joker",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 9,
+  "attack": 3800,
+  "defense": 2500,
+  "description": "The ace knight born when the King, Queen and Jack unite. It wields the power of every suit.",
+  "date": "2009-09-01",
+  "fusions": [
+   [
+    "Warrior Dai Grepher",
+    "Neo the Magic Swordsman"
+   ],
+   [
+    "Warrior of Zera",
+    "Neo the Magic Swordsman"
+   ],
+   [
+    "Giltia the D. Knight",
+    "Warrior of Zera"
+   ],
+   [
+    "Giltia the D. Knight",
+    "Dark Blade"
+   ]
+  ]
+ },
+ {
+  "password": "75347539",
+  "name": "Valkyrion the Magna Warrior",
+  "type": "Rock",
+  "attribute": "Earth",
+  "level": 8,
+  "attack": 3500,
+  "defense": 3850,
+  "description": "The three Magnet Warriors joined into one. Magnetic force binds its body into an unbreakable shield.",
+  "date": "2003-04-15",
+  "fusions": [
+   [
+    "Stone D.",
+    "Gamma the Magnet Warrior"
+   ],
+   [
+    "Stone D.",
+    "Beta The Magnet Warrior"
+   ],
+   [
+    "Mystical Sand",
+    "Alpha The Magnet Warrior"
+   ]
+  ],
+  "steps": [
+   [
+    "Alpha The Magnet Warrior",
+    "Beta The Magnet Warrior",
+    "Stone D."
+   ],
+   [
+    "Alpha The Magnet Warrior",
+    "Gamma the Magnet Warrior",
+    "Stone D."
+   ],
+   [
+    "Beta The Magnet Warrior",
+    "Gamma the Magnet Warrior",
+    "Mystical Sand"
+   ]
+  ]
+ },
+ {
+  "password": "37663536",
+  "name": "Ancient Gear Megaton Golem",
+  "type": "Machine",
+  "attribute": "Earth",
+  "level": 9,
+  "attack": 3300,
+  "defense": 3300,
+  "description": "An ancient war machine rebuilt from countless gears. Each step it takes shakes the earth.",
+  "date": "2018-02-22",
+  "fusions": [
+   [
+    "Steel Ogre Grotto #2",
+    "Oni Tank T-34"
+   ],
+   [
+    "Steel Ogre Grotto #2",
+    "Inpachi"
+   ],
+   [
+    "Steel Ogre Grotto #2",
+    "Machine King"
+   ],
+   [
+    "Overdrive",
+    "Machine King"
+   ]
+  ]
+ },
+ {
+  "password": "85520851",
+  "name": "Super Conductor Tyranno",
+  "type": "Dinosaur",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 3300,
+  "defense": 1400,
+  "description": "A dinosaur charged with lightning. Its bite carries a deadly electric shock.",
+  "date": "2006-10-20",
+  "fusions": [
+   [
+    "Kabazauls",
+    "Bracchio-raidus"
+   ],
+   [
+    "Kabazauls",
+    "Pragtical"
+   ],
+   [
+    "Kabazauls",
+    "Megazowler"
+   ],
+   [
+    "Kabazauls",
+    "Thunder Dragon"
+   ]
+  ]
+ },
+ {
+  "password": "41685633",
+  "name": "Thunder Dragon Titan",
+  "type": "Thunder",
+  "attribute": "Light",
+  "level": 10,
+  "attack": 3200,
+  "defense": 3200,
+  "description": "The final form of the thunder dragons. Its body is a storm, and every roar calls down lightning.",
+  "date": "2018-10-18",
+  "fusions": [
+   [
+    "Twin-headed Thunder Dragon",
+    "Hyozanryu"
+   ],
+   [
+    "Twin-headed Thunder Dragon",
+    "Shining Abyss"
+   ],
+   [
+    "Sanga of the Thunder",
+    "Hyozanryu"
+   ]
+  ]
+ },
+ {
+  "password": "27346636",
+  "name": "Gladiator Beast Heraklinos",
+  "type": "Beast-Warrior",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2800,
+  "description": "The champion of the gladiator beasts. It rules the arena with a mighty spear and blazing flames.",
+  "date": "2007-11-14",
+  "fusions": [
+   [
+    "Garnecia Elefantis",
+    "Wolf Axwielder"
+   ],
+   [
+    "Garnecia Elefantis",
+    "Garoozis"
+   ],
+   [
+    "Garnecia Elefantis",
+    "Great Angus"
+   ],
+   [
+    "Wolf Axwielder",
+    "Sengenjin"
+   ]
+  ]
+ },
+ {
+  "password": "32543380",
+  "name": "Volcanic Doomfire",
+  "type": "Pyro",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 3000,
+  "defense": 1800,
+  "description": "A fiend born from the heart of a volcano. Its molten body burns all that stand before it.",
+  "date": "2007-05-16",
+  "fusions": [
+   [
+    "Mr. Volcano",
+    "Twin-Headed Fire Dragon"
+   ],
+   [
+    "Mr. Volcano",
+    "Flame Champion"
+   ],
+   [
+    "Twin-Headed Fire Dragon",
+    "Blazing Inpachi"
+   ],
+   [
+    "Flame Champion",
+    "Blazing Inpachi"
+   ]
+  ]
+ },
+ {
+  "password": "22056710",
+  "name": "Vampire Genesis",
+  "type": "Zombie",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2100,
+  "description": "The first vampire, reborn from the Vampire Lord. It commands the undead from its coffin throne.",
+  "date": "2005-01-01",
+  "fusions": [
+   [
+    "Master Kyonshee",
+    "Great Mammoth of Goldfine"
+   ],
+   [
+    "Master Kyonshee",
+    "Dokurorider"
+   ],
+   [
+    "Master Kyonshee",
+    "Pumpking the King of Ghosts"
+   ]
+  ]
+ },
+ {
+  "password": "48229808",
+  "name": "Horus the Black Flame Dragon LV8",
+  "type": "Dragon",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 3000,
+  "defense": 1800,
+  "description": "The black flame dragon in its final form. Its dark fire can silence any spell.",
+  "date": "2004-10-01",
+  "fusions": [
+   [
+    "Ryu-Ran",
+    "Twin-Headed Fire Dragon"
+   ],
+   [
+    "Ryu-Ran",
+    "Mr. Volcano"
+   ],
+   [
+    "Ryu-Ran",
+    "Luster Dragon #2"
+   ]
+  ]
+ },
+ {
+  "password": "84243274",
+  "name": "VWXYZ-Dragon Catapult Cannon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2800,
+  "description": "Five combat machines united into one flying fortress. Its catapult cannon blasts any target away.",
+  "date": "2005-11-05",
+  "fusions": [
+   [
+    "X-Head Cannon",
+    "Cyber Falcon"
+   ],
+   [
+    "X-Head Cannon",
+    "Gradius"
+   ],
+   [
+    "X-Head Cannon",
+    "Spikebot"
+   ],
+   [
+    "X-Head Cannon",
+    "Luster Dragon"
+   ]
+  ]
+ },
+ {
+  "password": "98502113",
+  "name": "Dark Paladin",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2900,
+  "defense": 2400,
+  "description": "The dark knight born when a spellcaster and a dragon-slayer join forces. Its sword drains the strength of dragons.",
+  "date": "2003-10-10",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Spellcaster",
+      "attribute": "Dark"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ]
+ },
+ {
+  "password": "32626733",
+  "name": "Spiral Serpent",
+  "type": "Sea Serpent",
+  "attribute": "Water",
+  "level": 8,
+  "attack": 2900,
+  "defense": 2900,
+  "description": "A giant serpent that coils around the sea. It wraps its prey in its spiral body.",
+  "date": "2007-02-28",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Sea Serpent"
+     },
+     {
+      "type": "Aqua"
+     }
+    ],
+    "max_atk": 2000,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Sea Serpent"
+     },
+     {
+      "type": "Fish"
+     }
+    ],
+    "max_atk": 2000,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Sea Serpent"
+     },
+     {
+      "type": "Fairy"
+     }
+    ],
+    "max_atk": 2000,
+    "min_one": 1600
+   }
+  ]
+ },
+ {
+  "password": "86489182",
+  "name": "Simorgh, Bird of Ancestry",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 2900,
+  "defense": 2000,
+  "description": "A sacred bird of legend that rules the sky. Its wings call down a storm.",
+  "date": "2008-05-03",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Winged Beast"
+     },
+     {
+      "type": "Fairy"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ]
+ },
+ {
+  "password": "11819616",
+  "name": "Tytannial, Princess of Camellias",
+  "type": "Plant",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2600,
+  "description": "The princess of the camellia garden. Her blossoms bloom into a storm of petals.",
+  "date": "2008-11-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Plant"
+     },
+     {
+      "type": "Insect"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Plant"
+     },
+     {
+      "type": "Fairy"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ]
+ },
+ {
+  "password": "57610714",
+  "name": "Cloudian - Eye of the Typhoon",
+  "type": "Aqua",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 3000,
+  "defense": 1000,
+  "description": "The king of the clouds. It sits in the eye of a typhoon and rules the storm.",
+  "date": "2007-11-14",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Aqua"
+     },
+     {
+      "type": "Thunder"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Thunder"
+     },
+     {
+      "type": "Winged Beast"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ]
+ },
+ {
+  "password": "78651105",
+  "name": "Beast King Barbaros",
+  "type": "Beast-Warrior",
+  "attribute": "Earth",
+  "level": 8,
+  "attack": 3000,
+  "defense": 1200,
+  "description": "The king of all beasts. Its roar alone puts a whole army to flight.",
+  "date": "2009-06-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Beast-Warrior"
+     },
+     {
+      "type": "Beast"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Beast-Warrior"
+     },
+     {
+      "type": "Dinosaur"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   }
+  ]
+ },
+ {
+  "password": "00324483",
+  "name": "Ultimate Flame Swordsman",
+  "type": "Warrior",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 2800,
+  "defense": 1600,
+  "description": "The flame swordsman at its peak, burning with more fire than ever. Its blade cuts through anything.",
+  "date": "2024-01-18",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Flame Swordsman"
+     },
+     {
+      "attribute": "Fire"
+     }
+    ],
+    "max_atk": 2600,
+    "override": true
+   }
+  ]
+ }
+]

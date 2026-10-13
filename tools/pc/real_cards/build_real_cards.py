@@ -3,12 +3,23 @@
 
     python tools/pc/real_cards/build_real_cards.py select   # API -> curated.json (100 cards)
     python tools/pc/real_cards/build_real_cards.py art      # download the art into mods/real-cards/images
-    python tools/pc/real_cards/build_real_cards.py build    # curated.json -> mods/real-cards/mod.json
+    python tools/pc/real_cards/build_real_cards.py build    # curated.json + targets.json -> mods/real-cards/mod.json
     python tools/pc/real_cards/build_real_cards.py check    # validate mod.json
 
 Data comes from the YGOPRODeck API (https://ygoprodeck.com/api-guide/). Study
 project; the art is Konami's and is fetched to the user's machine, not stored
 in git (see .gitignore). notes/real-cards.md documents the mapping rules.
+
+targets.json is hand-written and `select` leaves it alone: stronger cards
+(mostly 3000-4000 ATK) that only come from the fusion recipes listed with
+each, so they never drop and no opponent deals them, and the materials those
+recipes need that the disc lacks (an entry without "fusions", such as Cyber
+Dragon), which are ordinary cards like curated.json's.
+A target's "mass" rules ({"groups": [{type/attribute}, {type/attribute}], "max_atk", "min_one"}; a group may also name one card or an attribute alone) make it from
+any two such monsters, as Twin-headed Thunder Dragon is on the disc. "max_atk" caps both materials and
+"min_one" is the ATK at least one of them needs.
+A target's "steps" are recipes for a card made of three (Alpha + Beta + Gamma):
+each [A, B, retail card] makes the card its "fusions" then take.
 """
 import csv
 import json
@@ -23,8 +34,11 @@ ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
 MOD = ROOT / "mods" / "real-cards"
 CATALOG = ROOT / "notes" / "card-catalog.csv"
+DISC = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions.csv"
+DISC = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions.csv"
 BY_RESULT = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions_by_result.csv"
 CURATED = HERE / "curated.json"
+TARGETS = HERE / "targets.json"
 API = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=Normal%20Monster&misc=yes"
 UA = "fm-recomp-study/1.0"
 MOD_ID = "real-cards"
@@ -118,23 +132,28 @@ def select():
     print(f"{len(out)} cards -> {CURATED}")
 
 
-def art():
+def fetch_art(password, dest):
+    """Download a card's picture from YGOPRODeck, cropped to the game's 102:96 shape at 4x (408x384)."""
     from PIL import Image
     import io
+    url = f"https://images.ygoprodeck.com/images/cards_cropped/{int(password)}.jpg"
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        img = Image.open(io.BytesIO(r.read())).convert("RGB")
+    w, h = img.size
+    ch = min(h, int(w * 96 / 102))
+    top = (h - ch) // 2
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    img.crop((0, top, w, top + ch)).resize((408, 384), Image.LANCZOS).save(dest, optimize=True)
+
+
+def art():
     out = MOD / "images"
-    out.mkdir(parents=True, exist_ok=True)
-    for c in json.loads(CURATED.read_text(encoding="utf-8")):
+    for c in json.loads(CURATED.read_text(encoding="utf-8")) + json.loads(TARGETS.read_text(encoding="utf-8")):
         dest = out / f"{slug(c['name'])}.png"
         if dest.exists():
             continue
-        url = f"https://images.ygoprodeck.com/images/cards_cropped/{int(c['password'])}.jpg"
-        req = urllib.request.Request(url, headers={"User-Agent": UA})
-        with urllib.request.urlopen(req, timeout=60) as r:
-            img = Image.open(io.BytesIO(r.read())).convert("RGB")
-        w, h = img.size                      # crop to the card picture's 102:96 shape, 4x = 408x384
-        ch = min(h, int(w * 96 / 102))
-        top = (h - ch) // 2
-        img.crop((0, top, w, top + ch)).resize((408, 384), Image.LANCZOS).save(dest, optimize=True)
+        fetch_art(c["password"], dest)
         print("art", dest.name)
         time.sleep(0.15)
 
@@ -143,37 +162,42 @@ def build():
     cat = read_catalog()
     monsters = [r for r in cat if is_monster(r)]
     cards = json.loads(CURATED.read_text(encoding="utf-8"))
-    entries, nodes = [], []
-    for c in cards:
+    targets = json.loads(TARGETS.read_text(encoding="utf-8"))
+    entries, nodes, extra = [], [], []
+    for c in cards + targets:
+        target = "fusions" in c
         same = [m for m in monsters if m["type"] == c["type"] and m["atk"] <= MAX_ATK]
         base = min(same, key=lambda m: (abs(m["atk"] - c["attack"]) + abs(m["def"] - c["defense"])
                                         + 150 * abs(int(m["level"]) - c["level"]), m["id"]))
         cid = slug(c["name"])
-        e = {"id": cid, "copy": base["id"], "name": c["name"], "description": c["description"],
+        text = description(c["description"]) if c in targets else c["description"]
+        e = {"id": cid, "copy": base["id"], "name": c["name"], "description": text,
              "type": c["type"], "attribute": c["attribute"], "level": c["level"],
              "attack": c["attack"], "defense": c["defense"], "password": c["password"],
-             "drops": True, "opponents": True}
+             "drops": not target, "opponents": not target}
         if (MOD / "images" / f"{cid}.png").exists():
             e["art"] = f"images/{cid}.png"
         entries.append(e)
-        nodes.append({"ref": f"{MOD_ID}:{cid}:1", "name": c["name"], "type": c["type"],
-                      "attribute": c["attribute"].title(), "atk": c["attack"]})
+        if not target:
+            (nodes if c in cards else extra).append({"ref": f"{MOD_ID}:{cid}:1", "name": c["name"], "type": c["type"],
+                          "attribute": c["attribute"].title(), "atk": c["attack"], "base": base["id"]})
     mod = {"id": MOD_ID, "name": "Real cards", "version": "0.1",
            "author": "community", "enabled": False,
            "description": f"{len(entries)} real Yu-Gi-Oh! monsters the disc lacks, with fusions. "
                           "Study project; art is Konami's.",
-           "cards": entries, "fusions": fusions(nodes, monsters)}
+           "cards": entries, "fusions": target_fusions(targets, cards, monsters, fusions(nodes, monsters, extra), nodes + extra)}
     MOD.mkdir(parents=True, exist_ok=True)
     (MOD / "mod.json").write_text(json.dumps(mod, indent=1, ensure_ascii=True) + "\n", encoding="utf-8")
     print(f"{len(entries)} cards, {len(mod['fusions'])} fusions -> {MOD / 'mod.json'}")
 
 
-def fusions(new, monsters):
+def fusions(new, monsters, extra=()):
     """FM-style fusions: a result is always stronger than both materials.
 
     Partners of each new card: its 6 nearest-ATK retail monsters of the same
     type, 6 of the same attribute (other types) and 3 neighbours among the new
-    cards. The result is the weakest obtainable fusion result that is at least
+    cards (for targets.json's materials, the 3 new cards nearest in ATK, so
+    curated.json's rules stay as they were). The result is the weakest obtainable fusion result that is at least
     200 ATK above both and shares a type or attribute with a material; ties
     rotate so one result does not take every recipe.
     """
@@ -195,15 +219,70 @@ def fusions(new, monsters):
             seen.add(key)
             rules.append({"with": [a, b], "result": pick["id"]})
 
-    for i, n in enumerate(new):
+    for i, n in enumerate(list(new) + list(extra)):
         pn = {"atk": n["atk"], "type": n["type"], "attribute": n["attribute"]}
         for pool in (lambda m: m["type"] == n["type"],
                      lambda m: m["attribute"] == n["attribute"] and m["type"] != n["type"]):
             for m in sorted((m for m in monsters if pool(m)), key=lambda m: (abs(m["atk"] - n["atk"]), m["id"]))[:6]:
                 add(n["ref"], m["id"], pn, {"atk": m["atk"], "type": m["type"], "attribute": m["attribute"]})
-        for k in (1, 2, 3):
-            o = new[(i + k) % len(new)]
+        near = ([new[(i + k) % len(new)] for k in (1, 2, 3)] if i < len(new) else
+                sorted(new, key=lambda o: (abs(o["atk"] - n["atk"]), o["name"]))[:3])
+        for o in near:
             add(n["ref"], o["ref"], pn, {"atk": o["atk"], "type": o["type"], "attribute": o["attribute"]})
+    return rules
+
+
+def target_fusions(targets, cards, monsters, rules, pool):
+    """Add targets.json's recipes; a recipe replaces a generated rule for the same pair.
+
+    A target's "mass" rules are the disc's Twin-headed Thunder Dragon style: any
+    monster of one group (type and/or attribute) with any of another, both up to
+    "max_atk", makes the target. They only fill pairs that make nothing yet, on
+    the disc (as the cards' bases) or in this mod, so no other recipe is lost,
+    unless the rule says "override": true, which takes the pair over."""
+    ref = {c["name"]: f"{MOD_ID}:{slug(c['name'])}:1" for c in cards + targets}
+    retail = {m["name"]: m["id"] for m in monsters}
+
+    def card(name):
+        if name in ref:
+            return ref[name]
+        if name in retail:
+            return retail[name]
+        raise SystemExit(f"targets.json: unknown card {name!r}")
+
+    own = []
+    for t in targets:
+        for a, b in t.get("fusions", []):
+            own.append({"with": [card(a), card(b)], "result": ref[t["name"]]})
+        for a, b, mid in t.get("steps", []):      # a three-card recipe: two fuse into a retail card first
+            own.append({"with": [card(a), card(b)], "result": card(mid)})
+    pairs = {frozenset(map(str, r["with"])) for r in own}
+    rules = [r for r in rules if frozenset(map(str, r["with"])) not in pairs] + own
+    taken = {frozenset(map(str, r["with"])) for r in rules}
+    with open(DISC, encoding="utf-8", newline="") as f:
+        disc = {frozenset((int(r["material_a_id"]), int(r["material_b_id"]))) for r in csv.DictReader(f)}
+    mats = [{"key": m["id"], "base": m["id"], "name": m["name"], "type": m["type"], "attribute": m["attribute"], "atk": m["atk"]}
+            for m in monsters] + [{"key": n["ref"], "base": n["base"], "name": n["name"], "type": n["type"],
+                                   "attribute": n["attribute"], "atk": n["atk"]} for n in pool]
+    for t in targets:
+        for rule in t.get("mass", []):
+            ga, gb = rule["groups"]
+            cap, floor = rule["max_atk"], rule.get("min_one", 0)
+
+            def pick(g):
+                return [m for m in mats if m["atk"] <= cap and all(m[k.lower()] == v for k, v in g.items())]
+
+            for a in pick(ga):
+                for b in pick(gb):
+                    key = frozenset((str(a["key"]), str(b["key"])))
+                    if max(a["atk"], b["atk"]) < floor:
+                        continue
+                    if key in pairs or not rule.get("override") and (key in taken or frozenset((a["base"], b["base"])) in disc):
+                        continue
+                    if key in taken:                 # "override": the pair's other recipe is replaced
+                        rules = [r for r in rules if frozenset(map(str, r["with"])) != key]
+                    taken.add(key)
+                    rules.append({"with": [a["key"], b["key"]], "result": ref[t["name"]]})
     return rules
 
 
