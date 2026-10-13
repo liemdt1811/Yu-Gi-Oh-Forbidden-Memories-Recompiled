@@ -25,7 +25,17 @@
     "Cyber Dragon",
     "Cyber Dragon"
    ]
-  ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "01546123",
@@ -46,32 +56,13 @@
     "Cyber Twin Dragon",
     "Cyber Twin Dragon"
    ]
-  ]
- },
- {
-  "password": "69890967",
-  "name": "Raviel, Lord of Phantasms",
-  "type": "Fiend",
-  "attribute": "Dark",
-  "level": 10,
-  "attack": 4000,
-  "defense": 4000,
-  "description": "The phantasm lord who rules over the demons. Its roar shakes the sky and drains the will of its foes.",
-  "date": "2006-02-18",
-  "fusions": [
-   [
-    "Beast of Talwar",
-    "Zera The Mant"
-   ],
-   [
-    "Beast of Talwar",
-    "Archfiend Soldier"
-   ],
-   [
-    "The Earl of Demise",
-    "Zera The Mant"
+  ],
+  "drop": {
+   "weight": 2,
+   "from": [
+    "Duel Master K"
    ]
-  ]
+  }
  },
  {
   "password": "06150044",
@@ -85,20 +76,40 @@
   "date": "2009-09-01",
   "fusions": [
    [
-    "Warrior Dai Grepher",
-    "Neo the Magic Swordsman"
+    "Judge Man",
+    "King's Knight"
    ],
    [
-    "Warrior of Zera",
-    "Neo the Magic Swordsman"
+    "Judge Man",
+    "Queen's Knight"
    ],
    [
-    "Giltia the D. Knight",
-    "Warrior of Zera"
+    "Judge Man",
+    "Jack's Knight"
+   ]
+  ],
+  "drop": {
+   "weight": 3,
+   "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  },
+  "steps": [
+   [
+    "King's Knight",
+    "Queen's Knight",
+    "Judge Man"
    ],
    [
-    "Giltia the D. Knight",
-    "Dark Blade"
+    "King's Knight",
+    "Jack's Knight",
+    "Judge Man"
+   ],
+   [
+    "Queen's Knight",
+    "Jack's Knight",
+    "Judge Man"
    ]
   ]
  },
@@ -142,7 +153,14 @@
     "Gamma the Magnet Warrior",
     "Mystical Sand"
    ]
-  ]
+  ],
+  "drop": {
+   "weight": 3,
+   "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "37663536",
@@ -156,22 +174,30 @@
   "date": "2018-02-22",
   "fusions": [
    [
-    "Steel Ogre Grotto #2",
-    "Oni Tank T-34"
+    "Machine King",
+    "Labyrinth Tank"
    ],
    [
-    "Steel Ogre Grotto #2",
-    "Inpachi"
+    "Machine King",
+    "Steel Ogre Grotto #2"
    ],
    [
-    "Steel Ogre Grotto #2",
-    "Machine King"
+    "Labyrinth Tank",
+    "Steel Ogre Grotto #2"
    ],
    [
-    "Overdrive",
-    "Machine King"
+    "Machine King",
+    "Launcher Spider"
    ]
-  ]
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "85520851",
@@ -189,18 +215,26 @@
     "Bracchio-raidus"
    ],
    [
-    "Kabazauls",
-    "Pragtical"
+    "Pragtical",
+    "Bracchio-raidus"
    ],
    [
-    "Kabazauls",
-    "Megazowler"
+    "Megazowler",
+    "Bracchio-raidus"
    ],
    [
-    "Kabazauls",
-    "Thunder Dragon"
+    "Thunder Dragon",
+    "Bracchio-raidus"
    ]
-  ]
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "41685633",
@@ -231,7 +265,15 @@
     "max_atk": 3000,
     "override": true
    }
-  ]
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "27346636",
@@ -260,7 +302,17 @@
     "Wolf Axwielder",
     "Sengenjin"
    ]
-  ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "32543380",
@@ -289,7 +341,17 @@
     "Flame Champion",
     "Blazing Inpachi"
    ]
-  ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "22056710",
@@ -314,7 +376,17 @@
     "Master Kyonshee",
     "Pumpking the King of Ghosts"
    ]
-  ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "48229808",
@@ -339,7 +411,17 @@
     "Ryu-Ran",
     "Luster Dragon #2"
    ]
-  ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "84243274",
@@ -368,7 +450,17 @@
     "X-Head Cannon",
     "Luster Dragon"
    ]
-  ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "98502113",
@@ -378,24 +470,25 @@
   "level": 8,
   "attack": 2900,
   "defense": 2400,
-  "description": "The dark knight born when a spellcaster and a dragon-slayer join forces. Its sword drains the strength of dragons.",
+  "description": "The dark knight born when the Dark Magician and Buster Blader join forces. Its sword slays dragons.",
   "date": "2003-10-10",
-  "fusions": [],
-  "mass": [
-   {
-    "groups": [
-     {
-      "type": "Spellcaster",
-      "attribute": "Dark"
-     },
-     {
-      "type": "Dragon"
-     }
-    ],
-    "max_atk": 2200,
-    "min_one": 1600
-   }
-  ]
+  "fusions": [
+   [
+    "Dark Magician",
+    "Buster Blader"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "32626733",
@@ -445,7 +538,17 @@
     "max_atk": 2000,
     "min_one": 1600
    }
-  ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "86489182",
@@ -471,7 +574,17 @@
     "max_atk": 2200,
     "min_one": 1600
    }
-  ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "11819616",
@@ -509,7 +622,17 @@
     "max_atk": 2200,
     "min_one": 1600
    }
-  ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "57610714",
@@ -547,7 +670,17 @@
     "max_atk": 2200,
     "min_one": 1600
    }
-  ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "78651105",
@@ -585,7 +718,17 @@
     "max_atk": 1800,
     "min_one": 1600
    }
-  ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
  },
  {
   "password": "00324483",
@@ -611,6 +754,647 @@
     "max_atk": 2600,
     "override": true
    }
-  ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "70902743",
+  "name": "Red Dragon Archfiend",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2000,
+  "description": "A crimson dragon of flame and darkness. Its Absolute Powerforce scorches all.",
+  "date": "2008-08-18",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Dragon"
+     },
+     {
+      "type": "Fiend",
+      "attribute": "Dark"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "72989439",
+  "name": "Black Luster Soldier - Envoy of the Beginning",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "The soldier who appears at the start of a battle. Its blade of light banishes any foe.",
+  "date": "2004-03-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Warrior"
+     },
+     {
+      "type": "Fairy",
+      "attribute": "Light"
+     }
+    ],
+    "max_atk": 1700,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Warrior",
+      "attribute": "Light"
+     },
+     {
+      "type": "Spellcaster"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "73879377",
+  "name": "Armed Dragon LV7",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 7,
+  "attack": 2800,
+  "defense": 1000,
+  "description": "A dragon with blades along its body. It slashes foes with blade wings.",
+  "date": "2004-10-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Dragon",
+      "attribute": "Wind"
+     },
+     {
+      "type": "Machine"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "18891691",
+  "name": "Perfect Machine King",
+  "type": "Machine",
+  "attribute": "Earth",
+  "level": 8,
+  "attack": 2700,
+  "defense": 1500,
+  "description": "The king of machines. Every machine on the field is powered up by its might.",
+  "date": "2004-11-20",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Machine",
+      "attribute": "Earth"
+     },
+     {
+      "type": "Rock"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "49064413",
+  "name": "The Masked Beast",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 3200,
+  "defense": 1800,
+  "description": "A beast sealed behind a cursed mask. When the mask comes off, its fury is unstoppable.",
+  "date": "2003-03-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Ushi Oni"
+     },
+     {
+      "type": "Beast-Warrior"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "name": "Ushi Oni"
+     },
+     {
+      "type": "Zombie"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "name": "Soul Hunter"
+     },
+     {
+      "type": "Beast-Warrior"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "name": "Soul Hunter"
+     },
+     {
+      "type": "Zombie"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "76039636",
+  "name": "Doom Dozer",
+  "type": "Insect",
+  "attribute": "Earth",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2600,
+  "description": "A giant insect that bulldozes over everything. Nothing stands in its way.",
+  "date": "2006-02-18",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Insect"
+     },
+     {
+      "type": "Beast"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "78193831",
+  "name": "Buster Blader",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 7,
+  "attack": 2600,
+  "defense": 2300,
+  "description": "The swordsman who slays dragons. It grows stronger with every dragon in the foe's army.",
+  "date": "2002-10-20"
+ },
+ {
+  "password": "41721210",
+  "name": "Dark Magician the Dragon Knight",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "The dark magician who rides a dragon into battle. Together they strike as one.",
+  "date": "2017-10-05",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Spellcaster",
+      "attribute": "Dark"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "name": "Dark Magician"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 2900,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "64788463",
+  "name": "King's Knight",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1600,
+  "defense": 1400,
+  "description": "The king of the card knights. When the queen stands beside him, the jack answers his call.",
+  "date": "2005-11-05"
+ },
+ {
+  "password": "25652259",
+  "name": "Queen's Knight",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1500,
+  "defense": 1600,
+  "description": "The queen of the card knights. Her grace commands the loyalty of the king and the jack.",
+  "date": "2005-11-05"
+ },
+ {
+  "password": "90876561",
+  "name": "Jack's Knight",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 5,
+  "attack": 1900,
+  "defense": 1000,
+  "description": "The jack of the card knights. He serves the king and queen with a sharp blade.",
+  "date": "2005-11-05"
+ },
+ {
+  "password": "11321089",
+  "name": "Guardian Chimera",
+  "type": "Beast",
+  "attribute": "Dark",
+  "level": 9,
+  "attack": 3300,
+  "defense": 3300,
+  "description": "A beast of many bodies that guards the sacred ground. Its triple claws tear through all.",
+  "date": "2022-02-10",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Sphinx Teleia"
+     },
+     {
+      "type": "Beast"
+     }
+    ],
+    "max_atk": 2600,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "name": "Sphinx Teleia"
+     },
+     {
+      "type": "Beast-Warrior"
+     }
+    ],
+    "max_atk": 2600,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "21175632",
+  "name": "St. Joan",
+  "type": "Fairy",
+  "attribute": "Light",
+  "level": 7,
+  "attack": 2800,
+  "defense": 2000,
+  "description": "A holy maiden who leads armies into battle. Her faith turns the tide of every war.",
+  "date": "2003-03-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Fairy"
+     },
+     {
+      "type": "Spellcaster"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "10532969",
+  "name": "Hyper-Ancient Shark Megalodon",
+  "type": "Fish",
+  "attribute": "Water",
+  "level": 8,
+  "attack": 2900,
+  "defense": 1300,
+  "description": "A huge shark from the ancient seas. It bites through anything in its way.",
+  "date": "2013-01-25",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Fish"
+     },
+     {
+      "type": "Aqua"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "09053187",
+  "name": "Gagagigo the Risen",
+  "type": "Reptile",
+  "attribute": "Water",
+  "level": 4,
+  "attack": 2950,
+  "defense": 2800,
+  "description": "The lizard warrior who has risen again. His new strength comes from the pain he has felt.",
+  "date": "2012-11-09",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Reptile"
+     },
+     {
+      "type": "Aqua"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Reptile"
+     },
+     {
+      "type": "Fish"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Reptile"
+     },
+     {
+      "type": "Dinosaur"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "51402177",
+  "name": "Sphinx Teleia",
+  "type": "Beast",
+  "attribute": "Light",
+  "level": 10,
+  "attack": 2500,
+  "defense": 3000,
+  "description": "The sphinx that guards the tomb. It asks a riddle, and no one has ever answered.",
+  "date": "2004-07-25",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Beast"
+     },
+     {
+      "type": "Beast"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "10000000",
+  "name": "Obelisk the Tormentor",
+  "type": "Fiend",
+  "attribute": "Earth",
+  "level": 10,
+  "attack": 4000,
+  "defense": 4000,
+  "description": "The giant god of the pharaoh. Its fists crush an enemy and its soul-energy blast wipes out all.",
+  "date": "2010-01-01",
+  "fusions": [],
+  "mass": [],
+  "drop": {
+   "weight": 1,
+   "from": [
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "10000020",
+  "name": "Slifer the Sky Dragon",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 10,
+  "attack": 4000,
+  "defense": 4000,
+  "description": "The god dragon of the sky. The more cards in the hand, the stronger it grows. Its thunder force burns all.",
+  "date": "2010-01-01",
+  "fusions": [],
+  "mass": [],
+  "drop": {
+   "weight": 1,
+   "from": [
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "10000010",
+  "name": "The Winged Dragon of Ra",
+  "type": "Winged Beast",
+  "attribute": "Fire",
+  "level": 10,
+  "attack": 4000,
+  "defense": 4000,
+  "description": "The sun god of the pharaoh. Its golden wings shine with the power of the sun and burn all.",
+  "date": "2010-01-01",
+  "fusions": [],
+  "mass": [],
+  "drop": {
+   "weight": 1,
+   "from": [
+    "Duel Master K"
+   ]
+  }
  }
 ]

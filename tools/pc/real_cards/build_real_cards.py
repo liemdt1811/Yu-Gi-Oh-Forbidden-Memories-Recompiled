@@ -18,6 +18,7 @@ Dragon), which are ordinary cards like curated.json's.
 A target's "mass" rules ({"groups": [{type/attribute}, {type/attribute}], "max_atk", "min_one"}; a group may also name one card or an attribute alone) make it from
 any two such monsters, as Twin-headed Thunder Dragon is on the disc. "max_atk" caps both materials and
 "min_one" is the ATK at least one of them needs.
+A target's "drop" ({"weight", "from": [opponents]}) puts it in those opponents' S/A rank prize pools.
 A target's "steps" are recipes for a card made of three (Alpha + Beta + Gamma):
 each [A, B, retail card] makes the card its "fusions" then take.
 """
@@ -48,6 +49,8 @@ ERA_END = "2005"          # TCG release date before this
 # Cards FM already has under a different spelling.
 FM_ALIASES = ("fiendreflection", "trialofnightmare", "mechanicalchaser", "lajinnthemystical",
               "wingeddragonguardian", "twinlongrods", "redeyesblackdragon")
+# Opponents a "drops" rule may name (notes/gameplay-tables.md lists all 39).
+OPPONENTS = {"Seto 3rd", "Heishin 2nd", "DarkNite", "Nitemare", "Duel Master K"}
 # Fixed Cards the game treats specially; never used as a base or a fusion partner.
 SPECIAL_IDS = {17, 18, 19, 20, 21, 22, 777}
 
@@ -163,7 +166,7 @@ def build():
     monsters = [r for r in cat if is_monster(r)]
     cards = json.loads(CURATED.read_text(encoding="utf-8"))
     targets = json.loads(TARGETS.read_text(encoding="utf-8"))
-    entries, nodes, extra = [], [], []
+    entries, nodes, extra, inter = [], [], [], []
     for c in cards + targets:
         target = "fusions" in c
         same = [m for m in monsters if m["type"] == c["type"] and m["atk"] <= MAX_ATK]
@@ -178,6 +181,9 @@ def build():
         if (MOD / "images" / f"{cid}.png").exists():
             e["art"] = f"images/{cid}.png"
         entries.append(e)
+        if target:
+            inter.append({"ref": f"{MOD_ID}:{cid}:1", "name": c["name"], "type": c["type"], "attribute": c["attribute"].title(),
+                          "atk": c["attack"], "base": base["id"]})
         if not target:
             (nodes if c in cards else extra).append({"ref": f"{MOD_ID}:{cid}:1", "name": c["name"], "type": c["type"],
                           "attribute": c["attribute"].title(), "atk": c["attack"], "base": base["id"]})
@@ -185,7 +191,7 @@ def build():
            "author": "community", "enabled": False,
            "description": f"{len(entries)} real Yu-Gi-Oh! monsters the disc lacks, with fusions. "
                           "Study project; art is Konami's.",
-           "cards": entries, "fusions": target_fusions(targets, cards, monsters, fusions(nodes, monsters, extra), nodes + extra)}
+           "cards": entries, "drops": target_drops(targets), "fusions": target_fusions(targets, cards, monsters, fusions(nodes, monsters, extra), nodes + extra, inter)}
     MOD.mkdir(parents=True, exist_ok=True)
     (MOD / "mod.json").write_text(json.dumps(mod, indent=1, ensure_ascii=True) + "\n", encoding="utf-8")
     print(f"{len(entries)} cards, {len(mod['fusions'])} fusions -> {MOD / 'mod.json'}")
@@ -232,7 +238,21 @@ def fusions(new, monsters, extra=()):
     return rules
 
 
-def target_fusions(targets, cards, monsters, rules, pool):
+def target_drops(targets):
+    """Prize pools: a target with {"drop": {"weight": W, "from": [opponents]}} is won, W in 2048,
+    from each of those opponents on an S or A rank (POW and TEC); B, C and D ranks never give it."""
+    drops = {}
+    for t in targets:
+        d = t.get("drop")
+        if not d:
+            continue
+        for opponent in d["from"]:
+            for pool in ("pow", "tec"):
+                drops.setdefault(opponent, {}).setdefault(pool, {})[f"{MOD_ID}:{slug(t['name'])}:1"] = d["weight"]
+    return drops
+
+
+def target_fusions(targets, cards, monsters, rules, pool, inter=()):
     """Add targets.json's recipes; a recipe replaces a generated rule for the same pair.
 
     A target's "mass" rules are the disc's Twin-headed Thunder Dragon style: any
@@ -263,7 +283,7 @@ def target_fusions(targets, cards, monsters, rules, pool):
         disc = {frozenset((int(r["material_a_id"]), int(r["material_b_id"]))) for r in csv.DictReader(f)}
     mats = [{"key": m["id"], "base": m["id"], "name": m["name"], "type": m["type"], "attribute": m["attribute"], "atk": m["atk"]}
             for m in monsters] + [{"key": n["ref"], "base": n["base"], "name": n["name"], "type": n["type"],
-                                   "attribute": n["attribute"], "atk": n["atk"]} for n in pool]
+                                   "attribute": n["attribute"], "atk": n["atk"]} for n in list(pool) + list(inter)]
     for t in targets:
         for rule in t.get("mass", []):
             ga, gb = rule["groups"]
@@ -319,6 +339,15 @@ def check():
         if isinstance(x, int):
             return ids[x]["atk"] if x in ids else None
         return refs[x]["attack"] if x in refs else None
+    for opponent, pools in mod.get("drops", {}).items():
+        if opponent not in OPPONENTS:
+            errors.append(f"drops: no opponent {opponent!r}")
+        for pool, cards in pools.items():
+            if pool not in ("pow", "bcd", "tec"):
+                errors.append(f"drops {opponent}: pool {pool!r}")
+            for ref, weight in cards.items():
+                if ref not in refs or not isinstance(weight, int) or not 0 < weight < 2048:
+                    errors.append(f"drops {opponent} {pool}: {ref!r} {weight!r}")
     pairs = set()
     for r in mod["fusions"]:
         a, b = r["with"]

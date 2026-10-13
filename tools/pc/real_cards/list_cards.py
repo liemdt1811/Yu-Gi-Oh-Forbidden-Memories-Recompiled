@@ -24,6 +24,19 @@ for i, c in enumerate(sorted(mod["cards"], key=lambda c: (-c["attack"], c["name"
     out.append(f"| {i} | {c['name']} | {c['type']} | {c['attribute']} | {c['level']} | {c['attack']} | "
                f"{c['defense']} | {c['password']} | {cat[c['copy']]['name']} |")
 targets = {k: c for k, c in new.items() if not c["drops"]}
+won = {}
+for opponent, pools in mod.get("drops", {}).items():
+    for pool, cards in pools.items():
+        for ref, weight in cards.items():
+            won.setdefault(ref, {}).setdefault(weight, set()).add(opponent)
+if won:
+    out += ["", "## Prizes", "",
+            "Fusion-only cards also won on an S or A rank (POW and TEC) from the late opponents below. "
+            "Weights are out of 2048 per card, per pool.", "",
+            "| Card | ATK | Weight | Chance | Opponents |", "|---|---|---|---|---|"]
+    for ref, ws in sorted(won.items(), key=lambda kv: (-new[kv[0]]["attack"], new[kv[0]]["name"])):
+        (w, opp), = ws.items()
+        out.append(f"| {new[ref]['name']} | {new[ref]['attack']} | {w} | {w / 2048:.2%} | {', '.join(sorted(opp))} |")
 out += ["", "## Fusion targets", "",
         "Fusion-only cards from `targets.json`: never dropped or dealt by an opponent.", ""]
 for k, c in sorted(targets.items(), key=lambda kv: (-kv[1]["attack"], kv[1]["name"])):

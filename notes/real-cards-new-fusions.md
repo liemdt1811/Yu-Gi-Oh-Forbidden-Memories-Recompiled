@@ -1,30 +1,48 @@
 # Real cards: new fusion formulas
 
-What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 21 cards, 2182 new formulas and 21 changed results. `*` marks a new card; other names are retail cards. The full list is in [real-cards-list.md](real-cards-list.md).
+What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 39 cards, 5445 new formulas and 17 changed results. `*` marks a new card; other names are retail cards. The full list is in [real-cards-list.md](real-cards-list.md).
 
 ## New cards
 
 - Cyber End Dragon (4000/2800, Machine, Light, Lv10) - fusion only
-- Raviel, Lord of Phantasms (4000/4000, Fiend, Dark, Lv10) - fusion only
+- Obelisk the Tormentor (4000/4000, Fiend, Earth, Lv10) - fusion only
+- Slifer the Sky Dragon (4000/4000, Dragon, Wind, Lv10) - fusion only
+- The Winged Dragon of Ra (4000/4000, Winged Beast, Fire, Lv10) - fusion only
 - Arcana Knight Joker (3800/2500, Warrior, Light, Lv9) - fusion only
 - Valkyrion the Magna Warrior (3500/3850, Rock, Earth, Lv8) - fusion only
 - Ancient Gear Megaton Golem (3300/3300, Machine, Earth, Lv9) - fusion only
+- Guardian Chimera (3300/3300, Beast, Dark, Lv9) - fusion only
 - Super Conductor Tyranno (3300/1400, Dinosaur, Light, Lv8) - fusion only
+- The Masked Beast (3200/1800, Fiend, Dark, Lv8) - fusion only
 - Thunder Dragon Titan (3200/3200, Thunder, Light, Lv10) - fusion only
 - Beast King Barbaros (3000/1200, Beast-Warrior, Earth, Lv8) - fusion only
+- Black Luster Soldier - Envoy of the Beginning (3000/2500, Warrior, Light, Lv8) - fusion only
 - Cloudian - Eye of the Typhoon (3000/1000, Aqua, Wind, Lv8) - fusion only
+- Dark Magician the Dragon Knight (3000/2500, Dragon, Dark, Lv8) - fusion only
 - Gladiator Beast Heraklinos (3000/2800, Beast-Warrior, Fire, Lv8) - fusion only
 - Horus the Black Flame Dragon LV8 (3000/1800, Dragon, Fire, Lv8) - fusion only
+- Red Dragon Archfiend (3000/2000, Dragon, Dark, Lv8) - fusion only
 - VWXYZ-Dragon Catapult Cannon (3000/2800, Machine, Light, Lv8) - fusion only
 - Vampire Genesis (3000/2100, Zombie, Dark, Lv8) - fusion only
 - Volcanic Doomfire (3000/1800, Pyro, Fire, Lv8) - fusion only
+- Gagagigo the Risen (2950/2800, Reptile, Water, Lv4) - fusion only
 - Dark Paladin (2900/2400, Spellcaster, Dark, Lv8) - fusion only
+- Hyper-Ancient Shark Megalodon (2900/1300, Fish, Water, Lv8) - fusion only
 - Simorgh, Bird of Ancestry (2900/2000, Winged Beast, Wind, Lv8) - fusion only
 - Spiral Serpent (2900/2900, Sea Serpent, Water, Lv8) - fusion only
+- Armed Dragon LV7 (2800/1000, Dragon, Wind, Lv7) - fusion only
 - Cyber Twin Dragon (2800/2100, Machine, Light, Lv8) - fusion only
+- Doom Dozer (2800/2600, Insect, Earth, Lv8) - fusion only
+- St. Joan (2800/2000, Fairy, Light, Lv7) - fusion only
 - Tytannial, Princess of Camellias (2800/2600, Plant, Wind, Lv8) - fusion only
 - Ultimate Flame Swordsman (2800/1600, Warrior, Fire, Lv8) - fusion only
+- Perfect Machine King (2700/1500, Machine, Earth, Lv8) - fusion only
+- Buster Blader (2600/2300, Warrior, Earth, Lv7)
+- Sphinx Teleia (2500/3000, Beast, Light, Lv10) - fusion only
 - Cyber Dragon (2100/1600, Machine, Light, Lv5)
+- Jack's Knight (1900/1000, Warrior, Light, Lv5)
+- King's Knight (1600/1400, Warrior, Light, Lv4)
+- Queen's Knight (1500/1600, Warrior, Light, Lv4)
 
 ## Three-card recipe: Valkyrion the Magna Warrior
 
@@ -36,7 +54,7 @@ Fusion takes two cards, so Alpha + Beta + Gamma goes through a retail Rock first
 
 Side effect: Stone D. made from Alpha + Beta also fuses with Beta (it is the same card as any other Stone D.).
 
-## Changed results (21)
+## Changed results (17)
 
 Same materials, now a different result (one is weaker: Heraklinos, 3000, replaces Meteor B. Dragon, 3500). Format: `A + B = new result (was old result)`.
 
@@ -53,39 +71,49 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
 - Flame Swordsman (1800) + Ryu-Ran * (2200) = Ultimate Flame Swordsman * (2800) (was Gaia the Dragon Champion (2600))
 - Flame Swordsman (1800) + Twin-Headed Fire Dragon * (2200) = Ultimate Flame Swordsman * (2800) (was Meteor B. Dragon (3500))
 - Garnecia Elefantis * (2400) + Garoozis (1800) = Gladiator Beast Heraklinos * (3000) (was Meteor B. Dragon (3500))
-- Giltia the D. Knight (1850) + Dark Blade * (1800) = Arcana Knight Joker * (3800) (was Ushi Oni (2150))
-- Kabazauls * (1700) + Megazowler (1800) = Super Conductor Tyranno * (3300) (was Rabid Horseman (2000))
-- Kabazauls * (1700) + Pragtical (1900) = Super Conductor Tyranno * (3300) (was Mystical Sand (2100))
 - Master Kyonshee * (1750) + Dokurorider (1900) = Vampire Genesis * (3000) (was Mystical Sand (2100))
 - Master Kyonshee * (1750) + Pumpking the King of Ghosts (1800) = Vampire Genesis * (3000) (was Rabid Horseman (2000))
-- Steel Ogre Grotto #2 * (1900) + Oni Tank T-34 * (1400) = Ancient Gear Megaton Golem * (3300) (was Mystical Sand (2100))
 - Stone D. (2000) + Beta The Magnet Warrior * (1700) = Valkyrion the Magna Warrior * (3500) (was Judge Man (2200))
 - X-Head Cannon * (1800) + Luster Dragon * (1900) = VWXYZ-Dragon Catapult Cannon * (3000) (was Punished Eagle (2100))
 
-## Added: fusion targets (2166)
+## Added: fusion targets (5377)
 
-- Beast of Talwar * (2400) + Archfiend Soldier * (1900) = Raviel, Lord of Phantasms * (4000)
-- Beast of Talwar * (2400) + Zera The Mant (2800) = Raviel, Lord of Phantasms * (4000)
-- The Earl of Demise * (2000) + Zera The Mant (2800) = Raviel, Lord of Phantasms * (4000)
 - Cyber Twin Dragon * (2800) + Cyber Dragon * (2100) = Cyber End Dragon * (4000)
 - Cyber Twin Dragon * (2800) + Cyber Twin Dragon * (2800) = Cyber End Dragon * (4000)
-- Giltia the D. Knight (1850) + Warrior of Zera * (1600) = Arcana Knight Joker * (3800)
-- Warrior Dai Grepher * (1700) + Neo the Magic Swordsman * (1700) = Arcana Knight Joker * (3800)
-- Warrior of Zera * (1600) + Neo the Magic Swordsman * (1700) = Arcana Knight Joker * (3800)
+- Judge Man (2200) + Jack's Knight * (1900) = Arcana Knight Joker * (3800)
+- Judge Man (2200) + King's Knight * (1600) = Arcana Knight Joker * (3800)
+- Judge Man (2200) + Queen's Knight * (1500) = Arcana Knight Joker * (3800)
 - Mystical Sand (2100) + Alpha The Magnet Warrior * (1400) = Valkyrion the Magna Warrior * (3500)
 - Stone D. (2000) + Gamma the Magnet Warrior * (1500) = Valkyrion the Magna Warrior * (3500)
 - Kabazauls * (1700) + Bracchio-raidus (2200) = Super Conductor Tyranno * (3300)
-- Kabazauls * (1700) + Thunder Dragon (1600) = Super Conductor Tyranno * (3300)
-- Overdrive * (1600) + Machine King (2200) = Ancient Gear Megaton Golem * (3300)
-- Steel Ogre Grotto #2 * (1900) + Inpachi * (1600) = Ancient Gear Megaton Golem * (3300)
-- Steel Ogre Grotto #2 * (1900) + Machine King (2200) = Ancient Gear Megaton Golem * (3300)
-- **Thunder Dragon Titan * (3200): 36 formulas**, a type with a type from weak materials, e.g.:
+- Megazowler (1800) + Bracchio-raidus (2200) = Super Conductor Tyranno * (3300)
+- Pragtical (1900) + Bracchio-raidus (2200) = Super Conductor Tyranno * (3300)
+- Thunder Dragon (1600) + Bracchio-raidus (2200) = Super Conductor Tyranno * (3300)
+- Labyrinth Tank (2400) + Steel Ogre Grotto #2 * (1900) = Ancient Gear Megaton Golem * (3300)
+- Machine King (2200) + Labyrinth Tank (2400) = Ancient Gear Megaton Golem * (3300)
+- Machine King (2200) + Launcher Spider (2200) = Ancient Gear Megaton Golem * (3300)
+- Machine King (2200) + Steel Ogre Grotto #2 * (1900) = Ancient Gear Megaton Golem * (3300)
+- **Guardian Chimera * (3300): 65 formulas**, a type with a type from weak materials, e.g.:
+  - Sphinx Teleia * (2500) + Air Marmot of Nefariousness (400) = Guardian Chimera * (3300)
+  - Sphinx Teleia * (2500) + Ancient One of the Deep Forest (1800) = Guardian Chimera * (3300)
+  - Sphinx Teleia * (2500) + Armored Rat (950) = Guardian Chimera * (3300)
+  - Sphinx Teleia * (2500) + Battle Ox (1700) = Guardian Chimera * (3300)
+  - Sphinx Teleia * (2500) + Battle Steer (1800) = Guardian Chimera * (3300)
+  - ... and 60 more (all in real-cards-list.md)
+- **The Masked Beast * (3200): 94 formulas**, a type with a type from weak materials, e.g.:
+  - Soul Hunter (2200) + Armored Zombie (1500) = The Masked Beast * (3200)
+  - Soul Hunter (2200) + Battle Ox (1700) = The Masked Beast * (3200)
+  - Soul Hunter (2200) + Battle Steer (1800) = The Masked Beast * (3200)
+  - Soul Hunter (2200) + Beaver Warrior (1200) = The Masked Beast * (3200)
+  - Soul Hunter (2200) + Blue-eyed Silver Zombie (900) = The Masked Beast * (3200)
+  - ... and 89 more (all in real-cards-list.md)
+- **Thunder Dragon Titan * (3200): 40 formulas**, a type with a type from weak materials, e.g.:
+  - Twin-headed Thunder Dragon (2800) + Armed Dragon LV7 * (2800) = Thunder Dragon Titan * (3200)
   - Twin-headed Thunder Dragon (2800) + B. Dragon Jungle King (2100) = Thunder Dragon Titan * (3200)
   - Twin-headed Thunder Dragon (2800) + Baby Dragon (1200) = Thunder Dragon Titan * (3200)
   - Twin-headed Thunder Dragon (2800) + Blackland Fire Dragon (1500) = Thunder Dragon Titan * (3200)
   - Twin-headed Thunder Dragon (2800) + Blue-eyes White Dragon (3000) = Thunder Dragon Titan * (3200)
-  - Twin-headed Thunder Dragon (2800) + Crawling Dragon (1600) = Thunder Dragon Titan * (3200)
-  - ... and 31 more (all in real-cards-list.md)
+  - ... and 35 more (all in real-cards-list.md)
 - **Cloudian - Eye of the Typhoon * (3000): 326 formulas**, a type with a type from weak materials, e.g.:
   - 30,000-Year White Turtle (1250) + Kaminari Attack (1900) = Cloudian - Eye of the Typhoon * (3000)
   - Akihiron (1700) + Bolt Escargot (1400) = Cloudian - Eye of the Typhoon * (3000)
@@ -93,6 +121,27 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
   - Akihiron (1700) + Electric Lizard (850) = Cloudian - Eye of the Typhoon * (3000)
   - Akihiron (1700) + Electric Snake (800) = Cloudian - Eye of the Typhoon * (3000)
   - ... and 321 more (all in real-cards-list.md)
+- **Dark Magician the Dragon Knight * (3000): 332 formulas**, a type with a type from weak materials, e.g.:
+  - Akakieisu (1000) + B. Dragon Jungle King (2100) = Dark Magician the Dragon Knight * (3000)
+  - Akakieisu (1000) + Crawling Dragon (1600) = Dark Magician the Dragon Knight * (3000)
+  - Akakieisu (1000) + Curse of Dragon (2000) = Dark Magician the Dragon Knight * (3000)
+  - Akakieisu (1000) + Harpie's Pet Dragon (2000) = Dark Magician the Dragon Knight * (3000)
+  - Akakieisu (1000) + Hyozanryu * (2100) = Dark Magician the Dragon Knight * (3000)
+  - ... and 327 more (all in real-cards-list.md)
+- **Black Luster Soldier - Envoy of the Beginning * (3000): 373 formulas**, a type with a type from weak materials, e.g.:
+  - Ansatsu (1700) + Binding Chain (1000) = Black Luster Soldier - Envoy of the Beginning * (3000)
+  - Ansatsu (1700) + Bio-Mage * (1150) = Black Luster Soldier - Envoy of the Beginning * (3000)
+  - Ansatsu (1700) + Goddess of Whim (950) = Black Luster Soldier - Envoy of the Beginning * (3000)
+  - Ansatsu (1700) + Goddess with the Third Eye (1200) = Black Luster Soldier - Envoy of the Beginning * (3000)
+  - Ansatsu (1700) + Happy Lover (800) = Black Luster Soldier - Envoy of the Beginning * (3000)
+  - ... and 368 more (all in real-cards-list.md)
+- **Red Dragon Archfiend * (3000): 356 formulas**, a type with a type from weak materials, e.g.:
+  - Baby Dragon (1200) + Dark Chimera (1610) = Red Dragon Archfiend * (3000)
+  - Baby Dragon (1200) + La Jinn the Mystical Genie (1800) = Red Dragon Archfiend * (3000)
+  - Baby Dragon (1200) + Mabarrel (1700) = Red Dragon Archfiend * (3000)
+  - Baby Dragon (1200) + Neck Hunter (1750) = Red Dragon Archfiend * (3000)
+  - Baby Dragon (1200) + Opticlops * (1800) = Red Dragon Archfiend * (3000)
+  - ... and 351 more (all in real-cards-list.md)
 - **Beast King Barbaros * (3000): 321 formulas**, a type with a type from weak materials, e.g.:
   - Battle Ox (1700) + Air Marmot of Nefariousness (400) = Beast King Barbaros * (3000)
   - Battle Ox (1700) + Ancient One of the Deep Forest (1800) = Beast King Barbaros * (3000)
@@ -114,13 +163,20 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
 - X-Head Cannon * (1800) + Cyber Falcon * (1400) = VWXYZ-Dragon Catapult Cannon * (3000)
 - X-Head Cannon * (1800) + Gradius * (1200) = VWXYZ-Dragon Catapult Cannon * (3000)
 - X-Head Cannon * (1800) + Spikebot * (1800) = VWXYZ-Dragon Catapult Cannon * (3000)
-- **Dark Paladin * (2900): 297 formulas**, a type with a type from weak materials, e.g.:
-  - Akakieisu (1000) + B. Dragon Jungle King (2100) = Dark Paladin * (2900)
-  - Akakieisu (1000) + Crawling Dragon (1600) = Dark Paladin * (2900)
-  - Akakieisu (1000) + Curse of Dragon (2000) = Dark Paladin * (2900)
-  - Akakieisu (1000) + Harpie's Pet Dragon (2000) = Dark Paladin * (2900)
-  - Akakieisu (1000) + Hyozanryu * (2100) = Dark Paladin * (2900)
-  - ... and 292 more (all in real-cards-list.md)
+- **Gagagigo the Risen * (2950): 364 formulas**, a type with a type from weak materials, e.g.:
+  - Ancient Lizard Warrior (1400) + 7 Colored Fish (1800) = Gagagigo the Risen * (2950)
+  - Ancient Lizard Warrior (1400) + Akihiron (1700) = Gagagigo the Risen * (2950)
+  - Ancient Lizard Warrior (1400) + Bottom Dweller (1650) = Gagagigo the Risen * (2950)
+  - Ancient Lizard Warrior (1400) + Bracchio-raidus (2200) = Gagagigo the Risen * (2950)
+  - Ancient Lizard Warrior (1400) + Crawling Dragon #2 (1600) = Gagagigo the Risen * (2950)
+  - ... and 359 more (all in real-cards-list.md)
+- **Hyper-Ancient Shark Megalodon * (2900): 370 formulas**, a type with a type from weak materials, e.g.:
+  - 7 Colored Fish (1800) + 30,000-Year White Turtle (1250) = Hyper-Ancient Shark Megalodon * (2900)
+  - 7 Colored Fish (1800) + Akihiron (1700) = Hyper-Ancient Shark Megalodon * (2900)
+  - 7 Colored Fish (1800) + Ameba (300) = Hyper-Ancient Shark Megalodon * (2900)
+  - 7 Colored Fish (1800) + Aqua Snake (1050) = Hyper-Ancient Shark Megalodon * (2900)
+  - 7 Colored Fish (1800) + Arma Knight (1000) = Hyper-Ancient Shark Megalodon * (2900)
+  - ... and 365 more (all in real-cards-list.md)
 - **Simorgh, Bird of Ancestry * (2900): 388 formulas**, a type with a type from weak materials, e.g.:
   - Blue-winged Crown (1600) + Aitsu * (100) = Simorgh, Bird of Ancestry * (2900)
   - Blue-winged Crown (1600) + Binding Chain (1000) = Simorgh, Bird of Ancestry * (2900)
@@ -128,6 +184,7 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
   - Blue-winged Crown (1600) + Dancing Elf (300) = Simorgh, Bird of Ancestry * (2900)
   - Blue-winged Crown (1600) + Dark Witch (1800) = Simorgh, Bird of Ancestry * (2900)
   - ... and 383 more (all in real-cards-list.md)
+- Dark Magician (2500) + Buster Blader * (2600) = Dark Paladin * (2900)
 - **Spiral Serpent * (2900): 370 formulas**, a type with a type from weak materials, e.g.:
   - Kairyu-shin (1800) + 7 Colored Fish (1800) = Spiral Serpent * (2900)
   - Kairyu-shin (1800) + Aitsu * (100) = Spiral Serpent * (2900)
@@ -142,6 +199,27 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
   - Abyss Flower (750) + Empress Mantis * (2200) = Tytannial, Princess of Camellias * (2800)
   - Abyss Flower (750) + Girochin Kuwagata * (1700) = Tytannial, Princess of Camellias * (2800)
   - ... and 369 more (all in real-cards-list.md)
+- **Doom Dozer * (2800): 329 formulas**, a type with a type from weak materials, e.g.:
+  - Acid Crawler (900) + Ancient One of the Deep Forest (1800) = Doom Dozer * (2800)
+  - Acid Crawler (900) + Flower Wolf (1800) = Doom Dozer * (2800)
+  - Acid Crawler (900) + Great Angus * (1800) = Doom Dozer * (2800)
+  - Acid Crawler (900) + Leogun (1750) = Doom Dozer * (2800)
+  - Acid Crawler (900) + Togex (1600) = Doom Dozer * (2800)
+  - ... and 324 more (all in real-cards-list.md)
+- **St. Joan * (2800): 330 formulas**, a type with a type from weak materials, e.g.:
+  - Aitsu * (100) + Musician King (1750) = St. Joan * (2800)
+  - Aitsu * (100) + Neo the Magic Swordsman * (1700) = St. Joan * (2800)
+  - Aitsu * (100) + Rock Spirit (1650) = St. Joan * (2800)
+  - Aitsu * (100) + Rogue Doll (1600) = St. Joan * (2800)
+  - Aitsu * (100) + Spirit of the Winds (1700) = St. Joan * (2800)
+  - ... and 325 more (all in real-cards-list.md)
+- **Armed Dragon LV7 * (2800): 309 formulas**, a type with a type from weak materials, e.g.:
+  - Baby Dragon (1200) + Launcher Spider (2200) = Armed Dragon LV7 * (2800)
+  - Baby Dragon (1200) + Machine King (2200) = Armed Dragon LV7 * (2800)
+  - Baby Dragon (1200) + Mechanicalchacer (1850) = Armed Dragon LV7 * (2800)
+  - Baby Dragon (1200) + Metal Dragon (1850) = Armed Dragon LV7 * (2800)
+  - Baby Dragon (1200) + Royal Guard (1900) = Armed Dragon LV7 * (2800)
+  - ... and 304 more (all in real-cards-list.md)
 - Cyber Dragon * (2100) + Cyber Dragon * (2100) = Cyber Twin Dragon * (2800)
 - **Ultimate Flame Swordsman * (2800): 24 formulas**, a type with a type from weak materials, e.g.:
   - Flame Swordsman (1800) + Aitsu * (100) = Ultimate Flame Swordsman * (2800)
@@ -150,13 +228,31 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
   - Flame Swordsman (1800) + Charcoal Inpachi * (100) = Ultimate Flame Swordsman * (2800)
   - Flame Swordsman (1800) + Charubin the Fire Knight (1100) = Ultimate Flame Swordsman * (2800)
   - ... and 19 more (all in real-cards-list.md)
+- **Perfect Machine King * (2700): 298 formulas**, a type with a type from weak materials, e.g.:
+  - Acrobat Monkey * (1000) + Beta The Magnet Warrior * (1700) = Perfect Machine King * (2700)
+  - Acrobat Monkey * (1000) + Millennium Golem (2000) = Perfect Machine King * (2700)
+  - Acrobat Monkey * (1000) + Mystical Sand (2100) = Perfect Machine King * (2700)
+  - Acrobat Monkey * (1000) + Stone D. (2000) = Perfect Machine King * (2700)
+  - Acrobat Monkey * (1000) + Stone Ogre Grotto (1600) = Perfect Machine King * (2700)
+  - ... and 293 more (all in real-cards-list.md)
+- **Sphinx Teleia * (2500): 283 formulas**, a type with a type from weak materials, e.g.:
+  - Air Marmot of Nefariousness (400) + Ancient One of the Deep Forest (1800) = Sphinx Teleia * (2500)
+  - Air Marmot of Nefariousness (400) + Flower Wolf (1800) = Sphinx Teleia * (2500)
+  - Air Marmot of Nefariousness (400) + Garvas (2000) = Sphinx Teleia * (2500)
+  - Air Marmot of Nefariousness (400) + Great Angus * (1800) = Sphinx Teleia * (2500)
+  - Air Marmot of Nefariousness (400) + Leogun (1750) = Sphinx Teleia * (2500)
+  - ... and 278 more (all in real-cards-list.md)
 
-## Added: other new formulas (16)
+## Added: other new formulas (68)
 
+- Buster Blader * (2600) + Black Luster Soldier (3000) = B. Skull Dragon (3200)
+- Buster Blader * (2600) + Garma Sword (2550) = B. Skull Dragon (3200)
+- Buster Blader * (2600) + Machine King (2200) = Metalzoa (3000)
 - Cyber Dragon * (2100) + Dark Witch (1800) = Metalzoa (3000)
 - Cyber Dragon * (2100) + Gyakutenno Megami (1800) = Metalzoa (3000)
 - Cyber Dragon * (2100) + Labyrinth Tank (2400) = Metalzoa (3000)
 - Cyber Dragon * (2100) + Machine King (2200) = Metalzoa (3000)
+- Buster Blader * (2600) + Skull Guardian (2050) = Twin-headed Thunder Dragon (2800)
 - Cyber Dragon * (2100) + Giltia the D. Knight (1850) = Twin-headed Thunder Dragon (2800)
 - Cyber Dragon * (2100) + Kaiser Dragon (2300) = Twin-headed Thunder Dragon (2800)
 - Cyber Dragon * (2100) + Launcher Spider (2200) = Twin-headed Thunder Dragon (2800)
@@ -168,7 +264,55 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
 - Cyber Dragon * (2100) + Empress Mantis * (2200) = Thousand Dragon (2400)
 - Cyber Dragon * (2100) + Mechanicalchacer (1850) = Red-eyes B. Dragon (2400)
 - Cyber Dragon * (2100) + Mr. Volcano * (2100) = Crimson Sunbird (2300)
+- Jack's Knight * (1900) + Dark Witch (1800) = Judge Man (2200)
+- Jack's Knight * (1900) + Flame Champion * (1900) = Judge Man (2200)
+- Jack's Knight * (1900) + Flame Swordsman (1800) = Judge Man (2200)
+- Jack's Knight * (1900) + Giltia the D. Knight (1850) = Judge Man (2200)
+- Jack's Knight * (1900) + Gyakutenno Megami (1800) = Judge Man (2200)
+- Jack's Knight * (1900) + Luster Dragon * (1900) = Judge Man (2200)
+- Jack's Knight * (1900) + Monster Tamer (1800) = Judge Man (2200)
+- Jack's Knight * (1900) + Musician King (1750) = Judge Man (2200)
+- Jack's Knight * (1900) + Orion the Battle King (1800) = Judge Man (2200)
+- Jack's Knight * (1900) + Performance of Sword (1950) = Judge Man (2200)
+- Jack's Knight * (1900) + Rogue Doll (1600) = Judge Man (2200)
+- King's Knight * (1600) + Jack's Knight * (1900) = Judge Man (2200)
+- King's Knight * (1600) + Queen's Knight * (1500) = Judge Man (2200)
+- Queen's Knight * (1500) + Jack's Knight * (1900) = Judge Man (2200)
+- Jack's Knight * (1900) + Guardian of the Throne Room (1650) = Launcher Spider (2200)
+- Jack's Knight * (1900) + Archfiend Soldier * (1900) = Ushi Oni (2150)
+- Jack's Knight * (1900) + Swamp Battleguard (1800) = Mystical Sand (2100)
+- Jack's Knight * (1900) + Warrior of Tradition (1900) = Mystical Sand (2100)
 - Alpha The Magnet Warrior * (1400) + Gamma the Magnet Warrior * (1500) = Stone D. (2000)
+- King's Knight * (1600) + Succubus Knight (1650) = Curse of Dragon (2000)
+- King's Knight * (1600) + Guardian of the Throne Room (1650) = Metal Dragon (1850)
+- King's Knight * (1600) + Beautiful Headhuntress (1600) = Flame Swordsman (1800)
+- King's Knight * (1600) + Inpachi * (1600) = Flame Swordsman (1800)
+- King's Knight * (1600) + Ocubeam (1550) = Flame Swordsman (1800)
+- King's Knight * (1600) + Rogue Doll (1600) = Flame Swordsman (1800)
+- Queen's Knight * (1500) + Ocubeam (1550) = Flame Swordsman (1800)
+- King's Knight * (1600) + Ill Witch (1600) = Dark Witch (1800)
+- Queen's Knight * (1500) + Rogue Doll (1600) = Dark Witch (1800)
+- King's Knight * (1600) + Karbonala Warrior (1500) = Dungeon Worm (1800)
+- King's Knight * (1600) + Overdrive * (1600) = Dungeon Worm (1800)
+- King's Knight * (1600) + Kojikocy (1500) = Monster Tamer (1800)
+- King's Knight * (1600) + Lava Battleguard (1550) = Monster Tamer (1800)
+- King's Knight * (1600) + Maha Vailo (1550) = Monster Tamer (1800)
+- King's Knight * (1600) + Thunder Dragon (1600) = Monster Tamer (1800)
+- King's Knight * (1600) + Robotic Knight * (1600) = Cyber Saurus (1800)
+- King's Knight * (1600) + Wall Shadow (1600) = Pumpking the King of Ghosts (1800)
+- Queen's Knight * (1500) + Ancient Elf (1450) = Beautiful Beast Trainer (1750)
+- Queen's Knight * (1500) + Flying Kamakiri #2 * (1500) = Beautiful Beast Trainer (1750)
+- Queen's Knight * (1500) + Gamma the Magnet Warrior * (1500) = Beautiful Beast Trainer (1750)
+- Queen's Knight * (1500) + Hibikime (1450) = Beautiful Beast Trainer (1750)
+- Queen's Knight * (1500) + Kojikocy (1500) = Beautiful Beast Trainer (1750)
+- Queen's Knight * (1500) + The Immortal of Thunder (1500) = Beautiful Beast Trainer (1750)
+- Queen's Knight * (1500) + Celtic Guardian (1400) = Musician King (1750)
+- Queen's Knight * (1500) + Gazelle the King of Mythical Beasts * (1500) = Musician King (1750)
+- Queen's Knight * (1500) + Maha Vailo (1550) = Musician King (1750)
+- Queen's Knight * (1500) + Maiden of the Moonlight (1500) = Musician King (1750)
+- Queen's Knight * (1500) + Zanki (1500) = Musician King (1750)
+- Queen's Knight * (1500) + Karbonala Warrior (1500) = Sword Arm of Dragon (1750)
+- Queen's Knight * (1500) + Lava Battleguard (1550) = Sword Arm of Dragon (1750)
 
 ## Disc recipes taken over by Ultimate Flame Swordsman (14)
 
