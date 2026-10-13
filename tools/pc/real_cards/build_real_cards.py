@@ -19,6 +19,9 @@ A target's "mass" rules ({"groups": [{type/attribute}, {type/attribute}], "max_a
 any two such monsters, as Twin-headed Thunder Dragon is on the disc. "max_atk" caps both materials and
 "min_one" is the ATK at least one of them needs.
 A target's "drop" ({"weight", "from": [opponents]}) puts it in those opponents' S/A rank prize pools.
+spells.json holds Equip and Ritual cards (a copy of a retail one of the same kind; "equip":
+"add"/"bonus"/"bonus_if"/"bonus_attack"/"bonus_defense" go to the mod's "equips", "ritual": "result" and
+"tributes" to its "rituals"), with their own "drop".
 A target's "steps" are recipes for a card made of three (Alpha + Beta + Gamma):
 each [A, B, retail card] makes the card its "fusions" then take.
 """
@@ -40,6 +43,7 @@ DISC = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions.csv"
 BY_RESULT = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions_by_result.csv"
 CURATED = HERE / "curated.json"
 TARGETS = HERE / "targets.json"
+SPELLS = HERE / "spells.json"
 API = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=Normal%20Monster&misc=yes"
 UA = "fm-recomp-study/1.0"
 MOD_ID = "z"
@@ -50,7 +54,11 @@ ERA_END = "2005"          # TCG release date before this
 FM_ALIASES = ("fiendreflection", "trialofnightmare", "mechanicalchaser", "lajinnthemystical",
               "wingeddragonguardian", "twinlongrods", "redeyesblackdragon")
 # Opponents a "drops" rule may name (notes/gameplay-tables.md lists all 39).
-OPPONENTS = {"Seto 3rd", "Heishin 2nd", "DarkNite", "Nitemare", "Duel Master K"}
+OPPONENTS = {"Teana 2nd", "Ocean Mage", "High Mage Secmeton", "Forest Mage", "High Mage Anubisius", "Mountain Mage",
+             "High Mage Atenza", "Desert Mage", "High Mage Martis", "Meadow Mage", "High Mage Kepura", "Labyrinth Mage",
+             "Seto 2nd", "Guardian Sebek", "Guardian Neku", "Heishin 2nd", "Seto 3rd", "DarkNite", "Nitemare", "Duel Master K"}
+RITUAL_KEYS = {"card", "type", "fusion_group", "min_attack", "max_attack", "min_defense", "max_defense", "min_level",
+               "max_level", "defense_gt_attack"}
 # Fixed Cards the game treats specially; never used as a base or a fusion partner.
 SPECIAL_IDS = {17, 18, 19, 20, 21, 22, 777}
 
@@ -152,7 +160,8 @@ def fetch_art(password, dest):
 
 def art():
     out = MOD / "images"
-    for c in json.loads(CURATED.read_text(encoding="utf-8")) + json.loads(TARGETS.read_text(encoding="utf-8")):
+    for c in (json.loads(CURATED.read_text(encoding="utf-8")) + json.loads(TARGETS.read_text(encoding="utf-8"))
+              + json.loads(SPELLS.read_text(encoding="utf-8"))):
         dest = out / f"{slug(c['name'])}.png"
         if dest.exists():
             continue
@@ -187,14 +196,46 @@ def build():
         if not target:
             (nodes if c in cards else extra).append({"ref": f"{MOD_ID}:{cid}:1", "name": c["name"], "type": c["type"],
                           "attribute": c["attribute"].title(), "atk": c["attack"], "base": base["id"]})
+    spells = json.loads(SPELLS.read_text(encoding="utf-8"))
+    equips, rituals = spell_cards(spells, cat, entries, cards + targets)
     mod = {"id": MOD_ID, "name": "Z", "version": "0.1",
            "author": "community", "enabled": False,
-           "description": f"{len(entries)} real Yu-Gi-Oh! monsters the disc lacks, with fusions. "
+           "description": f"{len(entries)} real Yu-Gi-Oh! cards the disc lacks, with fusions. "
                           "Study project; art is Konami's.",
-           "cards": entries, "drops": target_drops(targets), "fusions": target_fusions(targets, cards, monsters, fusions(nodes, monsters, extra), nodes + extra, inter)}
+           "cards": entries, "drops": target_drops(targets + spells), "fusions": target_fusions(targets, cards, monsters, fusions(nodes, monsters, extra), nodes + extra, inter)}
+    if equips:
+        mod["equips"] = equips
+    if rituals:
+        mod["rituals"] = rituals
     MOD.mkdir(parents=True, exist_ok=True)
     (MOD / "mod.json").write_text(json.dumps(mod, indent=1, ensure_ascii=True) + "\n", encoding="utf-8")
     print(f"{len(entries)} cards, {len(mod['fusions'])} fusions -> {MOD / 'mod.json'}")
+
+
+def spell_cards(spells, cat, entries, monsters):
+    """spells.json -> card entries (a copy of a retail Equip / Ritual card) and the equips / rituals rules."""
+    by_name = {r["name"]: r for r in cat}
+    ref = {c["name"]: f"{MOD_ID}:{slug(c['name'])}:1" for c in monsters + spells}
+    equips, rituals = [], []
+    for s in spells:
+        base = by_name[s["base"]]
+        if base["type"] != s["kind"].title():
+            raise SystemExit(f"spells.json: {s['name']}: base {s['base']!r} is a {base['type']}, not a {s['kind']}")
+        cid = slug(s["name"])
+        e = {"id": cid, "copy": base["id"], "name": s["name"], "description": description(s["description"]),
+             "password": s["password"], "drops": False, "opponents": False}
+        if (MOD / "images" / f"{cid}.png").exists():
+            e["art"] = f"images/{cid}.png"
+        entries.append(e)
+        if s["kind"] == "equip":
+            rule = {"card": ref[s["name"]], "replace": True, "add": s["add"]}
+            for k in ("bonus", "bonus_if", "bonus_attack", "bonus_defense"):
+                if k in s:
+                    rule[k] = s[k]
+            equips.append(rule)
+        else:
+            rituals.append({"card": ref[s["name"]], "result": ref[s["result"]], "tributes": s["tributes"]})
+    return equips, rituals
 
 
 def fusions(new, monsters, extra=()):
@@ -318,14 +359,16 @@ def check():
         if len(e["id"]) > 63 or e["id"] in names:
             errors.append(f"{where}: id")
         names.add(e["id"])
-        if e["copy"] not in ids or ids[e["copy"]]["atk"] is None:
+        monster = "attack" in e
+        kind = ids[e["copy"]]["type"] if e["copy"] in ids else None
+        if kind is None or (monster and (kind not in TYPES or ids[e["copy"]]["atk"] is None))                 or (not monster and kind not in ("Equip", "Ritual")):
             errors.append(f"{where}: base")
         if any(ch not in FONT_OK for ch in e["name"]):
             errors.append(f"{where}: name has characters the font lacks")
-        if e["type"] not in TYPES or not 0 <= e["level"] <= 12:
+        if monster and (e["type"] not in TYPES or not 0 <= e["level"] <= 12):
             errors.append(f"{where}: type/level")
         for k in ("attack", "defense"):
-            if not 0 <= e[k] <= 5110 or e[k] % 10:
+            if monster and (not 0 <= e[k] <= 5110 or e[k] % 10):
                 errors.append(f"{where}: {k}")
         lines = e["description"].split("\n")
         if len(lines) > 8 or any(len(x) > 20 for x in lines) or any(ch not in FONT_OK | {"\n"} for ch in e["description"]):
@@ -335,6 +378,20 @@ def check():
         passwords.add(e["password"])
         if "art" in e and not (MOD / e["art"]).exists():
             errors.append(f"{where}: art missing")
+    equip_cards = {f"{MOD_ID}:{e['id']}:1" for e in mod["cards"] if "attack" not in e and ids[e["copy"]]["type"] == "Equip"}
+    ritual_cards = {f"{MOD_ID}:{e['id']}:1" for e in mod["cards"] if "attack" not in e and ids[e["copy"]]["type"] == "Ritual"}
+    for r in mod.get("equips", []):
+        if r["card"] not in equip_cards or not r.get("add") or any(t not in TYPES for t in r["add"]):
+            errors.append(f"equips {r['card']}: card or types")
+        if not any(k in r for k in ("bonus", "bonus_if", "bonus_attack", "bonus_defense")):
+            errors.append(f"equips {r['card']}: no bonus")
+    for r in mod.get("rituals", []):
+        if r["card"] not in ritual_cards or r["result"] not in refs or "attack" not in refs[r["result"]]:
+            errors.append(f"rituals {r['card']}: card or result")
+        if len(r["tributes"]) != 3 or any(not t or set(t) - RITUAL_KEYS for t in r["tributes"]):
+            errors.append(f"rituals {r['card']}: tributes")
+        if any(t.get("type") not in TYPES for t in r["tributes"] if "type" in t):
+            errors.append(f"rituals {r['card']}: tribute type")
     def stats(x):
         if isinstance(x, int):
             return ids[x]["atk"] if x in ids else None

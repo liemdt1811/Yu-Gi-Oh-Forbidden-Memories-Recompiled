@@ -4,7 +4,7 @@
  "version": "0.1",
  "author": "community",
  "enabled": false,
- "description": "139 real Yu-Gi-Oh! monsters the disc lacks, with fusions. Study project; art is Konami's.",
+ "description": "150 real Yu-Gi-Oh! cards the disc lacks, with fusions. Study project; art is Konami's.",
  "cards": [
   {
    "id": "luster-dragon",
@@ -2090,59 +2090,720 @@
    "drops": false,
    "opponents": false,
    "art": "images/the-winged-dragon-of-ra.png"
+  },
+  {
+   "id": "dark-master-zorc",
+   "copy": 391,
+   "name": "Dark Master - Zorc",
+   "description": "The dark master who\nrules the darkness\nof the Shadow Realm.\nIts wrath drains all\nlight.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 8,
+   "attack": 2700,
+   "defense": 1500,
+   "password": "97642679",
+   "drops": false,
+   "opponents": false,
+   "art": "images/dark-master-zorc.png"
+  },
+  {
+   "id": "andro-sphinx",
+   "copy": 356,
+   "name": "Andro Sphinx",
+   "description": "The sphinx of the\npyramid. It guards\nthe pharaoh's tomb\nand punishes any\nthief.",
+   "type": "Beast",
+   "attribute": "Light",
+   "level": 10,
+   "attack": 3000,
+   "defense": 2500,
+   "password": "15013468",
+   "drops": false,
+   "opponents": false,
+   "art": "images/andro-sphinx.png"
+  },
+  {
+   "id": "conduction-warrior-linear-magnum-plus-minus",
+   "copy": 531,
+   "name": "Conduction Warrior Linear Magnum Plus Minus",
+   "description": "Two magnet warriors\njoined by a surge of\nplus and minus. The\ncurrent between them\nfuels a third.",
+   "type": "Rock",
+   "attribute": "Earth",
+   "level": 7,
+   "attack": 2700,
+   "defense": 1300,
+   "password": "44839512",
+   "drops": false,
+   "opponents": false,
+   "art": "images/conduction-warrior-linear-magnum-plus-minus.png"
+  },
+  {
+   "id": "mage-power",
+   "copy": 323,
+   "name": "Mage Power",
+   "description": "The spellcaster's\npower grows with the\nmagic around it. It\ngains great\nstrength.",
+   "password": "83746708",
+   "drops": false,
+   "opponents": false,
+   "art": "images/mage-power.png"
+  },
+  {
+   "id": "united-we-stand",
+   "copy": 303,
+   "name": "United We Stand",
+   "description": "The monster draws\nstrength from its\nallies. Any monster\nmay be equipped.",
+   "password": "56747793",
+   "drops": false,
+   "opponents": false,
+   "art": "images/united-we-stand.png"
+  },
+  {
+   "id": "divine-sword-phoenix-blade",
+   "copy": 301,
+   "name": "Divine Sword - Phoenix Blade",
+   "description": "A holy sword of the\nphoenix. Fire\nmonsters wield it\nbest.",
+   "password": "31423101",
+   "drops": false,
+   "opponents": false,
+   "art": "images/divine-sword-phoenix-blade.png"
+  },
+  {
+   "id": "lightning-blade",
+   "copy": 308,
+   "name": "Lightning Blade",
+   "description": "A blade that\ncrackles with\nlightning. It adds\nto the attack of its\nwielder.",
+   "password": "55226821",
+   "drops": false,
+   "opponents": false,
+   "art": "images/lightning-blade.png"
+  },
+  {
+   "id": "rod-of-silence-kay-est",
+   "copy": 307,
+   "name": "Rod of Silence - Kay'est",
+   "description": "A rod that guards\nits holder with\nsilence. It adds to\nthe defense of its\nholder.",
+   "password": "95515060",
+   "drops": false,
+   "opponents": false,
+   "art": "images/rod-of-silence-kay-est.png"
+  },
+  {
+   "id": "curse-of-the-masked-beast",
+   "copy": 671,
+   "name": "Curse of the Masked Beast",
+   "description": "Tribute a Fiend, a\nBeast-Warrior and\none more monster to\nsummon The Masked\nBeast.",
+   "password": "94377247",
+   "drops": false,
+   "opponents": false,
+   "art": "images/curse-of-the-masked-beast.png"
+  },
+  {
+   "id": "contract-with-the-dark-master",
+   "copy": 695,
+   "name": "Contract with the Dark Master",
+   "description": "Tribute a strong\nFiend, a Spellcaster\nand one more monster\nto summon Dark\nMaster - Zorc.",
+   "password": "96420087",
+   "drops": false,
+   "opponents": false,
+   "art": "images/contract-with-the-dark-master.png"
+  },
+  {
+   "id": "pyramid-of-light",
+   "copy": 670,
+   "name": "Pyramid of Light",
+   "description": "Tribute a Beast, a\nFairy and one more\nmonster to summon\nAndro Sphinx.",
+   "password": "53569894",
+   "drops": false,
+   "opponents": false,
+   "art": "images/pyramid-of-light.png"
   }
  ],
  "drops": {
-  "Seto 3rd": {
+  "Teana 2nd": {
    "pow": {
     "z:cyber-twin-dragon:1": 8,
-    "z:gladiator-beast-heraklinos:1": 6,
-    "z:volcanic-doomfire:1": 6,
-    "z:vampire-genesis:1": 6,
-    "z:horus-the-black-flame-dragon-lv8:1": 6,
-    "z:vwxyz-dragon-catapult-cannon:1": 6,
     "z:dark-paladin:1": 8,
     "z:spiral-serpent:1": 8,
     "z:simorgh-bird-of-ancestry:1": 8,
     "z:tytannial-princess-of-camellias:1": 8,
-    "z:cloudian-eye-of-the-typhoon:1": 6,
-    "z:beast-king-barbaros:1": 6,
     "z:ultimate-flame-swordsman:1": 8,
-    "z:red-dragon-archfiend:1": 6,
-    "z:black-luster-soldier-envoy-of-the-beginning:1": 6,
     "z:armed-dragon-lv7:1": 8,
     "z:perfect-machine-king:1": 8,
     "z:doom-dozer:1": 8,
-    "z:dark-magician-the-dragon-knight:1": 6,
     "z:st-joan:1": 8,
     "z:hyper-ancient-shark-megalodon:1": 8,
     "z:gagagigo-the-risen:1": 6,
-    "z:sphinx-teleia:1": 8
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
    },
    "tec": {
     "z:cyber-twin-dragon:1": 8,
-    "z:gladiator-beast-heraklinos:1": 6,
-    "z:volcanic-doomfire:1": 6,
-    "z:vampire-genesis:1": 6,
-    "z:horus-the-black-flame-dragon-lv8:1": 6,
-    "z:vwxyz-dragon-catapult-cannon:1": 6,
     "z:dark-paladin:1": 8,
     "z:spiral-serpent:1": 8,
     "z:simorgh-bird-of-ancestry:1": 8,
     "z:tytannial-princess-of-camellias:1": 8,
-    "z:cloudian-eye-of-the-typhoon:1": 6,
-    "z:beast-king-barbaros:1": 6,
     "z:ultimate-flame-swordsman:1": 8,
-    "z:red-dragon-archfiend:1": 6,
-    "z:black-luster-soldier-envoy-of-the-beginning:1": 6,
     "z:armed-dragon-lv7:1": 8,
     "z:perfect-machine-king:1": 8,
     "z:doom-dozer:1": 8,
-    "z:dark-magician-the-dragon-knight:1": 6,
     "z:st-joan:1": 8,
     "z:hyper-ancient-shark-megalodon:1": 8,
     "z:gagagigo-the-risen:1": 6,
-    "z:sphinx-teleia:1": 8
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   }
+  },
+  "Ocean Mage": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   }
+  },
+  "High Mage Secmeton": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   }
+  },
+  "Forest Mage": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   }
+  },
+  "High Mage Anubisius": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   }
+  },
+  "Mountain Mage": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   }
+  },
+  "High Mage Atenza": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   }
+  },
+  "Desert Mage": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   }
+  },
+  "High Mage Martis": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   }
+  },
+  "Meadow Mage": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   }
+  },
+  "High Mage Kepura": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   }
+  },
+  "Labyrinth Mage": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
+   }
+  },
+  "Seto 2nd": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8
+   }
+  },
+  "Guardian Sebek": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
+   }
+  },
+  "Guardian Neku": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
    }
   },
   "Heishin 2nd": {
@@ -2169,7 +2830,17 @@
     "z:st-joan:1": 8,
     "z:hyper-ancient-shark-megalodon:1": 8,
     "z:gagagigo-the-risen:1": 6,
-    "z:sphinx-teleia:1": 8
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
    },
    "tec": {
     "z:cyber-twin-dragon:1": 8,
@@ -2194,7 +2865,89 @@
     "z:st-joan:1": 8,
     "z:hyper-ancient-shark-megalodon:1": 8,
     "z:gagagigo-the-risen:1": 6,
-    "z:sphinx-teleia:1": 8
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
+   }
+  },
+  "Seto 3rd": {
+   "pow": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:gladiator-beast-heraklinos:1": 6,
+    "z:volcanic-doomfire:1": 6,
+    "z:vampire-genesis:1": 6,
+    "z:horus-the-black-flame-dragon-lv8:1": 6,
+    "z:vwxyz-dragon-catapult-cannon:1": 6,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:cloudian-eye-of-the-typhoon:1": 6,
+    "z:beast-king-barbaros:1": 6,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:red-dragon-archfiend:1": 6,
+    "z:black-luster-soldier-envoy-of-the-beginning:1": 6,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:dark-magician-the-dragon-knight:1": 6,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
+   },
+   "tec": {
+    "z:cyber-twin-dragon:1": 8,
+    "z:gladiator-beast-heraklinos:1": 6,
+    "z:volcanic-doomfire:1": 6,
+    "z:vampire-genesis:1": 6,
+    "z:horus-the-black-flame-dragon-lv8:1": 6,
+    "z:vwxyz-dragon-catapult-cannon:1": 6,
+    "z:dark-paladin:1": 8,
+    "z:spiral-serpent:1": 8,
+    "z:simorgh-bird-of-ancestry:1": 8,
+    "z:tytannial-princess-of-camellias:1": 8,
+    "z:cloudian-eye-of-the-typhoon:1": 6,
+    "z:beast-king-barbaros:1": 6,
+    "z:ultimate-flame-swordsman:1": 8,
+    "z:red-dragon-archfiend:1": 6,
+    "z:black-luster-soldier-envoy-of-the-beginning:1": 6,
+    "z:armed-dragon-lv7:1": 8,
+    "z:perfect-machine-king:1": 8,
+    "z:doom-dozer:1": 8,
+    "z:dark-magician-the-dragon-knight:1": 6,
+    "z:st-joan:1": 8,
+    "z:hyper-ancient-shark-megalodon:1": 8,
+    "z:gagagigo-the-risen:1": 6,
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
    }
   },
   "DarkNite": {
@@ -2226,7 +2979,17 @@
     "z:st-joan:1": 8,
     "z:hyper-ancient-shark-megalodon:1": 8,
     "z:gagagigo-the-risen:1": 6,
-    "z:sphinx-teleia:1": 8
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
    },
    "tec": {
     "z:cyber-twin-dragon:1": 8,
@@ -2256,7 +3019,17 @@
     "z:st-joan:1": 8,
     "z:hyper-ancient-shark-megalodon:1": 8,
     "z:gagagigo-the-risen:1": 6,
-    "z:sphinx-teleia:1": 8
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
    }
   },
   "Nitemare": {
@@ -2290,7 +3063,17 @@
     "z:st-joan:1": 8,
     "z:hyper-ancient-shark-megalodon:1": 8,
     "z:gagagigo-the-risen:1": 6,
-    "z:sphinx-teleia:1": 8
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
    },
    "tec": {
     "z:cyber-twin-dragon:1": 8,
@@ -2322,7 +3105,17 @@
     "z:st-joan:1": 8,
     "z:hyper-ancient-shark-megalodon:1": 8,
     "z:gagagigo-the-risen:1": 6,
-    "z:sphinx-teleia:1": 8
+    "z:sphinx-teleia:1": 8,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
    }
   },
   "Duel Master K": {
@@ -2360,7 +3153,17 @@
     "z:sphinx-teleia:1": 8,
     "z:obelisk-the-tormentor:1": 1,
     "z:slifer-the-sky-dragon:1": 1,
-    "z:the-winged-dragon-of-ra:1": 1
+    "z:the-winged-dragon-of-ra:1": 1,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
    },
    "tec": {
     "z:cyber-twin-dragon:1": 8,
@@ -2396,7 +3199,17 @@
     "z:sphinx-teleia:1": 8,
     "z:obelisk-the-tormentor:1": 1,
     "z:slifer-the-sky-dragon:1": 1,
-    "z:the-winged-dragon-of-ra:1": 1
+    "z:the-winged-dragon-of-ra:1": 1,
+    "z:dark-master-zorc:1": 8,
+    "z:conduction-warrior-linear-magnum-plus-minus:1": 8,
+    "z:mage-power:1": 24,
+    "z:united-we-stand:1": 24,
+    "z:divine-sword-phoenix-blade:1": 24,
+    "z:lightning-blade:1": 24,
+    "z:rod-of-silence-kay-est:1": 24,
+    "z:curse-of-the-masked-beast:1": 16,
+    "z:contract-with-the-dark-master:1": 16,
+    "z:pyramid-of-light:1": 16
    }
   }
  },
@@ -3485,6 +4298,13 @@
     454
    ],
    "result": 627
+  },
+  {
+   "with": [
+    "z:beta-the-magnet-warrior:1",
+    426
+   ],
+   "result": 33
   },
   {
    "with": [
@@ -12427,45 +13247,24 @@
   },
   {
    "with": [
-    426,
-    "z:gamma-the-magnet-warrior:1"
-   ],
-   "result": "z:valkyrion-the-magna-warrior:1"
-  },
-  {
-   "with": [
-    426,
-    "z:beta-the-magnet-warrior:1"
-   ],
-   "result": "z:valkyrion-the-magna-warrior:1"
-  },
-  {
-   "with": [
-    531,
+    "z:conduction-warrior-linear-magnum-plus-minus:1",
     "z:alpha-the-magnet-warrior:1"
    ],
    "result": "z:valkyrion-the-magna-warrior:1"
   },
   {
    "with": [
-    "z:alpha-the-magnet-warrior:1",
+    "z:conduction-warrior-linear-magnum-plus-minus:1",
     "z:beta-the-magnet-warrior:1"
    ],
-   "result": 426
+   "result": "z:valkyrion-the-magna-warrior:1"
   },
   {
    "with": [
-    "z:alpha-the-magnet-warrior:1",
+    "z:conduction-warrior-linear-magnum-plus-minus:1",
     "z:gamma-the-magnet-warrior:1"
    ],
-   "result": 426
-  },
-  {
-   "with": [
-    "z:beta-the-magnet-warrior:1",
-    "z:gamma-the-magnet-warrior:1"
-   ],
-   "result": 531
+   "result": "z:valkyrion-the-magna-warrior:1"
   },
   {
    "with": [
@@ -12662,6 +13461,27 @@
     "z:buster-blader:1"
    ],
    "result": "z:dark-paladin:1"
+  },
+  {
+   "with": [
+    "z:alpha-the-magnet-warrior:1",
+    "z:beta-the-magnet-warrior:1"
+   ],
+   "result": "z:conduction-warrior-linear-magnum-plus-minus:1"
+  },
+  {
+   "with": [
+    "z:alpha-the-magnet-warrior:1",
+    "z:gamma-the-magnet-warrior:1"
+   ],
+   "result": "z:conduction-warrior-linear-magnum-plus-minus:1"
+  },
+  {
+   "with": [
+    "z:beta-the-magnet-warrior:1",
+    "z:gamma-the-magnet-warrior:1"
+   ],
+   "result": "z:conduction-warrior-linear-magnum-plus-minus:1"
   },
   {
    "with": [
@@ -50147,6 +50967,123 @@
     "z:soul-tiger:1"
    ],
    "result": "z:sphinx-teleia:1"
+  }
+ ],
+ "equips": [
+  {
+   "card": "z:mage-power:1",
+   "replace": true,
+   "add": [
+    "Spellcaster"
+   ],
+   "bonus": 1000
+  },
+  {
+   "card": "z:united-we-stand:1",
+   "replace": true,
+   "add": [
+    "Dragon",
+    "Spellcaster",
+    "Zombie",
+    "Warrior",
+    "Beast-Warrior",
+    "Beast",
+    "Winged Beast",
+    "Fiend",
+    "Fairy",
+    "Insect",
+    "Dinosaur",
+    "Reptile",
+    "Fish",
+    "Sea Serpent",
+    "Machine",
+    "Thunder",
+    "Aqua",
+    "Pyro",
+    "Rock",
+    "Plant"
+   ],
+   "bonus": 600
+  },
+  {
+   "card": "z:divine-sword-phoenix-blade:1",
+   "replace": true,
+   "add": [
+    "Warrior",
+    "Beast-Warrior"
+   ],
+   "bonus": 800,
+   "bonus_if": {
+    "Fire": 1000
+   }
+  },
+  {
+   "card": "z:lightning-blade:1",
+   "replace": true,
+   "add": [
+    "Warrior",
+    "Thunder"
+   ],
+   "bonus_attack": 800,
+   "bonus_defense": 0
+  },
+  {
+   "card": "z:rod-of-silence-kay-est:1",
+   "replace": true,
+   "add": [
+    "Spellcaster",
+    "Fairy"
+   ],
+   "bonus_attack": 200,
+   "bonus_defense": 1000
+  }
+ ],
+ "rituals": [
+  {
+   "card": "z:curse-of-the-masked-beast:1",
+   "result": "z:the-masked-beast:1",
+   "tributes": [
+    {
+     "type": "Fiend"
+    },
+    {
+     "type": "Beast-Warrior"
+    },
+    {
+     "min_attack": 1600
+    }
+   ]
+  },
+  {
+   "card": "z:contract-with-the-dark-master:1",
+   "result": "z:dark-master-zorc:1",
+   "tributes": [
+    {
+     "type": "Fiend",
+     "min_attack": 1800
+    },
+    {
+     "type": "Spellcaster"
+    },
+    {
+     "min_level": 4
+    }
+   ]
+  },
+  {
+   "card": "z:pyramid-of-light:1",
+   "result": "z:andro-sphinx:1",
+   "tributes": [
+    {
+     "type": "Beast"
+    },
+    {
+     "type": "Fairy"
+    },
+    {
+     "min_attack": 1600
+    }
+   ]
   }
  ]
 }

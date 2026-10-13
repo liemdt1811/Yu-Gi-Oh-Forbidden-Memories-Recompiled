@@ -1,6 +1,6 @@
 # Real cards: new fusion formulas
 
-What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 39 cards, 5445 new formulas and 17 changed results. `*` marks a new card; other names are retail cards. The full list is in [real-cards-list.md](real-cards-list.md).
+What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 42 cards, 5446 new formulas and 16 changed results. `*` marks a new card; other names are retail cards. The full list is in [real-cards-list.md](real-cards-list.md).
 
 ## New cards
 
@@ -15,6 +15,7 @@ What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 3
 - Super Conductor Tyranno (3300/1400, Dinosaur, Light, Lv8) - fusion only
 - The Masked Beast (3200/1800, Fiend, Dark, Lv8) - fusion only
 - Thunder Dragon Titan (3200/3200, Thunder, Light, Lv10) - fusion only
+- Andro Sphinx (3000/2500, Beast, Light, Lv10) - fusion only
 - Beast King Barbaros (3000/1200, Beast-Warrior, Earth, Lv8) - fusion only
 - Black Luster Soldier - Envoy of the Beginning (3000/2500, Warrior, Light, Lv8) - fusion only
 - Cloudian - Eye of the Typhoon (3000/1000, Aqua, Wind, Lv8) - fusion only
@@ -36,6 +37,8 @@ What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 3
 - St. Joan (2800/2000, Fairy, Light, Lv7) - fusion only
 - Tytannial, Princess of Camellias (2800/2600, Plant, Wind, Lv8) - fusion only
 - Ultimate Flame Swordsman (2800/1600, Warrior, Fire, Lv8) - fusion only
+- Conduction Warrior Linear Magnum Plus Minus (2700/1300, Rock, Earth, Lv7) - fusion only
+- Dark Master - Zorc (2700/1500, Fiend, Dark, Lv8) - fusion only
 - Perfect Machine King (2700/1500, Machine, Earth, Lv8) - fusion only
 - Buster Blader (2600/2300, Warrior, Earth, Lv7)
 - Sphinx Teleia (2500/3000, Beast, Light, Lv10) - fusion only
@@ -44,22 +47,34 @@ What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 3
 - King's Knight (1600/1400, Warrior, Light, Lv4)
 - Queen's Knight (1500/1600, Warrior, Light, Lv4)
 
+## New Equip and Ritual cards
+
+Details in real-cards-list.md (Equip cards, Ritual cards, Prizes).
+
+- Mage Power
+- United We Stand
+- Divine Sword - Phoenix Blade
+- Lightning Blade
+- Rod of Silence - Kay'est
+- Curse of the Masked Beast
+- Contract with the Dark Master
+- Pyramid of Light
+
 ## Three-card recipe: Valkyrion the Magna Warrior
 
-Fusion takes two cards, so Alpha + Beta + Gamma goes through a retail Rock first. Any order of the three works:
+Fusion takes two cards, so Alpha + Beta + Gamma goes through Conduction Warrior Linear Magnum Plus Minus (2700) first. Any order of the three works:
 
-- Alpha + Beta = Stone D., then Stone D. + Gamma = Valkyrion
-- Alpha + Gamma = Stone D., then Stone D. + Beta = Valkyrion
-- Beta + Gamma = Mystical Sand, then Mystical Sand + Alpha = Valkyrion
+- Alpha + Beta, Alpha + Gamma or Beta + Gamma = Conduction Warrior Linear Magnum Plus Minus
+- Conduction Warrior Linear Magnum Plus Minus + Alpha, Beta or Gamma = Valkyrion
 
-Side effect: Stone D. made from Alpha + Beta also fuses with Beta (it is the same card as any other Stone D.).
+Side effect: the Conduction Warrior is one card, so it also fuses with a second copy of the same Magnet Warrior it was made from.
 
-## Changed results (17)
+## Changed results (16)
 
 Same materials, now a different result (one is weaker: Heraklinos, 3000, replaces Meteor B. Dragon, 3500). Format: `A + B = new result (was old result)`.
 
-- Alpha The Magnet Warrior * (1400) + Beta The Magnet Warrior * (1700) = Stone D. (2000) (was Nekogal #2 (1900))
-- Beta The Magnet Warrior * (1700) + Gamma the Magnet Warrior * (1500) = Mystical Sand (2100) (was Kwagar Hercules (1900))
+- Alpha The Magnet Warrior * (1400) + Beta The Magnet Warrior * (1700) = Conduction Warrior Linear Magnum Plus Minus * (2700) (was Nekogal #2 (1900))
+- Beta The Magnet Warrior * (1700) + Gamma the Magnet Warrior * (1500) = Conduction Warrior Linear Magnum Plus Minus * (2700) (was Kwagar Hercules (1900))
 - Flame Swordsman (1800) + Blazing Inpachi * (1850) = Ultimate Flame Swordsman * (2800) (was Launcher Spider (2200))
 - Flame Swordsman (1800) + Darkfire Soldier #1 * (1700) = Ultimate Flame Swordsman * (2800) (was Launcher Spider (2200))
 - Flame Swordsman (1800) + Darkfire Soldier #2 * (1700) = Ultimate Flame Swordsman * (2800) (was Launcher Spider (2200))
@@ -73,18 +88,18 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
 - Garnecia Elefantis * (2400) + Garoozis (1800) = Gladiator Beast Heraklinos * (3000) (was Meteor B. Dragon (3500))
 - Master Kyonshee * (1750) + Dokurorider (1900) = Vampire Genesis * (3000) (was Mystical Sand (2100))
 - Master Kyonshee * (1750) + Pumpking the King of Ghosts (1800) = Vampire Genesis * (3000) (was Rabid Horseman (2000))
-- Stone D. (2000) + Beta The Magnet Warrior * (1700) = Valkyrion the Magna Warrior * (3500) (was Judge Man (2200))
 - X-Head Cannon * (1800) + Luster Dragon * (1900) = VWXYZ-Dragon Catapult Cannon * (3000) (was Punished Eagle (2100))
 
-## Added: fusion targets (5377)
+## Added: fusion targets (5379)
 
 - Cyber Twin Dragon * (2800) + Cyber Dragon * (2100) = Cyber End Dragon * (4000)
 - Cyber Twin Dragon * (2800) + Cyber Twin Dragon * (2800) = Cyber End Dragon * (4000)
 - Judge Man (2200) + Jack's Knight * (1900) = Arcana Knight Joker * (3800)
 - Judge Man (2200) + King's Knight * (1600) = Arcana Knight Joker * (3800)
 - Judge Man (2200) + Queen's Knight * (1500) = Arcana Knight Joker * (3800)
-- Mystical Sand (2100) + Alpha The Magnet Warrior * (1400) = Valkyrion the Magna Warrior * (3500)
-- Stone D. (2000) + Gamma the Magnet Warrior * (1500) = Valkyrion the Magna Warrior * (3500)
+- Conduction Warrior Linear Magnum Plus Minus * (2700) + Alpha The Magnet Warrior * (1400) = Valkyrion the Magna Warrior * (3500)
+- Conduction Warrior Linear Magnum Plus Minus * (2700) + Beta The Magnet Warrior * (1700) = Valkyrion the Magna Warrior * (3500)
+- Conduction Warrior Linear Magnum Plus Minus * (2700) + Gamma the Magnet Warrior * (1500) = Valkyrion the Magna Warrior * (3500)
 - Kabazauls * (1700) + Bracchio-raidus (2200) = Super Conductor Tyranno * (3300)
 - Megazowler (1800) + Bracchio-raidus (2200) = Super Conductor Tyranno * (3300)
 - Pragtical (1900) + Bracchio-raidus (2200) = Super Conductor Tyranno * (3300)
@@ -235,6 +250,7 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
   - Acrobat Monkey * (1000) + Stone D. (2000) = Perfect Machine King * (2700)
   - Acrobat Monkey * (1000) + Stone Ogre Grotto (1600) = Perfect Machine King * (2700)
   - ... and 293 more (all in real-cards-list.md)
+- Alpha The Magnet Warrior * (1400) + Gamma the Magnet Warrior * (1500) = Conduction Warrior Linear Magnum Plus Minus * (2700)
 - **Sphinx Teleia * (2500): 283 formulas**, a type with a type from weak materials, e.g.:
   - Air Marmot of Nefariousness (400) + Ancient One of the Deep Forest (1800) = Sphinx Teleia * (2500)
   - Air Marmot of Nefariousness (400) + Flower Wolf (1800) = Sphinx Teleia * (2500)
@@ -243,7 +259,7 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
   - Air Marmot of Nefariousness (400) + Leogun (1750) = Sphinx Teleia * (2500)
   - ... and 278 more (all in real-cards-list.md)
 
-## Added: other new formulas (68)
+## Added: other new formulas (67)
 
 - Buster Blader * (2600) + Black Luster Soldier (3000) = B. Skull Dragon (3200)
 - Buster Blader * (2600) + Garma Sword (2550) = B. Skull Dragon (3200)
@@ -282,7 +298,6 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
 - Jack's Knight * (1900) + Archfiend Soldier * (1900) = Ushi Oni (2150)
 - Jack's Knight * (1900) + Swamp Battleguard (1800) = Mystical Sand (2100)
 - Jack's Knight * (1900) + Warrior of Tradition (1900) = Mystical Sand (2100)
-- Alpha The Magnet Warrior * (1400) + Gamma the Magnet Warrior * (1500) = Stone D. (2000)
 - King's Knight * (1600) + Succubus Knight (1650) = Curse of Dragon (2000)
 - King's Knight * (1600) + Guardian of the Throne Room (1650) = Metal Dragon (1850)
 - King's Knight * (1600) + Beautiful Headhuntress (1600) = Flame Swordsman (1800)

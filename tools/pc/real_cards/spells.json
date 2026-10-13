@@ -1,0 +1,254 @@
+[
+ {
+  "kind": "equip",
+  "name": "Mage Power",
+  "password": "83746708",
+  "base": "Book of Secret Arts",
+  "description": "The spellcaster's power grows with the magic around it. It gains great strength.",
+  "date": "2003-03-01",
+  "add": [
+   "Spellcaster"
+  ],
+  "bonus": 1000,
+  "drop": {
+   "weight": 24,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "equip",
+  "name": "United We Stand",
+  "password": "56747793",
+  "base": "Dark Energy",
+  "description": "The monster draws strength from its allies. Any monster may be equipped.",
+  "date": "2003-03-01",
+  "add": [
+   "Dragon",
+   "Spellcaster",
+   "Zombie",
+   "Warrior",
+   "Beast-Warrior",
+   "Beast",
+   "Winged Beast",
+   "Fiend",
+   "Fairy",
+   "Insect",
+   "Dinosaur",
+   "Reptile",
+   "Fish",
+   "Sea Serpent",
+   "Machine",
+   "Thunder",
+   "Aqua",
+   "Pyro",
+   "Rock",
+   "Plant"
+  ],
+  "bonus": 600,
+  "drop": {
+   "weight": 24,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "equip",
+  "name": "Divine Sword - Phoenix Blade",
+  "password": "31423101",
+  "base": "Legendary Sword",
+  "description": "A holy sword of the phoenix. Fire monsters wield it best.",
+  "date": "2005-10-28",
+  "add": [
+   "Warrior",
+   "Beast-Warrior"
+  ],
+  "bonus": 800,
+  "bonus_if": {
+   "Fire": 1000
+  },
+  "drop": {
+   "weight": 24,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "equip",
+  "name": "Lightning Blade",
+  "password": "55226821",
+  "base": "Beast Fangs",
+  "description": "A blade that crackles with lightning. It adds to the attack of its wielder.",
+  "date": "2003-03-01",
+  "add": [
+   "Warrior",
+   "Thunder"
+  ],
+  "bonus_attack": 800,
+  "bonus_defense": 0,
+  "drop": {
+   "weight": 24,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "equip",
+  "name": "Rod of Silence - Kay'est",
+  "password": "95515060",
+  "base": "Elf's Light",
+  "description": "A rod that guards its holder with silence. It adds to the defense of its holder.",
+  "date": "2003-12-01",
+  "add": [
+   "Spellcaster",
+   "Fairy"
+  ],
+  "bonus_attack": 200,
+  "bonus_defense": 1000,
+  "drop": {
+   "weight": 24,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "ritual",
+  "name": "Curse of the Masked Beast",
+  "password": "94377247",
+  "base": "Zera Ritual",
+  "description": "Tribute a Fiend, a Beast-Warrior and one more monster to summon The Masked Beast.",
+  "date": "2003-03-01",
+  "result": "The Masked Beast",
+  "tributes": [
+   {
+    "type": "Fiend"
+   },
+   {
+    "type": "Beast-Warrior"
+   },
+   {
+    "min_attack": 1600
+   }
+  ],
+  "drop": {
+   "weight": 16,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "ritual",
+  "name": "Contract with the Dark Master",
+  "password": "96420087",
+  "base": "Puppet Ritual",
+  "description": "Tribute a strong Fiend, a Spellcaster and one more monster to summon Dark Master - Zorc.",
+  "date": "2003-12-01",
+  "result": "Dark Master - Zorc",
+  "tributes": [
+   {
+    "type": "Fiend",
+    "min_attack": 1800
+   },
+   {
+    "type": "Spellcaster"
+   },
+   {
+    "min_level": 4
+   }
+  ],
+  "drop": {
+   "weight": 16,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "ritual",
+  "name": "Pyramid of Light",
+  "password": "53569894",
+  "base": "Black Luster Ritual",
+  "description": "Tribute a Beast, a Fairy and one more monster to summon Andro Sphinx.",
+  "date": "2004-08-13",
+  "result": "Andro Sphinx",
+  "tributes": [
+   {
+    "type": "Beast"
+   },
+   {
+    "type": "Fairy"
+   },
+   {
+    "min_attack": 1600
+   }
+  ],
+  "drop": {
+   "weight": 16,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ }
+]
