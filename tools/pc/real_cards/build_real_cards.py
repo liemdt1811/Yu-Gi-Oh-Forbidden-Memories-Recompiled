@@ -22,6 +22,9 @@ A target's "drop" ({"weight", "from": [opponents]}) puts it in those opponents' 
 spells.json holds Equip and Ritual cards (a copy of a retail one of the same kind; "equip":
 "add"/"bonus"/"bonus_if"/"bonus_attack"/"bonus_defense" go to the mod's "equips", "ritual": "result" and
 "tributes" to its "rituals"), with their own "drop".
+duelists.json holds opponents with their own deck and prize pools (the mod's "duelists", "decks"
+and "drops"; card names there become the mod's cards, other names the disc's), a "copy" base and
+an "unlock"; "portrait_from" names a card whose art becomes its face.
 A target's "steps" are recipes for a card made of three (Alpha + Beta + Gamma):
 each [A, B, retail card] makes the card its "fusions" then take.
 """
@@ -44,6 +47,7 @@ BY_RESULT = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions_by
 CURATED = HERE / "curated.json"
 TARGETS = HERE / "targets.json"
 SPELLS = HERE / "spells.json"
+DUELISTS = HERE / "duelists.json"
 API = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=Normal%20Monster&misc=yes"
 UA = "fm-recomp-study/1.0"
 MOD_ID = "z"
@@ -57,6 +61,8 @@ FM_ALIASES = ("fiendreflection", "trialofnightmare", "mechanicalchaser", "lajinn
 OPPONENTS = {"Teana 2nd", "Ocean Mage", "High Mage Secmeton", "Forest Mage", "High Mage Anubisius", "Mountain Mage",
              "High Mage Atenza", "Desert Mage", "High Mage Martis", "Meadow Mage", "High Mage Kepura", "Labyrinth Mage",
              "Seto 2nd", "Guardian Sebek", "Guardian Neku", "Heishin 2nd", "Seto 3rd", "DarkNite", "Nitemare", "Duel Master K"}
+# The disc's 39 opponents a duelist may copy or be unlocked by (the ones this tool names).
+OPPONENTS_ALL = OPPONENTS | {"Seto 2nd", "Heishin 2nd", "Seto 3rd", "Heishin", "Seto", "Kaiba", "Pegasus"}
 RITUAL_KEYS = {"card", "type", "fusion_group", "min_attack", "max_attack", "min_defense", "max_defense", "min_level",
                "max_level", "defense_gt_attack"}
 # Fixed Cards the game treats specially; never used as a base or a fusion partner.
@@ -203,6 +209,8 @@ def build():
            "description": f"{len(entries)} real Yu-Gi-Oh! cards the disc lacks, with fusions. "
                           "Study project; art is Konami's.",
            "cards": entries, "drops": target_drops(targets + spells), "fusions": target_fusions(targets, cards, monsters, fusions(nodes, monsters, extra), nodes + extra, inter)}
+    duelists = json.loads(DUELISTS.read_text(encoding="utf-8"))
+    mod_duelists(mod, duelists, cards + targets + spells)
     if equips:
         mod["equips"] = equips
     if rituals:
@@ -210,6 +218,26 @@ def build():
     MOD.mkdir(parents=True, exist_ok=True)
     (MOD / "mod.json").write_text(json.dumps(mod, indent=1, ensure_ascii=True) + "\n", encoding="utf-8")
     print(f"{len(entries)} cards, {len(mod['fusions'])} fusions -> {MOD / 'mod.json'}")
+
+
+def mod_duelists(mod, duelists, known):
+    """duelists.json -> the mod's "duelists", "decks" and "drops" entries, and each portrait."""
+    ref = {c["name"]: f"{MOD_ID}:{slug(c['name'])}:1" for c in known}
+    name = lambda n: ref.get(n, n)
+    mod["duelists"], mod["decks"] = [], {}
+    for d in duelists:
+        entry = {"id": d["id"], "copy": d["copy"], "name": d["name"]}
+        if "unlock" in d:
+            entry["unlock"] = d["unlock"]
+        if "portrait_from" in d:
+            src = MOD / "images" / f"{slug(d['portrait_from'])}.png"
+            if src.exists():
+                (MOD / "portraits").mkdir(parents=True, exist_ok=True)
+                (MOD / "portraits" / f"{d['id']}.png").write_bytes(src.read_bytes())
+                entry["portrait"] = f"portraits/{d['id']}.png"
+        mod["duelists"].append(entry)
+        mod["decks"][d["id"]] = {"replace": True, **{name(c): w for c, w in d["deck"].items()}}
+        mod["drops"][d["id"]] = {pool: {name(c): w for c, w in cards.items()} for pool, cards in d["drops"].items()}
 
 
 def spell_cards(spells, cat, entries, monsters):
@@ -330,8 +358,20 @@ def target_fusions(targets, cards, monsters, rules, pool, inter=()):
             ga, gb = rule["groups"]
             cap, floor = rule["max_atk"], rule.get("min_one", 0)
 
+            def fits(m, g):
+                for k, v in g.items():
+                    if k == "name_has":
+                        ok = v in m["name"]
+                    elif k == "not_name_has":
+                        ok = v not in m["name"]
+                    else:
+                        ok = m[k] == v
+                    if not ok:
+                        return False
+                return True
+
             def pick(g):
-                return [m for m in mats if m["atk"] <= cap and all(m[k.lower()] == v for k, v in g.items())]
+                return [m for m in mats if m["atk"] <= cap and fits(m, g)]
 
             for a in pick(ga):
                 for b in pick(gb):
@@ -396,8 +436,22 @@ def check():
         if isinstance(x, int):
             return ids[x]["atk"] if x in ids else None
         return refs[x]["attack"] if x in refs else None
+    cardrefs = set(refs) | {r["name"] for r in cat}
+    for d in mod.get("duelists", []):
+        if d["copy"] not in OPPONENTS_ALL:
+            errors.append(f"duelist {d['id']}: copy {d['copy']!r}")
+        if d.get("unlock", {}).get("beat") not in (None, *OPPONENTS_ALL):
+            errors.append(f"duelist {d['id']}: unlock {d['unlock']['beat']!r}")
+        if "portrait" in d and not (MOD / d["portrait"]).exists():
+            errors.append(f"duelist {d['id']}: portrait missing")
+        deck = mod["decks"].get(d["id"], {})
+        if len(deck) - ("replace" in deck) < 14:
+            errors.append(f"duelist {d['id']}: deck needs 14 cards")
+        for c, w in deck.items():
+            if c != "replace" and (c not in cardrefs or not isinstance(w, int) or not 0 < w < 2048):
+                errors.append(f"duelist {d['id']} deck: {c!r} {w!r}")
     for opponent, pools in mod.get("drops", {}).items():
-        if opponent not in OPPONENTS:
+        if opponent not in OPPONENTS and opponent not in {d["id"] for d in mod.get("duelists", [])}:
             errors.append(f"drops: no opponent {opponent!r}")
         for pool, cards in pools.items():
             if pool not in ("pow", "bcd", "tec"):
@@ -409,8 +463,8 @@ def check():
     for r in mod["fusions"]:
         a, b = r["with"]
         sa, sb, sr = stats(a), stats(b), stats(r["result"])
-        if None in (sa, sb, sr) or sr <= max(sa, sb):
-            errors.append(f"fusion {a}+{b}->{r['result']}: unknown card or result not stronger")
+        if None in (sa, sb, sr) or sr < max(sa, sb):
+            errors.append(f"fusion {a}+{b}->{r['result']}: unknown card or result weaker")
         key = frozenset((str(a), str(b)))
         if key in pairs:
             errors.append(f"fusion {a}+{b}: duplicate")

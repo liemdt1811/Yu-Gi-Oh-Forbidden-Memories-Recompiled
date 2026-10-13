@@ -1,0 +1,57 @@
+[
+ {
+  "id": "jaden-yuki",
+  "name": "Jaden Yuki",
+  "copy": "Heishin 2nd",
+  "unlock": {"beat": "Seto 2nd"},
+  "portrait_from": "Elemental HERO Neos",
+  "deck": {
+   "Elemental HERO Avian": 120,
+   "Elemental HERO Burstinatrix": 120,
+   "Elemental HERO Clayman": 120,
+   "Elemental HERO Sparkman": 120,
+   "Elemental HERO Neos": 60,
+   "Neo-Spacian Air Hummingbird": 100,
+   "Neo-Spacian Aqua Dolphin": 100,
+   "Neo-Spacian Dark Panther": 100,
+   "Neo-Spacian Flare Scarab": 100,
+   "Neo-Spacian Grand Mole": 100,
+   "Neo-Spacian Marine Dolphin": 60,
+   "Elemental HERO Air Neos": 40,
+   "Elemental HERO Aqua Neos": 40,
+   "Elemental HERO Dark Neos": 40,
+   "Elemental HERO Flare Neos": 40,
+   "Elemental HERO Grand Neos": 40,
+   "Elemental HERO Marine Neos": 40,
+   "Elemental HERO Neos Knight": 40,
+   "Elemental HERO Great Tornado": 30,
+   "Elemental HERO Nova Master": 30,
+   "Elemental HERO The Shining": 30,
+   "Elemental HERO Absolute Zero": 30,
+   "Elemental HERO Escuridao": 30,
+   "Elemental HERO Gaia": 30,
+   "United We Stand": 30,
+   "Divine Sword - Phoenix Blade": 30
+  },
+  "drops": {
+   "pow": {
+    "Elemental HERO Great Tornado": 40,
+    "Elemental HERO Nova Master": 40,
+    "Elemental HERO The Shining": 40,
+    "Elemental HERO Absolute Zero": 40,
+    "Elemental HERO Escuridao": 40,
+    "Elemental HERO Gaia": 40
+   },
+   "tec": {
+    "Elemental HERO Air Neos": 40,
+    "Elemental HERO Aqua Neos": 40,
+    "Elemental HERO Dark Neos": 40,
+    "Elemental HERO Flare Neos": 40,
+    "Elemental HERO Grand Neos": 40,
+    "Elemental HERO Marine Neos": 40,
+    "Elemental HERO Neos Knight": 40,
+    "Elemental HERO Storm Neos": 20
+   }
+  }
+ }
+]

@@ -26,7 +26,10 @@ for i, c in enumerate(sorted(new.values(), key=lambda c: (-c["attack"], c["name"
                f"{c['defense']} | {c['password']} | {cat[c['copy']]['name']} |")
 targets = {k: c for k, c in new.items() if not c["drops"]}
 won = {}
+own = {d["id"] for d in mod.get("duelists", [])}
 for opponent, pools in mod.get("drops", {}).items():
+    if opponent in own:
+        continue
     for pool, cards in pools.items():
         for ref, weight in cards.items():
             won.setdefault(ref, {}).setdefault(weight, set()).add(opponent)
@@ -50,6 +53,17 @@ for k, c in sorted(targets.items(), key=lambda kv: (-kv[1]["attack"], kv[1]["nam
         out.append(f"- {na} ({aa}) + {nb} ({ab})")
     if len(made) > 12:
         out.append(f"- ... and {len(made) - 12} more of the same kinds (a type with a type, weak materials)")
+    out.append("")
+for d in mod.get("duelists", []):
+    deck = {k: v for k, v in mod["decks"][d["id"]].items() if k != "replace"}
+    nm = lambda r: new.get(r, spells.get(r, {})).get("name", r)
+    out += [f"## Duelist: {d['name']}", "",
+            f"Free Duel opponent playing like {d['copy']}; appears after beating {d.get('unlock', {}).get('beat', 'nobody')}.",
+            "", "Deck pool (weights; the game deals 40 cards from it, three of a card at most):", ""]
+    out += [f"- {nm(k)} ({v})" for k, v in sorted(deck.items(), key=lambda kv: -kv[1])]
+    out += ["", "Prizes (weights out of 2048):", ""]
+    for pool, cards in mod["drops"][d["id"]].items():
+        out.append(f"- {pool.upper()}: " + ", ".join(f"{nm(k)} {v}" for k, v in cards.items()))
     out.append("")
 if mod.get("equips"):
     out += ["## Equip cards", "", "| Card | Equips | Bonus |", "|---|---|---|"]
@@ -79,9 +93,11 @@ for k, c in sorted(new.items(), key=lambda kv: kv[1]["name"]):
     if not rules and k in targets:
         continue
     out += [f"### {c['name']} ({c['attack']}) - {len(rules)} formulas", ""]
-    for r in rules:
+    for r in rules[:60]:
         (na, aa), (nb, ab), (nr, ar) = label(r["with"][0]), label(r["with"][1]), label(r["result"])
         out.append(f"- {na} ({aa}) + {nb} ({ab}) = {nr} ({ar})")
+    if len(rules) > 60:
+        out.append(f"- ... and {len(rules) - 60} more (all in mod.json)")
     out.append("")
 (ROOT / "notes/real-cards-list.md").write_text("\n".join(out), encoding="utf-8")
 print(len(out), "lines")

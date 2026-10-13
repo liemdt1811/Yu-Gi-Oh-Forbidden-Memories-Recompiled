@@ -1,9 +1,10 @@
 # Real cards: new fusion formulas
 
-What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 42 cards, 5446 new formulas and 16 changed results. `*` marks a new card; other names are retail cards. The full list is in [real-cards-list.md](real-cards-list.md).
+What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 77 cards, 18761 new formulas and 16 changed results. `*` marks a new card; other names are retail cards. The full list is in [real-cards-list.md](real-cards-list.md).
 
 ## New cards
 
+- Dragon Master Knight (5000/5000, Dragon, Light, Lv12) - fusion only
 - Cyber End Dragon (4000/2800, Machine, Light, Lv10) - fusion only
 - Obelisk the Tormentor (4000/4000, Fiend, Earth, Lv10) - fusion only
 - Slifer the Sky Dragon (4000/4000, Dragon, Wind, Lv10) - fusion only
@@ -15,11 +16,13 @@ What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 4
 - Super Conductor Tyranno (3300/1400, Dinosaur, Light, Lv8) - fusion only
 - The Masked Beast (3200/1800, Fiend, Dark, Lv8) - fusion only
 - Thunder Dragon Titan (3200/3200, Thunder, Light, Lv10) - fusion only
+- Chimera the Illusion Beast (3100/2800, Spellcaster, Dark, Lv8) - fusion only
 - Andro Sphinx (3000/2500, Beast, Light, Lv10) - fusion only
 - Beast King Barbaros (3000/1200, Beast-Warrior, Earth, Lv8) - fusion only
 - Black Luster Soldier - Envoy of the Beginning (3000/2500, Warrior, Light, Lv8) - fusion only
 - Cloudian - Eye of the Typhoon (3000/1000, Aqua, Wind, Lv8) - fusion only
 - Dark Magician the Dragon Knight (3000/2500, Dragon, Dark, Lv8) - fusion only
+- Elemental HERO Storm Neos (3000/2500, Warrior, Wind, Lv9) - fusion only
 - Gladiator Beast Heraklinos (3000/2800, Beast-Warrior, Fire, Lv8) - fusion only
 - Horus the Black Flame Dragon LV8 (3000/1800, Dragon, Fire, Lv8) - fusion only
 - Red Dragon Archfiend (3000/2000, Dragon, Dark, Lv8) - fusion only
@@ -32,8 +35,11 @@ What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 4
 - Simorgh, Bird of Ancestry (2900/2000, Winged Beast, Wind, Lv8) - fusion only
 - Spiral Serpent (2900/2900, Sea Serpent, Water, Lv8) - fusion only
 - Armed Dragon LV7 (2800/1000, Dragon, Wind, Lv7) - fusion only
+- Blaze Fenix, the Burning Bombardment Bird (2800/2300, Pyro, Fire, Lv8) - fusion only
 - Cyber Twin Dragon (2800/2100, Machine, Light, Lv8) - fusion only
 - Doom Dozer (2800/2600, Insect, Earth, Lv8) - fusion only
+- Elemental HERO Great Tornado (2800/2200, Warrior, Wind, Lv8) - fusion only
+- Elemental HERO Marine Neos (2800/2300, Warrior, Water, Lv8) - fusion only
 - St. Joan (2800/2000, Fairy, Light, Lv7) - fusion only
 - Tytannial, Princess of Camellias (2800/2600, Plant, Wind, Lv8) - fusion only
 - Ultimate Flame Swordsman (2800/1600, Warrior, Fire, Lv8) - fusion only
@@ -41,11 +47,40 @@ What was added to the mod after commit `84ef4a2be` (100 cards, 1376 formulas): 4
 - Dark Master - Zorc (2700/1500, Fiend, Dark, Lv8) - fusion only
 - Perfect Machine King (2700/1500, Machine, Earth, Lv8) - fusion only
 - Buster Blader (2600/2300, Warrior, Earth, Lv7)
+- Cyber Ogre 2 (2600/1900, Machine, Earth, Lv7) - fusion only
+- Elemental HERO Nova Master (2600/2100, Warrior, Fire, Lv8) - fusion only
+- Elemental HERO The Shining (2600/2100, Warrior, Light, Lv8) - fusion only
+- Elemental HERO Absolute Zero (2500/2000, Warrior, Water, Lv8) - fusion only
+- Elemental HERO Air Neos (2500/2000, Warrior, Wind, Lv7) - fusion only
+- Elemental HERO Aqua Neos (2500/2000, Warrior, Water, Lv7) - fusion only
+- Elemental HERO Dark Neos (2500/2000, Warrior, Dark, Lv7) - fusion only
+- Elemental HERO Escuridao (2500/2000, Warrior, Dark, Lv8) - fusion only
+- Elemental HERO Flare Neos (2500/2000, Warrior, Fire, Lv7) - fusion only
+- Elemental HERO Grand Neos (2500/2000, Warrior, Earth, Lv7) - fusion only
+- Elemental HERO Neos (2500/2000, Warrior, Light, Lv7)
+- Elemental HERO Neos Knight (2500/1000, Warrior, Light, Lv7) - fusion only
 - Sphinx Teleia (2500/3000, Beast, Light, Lv10) - fusion only
+- Elemental HERO Gaia (2200/2600, Warrior, Earth, Lv6) - fusion only
+- Chimera the Flying Mythical Beast (2100/1800, Beast, Wind, Lv6) - fusion only
+- Chimera the King of Phantom Beasts (2100/1800, Beast, Wind, Lv6) - fusion only
 - Cyber Dragon (2100/1600, Machine, Light, Lv5)
+- Cyber Ogre (1900/1200, Machine, Earth, Lv5)
 - Jack's Knight (1900/1000, Warrior, Light, Lv5)
+- Alligator's Sword Dragon (1700/1500, Dragon, Wind, Lv5) - fusion only
+- Elemental HERO Sparkman (1600/1400, Warrior, Light, Lv4)
 - King's Knight (1600/1400, Warrior, Light, Lv4)
+- Alligator's Sword (1500/1200, Beast, Earth, Lv4)
 - Queen's Knight (1500/1600, Warrior, Light, Lv4)
+- Berfomet (1400/1800, Fiend, Dark, Lv5)
+- Elemental HERO Burstinatrix (1200/800, Warrior, Fire, Lv3)
+- Elemental HERO Avian (1000/1000, Warrior, Wind, Lv3)
+- Neo-Spacian Dark Panther (1000/500, Beast, Dark, Lv3)
+- Neo-Spacian Grand Mole (900/300, Rock, Earth, Lv3)
+- Neo-Spacian Marine Dolphin (900/1100, Warrior, Water, Lv4)
+- Elemental HERO Clayman (800/2000, Warrior, Earth, Lv4)
+- Neo-Spacian Air Hummingbird (800/600, Winged Beast, Wind, Lv3)
+- Neo-Spacian Aqua Dolphin (600/800, Warrior, Water, Lv3)
+- Neo-Spacian Flare Scarab (500/500, Insect, Fire, Lv3)
 
 ## New Equip and Ritual cards
 
@@ -90,8 +125,9 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
 - Master Kyonshee * (1750) + Pumpking the King of Ghosts (1800) = Vampire Genesis * (3000) (was Rabid Horseman (2000))
 - X-Head Cannon * (1800) + Luster Dragon * (1900) = VWXYZ-Dragon Catapult Cannon * (3000) (was Punished Eagle (2100))
 
-## Added: fusion targets (5379)
+## Added: fusion targets (18556)
 
+- Black Luster Soldier (3000) + Blue-eyes Ultimate Dragon (4500) = Dragon Master Knight * (5000)
 - Cyber Twin Dragon * (2800) + Cyber Dragon * (2100) = Cyber End Dragon * (4000)
 - Cyber Twin Dragon * (2800) + Cyber Twin Dragon * (2800) = Cyber End Dragon * (4000)
 - Judge Man (2200) + Jack's Knight * (1900) = Arcana Knight Joker * (3800)
@@ -108,13 +144,13 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
 - Machine King (2200) + Labyrinth Tank (2400) = Ancient Gear Megaton Golem * (3300)
 - Machine King (2200) + Launcher Spider (2200) = Ancient Gear Megaton Golem * (3300)
 - Machine King (2200) + Steel Ogre Grotto #2 * (1900) = Ancient Gear Megaton Golem * (3300)
-- **Guardian Chimera * (3300): 65 formulas**, a type with a type from weak materials, e.g.:
+- **Guardian Chimera * (3300): 69 formulas**, a type with a type from weak materials, e.g.:
   - Sphinx Teleia * (2500) + Air Marmot of Nefariousness (400) = Guardian Chimera * (3300)
+  - Sphinx Teleia * (2500) + Alligator's Sword * (1500) = Guardian Chimera * (3300)
   - Sphinx Teleia * (2500) + Ancient One of the Deep Forest (1800) = Guardian Chimera * (3300)
   - Sphinx Teleia * (2500) + Armored Rat (950) = Guardian Chimera * (3300)
   - Sphinx Teleia * (2500) + Battle Ox (1700) = Guardian Chimera * (3300)
-  - Sphinx Teleia * (2500) + Battle Steer (1800) = Guardian Chimera * (3300)
-  - ... and 60 more (all in real-cards-list.md)
+  - ... and 64 more (all in real-cards-list.md)
 - **The Masked Beast * (3200): 94 formulas**, a type with a type from weak materials, e.g.:
   - Soul Hunter (2200) + Armored Zombie (1500) = The Masked Beast * (3200)
   - Soul Hunter (2200) + Battle Ox (1700) = The Masked Beast * (3200)
@@ -122,48 +158,57 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
   - Soul Hunter (2200) + Beaver Warrior (1200) = The Masked Beast * (3200)
   - Soul Hunter (2200) + Blue-eyed Silver Zombie (900) = The Masked Beast * (3200)
   - ... and 89 more (all in real-cards-list.md)
-- **Thunder Dragon Titan * (3200): 40 formulas**, a type with a type from weak materials, e.g.:
+- **Thunder Dragon Titan * (3200): 41 formulas**, a type with a type from weak materials, e.g.:
+  - Twin-headed Thunder Dragon (2800) + Alligator's Sword Dragon * (1700) = Thunder Dragon Titan * (3200)
   - Twin-headed Thunder Dragon (2800) + Armed Dragon LV7 * (2800) = Thunder Dragon Titan * (3200)
   - Twin-headed Thunder Dragon (2800) + B. Dragon Jungle King (2100) = Thunder Dragon Titan * (3200)
   - Twin-headed Thunder Dragon (2800) + Baby Dragon (1200) = Thunder Dragon Titan * (3200)
   - Twin-headed Thunder Dragon (2800) + Blackland Fire Dragon (1500) = Thunder Dragon Titan * (3200)
-  - Twin-headed Thunder Dragon (2800) + Blue-eyes White Dragon (3000) = Thunder Dragon Titan * (3200)
-  - ... and 35 more (all in real-cards-list.md)
-- **Cloudian - Eye of the Typhoon * (3000): 326 formulas**, a type with a type from weak materials, e.g.:
+  - ... and 36 more (all in real-cards-list.md)
+- **Chimera the Illusion Beast * (3100): 57 formulas**, a type with a type from weak materials, e.g.:
+  - Chimera the Flying Mythical Beast * (2100) + Akakieisu (1000) = Chimera the Illusion Beast * (3100)
+  - Chimera the Flying Mythical Beast * (2100) + Ancient Elf (1450) = Chimera the Illusion Beast * (3100)
+  - Chimera the Flying Mythical Beast * (2100) + Ancient Sorcerer (1000) = Chimera the Illusion Beast * (3100)
+  - Chimera the Flying Mythical Beast * (2100) + Angelwitch (800) = Chimera the Illusion Beast * (3100)
+  - Chimera the Flying Mythical Beast * (2100) + Aqua Madoor (1200) = Chimera the Illusion Beast * (3100)
+  - ... and 52 more (all in real-cards-list.md)
+- **Cloudian - Eye of the Typhoon * (3000): 328 formulas**, a type with a type from weak materials, e.g.:
   - 30,000-Year White Turtle (1250) + Kaminari Attack (1900) = Cloudian - Eye of the Typhoon * (3000)
   - Akihiron (1700) + Bolt Escargot (1400) = Cloudian - Eye of the Typhoon * (3000)
   - Akihiron (1700) + Bolt Penguin (1100) = Cloudian - Eye of the Typhoon * (3000)
   - Akihiron (1700) + Electric Lizard (850) = Cloudian - Eye of the Typhoon * (3000)
   - Akihiron (1700) + Electric Snake (800) = Cloudian - Eye of the Typhoon * (3000)
-  - ... and 321 more (all in real-cards-list.md)
-- **Dark Magician the Dragon Knight * (3000): 332 formulas**, a type with a type from weak materials, e.g.:
+  - ... and 323 more (all in real-cards-list.md)
+- **Dark Magician the Dragon Knight * (3000): 354 formulas**, a type with a type from weak materials, e.g.:
+  - Akakieisu (1000) + Alligator's Sword Dragon * (1700) = Dark Magician the Dragon Knight * (3000)
   - Akakieisu (1000) + B. Dragon Jungle King (2100) = Dark Magician the Dragon Knight * (3000)
   - Akakieisu (1000) + Crawling Dragon (1600) = Dark Magician the Dragon Knight * (3000)
   - Akakieisu (1000) + Curse of Dragon (2000) = Dark Magician the Dragon Knight * (3000)
   - Akakieisu (1000) + Harpie's Pet Dragon (2000) = Dark Magician the Dragon Knight * (3000)
-  - Akakieisu (1000) + Hyozanryu * (2100) = Dark Magician the Dragon Knight * (3000)
-  - ... and 327 more (all in real-cards-list.md)
-- **Black Luster Soldier - Envoy of the Beginning * (3000): 373 formulas**, a type with a type from weak materials, e.g.:
+  - ... and 349 more (all in real-cards-list.md)
+- **Red Dragon Archfiend * (3000): 424 formulas**, a type with a type from weak materials, e.g.:
+  - Alligator's Sword Dragon * (1700) + Ancient Brain (1000) = Red Dragon Archfiend * (3000)
+  - Alligator's Sword Dragon * (1700) + Barox (1380) = Red Dragon Archfiend * (3000)
+  - Alligator's Sword Dragon * (1700) + Berfomet * (1400) = Red Dragon Archfiend * (3000)
+  - Alligator's Sword Dragon * (1700) + Big Eye (1200) = Red Dragon Archfiend * (3000)
+  - Alligator's Sword Dragon * (1700) + Bio Plant (600) = Red Dragon Archfiend * (3000)
+  - ... and 419 more (all in real-cards-list.md)
+- **Black Luster Soldier - Envoy of the Beginning * (3000): 375 formulas**, a type with a type from weak materials, e.g.:
   - Ansatsu (1700) + Binding Chain (1000) = Black Luster Soldier - Envoy of the Beginning * (3000)
   - Ansatsu (1700) + Bio-Mage * (1150) = Black Luster Soldier - Envoy of the Beginning * (3000)
   - Ansatsu (1700) + Goddess of Whim (950) = Black Luster Soldier - Envoy of the Beginning * (3000)
   - Ansatsu (1700) + Goddess with the Third Eye (1200) = Black Luster Soldier - Envoy of the Beginning * (3000)
   - Ansatsu (1700) + Happy Lover (800) = Black Luster Soldier - Envoy of the Beginning * (3000)
-  - ... and 368 more (all in real-cards-list.md)
-- **Red Dragon Archfiend * (3000): 356 formulas**, a type with a type from weak materials, e.g.:
-  - Baby Dragon (1200) + Dark Chimera (1610) = Red Dragon Archfiend * (3000)
-  - Baby Dragon (1200) + La Jinn the Mystical Genie (1800) = Red Dragon Archfiend * (3000)
-  - Baby Dragon (1200) + Mabarrel (1700) = Red Dragon Archfiend * (3000)
-  - Baby Dragon (1200) + Neck Hunter (1750) = Red Dragon Archfiend * (3000)
-  - Baby Dragon (1200) + Opticlops * (1800) = Red Dragon Archfiend * (3000)
-  - ... and 351 more (all in real-cards-list.md)
-- **Beast King Barbaros * (3000): 321 formulas**, a type with a type from weak materials, e.g.:
+  - ... and 370 more (all in real-cards-list.md)
+- **Beast King Barbaros * (3000): 329 formulas**, a type with a type from weak materials, e.g.:
   - Battle Ox (1700) + Air Marmot of Nefariousness (400) = Beast King Barbaros * (3000)
+  - Battle Ox (1700) + Alligator's Sword * (1500) = Beast King Barbaros * (3000)
   - Battle Ox (1700) + Ancient One of the Deep Forest (1800) = Beast King Barbaros * (3000)
   - Battle Ox (1700) + Anthrosaurus (1000) = Beast King Barbaros * (3000)
   - Battle Ox (1700) + Armored Rat (950) = Beast King Barbaros * (3000)
-  - Battle Ox (1700) + Burglar (850) = Beast King Barbaros * (3000)
-  - ... and 316 more (all in real-cards-list.md)
+  - ... and 324 more (all in real-cards-list.md)
+- Elemental HERO Air Neos * (2500) + Neo-Spacian Aqua Dolphin * (600) = Elemental HERO Storm Neos * (3000)
+- Elemental HERO Aqua Neos * (2500) + Neo-Spacian Air Hummingbird * (800) = Elemental HERO Storm Neos * (3000)
 - Flame Champion * (1900) + Blazing Inpachi * (1850) = Volcanic Doomfire * (3000)
 - Mr. Volcano * (2100) + Flame Champion * (1900) = Volcanic Doomfire * (3000)
 - Mr. Volcano * (2100) + Twin-Headed Fire Dragon * (2200) = Volcanic Doomfire * (3000)
@@ -192,13 +237,13 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
   - 7 Colored Fish (1800) + Aqua Snake (1050) = Hyper-Ancient Shark Megalodon * (2900)
   - 7 Colored Fish (1800) + Arma Knight (1000) = Hyper-Ancient Shark Megalodon * (2900)
   - ... and 365 more (all in real-cards-list.md)
-- **Simorgh, Bird of Ancestry * (2900): 388 formulas**, a type with a type from weak materials, e.g.:
+- **Simorgh, Bird of Ancestry * (2900): 393 formulas**, a type with a type from weak materials, e.g.:
   - Blue-winged Crown (1600) + Aitsu * (100) = Simorgh, Bird of Ancestry * (2900)
   - Blue-winged Crown (1600) + Binding Chain (1000) = Simorgh, Bird of Ancestry * (2900)
   - Blue-winged Crown (1600) + Bio-Mage * (1150) = Simorgh, Bird of Ancestry * (2900)
   - Blue-winged Crown (1600) + Dancing Elf (300) = Simorgh, Bird of Ancestry * (2900)
   - Blue-winged Crown (1600) + Dark Witch (1800) = Simorgh, Bird of Ancestry * (2900)
-  - ... and 383 more (all in real-cards-list.md)
+  - ... and 388 more (all in real-cards-list.md)
 - Dark Magician (2500) + Buster Blader * (2600) = Dark Paladin * (2900)
 - **Spiral Serpent * (2900): 370 formulas**, a type with a type from weak materials, e.g.:
   - Kairyu-shin (1800) + 7 Colored Fish (1800) = Spiral Serpent * (2900)
@@ -207,20 +252,27 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
   - Kairyu-shin (1800) + Amazon of the Seas (1300) = Spiral Serpent * (2900)
   - Kairyu-shin (1800) + Ameba (300) = Spiral Serpent * (2900)
   - ... and 365 more (all in real-cards-list.md)
-- **Tytannial, Princess of Camellias * (2800): 374 formulas**, a type with a type from weak materials, e.g.:
+- **Tytannial, Princess of Camellias * (2800): 376 formulas**, a type with a type from weak materials, e.g.:
   - Abyss Flower (750) + Dark Witch (1800) = Tytannial, Princess of Camellias * (2800)
   - Abyss Flower (750) + Doma The Angel of Silence (1600) = Tytannial, Princess of Camellias * (2800)
   - Abyss Flower (750) + Dungeon Worm (1800) = Tytannial, Princess of Camellias * (2800)
   - Abyss Flower (750) + Empress Mantis * (2200) = Tytannial, Princess of Camellias * (2800)
   - Abyss Flower (750) + Girochin Kuwagata * (1700) = Tytannial, Princess of Camellias * (2800)
-  - ... and 369 more (all in real-cards-list.md)
-- **Doom Dozer * (2800): 329 formulas**, a type with a type from weak materials, e.g.:
+  - ... and 371 more (all in real-cards-list.md)
+- **Doom Dozer * (2800): 342 formulas**, a type with a type from weak materials, e.g.:
   - Acid Crawler (900) + Ancient One of the Deep Forest (1800) = Doom Dozer * (2800)
   - Acid Crawler (900) + Flower Wolf (1800) = Doom Dozer * (2800)
   - Acid Crawler (900) + Great Angus * (1800) = Doom Dozer * (2800)
   - Acid Crawler (900) + Leogun (1750) = Doom Dozer * (2800)
   - Acid Crawler (900) + Togex (1600) = Doom Dozer * (2800)
-  - ... and 324 more (all in real-cards-list.md)
+  - ... and 337 more (all in real-cards-list.md)
+- **Blaze Fenix, the Burning Bombardment Bird * (2800): 810 formulas**, a type with a type from weak materials, e.g.:
+  - Acrobat Monkey * (1000) + Blaze Fenix, the Burning Bombardment Bird * (2800) = Blaze Fenix, the Burning Bombardment Bird * (2800)
+  - Acrobat Monkey * (1000) + Blazing Inpachi * (1850) = Blaze Fenix, the Burning Bombardment Bird * (2800)
+  - Acrobat Monkey * (1000) + Darkfire Soldier #1 * (1700) = Blaze Fenix, the Burning Bombardment Bird * (2800)
+  - Acrobat Monkey * (1000) + Darkfire Soldier #2 * (1700) = Blaze Fenix, the Burning Bombardment Bird * (2800)
+  - Acrobat Monkey * (1000) + Flame Cerebrus (2100) = Blaze Fenix, the Burning Bombardment Bird * (2800)
+  - ... and 805 more (all in real-cards-list.md)
 - **St. Joan * (2800): 330 formulas**, a type with a type from weak materials, e.g.:
   - Aitsu * (100) + Musician King (1750) = St. Joan * (2800)
   - Aitsu * (100) + Neo the Magic Swordsman * (1700) = St. Joan * (2800)
@@ -228,46 +280,114 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
   - Aitsu * (100) + Rogue Doll (1600) = St. Joan * (2800)
   - Aitsu * (100) + Spirit of the Winds (1700) = St. Joan * (2800)
   - ... and 325 more (all in real-cards-list.md)
-- **Armed Dragon LV7 * (2800): 309 formulas**, a type with a type from weak materials, e.g.:
-  - Baby Dragon (1200) + Launcher Spider (2200) = Armed Dragon LV7 * (2800)
-  - Baby Dragon (1200) + Machine King (2200) = Armed Dragon LV7 * (2800)
-  - Baby Dragon (1200) + Mechanicalchacer (1850) = Armed Dragon LV7 * (2800)
-  - Baby Dragon (1200) + Metal Dragon (1850) = Armed Dragon LV7 * (2800)
-  - Baby Dragon (1200) + Royal Guard (1900) = Armed Dragon LV7 * (2800)
-  - ... and 304 more (all in real-cards-list.md)
+- **Armed Dragon LV7 * (2800): 320 formulas**, a type with a type from weak materials, e.g.:
+  - Alligator's Sword Dragon * (1700) + Launcher Spider (2200) = Armed Dragon LV7 * (2800)
+  - Alligator's Sword Dragon * (1700) + Machine King (2200) = Armed Dragon LV7 * (2800)
+  - Alligator's Sword Dragon * (1700) + Mechanicalchacer (1850) = Armed Dragon LV7 * (2800)
+  - Alligator's Sword Dragon * (1700) + Metal Dragon (1850) = Armed Dragon LV7 * (2800)
+  - Alligator's Sword Dragon * (1700) + Royal Guard (1900) = Armed Dragon LV7 * (2800)
+  - ... and 315 more (all in real-cards-list.md)
 - Cyber Dragon * (2100) + Cyber Dragon * (2100) = Cyber Twin Dragon * (2800)
-- **Ultimate Flame Swordsman * (2800): 24 formulas**, a type with a type from weak materials, e.g.:
+- **Elemental HERO Great Tornado * (2800): 1292 formulas**, a type with a type from weak materials, e.g.:
+  - Elemental HERO Absolute Zero * (2500) + Air Eater (2100) = Elemental HERO Great Tornado * (2800)
+  - Elemental HERO Absolute Zero * (2500) + Alligator's Sword Dragon * (1700) = Elemental HERO Great Tornado * (2800)
+  - Elemental HERO Absolute Zero * (2500) + Armed Dragon LV7 * (2800) = Elemental HERO Great Tornado * (2800)
+  - Elemental HERO Absolute Zero * (2500) + Baby Dragon (1200) = Elemental HERO Great Tornado * (2800)
+  - Elemental HERO Absolute Zero * (2500) + Bat (300) = Elemental HERO Great Tornado * (2800)
+  - ... and 1287 more (all in real-cards-list.md)
+- Elemental HERO Neos * (2500) + Neo-Spacian Marine Dolphin * (900) = Elemental HERO Marine Neos * (2800)
+- **Ultimate Flame Swordsman * (2800): 25 formulas**, a type with a type from weak materials, e.g.:
   - Flame Swordsman (1800) + Aitsu * (100) = Ultimate Flame Swordsman * (2800)
   - Flame Swordsman (1800) + Battle Footballer * (1000) = Ultimate Flame Swordsman * (2800)
   - Flame Swordsman (1800) + Blast Juggler (800) = Ultimate Flame Swordsman * (2800)
   - Flame Swordsman (1800) + Charcoal Inpachi * (100) = Ultimate Flame Swordsman * (2800)
   - Flame Swordsman (1800) + Charubin the Fire Knight (1100) = Ultimate Flame Swordsman * (2800)
-  - ... and 19 more (all in real-cards-list.md)
-- **Perfect Machine King * (2700): 298 formulas**, a type with a type from weak materials, e.g.:
+  - ... and 20 more (all in real-cards-list.md)
+- **Perfect Machine King * (2700): 334 formulas**, a type with a type from weak materials, e.g.:
   - Acrobat Monkey * (1000) + Beta The Magnet Warrior * (1700) = Perfect Machine King * (2700)
   - Acrobat Monkey * (1000) + Millennium Golem (2000) = Perfect Machine King * (2700)
   - Acrobat Monkey * (1000) + Mystical Sand (2100) = Perfect Machine King * (2700)
   - Acrobat Monkey * (1000) + Stone D. (2000) = Perfect Machine King * (2700)
   - Acrobat Monkey * (1000) + Stone Ogre Grotto (1600) = Perfect Machine King * (2700)
-  - ... and 293 more (all in real-cards-list.md)
+  - ... and 329 more (all in real-cards-list.md)
 - Alpha The Magnet Warrior * (1400) + Gamma the Magnet Warrior * (1500) = Conduction Warrior Linear Magnum Plus Minus * (2700)
-- **Sphinx Teleia * (2500): 283 formulas**, a type with a type from weak materials, e.g.:
+- Cyber Ogre * (1900) + Cyber Ogre * (1900) = Cyber Ogre 2 * (2600)
+- **Elemental HERO Nova Master * (2600): 558 formulas**, a type with a type from weak materials, e.g.:
+  - Elemental HERO Absolute Zero * (2500) + Aitsu * (100) = Elemental HERO Nova Master * (2600)
+  - Elemental HERO Absolute Zero * (2500) + Battle Footballer * (1000) = Elemental HERO Nova Master * (2600)
+  - Elemental HERO Absolute Zero * (2500) + Blast Juggler (800) = Elemental HERO Nova Master * (2600)
+  - Elemental HERO Absolute Zero * (2500) + Blazing Inpachi * (1850) = Elemental HERO Nova Master * (2600)
+  - Elemental HERO Absolute Zero * (2500) + Charcoal Inpachi * (100) = Elemental HERO Nova Master * (2600)
+  - ... and 553 more (all in real-cards-list.md)
+- **Elemental HERO The Shining * (2600): 1098 formulas**, a type with a type from weak materials, e.g.:
+  - Elemental HERO Absolute Zero * (2500) + Ancient Elf (1450) = Elemental HERO The Shining * (2600)
+  - Elemental HERO Absolute Zero * (2500) + Binding Chain (1000) = Elemental HERO The Shining * (2600)
+  - Elemental HERO Absolute Zero * (2500) + Bio-Mage * (1150) = Elemental HERO The Shining * (2600)
+  - Elemental HERO Absolute Zero * (2500) + Cyber Dragon * (2100) = Elemental HERO The Shining * (2600)
+  - Elemental HERO Absolute Zero * (2500) + Dark Witch (1800) = Elemental HERO The Shining * (2600)
+  - ... and 1093 more (all in real-cards-list.md)
+- **Sphinx Teleia * (2500): 397 formulas**, a type with a type from weak materials, e.g.:
   - Air Marmot of Nefariousness (400) + Ancient One of the Deep Forest (1800) = Sphinx Teleia * (2500)
+  - Air Marmot of Nefariousness (400) + Chimera the Flying Mythical Beast * (2100) = Sphinx Teleia * (2500)
+  - Air Marmot of Nefariousness (400) + Chimera the King of Phantom Beasts * (2100) = Sphinx Teleia * (2500)
   - Air Marmot of Nefariousness (400) + Flower Wolf (1800) = Sphinx Teleia * (2500)
   - Air Marmot of Nefariousness (400) + Garvas (2000) = Sphinx Teleia * (2500)
-  - Air Marmot of Nefariousness (400) + Great Angus * (1800) = Sphinx Teleia * (2500)
-  - Air Marmot of Nefariousness (400) + Leogun (1750) = Sphinx Teleia * (2500)
-  - ... and 278 more (all in real-cards-list.md)
+  - ... and 392 more (all in real-cards-list.md)
+- **Elemental HERO Absolute Zero * (2500): 1548 formulas**, a type with a type from weak materials, e.g.:
+  - Elemental HERO Absolute Zero * (2500) + 30,000-Year White Turtle (1250) = Elemental HERO Absolute Zero * (2500)
+  - Elemental HERO Absolute Zero * (2500) + 7 Colored Fish (1800) = Elemental HERO Absolute Zero * (2500)
+  - Elemental HERO Absolute Zero * (2500) + Akihiron (1700) = Elemental HERO Absolute Zero * (2500)
+  - Elemental HERO Absolute Zero * (2500) + Amazon of the Seas (1300) = Elemental HERO Absolute Zero * (2500)
+  - Elemental HERO Absolute Zero * (2500) + Ameba (300) = Elemental HERO Absolute Zero * (2500)
+  - ... and 1543 more (all in real-cards-list.md)
+- **Elemental HERO Escuridao * (2500): 2506 formulas**, a type with a type from weak materials, e.g.:
+  - Elemental HERO Absolute Zero * (2500) + Akakieisu (1000) = Elemental HERO Escuridao * (2500)
+  - Elemental HERO Absolute Zero * (2500) + Ancient Brain (1000) = Elemental HERO Escuridao * (2500)
+  - Elemental HERO Absolute Zero * (2500) + Ancient Sorcerer (1000) = Elemental HERO Escuridao * (2500)
+  - Elemental HERO Absolute Zero * (2500) + Ancient Tool (1700) = Elemental HERO Escuridao * (2500)
+  - Elemental HERO Absolute Zero * (2500) + Angelwitch (800) = Elemental HERO Escuridao * (2500)
+  - ... and 2501 more (all in real-cards-list.md)
+- **Elemental HERO Neos Knight * (2500): 93 formulas**, a type with a type from weak materials, e.g.:
+  - Elemental HERO Neos * (2500) + Ansatsu (1700) = Elemental HERO Neos Knight * (2500)
+  - Elemental HERO Neos * (2500) + Armaill (700) = Elemental HERO Neos Knight * (2500)
+  - Elemental HERO Neos * (2500) + Armed Ninja (300) = Elemental HERO Neos Knight * (2500)
+  - Elemental HERO Neos * (2500) + Axe Raider (1700) = Elemental HERO Neos Knight * (2500)
+  - Elemental HERO Neos * (2500) + Battle Warrior (700) = Elemental HERO Neos Knight * (2500)
+  - ... and 88 more (all in real-cards-list.md)
+- Elemental HERO Neos * (2500) + Neo-Spacian Air Hummingbird * (800) = Elemental HERO Air Neos * (2500)
+- Elemental HERO Neos * (2500) + Neo-Spacian Aqua Dolphin * (600) = Elemental HERO Aqua Neos * (2500)
+- Elemental HERO Neos * (2500) + Neo-Spacian Dark Panther * (1000) = Elemental HERO Dark Neos * (2500)
+- Elemental HERO Neos * (2500) + Neo-Spacian Flare Scarab * (500) = Elemental HERO Flare Neos * (2500)
+- Elemental HERO Neos * (2500) + Neo-Spacian Grand Mole * (900) = Elemental HERO Grand Neos * (2500)
+- **Elemental HERO Gaia * (2200): 1200 formulas**, a type with a type from weak materials, e.g.:
+  - Elemental HERO Avian * (1000) + Abyss Flower (750) = Elemental HERO Gaia * (2200)
+  - Elemental HERO Avian * (1000) + Acid Crawler (900) = Elemental HERO Gaia * (2200)
+  - Elemental HERO Avian * (1000) + Acrobat Monkey * (1000) = Elemental HERO Gaia * (2200)
+  - Elemental HERO Avian * (1000) + Air Marmot of Nefariousness (400) = Elemental HERO Gaia * (2200)
+  - Elemental HERO Avian * (1000) + Alinsection (950) = Elemental HERO Gaia * (2200)
+  - ... and 1195 more (all in real-cards-list.md)
+- **Chimera the King of Phantom Beasts * (2100): 3714 formulas**, a type with a type from weak materials, e.g.:
+  - Air Marmot of Nefariousness (400) + Air Eater (2100) = Chimera the King of Phantom Beasts * (2100)
+  - Air Marmot of Nefariousness (400) + Archfiend Soldier * (1900) = Chimera the King of Phantom Beasts * (2100)
+  - Air Marmot of Nefariousness (400) + Barox (1380) = Chimera the King of Phantom Beasts * (2100)
+  - Air Marmot of Nefariousness (400) + Berfomet * (1400) = Chimera the King of Phantom Beasts * (2100)
+  - Air Marmot of Nefariousness (400) + Big Eye (1200) = Chimera the King of Phantom Beasts * (2100)
+  - ... and 3709 more (all in real-cards-list.md)
+- Gazelle the King of Mythical Beasts * (1500) + Berfomet * (1400) = Chimera the Flying Mythical Beast * (2100)
+- Baby Dragon (1200) + Alligator's Sword * (1500) = Alligator's Sword Dragon * (1700)
 
-## Added: other new formulas (67)
+## Added: other new formulas (205)
 
 - Buster Blader * (2600) + Black Luster Soldier (3000) = B. Skull Dragon (3200)
 - Buster Blader * (2600) + Garma Sword (2550) = B. Skull Dragon (3200)
+- Elemental HERO Neos * (2500) + Black Luster Soldier (3000) = B. Skull Dragon (3200)
+- Elemental HERO Neos * (2500) + Blue-eyes White Dragon (3000) = B. Skull Dragon (3200)
 - Buster Blader * (2600) + Machine King (2200) = Metalzoa (3000)
 - Cyber Dragon * (2100) + Dark Witch (1800) = Metalzoa (3000)
 - Cyber Dragon * (2100) + Gyakutenno Megami (1800) = Metalzoa (3000)
 - Cyber Dragon * (2100) + Labyrinth Tank (2400) = Metalzoa (3000)
 - Cyber Dragon * (2100) + Machine King (2200) = Metalzoa (3000)
+- Elemental HERO Neos * (2500) + Garma Sword (2550) = Metalzoa (3000)
 - Buster Blader * (2600) + Skull Guardian (2050) = Twin-headed Thunder Dragon (2800)
 - Cyber Dragon * (2100) + Giltia the D. Knight (1850) = Twin-headed Thunder Dragon (2800)
 - Cyber Dragon * (2100) + Kaiser Dragon (2300) = Twin-headed Thunder Dragon (2800)
@@ -280,6 +400,7 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
 - Cyber Dragon * (2100) + Empress Mantis * (2200) = Thousand Dragon (2400)
 - Cyber Dragon * (2100) + Mechanicalchacer (1850) = Red-eyes B. Dragon (2400)
 - Cyber Dragon * (2100) + Mr. Volcano * (2100) = Crimson Sunbird (2300)
+- Cyber Ogre * (1900) + Kwagar Hercules (1900) = Judge Man (2200)
 - Jack's Knight * (1900) + Dark Witch (1800) = Judge Man (2200)
 - Jack's Knight * (1900) + Flame Champion * (1900) = Judge Man (2200)
 - Jack's Knight * (1900) + Flame Swordsman (1800) = Judge Man (2200)
@@ -294,12 +415,33 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
 - King's Knight * (1600) + Jack's Knight * (1900) = Judge Man (2200)
 - King's Knight * (1600) + Queen's Knight * (1500) = Judge Man (2200)
 - Queen's Knight * (1500) + Jack's Knight * (1900) = Judge Man (2200)
+- Cyber Ogre * (1900) + Performance of Sword (1950) = Launcher Spider (2200)
 - Jack's Knight * (1900) + Guardian of the Throne Room (1650) = Launcher Spider (2200)
+- Cyber Ogre * (1900) + Mechanicalchacer (1850) = Ushi Oni (2150)
+- Cyber Ogre * (1900) + Pendulum Machine (1750) = Ushi Oni (2150)
 - Jack's Knight * (1900) + Archfiend Soldier * (1900) = Ushi Oni (2150)
+- Cyber Ogre * (1900) + Archfiend Soldier * (1900) = Mystical Sand (2100)
+- Cyber Ogre * (1900) + Flame Champion * (1900) = Mystical Sand (2100)
+- Cyber Ogre * (1900) + Mech Bass (1800) = Mystical Sand (2100)
+- Cyber Ogre * (1900) + Metal Dragon (1850) = Mystical Sand (2100)
+- Cyber Ogre * (1900) + Pragtical (1900) = Mystical Sand (2100)
+- Cyber Ogre * (1900) + Royal Guard (1900) = Mystical Sand (2100)
+- Cyber Ogre * (1900) + Warrior of Tradition (1900) = Mystical Sand (2100)
 - Jack's Knight * (1900) + Swamp Battleguard (1800) = Mystical Sand (2100)
 - Jack's Knight * (1900) + Warrior of Tradition (1900) = Mystical Sand (2100)
+- Cyber Ogre * (1900) + Cyber Saurus (1800) = B. Dragon Jungle King (2100)
+- Cyber Ogre * (1900) + Gemini Elf (1900) = B. Dragon Jungle King (2100)
+- Cyber Ogre * (1900) + Luster Dragon * (1900) = B. Dragon Jungle King (2100)
+- Cyber Ogre * (1900) + Nekogal #2 (1900) = B. Dragon Jungle King (2100)
 - King's Knight * (1600) + Succubus Knight (1650) = Curse of Dragon (2000)
 - King's Knight * (1600) + Guardian of the Throne Room (1650) = Metal Dragon (1850)
+- Alligator's Sword * (1500) + Gazelle the King of Mythical Beasts * (1500) = Dungeon Worm (1800)
+- Alligator's Sword * (1500) + Hercules Beetle (1500) = Dungeon Worm (1800)
+- Alligator's Sword * (1500) + Lisark (1300) = Dungeon Worm (1800)
+- Alligator's Sword * (1500) + Uraby (1500) = Dungeon Worm (1800)
+- King's Knight * (1600) + Karbonala Warrior (1500) = Dungeon Worm (1800)
+- King's Knight * (1600) + Overdrive * (1600) = Dungeon Worm (1800)
+- Alligator's Sword * (1500) + Togex (1600) = Flower Wolf (1800)
 - King's Knight * (1600) + Beautiful Headhuntress (1600) = Flame Swordsman (1800)
 - King's Knight * (1600) + Inpachi * (1600) = Flame Swordsman (1800)
 - King's Knight * (1600) + Ocubeam (1550) = Flame Swordsman (1800)
@@ -307,27 +449,140 @@ Same materials, now a different result (one is weaker: Heraklinos, 3000, replace
 - Queen's Knight * (1500) + Ocubeam (1550) = Flame Swordsman (1800)
 - King's Knight * (1600) + Ill Witch (1600) = Dark Witch (1800)
 - Queen's Knight * (1500) + Rogue Doll (1600) = Dark Witch (1800)
-- King's Knight * (1600) + Karbonala Warrior (1500) = Dungeon Worm (1800)
-- King's Knight * (1600) + Overdrive * (1600) = Dungeon Worm (1800)
 - King's Knight * (1600) + Kojikocy (1500) = Monster Tamer (1800)
 - King's Knight * (1600) + Lava Battleguard (1550) = Monster Tamer (1800)
 - King's Knight * (1600) + Maha Vailo (1550) = Monster Tamer (1800)
 - King's Knight * (1600) + Thunder Dragon (1600) = Monster Tamer (1800)
 - King's Knight * (1600) + Robotic Knight * (1600) = Cyber Saurus (1800)
 - King's Knight * (1600) + Wall Shadow (1600) = Pumpking the King of Ghosts (1800)
+- Alligator's Sword * (1500) + Armored Lizard (1500) = Beautiful Beast Trainer (1750)
+- Alligator's Sword * (1500) + Gamma the Magnet Warrior * (1500) = Beautiful Beast Trainer (1750)
+- Alligator's Sword * (1500) + Kojikocy (1500) = Beautiful Beast Trainer (1750)
+- Alligator's Sword * (1500) + Mystic Horseman (1300) = Beautiful Beast Trainer (1750)
+- Alligator's Sword * (1500) + The Wicked Worm Beast (1400) = Beautiful Beast Trainer (1750)
 - Queen's Knight * (1500) + Ancient Elf (1450) = Beautiful Beast Trainer (1750)
 - Queen's Knight * (1500) + Flying Kamakiri #2 * (1500) = Beautiful Beast Trainer (1750)
 - Queen's Knight * (1500) + Gamma the Magnet Warrior * (1500) = Beautiful Beast Trainer (1750)
 - Queen's Knight * (1500) + Hibikime (1450) = Beautiful Beast Trainer (1750)
 - Queen's Knight * (1500) + Kojikocy (1500) = Beautiful Beast Trainer (1750)
 - Queen's Knight * (1500) + The Immortal of Thunder (1500) = Beautiful Beast Trainer (1750)
+- Alligator's Sword * (1500) + Flying Kamakiri #2 * (1500) = Sword Arm of Dragon (1750)
+- Alligator's Sword * (1500) + Giant Flea (1500) = Sword Arm of Dragon (1750)
+- Alligator's Sword * (1500) + Karbonala Warrior (1500) = Sword Arm of Dragon (1750)
+- Alligator's Sword * (1500) + Pale Beast (1500) = Sword Arm of Dragon (1750)
+- Alligator's Sword * (1500) + Tatsunootoshigo (1350) = Sword Arm of Dragon (1750)
+- Queen's Knight * (1500) + Karbonala Warrior (1500) = Sword Arm of Dragon (1750)
+- Queen's Knight * (1500) + Lava Battleguard (1550) = Sword Arm of Dragon (1750)
 - Queen's Knight * (1500) + Celtic Guardian (1400) = Musician King (1750)
 - Queen's Knight * (1500) + Gazelle the King of Mythical Beasts * (1500) = Musician King (1750)
 - Queen's Knight * (1500) + Maha Vailo (1550) = Musician King (1750)
 - Queen's Knight * (1500) + Maiden of the Moonlight (1500) = Musician King (1750)
 - Queen's Knight * (1500) + Zanki (1500) = Musician King (1750)
-- Queen's Knight * (1500) + Karbonala Warrior (1500) = Sword Arm of Dragon (1750)
-- Queen's Knight * (1500) + Lava Battleguard (1550) = Sword Arm of Dragon (1750)
+- Berfomet * (1400) + Feral Imp (1300) = Whiptail Crow (1650)
+- Berfomet * (1400) + Reaper of the Cards (1380) = Whiptail Crow (1650)
+- Berfomet * (1400) + Saber Slasher (1450) = Whiptail Crow (1650)
+- Berfomet * (1400) + Alpha The Magnet Warrior * (1400) = Dragon Zombie (1600)
+- Berfomet * (1400) + Barox (1380) = Dragon Zombie (1600)
+- Berfomet * (1400) + Clown Zombie (1350) = Dragon Zombie (1600)
+- Berfomet * (1400) + Fiend Sword (1400) = Dragon Zombie (1600)
+- Berfomet * (1400) + Witty Phantom (1400) = Dragon Zombie (1600)
+- Berfomet * (1400) + Cannon Soldier (1400) = Metal Fish (1600)
+- Berfomet * (1400) + Disk Magician (1350) = Metal Fish (1600)
+- Berfomet * (1400) + Oni Tank T-34 * (1400) = Metal Fish (1600)
+- Berfomet * (1400) + Crass Clown (1350) = Ryu-kishin Powered (1600)
+- Berfomet * (1400) + Cyber Falcon * (1400) = Ryu-kishin Powered (1600)
+- Berfomet * (1400) + Cyber Soldier of Darkworld (1400) = Ryu-kishin Powered (1600)
+- Berfomet * (1400) + Lord of the Lamp (1400) = Ryu-kishin Powered (1600)
+- Neo-Spacian Air Hummingbird * (800) + Fiend Refrection #2 (1100) = Spirit of the Books (1400)
+- Neo-Spacian Air Hummingbird * (800) + Queen Bird (1200) = Spirit of the Books (1400)
+- Neo-Spacian Air Hummingbird * (800) + Tyhone (1200) = Spirit of the Books (1400)
+- Neo-Spacian Air Hummingbird * (800) + Djinn the Watcher of the Wind (700) = Mavelus (1300)
+- Neo-Spacian Air Hummingbird * (800) + Droll Bird (600) = Mavelus (1300)
+- Neo-Spacian Air Hummingbird * (800) + Mega Thunderball (750) = Mavelus (1300)
+- Neo-Spacian Air Hummingbird * (800) + Hurricail (900) = Fiend Refrection #1 (1300)
+- Neo-Spacian Air Hummingbird * (800) + Kurama (800) = Fiend Refrection #1 (1300)
+- Neo-Spacian Dark Panther * (1000) + Dark Rabbit (1100) = Magical Ghost (1300)
+- Neo-Spacian Dark Panther * (1000) + Nekogal #1 (1100) = Magical Ghost (1300)
+- Neo-Spacian Air Hummingbird * (800) + Flying Fish * (800) = Wow Warrior (1250)
+- Neo-Spacian Dark Panther * (1000) + Claw Reacher (1000) = Tainted Wisdom (1250)
+- Neo-Spacian Dark Panther * (1000) + Ryu-kishin (1000) = Tainted Wisdom (1250)
+- Neo-Spacian Air Hummingbird * (800) + Kaminarikozou (700) = Dragoness the Wicked Knight (1200)
+- Neo-Spacian Air Hummingbird * (800) + Princess of Tsurugi (900) = Dragoness the Wicked Knight (1200)
+- Neo-Spacian Air Hummingbird * (800) + Yamatano Dragon Scroll (900) = Dragoness the Wicked Knight (1200)
+- Neo-Spacian Dark Panther * (1000) + Acrobat Monkey * (1000) = Giga-tech Wolf (1200)
+- Neo-Spacian Dark Panther * (1000) + Wilmee (1000) = Giga-tech Wolf (1200)
+- Neo-Spacian Flare Scarab * (500) + Blast Juggler (800) = Giga-tech Wolf (1200)
+- Neo-Spacian Grand Mole * (900) + Dissolverock (900) = Giga-tech Wolf (1200)
+- Neo-Spacian Grand Mole * (900) + Nightmare Scorpion (900) = Giga-tech Wolf (1200)
+- Neo-Spacian Grand Mole * (900) + Two-mouth Darkruler (900) = Giga-tech Wolf (1200)
+- Neo-Spacian Dark Panther * (1000) + Akakieisu (1000) = Zombie Warrior (1200)
+- Neo-Spacian Dark Panther * (1000) + Armored Rat (950) = Zombie Warrior (1200)
+- Neo-Spacian Dark Panther * (1000) + Battle Footballer * (1000) = Zombie Warrior (1200)
+- Neo-Spacian Dark Panther * (1000) + Sangan (1000) = Zombie Warrior (1200)
+- Neo-Spacian Dark Panther * (1000) + Ancient Brain (1000) = Big Eye (1200)
+- Neo-Spacian Dark Panther * (1000) + Burglar (850) = Big Eye (1200)
+- Neo-Spacian Dark Panther * (1000) + Dark Bat * (1000) = Big Eye (1200)
+- Neo-Spacian Dark Panther * (1000) + Flame Ghost (1000) = Big Eye (1200)
+- Neo-Spacian Dark Panther * (1000) + Fusionist (900) = Big Eye (1200)
+- Neo-Spacian Grand Mole * (900) + Barrel Rock (1000) = Tripwire Beast (1200)
+- Neo-Spacian Marine Dolphin * (900) + Penguin Knight (900) = Enchanting Mermaid (1200)
+- Neo-Spacian Marine Dolphin * (900) + Water Element (900) = Enchanting Mermaid (1200)
+- Neo-Spacian Aqua Dolphin * (600) + Hitodenchak (600) = Ice Water (1150)
+- Neo-Spacian Aqua Dolphin * (600) + Star Boy (550) = Ice Water (1150)
+- Neo-Spacian Marine Dolphin * (900) + Pharaoh's Servant * (900) = Ice Water (1150)
+- Neo-Spacian Marine Dolphin * (900) + Twin Long Rods #1 (900) = Ice Water (1150)
+- Neo-Spacian Marine Dolphin * (900) + Vishwar Randi (900) = Ice Water (1150)
+- Neo-Spacian Marine Dolphin * (900) + Wodan the Resident of the Forest (900) = Ice Water (1150)
+- Neo-Spacian Marine Dolphin * (900) + Yado Karu (900) = Ice Water (1150)
+- Neo-Spacian Grand Mole * (900) + Doron (900) = Mystical Sheep #1 (1150)
+- Neo-Spacian Grand Mole * (900) + Pharaoh's Servant * (900) = Mystical Sheep #1 (1150)
+- Neo-Spacian Grand Mole * (900) + Rock Ogre Grotto #2 (700) = Mystical Sheep #1 (1150)
+- Neo-Spacian Grand Mole * (900) + Shovel Crusher (900) = Mystical Sheep #1 (1150)
+- Neo-Spacian Grand Mole * (900) + Stone Armadiller (800) = Mystical Sheep #1 (1150)
+- Neo-Spacian Marine Dolphin * (900) + Doron (900) = Mystical Sheep #1 (1150)
+- Neo-Spacian Air Hummingbird * (800) + Niwatori (900) = Dragon Statue (1100)
+- Neo-Spacian Aqua Dolphin * (600) + Harpie Girl * (500) = Dragon Statue (1100)
+- Neo-Spacian Aqua Dolphin * (600) + Kanikabuto (650) = Dragon Statue (1100)
+- Neo-Spacian Aqua Dolphin * (600) + People Running About * (600) = Dragon Statue (1100)
+- Neo-Spacian Aqua Dolphin * (600) + White Dolphin (500) = Dragon Statue (1100)
+- Neo-Spacian Grand Mole * (900) + Fusionist (900) = Dragon Statue (1100)
+- Neo-Spacian Grand Mole * (900) + Prisman (800) = Dragon Statue (1100)
+- Neo-Spacian Grand Mole * (900) + Roboyarou * (900) = Dragon Statue (1100)
+- Neo-Spacian Grand Mole * (900) + Rock Ogre Grotto #1 (800) = Dragon Statue (1100)
+- Neo-Spacian Grand Mole * (900) + Wodan the Resident of the Forest (900) = Dragon Statue (1100)
+- Neo-Spacian Marine Dolphin * (900) + Dorover (900) = Dragon Statue (1100)
+- Neo-Spacian Marine Dolphin * (900) + Princess of Tsurugi (900) = Dragon Statue (1100)
+- Neo-Spacian Marine Dolphin * (900) + Roboyarou * (900) = Dragon Statue (1100)
+- Neo-Spacian Marine Dolphin * (900) + Root Water (900) = Dragon Statue (1100)
+- Neo-Spacian Marine Dolphin * (900) + Skull Stalker (900) = Dragon Statue (1100)
+- Neo-Spacian Flare Scarab * (500) + Bladefly (600) = Charubin the Fire Knight (1100)
+- Neo-Spacian Flare Scarab * (500) + Dragon Piper (200) = Charubin the Fire Knight (1100)
+- Neo-Spacian Flare Scarab * (500) + Fire Eye (800) = Charubin the Fire Knight (1100)
+- Neo-Spacian Flare Scarab * (500) + Harpie Girl * (500) = Charubin the Fire Knight (1100)
+- Neo-Spacian Flare Scarab * (500) + Little Chimera (600) = Charubin the Fire Knight (1100)
+- Neo-Spacian Flare Scarab * (500) + Wings of Wicked Flame (700) = Charubin the Fire Knight (1100)
+- Neo-Spacian Grand Mole * (900) + Souls of the Forgotten * (900) = Corroding Shark (1100)
+- Neo-Spacian Marine Dolphin * (900) + Kageningen (800) = Corroding Shark (1100)
+- Neo-Spacian Marine Dolphin * (900) + Souls of the Forgotten * (900) = Corroding Shark (1100)
+- Neo-Spacian Air Hummingbird * (800) + Humanoid Slime * (800) = Turtle Tiger (1000)
+- Neo-Spacian Aqua Dolphin * (600) + Armaill (700) = Turtle Tiger (1000)
+- Neo-Spacian Aqua Dolphin * (600) + The Melting Red Shadow (500) = Turtle Tiger (1000)
+- Neo-Spacian Aqua Dolphin * (600) + Zarigun (600) = Turtle Tiger (1000)
+- Neo-Spacian Air Hummingbird * (800) + Science Soldier * (800) = Wood Remains (1000)
+- Neo-Spacian Aqua Dolphin * (600) + Battle Warrior (700) = Snakeyashi (1000)
+- Neo-Spacian Aqua Dolphin * (600) + Greenkappa (650) = Flame Ghost (1000)
+- Neo-Spacian Aqua Dolphin * (600) + Monster Egg (600) = Dissolverock (900)
+- Neo-Spacian Flare Scarab * (500) + Korogashi (550) = Electric Lizard (850)
+- Neo-Spacian Aqua Dolphin * (600) + Earthbound Spirit * (500) = Cockroach Knight (800)
+- Neo-Spacian Aqua Dolphin * (600) + Eyearmor (600) = Cockroach Knight (800)
+- Neo-Spacian Aqua Dolphin * (600) + M-warrior #2 (500) = Cockroach Knight (800)
+- Neo-Spacian Flare Scarab * (500) + Basic Insect (500) = Cockroach Knight (800)
+- Neo-Spacian Flare Scarab * (500) + Earthbound Spirit * (500) = Cockroach Knight (800)
+- Neo-Spacian Flare Scarab * (500) + Ganigumo (600) = Cockroach Knight (800)
+- Neo-Spacian Flare Scarab * (500) + Hinotama Soul (600) = Cockroach Knight (800)
+- Neo-Spacian Flare Scarab * (500) + Man-eater Bug (450) = Cockroach Knight (800)
+- Neo-Spacian Flare Scarab * (500) + Mystical Shine Ball * (500) = Cockroach Knight (800)
+- Neo-Spacian Flare Scarab * (500) + Larvae Moth (500) = Battle Warrior (700)
 
 ## Disc recipes taken over by Ultimate Flame Swordsman (14)
 
