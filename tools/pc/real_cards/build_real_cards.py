@@ -18,6 +18,10 @@ Dragon), which are ordinary cards like curated.json's.
 A target's "mass" rules ({"groups": [{type/attribute}, {type/attribute}], "max_atk", "min_one"}; a group may also name one card or an attribute alone) make it from
 any two such monsters, as Twin-headed Thunder Dragon is on the disc. "max_atk" caps both materials and
 "min_one" is the ATK at least one of them needs; a rule may name a middle card with "result" (a retail card, for a three-card combo), a group may also have "min_atk" for its own monsters, and "name_has" / "not_name_has" for a word in the name.
+A card's "unknown_stats": true prints its ATK and DEF as 0 and keeps them out of the raised/lowered tint (an
+effect gives the real ones); its "attack" and "defense" still say how strong a fusion treats it.
+A card's "frame" is its mod "frame" colour (notes/more-cards.md#frame-colour).
+A card's "effects" are its mod "monster_effects" (notes/more-cards.md#monster-effects); put them in its description too.
 A target's "drop" ({"weight", "from": [opponents]}) puts it in those opponents' S/A rank prize pools.
 spells.json holds Equip and Ritual cards (a copy of a retail one of the same kind; "equip":
 "add"/"bonus"/"bonus_if"/"bonus_attack"/"bonus_defense" go to the mod's "equips", "ritual": "result" and
@@ -193,6 +197,13 @@ def build():
              "type": c["type"], "attribute": c["attribute"], "level": c["level"],
              "attack": c["attack"], "defense": c["defense"], "password": c["password"],
              "drops": not target, "opponents": not target}
+        if "effects" in c:
+            e["monster_effects"] = c["effects"]
+        if c.get("unknown_stats"):               # a rule gives its real ATK and DEF: it prints 0 and 0 (cards.h)
+            e["unknown_stats"] = True
+            e["attack"] = e["defense"] = 0       # "attack" here stays the strength fusions are built from
+        if "frame" in c:                         # "Orange" is an effect monster's, as in the card game
+            e["frame"] = c["frame"]
         if (MOD / "images" / f"{cid}.png").exists():
             e["art"] = f"images/{cid}.png"
         entries.append(e)

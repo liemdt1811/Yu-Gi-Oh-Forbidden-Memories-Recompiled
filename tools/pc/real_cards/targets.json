@@ -1159,8 +1159,9 @@
   "level": 7,
   "attack": 2600,
   "defense": 2300,
-  "description": "The swordsman who slays dragons. It grows stronger with every dragon in the foe's army.",
-  "date": "2002-10-20"
+  "description": "The swordsman who slays dragons. Gains 500 ATK for each face-up Dragon on the foe's side.",
+  "date": "2002-10-20",
+  "frame": "Orange"
  },
  {
   "password": "38033121",
@@ -1170,8 +1171,9 @@
   "level": 6,
   "attack": 2000,
   "defense": 1700,
-  "description": "A girl who studied magic beside the Dark Magician. She is quick and fearless.",
-  "date": "2003-10-10"
+  "description": "A girl who studied magic beside the Dark Magician. Gains 300 ATK for each Dark Magician or Magician of Black Chaos destroyed.",
+  "date": "2003-10-10",
+  "frame": "Orange"
  },
  {
   "password": "59400890",
@@ -1616,7 +1618,7 @@
   "level": 10,
   "attack": 4000,
   "defense": 4000,
-  "description": "The god dragon of the sky. The more cards in the hand, the stronger it grows. Its thunder force burns all.",
+  "description": "ATK and DEF are 1000 for each card in your hand. Foe's Attack Position monsters lose 2000 ATK; at 0 they are destroyed.",
   "date": "2010-01-01",
   "fusions": [],
   "mass": [],
@@ -1625,7 +1627,9 @@
    "from": [
     "Duel Master K"
    ]
-  }
+  },
+  "frame": "Orange",
+  "unknown_stats": true
  },
  {
   "password": "10000010",
@@ -1635,7 +1639,7 @@
   "level": 10,
   "attack": 4000,
   "defense": 4000,
-  "description": "The sun god of the pharaoh. Its golden wings shine with the power of the sun and burn all.",
+  "description": "The winged dragon of the sun. Its ATK is its owner's life points.",
   "date": "2010-01-01",
   "fusions": [],
   "mass": [],
@@ -1644,7 +1648,9 @@
    "from": [
     "Duel Master K"
    ]
-  }
+  },
+  "frame": "Orange",
+  "unknown_stats": true
  },
  {
   "password": "97642679",
@@ -3692,6 +3698,36 @@
     "DarkNite",
     "Nitemare",
     "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "58257569",
+  "name": "Red-Eyes Baby Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 3,
+  "attack": 1200,
+  "defense": 700,
+  "description": "A small dragon with red eyes. Given time, it grows into a Red-Eyes Black Dragon.",
+  "date": "2017-09-07",
+  "fusions": [],
+  "steps": [
+   [
+    "Red-Eyes Baby Dragon",
+    "Time Wizard",
+    "Red-eyes B. Dragon"
+   ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite"
    ]
   }
  }

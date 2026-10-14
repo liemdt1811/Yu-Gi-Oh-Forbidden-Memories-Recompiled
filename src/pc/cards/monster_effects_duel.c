@@ -479,6 +479,28 @@ int MonsterEffects_PlayFaceUp(int card)
     return summon || (seen && !flip);
 }
 
+int MonsterEffects_Destroy(int record)
+{
+    int side;
+    /* One removal at a time, and only a monster that is there. */
+    if (!S.ready || S.running || S.destroy_mask || !monster_zone(record) ||
+        !(D_801A7AD8[record].flags & DUEL_CARD_FLAG_OCCUPIED))
+        return 0;
+    /* As a "destroy" effect plays it (resolve): Crush Card's removal, on this monster
+     * alone, played by the other side's owner. */
+    side = owner(record) ^ 1;
+    S.destroy_mask = 1u << record;
+    if (side != D_8009B1D5) {
+        S.swapped = 1;
+        S.saved_turn = D_8009B1D5;
+        lend_turn(side);
+    }
+    S.running = 1;
+    S.magic_card = CRUSH_CARD;
+    DuelEffect_StartRetailCardEffect(CRUSH_CARD, 0);
+    return 1;
+}
+
 int MonsterEffects_RemovalTakes(int record)
 {
     if (!S.destroy_mask) return -1;

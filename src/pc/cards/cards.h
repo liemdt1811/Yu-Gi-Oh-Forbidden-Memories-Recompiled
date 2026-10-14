@@ -81,6 +81,11 @@ int Cards_ExodiaPiece(int id);
 enum { CARD_FRAME_MONSTER, CARD_FRAME_MAGIC, CARD_FRAME_TRAP, CARD_FRAME_RITUAL, CARD_FRAME_PURPLE,
        CARD_FRAME_ORANGE, CARD_FRAME_COUNT };
 int Cards_FrameColor(int id);
+/* Whether a mod's "unknown_stats": true marks `id`: its printed ATK and DEF are
+ * not a number the card means (the duel's own rule gives its real one), so a
+ * screen shows "?" for them and the duel does not tint them as raised or
+ * lowered. */
+int Cards_UnknownStats(int id);
 int Cards_Fusion(int a, int b, int *result);
 
 /* A card a manifest names: its id, a stable identity ("mod:entry:n"), or a
