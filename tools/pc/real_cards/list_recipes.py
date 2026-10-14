@@ -15,7 +15,7 @@ OUT = HERE.parents[2] / "notes" / "real-cards-z-recipes.md"
 def group(g):
     if "name" in g:
         return g["name"]
-    text = " ".join(p for p in (g.get("attribute"), g.get("type")) if p) + " monster"
+    text = " ".join(p for p in (f"Level {g['level']}" if "level" in g else None, g.get("attribute"), g.get("type")) if p) + " monster"
     if "name_has" in g:
         text += f' with "{g["name_has"]}" in its name'
     if "not_name_has" in g:

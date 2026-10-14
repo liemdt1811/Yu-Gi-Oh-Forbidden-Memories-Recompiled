@@ -62,6 +62,8 @@ int Tables_HasRitual(int ritual);
 /* Whether a mod's ritual rule for `ritual` is {"fusion": true}: it fuses two monsters
  * of the field by the fusion rules instead of tributing three for one result. */
 int Tables_RitualFusion(int ritual);
+/* Whether it has "recipes_only": true, so only its recipes make anything (a single monster may do). */
+int Tables_RitualFusionOnly(int ritual);
 /* Its "recipes": up to TABLES_POLY_RECIPES of {up to TABLES_POLY_MATERIALS materials (0 ends
  * them), result} that fuse the monsters of the field named into the result, whatever the fusion
  * rules say. A material is a card, or TABLES_POLY_TYPE | a monster type for any monster of it.

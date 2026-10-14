@@ -282,5 +282,54 @@
     "result": "Blue-eyes Ultimate Dragon"
    }
   ]
+ },
+ {
+  "kind": "ritual",
+  "name": "Chaos Form",
+  "password": "21082832",
+  "base": "Gate Guardian Ritual",
+  "description": "Tribute Blue-eyes for Blue-Eyes Chaos MAX Dragon, Dark Magician for Magician of Black Chaos, or Gaia for Black Luster Soldier.",
+  "date": "2007-01-01",
+  "fusion": true,
+  "recipes_only": true,
+  "recipes": [
+   {
+    "materials": [
+     "Blue-eyes White Dragon"
+    ],
+    "result": "Blue-Eyes Chaos MAX Dragon"
+   },
+   {
+    "materials": [
+     "Dark Magician"
+    ],
+    "result": "Magician of Black Chaos"
+   },
+   {
+    "materials": [
+     "Gaia the Fierce Knight"
+    ],
+    "result": "Black Luster Soldier"
+   },
+   {
+    "materials": [
+     "Gaia the Dragon Champion"
+    ],
+    "result": "Black Luster Soldier"
+   }
+  ],
+  "drop": {
+   "weight": 12,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
  }
 ]

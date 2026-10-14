@@ -177,8 +177,12 @@ them: `[{"materials": ["Alpha The Magnet Warrior", "Beta The Magnet Warrior",
 "Gamma the Magnet Warrior"], "result": "Valkyrion the Magna Warrior"}]`, two to
 five monsters of the field in any order (up to 32 recipes), and the strongest
 result of all the sets is made. A material may be `{"type": "Dragon"}`: any
-monster of the type (the weakest are spent, after the named cards are met),
+monster of the type (the named cards are met first),
 so five of them make Five-Headed Dragon.
+`"recipes_only": true` leaves out the fusion rules: only the recipes make
+anything, and a recipe may have a single material (Chaos Form: Blue-eyes
+White Dragon, Dark Magician or Gaia for what each becomes). Of the monsters that
+fit a material it spends the one with the lowest ATK it has now.
 
 A tribute may also be an object of conditions, all of which the monster
 must meet:

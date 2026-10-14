@@ -125,7 +125,12 @@ void BuildDeck_UpdateChestPaneInput(BuildDeckTransitionState *state)
     if (r != 0 && c != 0) {
         if (state->deck_total < DECK_SIZE &&
             state->chest_card_quantities[r] != 0 &&
-            state->deck_card_quantities[r] < DECK_CARD_COPY_LIMIT) {
+            state->deck_card_quantities[r] <
+#ifdef MEMORIES_PC
+                Cards_CopyLimit(r)) {
+#else
+                DECK_CARD_COPY_LIMIT) {
+#endif
             SD_SEPlayFull(7);
             BuildDeck_AddCard((s32)state, r);
             BuildDeck_TakeCardFromChest(state, r);

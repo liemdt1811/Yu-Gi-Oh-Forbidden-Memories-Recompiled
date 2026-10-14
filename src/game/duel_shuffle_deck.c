@@ -4,6 +4,12 @@
 #include "card_constants.h"
 #include "duel_shuffle_deck.h"
 #include "duel_shuffle_both_decks.h"
+/* How many copies of a card a deck may hold (a mod's "copy_limit"). */
+#ifdef MEMORIES_PC
+#define LIMIT_OF(id) Cards_CopyLimit(id)
+#else
+#define LIMIT_OF(id) DECK_CARD_COPY_LIMIT
+#endif
 #ifdef MEMORIES_PC
 #include "pc/cards/cards.h"
 #include "pc/cards/tables.h"
@@ -29,7 +35,7 @@ static void Duel_DealEditedDeck(const u16 *pool, u8 *out16, u8 *out8)
                 break;
             }
         }
-        if (i > gCard_nCount || held[i] >= DECK_CARD_COPY_LIMIT) {
+        if (i > gCard_nCount || held[i] >= LIMIT_OF(i)) {
             continue;
         }
         held[i]++;
@@ -105,7 +111,7 @@ void Duel_ShuffleDeck(s32 src, u8 *out16, u8 *out8) {
                 acc += *(u16 *)e;
                 if (acc >= lim) {
                     q = buf + i;
-                    if (*q < DECK_CARD_COPY_LIMIT) {
+                    if (*q < LIMIT_OF(i + 1)) {
 #ifdef MEMORIES_PC
                         /* A copy that asked to may be dealt in its base's
                            place (Cards_PickVariant). */

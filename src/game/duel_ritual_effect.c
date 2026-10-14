@@ -99,10 +99,14 @@ void DuelEffect_ApplyRitual(void)
         if (((DuelEffectRequest *)D_8009B17C)->field_1D) {
             D_8009B19C = D_800E9EF0.slots[3]->field_6A;
             DuelCard_DeactivateRecord(&D_801A7AD8[D_800E9EF0.slots[2]->field_6A]);
+#ifdef MEMORIES_PC
+            /* A fusion (Polymerization) may have fewer than three tributes. */
+            if (D_800E9EF0.slots[3] != D_800E9EF0.slots[2])
+#endif
             DuelCard_DeactivateRecord(&D_801A7AD8[D_800E9EF0.slots[3]->field_6A]);
 #ifdef MEMORIES_PC
             /* A fusion (Polymerization) has two tributes: the third is the second. */
-            if (D_800E9EF0.slots[4] != D_800E9EF0.slots[3])
+            if (D_800E9EF0.slots[4] != D_800E9EF0.slots[3] && D_800E9EF0.slots[4] != D_800E9EF0.slots[2])
 #endif
             DuelCard_DeactivateRecord(&D_801A7AD8[D_800E9EF0.slots[4]->field_6A]);
 #ifdef MEMORIES_PC

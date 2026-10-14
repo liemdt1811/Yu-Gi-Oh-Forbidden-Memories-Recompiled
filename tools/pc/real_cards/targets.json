@@ -1851,7 +1851,8 @@
     "Duel Master K"
    ]
   },
-  "no_fusion": true
+  "no_fusion": true,
+  "copy_limit": 1
  },
  {
   "password": "10000020",
@@ -1873,7 +1874,8 @@
   },
   "frame": "Orange",
   "unknown_stats": true,
-  "no_fusion": true
+  "no_fusion": true,
+  "copy_limit": 1
  },
  {
   "password": "10000010",
@@ -1895,7 +1897,8 @@
   },
   "frame": "Orange",
   "unknown_stats": true,
-  "no_fusion": true
+  "no_fusion": true,
+  "copy_limit": 1
  },
  {
   "password": "97642679",
@@ -2763,7 +2766,7 @@
   "level": 7,
   "attack": 2500,
   "defense": 2000,
-  "description": "The Neos hero joined by the winged Neo-Spacian. He rides the wind.",
+  "description": "The Neos hero joined by the winged Neo-Spacian. He rides the wind. Gains 500 ATK for each face-up WIND monster on the field.",
   "date": "2007-02-28",
   "fusions": [
    [
@@ -2796,7 +2799,8 @@
     "Nitemare",
     "Duel Master K"
    ]
-  }
+  },
+  "frame": "Orange"
  },
  {
   "password": "55171412",
@@ -2806,7 +2810,7 @@
   "level": 7,
   "attack": 2500,
   "defense": 2000,
-  "description": "The Neos hero joined by the aqua Neo-Spacian. He sways the tides.",
+  "description": "The Neos hero joined by the aqua Neo-Spacian. He sways the tides. Gains 500 ATK for each face-up WATER monster on the field.",
   "date": "2006-08-16",
   "fusions": [
    [
@@ -2839,7 +2843,8 @@
     "Nitemare",
     "Duel Master K"
    ]
-  }
+  },
+  "frame": "Orange"
  },
  {
   "password": "28677304",
@@ -2849,7 +2854,7 @@
   "level": 7,
   "attack": 2500,
   "defense": 2000,
-  "description": "The Neos hero joined by the dark Neo-Spacian. He uses the dark.",
+  "description": "The Neos hero joined by the dark Neo-Spacian. He uses the dark. Gains 500 ATK for each face-up DARK monster on the field.",
   "date": "2006-08-16",
   "fusions": [
    [
@@ -2882,7 +2887,8 @@
     "Nitemare",
     "Duel Master K"
    ]
-  }
+  },
+  "frame": "Orange"
  },
  {
   "password": "81566151",
@@ -2892,7 +2898,7 @@
   "level": 7,
   "attack": 2500,
   "defense": 2000,
-  "description": "The Neos hero joined by the flare Neo-Spacian. He burns bright.",
+  "description": "The Neos hero joined by the flare Neo-Spacian. He burns bright. Gains 500 ATK for each face-up FIRE monster on the field.",
   "date": "2006-08-16",
   "fusions": [
    [
@@ -2925,7 +2931,8 @@
     "Nitemare",
     "Duel Master K"
    ]
-  }
+  },
+  "frame": "Orange"
  },
  {
   "password": "48996569",
@@ -2935,7 +2942,7 @@
   "level": 7,
   "attack": 2500,
   "defense": 2000,
-  "description": "The Neos hero joined by the grand Neo-Spacian. He shakes the earth.",
+  "description": "The Neos hero joined by the grand Neo-Spacian. He shakes the earth. Gains 500 ATK for each face-up EARTH monster on the field.",
   "date": "2007-02-28",
   "fusions": [
    [
@@ -2968,7 +2975,8 @@
     "Nitemare",
     "Duel Master K"
    ]
-  }
+  },
+  "frame": "Orange"
  },
  {
   "password": "05128859",
@@ -4164,6 +4172,58 @@
    "weight": 8,
    "from": [
     "Seto 3rd"
+   ]
+  }
+ },
+ {
+  "password": "55410871",
+  "name": "Blue-Eyes Chaos MAX Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 4000,
+  "defense": 0,
+  "description": "The blue-eyed dragon, born again in chaos. It can only be made with Chaos Form.",
+  "date": "2011-01-01",
+  "fusions": []
+ },
+ {
+  "password": "15989522",
+  "name": "Gaia the Magical Knight of Dragons",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 7,
+  "attack": 2600,
+  "defense": 2100,
+  "description": "Gaia the Fierce Knight joined with a dragon. Its name becomes \"Gaia the Dragon Champion\".",
+  "date": "2020-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Gaia the Fierce Knight"
+     },
+     {
+      "type": "Dragon",
+      "level": 5,
+      "not_name_has": "Curse of Dragon"
+     }
+    ],
+    "max_atk": 2500
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
    ]
   }
  }

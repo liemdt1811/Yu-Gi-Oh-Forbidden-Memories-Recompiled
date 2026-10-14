@@ -207,6 +207,8 @@ def build():
             e["attack"] = e["defense"] = 0       # "attack" here stays the strength fusions are built from
         if c.get("no_fusion"):                   # a god: fuses with no card, and Polymerization does not take it
             e["no_fusion"] = True
+        if "copy_limit" in c:                    # a god: one in a deck
+            e["copy_limit"] = c["copy_limit"]
         if "frame" in c:                         # "Orange" is an effect monster's, as in the card game
             e["frame"] = c["frame"]
         if (MOD / "images" / f"{cid}.png").exists():
@@ -214,10 +216,10 @@ def build():
         entries.append(e)
         if target:
             inter.append({"ref": f"{MOD_ID}:{cid}:1", "name": c["name"], "type": c["type"], "attribute": c["attribute"].title(),
-                          "atk": c["attack"], "base": base["id"]})
+                          "atk": c["attack"], "base": base["id"], "level": c["level"]})
         if not target:
             (nodes if c in cards else extra).append({"ref": f"{MOD_ID}:{cid}:1", "name": c["name"], "type": c["type"],
-                          "attribute": c["attribute"].title(), "atk": c["attack"], "base": base["id"]})
+                          "attribute": c["attribute"].title(), "atk": c["attack"], "base": base["id"], "level": c["level"]})
     spells = json.loads(SPELLS.read_text(encoding="utf-8"))
     equips, rituals = spell_cards(spells, cat, entries, cards + targets)
     mod = {"id": MOD_ID, "name": "Z", "version": "0.1",
@@ -287,7 +289,8 @@ def spell_cards(spells, cat, entries, monsters):
                 # "recipes" on the spell itself: the same for a retail result (names of retail cards)
                 recipes += [{"materials": [m if isinstance(m, dict) else ref.get(m, m) for m in r["materials"]], "result": ref.get(r["result"], r["result"])}
                             for r in s.get("recipes", [])]
-                rituals.append({"card": ref[s["name"]], "fusion": True, **({"recipes": recipes} if recipes else {})})
+                rituals.append({"card": ref[s["name"]], "fusion": True, **({"recipes_only": True} if s.get("recipes_only") else {}),
+                                **({"recipes": recipes} if recipes else {})})
             else:
                 rituals.append({"card": ref[s["name"]], "result": ref[s["result"]], "tributes": s["tributes"]})
     return equips, rituals
@@ -378,13 +381,16 @@ def target_fusions(targets, cards, monsters, rules, pool, inter=()):
     taken = {frozenset(map(str, r["with"])) for r in rules}
     with open(DISC, encoding="utf-8", newline="") as f:
         disc = {frozenset((int(r["material_a_id"]), int(r["material_b_id"]))) for r in csv.DictReader(f)}
-    mats = [{"key": m["id"], "base": m["id"], "name": m["name"], "type": m["type"], "attribute": m["attribute"], "atk": m["atk"]}
-            for m in monsters] + [{"key": n["ref"], "base": n["base"], "name": n["name"], "type": n["type"],
-                                   "attribute": n["attribute"], "atk": n["atk"]} for n in list(pool) + list(inter)]
+    mats = [{"key": m["id"], "base": m["id"], "name": m["name"], "type": m["type"], "attribute": m["attribute"], "atk": m["atk"],
+             "level": int(m["level"])} for m in monsters] + [{"key": n["ref"], "base": n["base"], "name": n["name"], "type": n["type"],
+                                   "attribute": n["attribute"], "atk": n["atk"],
+                                   "level": n.get("level")} for n in list(pool) + list(inter)]
     for t in targets:
         for rule in t.get("mass", []):
             ga, gb = rule["groups"]
-            cap, floor = rule["max_atk"], rule.get("min_one", 0)
+            # a result is stronger than both materials: never take a material as strong as the result,
+            # nor the result itself
+            cap, floor = min(rule["max_atk"], t["attack"] - 10), rule.get("min_one", 0)
 
             def fits(m, g):
                 for k, v in g.items():
@@ -401,7 +407,7 @@ def target_fusions(targets, cards, monsters, rules, pool, inter=()):
                 return True
 
             def pick(g):
-                return [m for m in mats if m["atk"] <= cap and fits(m, g)]
+                return [m for m in mats if m["atk"] <= cap and m["name"] != t["name"] and fits(m, g)]
 
             for a in pick(ga):
                 for b in pick(gb):

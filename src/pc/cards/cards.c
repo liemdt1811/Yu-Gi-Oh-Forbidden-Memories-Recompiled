@@ -82,6 +82,9 @@ int Cards_UnknownStats(int id) { return Cards_Valid(id) && unknown_stats[id]; }
 /* "no_fusion": a card that takes part in no fusion (cards.h Cards_NoFusion). */
 static unsigned char no_fusion[CARD_TABLE_ID_END];
 int Cards_NoFusion(int id) { return Cards_Valid(id) && no_fusion[id]; }
+/* "copy_limit": how many of the card a deck holds (cards.h Cards_CopyLimit); 0 for the game's three. */
+static unsigned char copy_limit[CARD_TABLE_ID_END];
+int Cards_CopyLimit(int id) { return Cards_Valid(id) && copy_limit[id] ? copy_limit[id] : DECK_CARD_COPY_LIMIT; }
 /* "monster_effects" (monster_effects.h): an entry's list, shared by its cards. */
 static const MonsterEffect *monster_effects[CARD_TABLE_ID_END];
 static unsigned char monster_effect_counts[CARD_TABLE_ID_END];
@@ -1120,7 +1123,7 @@ static void add_entry(const char *mod, const char *directory, int index, const J
     MonsterEffect *own_effects = NULL;
     int effect_count;
     unsigned int trap_threshold;
-    unsigned char level_attr, frame, unknown, nofuse;
+    unsigned char level_attr, frame, unknown, nofuse, limit;
     if (Json_TypeOf(entry) != JSON_OBJECT) {
         Mods_Note(mod, "cards[%d] is not an object", index);
         return;
@@ -1279,6 +1282,8 @@ static void add_entry(const char *mod, const char *directory, int index, const J
     frame = frames[base];
     unknown = Json_Bool(Json_Member(entry, "unknown_stats"), unknown_stats[base]) ? 1 : 0;
     nofuse = Json_Bool(Json_Member(entry, "no_fusion"), 0) ? 1 : 0;
+    limit = (unsigned char)Json_Number(Json_Member(entry, "copy_limit"), 0);
+    if (limit > DECK_SIZE) limit = DECK_SIZE;
     if (Json_Member(entry, "frame")) {
         value = choice(Json_Member(entry, "frame"), frame_names, CARD_FRAME_COUNT + 1);
         if (value < 0 || value > CARD_FRAME_COUNT) {
@@ -1407,6 +1412,7 @@ static void add_entry(const char *mod, const char *directory, int index, const J
         frames[id] = frame;
         unknown_stats[id] = unknown;
         no_fusion[id] = nofuse;
+        copy_limit[id] = limit;
         names[id] = name && *name ? encode_name(mod, name, n, id) : NULL;
         descriptions[id] = description && *description ? encode_description(mod, description, id) : NULL;
         add_notes(mod, index, id, Json_Member(entry, "notes"));

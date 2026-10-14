@@ -89,6 +89,9 @@ int Cards_UnknownStats(int id);
 /* Whether a mod's "no_fusion": true marks `id`: it fuses with no card, by no rule
  * of the disc or of a mod, and a Polymerization does not take it. */
 int Cards_NoFusion(int id);
+/* How many copies of `id` a deck holds: a mod's "copy_limit" (1 to the deck's size), else
+ * DECK_CARD_COPY_LIMIT. The build-deck screen and the opponents' dealt decks keep to it. */
+int Cards_CopyLimit(int id);
 int Cards_Fusion(int a, int b, int *result);
 
 /* A card a manifest names: its id, a stable identity ("mod:entry:n"), or a

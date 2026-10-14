@@ -100,49 +100,45 @@ s32 Duel_CheckRitual(DuelRitualResult *out, s32 ritualId)
                         s32 typed = (list[r][j] & TABLES_POLY_TYPE) != 0;
                         s32 pass, weakest = 0x7FFFFFFF;
                         if (typed != stage) continue;
+                        /* Of the monsters that fit, the one with the lowest ATK it has now
+                         * (equips and fields counted); a card is met before a copy of it. */
                         for (pass = 0; pass < (typed ? 1 : 2) && chosen[j] < 0; pass++) {
                             for (k = 0; k < DUEL_FIELD_ROW_SIZE; k++) {
-                                s32 used = 0, hit;
+                                s32 used = 0, hit, now;
                                 if (!(c[k].flags & DUEL_CARD_FLAG_OCCUPIED) || Cards_NoFusion(c[k].card_id)) continue;
                                 for (i = 0; i < need; i++) used |= chosen[i] == k;
                                 if (used) continue;
-                                if (typed) {
+                                if (typed)
                                     hit = Cards_Type(c[k].card_id) == (list[r][j] & ~TABLES_POLY_TYPE);
-                                    if (hit) {
-                                        s32 own = gDuel_adwCardStats[c[k].card_id - 1] & CARD_STAT_VALUE_MASK;
-                                        if (own >= weakest) continue;
-                                        weakest = own;
-                                        chosen[j] = k;
-                                        hit = 0;
-                                    }
-                                } else {
+                                else
                                     hit = pass == 0 ? c[k].card_id == list[r][j]
                                                     : Cards_BaseId(c[k].card_id) == list[r][j];
-                                }
-                                if (hit) {
+                                if (!hit) continue;
+                                now = Duel_CalcCardStats(&c[k]) & 0xFFFF;
+                                if (now < weakest) {
+                                    weakest = now;
                                     chosen[j] = k;
-                                    break;
                                 }
                             }
                         }
                         if (chosen[j] < 0) short_of = 1;
                     }
                 }
-                if (short_of || need < 2) continue;
+                if (short_of || need < 1) continue;
                 stats = gDuel_adwCardStats[list[r][TABLES_POLY_MATERIALS] - 1];
                 attack = (stats & CARD_STAT_VALUE_MASK) * CARD_STAT_SCALE;
                 if (attack > best_attack) {
                     best_attack = attack;
                     best = list[r][TABLES_POLY_MATERIALS];
                     pick[0] = &c[chosen[0]];
-                    pick[1] = &c[chosen[1]];
-                    pick[2] = &c[chosen[need > 2 ? 2 : 1]];
+                    pick[1] = &c[chosen[need > 1 ? 1 : 0]];
+                    pick[2] = &c[chosen[need > 2 ? 2 : need - 1]];
                     extra[0] = need > 3 ? &c[chosen[3]] : 0;
                     extra[1] = need > 4 ? &c[chosen[4]] : 0;
                 }
             }
         }
-        for (a = 0; a < DUEL_FIELD_ROW_SIZE; a++) {
+        for (a = 0; a < DUEL_FIELD_ROW_SIZE && !Tables_RitualFusionOnly(ritualId); a++) {
             if (!(c[a].flags & DUEL_CARD_FLAG_OCCUPIED)) continue;
             for (b = a + 1; b < DUEL_FIELD_ROW_SIZE; b++) {
                 if (!(c[b].flags & DUEL_CARD_FLAG_OCCUPIED)) continue;

@@ -179,6 +179,7 @@ typedef struct {
     unsigned short recipe[6];   /* ritual, three tributes, result, 0 */
     TablesRitualRequirement requirements[DUEL_RITUAL_TRIBUTE_COUNT];
     unsigned char removed, conditional;
+    unsigned char only_recipes; /* "recipes_only": no fusion by the rules, only its recipes */
     unsigned char fusion;       /* "fusion": two monsters of the field fuse by the fusion rules */
     unsigned char poly_count;   /* "recipes" of a "fusion" ritual: materials (0 ends), result */
     unsigned short poly[TABLES_POLY_RECIPES][TABLES_POLY_WIDTH];
@@ -836,6 +837,7 @@ static void read_rituals(const char *mod, const JsonValue *list)
         } else if (Json_Bool(Json_Member(entry, "fusion"), 0)) {
             const JsonValue *recipes = Json_Member(entry, "recipes");
             rule.fusion = 1;
+            rule.only_recipes = Json_Bool(Json_Member(entry, "recipes_only"), 0) ? 1 : 0;
             for (j = 0; j < Json_Count(recipes); j++) {
                 const JsonValue *recipe = Json_At(recipes, j);
                 const JsonValue *materials = Json_Member(recipe, "materials");
@@ -846,8 +848,8 @@ static void read_rituals(const char *mod, const JsonValue *list)
                               TABLES_POLY_RECIPES);
                     break;
                 }
-                if (Json_Count(materials) < 2 || Json_Count(materials) > TABLES_POLY_MATERIALS) {
-                    Mods_Note(mod, "%s: a recipe has two to %d \"materials\"; left out", where, TABLES_POLY_MATERIALS);
+                if (Json_Count(materials) < 1 || Json_Count(materials) > TABLES_POLY_MATERIALS) {
+                    Mods_Note(mod, "%s: a recipe has one to %d \"materials\"; left out", where, TABLES_POLY_MATERIALS);
                     continue;
                 }
                 r = rule.poly[rule.poly_count];
@@ -910,6 +912,14 @@ int Tables_RitualFusion(int ritual)
     int i;
     for (i = ritual_count - 1; i >= 0; i--)
         if (rituals[i].recipe[0] == ritual) return rituals[i].fusion;
+    return 0;
+}
+
+int Tables_RitualFusionOnly(int ritual)
+{
+    int i;
+    for (i = ritual_count - 1; i >= 0; i--)
+        if (rituals[i].recipe[0] == ritual) return rituals[i].fusion && rituals[i].only_recipes;
     return 0;
 }
 

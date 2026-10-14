@@ -10,6 +10,8 @@
  *    summon is remembered per duel record (state.weak, with the card's id so a record
  *    that is emptied and refilled cannot inherit it).
  *  - The Winged Dragon of Ra: ATK and DEF are its owner's life points.
+ *  - Elemental HERO Air / Aqua / Dark / Flare / Grand Neos: +500 ATK for each face-up WIND / WATER / DARK / FIRE /
+ *    EARTH monster on the field, either side's and itself.
  * Forbidden Memories has no graveyard, so Buster Blader has no "or in the
  * Graveyard" half, and Dark Magician Girl's "graveyard" is a count of those
  * two monsters when they are destroyed (MEMORIES_MONSTER_DESTROYED: in a battle or by
@@ -42,6 +44,7 @@
 #define RA "z:the-winged-dragon-of-ra:1"
 #define DARK_MAGICIAN 35            /* the disc's own cards */
 #define MAGICIAN_OF_BLACK_CHAOS 722
+#define PER_ATTRIBUTE 500
 #define PER_DRAGON 500
 #define PER_MAGICIAN 300
 #define PER_HAND_CARD 1000
@@ -50,8 +53,13 @@
 #define FIRST_MONSTER 5
 #define LAST_MONSTER 9
 
-enum { BUSTER, GIRL, SLIFER_CARD, RA_CARD, CARDS };
-static const char *const identity[CARDS] = {BUSTER_BLADER, DARK_MAGICIAN_GIRL, SLIFER, RA};
+/* The five Neos forms follow the others: neos_attribute[which - AIR_NEOS] is the attribute (card.h order: Light, Dark, Earth,
+ * Water, Fire, Wind) they count. Slifer and Ra stay last of the first group, as the "which >= SLIFER_CARD" tests expect. */
+enum { BUSTER, GIRL, AIR_NEOS, AQUA_NEOS, DARK_NEOS, FLARE_NEOS, GRAND_NEOS, SLIFER_CARD, RA_CARD, CARDS };
+static const char *const identity[CARDS] = {BUSTER_BLADER, DARK_MAGICIAN_GIRL,
+    "z:elemental-hero-air-neos:1", "z:elemental-hero-aqua-neos:1", "z:elemental-hero-dark-neos:1",
+    "z:elemental-hero-flare-neos:1", "z:elemental-hero-grand-neos:1", SLIFER, RA};
+static const int neos_attribute[5] = {5, 3, 1, 4, 2};
 
 static const MemoriesModHost *host;
 
@@ -111,6 +119,21 @@ static int is_dragon(const DuelCardRecord *card)
     return ((gDuel_adwCardStats[card->card_id - 1] >> CARD_STAT_TYPE_SHIFT) & CARD_STAT_TYPE_MASK) == CARD_TYPE_DRAGON;
 }
 
+/* How many face-up monsters of an attribute are on the field, both sides'. */
+static int attribute_monsters(int attribute)
+{
+    int n = 0, side, zone;
+    for (side = 0; side < 2; side++)
+        for (zone = FIRST_MONSTER; zone <= LAST_MONSTER; zone++) {
+            int record = side * SIDE_RECORDS + zone;
+            const DuelCardRecord *other = &D_801A7AD8[record];
+            if (present(other, record) && face_up(other, record) && other->card_id > 0 &&
+                (gDuel_abCardLevelAttr[other->card_id] >> 4) == attribute)
+                n++;
+        }
+    return n;
+}
+
 static int hand_cards(int side)
 {
     int n = 0, i;
@@ -142,6 +165,13 @@ static int effect_attack(const DuelCardRecord *card, int record, int now, int *w
         return n ? now + n * PER_DRAGON : -1;
     case GIRL:
         return state.destroyed > 0 ? now + state.destroyed * PER_MAGICIAN : -1;
+    case AIR_NEOS:
+    case AQUA_NEOS:
+    case DARK_NEOS:
+    case FLARE_NEOS:
+    case GRAND_NEOS:
+        n = attribute_monsters(neos_attribute[*which - AIR_NEOS]);
+        return n ? now + n * PER_ATTRIBUTE : -1;
     case SLIFER_CARD:      /* 1000 for each card in its owner's hand, whatever its printed ATK and DEF */
         *value = hand_cards(side) * PER_HAND_CARD;
         return now - card->attack + *value;
