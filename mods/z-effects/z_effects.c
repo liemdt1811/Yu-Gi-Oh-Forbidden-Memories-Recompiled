@@ -22,12 +22,17 @@
  * duel's monster zones are records 5-9 of each side's 15 in D_801A7AD8, as
  * src/pc/cards/monster_effects_duel.c reads them. A card's type is bits 26-30
  * of gDuel_adwCardStats[card_id - 1]. */
+#include <stdarg.h>
 #include "types.h"
+#include <string.h>
 #include "game/card_constants.h"
 #include "game/duel_card.h"
 #include "game/duel_init_scene.h"
 #include "game/duel_side_state.h"
 #include "game/duel_card_record_lifecycle.h"
+#include "game/duel_battle_stats.h"
+#include "game/display_object.h"
+#include "game/display_object_work_slots.h"
 #include "pc/cards/monster_effects_duel.h"
 #include "pc/mods/modapi.h"
 
@@ -49,11 +54,57 @@ enum { BUSTER, GIRL, SLIFER_CARD, RA_CARD, CARDS };
 static const char *const identity[CARDS] = {BUSTER_BLADER, DARK_MAGICIAN_GIRL, SLIFER, RA};
 
 static const MemoriesModHost *host;
+
+/* A line in z-effects.txt in the mod's data folder (mod-data/z-effects, beside the saves), while the game's "mods" log channel is on (MEMORIES_TRACE=mods): the first 600 lines of a run, to see what the duel works from. */
+static int traced;
+static char last_line[200];
+static void trace(const char *format, ...)
+{
+    char line[200];
+    FILE *file;
+    va_list arguments;
+    int n;
+    if (traced >= 600 || !host->log_enabled(host)) return;     /* only when the "mods" log channel is on */
+    va_start(arguments, format);
+    n = vsnprintf(line, sizeof(line) - 1, format, arguments);
+    va_end(arguments);
+    if (n <= 0) return;
+    line[n < (int)sizeof(line) - 2 ? n : (int)sizeof(line) - 2] = 0;
+    if (!strcmp(line, last_line)) return;       /* the same line as the one before is not news */
+    strcpy(last_line, line);
+    if (!(file = host->open_data(host, "z-effects.txt", traced ? "a" : "w"))) return;
+    traced++;
+    {
+        fwrite(line, 1, strlen(line), file);
+        fwrite("\n", 1, 1, file);
+    }
+    fclose(file);
+}
 static s32 (*original)(DuelCardRecord *card);
 static void (*original_init)(void);
 static int id[CARDS];       /* the cards' ids this run, 0 until the tables are built */
 static int logged[CARDS];
 static struct { int destroyed; short weak[2 * SIDE_RECORDS]; } state;     /* in save states: Magicians destroyed this duel; the cards Slifer weakened, by record */
+
+/* A fighter of the battle on screen. The battle takes both fighters' records off the field (DuelCard_DeactivateRecord
+ * clears DUEL_CARD_FLAG_OCCUPIED, and the record keeps no display object either) and shows them as its own objects,
+ * D_800E9EF0[0] (the attacker) and [1] (the defender): to the battle, a card is there by its id alone. */
+static int in_battle(int record)
+{
+    return (D_800E9EF0[0] && D_800E9EF0[0]->field_6A == record) || (D_800E9EF0[1] && D_800E9EF0[1]->field_6A == record);
+}
+
+/* A monster is on the field when its record is occupied or has an object, or while it is fighting. */
+static int present(const DuelCardRecord *card, int record)
+{
+    return (card->flags & DUEL_CARD_FLAG_OCCUPIED) || card->object != 0 || in_battle(record);
+}
+
+/* Face up: a fighter's flags are not worth reading (the one that attacks face down turns face up as it does). */
+static int face_up(const DuelCardRecord *card, int record)
+{
+    return !(card->flags & DUEL_CARD_FLAG_FACE_DOWN) || in_battle(record);
+}
 
 static int is_dragon(const DuelCardRecord *card)
 {
@@ -84,7 +135,7 @@ static int effect_attack(const DuelCardRecord *card, int record, int now, int *w
         n = 0;
         for (zone = FIRST_MONSTER; zone <= LAST_MONSTER; zone++) {
             const DuelCardRecord *other = &D_801A7AD8[(1 - side) * SIDE_RECORDS + zone];
-            if ((other->flags & DUEL_CARD_FLAG_OCCUPIED) && !(other->flags & DUEL_CARD_FLAG_FACE_DOWN) &&
+            if (present(other, (1 - side) * SIDE_RECORDS + zone) && face_up(other, (1 - side) * SIDE_RECORDS + zone) &&
                 other->card_id > 0 && is_dragon(other))
                 n++;
         }
@@ -120,7 +171,7 @@ static int slifer_opposes(int record)
     if (!id[SLIFER_CARD]) return 0;
     for (zone = FIRST_MONSTER; zone <= LAST_MONSTER; zone++) {
         const DuelCardRecord *other = &D_801A7AD8[(1 - side) * SIDE_RECORDS + zone];
-        if ((other->flags & DUEL_CARD_FLAG_OCCUPIED) && !(other->flags & DUEL_CARD_FLAG_FACE_DOWN) &&
+        if (present(other, (1 - side) * SIDE_RECORDS + zone) && face_up(other, (1 - side) * SIDE_RECORDS + zone) &&
             other->card_id == id[SLIFER_CARD])
             return 1;
     }
@@ -140,10 +191,13 @@ static s32 calc_card_stats(DuelCardRecord *card)
     int record = (int)(card - D_801A7AD8), attack, defense, cap, which, value;
 
     resolve_ids();
-    if (!(card->flags & DUEL_CARD_FLAG_OCCUPIED) || (card->flags & DUEL_CARD_FLAG_FACE_DOWN) || card->card_id <= 0 ||
-        record < 0 || record >= 2 * SIDE_RECORDS || record % SIDE_RECORDS < FIRST_MONSTER ||
-        record % SIDE_RECORDS > LAST_MONSTER)
+    if (card->card_id <= 0 || record < 0 || record >= 2 * SIDE_RECORDS || record % SIDE_RECORDS < FIRST_MONSTER ||
+        record % SIDE_RECORDS > LAST_MONSTER || !present(card, record) || !face_up(card, record)) {
+        for (which = 0; which < CARDS && record % SIDE_RECORDS >= FIRST_MONSTER; which++)    /* not a hand card */
+            if (id[which] && card->card_id == id[which])
+                trace("calc %s skipped: record %d flags %04x object %d", identity[which], record, card->flags, card->object != 0);
         return packed;
+    }
     attack = effect_attack(card, record, packed & 0xFFFF, &which, &value);
     defense = (int)((u32)packed >> 16);
     if (attack < 0) {
@@ -170,7 +224,27 @@ static s32 calc_card_stats(DuelCardRecord *card)
         logged[which] = 1;
         host->log(host, "z-effects: %s (record %d) has %d ATK, %d DEF", identity[which], record, attack, defense);
     }
+    if (which >= SLIFER_CARD) trace("calc %s record %d flags %04x: %d ATK %d DEF", identity[which], record, card->flags, attack, defense);
     return (defense << 16) | attack;
+}
+
+/* The battle's own number: the damage a direct attack deals, or the difference of a fight. Logged for Slifer and Ra,
+ * to see what the duel works from. */
+static s32 (*original_battle)(DisplayObject *left, DisplayObject *right);
+static s32 battle_result(DisplayObject *left, DisplayObject *right)
+{
+    s32 result = original_battle(left, right);
+    if (left) {
+        const DuelCardRecord *card = &D_801A7AD8[left->field_6A];
+        if ((id[SLIFER_CARD] && card->card_id == id[SLIFER_CARD]) || (id[RA_CARD] && card->card_id == id[RA_CARD]))
+            trace("battle result %d (%s) attacker record %d flags %04x stats %08x", (int)result, right ? "fight" : "direct",
+                  (int)left->field_6A, card->flags, (unsigned)original(card));
+        if (id[SLIFER_CARD] && card->card_id == id[SLIFER_CARD])
+            host->log(host, "z-effects: Slifer battle result %d (%s)", (int)result, right ? "fight" : "direct");
+        else if (id[RA_CARD] && card->card_id == id[RA_CARD])
+            host->log(host, "z-effects: Ra battle result %d (%s)", (int)result, right ? "fight" : "direct");
+    }
+    return result;
 }
 
 static void reset(void)
@@ -225,6 +299,7 @@ int MemoriesModInit(const MemoriesModHost *from, MemoriesMod *mod)
         host->log(host, "z-effects: could not set up the Magician count");
         return 0;
     }
+    host->hook(host, (void *)func_8001EFD4, (void *)battle_result, (void **)&original_battle);
     mod->api = MEMORIES_MOD_API;
     mod->reset = reset;
     return 1;

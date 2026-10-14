@@ -3730,5 +3730,148 @@
     "DarkNite"
    ]
   }
+ },
+ {
+  "password": "31829185",
+  "name": "Dark Necrofear",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2200,
+  "defense": 2800,
+  "description": "A fallen doll that lures its foes into the dark.",
+  "date": "2003-03-01"
+ },
+ {
+  "password": "53839837",
+  "name": "Vampire Lord",
+  "type": "Zombie",
+  "attribute": "Dark",
+  "level": 5,
+  "attack": 2000,
+  "defense": 1500,
+  "description": "A lord of the night. It drinks the life of the living.",
+  "date": "2003-12-01"
+ },
+ {
+  "password": "17259470",
+  "name": "Zombie Master",
+  "type": "Zombie",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1800,
+  "defense": 0,
+  "description": "A necromancer who calls the dead back to fight.",
+  "date": "2007-08-15"
+ },
+ {
+  "password": "25262697",
+  "name": "Gravekeeper's Assailant",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1500,
+  "defense": 1500,
+  "description": "A tomb guard who strikes from the shadows.",
+  "date": "2003-07-18"
+ },
+ {
+  "password": "37101832",
+  "name": "Gravekeeper's Guard",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1000,
+  "defense": 1900,
+  "description": "A tomb guard who turns away those who enter.",
+  "date": "2003-07-18"
+ },
+ {
+  "password": "24317029",
+  "name": "Gravekeeper's Spy",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1200,
+  "defense": 2000,
+  "description": "A tomb guard who watches the dead and the living.",
+  "date": "2003-07-18"
+ },
+ {
+  "password": "40737112",
+  "name": "Dark Magician of Chaos",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2600,
+  "description": "The Dark Magician taken by chaos. Its spells bend the dead.",
+  "date": "2004-03-01"
+ },
+ {
+  "password": "24435369",
+  "name": "Mermaid Knight",
+  "type": "Aqua",
+  "attribute": "Water",
+  "level": 4,
+  "attack": 1500,
+  "defense": 700,
+  "description": "A knight of the sea who rides the waves into battle.",
+  "date": "2004-06-01"
+ },
+ {
+  "password": "25343280",
+  "name": "Spirit of the Pharaoh",
+  "type": "Zombie",
+  "attribute": "Light",
+  "level": 6,
+  "attack": 2500,
+  "defense": 2000,
+  "description": "The spirit of a king who walks the tombs.",
+  "date": "2004-06-01"
+ },
+ {
+  "password": "15960641",
+  "name": "Mirage Dragon",
+  "type": "Dragon",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1600,
+  "defense": 600,
+  "description": "A dragon of light that hides in the haze.",
+  "date": "2004-11-20"
+ },
+ {
+  "password": "86652646",
+  "name": "Skull Dog Marron",
+  "type": "Beast",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 1350,
+  "defense": 2000,
+  "description": "A hound of bone that guards the underworld.",
+  "date": "2004-10-01"
+ },
+ {
+  "password": "13945283",
+  "name": "Wall of Illusion",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1000,
+  "defense": 1850,
+  "description": "A wall that bends the minds of those who strike it.",
+  "date": "2002-03-29"
+ },
+ {
+  "password": "38445524",
+  "name": "Gil Garth",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1800,
+  "defense": 1200,
+  "description": "A dark knight with a heart as cold as his blade.",
+  "date": "2007-11-14"
  }
 ]

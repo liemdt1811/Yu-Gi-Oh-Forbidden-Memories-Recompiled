@@ -29,9 +29,10 @@ def main():
     ap.add_argument("--hand", type=int, default=5, help="most cards one fusion chain may use")
     args = ap.parse_args()
 
-    cat = {}
+    cat, by_name = {}, {}
     with open(ROOT / "notes" / "card-catalog.csv", encoding="utf-8", newline="") as f:
         for r in csv.DictReader(f):
+            by_name[r["name"]] = int(r["id"])
             if r["attack"]:
                 cat[int(r["id"])] = (r["name"], int(r["attack"]))
     fuse = {}
@@ -60,7 +61,7 @@ def main():
             pool = dict(pool)
             for card, w in deck.items():
                 if card != "replace":
-                    pool[card] = w
+                    pool[by_name.get(card, card)] = w      # a retail card by name, a Z card by "z:id:1"
             decks[names.get(did, did)] = pool
 
     by_card = {}

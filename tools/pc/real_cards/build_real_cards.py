@@ -66,7 +66,10 @@ OPPONENTS = {"Teana 2nd", "Ocean Mage", "High Mage Secmeton", "Forest Mage", "Hi
              "High Mage Atenza", "Desert Mage", "High Mage Martis", "Meadow Mage", "High Mage Kepura", "Labyrinth Mage",
              "Seto 2nd", "Guardian Sebek", "Guardian Neku", "Heishin 2nd", "Seto 3rd", "DarkNite", "Nitemare", "Duel Master K"}
 # The disc's 39 opponents a duelist may copy or be unlocked by (the ones this tool names).
-OPPONENTS_ALL = OPPONENTS | {"Jono 2nd", "Seto 2nd", "Heishin 2nd", "Seto 3rd", "Heishin", "Seto", "Kaiba", "Pegasus"}
+# All 39 of the disc's opponents (notes/gameplay-tables.md): a duelist may copy one, be unlocked by one, or borrow its AI row.
+OPPONENTS_ALL = OPPONENTS | {"Simon Muran", "Teana", "Jono", "Villager 1", "Villager 2", "Villager 3", "Seto", "Heishin",
+                             "Rex Raptor", "Weevil Underwood", "Mai Valentine", "Bandit Keith", "Shadi", "Yami Bakura",
+                             "Pegasus", "Isis", "Kaiba", "Mage Soldier", "Jono 2nd", "Seto 2nd", "Heishin 2nd", "Seto 3rd"}
 RITUAL_KEYS = {"card", "type", "fusion_group", "min_attack", "max_attack", "min_defense", "max_defense", "min_level",
                "max_level", "defense_gt_attack"}
 # Fixed Cards the game treats specially; never used as a base or a fusion partner.
@@ -238,8 +241,9 @@ def mod_duelists(mod, duelists, known):
     mod["duelists"], mod["decks"] = [], {}
     for d in duelists:
         entry = {"id": d["id"], "copy": d["copy"], "name": d["name"]}
-        if "unlock" in d:
-            entry["unlock"] = d["unlock"]
+        for key in ("unlock", "slot", "ai", "ranks"):
+            if key in d:
+                entry[key] = d[key]
         if "portrait_file" in d or "portrait_from" in d:
             src = (HERE / d["portrait_file"] if "portrait_file" in d
                    else MOD / "images" / f"{slug(d['portrait_from'])}.png")
@@ -455,7 +459,8 @@ def check():
     for d in mod.get("duelists", []):
         if d["copy"] not in OPPONENTS_ALL:
             errors.append(f"duelist {d['id']}: copy {d['copy']!r}")
-        if d.get("unlock", {}).get("beat") not in (None, *OPPONENTS_ALL):
+        added = {x["id"] for x in mod["duelists"]}
+        if d.get("unlock", {}).get("beat") not in (None, *OPPONENTS_ALL, *added):
             errors.append(f"duelist {d['id']}: unlock {d['unlock']['beat']!r}")
         if "portrait" in d and not (MOD / d["portrait"]).exists():
             errors.append(f"duelist {d['id']}: portrait missing")
@@ -472,7 +477,7 @@ def check():
             if pool not in ("pow", "bcd", "tec"):
                 errors.append(f"drops {opponent}: pool {pool!r}")
             for ref, weight in cards.items():
-                if ref not in refs or not isinstance(weight, int) or not 0 < weight < 2048:
+                if ref not in cardrefs or not isinstance(weight, int) or not 0 < weight < 2048:
                     errors.append(f"drops {opponent} {pool}: {ref!r} {weight!r}")
     pairs = set()
     for r in mod["fusions"]:

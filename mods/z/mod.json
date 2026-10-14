@@ -4,7 +4,7 @@
  "version": "0.1",
  "author": "community",
  "enabled": false,
- "description": "213 real Yu-Gi-Oh! cards the disc lacks, with fusions. Study project; art is Konami's.",
+ "description": "226 real Yu-Gi-Oh! cards the disc lacks, with fusions. Study project; art is Konami's.",
  "cards": [
   {
    "id": "luster-dragon",
@@ -3088,6 +3088,201 @@
    "art": "images/red-eyes-baby-dragon.png"
   },
   {
+   "id": "dark-necrofear",
+   "copy": 715,
+   "name": "Dark Necrofear",
+   "description": "A fallen doll that\nlures its foes into\nthe dark.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 8,
+   "attack": 2200,
+   "defense": 2800,
+   "password": "31829185",
+   "drops": true,
+   "opponents": true,
+   "art": "images/dark-necrofear.png"
+  },
+  {
+   "id": "vampire-lord",
+   "copy": 368,
+   "name": "Vampire Lord",
+   "description": "A lord of the night.\nIt drinks the life\nof the living.",
+   "type": "Zombie",
+   "attribute": "Dark",
+   "level": 5,
+   "attack": 2000,
+   "defense": 1500,
+   "password": "53839837",
+   "drops": true,
+   "opponents": true,
+   "art": "images/vampire-lord.png"
+  },
+  {
+   "id": "zombie-master",
+   "copy": 97,
+   "name": "Zombie Master",
+   "description": "A necromancer who\ncalls the dead back\nto fight.",
+   "type": "Zombie",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1800,
+   "defense": 0,
+   "password": "17259470",
+   "drops": true,
+   "opponents": true,
+   "art": "images/zombie-master.png"
+  },
+  {
+   "id": "gravekeeper-s-assailant",
+   "copy": 631,
+   "name": "Gravekeeper's Assailant",
+   "description": "A tomb guard who\nstrikes from the\nshadows.",
+   "type": "Spellcaster",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1500,
+   "defense": 1500,
+   "password": "25262697",
+   "drops": true,
+   "opponents": true,
+   "art": "images/gravekeeper-s-assailant.png"
+  },
+  {
+   "id": "gravekeeper-s-guard",
+   "copy": 2,
+   "name": "Gravekeeper's Guard",
+   "description": "A tomb guard who\nturns away those who\nenter.",
+   "type": "Spellcaster",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1000,
+   "defense": 1900,
+   "password": "37101832",
+   "drops": true,
+   "opponents": true,
+   "art": "images/gravekeeper-s-guard.png"
+  },
+  {
+   "id": "gravekeeper-s-spy",
+   "copy": 213,
+   "name": "Gravekeeper's Spy",
+   "description": "A tomb guard who\nwatches the dead and\nthe living.",
+   "type": "Spellcaster",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1200,
+   "defense": 2000,
+   "password": "24317029",
+   "drops": true,
+   "opponents": true,
+   "art": "images/gravekeeper-s-spy.png"
+  },
+  {
+   "id": "dark-magician-of-chaos",
+   "copy": 722,
+   "name": "Dark Magician of Chaos",
+   "description": "The Dark Magician\ntaken by chaos. Its\nspells bend the\ndead.",
+   "type": "Spellcaster",
+   "attribute": "Dark",
+   "level": 8,
+   "attack": 2800,
+   "defense": 2600,
+   "password": "40737112",
+   "drops": true,
+   "opponents": true,
+   "art": "images/dark-magician-of-chaos.png"
+  },
+  {
+   "id": "mermaid-knight",
+   "copy": 599,
+   "name": "Mermaid Knight",
+   "description": "A knight of the sea\nwho rides the waves\ninto battle.",
+   "type": "Aqua",
+   "attribute": "Water",
+   "level": 4,
+   "attack": 1500,
+   "defense": 700,
+   "password": "24435369",
+   "drops": true,
+   "opponents": true,
+   "art": "images/mermaid-knight.png"
+  },
+  {
+   "id": "spirit-of-the-pharaoh",
+   "copy": 564,
+   "name": "Spirit of the Pharaoh",
+   "description": "The spirit of a king\nwho walks the tombs.",
+   "type": "Zombie",
+   "attribute": "Light",
+   "level": 6,
+   "attack": 2500,
+   "defense": 2000,
+   "password": "25343280",
+   "drops": true,
+   "opponents": true,
+   "art": "images/spirit-of-the-pharaoh.png"
+  },
+  {
+   "id": "mirage-dragon",
+   "copy": 10,
+   "name": "Mirage Dragon",
+   "description": "A dragon of light\nthat hides in the\nhaze.",
+   "type": "Dragon",
+   "attribute": "Light",
+   "level": 4,
+   "attack": 1600,
+   "defense": 600,
+   "password": "15960641",
+   "drops": true,
+   "opponents": true,
+   "art": "images/mirage-dragon.png"
+  },
+  {
+   "id": "skull-dog-marron",
+   "copy": 91,
+   "name": "Skull Dog Marron",
+   "description": "A hound of bone that\nguards the\nunderworld.",
+   "type": "Beast",
+   "attribute": "Earth",
+   "level": 4,
+   "attack": 1350,
+   "defense": 2000,
+   "password": "86652646",
+   "drops": true,
+   "opponents": true,
+   "art": "images/skull-dog-marron.png"
+  },
+  {
+   "id": "wall-of-illusion",
+   "copy": 83,
+   "name": "Wall of Illusion",
+   "description": "A wall that bends\nthe minds of those\nwho strike it.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1000,
+   "defense": 1850,
+   "password": "13945283",
+   "drops": true,
+   "opponents": true,
+   "art": "images/wall-of-illusion.png"
+  },
+  {
+   "id": "gil-garth",
+   "copy": 377,
+   "name": "Gil Garth",
+   "description": "A dark knight with a\nheart as cold as his\nblade.",
+   "type": "Fiend",
+   "attribute": "Dark",
+   "level": 4,
+   "attack": 1800,
+   "defense": 1200,
+   "password": "38445524",
+   "drops": true,
+   "opponents": true,
+   "art": "images/gil-garth.png"
+  },
+  {
    "id": "mage-power",
    "copy": 323,
    "name": "Mage Power",
@@ -5119,6 +5314,181 @@
     "z:curse-of-the-masked-beast:1": 16,
     "z:contract-with-the-dark-master:1": 16,
     "z:pyramid-of-light:1": 16
+   }
+  },
+  "mako-tsunami": {
+   "pow": {
+    "Fortress Whale": 40,
+    "Kairyu-shin": 40,
+    "Giant Red Seasnake": 40,
+    "z:mermaid-knight:1": 40
+   },
+   "tec": {
+    "Spike Seadra": 40,
+    "Aqua Madoor": 40,
+    "7 Colored Fish": 40,
+    "Umi": 30
+   }
+  },
+  "duke-devlin": {
+   "pow": {
+    "Red-eyes B. Dragon": 30,
+    "B. Skull Dragon": 20,
+    "z:cyber-dragon:1": 40,
+    "Cyber Commander": 40
+   },
+   "tec": {
+    "z:gradius:1": 40,
+    "Flame Swordsman": 40,
+    "Dragon Piper": 40,
+    "Big Eye": 40
+   }
+  },
+  "bonz": {
+   "pow": {
+    "z:dark-necrofear:1": 30,
+    "z:vampire-lord:1": 40,
+    "z:ryu-kokki:1": 40,
+    "z:zombie-master:1": 40
+   },
+   "tec": {
+    "Pumpking the King of Ghosts": 40,
+    "Armored Zombie": 40,
+    "Dokurorider": 40,
+    "z:master-kyonshee:1": 40,
+    "z:vampire-voivode:1": 15
+   }
+  },
+  "espa-roba": {
+   "pow": {
+    "z:spirit-of-the-pharaoh:1": 40,
+    "Jirai Gumo": 40,
+    "Dark Elf": 40,
+    "z:gil-garth:1": 40
+   },
+   "tec": {
+    "Pendulum Machine": 40,
+    "z:beast-of-talwar:1": 40,
+    "Mystic Clown": 40,
+    "z:skull-dog-marron:1": 40
+   }
+  },
+  "mokuba-kaiba": {
+   "pow": {
+    "Blue-eyes White Dragon": 20,
+    "Red-eyes B. Dragon": 40,
+    "Cyber Commander": 40,
+    "z:mirage-dragon:1": 40
+   },
+   "tec": {
+    "z:gadget-soldier:1": 40,
+    "Battle Ox": 40,
+    "Beaver Warrior": 40,
+    "Dragon Capture Jar": 30
+   }
+  },
+  "arkana": {
+   "pow": {
+    "z:dark-magician-of-chaos:1": 30,
+    "Dark Magician": 40,
+    "Magician of Black Chaos": 40,
+    "z:the-dark-magicians:1": 15
+   },
+   "tec": {
+    "z:dark-magician-girl:1": 40,
+    "Skull Knight": 40,
+    "Rogue Doll": 40,
+    "z:wall-of-illusion:1": 40
+   }
+  },
+  "panik": {
+   "pow": {
+    "z:dark-necrofear:1": 30,
+    "Reaper of the Cards": 40,
+    "Doma The Angel of Silence": 40,
+    "z:gil-garth:1": 40
+   },
+   "tec": {
+    "Dark Gray": 40,
+    "Dark Assailant": 40,
+    "z:zombie-master:1": 40,
+    "Mystic Clown": 40
+   }
+  },
+  "yugi-muto": {
+   "pow": {
+    "Dark Magician": 40,
+    "Summoned Skull": 40,
+    "Gaia the Fierce Knight": 40,
+    "z:buster-blader:1": 40,
+    "z:dark-magician-of-chaos:1": 20
+   },
+   "tec": {
+    "Celtic Guardian": 40,
+    "z:dark-magician-girl:1": 40,
+    "Magician of Black Chaos": 40,
+    "z:black-luster-soldier-envoy-of-the-beginning:1": 10,
+    "Curse of Dragon": 40
+   }
+  },
+  "rishid": {
+   "pow": {
+    "z:spirit-of-the-pharaoh:1": 40,
+    "z:dark-necrofear:1": 30,
+    "z:sphinx-teleia:1": 30,
+    "z:gravekeeper-s-assailant:1": 40
+   },
+   "tec": {
+    "z:gravekeeper-s-guard:1": 40,
+    "z:gravekeeper-s-spy:1": 40,
+    "Reaper of the Cards": 40,
+    "Dokurorider": 40
+   }
+  },
+  "marik-ishtar": {
+   "pow": {
+    "z:the-winged-dragon-of-ra:1": 4,
+    "z:dark-necrofear:1": 30,
+    "z:spirit-of-the-pharaoh:1": 40,
+    "Fiend's Hand": 40
+   },
+   "tec": {
+    "Fiend's Hand": 40,
+    "Judge Man": 40,
+    "Skull Knight": 40,
+    "z:gil-garth:1": 40
+   }
+  },
+  "yami-marik": {
+   "pow": {
+    "z:the-winged-dragon-of-ra:1": 8,
+    "z:slifer-the-sky-dragon:1": 8,
+    "z:obelisk-the-tormentor:1": 8,
+    "z:dark-necrofear:1": 30,
+    "Magician of Black Chaos": 40,
+    "z:spirit-of-the-pharaoh:1": 40
+   },
+   "tec": {
+    "Fiend's Hand": 40,
+    "Judge Man": 40,
+    "Skull Knight": 40,
+    "z:gil-garth:1": 40
+   }
+  },
+  "atemu": {
+   "pow": {
+    "z:slifer-the-sky-dragon:1": 10,
+    "z:obelisk-the-tormentor:1": 10,
+    "z:the-winged-dragon-of-ra:1": 10,
+    "z:dark-magician-of-chaos:1": 30,
+    "z:black-luster-soldier-envoy-of-the-beginning:1": 15
+   },
+   "tec": {
+    "Dark Magician": 40,
+    "z:dark-magician-girl:1": 40,
+    "z:buster-blader:1": 40,
+    "Gaia the Fierce Knight": 40,
+    "Summoned Skull": 40
    }
   },
   "jaden-yuki": {
@@ -16310,6 +16680,1364 @@
   },
   {
    "with": [
+    "z:dark-necrofear:1",
+    471
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    401
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    365
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    385
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    472
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    85
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    564
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    711
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    706
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    39
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    82
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    370
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    "z:empress-mantis:1"
+   ],
+   "result": 37
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    "z:ryu-ran:1"
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "z:dark-necrofear:1",
+    "z:twin-headed-fire-dragon:1"
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    719
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    99
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    564
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    545
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    97
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    368
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    39
+   ],
+   "result": 69
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    85
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    378
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    500
+   ],
+   "result": 82
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    551
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    594
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    "z:slot-machine:1"
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    "z:the-earl-of-demise:1"
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "z:vampire-lord:1",
+    "z:archfiend-soldier:1"
+   ],
+   "result": 564
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    99
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    545
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    719
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    97
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    368
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    596
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    379
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    523
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    388
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    415
+   ],
+   "result": 471
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    526
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    124
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    "z:dark-blade:1"
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    "z:gadget-soldier:1"
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:zombie-master:1",
+    "z:great-angus:1"
+   ],
+   "result": 483
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    631
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    433
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    493
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    44
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    363
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    622
+   ],
+   "result": 582
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    10
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    31
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    36
+   ],
+   "result": 495
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    96
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    168
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    281
+   ],
+   "result": 495
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    "z:flying-kamakiri-2:1"
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    "z:gamma-the-magnet-warrior:1"
+   ],
+   "result": 545
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    "z:gazelle-the-king-of-mythical-beasts:1"
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    114
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    190
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    259
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    530
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    142
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    174
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    5
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    48
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    175
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    178
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    215
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    228
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    "z:acrobat-monkey:1"
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    "z:battle-footballer:1"
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    "z:dark-bat:1"
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    42
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    128
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    213
+   ],
+   "result": 430
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    216
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    284
+   ],
+   "result": 23
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    115
+   ],
+   "result": 31
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    30
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    112
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    132
+   ],
+   "result": 433
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    169
+   ],
+   "result": 10
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    171
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    194
+   ],
+   "result": 433
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    "z:gradius:1"
+   ],
+   "result": 433
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    "z:neo-aqua-madoor:1"
+   ],
+   "result": 149
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    "z:shapesnatch:1"
+   ],
+   "result": 433
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    722
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    708
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    707
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    35
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    372
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    551
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    360
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    705
+   ],
+   "result": 713
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    364
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    391
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    392
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    716
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    "z:metal-armored-bug:1"
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    "z:wingweaver:1"
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "z:dark-magician-of-chaos:1",
+    "z:big-koala:1"
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    647
+   ],
+   "result": 440
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    518
+   ],
+   "result": 617
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    599
+   ],
+   "result": 440
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    131
+   ],
+   "result": 639
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    249
+   ],
+   "result": 617
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    430
+   ],
+   "result": 73
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    230
+   ],
+   "result": 440
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    353
+   ],
+   "result": 617
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    494
+   ],
+   "result": 440
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    60
+   ],
+   "result": 639
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    438
+   ],
+   "result": 73
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    448
+   ],
+   "result": 440
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    "z:flying-kamakiri-2:1"
+   ],
+   "result": 375
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    "z:gamma-the-magnet-warrior:1"
+   ],
+   "result": 617
+  },
+  {
+   "with": [
+    "z:mermaid-knight:1",
+    "z:gazelle-the-king-of-mythical-beasts:1"
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    564
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    719
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    99
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    545
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    97
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    368
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    358
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    371
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    427
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    704
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    1
+   ],
+   "result": 217
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    "z:giga-gagagigo:1"
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    "z:amphibian-beast:1"
+   ],
+   "result": 613
+  },
+  {
+   "with": [
+    "z:spirit-of-the-pharaoh:1",
+    "z:beast-of-talwar:1"
+   ],
+   "result": 392
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    94
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    357
+   ],
+   "result": 473
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    10
+   ],
+   "result": 99
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    31
+   ],
+   "result": 582
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    168
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    555
+   ],
+   "result": 473
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    44
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    425
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    622
+   ],
+   "result": 582
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    396
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    493
+   ],
+   "result": 386
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    513
+   ],
+   "result": 409
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:inpachi:1"
+   ],
+   "result": 376
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:overdrive:1"
+   ],
+   "result": 487
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:robotic-knight:1"
+   ],
+   "result": 15
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    404
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    23
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    91
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    163
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    587
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    607
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    578
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    641
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    41
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    64
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    74
+   ],
+   "result": 434
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    165
+   ],
+   "result": 423
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:alpha-the-magnet-warrior:1"
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:cyber-falcon:1"
+   ],
+   "result": 11
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:oni-tank-t-34:1"
+   ],
+   "result": 438
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    5
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    48
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    175
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    178
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    181
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    279
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    190
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    215
+   ],
+   "result": 162
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    228
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    259
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    267
+   ],
+   "result": 294
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    406
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    "z:acrobat-monkey:1"
+   ],
+   "result": 171
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    "z:battle-footballer:1"
+   ],
+   "result": 412
+  },
+  {
+   "with": [
+    "z:wall-of-illusion:1",
+    "z:dark-bat:1"
+   ],
+   "result": 30
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    379
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    523
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    526
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    204
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    650
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    87
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    99
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    388
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    415
+   ],
+   "result": 401
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    124
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    419
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    545
+   ],
+   "result": 39
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    "z:dark-blade:1"
+   ],
+   "result": 551
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    "z:gadget-soldier:1"
+   ],
+   "result": 594
+  },
+  {
+   "with": [
+    "z:gil-garth:1",
+    "z:great-angus:1"
+   ],
+   "result": 39
+  },
+  {
+   "with": [
     "z:cyber-dragon:1",
     "z:cyber-dragon:1"
    ],
@@ -17137,6 +18865,13 @@
   {
    "with": [
     613,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:thunder-dragon-titan:1"
+  },
+  {
+   "with": [
+    613,
     "z:horus-the-black-flame-dragon-lv8:1"
    ],
    "result": "z:thunder-dragon-titan:1"
@@ -17572,6 +19307,13 @@
    "with": [
     73,
     "z:boneheimer:1"
+   ],
+   "result": "z:spiral-serpent:1"
+  },
+  {
+   "with": [
+    73,
+    "z:mermaid-knight:1"
    ],
    "result": "z:spiral-serpent:1"
   },
@@ -18039,6 +19781,13 @@
   },
   {
    "with": [
+    443,
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:spiral-serpent:1"
+  },
+  {
+   "with": [
     448,
     447
    ],
@@ -18405,6 +20154,13 @@
    "with": [
     "z:sea-serpent-warrior-of-darkness:1",
     "z:boneheimer:1"
+   ],
+   "result": "z:spiral-serpent:1"
+  },
+  {
+   "with": [
+    "z:sea-serpent-warrior-of-darkness:1",
+    "z:mermaid-knight:1"
    ],
    "result": "z:spiral-serpent:1"
   },
@@ -26341,6 +28097,13 @@
   },
   {
    "with": [
+    "z:mermaid-knight:1",
+    458
+   ],
+   "result": "z:cloudian-eye-of-the-typhoon:1"
+  },
+  {
+   "with": [
     45,
     63
    ],
@@ -27832,6 +29595,13 @@
   },
   {
    "with": [
+    14,
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:beast-king-barbaros:1"
+  },
+  {
+   "with": [
     26,
     23
    ],
@@ -28800,6 +30570,13 @@
    "with": [
     382,
     "z:neo-spacian-dark-panther:1"
+   ],
+   "result": "z:beast-king-barbaros:1"
+  },
+  {
+   "with": [
+    382,
+    "z:skull-dog-marron:1"
    ],
    "result": "z:beast-king-barbaros:1"
   },
@@ -30079,6 +31856,13 @@
   },
   {
    "with": [
+    4,
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     7,
     87
    ],
@@ -30135,6 +31919,13 @@
   },
   {
    "with": [
+    7,
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     10,
     87
    ],
@@ -30191,6 +31982,13 @@
   },
   {
    "with": [
+    10,
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     31,
     87
    ],
@@ -30242,6 +32040,13 @@
    "with": [
     31,
     "z:opticlops:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    31,
+    "z:gil-garth:1"
    ],
    "result": "z:red-dragon-archfiend:1"
   },
@@ -30695,6 +32500,20 @@
   },
   {
    "with": [
+    94,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    94,
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     122,
     87
    ],
@@ -30751,6 +32570,13 @@
   },
   {
    "with": [
+    122,
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     168,
     87
    ],
@@ -30807,6 +32633,13 @@
   },
   {
    "with": [
+    168,
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     200,
     87
    ],
@@ -30863,6 +32696,13 @@
   },
   {
    "with": [
+    200,
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     296,
     87
    ],
@@ -30919,6 +32759,13 @@
   },
   {
    "with": [
+    296,
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     298,
     87
    ],
@@ -30970,6 +32817,13 @@
    "with": [
     298,
     "z:opticlops:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    298,
+    "z:gil-garth:1"
    ],
    "result": "z:red-dragon-archfiend:1"
   },
@@ -31423,6 +33277,20 @@
   },
   {
    "with": [
+    357,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    357,
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     555,
     5
    ],
@@ -31871,6 +33739,20 @@
   },
   {
    "with": [
+    555,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    555,
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     561,
     87
    ],
@@ -31927,6 +33809,13 @@
   },
   {
    "with": [
+    561,
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     603,
     87
    ],
@@ -31978,6 +33867,13 @@
    "with": [
     603,
     "z:opticlops:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    603,
+    "z:gil-garth:1"
    ],
    "result": "z:red-dragon-archfiend:1"
   },
@@ -32431,6 +34327,20 @@
   },
   {
    "with": [
+    712,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    712,
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     "z:the-dragon-dwelling-in-the-cave:1",
     87
    ],
@@ -32487,6 +34397,13 @@
   },
   {
    "with": [
+    "z:the-dragon-dwelling-in-the-cave:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     "z:lizard-soldier:1",
     87
    ],
@@ -32538,6 +34455,475 @@
    "with": [
     "z:lizard-soldier:1",
     "z:opticlops:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:lizard-soldier:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    5
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    6
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    25
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    48
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    58
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    83
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    84
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    86
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    87
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    88
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    95
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    102
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    103
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    112
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    119
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    136
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    137
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    148
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    149
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    162
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    164
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    169
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    171
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    173
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    175
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    178
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    194
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    204
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    222
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    232
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    233
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    240
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    242
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    245
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    254
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    261
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    269
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    271
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    277
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    279
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    281
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    288
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    295
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    377
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    379
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    402
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    490
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    498
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    504
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    523
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    526
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    560
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    563
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    600
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    611
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    650
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:melchid-the-four-face-beast:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:the-gross-ghost-of-fled-dreams:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:grand-tiki-elder:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:opticlops:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:souls-of-the-forgotten:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:three-headed-geedo:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:d-d-trainer:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:berfomet:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:mirage-dragon:1",
+    "z:gil-garth:1"
    ],
    "result": "z:red-dragon-archfiend:1"
   },
@@ -32991,6 +35377,20 @@
   },
   {
    "with": [
+    "z:alligator-s-sword-dragon:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:alligator-s-sword-dragon:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
     "z:red-eyes-baby-dragon:1",
     87
    ],
@@ -33042,6 +35442,13 @@
    "with": [
     "z:red-eyes-baby-dragon:1",
     "z:opticlops:1"
+   ],
+   "result": "z:red-dragon-archfiend:1"
+  },
+  {
+   "with": [
+    "z:red-eyes-baby-dragon:1",
+    "z:gil-garth:1"
    ],
    "result": "z:red-dragon-archfiend:1"
   },
@@ -34650,6 +37057,27 @@
   },
   {
    "with": [
+    389,
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+  },
+  {
+   "with": [
+    389,
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+  },
+  {
+   "with": [
+    389,
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+  },
+  {
+   "with": [
     704,
     2
    ],
@@ -35007,6 +37435,27 @@
   },
   {
    "with": [
+    704,
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+  },
+  {
+   "with": [
+    704,
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+  },
+  {
+   "with": [
+    704,
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+  },
+  {
+   "with": [
     "z:king-s-knight:1",
     2
    ],
@@ -35331,6 +37780,27 @@
    "with": [
     "z:king-s-knight:1",
     "z:dark-magician-girl:1"
+   ],
+   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+  },
+  {
+   "with": [
+    "z:king-s-knight:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+  },
+  {
+   "with": [
+    "z:king-s-knight:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+  },
+  {
+   "with": [
+    "z:king-s-knight:1",
+    "z:gravekeeper-s-spy:1"
    ],
    "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
   },
@@ -35714,6 +38184,20 @@
   },
   {
    "with": [
+    "z:jack-s-knight:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+  },
+  {
+   "with": [
+    "z:jack-s-knight:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+  },
+  {
+   "with": [
     4,
     390
    ],
@@ -40621,6 +43105,20 @@
   },
   {
    "with": [
+    401,
+    "z:vampire-lord:1"
+   ],
+   "result": "z:the-masked-beast:1"
+  },
+  {
+   "with": [
+    401,
+    "z:zombie-master:1"
+   ],
+   "result": "z:the-masked-beast:1"
+  },
+  {
+   "with": [
     471,
     3
    ],
@@ -40950,6 +43448,20 @@
   },
   {
    "with": [
+    471,
+    "z:vampire-lord:1"
+   ],
+   "result": "z:the-masked-beast:1"
+  },
+  {
+   "with": [
+    471,
+    "z:zombie-master:1"
+   ],
+   "result": "z:the-masked-beast:1"
+  },
+  {
+   "with": [
     49,
     403
    ],
@@ -41734,6 +44246,13 @@
   },
   {
    "with": [
+    375,
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:doom-dozer:1"
+  },
+  {
+   "with": [
     397,
     403
    ],
@@ -42588,6 +45107,13 @@
   },
   {
    "with": [
+    614,
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:doom-dozer:1"
+  },
+  {
+   "with": [
     640,
     403
    ],
@@ -42987,6 +45513,13 @@
   },
   {
    "with": [
+    "z:girochin-kuwagata:1",
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:doom-dozer:1"
+  },
+  {
+   "with": [
     "z:neo-bug:1",
     23
    ],
@@ -43304,6 +45837,13 @@
    "with": [
     "z:neo-bug:1",
     "z:neo-spacian-dark-panther:1"
+   ],
+   "result": "z:doom-dozer:1"
+  },
+  {
+   "with": [
+    "z:neo-bug:1",
+    "z:skull-dog-marron:1"
    ],
    "result": "z:doom-dozer:1"
   },
@@ -43675,6 +46215,13 @@
    "with": [
     35,
     "z:jack-s-knight:1"
+   ],
+   "result": "z:dark-magician-of-destruction:1"
+  },
+  {
+   "with": [
+    35,
+    "z:spirit-of-the-pharaoh:1"
    ],
    "result": "z:dark-magician-of-destruction:1"
   },
@@ -44787,6 +47334,41 @@
   {
    "with": [
     35,
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:dark-magician-of-destruction:1"
+  },
+  {
+   "with": [
+    35,
+    "z:vampire-lord:1"
+   ],
+   "result": "z:dark-magician-of-destruction:1"
+  },
+  {
+   "with": [
+    35,
+    "z:zombie-master:1"
+   ],
+   "result": "z:dark-magician-of-destruction:1"
+  },
+  {
+   "with": [
+    35,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:dark-magician-of-destruction:1"
+  },
+  {
+   "with": [
+    35,
+    "z:gil-garth:1"
+   ],
+   "result": "z:dark-magician-of-destruction:1"
+  },
+  {
+   "with": [
+    35,
     "z:dark-master-zorc:1"
    ],
    "result": "z:dark-magician-of-destruction:1"
@@ -44892,6 +47474,13 @@
   {
    "with": [
     34,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    34,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -44990,6 +47579,13 @@
   {
    "with": [
     42,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    42,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -45088,6 +47684,13 @@
   {
    "with": [
     104,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    104,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -45186,6 +47789,13 @@
   {
    "with": [
     115,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    115,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -45284,6 +47894,13 @@
   {
    "with": [
     129,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    129,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -45382,6 +47999,13 @@
   {
    "with": [
     143,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    143,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -45480,6 +48104,13 @@
   {
    "with": [
     145,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    145,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -45578,6 +48209,13 @@
   {
    "with": [
     179,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    179,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -45676,6 +48314,13 @@
   {
    "with": [
     190,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    190,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -45774,6 +48419,13 @@
   {
    "with": [
     220,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    220,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -45872,6 +48524,13 @@
   {
    "with": [
     253,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    253,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -45970,6 +48629,13 @@
   {
    "with": [
     259,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    259,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -46068,6 +48734,13 @@
   {
    "with": [
     268,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    268,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -46160,6 +48833,13 @@
    "with": [
     387,
     "z:ryu-ran:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    387,
+    "z:mirage-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
   },
@@ -46258,6 +48938,13 @@
    "with": [
     486,
     "z:ryu-ran:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    486,
+    "z:mirage-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
   },
@@ -46453,6 +49140,13 @@
   {
    "with": [
     551,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    551,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -46558,6 +49252,13 @@
   {
    "with": [
     574,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    574,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -46650,6 +49351,13 @@
    "with": [
     628,
     "z:ryu-ran:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    628,
+    "z:mirage-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
   },
@@ -46845,6 +49553,13 @@
   {
    "with": [
     720,
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    720,
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -46930,6 +49645,13 @@
    "with": [
     "z:thousand-eyes-idol:1",
     "z:luster-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:thousand-eyes-idol:1",
+    "z:mirage-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
   },
@@ -47034,6 +49756,321 @@
   {
    "with": [
     "z:the-illusory-gentleman:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:the-illusory-gentleman:1",
+    "z:alligator-s-sword-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    39
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    94
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    357
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    383
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    386
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    424
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    555
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    571
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    711
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    712
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    "z:luster-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    "z:hyozanryu:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    "z:ryu-ran:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-assailant:1",
+    "z:alligator-s-sword-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    39
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    94
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    357
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    383
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    386
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    424
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    555
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    571
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    711
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    712
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    "z:luster-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    "z:hyozanryu:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    "z:ryu-ran:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-guard:1",
+    "z:alligator-s-sword-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    39
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    94
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    357
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    383
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    386
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    424
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    555
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    571
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    711
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    712
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    "z:luster-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    "z:hyozanryu:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    "z:ryu-ran:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:gravekeeper-s-spy:1",
     "z:alligator-s-sword-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
@@ -47231,6 +50268,13 @@
    "with": [
     35,
     "z:lizard-soldier:1"
+   ],
+   "result": "z:dark-magician-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    35,
+    "z:mirage-dragon:1"
    ],
    "result": "z:dark-magician-the-dragon-knight:1"
   },
@@ -47602,6 +50646,13 @@
    "with": [
     "z:sphinx-teleia:1",
     "z:neo-spacian-dark-panther:1"
+   ],
+   "result": "z:guardian-chimera:1"
+  },
+  {
+   "with": [
+    "z:sphinx-teleia:1",
+    "z:skull-dog-marron:1"
    ],
    "result": "z:guardian-chimera:1"
   },
@@ -48055,6 +51106,27 @@
   },
   {
    "with": [
+    90,
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:st-joan:1"
+  },
+  {
+   "with": [
+    90,
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:st-joan:1"
+  },
+  {
+   "with": [
+    90,
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:st-joan:1"
+  },
+  {
+   "with": [
     109,
     44
    ],
@@ -48309,6 +51381,13 @@
    "with": [
     111,
     "z:neo-aqua-madoor:1"
+   ],
+   "result": "z:st-joan:1"
+  },
+  {
+   "with": [
+    111,
+    "z:gravekeeper-s-spy:1"
    ],
    "result": "z:st-joan:1"
   },
@@ -48636,6 +51715,27 @@
   },
   {
    "with": [
+    126,
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:st-joan:1"
+  },
+  {
+   "with": [
+    126,
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:st-joan:1"
+  },
+  {
+   "with": [
+    126,
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:st-joan:1"
+  },
+  {
+   "with": [
     130,
     44
    ],
@@ -49483,6 +52583,27 @@
   },
   {
    "with": [
+    582,
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:st-joan:1"
+  },
+  {
+   "with": [
+    582,
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:st-joan:1"
+  },
+  {
+   "with": [
+    582,
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:st-joan:1"
+  },
+  {
+   "with": [
     584,
     44
    ],
@@ -49938,6 +53059,13 @@
   },
   {
    "with": [
+    "z:shining-abyss:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:st-joan:1"
+  },
+  {
+   "with": [
     "z:mokey-mokey:1",
     44
    ],
@@ -51079,6 +54207,13 @@
   },
   {
    "with": [
+    439,
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:hyper-ancient-shark-megalodon:1"
+  },
+  {
+   "with": [
     440,
     70
    ],
@@ -51513,6 +54648,13 @@
   },
   {
    "with": [
+    440,
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:hyper-ancient-shark-megalodon:1"
+  },
+  {
+   "with": [
     494,
     131
    ],
@@ -51989,6 +55131,13 @@
   },
   {
    "with": [
+    507,
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:hyper-ancient-shark-megalodon:1"
+  },
+  {
+   "with": [
     542,
     131
    ],
@@ -52549,6 +55698,13 @@
   },
   {
    "with": [
+    617,
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:hyper-ancient-shark-megalodon:1"
+  },
+  {
+   "with": [
     626,
     131
    ],
@@ -53272,6 +56428,13 @@
    "with": [
     400,
     "z:boneheimer:1"
+   ],
+   "result": "z:gagagigo-the-risen:1"
+  },
+  {
+   "with": [
+    400,
+    "z:mermaid-knight:1"
    ],
    "result": "z:gagagigo-the-risen:1"
   },
@@ -56666,6 +59829,13 @@
   {
    "with": [
     403,
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:sphinx-teleia:1"
+  },
+  {
+   "with": [
+    403,
     "z:chimera-the-flying-mythical-beast:1"
    ],
    "result": "z:sphinx-teleia:1"
@@ -56946,6 +60116,13 @@
   {
    "with": [
     483,
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:sphinx-teleia:1"
+  },
+  {
+   "with": [
+    483,
     "z:chimera-the-flying-mythical-beast:1"
    ],
    "result": "z:sphinx-teleia:1"
@@ -57107,6 +60284,13 @@
   {
    "with": [
     487,
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:sphinx-teleia:1"
+  },
+  {
+   "with": [
+    487,
     "z:chimera-the-flying-mythical-beast:1"
    ],
    "result": "z:sphinx-teleia:1"
@@ -57317,6 +60501,13 @@
   {
    "with": [
     528,
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:sphinx-teleia:1"
+  },
+  {
+   "with": [
+    528,
     "z:chimera-the-flying-mythical-beast:1"
    ],
    "result": "z:sphinx-teleia:1"
@@ -57478,6 +60669,13 @@
   {
    "with": [
     575,
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:sphinx-teleia:1"
+  },
+  {
+   "with": [
+    575,
     "z:chimera-the-flying-mythical-beast:1"
    ],
    "result": "z:sphinx-teleia:1"
@@ -57800,6 +60998,13 @@
   {
    "with": [
     "z:mad-dog-of-darkness:1",
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:sphinx-teleia:1"
+  },
+  {
+   "with": [
+    "z:mad-dog-of-darkness:1",
     "z:chimera-the-flying-mythical-beast:1"
    ],
    "result": "z:sphinx-teleia:1"
@@ -57870,6 +61075,13 @@
   {
    "with": [
     "z:great-angus:1",
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:sphinx-teleia:1"
+  },
+  {
+   "with": [
+    "z:great-angus:1",
     "z:chimera-the-flying-mythical-beast:1"
    ],
    "result": "z:sphinx-teleia:1"
@@ -57933,6 +61145,20 @@
   {
    "with": [
     "z:neo-spacian-dark-panther:1",
+    "z:chimera-the-king-of-phantom-beasts:1"
+   ],
+   "result": "z:sphinx-teleia:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:chimera-the-flying-mythical-beast:1"
+   ],
+   "result": "z:sphinx-teleia:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
     "z:chimera-the-king-of-phantom-beasts:1"
    ],
    "result": "z:sphinx-teleia:1"
@@ -58312,6 +61538,13 @@
    "with": [
     529,
     "z:neo-spacian-dark-panther:1"
+   ],
+   "result": "z:sphinx-teleia:1"
+  },
+  {
+   "with": [
+    529,
+    "z:skull-dog-marron:1"
    ],
    "result": "z:sphinx-teleia:1"
   },
@@ -64520,6 +67753,34 @@
   {
    "with": [
     "z:chimera-the-flying-mythical-beast:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:chimera-the-illusion-beast:1"
+  },
+  {
+   "with": [
+    "z:chimera-the-flying-mythical-beast:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:chimera-the-illusion-beast:1"
+  },
+  {
+   "with": [
+    "z:chimera-the-flying-mythical-beast:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:chimera-the-illusion-beast:1"
+  },
+  {
+   "with": [
+    "z:chimera-the-flying-mythical-beast:1",
+    "z:dark-magician-of-chaos:1"
+   ],
+   "result": "z:chimera-the-illusion-beast:1"
+  },
+  {
+   "with": [
+    "z:chimera-the-flying-mythical-beast:1",
     "z:dark-paladin:1"
    ],
    "result": "z:chimera-the-illusion-beast:1"
@@ -65072,6 +68333,20 @@
   },
   {
    "with": [
+    23,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    23,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     46,
     5
    ],
@@ -65576,6 +68851,20 @@
   },
   {
    "with": [
+    46,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    46,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     47,
     5
    ],
@@ -66075,6 +69364,20 @@
    "with": [
     47,
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    47,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    47,
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -66591,6 +69894,20 @@
   },
   {
    "with": [
+    61,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    61,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     65,
     5
    ],
@@ -67102,6 +70419,20 @@
   },
   {
    "with": [
+    65,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    65,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     91,
     5
    ],
@@ -67613,6 +70944,20 @@
   },
   {
    "with": [
+    91,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    91,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     113,
     5
    ],
@@ -68124,6 +71469,20 @@
   },
   {
    "with": [
+    113,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    113,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     121,
     5
    ],
@@ -68630,6 +71989,20 @@
    "with": [
     121,
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    121,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    121,
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -69160,6 +72533,20 @@
   },
   {
    "with": [
+    155,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    155,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     159,
     5
    ],
@@ -69678,6 +73065,20 @@
   },
   {
    "with": [
+    159,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    159,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     163,
     5
    ],
@@ -70203,6 +73604,20 @@
   },
   {
    "with": [
+    163,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    163,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     187,
     5
    ],
@@ -70728,6 +74143,20 @@
   },
   {
    "with": [
+    187,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    187,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     188,
     5
    ],
@@ -71239,6 +74668,20 @@
   },
   {
    "with": [
+    188,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    188,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     189,
     5
    ],
@@ -71731,6 +75174,20 @@
    "with": [
     189,
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    189,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    189,
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -72247,6 +75704,20 @@
   },
   {
    "with": [
+    201,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    201,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     202,
     5
    ],
@@ -72753,6 +76224,20 @@
    "with": [
     202,
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    202,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    202,
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -73283,6 +76768,20 @@
   },
   {
    "with": [
+    212,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    212,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     248,
     5
    ],
@@ -73789,6 +77288,20 @@
    "with": [
     248,
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    248,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    248,
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -74319,6 +77832,20 @@
   },
   {
    "with": [
+    252,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    252,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     255,
     5
    ],
@@ -74830,6 +78357,20 @@
   },
   {
    "with": [
+    255,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    255,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     282,
     6
    ],
@@ -75105,6 +78646,13 @@
    "with": [
     282,
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    282,
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -75635,6 +79183,20 @@
   },
   {
    "with": [
+    384,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    384,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     403,
     5
    ],
@@ -76141,6 +79703,20 @@
    "with": [
     403,
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    403,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    403,
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -76671,6 +80247,20 @@
   },
   {
    "with": [
+    404,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    404,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     481,
     5
    ],
@@ -77177,6 +80767,20 @@
    "with": [
     481,
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    481,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    481,
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -77707,6 +81311,20 @@
   },
   {
    "with": [
+    483,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    483,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     487,
     5
    ],
@@ -78213,6 +81831,20 @@
    "with": [
     487,
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    487,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    487,
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -78743,6 +82375,20 @@
   },
   {
    "with": [
+    496,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    496,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     527,
     5
    ],
@@ -79254,6 +82900,20 @@
   },
   {
    "with": [
+    527,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    527,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     528,
     5
    ],
@@ -79760,6 +83420,20 @@
    "with": [
     528,
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    528,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    528,
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -80290,6 +83964,20 @@
   },
   {
    "with": [
+    541,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    541,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     575,
     5
    ],
@@ -80796,6 +84484,20 @@
    "with": [
     575,
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    575,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    575,
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -81326,6 +85028,20 @@
   },
   {
    "with": [
+    587,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    587,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     597,
     5
    ],
@@ -81837,6 +85553,20 @@
   },
   {
    "with": [
+    597,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    597,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     598,
     5
    ],
@@ -82348,6 +86078,20 @@
   },
   {
    "with": [
+    598,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    598,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     604,
     5
    ],
@@ -82854,6 +86598,20 @@
    "with": [
     604,
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    604,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    604,
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -83384,6 +87142,20 @@
   },
   {
    "with": [
+    607,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    607,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     629,
     5
    ],
@@ -83895,6 +87667,20 @@
   },
   {
    "with": [
+    629,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    629,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     642,
     5
    ],
@@ -84406,6 +88192,20 @@
   },
   {
    "with": [
+    642,
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    642,
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     "z:gazelle-the-king-of-mythical-beasts:1",
     5
    ],
@@ -84898,6 +88698,20 @@
    "with": [
     "z:gazelle-the-king-of-mythical-beasts:1",
     "z:dokuroyaiba:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:gazelle-the-king-of-mythical-beasts:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:gazelle-the-king-of-mythical-beasts:1",
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -85428,6 +89242,20 @@
   },
   {
    "with": [
+    "z:ojama-black:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:ojama-black:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     "z:ojama-green:1",
     5
    ],
@@ -85946,6 +89774,20 @@
   },
   {
    "with": [
+    "z:ojama-green:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:ojama-green:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     "z:mad-dog-of-darkness:1",
     5
    ],
@@ -86438,6 +90280,20 @@
    "with": [
     "z:mad-dog-of-darkness:1",
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:mad-dog-of-darkness:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:mad-dog-of-darkness:1",
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -86954,6 +90810,20 @@
   },
   {
    "with": [
+    "z:ojama-yellow:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:ojama-yellow:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     "z:great-angus:1",
     5
    ],
@@ -87465,6 +91335,13 @@
   },
   {
    "with": [
+    "z:great-angus:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     "z:the-all-seeing-white-tiger:1",
     5
    ],
@@ -87976,6 +91853,20 @@
   },
   {
    "with": [
+    "z:the-all-seeing-white-tiger:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:the-all-seeing-white-tiger:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     "z:soul-tiger:1",
     5
    ],
@@ -88487,6 +92378,20 @@
   },
   {
    "with": [
+    "z:soul-tiger:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:soul-tiger:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     "z:alligator-s-sword:1",
     5
    ],
@@ -88998,6 +92903,20 @@
   },
   {
    "with": [
+    "z:alligator-s-sword:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:alligator-s-sword:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     "z:neo-spacian-dark-panther:1",
     6
    ],
@@ -89483,6 +93402,545 @@
    "with": [
     "z:neo-spacian-dark-panther:1",
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:neo-spacian-dark-panther:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:neo-spacian-dark-panther:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    5
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    6
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    25
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    48
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    58
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    83
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    84
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    85
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    86
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    87
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    88
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    95
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    102
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    103
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    112
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    119
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    136
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    137
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    148
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    149
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    162
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    164
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    169
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    171
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    173
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    178
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    181
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    194
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    204
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    222
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    232
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    233
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    240
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    245
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    254
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    261
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    269
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    271
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    277
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    279
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    281
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    288
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    295
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    365
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    377
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    379
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    402
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    472
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    490
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    498
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    500
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    504
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    523
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    526
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    560
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    563
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    611
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    650
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    715
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:archfiend-soldier:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:earthbound-spirit:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:melchid-the-four-face-beast:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:headless-knight:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:the-gross-ghost-of-fled-dreams:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:grand-tiki-elder:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:the-earl-of-demise:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:opticlops:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:the-portrait-s-secret:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:souls-of-the-forgotten:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:three-headed-geedo:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:d-d-trainer:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:dokuroyaiba:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:skull-dog-marron:1",
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -90020,6 +94478,20 @@
   },
   {
    "with": [
+    "z:chimera-the-flying-mythical-beast:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:chimera-the-flying-mythical-beast:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
     "z:chimera-the-king-of-phantom-beasts:1",
     5
    ],
@@ -90547,6 +95019,20 @@
    "with": [
     "z:chimera-the-king-of-phantom-beasts:1",
     "z:berfomet:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:chimera-the-king-of-phantom-beasts:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:chimera-the-king-of-phantom-beasts:1"
+  },
+  {
+   "with": [
+    "z:chimera-the-king-of-phantom-beasts:1",
+    "z:gil-garth:1"
    ],
    "result": "z:chimera-the-king-of-phantom-beasts:1"
   },
@@ -91289,6 +95775,13 @@
    "with": [
     "z:elemental-hero-neos:1",
     "z:boneheimer:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos:1",
+    "z:mermaid-knight:1"
    ],
    "result": "z:elemental-hero-absolute-zero:1"
   },
@@ -92071,6 +96564,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-avian:1",
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-burstinatrix:1",
     60
    ],
@@ -92848,6 +97348,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-burstinatrix:1",
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-clayman:1",
     60
    ],
@@ -93625,6 +98132,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-clayman:1",
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-sparkman:1",
     60
    ],
@@ -94402,6 +98916,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-sparkman:1",
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-absolute-zero:1",
     60
    ],
@@ -95179,6 +99700,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-absolute-zero:1",
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-escuridao:1",
     60
    ],
@@ -95956,6 +100484,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-escuridao:1",
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-gaia:1",
     60
    ],
@@ -96733,6 +101268,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-gaia:1",
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-air-neos:1",
     60
    ],
@@ -97498,6 +102040,13 @@
    "with": [
     "z:elemental-hero-air-neos:1",
     "z:neo-spacian-marine-dolphin:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-air-neos:1",
+    "z:mermaid-knight:1"
    ],
    "result": "z:elemental-hero-absolute-zero:1"
   },
@@ -98280,6 +102829,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-aqua-neos:1",
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-dark-neos:1",
     60
    ],
@@ -99057,6 +103613,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-dark-neos:1",
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-flare-neos:1",
     60
    ],
@@ -99834,6 +104397,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-flare-neos:1",
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-grand-neos:1",
     60
    ],
@@ -100611,6 +105181,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-grand-neos:1",
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-neos-knight:1",
     60
    ],
@@ -101388,6 +105965,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-neos-knight:1",
+    "z:mermaid-knight:1"
+   ],
+   "result": "z:elemental-hero-absolute-zero:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-neos:1",
     5
    ],
@@ -102559,6 +107143,62 @@
    "with": [
     "z:elemental-hero-neos:1",
     "z:archfiend-giant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos:1",
+    "z:gil-garth:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
   },
@@ -103853,6 +108493,62 @@
   {
    "with": [
     "z:elemental-hero-avian:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-avian:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-avian:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-avian:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-avian:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-avian:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-avian:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-avian:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-avian:1",
     "z:ryu-kokki:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
@@ -105141,6 +109837,62 @@
   {
    "with": [
     "z:elemental-hero-burstinatrix:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-burstinatrix:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-burstinatrix:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-burstinatrix:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-burstinatrix:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-burstinatrix:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-burstinatrix:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-burstinatrix:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-burstinatrix:1",
     "z:ryu-kokki:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
@@ -106429,6 +111181,62 @@
   {
    "with": [
     "z:elemental-hero-clayman:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-clayman:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-clayman:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-clayman:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-clayman:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-clayman:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-clayman:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-clayman:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-clayman:1",
     "z:ryu-kokki:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
@@ -107717,6 +112525,62 @@
   {
    "with": [
     "z:elemental-hero-sparkman:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-sparkman:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-sparkman:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-sparkman:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-sparkman:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-sparkman:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-sparkman:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-sparkman:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-sparkman:1",
     "z:ryu-kokki:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
@@ -109005,6 +113869,62 @@
   {
    "with": [
     "z:elemental-hero-absolute-zero:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-absolute-zero:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-absolute-zero:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-absolute-zero:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-absolute-zero:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-absolute-zero:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-absolute-zero:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-absolute-zero:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-absolute-zero:1",
     "z:ryu-kokki:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
@@ -110293,6 +115213,62 @@
   {
    "with": [
     "z:elemental-hero-escuridao:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-escuridao:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-escuridao:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-escuridao:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-escuridao:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-escuridao:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-escuridao:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-escuridao:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-escuridao:1",
     "z:ryu-kokki:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
@@ -111581,6 +116557,62 @@
   {
    "with": [
     "z:elemental-hero-gaia:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-gaia:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-gaia:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-gaia:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-gaia:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-gaia:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-gaia:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-gaia:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-gaia:1",
     "z:ryu-kokki:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
@@ -112869,6 +117901,62 @@
   {
    "with": [
     "z:elemental-hero-air-neos:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-air-neos:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-air-neos:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-air-neos:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-air-neos:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-air-neos:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-air-neos:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-air-neos:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-air-neos:1",
     "z:ryu-kokki:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
@@ -114157,6 +119245,62 @@
   {
    "with": [
     "z:elemental-hero-aqua-neos:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-aqua-neos:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-aqua-neos:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-aqua-neos:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-aqua-neos:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-aqua-neos:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-aqua-neos:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-aqua-neos:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-aqua-neos:1",
     "z:ryu-kokki:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
@@ -115445,6 +120589,62 @@
   {
    "with": [
     "z:elemental-hero-dark-neos:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-dark-neos:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-dark-neos:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-dark-neos:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-dark-neos:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-dark-neos:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-dark-neos:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-dark-neos:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-dark-neos:1",
     "z:ryu-kokki:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
@@ -116733,6 +121933,62 @@
   {
    "with": [
     "z:elemental-hero-flare-neos:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-flare-neos:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-flare-neos:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-flare-neos:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-flare-neos:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-flare-neos:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-flare-neos:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-flare-neos:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-flare-neos:1",
     "z:ryu-kokki:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
@@ -118021,6 +123277,62 @@
   {
    "with": [
     "z:elemental-hero-grand-neos:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-grand-neos:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-grand-neos:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-grand-neos:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-grand-neos:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-grand-neos:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-grand-neos:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-grand-neos:1",
+    "z:gil-garth:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-grand-neos:1",
     "z:ryu-kokki:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
@@ -119303,6 +124615,62 @@
    "with": [
     "z:elemental-hero-neos-knight:1",
     "z:archfiend-giant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos-knight:1",
+    "z:dark-necrofear:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos-knight:1",
+    "z:vampire-lord:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos-knight:1",
+    "z:zombie-master:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos-knight:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos-knight:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos-knight:1",
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos-knight:1",
+    "z:wall-of-illusion:1"
+   ],
+   "result": "z:elemental-hero-escuridao:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos-knight:1",
+    "z:gil-garth:1"
    ],
    "result": "z:elemental-hero-escuridao:1"
   },
@@ -121002,6 +126370,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-avian:1",
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:elemental-hero-gaia:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-burstinatrix:1",
     3
    ],
@@ -122670,6 +128045,13 @@
    "with": [
     "z:elemental-hero-burstinatrix:1",
     "z:neo-spacian-grand-mole:1"
+   ],
+   "result": "z:elemental-hero-gaia:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-burstinatrix:1",
+    "z:skull-dog-marron:1"
    ],
    "result": "z:elemental-hero-gaia:1"
   },
@@ -124355,6 +129737,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-clayman:1",
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:elemental-hero-gaia:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-sparkman:1",
     3
    ],
@@ -126035,6 +131424,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-sparkman:1",
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:elemental-hero-gaia:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-gaia:1",
     3
    ],
@@ -127715,6 +133111,13 @@
   },
   {
    "with": [
+    "z:elemental-hero-gaia:1",
+    "z:skull-dog-marron:1"
+   ],
+   "result": "z:elemental-hero-gaia:1"
+  },
+  {
+   "with": [
     "z:elemental-hero-neos:1",
     4
    ],
@@ -141716,6 +147119,20 @@
   {
    "with": [
     "z:elemental-hero-neos:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -142206,6 +147623,20 @@
   {
    "with": [
     "z:elemental-hero-avian:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-avian:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-avian:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -142696,6 +148127,20 @@
   {
    "with": [
     "z:elemental-hero-burstinatrix:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-burstinatrix:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-burstinatrix:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -143186,6 +148631,20 @@
   {
    "with": [
     "z:elemental-hero-clayman:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-clayman:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-clayman:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -143676,6 +149135,20 @@
   {
    "with": [
     "z:elemental-hero-sparkman:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-sparkman:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-sparkman:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -144166,6 +149639,20 @@
   {
    "with": [
     "z:elemental-hero-absolute-zero:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-absolute-zero:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-absolute-zero:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -144656,6 +150143,20 @@
   {
    "with": [
     "z:elemental-hero-escuridao:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-escuridao:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-escuridao:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -145146,6 +150647,20 @@
   {
    "with": [
     "z:elemental-hero-gaia:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-gaia:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-gaia:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -145636,6 +151151,20 @@
   {
    "with": [
     "z:elemental-hero-nova-master:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-nova-master:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-nova-master:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -146126,6 +151655,20 @@
   {
    "with": [
     "z:elemental-hero-the-shining:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-the-shining:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-the-shining:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -146616,6 +152159,20 @@
   {
    "with": [
     "z:elemental-hero-air-neos:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-air-neos:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-air-neos:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -147106,6 +152663,20 @@
   {
    "with": [
     "z:elemental-hero-aqua-neos:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-aqua-neos:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-aqua-neos:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -147596,6 +153167,20 @@
   {
    "with": [
     "z:elemental-hero-dark-neos:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-dark-neos:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-dark-neos:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -148086,6 +153671,20 @@
   {
    "with": [
     "z:elemental-hero-flare-neos:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-flare-neos:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-flare-neos:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -148576,6 +154175,20 @@
   {
    "with": [
     "z:elemental-hero-grand-neos:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-grand-neos:1",
+    "z:mirage-dragon:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-grand-neos:1",
     "z:sphinx-teleia:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
@@ -149060,6 +154673,20 @@
    "with": [
     "z:elemental-hero-neos-knight:1",
     "z:jack-s-knight:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos-knight:1",
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:elemental-hero-the-shining:1"
+  },
+  {
+   "with": [
+    "z:elemental-hero-neos-knight:1",
+    "z:mirage-dragon:1"
    ],
    "result": "z:elemental-hero-the-shining:1"
   },
@@ -157445,6 +163072,27 @@
   {
    "with": [
     82,
+    "z:vampire-lord:1"
+   ],
+   "result": "z:red-eyes-zombie-dragon-lord:1"
+  },
+  {
+   "with": [
+    82,
+    "z:zombie-master:1"
+   ],
+   "result": "z:red-eyes-zombie-dragon-lord:1"
+  },
+  {
+   "with": [
+    82,
+    "z:spirit-of-the-pharaoh:1"
+   ],
+   "result": "z:red-eyes-zombie-dragon-lord:1"
+  },
+  {
+   "with": [
+    82,
     "z:ryu-kokki:1"
    ],
    "result": "z:red-eyes-zombie-dragon-lord:1"
@@ -157677,6 +163325,13 @@
    "with": [
     "z:dark-magician-girl:1",
     "z:lizard-soldier:1"
+   ],
+   "result": "z:dark-magician-girl-the-dragon-knight:1"
+  },
+  {
+   "with": [
+    "z:dark-magician-girl:1",
+    "z:mirage-dragon:1"
    ],
    "result": "z:dark-magician-girl-the-dragon-knight:1"
   },
@@ -158067,6 +163722,27 @@
   },
   {
    "with": [
+    35,
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:the-dark-magicians:1"
+  },
+  {
+   "with": [
+    35,
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:the-dark-magicians:1"
+  },
+  {
+   "with": [
+    35,
+    "z:gravekeeper-s-spy:1"
+   ],
+   "result": "z:the-dark-magicians:1"
+  },
+  {
+   "with": [
     "z:dark-magician-girl:1",
     2
    ],
@@ -158440,6 +164116,27 @@
    "with": [
     "z:dark-magician-girl:1",
     "z:dark-magician-girl:1"
+   ],
+   "result": "z:the-dark-magicians:1"
+  },
+  {
+   "with": [
+    "z:dark-magician-girl:1",
+    "z:gravekeeper-s-assailant:1"
+   ],
+   "result": "z:the-dark-magicians:1"
+  },
+  {
+   "with": [
+    "z:dark-magician-girl:1",
+    "z:gravekeeper-s-guard:1"
+   ],
+   "result": "z:the-dark-magicians:1"
+  },
+  {
+   "with": [
+    "z:dark-magician-girl:1",
+    "z:gravekeeper-s-spy:1"
    ],
    "result": "z:the-dark-magicians:1"
   },
@@ -160279,6 +165976,13 @@
   },
   {
    "with": [
+    554,
+    "z:zombie-master:1"
+   ],
+   "result": 453
+  },
+  {
+   "with": [
     453,
     15
    ],
@@ -160574,16 +166278,505 @@
  ],
  "duelists": [
   {
+   "id": "mako-tsunami",
+   "copy": "Seto",
+   "name": "Mako Tsunami",
+   "unlock": {
+    "beat": "Jono 2nd"
+   },
+   "slot": 40,
+   "ai": {
+    "copy": "Seto 2nd",
+    "search": 10
+   },
+   "portrait": "portraits/mako-tsunami.png"
+  },
+  {
+   "id": "duke-devlin",
+   "copy": "Mai Valentine",
+   "name": "Duke Devlin",
+   "unlock": {
+    "beat": "mako-tsunami"
+   },
+   "slot": 41,
+   "ai": {
+    "copy": "Mai Valentine",
+    "search": 10
+   },
+   "portrait": "portraits/duke-devlin.png"
+  },
+  {
+   "id": "bonz",
+   "copy": "Weevil Underwood",
+   "name": "Bonz",
+   "unlock": {
+    "beat": "duke-devlin"
+   },
+   "slot": 42,
+   "ai": {
+    "copy": "Weevil Underwood",
+    "search": 8
+   },
+   "portrait": "portraits/bonz.png"
+  },
+  {
+   "id": "espa-roba",
+   "copy": "Rex Raptor",
+   "name": "Espa Roba",
+   "unlock": {
+    "beat": "bonz"
+   },
+   "slot": 43,
+   "ai": {
+    "copy": "Rex Raptor",
+    "search": 8
+   },
+   "portrait": "portraits/espa-roba.png"
+  },
+  {
+   "id": "mokuba-kaiba",
+   "copy": "Kaiba",
+   "name": "Mokuba Kaiba",
+   "unlock": {
+    "beat": "espa-roba"
+   },
+   "slot": 44,
+   "ai": {
+    "copy": "Kaiba",
+    "search": 10
+   },
+   "portrait": "portraits/mokuba-kaiba.png"
+  },
+  {
+   "id": "arkana",
+   "copy": "Pegasus",
+   "name": "Arkana",
+   "unlock": {
+    "beat": "mokuba-kaiba"
+   },
+   "slot": 45,
+   "ai": {
+    "copy": "Pegasus",
+    "search": 12
+   },
+   "portrait": "portraits/arkana.png"
+  },
+  {
+   "id": "panik",
+   "copy": "Bandit Keith",
+   "name": "Panik",
+   "unlock": {
+    "beat": "arkana"
+   },
+   "slot": 46,
+   "ai": {
+    "copy": "Bandit Keith",
+    "search": 10
+   },
+   "portrait": "portraits/panik.png"
+  },
+  {
+   "id": "yugi-muto",
+   "copy": "Heishin 2nd",
+   "name": "Yugi Muto",
+   "unlock": {
+    "beat": "panik"
+   },
+   "slot": 47,
+   "ai": {
+    "copy": "Heishin 2nd",
+    "search": 14
+   },
+   "portrait": "portraits/yugi-muto.png"
+  },
+  {
+   "id": "rishid",
+   "copy": "Isis",
+   "name": "Rishid",
+   "unlock": {
+    "beat": "yugi-muto"
+   },
+   "slot": 48,
+   "ai": {
+    "copy": "Isis",
+    "search": 14
+   },
+   "portrait": "portraits/rishid.png"
+  },
+  {
+   "id": "marik-ishtar",
+   "copy": "Heishin 2nd",
+   "name": "Marik Ishtar",
+   "unlock": {
+    "beat": "rishid"
+   },
+   "slot": 49,
+   "ai": {
+    "copy": "Seto 3rd",
+    "search": 16
+   },
+   "portrait": "portraits/marik-ishtar.png"
+  },
+  {
+   "id": "yami-marik",
+   "copy": "Nitemare",
+   "name": "Yami Marik",
+   "unlock": {
+    "beat": "marik-ishtar"
+   },
+   "slot": 50,
+   "ai": {
+    "copy": "Nitemare"
+   },
+   "portrait": "portraits/yami-marik.png"
+  },
+  {
+   "id": "atemu",
+   "copy": "Seto 3rd",
+   "name": "Atemu",
+   "unlock": {
+    "beat": "yami-marik"
+   },
+   "slot": 51,
+   "ai": {
+    "copy": "Duel Master K"
+   },
+   "portrait": "portraits/atemu.png"
+  },
+  {
    "id": "jaden-yuki",
    "copy": "Heishin 2nd",
    "name": "Jaden Yuki",
    "unlock": {
     "beat": "Jono 2nd"
    },
+   "slot": 60,
    "portrait": "portraits/jaden-yuki.png"
   }
  ],
  "decks": {
+  "mako-tsunami": {
+   "replace": true,
+   "Spike Seadra": 100,
+   "Kairyu-shin": 60,
+   "7 Colored Fish": 100,
+   "Aqua Madoor": 70,
+   "Giant Red Seasnake": 70,
+   "z:mermaid-knight:1": 100,
+   "Fortress Whale": 25,
+   "Umi": 40,
+   "Frog The Jam": 100,
+   "Monsturtle": 100,
+   "Dorover": 100,
+   "Yado Karu": 100,
+   "Catapult Turtle": 100,
+   "z:island-turtle:1": 100,
+   "Enchanting Mermaid": 100,
+   "30,000-Year White Turtle": 100,
+   "Guardian of the Sea": 100,
+   "z:red-archery-girl:1": 100,
+   "Rare Fish": 100,
+   "Fairy of the Fountain": 70,
+   "High Tide Gyojin": 70,
+   "Deepsea Shark": 70
+  },
+  "duke-devlin": {
+   "replace": true,
+   "Red-eyes B. Dragon": 40,
+   "B. Skull Dragon": 20,
+   "z:dragon-master-knight:1": 10,
+   "Cyber Commander": 60,
+   "z:gradius:1": 100,
+   "Flame Swordsman": 60,
+   "Dragon Piper": 100,
+   "Big Eye": 100,
+   "Dragon Capture Jar": 30,
+   "z:cyber-dragon:1": 40,
+   "Cyber-Stein": 100,
+   "z:roboyarou:1": 100,
+   "Holograh": 100,
+   "z:the-dragon-dwelling-in-the-cave:1": 100,
+   "Saber Slasher": 100,
+   "Crawling Dragon": 70,
+   "Yamadron": 70,
+   "Cyber Saurus": 70,
+   "z:cyber-ogre:1": 70,
+   "z:slot-machine:1": 45,
+   "Dragon Treasure": 30,
+   "Cyber Shield": 30
+  },
+  "bonz": {
+   "replace": true,
+   "z:dark-necrofear:1": 30,
+   "z:zombie-master:1": 70,
+   "z:vampire-lord:1": 50,
+   "Pumpking the King of Ghosts": 70,
+   "Armored Zombie": 100,
+   "z:ryu-kokki:1": 50,
+   "z:master-kyonshee:1": 70,
+   "Dokurorider": 70,
+   "Skull Servant": 120,
+   "Great Mammoth of Goldfine": 70,
+   "Skelgon": 70,
+   "Shadow Ghoul": 70,
+   "z:vampire-genesis:1": 10,
+   "z:vampire-voivode:1": 15,
+   "Fire Reaper": 100,
+   "Blue-eyed Silver Zombie": 100,
+   "Temple of Skulls": 100,
+   "Three-legged Zombies": 100,
+   "Zombie Warrior": 100,
+   "Clown Zombie": 100,
+   "Eternal Rest": 30
+  },
+  "espa-roba": {
+   "replace": true,
+   "Jirai Gumo": 70,
+   "Pendulum Machine": 70,
+   "Dark Elf": 70,
+   "z:beast-of-talwar:1": 70,
+   "Aqua Madoor": 70,
+   "Mystic Clown": 70,
+   "z:spirit-of-the-pharaoh:1": 30,
+   "z:skull-dog-marron:1": 70,
+   "z:gil-garth:1": 60,
+   "Djinn the Watcher of the Wind": 100,
+   "Sleeping Lion": 100,
+   "Larvas": 100,
+   "Burglar": 100,
+   "Eldeen": 100,
+   "Ray & Temperature": 100,
+   "z:bio-mage:1": 100,
+   "Illusionist Faceless Mage": 100,
+   "Great Bill": 100,
+   "z:the-all-seeing-white-tiger:1": 100,
+   "z:gazelle-the-king-of-mythical-beasts:1": 100,
+   "Doma The Angel of Silence": 70,
+   "Leogun": 70,
+   "Orion the Battle King": 70,
+   "Elf's Light": 30,
+   "Beast Fangs": 30
+  },
+  "mokuba-kaiba": {
+   "replace": true,
+   "Blue-eyes White Dragon": 15,
+   "Red-eyes B. Dragon": 35,
+   "z:gadget-soldier:1": 100,
+   "Cyber Commander": 60,
+   "Dragon Capture Jar": 30,
+   "Battle Ox": 100,
+   "Beaver Warrior": 100,
+   "z:mirage-dragon:1": 70,
+   "Armaill": 100,
+   "The Little Swordsman of Aile": 100,
+   "Wodan the Resident of the Forest": 100,
+   "Fairy Dragon": 100,
+   "z:gradius:1": 100,
+   "Invader of the Throne": 100,
+   "Blackland Fire Dragon": 100,
+   "Beautiful Headhuntress": 70,
+   "Dice Armadillo": 70,
+   "Cyber Saurus": 70,
+   "z:jack-s-knight:1": 70,
+   "Swordstalker": 45,
+   "Dragon Treasure": 30,
+   "Silver Bow and Arrow": 30
+  },
+  "arkana": {
+   "replace": true,
+   "z:dark-magician-of-chaos:1": 30,
+   "Magician of Black Chaos": 40,
+   "Dark Magician": 60,
+   "z:dark-magician-girl:1": 60,
+   "Illusionist Faceless Mage": 70,
+   "Dark Elf": 70,
+   "Skull Knight": 50,
+   "Magical Ghost": 70,
+   "Rogue Doll": 70,
+   "z:wall-of-illusion:1": 70,
+   "z:dark-magician-of-destruction:1": 15,
+   "z:the-dark-magicians:1": 15,
+   "Djinn the Watcher of the Wind": 100,
+   "Angelwitch": 100,
+   "Flame Manipulator": 100,
+   "Akakieisu": 100,
+   "Lady of Faith": 100,
+   "z:gravekeeper-s-spy:1": 100,
+   "Kamion Wizard": 100,
+   "Ancient Elf": 100,
+   "Maha Vailo": 70,
+   "Spirit of the Winds": 70,
+   "Dark Hole": 20,
+   "Sword of Dark Destruction": 30,
+   "Mystical Moon": 30
+  },
+  "panik": {
+   "replace": true,
+   "z:dark-necrofear:1": 25,
+   "Reaper of the Cards": 60,
+   "Dark Gray": 70,
+   "Doma The Angel of Silence": 70,
+   "Dark Assailant": 70,
+   "Mystic Clown": 70,
+   "z:skull-dog-marron:1": 60,
+   "z:wall-of-illusion:1": 70,
+   "z:gil-garth:1": 60,
+   "z:zombie-master:1": 50,
+   "Fire Reaper": 100,
+   "Meda Bat": 100,
+   "Mask of Darkness": 100,
+   "Ancient Brain": 100,
+   "Ryu-kishin": 100,
+   "Metal Guardian": 100,
+   "z:the-portrait-s-secret:1": 100,
+   "Lord of Zemia": 100,
+   "Crass Clown": 100,
+   "Armored Zombie": 100,
+   "Ryu-kishin Powered": 70,
+   "z:master-kyonshee:1": 70,
+   "Dokurorider": 70,
+   "Air Eater": 45,
+   "Dark Hole": 20
+  },
+  "yugi-muto": {
+   "replace": true,
+   "Dark Magician": 60,
+   "z:dark-magician-girl:1": 60,
+   "Summoned Skull": 40,
+   "Gaia the Fierce Knight": 60,
+   "Celtic Guardian": 100,
+   "Kuriboh": 120,
+   "Curse of Dragon": 60,
+   "z:buster-blader:1": 40,
+   "Mystical Elf": 100,
+   "Magician of Black Chaos": 30,
+   "z:dark-magician-of-chaos:1": 20,
+   "z:black-luster-soldier-envoy-of-the-beginning:1": 15,
+   "Armaill": 100,
+   "z:science-soldier:1": 100,
+   "Ancient Sorcerer": 100,
+   "Witch of the Black Forest": 100,
+   "Tao the Chanter": 100,
+   "z:gravekeeper-s-assailant:1": 100,
+   "z:skull-mariner:1": 70,
+   "Monster Tamer": 70,
+   "Swords of Revealing Light": 30,
+   "Dark Hole": 20,
+   "Dian Keto the Cure Master": 30,
+   "Sword of Dark Destruction": 30,
+   "Book of Secret Arts": 30,
+   "Legendary Sword": 30
+  },
+  "rishid": {
+   "replace": true,
+   "z:gravekeeper-s-assailant:1": 90,
+   "z:gravekeeper-s-guard:1": 90,
+   "z:gravekeeper-s-spy:1": 90,
+   "Reaper of the Cards": 50,
+   "Dokurorider": 60,
+   "z:sphinx-teleia:1": 20,
+   "Mystic Lamp": 60,
+   "z:spirit-of-the-pharaoh:1": 40,
+   "z:dark-necrofear:1": 20,
+   "Magician of Black Chaos": 25,
+   "Fire Reaper": 100,
+   "Sectarian of Secrets": 100,
+   "Nemuriko": 100,
+   "Dokuroizo the Grim Reaper": 100,
+   "Akakieisu": 100,
+   "Wood Remains": 100,
+   "Dark Assailant": 100,
+   "Kamion Wizard": 100,
+   "Clown Zombie": 100,
+   "Dragon Zombie": 70,
+   "Skelgon": 70,
+   "z:dark-magician-girl:1": 45,
+   "Mystical Moon": 30,
+   "Black Pendant": 30
+  },
+  "marik-ishtar": {
+   "replace": true,
+   "z:the-winged-dragon-of-ra:1": 8,
+   "z:dark-necrofear:1": 15,
+   "Fiend's Hand": 70,
+   "Dark Magician": 30,
+   "Skull Knight": 50,
+   "Judge Man": 50,
+   "z:mirage-dragon:1": 50,
+   "z:spirit-of-the-pharaoh:1": 20,
+   "z:gil-garth:1": 50,
+   "Djinn the Watcher of the Wind": 100,
+   "Mystical Elf": 100,
+   "Eldeen": 100,
+   "Sangan": 100,
+   "Dryad": 100,
+   "Dark Titan of Terror": 100,
+   "Reaper of the Cards": 100,
+   "Mystic Clown": 100,
+   "z:neo-the-magic-swordsman:1": 70,
+   "Dragon Seeker": 45,
+   "Dark Hole": 20,
+   "Dark Energy": 30
+  },
+  "yami-marik": {
+   "replace": true,
+   "z:the-winged-dragon-of-ra:1": 12,
+   "z:dark-necrofear:1": 30,
+   "Fiend's Hand": 70,
+   "Dark Magician": 50,
+   "Magician of Black Chaos": 40,
+   "Skull Knight": 50,
+   "Judge Man": 50,
+   "z:mirage-dragon:1": 50,
+   "z:spirit-of-the-pharaoh:1": 30,
+   "z:gil-garth:1": 50,
+   "z:dark-magician-of-chaos:1": 20,
+   "Djinn the Watcher of the Wind": 100,
+   "Mystical Elf": 100,
+   "Eldeen": 100,
+   "Sangan": 100,
+   "Dryad": 100,
+   "Dark Titan of Terror": 100,
+   "Reaper of the Cards": 100,
+   "Mystic Clown": 100,
+   "z:neo-the-magic-swordsman:1": 70,
+   "Dragon Seeker": 45,
+   "Dark Hole": 20,
+   "Raigeki": 15,
+   "Dark Energy": 30,
+   "z:slifer-the-sky-dragon:1": 12,
+   "z:obelisk-the-tormentor:1": 12
+  },
+  "atemu": {
+   "replace": true,
+   "z:slifer-the-sky-dragon:1": 12,
+   "z:obelisk-the-tormentor:1": 12,
+   "z:the-winged-dragon-of-ra:1": 12,
+   "Dark Magician": 50,
+   "z:dark-magician-girl:1": 50,
+   "Summoned Skull": 40,
+   "Gaia the Fierce Knight": 50,
+   "Celtic Guardian": 90,
+   "Kuriboh": 100,
+   "z:buster-blader:1": 40,
+   "z:black-luster-soldier-envoy-of-the-beginning:1": 15,
+   "Magician of Black Chaos": 30,
+   "z:dark-magician-of-chaos:1": 20,
+   "Red-eyes B. Dragon": 30,
+   "Curse of Dragon": 50,
+   "Mystical Elf": 90,
+   "z:mirage-dragon:1": 50,
+   "Armaill": 100,
+   "Flame Manipulator": 100,
+   "Dragon Statue": 100,
+   "Tao the Chanter": 100,
+   "z:queen-s-knight:1": 100,
+   "z:warrior-dai-grepher:1": 70,
+   "Swords of Revealing Light": 30,
+   "Dark Hole": 20,
+   "Raigeki": 20,
+   "Dian Keto the Cure Master": 30
+  },
   "jaden-yuki": {
    "replace": true,
    "z:elemental-hero-avian:1": 120,
