@@ -41,4 +41,8 @@ void ControlsWindow_Tick(void);
 void ControlsWindow_RequestClose(void);
 void ControlsWindow_FocusLost(void);
 int ControlsWindow_ShouldClose(void);
+/* For a panel inside the game's window, used with a finger (panel.h): a
+ * finger that went down at x, y and moved dy pixels scrolls the page (or
+ * the open device list). */
+void ControlsWindow_Drag(int x, int y, int dy);
 #endif

@@ -7,8 +7,16 @@
  * logical units multiplied by `scale`, which drops towards 1 when the window
  * is too small for the chosen menu scale; the window is resizable, so the
  * layout also reflows (the picture drops out, the table scrolls) rather than
- * assuming its default size. Colours follow menu.c so the game menu, the Mods
+ * assuming its default size. Colors follow menu.c so the game menu, the Mods
  * window and this one look like one piece of UI.
+ *
+ * With a finger (Menu_TouchTarget: a panel inside the game's window on a
+ * phone or tablet, panel.h) the scale stays the menu's (the density), rows
+ * and buttons are a finger's target tall, and the window is one page that
+ * a drag scrolls (ControlsWindow_Drag) between a fixed header (the tabs and
+ * the players) and a fixed footer (Clear, Rebind, Cancel, Apply, OK, over a
+ * message line): the device, the pad picture, both lists at full length,
+ * the fixed keys and Restore defaults, one above the other.
  *
  * The table lists the 16 PlayStation pad destinations in a reading order
  * (D-pad, face buttons, shoulders, stick clicks, system) with group headings;
@@ -51,14 +59,14 @@ enum {
     PAD = 18,
     GAP = 16,
     HEADER_H = 74,
-    ROW_H = 22,
+    ROW_H_MOUSE = 22,
     HEAD_H = 24,
-    BTN_H = 30,
+    BTN_H_MOUSE = 30,
     FOOTER_H = 54,
     NAME_W = 106,
     SLOT_W = 172,
     KEY_W = 224,
-    POPUP_ROW = 26,
+    POPUP_ROW_MOUSE = 26,
     POPUP_ROWS = 8,
     DIAGRAM_MIN = 250,
     DIAGRAM_MAX = 520,
@@ -69,7 +77,14 @@ enum {
     FIXED_LINES = 3 /* the fixed keys' text, under its heading */
 };
 
-/* Status severity: picks the colour of the message line. */
+/* Rows, buttons and the device list's entries: a finger's target tall with
+ * a finger (touch, in pixels; 0 with a mouse), else the sizes above. */
+static int touch, row_h = ROW_H_MOUSE, btn_h = BTN_H_MOUSE, popup_row = POPUP_ROW_MOUSE;
+#define ROW_H row_h
+#define BTN_H btn_h
+#define POPUP_ROW popup_row
+
+/* Status severity: picks the color of the message line. */
 enum { SAY_INFO, SAY_DONE, SAY_WARN, SAY_BUSY };
 
 typedef struct {
@@ -87,6 +102,10 @@ static struct {
     int count, mods, selected_device, draw_scale, say;
     int click_id, click_x, click_y;
     uint64_t click_time;
+    /* With a finger: the page's scroll, its most, and the view it shows
+     * (header to message line); reveal: bring the selected row into it. */
+    int page_scroll, page_max, view_top, view_bottom, reveal, drag_rest;
+    int keyed; /* with a finger: a key moved the focus last, so its ring shows */
     Hit hits[320];
     ControlCapture capture;
     ControlsEvaluator preview;
@@ -94,6 +113,12 @@ static struct {
 } ui;
 static MenuCanvas *canvas;
 static int scale;
+/* While the page is drawn with a finger: its offset on the canvas, and the
+ * rows a hit may take (the view between the header and the message line);
+ * 0 and none otherwise. */
+static int offset_y, clip_top, clip_bottom;
+/* The top of each row's line on the page, from the last draw (reveal). */
+static int row_page_y[CTRL_ROW_COUNT];
 /* Where the last draw put each pad button (the drawn shape, not its larger
  * mouse target); ControlsWindow_Locate reports these for the picture. */
 static Rect pad_rect[CTRL_DEST_COUNT];
@@ -225,6 +250,7 @@ static Rect rect(int x, int y, int w, int h)
 }
 static void fill(int x, int y, int w, int h, uint32_t color)
 {
+    y += offset_y;
     x *= scale;
     y *= scale;
     w *= scale;
@@ -245,15 +271,19 @@ static void frame(Rect r, uint32_t face, uint32_t border)
     fill(r.x, r.y, r.w, r.h, face);
     box(r.x, r.y, r.w, r.h, border);
 }
-/* The keyboard-focus ring sits just outside the widget it belongs to. */
+/* The keyboard-focus ring sits just outside the widget it belongs to. With
+ * a finger it shows only once a key has moved the focus. */
 static void ring(Rect r)
 {
+    if (touch && !ui.keyed)
+        return;
     box(r.x - 1, r.y - 1, r.w + 2, r.h + 2, accent);
     box(r.x - 2, r.y - 2, r.w + 4, r.h + 4, accent);
 }
 /* Darken what is already on the canvas: the scrim behind a dialog. */
 static void shade(int x, int y, int w, int h)
 {
+    y += offset_y;
     x *= scale;
     y *= scale;
     w *= scale;
@@ -284,7 +314,7 @@ static void caret(int cx, int cy, uint32_t color)
 static int text_w(const char *s) { return (Menu_TextWidthScaled(s, scale) + scale - 1) / scale; }
 static void text_at(int x, int middle, const char *s, uint32_t color)
 {
-    Menu_DrawTextScaled(canvas, x * scale, middle * scale, s, color, scale);
+    Menu_DrawTextScaled(canvas, x * scale, (middle + offset_y) * scale, s, color, scale);
 }
 /* `s` in `buf`, cut a whole character at a time to fit `width`, its last
  * three characters "..." when anything was cut. */
@@ -357,6 +387,15 @@ static int text_wrap(int x, int middle, const char *s, int width, uint32_t color
 
 static void hit(int id, Rect r)
 {
+    r.y += offset_y;
+    if (clip_bottom > clip_top) { /* a scrolled page: only what shows in its view */
+        int bottom = r.y + r.h < clip_bottom ? r.y + r.h : clip_bottom;
+        if (r.y < clip_top)
+            r.y = clip_top;
+        r.h = bottom - r.y;
+        if (r.h <= 0)
+            return;
+    }
     if (ui.count < (int)(sizeof(ui.hits) / sizeof(ui.hits[0])))
         ui.hits[ui.count++] = (Hit){r.x, r.y, r.w, r.h, id};
 }
@@ -418,6 +457,7 @@ void ControlsWindow_RequestClose(void)
 void ControlsWindow_Init(void)
 {
     memset(&ui, 0, sizeof(ui));
+    memset(row_page_y, 0, sizeof(row_page_y));
     ui.draft = *ControlsRuntime_Config();
     ui.focus = KEYBOARD;
     ui.row = pad_order[0];
@@ -512,6 +552,7 @@ static void select_row(int action, int slot)
     ui.slot = slot;
     ui.focus = ROW + action * 2 + slot;
     reveal_row();
+    ui.reveal = 1;
 }
 /* Arrows stay in the selected row's list; Tab goes from one to the other. */
 static void move_row(int delta)
@@ -586,11 +627,15 @@ static void activate(int id)
             say(SAY_WARN, "The keyboard always plays as Player 1. Switch to Player 1 to edit it.");
             break;
         }
+        if (ui.tab)
+            ui.page_scroll = 0;
         ui.tab = 0;
         ui.slot = 0;
         ui.capture.state = CAP_IDLE;
         break;
     case CONTROLLER:
+        if (!ui.tab)
+            ui.page_scroll = 0; /* with a finger: the other tab's page from its top */
         ui.tab = 1;
         ui.capture.state = CAP_IDLE;
         break;
@@ -690,6 +735,12 @@ void ControlsWindow_Event(const MenuEvent *e)
     }
     if (e->type == MENU_EVENT_WHEEL) {
         ui.click_id = 0;
+        if (touch && !ui.popup) {
+            /* The lists are at full length on the page: the wheel scrolls
+             * the page, a row per notch, as a finger's drag does. */
+            ControlsWindow_Drag(0, 0, e->wheel * ROW_H * (ui.draw_scale ? ui.draw_scale : 1));
+            return;
+        }
         /* The wheel scrolls the list under the pointer. */
         Rect g = list_rect[1];
         int host = !ui.popup && ui.pointer_x >= g.x && ui.pointer_x < g.x + g.w && ui.pointer_y >= g.y &&
@@ -706,6 +757,7 @@ void ControlsWindow_Event(const MenuEvent *e)
     if (e->type != MENU_EVENT_BUTTON_DOWN || e->button != 1)
         return;
     int x = e->x / sc, y = e->y / sc, at = hit_at(x, y);
+    ui.keyed = 0;
     if (ui.capture.state && !ui.modal) {
         /* Any click during capture means "stop listening", hit or miss. */
         ui.click_id = 0;
@@ -766,6 +818,7 @@ void ControlsWindow_Key(int key, int down, int repeat, int modifiers)
     ui.mods = modifiers;
     if (!down || repeat)
         return;
+    ui.keyed = 1;
     ui.click_id = 0;
     if (key == CTRL_KEY_ESCAPE) {
         if (ui.modal) {
@@ -792,6 +845,10 @@ void ControlsWindow_Key(int key, int down, int repeat, int modifiers)
     } else if ((key == CTRL_KEY_DELETE || key == CTRL_KEY_BACKSPACE) && !ui.modal && !ui.popup &&
                ui.focus >= ROW && ui.focus < DIAGRAM) {
         activate(CLEAR);
+    } else if ((key == CTRL_KEY_PAGE_UP || key == CTRL_KEY_PAGE_DOWN) && touch) {
+        if (!ui.modal && !ui.popup)
+            ControlsWindow_Drag(0, 0, (key == CTRL_KEY_PAGE_DOWN ? -1 : 1) *
+                                          (ui.view_bottom - ui.view_top - ROW_H) * (ui.draw_scale ? ui.draw_scale : 1));
     } else if (key == CTRL_KEY_PAGE_UP || key == CTRL_KEY_PAGE_DOWN) {
         if (!ui.modal && !ui.popup) {
             int step = ui.lines_shown > 1 ? ui.lines_shown - 1 : 1;
@@ -926,11 +983,12 @@ static void controller(int x, int y, int w, uint16_t bits)
         int dest = controller_regions[i].destination;
         Rect b = region_button(i, x, y, w);
         pad_rect[dest] = b;
+        pad_rect[dest].y += offset_y;
         if (bits & Controls_Actions[dest].bit)
             ellipse(b.x + b.w / 2, b.y + b.h / 2, b.w / 2, b.h / 2, held);
         hit(DIAGRAM + dest, region_hit(i, x, y, w));
     }
-    if (!ControlsArt_Draw(canvas, x * scale, y * scale, w * scale)) {
+    if (!ControlsArt_Draw(canvas, x * scale, (y + offset_y) * scale, w * scale)) {
         text_at(x + 20, y + 40, "Controller picture unavailable", dim);
         return;
     }
@@ -1027,7 +1085,8 @@ static void draw_diagram(Rect r, uint16_t bits)
     box(x, y + 3, swatch, swatch, marker);
     box(x + 1, y + 4, swatch - 2, swatch - 2, marker);
     text_at(x + swatch + 6, y + 8, "selected", faint);
-    text_clip(r.x + 12, y + 26, "Click a button here to jump to its row.", r.w - 24, faint);
+    text_clip(r.x + 12, y + 26, touch ? "Tap a button here to jump to its row." : "Click a button here to jump to its row.",
+              r.w - 24, faint);
     if (legend_lines > 2)
         text_clip(r.x + 12, y + 44,
                   ui.tab ? "Stick clicks (L3/R3) are in the list only."
@@ -1087,6 +1146,7 @@ static void draw_table(Rect r, uint64_t rows, int list)
         }
         int down = rows >> action & 1;
         int chosen = action == ui.row;
+        row_page_y[action] = y;
         int over = ui.hover == ROW + action * 2 || ui.hover == ROW + action * 2 + 1;
         uint32_t row_face = down ? held : chosen ? hot : over ? raised : panel;
         fill(x, y, inner, ROW_H - 2, row_face);
@@ -1154,17 +1214,22 @@ static int entry_chosen(int entry)
 }
 static void draw_popup(Rect anchor)
 {
-    int entries[CONTROLS_DEVICES + 3], count = device_entries(entries);
+    int entries[CONTROLS_DEVICES + 3], count = device_entries(entries), most = POPUP_ROWS;
     char line[256];
     ui.count = 0;
-    ui.popup_max = count > POPUP_ROWS ? count - POPUP_ROWS : 0;
+    if (touch) { /* finger-tall entries: as many as fit below the field, or above it */
+        int below = ui.height - 8 - (anchor.y + anchor.h + 2) - 8, above = anchor.y - 2 - 8 - 8;
+        most = (below > above ? below : above) / POPUP_ROW;
+        most = most < 2 ? 2 : most > POPUP_ROWS ? POPUP_ROWS : most;
+    }
+    ui.popup_max = count > most ? count - most : 0;
     if (ui.popup_scroll > ui.popup_max)
         ui.popup_scroll = ui.popup_max;
     if (ui.popup_scroll < 0)
         ui.popup_scroll = 0;
     int shown = count - ui.popup_scroll;
-    if (shown > POPUP_ROWS)
-        shown = POPUP_ROWS;
+    if (shown > most)
+        shown = most;
     Rect list = rect(anchor.x, anchor.y + anchor.h + 2, anchor.w, shown * POPUP_ROW + 8);
     if (list.y + list.h > ui.height - 8)
         list.y = anchor.y - list.h - 2;
@@ -1253,9 +1318,9 @@ static void segment(int id, Rect r, const char *label, int on)
         ring(r);
     hit(id, r);
 }
-static int tab_item(int id, int x, const char *label, int on, int disabled)
+static int tab_item(int id, int x, int y, int h, const char *label, int on, int disabled)
 {
-    Rect r = rect(x, HEADER_H - 30, text_w(label) + 28, 29);
+    Rect r = rect(x, y, text_w(label) + 28, h);
     int over = ui.hover == id;
     if (on)
         fill(r.x, r.y, r.w, r.h, bg);
@@ -1263,7 +1328,7 @@ static int tab_item(int id, int x, const char *label, int on, int disabled)
         fill(r.x, r.y, r.w, r.h, raised);
     text_at(r.x + 14, r.y + r.h / 2 - 1, label, disabled ? faint : on ? text : dim);
     fill(r.x, r.y + r.h - 2, r.w, 2, on ? accent : edge);
-    if (ui.focus == id)
+    if (ui.focus == id && (!touch || ui.keyed))
         box(r.x + 2, r.y + 2, r.w - 4, r.h - 6, accent);
     hit(id, r);
     return x + r.w + 4;
@@ -1281,8 +1346,8 @@ static void draw_header(void)
     segment(PLAYER_2, rect(seg_x + seg, 10, seg, 25), "Player 2", ui.player == 1);
 
     int x = PAD;
-    x = tab_item(KEYBOARD, x, "Keyboard", !ui.tab, ui.player == 1);
-    tab_item(CONTROLLER, x, "Controller", ui.tab, 0);
+    x = tab_item(KEYBOARD, x, HEADER_H - 30, 29, "Keyboard", !ui.tab, ui.player == 1);
+    tab_item(CONTROLLER, x, HEADER_H - 30, 29, "Controller", ui.tab, 0);
     if (dirty())
         text_right(w - PAD, HEADER_H - 16, "Unsaved changes", warn);
 }
@@ -1324,6 +1389,7 @@ static void draw_device_row(Rect r, ControllerDevice *d)
     int pill_w = text_w(state) + 24, pill_x = r.x + r.w - pill_w;
     Rect drop = rect(left, r.y, pill_x - 10 - left, r.h);
     device_drop = drop;
+    device_drop.y += offset_y; /* the list is drawn over the page, unscrolled */
     int over = ui.hover == DEVICE;
     frame(drop, over || ui.popup == DEVICE ? hot : raised, ui.popup == DEVICE ? accent : edge);
     text_clip(drop.x + 10, drop.y + drop.h / 2, label, drop.w - 34, text);
@@ -1335,11 +1401,209 @@ static void draw_device_row(Rect r, ControllerDevice *d)
     text_at(pill_x + 12, r.y + r.h / 2, state, state_ink);
 }
 
+/* With a finger (see the top of the file): the page between the fixed
+ * header and footer, drawn first and scrolled, then the header, the message
+ * line and the footer over its ends, then the device list or a dialog. */
+static void draw_touch(MenuCanvas *c, ControllerDevice *d, uint64_t rows)
+{
+    char line[256];
+    int t, w, h, inner, view_h, y, device_y, diagram_y = 0, diagram_w = 0, diagram_h = 0, pad_y, game_y, fixed_y;
+    int fixed_h, defaults_y, header_h, footer_h, message_h = 26, picture_first = 0;
+    const char *restore = ui.tab ? "Restore controller defaults" : "Restore keyboard defaults";
+    scale = Menu_Scale();
+    while (scale > 1 && (c->width / scale < 480 || c->height / scale < 300))
+        scale--;
+    ui.draw_scale = scale;
+    t = (touch + scale - 1) / scale; /* the finger's target in this scale's units */
+    row_h = t > ROW_H_MOUSE ? t : ROW_H_MOUSE;
+    btn_h = t > BTN_H_MOUSE ? t : BTN_H_MOUSE;
+    popup_row = t > POPUP_ROW_MOUSE ? t : POPUP_ROW_MOUSE;
+    w = ui.width = c->width / scale;
+    h = ui.height = c->height / scale;
+    header_h = footer_h = btn_h + 16;
+    inner = w - 2 * PAD;
+    ui.view_top = header_h;
+    ui.view_bottom = h - footer_h - message_h;
+    view_h = ui.view_bottom - ui.view_top;
+    /* Every pixel, including those past the last whole unit at the right
+     * and bottom, which a fill in units leaves see-through. */
+    for (int j = 0; j < c->height; j++)
+        for (int i = 0; i < c->width; i++)
+            c->pixels[j * c->stride + i] = bg;
+
+    /* Where each part of the page goes, from the page's top. */
+    y = 12;
+    device_y = y;
+    y += (ui.tab ? btn_h : 20) + 12;
+    /* The pad picture goes first where it leaves half the view to the
+     * list; on a phone, where it would fill the first screen, after both
+     * lists (tapping one of its buttons still brings that row into view). */
+    if (inner >= DIAGRAM_MIN) {
+        int most = view_h / 2 > 220 ? view_h / 2 : 220;
+        diagram_w = inner < DIAGRAM_MAX ? inner : DIAGRAM_MAX;
+        diagram_h = 34 + ControlsArt_Height(diagram_w - 24) + (diagram_w >= 330 ? 64 : 46);
+        if (diagram_h > most)
+            diagram_h = most;
+        picture_first = 2 * diagram_h <= view_h;
+    }
+    if (diagram_w && picture_first) {
+        diagram_y = y;
+        y += diagram_h + GAP;
+    }
+    pad_y = y;
+    y += HEAD_H + 11 + list_lines(0) * ROW_H + GAP;
+    game_y = y;
+    y += HEAD_H + 11 + list_lines(1) * ROW_H + GAP;
+    if (diagram_w && !picture_first) {
+        diagram_y = y;
+        y += diagram_h + GAP;
+    }
+    fixed_h = fixed_height(inner);
+    fixed_y = y;
+    y += fixed_h + GAP;
+    defaults_y = y;
+    y += btn_h + 12;
+    ui.page_max = y > view_h ? y - view_h : 0;
+    if (ui.reveal && row_page_y[ui.row] > 0) {
+        int top = row_page_y[ui.row] - ROW_H, bottom = row_page_y[ui.row] + 2 * ROW_H;
+        if (top < ui.page_scroll)
+            ui.page_scroll = top;
+        else if (bottom > ui.page_scroll + view_h)
+            ui.page_scroll = bottom - view_h;
+    }
+    ui.reveal = 0;
+    if (ui.page_scroll > ui.page_max)
+        ui.page_scroll = ui.page_max;
+    if (ui.page_scroll < 0)
+        ui.page_scroll = 0;
+
+    offset_y = ui.view_top - ui.page_scroll;
+    clip_top = ui.view_top;
+    clip_bottom = ui.view_bottom;
+    draw_device_row(rect(PAD, device_y, inner, ui.tab ? btn_h : 20), d);
+    if (diagram_w)
+        draw_diagram(rect(PAD + (inner - diagram_w) / 2, diagram_y, diagram_w, diagram_h), (uint16_t)rows);
+    draw_table(rect(PAD, pad_y, inner, HEAD_H + 11 + list_lines(0) * ROW_H), rows, 0);
+    draw_table(rect(PAD, game_y, inner, HEAD_H + 11 + list_lines(1) * ROW_H), rows, 1);
+    draw_fixed(rect(PAD, fixed_y, inner, fixed_h));
+    button(DEFAULTS, rect(PAD, defaults_y, button_w(restore), btn_h), restore, BTN_NORMAL);
+    offset_y = clip_top = clip_bottom = 0;
+    if (ui.page_max) { /* where the page is: a thin bar at the right of the view */
+        int knob = view_h * view_h / (view_h + ui.page_max);
+        knob = knob < 20 ? 20 : knob;
+        fill(w - 5, ui.view_top + (view_h - knob) * ui.page_scroll / ui.page_max, 3, knob, edge);
+    }
+
+    /* The header: the tabs, and the players at the right. */
+    fill(0, 0, w, header_h, panel);
+    fill(0, header_h - 1, w, 1, edge);
+    {
+        int x = tab_item(KEYBOARD, PAD, 8, btn_h, "Keyboard", !ui.tab, ui.player == 1);
+        int seg = text_w("Player 2") + 28 > 92 ? text_w("Player 2") + 28 : 92, seg_x = w - PAD - 2 * seg;
+        x = tab_item(CONTROLLER, x, 8, btn_h, "Controller", ui.tab, 0);
+        segment(PLAYER, rect(seg_x, 8, seg, btn_h), "Player 1", ui.player == 0);
+        segment(PLAYER_2, rect(seg_x + seg, 8, seg, btn_h), "Player 2", ui.player == 1);
+        if (dirty() && seg_x - 12 - x >= text_w("Unsaved changes"))
+            text_right(seg_x - 12, header_h / 2, "Unsaved changes", warn);
+        else if (seg_x - 12 - x >= text_w("Controls"))
+            text_right(seg_x - 12, header_h / 2, "Controls", dim);
+    }
+
+    /* The message line: what the window waits for, what happened, or the
+     * selected binding. */
+    fill(0, ui.view_bottom, w, message_h, bg);
+    fill(0, ui.view_bottom, w, 1, edge);
+    if (ui.capture.state) {
+        uint64_t now = ControlsRuntime_Now();
+        int left = ui.capture.deadline_us > now ? (int)((ui.capture.deadline_us - now + 999999) / 1000000) : 0;
+        snprintf(line, sizeof(line), "Press a %s for %s%s - %d second%s left. Back cancels.", ui.tab ? "button" : "key",
+                 Controls_RowName(ui.row), ui.tab && ui.slot ? " (alternate)" : "", left, left == 1 ? "" : "s");
+        text_clip(PAD, ui.view_bottom + message_h / 2, line, inner, accent);
+    } else if (ui.status[0])
+        text_clip(PAD, ui.view_bottom + message_h / 2, ui.status, inner,
+                  ui.say == SAY_WARN ? warn : ui.say == SAY_DONE ? good : ui.say == SAY_BUSY ? accent : dim);
+    else {
+        const ControlSource *src = &Controls_Row(profile(0), ui.row)[ui.slot];
+        snprintf(line, sizeof(line), "%s / %s%s: %s", action_group(ui.row), Controls_RowName(ui.row),
+                 ui.tab ? (ui.slot ? " (alternate)" : " (main)") : "",
+                 src->kind != CTRL_SRC_UNBOUND ? source_label(src) : "Unbound");
+        text_clip(PAD, ui.view_bottom + message_h / 2, line, inner, text);
+    }
+
+    /* The footer: what acts on the selected binding, then the window's own. */
+    fill(0, h - footer_h, w, footer_h, panel);
+    fill(0, h - footer_h, w, 1, edge);
+    {
+        int by = h - footer_h + 8, clear_w = button_w("Clear"), rebind_w = button_w("Rebind");
+        int ok_w = button_w("OK") + 18, apply_w = button_w("Apply"), cancel_w = button_w("Cancel");
+        const ControlSource *src = &Controls_Row(profile(0), ui.row)[ui.slot];
+        button(CLEAR, rect(PAD, by, clear_w, btn_h), "Clear", src->kind != CTRL_SRC_UNBOUND ? BTN_NORMAL : BTN_QUIET);
+        button(REBIND, rect(PAD + clear_w + 8, by, rebind_w, btn_h), ui.capture.state ? "Stop" : "Rebind", BTN_NORMAL);
+        button(OK, rect(w - PAD - ok_w, by, ok_w, btn_h), "OK", BTN_PRIMARY);
+        button(APPLY, rect(w - PAD - ok_w - 8 - apply_w, by, apply_w, btn_h), "Apply", dirty() ? BTN_READY : BTN_QUIET);
+        button(CANCEL, rect(w - PAD - ok_w - 8 - apply_w - 8 - cancel_w, by, cancel_w, btn_h), "Cancel", BTN_NORMAL);
+    }
+    if (ui.popup == DEVICE)
+        draw_popup(device_drop);
+    if (ui.modal)
+        draw_modal();
+}
+
+/* A finger that went down at x, y moved dy pixels: the device list's
+ * entries, or the page, follow it. */
+void ControlsWindow_Drag(int x, int y, int dy)
+{
+    int unit = ui.draw_scale ? ui.draw_scale : 1, step;
+    (void)x;
+    (void)y;
+    if (ui.modal)
+        return;
+    ui.drag_rest += dy;
+    if (ui.popup) {
+        step = ui.drag_rest / (POPUP_ROW * unit);
+        ui.drag_rest -= step * POPUP_ROW * unit;
+        ui.popup_scroll -= step;
+        if (ui.popup_scroll > ui.popup_max)
+            ui.popup_scroll = ui.popup_max;
+        if (ui.popup_scroll < 0)
+            ui.popup_scroll = 0;
+        return;
+    }
+    step = ui.drag_rest / unit;
+    ui.drag_rest -= step * unit;
+    ui.page_scroll -= step;
+    if (ui.page_scroll > ui.page_max)
+        ui.page_scroll = ui.page_max;
+    if (ui.page_scroll < 0)
+        ui.page_scroll = 0;
+}
+
 void ControlsWindow_Draw(MenuCanvas *c)
 {
     ControlSource sources[CTRL_KEY_COUNT];
     char line[256];
     canvas = c;
+    touch = Menu_TouchTarget();
+    if (touch) {
+        ControllerDevice *d = ControlsRuntime_Device(current_device());
+        uint64_t rows = 0;
+        ui.count = 0;
+        memset(pad_rect, 0, sizeof(pad_rect));
+        if (ui.tab) {
+            if (d) {
+                ui.preview.activation = d->threshold;
+                rows = Controls_EvalControllerRows(profile(0), &d->snapshot, &ui.preview);
+            }
+        } else {
+            int n = ControlsRuntime_Keys(sources);
+            rows = Controls_EvalKeyboardRows(profile(0), sources, n);
+        }
+        draw_touch(c, d, rows);
+        return;
+    }
+    row_h = ROW_H_MOUSE;
+    btn_h = BTN_H_MOUSE;
+    popup_row = POPUP_ROW_MOUSE;
     scale = Menu_Scale();
     while (scale > 1 && (c->width / scale < MIN_W || c->height / scale < MIN_H))
         scale--;

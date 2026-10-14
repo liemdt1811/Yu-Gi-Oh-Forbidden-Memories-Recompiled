@@ -27,11 +27,12 @@
 #include <stdint.h>
 #include <stdio.h>
 
-/* Bumped when this header changes shape. A mod records the version it was
- * built against; the host refuses a mod built against a later one. New host
- * entries only ever go at the end, so a mod built against an earlier version
- * keeps working, and one built against a later version can check host->api
- * before it calls an entry the host may not have.
+/* Bumped for new host services, events or manifest features. A mod records
+ * the version it was built against; the host refuses a mod built against a
+ * later one. New host entries only ever go at the end, so a mod built
+ * against an earlier version keeps working, and one built against a later
+ * version can check host->api before it calls an entry the host may not
+ * have.
  *   1  the first
  *   2  now_us, map_fixed; setting() reads MEMORIES_MOD_<ID>_<KEY> first
  *   3  managed events, registered state and stable card lookup
@@ -41,7 +42,15 @@
  *   5  duelist_id
  *   6  the STARCHIP event
  *   7  card_notes, card_tag: a card's notes and the tags in them
- *   8  limit: the numbers the game caps, as the mods' "limits" set them */
+ *   8  limit: the numbers the game caps, as the mods' "limits" set them
+ *   9  menu_item and the MENU event
+ *  10  the MONSTER event and manifest features listed in notes/modding.md
+ *  11  manifest features only; no host layout or event change
+ *  12  sound_add, sound_play, sound_free: a code mod's own sounds
+ *  13  "limits" "card_drops" (manifest only), which limit() also answers
+ *  14  the tower's manifest features (notes/tower-mode.md) only; no host
+ *      layout or event change
+ * A data mod declares its required version with min_api in mod.json. */
 #include "mod_types.h"
 
 typedef struct MemoriesModHost MemoriesModHost;
@@ -161,7 +170,7 @@ struct MemoriesModHost {
     /* Overlay drawing, for MemoriesMod.overlay: the canvas's size in pixels
      * and the scale the port draws its own menus at (1 at 480 lines, more in
      * a bigger window); text (ASCII) with `middle` its vertical centre and
-     * its width; a rectangle blended in at `alpha` (0-255). Colours are
+     * its width; a rectangle blended in at `alpha` (0-255). Colors are
      * 0xRRGGBB. Outside the overlay callback these do nothing. */
     void (*overlay_size)(const MemoriesModHost *, int *width, int *height, int *scale);
     void (*draw_text)(const MemoriesModHost *, int x, int middle, const char *text, uint32_t rgb, int scale);
@@ -207,8 +216,14 @@ struct MemoriesModHost {
      * a monster has, 9999 on the disc), "life_points" (the start against the
      * CPU), "life_points_max" (how far healing goes; 0 while it stops at the
      * start), "two_player_start", "two_player_max", "two_player_step",
-     * "starchips", "chest", "free_duel_record" and "two_player_record".
-     * -1 for a name it does not know. Answers once the card tables are
+     * "starchips", "chest", "free_duel_record" and "two_player_record";
+     * and the other values by their keys (the FM Editor's Values tab):
+     * "deck_copies", "swords_turns", "crush_card", "spellbinding_circle",
+     * "shadow_spell", "rank_score.start", "rank_score.exodia",
+     * "rank_score.deck_out", "starchip_prize.S" to "starchip_prize.D" and
+     * "new_game_starchips"; from API 13 "card_drops", the cards a mod locks
+     * every won duel to (0 while none does and the player's Game > Card
+     * drops decides). -1 for a name it does not know. Answers once the card tables are
      * built, which is before the title. A mod that deals damage or bonuses of
      * its own reads the caps here rather than assume 9999. */
     long (*limit)(const MemoriesModHost *, const char *name);
@@ -219,6 +234,22 @@ struct MemoriesModHost {
      * "mod-id:button-id" (11 on); NULL for none. A button's number depends
      * on the mods applied, so a mod knows its own by name. */
     const char *(*menu_item)(const MemoriesModHost *, int index);
+
+    /* --- API 12 ---
+     * Sounds of the mod's own, played as the game's sound effects are: on
+     * the same channels, under the sound-effect volume. sound_add copies
+     * `frames` frames of `channels` interleaved signed 16-bit samples at
+     * `rate` Hz and returns a handle, or -1; never from an interrupt.
+     * sound_play starts one once, `volume` 0-255 and `pan` -128 (left) to
+     * 128 (right), and is nonzero when it did; one still playing starts
+     * again from its beginning, as a game sound effect takes its own voice
+     * again. sound_free stops and frees one. Both sound_add and sound_play
+     * work only while the mod is applied (not from MemoriesModInit): the
+     * host frees a mod's sounds when it is turned off, and their handles go
+     * with them, so a mod adds them when it needs them, or in applied(1). */
+    int (*sound_add)(const MemoriesModHost *, const int16_t *samples, size_t frames, int channels, unsigned rate);
+    int (*sound_play)(const MemoriesModHost *, int sound, int volume, int pan);
+    void (*sound_free)(const MemoriesModHost *, int sound);
 };
 
 /* The symbol a mod's object defines, and its type. */

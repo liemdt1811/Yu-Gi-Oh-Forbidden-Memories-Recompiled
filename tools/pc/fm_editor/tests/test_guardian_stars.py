@@ -12,6 +12,7 @@ against the same files, so the editor and the game agree on every pair.
 import copy
 import json
 import unittest
+from unittest import mock
 from pathlib import Path
 
 try:
@@ -113,7 +114,7 @@ class TableTest(unittest.TestCase):
         bad = {"stars": [{"id": 16}, {"id": 0}, {"name": "x"}],
                "matchups": [{"attacker": 1, "defender": 2, "bonus": 40000}, {"attacker": "Nowhere", "defender": 2},
                             {"attacker": 1, "defender": 2, "bonus": "a"}],
-               "default_bonus": 99999, "colour": 1, "choice": "sometimes"}
+               "default_bonus": 99999, "color": 1, "choice": "sometimes"}
         errors = [m for level, where, m in gs.check(bad) if level == "error"]
         self.assertEqual(len(errors), 9, errors)            # stars.c's eight notes, and "choice"
         self.assertTrue(any("4 bits" in m for m in errors))
@@ -309,6 +310,9 @@ class GuardianStarsTabTest(unittest.TestCase):
         tab = GuardianStarsTab(notebook, app)
         tab.refresh()
         self.assertEqual(tab.default.get(), "700")
+        # A star is picked from the start, its button saying what it does.
+        self.assertEqual(tab.selected_star, 1)
+        self.assertEqual(tab.remove_button.cget("text"), "Reset")
         self.assertEqual(len(tab.tree.get_children()), 10)
         tab.pick_cell(1, 2)
         self.assertEqual(tab.value.get(), "700")
@@ -321,6 +325,7 @@ class GuardianStarsTabTest(unittest.TestCase):
         self.assertEqual(len(tab.tree.get_children()), 11)
         tab.tree.selection_set("11")
         tab._pick_star()
+        self.assertEqual(tab.remove_button.cget("text"), "Remove")
         tab.name.set("Fire")
         tab.set_name()
         with tempfile.TemporaryDirectory() as folder:
@@ -335,10 +340,10 @@ class GuardianStarsTabTest(unittest.TestCase):
         self.assertEqual(app.project.other["guardian_stars"]["choice"], "best")
         tab.draw()                              # the grid, 11 by 11
         self.assertGreater(len(tab.canvas.find_all()), 11 * 11)
-        # Dark mode: the grid redraws itself in the dark colours when the
+        # Dark mode: the grid redraws itself in the dark colors when the
         # theme changes, and back.
         from fm_editor import theme
-        from fm_editor.guardian_stars_tab import COLOURS
+        from fm_editor.guardian_stars_tab import COLORS
         looks = theme.Theme(self.root)
         looks.make_dark()
         light = looks.style.theme_use()
@@ -346,13 +351,22 @@ class GuardianStarsTabTest(unittest.TestCase):
                          if tab.canvas.type(item) == "rectangle"}
         looks.style.theme_use(theme.DARK_THEME)
         self.root.update()
-        self.assertIn(COLOURS["plus"][1], fills())
-        self.assertNotIn(COLOURS["plus"][0], fills())
+        self.assertIn(COLORS["plus"][1], fills())
+        self.assertNotIn(COLORS["plus"][0], fills())
         looks.style.theme_use(light)
         self.root.update()
-        self.assertIn(COLOURS["plus"][0], fills())
+        self.assertIn(COLORS["plus"][0], fills())
         tab.remove_icon()
         self.assertNotIn("icons/star-11.png", app.project.files)
+        # A cell of the star removed is no cell any more: the bonus buttons
+        # write no matchup for a star that is gone.
+        tab.pick_cell(11, 1)
+        with mock.patch("fm_editor.guardian_stars_tab.messagebox.askokcancel", return_value=True):
+            tab.remove_star()
+        self.assertIsNone(tab.cell)
+        tab.set_cell(500)
+        self.assertFalse([m for m in app.project.other["guardian_stars"].get("matchups", [])
+                          if 11 in (m["attacker"], m["defender"])])
         tab.preset_clear()
         self.assertTrue(app.project.other["guardian_stars"]["replace"])
         self.assertGreater(app.changes, 0)

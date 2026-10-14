@@ -38,6 +38,9 @@ void Stars_Build(void);
 void Stars_Add(const char *mod, const struct JsonValue *manifest);
 void Stars_AddFrom(const char *mod, const char *directory, const struct JsonValue *manifest);
 void Stars_Clear(void);
+/* Set by the optional icon renderer; keeping it a callback lets the rule
+ * parser's focused tests remain independent of rendering modules. */
+extern void (*Stars_IconsCleared)(void);
 
 /* The disc's rule, as Duel_CalcGuardianStarMatchup works it out for any two
  * 4-bit ids (0 and 11-15 included: the disc gives some of those +/-500). */
@@ -116,7 +119,7 @@ int Stars_Named(int star);
 const char *Stars_Name(int star);
 
 /* The mod's icon for `star`, a PNG's full path, or NULL; and whether it
- * keeps the PNG's own colours ("palette": "own") rather than taking the
+ * keeps the PNG's own colors ("palette": "own") rather than taking the
  * disc's stars' ("game", the default). */
 const char *Stars_Icon(int star);
 int Stars_IconOwnPalette(int star);

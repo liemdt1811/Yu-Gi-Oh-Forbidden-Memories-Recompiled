@@ -45,6 +45,8 @@
  * at load is overwritten -- and zero at 4bpp is transparent, not black.
  */
 #include "types.h"
+#include "psyq/libgte.h"
+#include "psyq/libgpu.h"
 #include "game/duel_effect.h"
 #include "game/duel_effect_command.h"
 #include "game/duel_effect_init_entry.h"
@@ -82,9 +84,6 @@
 #define NAME_MAX 28
 #define INI_NAME "card_name_color.ini"
 
-typedef struct { s16 x, y, w, h; } ModRect;   /* psyq/libgpu.h RECT */
-int LoadImage(ModRect *rect, u32 *pixels);
-int DrawSync(int mode);
 
 extern const char *const Tables_DuelistNames[];
 extern int gCard_nCount;
@@ -762,7 +761,7 @@ static void upload_ramps(void)
 {
     u16 base[RAMP_ENTRIES];
     u16 ramp[RAMP_ENTRIES];
-    ModRect rect;
+    RECT rect;
     int slot, i, wanted = 0;
 
     ramps_done = 1;
@@ -1428,7 +1427,7 @@ static void restore_boxes(void)
 }
 static void colors_removed(void)
 {
-    ModRect rect = {RAMP_VX, RAMP_VY, RAMP_ENTRIES, COLOR_COUNT};
+    RECT rect = {RAMP_VX, RAMP_VY, RAMP_ENTRIES, COLOR_COUNT};
     restore_boxes();
     if (have_original_ramps) {
         int slot;

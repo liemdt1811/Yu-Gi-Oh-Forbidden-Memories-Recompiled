@@ -38,9 +38,15 @@
 #define CALL32(type, pointer) pointer
 #endif
 
-/* Tables and globals shared with translated guest memory use the 32-bit
- * guest pointer representation. Native backends keep upstream host pointers
- * for their corresponding globals. */
+/* MEMORIES_TRANSLATED selects the translated memory model, used in production
+ * by macOS ARM64. Portable test harnesses may select it on other hosts.
+ * TRANSLATED_G32 is G32 only in the translated build and empty on the
+ * fixed-memory 64-bit ones (Windows x64, Android arm64). It fits only a
+ * name some declaration in src/ initializes: the port's own table in native
+ * .data, which the translated build shares with guest memory. Data of the
+ * retail image (a pinned global, such as the text command table
+ * D_80090F18), a member, or a local walking either, takes G32;
+ * tools/project/check_g32.py rejects TRANSLATED_G32 there. */
 #if defined(MEMORIES_TRANSLATED)
 #define TRANSLATED_G32 G32
 #else

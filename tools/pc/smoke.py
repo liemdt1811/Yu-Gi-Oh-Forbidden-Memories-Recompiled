@@ -107,21 +107,30 @@ def test_only_variables(executable: Path, case: dict[str, object]) -> list[str]:
 
 def refused_code_mods(executable: Path, case: dict[str, object]) -> list[str]:
     """The code mods a case turns on that this executable refuses: the
-    64-bit Windows game (a PE for x86-64) loads no code mods (they are
-    32-bit objects), so a case about one is not its to pass."""
+    64-bit Windows game (a PE for x86-64) loads a code mod's x86_64-windows
+    object, and refuses by name one with none beside it (or a mod that is
+    not there at all), so a case about it is not its to pass."""
     try:
         head = executable.read_bytes()[:4096]
         at = int.from_bytes(head[0x3C:0x40], "little")
         wide = head[at:at + 4] == b"PE" + bytes(2) and int.from_bytes(head[at + 4:at + 6], "little") == 0x8664
     except (OSError, ValueError):
         return []
+    if not wide:
+        return []
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import build_mod
     refused = []
     for key, value in case.get("settings", {}).items():
         manifest = executable.parent / "mods" / key[4:].split(".")[0] / "mod.json"   # mod.<id> or mod.<id>.<option>
-        # The 64-bit build leaves code mods out of its mods folder.
-        if wide and key.startswith("mod.") and value and (not manifest.is_file() or
-                                                          json.loads(manifest.read_text(encoding="utf-8")).get("library")) \
-                and manifest.parent.name not in refused:
+        if not key.startswith("mod.") or not value or manifest.parent.name in refused:
+            continue
+        if not manifest.is_file():
+            refused.append(manifest.parent.name)
+            continue
+        data = json.loads(manifest.read_text(encoding="utf-8-sig"))
+        if (data.get("library") or data.get("libraries")) and \
+                not (manifest.parent / build_mod.library_name(str(manifest.parent), "x86_64-windows")).is_file():
             refused.append(manifest.parent.name)
     return refused
 
@@ -140,7 +149,7 @@ def run_cases(command: list[str], extra: dict[str, str], fixtures: list[Path], o
             continue
         refused = refused_code_mods(executable, case)
         if refused:
-            print(f"smoke: {name} skipped: the 64-bit game loads no code mods ({', '.join(refused)})")
+            print(f"smoke: {name} skipped: the 64-bit game has no x86_64-windows object for ({', '.join(refused)})")
             continue
         image = output / f"{name}.ppm"
         settings = output / f"{name}.settings"

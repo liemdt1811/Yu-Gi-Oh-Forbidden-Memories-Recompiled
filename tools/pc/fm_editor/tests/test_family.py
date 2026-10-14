@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from fm_editor import gamedata as g, importer, kit, manifest
+from fm_editor import compat, gamedata as g, importer, kit, manifest
 from fm_editor.disc import GameFiles
 from fm_editor.tests import fixtures
 from fm_editor.tests.test_data import fixture
@@ -196,12 +196,12 @@ def put_text(slus: bytearray, table_entry: int, bank: int, address: int, data: b
 
 
 class TextTest(unittest.TestCase):
-    def test_coloured_names_and_empty_texts_go_to_the_text_file(self):
+    def test_colored_names_and_empty_texts_go_to_the_text_file(self):
         f = fixture()
         codes = fixtures.glyph_codes()
         slus = bytearray(f.slus)
         put_text(slus, g.NAME_TABLE + 6 * 2, g.NAME_BANK, 0x801DF000,
-                 b"\xF8\x0A\x05" + fixtures.encode_text("Dark Card", codes))           # a coloured name
+                 b"\xF8\x0A\x05" + fixtures.encode_text("Dark Card", codes))           # a colored name
         put_text(slus, g.NAME_TABLE + 9 * 2, g.NAME_BANK, 0x801DF100, fixtures.encode_text("Plain New", codes))
         put_text(slus, g.STRING_TABLE + (0x100 + 7) * 2, g.DESCRIPTION_BANK, 0x801CF000, b"\xFF")   # empty
         put_text(slus, g.STRING_TABLE + (0x100 + 8) * 2, g.DESCRIPTION_BANK, 0x801CF010,
@@ -217,7 +217,7 @@ class TextTest(unittest.TestCase):
             importer.save(result, folder)
             built = manifest.read_json(folder / "mod.json")
             entries = {e["replace"]: e for e in built["cards"]}
-            self.assertNotIn(6, entries)                                  # the text file has it, colour and all
+            self.assertNotIn(6, entries)                                  # the text file has it, color and all
             self.assertEqual(entries[9], {"replace": 9, "name": "Plain New"})
             self.assertNotIn(7, entries)
             self.assertNotIn(8, entries)
@@ -233,7 +233,7 @@ class TextTest(unittest.TestCase):
             self.assertEqual(manifest.build(opened)["cards"], built["cards"])
             opened.cards[6].name = "Darker Card"                          # an edit goes to cards[] again
             self.assertIn({"replace": 6, "name": "Darker Card"}, manifest.build(opened)["cards"])
-        self.assertIn("carry colour or icon codes or are empty on purpose (1 empty)", report)
+        self.assertIn("carry color or icon codes or are empty on purpose (1 empty)", report)
 
     def test_the_name_entry_strings_stay_retail(self):
         f = fixture()
@@ -314,6 +314,12 @@ class DeckAndDropTest(unittest.TestCase):
         self.assertEqual(result.project.pools, pools)
         self.assertIn("the prize draw at 0x80021C6C jumps to the mod's code at 0x8000B300, which calls 0x8000B380", report)
         self.assertEqual(kit.extra_draws(f.slus, bytes(slus)).count, 5)
+        # Five cards a win: the mod's "limits" "card_drops", which locks
+        # Game > Card drops while it is applied (API 13).
+        built = manifest.build(result.project)
+        self.assertEqual(built["limits"], {"card_drops": 5})
+        self.assertIn("\"limits\" \"card_drops\" 5, which locks Game > Card drops", report)
+        self.assertEqual(compat.required(built)[0], 13)
 
 
 class RulesTest(unittest.TestCase):

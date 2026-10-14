@@ -8,11 +8,12 @@
  * with one palette at (0x280, 0xFA); an icon id past them is a controller
  * button, and the battle effect draws an error cross. A star with no icon
  * of the mod's stays the disc's (1-10) or, past them, is a plain disc in the
- * stars' own colours. Nothing of the console's VRAM is used. */
+ * stars' own colors. Nothing of the console's VRAM is used. */
 #include "stars.h"
 #include "art.h"
 #include "pc/mods/mods.h"
 #include "pc/render/soft_gpu.h"
+#include "pc/render/texture_pack.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -26,6 +27,12 @@
 
 static unsigned pending;
 static unsigned char made[STARS_MAX + 1];   /* 0 not yet, 1 made, 2 failed */
+
+static void clear_icons(void)
+{
+    memset(made, 0, sizeof(made));
+    TexturePack_BankSpritesClear(TEXTURE_BANK_OWNER_STARS);
+}
 
 static int own_icon(int star)
 {
@@ -61,7 +68,7 @@ static void star_palette(unsigned short palette[16])
     memcpy(palette, &SoftGpu_Vram()[STAR_CLUT_Y * SOFT_GPU_WIDTH + STAR_CLUT_X], 16 * sizeof(*palette));
 }
 
-/* A star with no icon: a disc in the stars' colours, its edge in the one
+/* A star with no icon: a disc in the stars' colors, its edge in the one
  * the disc's icons outline with and its face in the one they fill with. */
 static void plain_disc(unsigned char *pixels)
 {
@@ -122,6 +129,14 @@ static int make(int star, uint16_t *bank)
             plain_disc(pixels);
         } else if (own) {
             memcpy(&bank[(OWN_CLUT_Y + star) * SOFT_GPU_WIDTH], clut, sizeof(clut));
+            /* The indexed 16x16 form is the console/1x texture; above 1x
+             * the PNG itself, where the icon is drawn through its own
+             * palette. Not one in the disc's: the game fades that one,
+             * and func_80035E20's shaded pass draws over the icon through
+             * another, which the PNG's colors would not follow. */
+            TexturePack_BankSpritesUseOwner(TEXTURE_BANK_OWNER_STARS);
+            TexturePack_AddBankSprite(ICON_BANK, ICON_PAGE * 64, 0, 0, 0, OWN_CLUT_Y + star, (star - 1) * SIDE, 0,
+                                      SIDE, SIDE, icon);
         }
     } else {
         plain_disc(pixels);
@@ -143,6 +158,7 @@ int Stars_IconCell(unsigned code, int *tpage, int *u, int *v, int *clut_x, int *
 {
     uint16_t *bank;
     int star = (int)(code & 0xF);
+    Stars_IconsCleared = clear_icons;
     if ((code & 0xFFF0u) != STARS_ICON_CODE || !own_icon(star)) return 0;
     if (made[star] == 2 || !(bank = SoftGpu_Bank(ICON_BANK))) return 0;
     if (!made[star]) made[star] = make(star, bank) ? 1 : 2;

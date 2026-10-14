@@ -8,6 +8,7 @@
 #include "pc/platform/settings.h"
 #include "game/duel_side_state.h"
 #include "game/main_modes.h"
+#include "pc/tower/tower.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -108,6 +109,7 @@ int Cheats_SetStarchips(unsigned value)
 
 int Cheats_StartingLifePoints(void)
 {
+    if (Tower_CheatsOff()) return DUEL_STARTING_LIFE_POINTS;
     return CHEATS_OFF ? 8000 : Settings_Get(SET_CHEAT_LIFE_POINTS);
 }
 
@@ -126,7 +128,7 @@ extern signed char gDuel_bOpponentID;
 s8 Cheats_CardViewMode(const DuelSideState *side)
 {
     if (side->card_view_mode < 0 && side == &D_800E9FF0[1] && gDuel_bOpponentID >= 0 &&
-        !CHEATS_OFF && Settings_Get(SET_CHEAT_SHOW_HAND)) {
+        !CHEATS_OFF && Settings_Get(SET_CHEAT_SHOW_HAND) && !Tower_CheatsOff()) {
         return 0;
     }
     return side->card_view_mode;

@@ -9,7 +9,7 @@
  *
  * Replay, at present, with the clock held. VRAM is a 16-bit integer texture
  * that the fragment shader decodes (4, 8 and 16 bits per texel through the
- * palette) exactly as the software GPU samples it; the picture is a colour
+ * palette) exactly as the software GPU samples it; the picture is a color
  * texture on a framebuffer, scale x scale pixels per word. Loads, fills and
  * copies are applied to both in order; primitives are drawn into the
  * picture only, and after the replay VRAM as the software GPU left it is
@@ -17,7 +17,7 @@
  * would be (what a primitive draws is not sampled by a later primitive of
  * the same frame: that would be render-to-texture, which the game does
  * only through a read-back and a load, and where it matters the game code
- * says so: SoftGpu_Capture, below). Blending: a fragment's colour comes out pre-multiplied and its alpha
+ * says so: SoftGpu_Capture, below). Blending: a fragment's color comes out pre-multiplied and its alpha
  * is the destination's factor, so opaque pixels and modes 0, 1 and 3 share
  * one draw; mode 2 (subtractive) draws its opaque texels first and then
  * its semi-transparent ones with a subtracting equation. No dithering, and
@@ -28,6 +28,7 @@
 #include "gl_picture.h"
 #include "soft_gpu.h"
 #include "texture_pack.h"
+#include "pc/cards/card_layout.h"
 #include "pc/text/hd_text.h"
 #include "pc/platform/settings.h"
 #include "pc/compat/signal.h"
@@ -54,6 +55,7 @@
     X(PFNGLGETPROGRAMINFOLOGPROC, GetProgramInfoLog) \
     X(PFNGLDELETESHADERPROC, DeleteShader) \
     X(PFNGLUSEPROGRAMPROC, UseProgram) \
+    X(PFNGLDELETEPROGRAMPROC, DeleteProgram) \
     X(PFNGLGETUNIFORMLOCATIONPROC, GetUniformLocation) \
     X(PFNGLUNIFORM1IPROC, Uniform1i) \
     X(PFNGLUNIFORM2IPROC, Uniform2i) \
@@ -61,6 +63,7 @@
     X(PFNGLUNIFORM4IPROC, Uniform4i) \
     X(PFNGLUNIFORM2FPROC, Uniform2f) \
     X(PFNGLGENBUFFERSPROC, GenBuffers) \
+    X(PFNGLDELETEBUFFERSPROC, DeleteBuffers) \
     X(PFNGLBINDBUFFERPROC, BindBuffer) \
     X(PFNGLBUFFERDATAPROC, BufferData) \
     X(PFNGLENABLEVERTEXATTRIBARRAYPROC, EnableVertexAttribArray) \
@@ -89,6 +92,7 @@ GL_FUNCTIONS(DECLARE)
 #undef DECLARE
 static PFNGLGENVERTEXARRAYSPROC glGenVertexArrays_; /* optional: a core profile needs one bound */
 static PFNGLBINDVERTEXARRAYPROC glBindVertexArray_;
+static PFNGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays_;
 /* The context is OpenGL ES 3 (Android; MEMORIES_GLES=1 on a desktop): the
  * shaders are made GLSL ES (es_source), and the context is the SDL
  * renderer's, which sdl.c hands over around every call here. */
@@ -106,6 +110,7 @@ static int load_functions(void)
 #undef LOAD
     glGenVertexArrays_ = (PFNGLGENVERTEXARRAYSPROC)SDL_GL_GetProcAddress("glGenVertexArrays");
     glBindVertexArray_ = (PFNGLBINDVERTEXARRAYPROC)SDL_GL_GetProcAddress("glBindVertexArray");
+    glDeleteVertexArrays_ = (PFNGLDELETEVERTEXARRAYSPROC)SDL_GL_GetProcAddress("glDeleteVertexArrays");
     return 1;
 }
 
@@ -216,18 +221,32 @@ static const SoftGpuRecorder recorder = {record_gp0, record_load, record_move, r
                                           record_precise, record_capture};
 
 /* --- GL objects ---------------------------------------------------------- */
+/* What the replays cost the GPU beyond the primitives, summed over 120 of
+ * them for MEMORIES_TRACE=frames: multisample resolves, other blits and
+ * copies, quads drawn to copy pictures in, and draw calls, with the pixels
+ * each touched. */
+static struct {
+    unsigned resolves, blits, copies, quads, draws;
+    double resolve_px, blit_px, copy_px, quad_px;
+} stats;
 static int scale;                 /* of the picture in the framebuffer, 0 before the first resync */
 static GLuint vram_texture, vram_scratch, vram_fbo, vram_scratch_fbo;
 static GLuint picture_texture, picture_scratch, picture_fbo, picture_scratch_fbo;
 /* Anti-aliasing (Video > Anti-aliasing, `msaa`): with `samples` above 0 the
  * picture and widescreen's targets are drawn into multisampled renderbuffers
  * (these framebuffers), and resolved into their textures where something
- * reads them: a move's source, a target's centre, and the end of a replay
- * (presenting, frame dumps). Nothing can be copied into a multisampled
- * buffer, so what is copied in is drawn, as a quad. 0: the textures are
- * drawn into straight, as before. */
+ * reads them: a move's source, a target's centre, and after a replay the
+ * part the presenter shows or a frame dump reads (picture_unresolved). The
+ * whole of VRAM at 4x is 4096 x 2048 pixels, seven times the shown area,
+ * and resolving all of it after every replay took an older GPU from 59 to
+ * 18 fps. Nothing can be copied into a multisampled buffer, so what is
+ * copied in is drawn, as a quad. 0: the textures are drawn into straight,
+ * as before. */
 static int samples, samples_scale;
 static GLuint picture_ms_fbo, picture_ms_buffer;
+/* A replay drew into the multisampled picture since it was last resolved
+ * whole: its texture is current only where a resolve has reached since. */
+static int picture_unresolved;
 static GLuint program, buffer, vertex_array;
 static GLint u_picture_size, u_window, u_op, u_pass, u_scale, u_copy_offset, u_vram, u_scratch, u_banks;
 static GLint u_tex_xbr;
@@ -244,14 +263,25 @@ static int bank_used[SOFT_GPU_BANKS];
 static GLuint entry_map_texture, place_map_texture, *entry_textures;
 static int entry_texture_count;
 static unsigned pack_generation = ~0u, map_generation = ~0u;
-static GLint u_entry_map, u_place_map, u_pack, u_pack_entry, u_pack_size;
+static GLint u_entry_map, u_place_map, u_pack, u_pack_entry, u_pack_size, u_bank_sprite, u_bank_source, u_bank_level;
+/* Bank sprites' PNGs (TexturePack_AddBankSprite): one texture to a PNG,
+ * with its levels, by its key; apart from the pack's, so that a sprite
+ * placed or a PNG let go leaves those be. */
+typedef struct BankTexture {
+    unsigned key;
+    GLuint texture;
+    int levels;
+} BankTexture;
+static BankTexture *bank_textures;
+static int bank_texture_count;
+static unsigned bank_generation = ~0u;
 /* HD text (hd_text.h): whether it is on for this replay, and its atlas of
  * glyph pictures, 8-bit indices, as an integer texture on unit 6; and HD
  * numbers and labels, whose pictures are in the same atlas. */
 static int hd_text, hd_hud, opponent_name;
 /* A capture (SoftGpu_Capture): the scaled picture of what the game loaded
  * at capture_rect (x, y, w, h in VRAM words; w 0 for none), on unit 7,
- * which 16-bit textures there take their colour from. It holds until a
+ * which 16-bit textures there take their color from. It holds until a
  * load, copy or fill reaches that rect, a resync or a new scale. */
 static GLuint capture_texture;
 static int capture_rect[4], capture_w, capture_h;
@@ -271,7 +301,7 @@ static const char *vertex_source =
     "uniform vec2 picture_size;\n"
     "in vec2 position;\n"
     "in vec2 texcoord;\n"
-    "in vec4 colour;\n"
+    "in vec4 color;\n"
     "in ivec4 texture_page;\n"
     "in ivec4 texture_mode;\n"
     "in float persp;\n"
@@ -287,10 +317,10 @@ static const char *vertex_source =
     "    gl_Position = vec4(position.x / picture_size.x * 2.0 - 1.0, position.y / picture_size.y * 2.0 - 1.0, 0.0, 1.0);\n"
     /* PGXP: a triangle with its depths (flag 32) interpolates uv / w and
      * 1 / w across the screen, and divides back, which is perspective. */
-    "    uv = (int(colour.a) & 32) != 0 ? texcoord * persp : texcoord;\n"
+    "    uv = (int(color.a) & 32) != 0 ? texcoord * persp : texcoord;\n"
     "    q = persp;\n"
-    "    rgb = colour.rgb;\n"
-    "    flags = int(colour.a);\n"
+    "    rgb = color.rgb;\n"
+    "    flags = int(color.a);\n"
     "    page = texture_page;\n"
     "    mode = texture_mode;\n"
     "    bounds = texture_bounds;\n"
@@ -300,19 +330,29 @@ static const char *vertex_source =
  * level 2, on the texels of each textured primitive instead of the finished
  * picture, so a sprite's edges are smoothed at the internal resolution and
  * against what lies under it. The same rules and neighbourhood (see there),
- * with three changes. A texel is its word: transparent (0) is one colour,
+ * with three changes. A texel is its word: transparent (0) is one color,
  * as far from every other as black from white, so outlines against
  * transparency round too, and where the fill is transparent the pixel is
  * not drawn. Texels are those of the primitive's rectangle of texture
  * (bounds: first u, v, last u, v); past it the edge repeats, so a picture
- * put together from several rectangles shows no seams. And the colours
+ * put together from several rectangles shows no seams. And the colors
  * blend by coverage only between two opaque texels. centre_word and
- * near_word are the texel's word and its fill's. */
+ * near_word are the texel's word and its fill's. Compiled in only while it
+ * is on (TEXTURE_XBR, make_program): its 25-texel neighbourhood made the
+ * NVIDIA program of every primitive 51 registers and a local array where 8
+ * do without it, and an older GPU (a GTX 550 Ti) ran a battle's effects at
+ * 4x at half speed although xBR was off. The neighbourhood is kept as its
+ * words alone, each color made where it is read (nbc), and the outer 16
+ * are fetched one by one rather than in a loop: on a phone (Adreno 660) an
+ * array of the 25 colors, filled in a loop, made the Free Duel screen at
+ * Internal 4x take 120 ms a frame (7.5 frames a second, 60 with xBR off;
+ * 44 like this, 60 at 2x), and that array filled one by one gave black
+ * corners where the driver read some of its texels as transparent. */
 #define TEXTURE_XBR_SOURCE \
     "uint centre_word, near_word;\n" \
     "uint nb_word[25];\n" \
-    "vec4 nb[25];\n" \
     "int nbi(int x, int y) { return (y + 2) * 5 + x + 2; }\n" \
+    "vec4 nbc(int i) { uint w = nb_word[i]; return w == 0u ? vec4(0.0) : vec4(expand(w) / 255.0, 1.0); }\n" \
     "float tdist(vec4 a, vec4 b) {\n" \
     "    if (a.a != b.a) return 1.0;\n" \
     "    vec3 k = a.rgb - b.rgb;\n" \
@@ -323,9 +363,9 @@ static const char *vertex_source =
     "bool tsame(vec4 a, vec4 b) { return tdist(a, b) < 0.06; }\n" \
     "float tcover(float f, float slope, float w) { return clamp(f / (slope * w) + 0.5, 0.0, 1.0); }\n" \
     "vec2 tcorner(int dx, int dy, vec2 q, float w) {\n" \
-    "    vec4 E = nb[12], B = nb[nbi(0, -dy)], C = nb[nbi(dx, -dy)], D = nb[nbi(-dx, 0)], F = nb[nbi(dx, 0)];\n" \
-    "    vec4 G = nb[nbi(-dx, dy)], H = nb[nbi(0, dy)], I = nb[nbi(dx, dy)], F4 = nb[nbi(2 * dx, 0)];\n" \
-    "    vec4 I4 = nb[nbi(2 * dx, dy)], H5 = nb[nbi(0, 2 * dy)], I5 = nb[nbi(dx, 2 * dy)];\n" \
+    "    vec4 E = nbc(12), B = nbc(nbi(0, -dy)), C = nbc(nbi(dx, -dy)), D = nbc(nbi(-dx, 0)), F = nbc(nbi(dx, 0));\n" \
+    "    vec4 G = nbc(nbi(-dx, dy)), H = nbc(nbi(0, dy)), I = nbc(nbi(dx, dy)), F4 = nbc(nbi(2 * dx, 0));\n" \
+    "    vec4 I4 = nbc(nbi(2 * dx, dy)), H5 = nbc(nbi(0, 2 * dy)), I5 = nbc(nbi(dx, 2 * dy));\n" \
     "    bool may = !tsame(E, F) && !tsame(E, H) &&\n" \
     "               (!tsame(F, B) && !tsame(H, D) || tsame(E, I) && !tsame(F, I4) && !tsame(H, I5) ||\n" \
     "                tsame(E, G) || tsame(E, C));\n" \
@@ -343,7 +383,6 @@ static const char *vertex_source =
     "    ivec2 t = clamp(e + ivec2(x, y), lo, hi);\n" \
     "    uint word = texel_word(t.x, t.y);\n" \
     "    nb_word[nbi(x, y)] = word;\n" \
-    "    nb[nbi(x, y)] = word == 0u ? vec4(0.0) : vec4(expand(word) / 255.0, 1.0);\n" \
     "}\n" \
     "vec4 texture_xbr(vec2 p, vec2 half_step, float w) {\n" \
     "    ivec2 e = ivec2(floor(p));\n" \
@@ -356,14 +395,24 @@ static const char *vertex_source =
     "    fetch(e, 0, -1, lo, hi);\n" \
     "    centre_word = near_word = nb_word[12];\n" \
     /* Like the four beside it (every corner's F and H): no corner is cut. */ \
-    "    if (tsame(nb[12], nb[13]) && tsame(nb[12], nb[11]) && tsame(nb[12], nb[17]) && tsame(nb[12], nb[7]))\n" \
+    "    if (tsame(nbc(12), nbc(13)) && tsame(nbc(12), nbc(11)) && tsame(nbc(12), nbc(17)) && tsame(nbc(12), nbc(7)))\n" \
     "        return vec4(expand(centre_word), 0.0);\n" \
-    "    for (int y = -2; y <= 2; y++) {\n" \
-    "        for (int x = -2; x <= 2; x++) {\n" \
-    "            if (((x == -2 || x == 2) && (y == -2 || y == 2)) || abs(x) + abs(y) <= 1) continue;\n" \
-    "            fetch(e, x, y, lo, hi);\n" \
-    "        }\n" \
-    "    }\n" \
+    "    fetch(e, -1, -2, lo, hi);\n" \
+    "    fetch(e, 0, -2, lo, hi);\n" \
+    "    fetch(e, 1, -2, lo, hi);\n" \
+    "    fetch(e, -2, -1, lo, hi);\n" \
+    "    fetch(e, -1, -1, lo, hi);\n" \
+    "    fetch(e, 1, -1, lo, hi);\n" \
+    "    fetch(e, 2, -1, lo, hi);\n" \
+    "    fetch(e, -2, 0, lo, hi);\n" \
+    "    fetch(e, 2, 0, lo, hi);\n" \
+    "    fetch(e, -2, 1, lo, hi);\n" \
+    "    fetch(e, -1, 1, lo, hi);\n" \
+    "    fetch(e, 1, 1, lo, hi);\n" \
+    "    fetch(e, 2, 1, lo, hi);\n" \
+    "    fetch(e, -1, 2, lo, hi);\n" \
+    "    fetch(e, 0, 2, lo, hi);\n" \
+    "    fetch(e, 1, 2, lo, hi);\n" \
     "    vec2 best = tcorner(1, 1, q, w), k = tcorner(-1, 1, vec2(1.0 - q.x, q.y), w);\n" \
     "    if (k.y > best.y) best = k;\n" \
     "    k = tcorner(1, -1, vec2(q.x, 1.0 - q.y), w);\n" \
@@ -379,7 +428,9 @@ static const char *vertex_source =
  * page: page x, page y, palette x, palette y. mode: depth, blend mode, bank.
  * window: mask x, mask y, offset x, offset y in texels, as soft_gpu.c has
  * them. pass: 0 every fragment, 1 the opaque ones, 2 the semi-transparent.
- * op 1: VRAM into the picture. op 2: the scratch copy into the picture. */
+ * op 1: VRAM into the picture. op 2: the scratch copy into the picture.
+ * Flag 128: a full-bleed card title, whose HD atlas ink is white instead of
+ * the retail title CLUT's black. */
 static const char *fragment_source =
 #ifdef __APPLE__
     "#version 150\n"
@@ -395,6 +446,9 @@ static const char *fragment_source =
     "uniform usampler2D glyphs;\n"
     "uniform ivec4 pack_entry;\n" /* entry index + 1, crop left, crop width, rows */
     "uniform ivec3 pack_size;\n"  /* image width, height, texels per word */
+    "uniform ivec4 bank_sprite;\n" /* u, v, width, height; width 0 is a normal pack */
+    "uniform ivec4 bank_source;\n" /* source x, y, width, height in the PNG */
+    "uniform int bank_level;\n"    /* the PNG's level sampled */
     "uniform sampler2D captured;\n" /* a capture's scaled picture (SoftGpu_Capture) */
     "uniform ivec4 capture;\n"      /* its rect in VRAM words, w 0 for none */
     "uniform ivec4 window;\n"
@@ -434,7 +488,9 @@ static const char *fragment_source =
     "    }\n"
     "    return word_at(page.x + u, y);\n"
     "}\n"
+    "#ifdef TEXTURE_XBR\n"
     TEXTURE_XBR_SOURCE
+    "#endif\n"
     "void main() {\n"
     "    if (op == 1) {\n"
     "        ivec2 at = ivec2(gl_FragCoord.xy) / scale;\n"
@@ -488,7 +544,13 @@ static const char *fragment_source =
     /* The pack's image, where it paints this texel (texture_pack.c, sample). */
     "            int per = pack_size.z;\n"
     "            int vx = (page.x + u / per) & 1023, vy = (page.y + v) & 511;\n"
-    "            if (int(texelFetch(entry_map, ivec2(vx, vy), 0).r) == pack_entry.x) {\n"
+    "            if (bank_sprite.z > 0 && u >= bank_sprite.x && u < bank_sprite.x + bank_sprite.z && v >= bank_sprite.y && v < bank_sprite.y + bank_sprite.w) {\n"
+    "                vec2 at = vec2(bank_source.xy) + (vec2(u - bank_sprite.x, v - bank_sprite.y) + fract(vec2(ub, vb))) * vec2(bank_source.zw) / vec2(bank_sprite.zw);\n"
+    "                ivec2 level = textureSize(pack, bank_level);\n"
+    "                vec4 p = texelFetch(pack, clamp(ivec2(floor(at * vec2(level) / vec2(pack_size.xy))), ivec2(0), level - 1), bank_level);\n"
+    "                if (p.a < 8.0 / 255.0) discard;\n"
+    "                cover = p.a; t = floor(p.rgb * 255.0 + 0.5); replaced = true;\n"
+    "            } else if (int(texelFetch(entry_map, ivec2(vx, vy), 0).r) == pack_entry.x) {\n"
     "                uint place = texelFetch(place_map, ivec2(vx, vy), 0).r;\n"
     "                int row = int(place >> 16), word_in = int(place & 0xffffu);\n"
     "                int texel_x = word_in * per + (u - (u / per) * per) - pack_entry.y;\n"
@@ -505,16 +567,21 @@ static const char *fragment_source =
     "                }\n"
     "            }\n"
     "        }\n"
-    /* The texel's own word: its colour unless replaced, and its
+    /* The texel's own word: its color unless replaced, and its
      * semi-transparency bit either way. */
     "        if ((flags & 16) != 0) {\n"
     /* HD text (hd_text.h): the index from the glyph's picture, through the
      * glyph's palette as ever. */
     "            ivec2 at = clamp(ivec2(floor(vec2(ub, vb) * float(scale))), ivec2(0), textureSize(glyphs, 0) - 1);\n"
-    "            word = word_at(page.z + int(texelFetch(glyphs, at, 0).r), page.w);\n"
+    "            uint ink = texelFetch(glyphs, at, 0).r;\n"
+    "            word = word_at(page.z + int(ink), page.w);\n"
+    "            if ((flags & 128) != 0) {\n"
+    "                uint level = ink == 0u ? 0u : (8u - min(ink, 7u)) * 31u / 7u;\n"
+    "                word = level | (level << 5u) | (level << 10u);\n"
+    "            }\n"
     /* A capture (SoftGpu_Capture): a 16-bit texel there keeps its word,
      * which says whether it is transparent and semi-transparent, and takes
-     * its colour from the picture the game read it from. */
+     * its color from the picture the game read it from. */
     "        } else if (!replaced && capture.z > 0 && mode.x == 2 && mode.z == 0 &&\n"
     "                   ((page.x + (((u & ~window.x) | window.z) & 255)) & 1023) - capture.x >= 0 &&\n"
     "                   ((page.x + (((u & ~window.x) | window.z) & 255)) & 1023) - capture.x < capture.z &&\n"
@@ -530,13 +597,17 @@ static const char *fragment_source =
     "                t = floor(texelFetch(captured, px, 0).rgb * 255.0 + 0.5);\n"
     "                replaced = true;\n"
     "            }\n"
-    "        } else if (tex_xbr != 0 && (flags & 8) == 0) {\n"
+    "        }\n"
+    "#ifdef TEXTURE_XBR\n"
+    "        else if (tex_xbr != 0 && (flags & 8) == 0) {\n"
     "            vec4 k = texture_xbr(vec2(ub, vb), half_step, spread);\n"
     "            word = k.a > 0.5 ? near_word : centre_word;\n"
     "            if (word == 0u) discard;\n"
     "            t = centre_word != 0u && near_word != 0u ? mix(expand(centre_word), k.rgb, k.a) : expand(word);\n"
     "            replaced = true;\n"
-    "        } else {\n"
+    "        }\n"
+    "#endif\n"
+    "        else {\n"
     "            word = texel_word(u, v);\n"
     "        }\n"
     "        semi = semi && (word & 0x8000u) != 0u;\n"
@@ -575,7 +646,8 @@ static const char *fragment_source =
  * samplers) or low (sampler2D) stated high, and without "noperspective",
  * which GLSL ES does not have. Every vertex's w is 1.0 (vertex_source), so
  * the perspective-correct interpolation ES does instead is the same
- * interpolation, up to rounding. NULL when out of memory. */
+ * interpolation, up to rounding. NULL when the first line is another (what
+ * is changed holds for GLSL 1.30 alone) or out of memory. */
 static char *es_source(const char *source)
 {
     static const char header[] = "#version 300 es\n"
@@ -584,11 +656,19 @@ static char *es_source(const char *source)
                                  "precision highp sampler2D;\n"
                                  "precision highp usampler2D;\n"
                                  "precision highp usampler2DArray;\n";
-    const char *body = strchr(source, '\n'), *from;
+    static const char desktop[] = "#version 130\n";
+    const char *body = source + sizeof(desktop) - 2, *from; /* at the first line's end */
     char *out, *to;
-    if (!body) return NULL;
+    if (strncmp(source, desktop, sizeof(desktop) - 1)) {
+        fprintf(stderr, "memories-pc: OpenGL picture: a shader for OpenGL ES that is not GLSL 1.30 (\"%.*s\")\n",
+                (int)strcspn(source, "\n"), source);
+        return NULL;
+    }
     out = malloc(sizeof(header) + strlen(body));
-    if (!out) return NULL;
+    if (!out) {
+        fprintf(stderr, "memories-pc: OpenGL picture: no memory for a shader\n");
+        return NULL;
+    }
     memcpy(out, header, sizeof(header) - 1);
     to = out + sizeof(header) - 1;
     for (from = body + 1; *from;) {
@@ -602,13 +682,29 @@ static char *es_source(const char *source)
     return out;
 }
 
-static GLuint compile(GLenum kind, const char *source)
+/* `define`, when given, is a line put right after the #version line. */
+static GLuint compile(GLenum kind, const char *source, const char *define)
 {
     GLuint shader = gl_CreateShader(kind);
     GLint ok = 0;
-    char *converted = es ? es_source(source) : NULL;
+    char *defined = NULL, *converted;
+    if (define) {
+        const char *rest = strchr(source, '\n');
+        size_t first = rest ? (size_t)(rest + 1 - source) : strlen(source);
+        defined = malloc(strlen(source) + strlen(define) + 1);
+        if (!defined) {
+            gl_DeleteShader(shader);
+            return 0;
+        }
+        memcpy(defined, source, first);
+        strcpy(defined + first, define);
+        strcat(defined, source + first);
+        source = defined;
+    }
+    converted = es ? es_source(source) : NULL;
     if (es) {
         if (!converted) {
+            free(defined);
             gl_DeleteShader(shader);
             return 0;
         }
@@ -617,6 +713,7 @@ static GLuint compile(GLenum kind, const char *source)
     gl_ShaderSource(shader, 1, &source, NULL);
     gl_CompileShader(shader);
     free(converted);
+    free(defined);
     gl_GetShaderiv(shader, GL_COMPILE_STATUS, &ok);
     if (!ok) {
         char log[2048];
@@ -629,36 +726,43 @@ static GLuint compile(GLenum kind, const char *source)
     return shader;
 }
 
-static int make_program(void)
+/* The program, with texture xBR's code or without (TEXTURE_XBR_SOURCE),
+ * made `program` when it links; the one it replaces is the caller's. */
+static int program_xbr;
+
+static int make_program(int xbr)
 {
-    GLuint vs = compile(GL_VERTEX_SHADER, vertex_source), fs;
+    GLuint vs = compile(GL_VERTEX_SHADER, vertex_source, NULL), fs, made;
     GLint ok = 0;
     if (!vs) return 0;
-    fs = compile(GL_FRAGMENT_SHADER, fragment_source);
+    fs = compile(GL_FRAGMENT_SHADER, fragment_source, xbr ? "#define TEXTURE_XBR 1\n" : NULL);
     if (!fs) {
         gl_DeleteShader(vs);
         return 0;
     }
-    program = gl_CreateProgram();
-    gl_AttachShader(program, vs);
-    gl_AttachShader(program, fs);
-    gl_BindAttribLocation(program, 0, "position");
-    gl_BindAttribLocation(program, 1, "texcoord");
-    gl_BindAttribLocation(program, 2, "colour");
-    gl_BindAttribLocation(program, 3, "texture_page");
-    gl_BindAttribLocation(program, 4, "texture_mode");
-    gl_BindAttribLocation(program, 5, "persp");
-    gl_BindAttribLocation(program, 6, "texture_bounds");
-    gl_LinkProgram(program);
+    made = gl_CreateProgram();
+    gl_AttachShader(made, vs);
+    gl_AttachShader(made, fs);
+    gl_BindAttribLocation(made, 0, "position");
+    gl_BindAttribLocation(made, 1, "texcoord");
+    gl_BindAttribLocation(made, 2, "color");
+    gl_BindAttribLocation(made, 3, "texture_page");
+    gl_BindAttribLocation(made, 4, "texture_mode");
+    gl_BindAttribLocation(made, 5, "persp");
+    gl_BindAttribLocation(made, 6, "texture_bounds");
+    gl_LinkProgram(made);
     gl_DeleteShader(vs);
     gl_DeleteShader(fs);
-    gl_GetProgramiv(program, GL_LINK_STATUS, &ok);
+    gl_GetProgramiv(made, GL_LINK_STATUS, &ok);
     if (!ok) {
         char log[2048];
-        gl_GetProgramInfoLog(program, sizeof(log), NULL, log);
+        gl_GetProgramInfoLog(made, sizeof(log), NULL, log);
         fprintf(stderr, "memories-pc: OpenGL picture: program: %s\n", log);
+        gl_DeleteProgram(made);
         return 0;
     }
+    program = made;
+    program_xbr = xbr;
     u_picture_size = gl_GetUniformLocation(program, "picture_size");
     u_window = gl_GetUniformLocation(program, "window");
     u_op = gl_GetUniformLocation(program, "op");
@@ -675,6 +779,9 @@ static int make_program(void)
     u_glyphs = gl_GetUniformLocation(program, "glyphs");
     u_pack_entry = gl_GetUniformLocation(program, "pack_entry");
     u_pack_size = gl_GetUniformLocation(program, "pack_size");
+    u_bank_sprite = gl_GetUniformLocation(program, "bank_sprite");
+    u_bank_source = gl_GetUniformLocation(program, "bank_source");
+    u_bank_level = gl_GetUniformLocation(program, "bank_level");
     u_captured = gl_GetUniformLocation(program, "captured");
     u_capture = gl_GetUniformLocation(program, "capture");
     return 1;
@@ -753,6 +860,8 @@ static void resolve(GLuint from, GLuint to, int x, int y, int w, int h)
     gl_BindFramebuffer(GL_READ_FRAMEBUFFER, from);
     gl_BindFramebuffer(GL_DRAW_FRAMEBUFFER, to);
     gl_BlitFramebuffer(x, y, x + w, y + h, x, y, x + w, y + h, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    stats.resolves++;
+    stats.resolve_px += (double)w * h * samples;
     gl_BindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
@@ -760,6 +869,27 @@ static void resolve(GLuint from, GLuint to, int x, int y, int w, int h)
 static void picture_resolve(int x, int y, int w, int h)
 {
     if (picture_ms_fbo) resolve(picture_ms_fbo, picture_fbo, x * scale, y * scale, w * scale, h * scale);
+}
+
+/* Pixels x,y,w,h of the picture into its texture, before something outside
+ * a replay reads them (clipped to the picture). */
+static void picture_resolve_pixels(int x, int y, int w, int h)
+{
+    int x1 = x + w, y1 = y + h;
+    if (!picture_ms_fbo || !picture_unresolved) return;
+    if (x < 0) x = 0;
+    if (y < 0) y = 0;
+    if (x1 > SOFT_GPU_WIDTH * scale) x1 = SOFT_GPU_WIDTH * scale;
+    if (y1 > SOFT_GPU_HEIGHT * scale) y1 = SOFT_GPU_HEIGHT * scale;
+    if (x1 > x && y1 > y) resolve(picture_ms_fbo, picture_fbo, x, y, x1 - x, y1 - y);
+}
+
+/* All of it: before the texture is read whole, or the multisampled
+ * picture is dropped. */
+static void picture_resolve_all(void)
+{
+    if (picture_ms_fbo && picture_unresolved) picture_resolve(0, 0, SOFT_GPU_WIDTH, SOFT_GPU_HEIGHT);
+    picture_unresolved = 0;
 }
 
 /* Where the picture is drawn. */
@@ -788,6 +918,7 @@ static int make_picture(int wanted)
     wide_free(); /* their textures are at the old scale */
     capture_rect[2] = capture_rect[3] = 0; /* so is the capture's */
     free_multisampled(&picture_ms_fbo, &picture_ms_buffer);
+    picture_unresolved = 0; /* drawn again from VRAM (resync) */
     if (picture_fbo) gl_DeleteFramebuffers(1, &picture_fbo);
     if (picture_scratch_fbo) gl_DeleteFramebuffers(1, &picture_scratch_fbo);
     if (picture_texture) glDeleteTextures(1, &picture_texture);
@@ -805,6 +936,17 @@ static int make_picture(int wanted)
     scale = wanted;
     samples_scale = wanted; /* made at this scale: set_samples has nothing to redo */
     return 1;
+}
+
+static void delete_names(void); /* every name the pass holds (below) */
+static void forget_names(void);
+
+/* A start that failed half way: what it made deleted, nothing held. */
+static int refuse(void)
+{
+    delete_names();
+    forget_names();
+    return 0;
 }
 
 int GlPicture_Init(void)
@@ -825,16 +967,28 @@ int GlPicture_Init(void)
                 version ? version : "none");
         return 0;
     }
-    if (!load_functions() || !make_program()) return 0;
+    if (!load_functions()) return 0;
+    /* On ES the context is SDL's renderer's: without a vertex array of the
+     * pass's own, unbind_attributes would turn off the attributes SDL's
+     * draws use in the one there is (the menu and overlays would vanish). */
+    if (es && (!glGenVertexArrays_ || !glBindVertexArray_ || !glDeleteVertexArrays_)) {
+        fprintf(stderr, "memories-pc: OpenGL picture: no glGenVertexArrays, which OpenGL ES 3 has\n");
+        return 0;
+    }
+    if (!make_program(Settings_Get(SET_XBR) != 0)) return refuse();
     vram_texture = make_texture(GL_R16UI, SOFT_GPU_WIDTH, SOFT_GPU_HEIGHT, GL_RED_INTEGER, GL_UNSIGNED_SHORT);
     vram_scratch = make_texture(GL_R16UI, SOFT_GPU_WIDTH, SOFT_GPU_HEIGHT, GL_RED_INTEGER, GL_UNSIGNED_SHORT);
     vram_fbo = make_framebuffer(vram_texture);
     vram_scratch_fbo = make_framebuffer(vram_scratch);
-    if (!vram_fbo || !vram_scratch_fbo) return 0;
+    if (!vram_fbo || !vram_scratch_fbo) return refuse();
     gl_GenBuffers(1, &buffer);
     if (glGenVertexArrays_ && glBindVertexArray_) glGenVertexArrays_(1, &vertex_array);
+    if (es && !vertex_array) {
+        fprintf(stderr, "memories-pc: OpenGL picture: no vertex array\n");
+        return refuse();
+    }
     if (!arena) arena = malloc(ARENA_WORDS * sizeof(uint32_t)); /* kept from before a lost context */
-    if (!arena) return 0;
+    if (!arena) return refuse();
     glBindTexture(GL_TEXTURE_2D, 0);
     on = 1;
     SoftGpu_SetRecorder(&recorder); /* records the first resync */
@@ -1059,7 +1213,7 @@ static int texel_left_out(const Vertex *v, int axis)
  * (i / scale from the first), GL interpolates at the centre: the texels
  * move back by half a pixel so the two agree, which shows where a pack's
  * image is sampled between texels. */
-static void block(int x, int y, int w, int h, int u0, int v0, int u1, int v1, const Vertex *colour, int flags)
+static void block(int x, int y, int w, int h, int u0, int v0, int u1, int v1, const Vertex *color, int flags)
 {
     GlVertex *out = push_vertices(6, (flags & 2) && state.blend == 2);
     float x0 = (float)x, y0 = (float)y, x1 = (float)(x + w), y1 = (float)(y + h);
@@ -1070,15 +1224,15 @@ static void block(int x, int y, int w, int h, int u0, int v0, int u1, int v1, co
     bounds_now[1] = v0;
     bounds_now[2] = u1 - 1;
     bounds_now[3] = v1 - 1;
-    set_vertex(&out[0], x0, y0, s0, t0, colour, flags);
-    set_vertex(&out[1], x1, y0, s1, t0, colour, flags);
-    set_vertex(&out[2], x1, y1, s1, t1, colour, flags);
-    set_vertex(&out[3], x0, y0, s0, t0, colour, flags);
-    set_vertex(&out[4], x1, y1, s1, t1, colour, flags);
-    set_vertex(&out[5], x0, y1, s0, t1, colour, flags);
+    set_vertex(&out[0], x0, y0, s0, t0, color, flags);
+    set_vertex(&out[1], x1, y0, s1, t0, color, flags);
+    set_vertex(&out[2], x1, y1, s1, t1, color, flags);
+    set_vertex(&out[3], x0, y0, s0, t0, color, flags);
+    set_vertex(&out[4], x1, y1, s1, t1, color, flags);
+    set_vertex(&out[5], x0, y1, s0, t1, color, flags);
 }
 
-static void set_colour(Vertex *vertex, uint32_t word)
+static void set_color(Vertex *vertex, uint32_t word)
 {
     vertex->r = word & 0xff;
     vertex->g = (word >> 8) & 0xff;
@@ -1105,11 +1259,15 @@ static void set_page(uint32_t value)
     state.glyph = (value & HD_TEXT_MARK) != 0;
 }
 
+static void name_over_panel(int x, int y, int width, int height, int u0, int v0, int w, int h, const Vertex *color,
+                            int flags);
+
 static size_t polygon(const uint32_t *words, size_t count)
 {
     uint32_t command = words[0] >> 24;
     int quad = command & 8, textured = command & 4, shaded = command & 0x10;
     int vertices_n = quad ? 4 : 3, i;
+    int piece[8];   /* a quad's place and texels, before HD text moves them: x0, y0, x1, y1, u0, v0, u1, v1 */
     size_t need = (size_t)vertices_n * (1 + (textured ? 1 : 0)) + (shaded ? (size_t)vertices_n : 1);
     size_t at = 0;
     int flags = (command & 3) | (textured ? 4 : 0);
@@ -1118,7 +1276,7 @@ static size_t polygon(const uint32_t *words, size_t count)
     memset(v, 0, sizeof(v));
     for (i = 0; i < vertices_n; i++) {
         if (i == 0 || shaded) {
-            set_colour(&v[i], words[at++]);
+            set_color(&v[i], words[at++]);
         } else {
             v[i].r = v[0].r;
             v[i].g = v[0].g;
@@ -1143,10 +1301,24 @@ static size_t polygon(const uint32_t *words, size_t count)
     }
     /* Only a primitive sampling a bank can fade: retail never names one. */
     state.fade = textured && state.bank ? SoftGpu_FadeOf((uint32_t)state.fade) : 0;
-    state.pack = textured && !state.bank
-                     ? TexturePack_EntryFor(state.page_x, state.page_y, state.depth, state.clut_x, state.clut_y,
-                                            v[0].u, v[0].v)
-                     : 0;
+    piece[0] = piece[2] = v[0].x;
+    piece[1] = piece[3] = v[0].y;
+    piece[4] = piece[6] = v[0].u;
+    piece[5] = piece[7] = v[0].v;
+    for (i = 1; i < vertices_n; i++) {
+        if (v[i].x < piece[0]) piece[0] = v[i].x;
+        if (v[i].y < piece[1]) piece[1] = v[i].y;
+        if (v[i].x > piece[2]) piece[2] = v[i].x;
+        if (v[i].y > piece[3]) piece[3] = v[i].y;
+        if (v[i].u < piece[4]) piece[4] = v[i].u;
+        if (v[i].v < piece[5]) piece[5] = v[i].v;
+        if (v[i].u > piece[6]) piece[6] = v[i].u;
+        if (v[i].v > piece[7]) piece[7] = v[i].v;
+    }
+    state.pack = textured ? (state.bank
+        ? (scale > 1 ? TexturePack_BankEntryForRegion(state.bank, state.page_x, state.page_y, state.depth, state.clut_x,
+                                                      state.clut_y, piece[4], piece[5], piece[6], piece[7]) : 0)
+        : TexturePack_EntryFor(state.page_x, state.page_y, state.depth, state.clut_x, state.clut_y, v[0].u, v[0].v)) : 0;
     if (quad && textured && hd_hud && !state.pack && !state.bank) {
         /* A digit or the panel drawn as a quad (a clip-tested field card):
          * a texture pack's image, where one paints it, comes first. */
@@ -1179,8 +1351,10 @@ static size_t polygon(const uint32_t *words, size_t count)
         }
     } else if (!(flags & 16) && textured && hd_text && state.depth == 0 && !state.bank) {
         /* A card's title plate, whole or a piece of the turning card. */
-        int atlas_u, atlas_v, title_u, title_v;
-        if (HdText_Title(state.page_x, state.page_y, v[0].u, v[0].v, scale, &atlas_u, &atlas_v, &title_u, &title_v)) {
+        int atlas_u, atlas_v, title_u, title_v, title_card;
+        if (HdText_TitleCard(state.page_x, state.page_y, v[0].u, v[0].v, scale, &atlas_u, &atlas_v, &title_u, &title_v,
+                         &title_card)) {
+            if (CardLayout_TitleStyled(title_card)) flags |= 128;
             for (i = 0; i < vertices_n; i++) {
                 v[i].u = atlas_u + v[i].u - title_u;
                 v[i].v = atlas_v + v[i].v - title_v;
@@ -1209,24 +1383,43 @@ static size_t polygon(const uint32_t *words, size_t count)
     triangle(&v[0], &v[1], &v[2], flags);
     if (quad) triangle(&v[1], &v[2], &v[3], flags);
     state.fade = 0;
+    /* A piece of the life-point panel drawn at another size (a mod's "ui"). */
+    if (quad && textured && !state.bank && HdText_PanelCut())
+        name_over_panel(piece[0], piece[1], piece[2] - piece[0], piece[3] - piece[1], piece[4], piece[5],
+                        piece[6] - piece[4], piece[7] - piece[5], &v[0], (int)(command & 3) | 4);
     return need;
 }
 
 /* The opponent's name over the life-point panel just drawn, and the
- * player's for YOU (hd_text.h): in the panel's colour, drawn from the atlas whatever
- * drew the panel. */
-static void name_over_panel(const Vertex *base, int w, int h, int flags)
+ * player's for YOU (hd_text.h): in the panel's color, drawn from the atlas whatever
+ * drew the panel. The panel may be drawn whole or in pieces, at any size
+ * (a mod's "ui", pc/cards/duel_ui.h): texels u0, v0 on (w x h of them) drawn
+ * over x, y to x + width, y + height of the game's pixels. A name's box goes
+ * with the piece that has its rows and the column it joins the panel at. */
+static void name_over_panel(int x, int y, int width, int height, int u0, int v0, int w, int h, const Vertex *color,
+                            int flags)
 {
-    int atlas_u, atlas_v, x, y, width, height, which;
+    int atlas_u, atlas_v, bx, by, bw, bh, which;
     if (!opponent_name || state.bank || state.depth != 0 || state.page_x != 704 || state.page_y != 0 ||
-        (state.clut_x != 736 && state.clut_x != 752) || state.clut_y != 252 || base->u != 128 || base->v != 128 || w != 64 || h != 40) {
+        (state.clut_x != 736 && state.clut_x != 752) || state.clut_y != 252 || w < 1 || h < 1 || u0 < 128 ||
+        v0 < 128 || u0 + w > 192 || v0 + h > 168) {
         return;
     }
+    /* Without a mod's "ui", the whole panel only, as ever. */
+    if (!HdText_PanelCut() && (u0 != 128 || v0 != 128 || w != 64 || h != 40)) return;
     for (which = 0; which < 2; which++) {
-        if (!HdText_NameBox(scale, which, &atlas_u, &atlas_v, &x, &y, &width, &height)) return;
+        if (!HdText_NameBox(scale, which, &atlas_u, &atlas_v, &bx, &by, &bw, &bh)) {
+            /* As ever, no player's box without the opponent's; but a mod's
+             * label may be for YOU alone. */
+            if (!HdText_PanelCut()) return;
+            continue;
+        }
+        /* In the piece: its rows, and where it meets the panel (column 25). */
+        if (by < v0 - 128 || by + bh > v0 - 128 + h || bx + bw <= u0 - 128 || bx + bw > u0 - 128 + w) continue;
         state.pack = 0;
-        block((base->x + x) * scale, (base->y + y) * scale, width * scale, height * scale, atlas_u, atlas_v,
-              atlas_u + width, atlas_v + height, base, flags | 16);
+        block((x * w + (bx - (u0 - 128)) * width) * scale / w, (y * h + (by - (v0 - 128)) * height) * scale / h,
+              bw * width * scale / w, bh * height * scale / h, atlas_u, atlas_v, atlas_u + bw, atlas_v + bh, color,
+              flags | 16);
     }
 }
 
@@ -1240,7 +1433,7 @@ static size_t rectangle(const uint32_t *words, size_t count)
     Vertex base;
     if (count < need) return 0;
     memset(&base, 0, sizeof(base));
-    set_colour(&base, words[0]);
+    set_color(&base, words[0]);
     set_position(&base, words[1]);
     if (textured) {
         base.u = words[at] & 0xff;
@@ -1254,10 +1447,10 @@ static size_t rectangle(const uint32_t *words, size_t count)
         w = words[at] & 0x3ff;
         h = (words[at] >> 16) & 0x1ff;
     }
-    state.pack = textured && !state.bank
-                     ? TexturePack_EntryFor(state.page_x, state.page_y, state.depth, state.clut_x, state.clut_y,
-                                            base.u, base.v)
-                     : 0;
+    state.pack = textured ? (state.bank
+        ? (scale > 1 ? TexturePack_BankEntryFor(state.bank, state.page_x, state.page_y, state.depth, state.clut_x,
+                                                state.clut_y, base.u, base.v) : 0)
+        : TexturePack_EntryFor(state.page_x, state.page_y, state.depth, state.clut_x, state.clut_y, base.u, base.v)) : 0;
     if (w && h && textured && hd_hud && !state.pack && !state.bank) {
         /* HD numbers and labels (a texture pack's image comes first). */
         int atlas_u, atlas_v;
@@ -1265,7 +1458,7 @@ static size_t rectangle(const uint32_t *words, size_t count)
                        &atlas_u, &atlas_v)) {
             block(base.x * scale, base.y * scale, w * scale, h * scale, atlas_u, atlas_v, atlas_u + w, atlas_v + h,
                   &base, flags | 16);
-            name_over_panel(&base, w, h, flags);
+            name_over_panel(base.x, base.y, w, h, base.u, base.v, w, h, &base, flags);
             return need;
         }
     }
@@ -1279,8 +1472,10 @@ static size_t rectangle(const uint32_t *words, size_t count)
         }
     }
     if (w && h && textured && hd_text && state.depth == 0 && !state.bank) {
-        int atlas_u, atlas_v, title_u, title_v;
-        if (HdText_Title(state.page_x, state.page_y, base.u, base.v, scale, &atlas_u, &atlas_v, &title_u, &title_v)) {
+        int atlas_u, atlas_v, title_u, title_v, title_card;
+        if (HdText_TitleCard(state.page_x, state.page_y, base.u, base.v, scale, &atlas_u, &atlas_v, &title_u, &title_v,
+                         &title_card)) {
+            if (CardLayout_TitleStyled(title_card)) flags |= 128;
             state.pack = 0;
             block(base.x * scale, base.y * scale, w * scale, h * scale, atlas_u + base.u - title_u,
                   atlas_v + base.v - title_v, atlas_u + base.u - title_u + w, atlas_v + base.v - title_v + h, &base,
@@ -1291,7 +1486,7 @@ static size_t rectangle(const uint32_t *words, size_t count)
     if (w && h) {
         block(base.x * scale, base.y * scale, w * scale, h * scale, base.u, base.v, base.u + w, base.v + h, &base,
               flags);
-        if (textured) name_over_panel(&base, w, h, flags);
+        if (textured) name_over_panel(base.x, base.y, w, h, base.u, base.v, w, h, &base, flags);
     }
     return need;
 }
@@ -1342,14 +1537,14 @@ static size_t lines(const uint32_t *words, size_t count)
     Vertex previous, next;
     memset(&previous, 0, sizeof(previous));
     if (count < (shaded ? 4u : 3u)) return 0;
-    set_colour(&previous, words[at++]);
+    set_color(&previous, words[at++]);
     set_position(&previous, words[at++]);
     for (;;) {
         if (poly && at < count && (words[at] & 0xf000f000u) == 0x50005000u) return at + 1;
         next = previous;
         if (shaded) {
             if (at >= count) return 0;
-            set_colour(&next, words[at++]);
+            set_color(&next, words[at++]);
         }
         if (at >= count) return 0;
         set_position(&next, words[at++]);
@@ -1384,6 +1579,7 @@ typedef struct GlWide {
     int width, height; /* the texture's pixels */
     GLuint texture, fbo; /* fbo 0: a free slot */
     GLuint ms_fbo, ms_buffer; /* drawn into, with anti-aliasing */
+    int unresolved;           /* a replay drew into ms_fbo since it was last resolved */
 } GlWide;
 static GlWide wide[WIDE_TARGETS];
 static unsigned wide_clock;
@@ -1432,10 +1628,12 @@ static void wide_copy(const GlWide *wt, int x, int y, int w, int h)
     gl_BindFramebuffer(GL_DRAW_FRAMEBUFFER, wt->fbo);
     gl_BlitFramebuffer(x * scale, y * scale, (x + w) * scale, (y + h) * scale, to_x * scale, to_y * scale,
                        (to_x + w) * scale, (to_y + h) * scale, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    stats.blits++;
+    stats.blit_px += (double)w * h * scale * scale;
     gl_BindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-/* The target's sides in rows y to y + h, in a colour. */
+/* The target's sides in rows y to y + h, in a color. */
 static void wide_sides(const GlWide *wt, int y, int h, float r, float g, float b)
 {
     gl_BindFramebuffer(GL_FRAMEBUFFER, wt->ms_fbo ? wt->ms_fbo : wt->fbo);
@@ -1504,7 +1702,8 @@ static int wide_target(void)
     if (samples && !wt->ms_fbo) samples = 0; /* no room: the picture's is dropped too, below */
     if (!samples && picture_ms_fbo) {
         flush_runs();
-        picture_resolve(0, 0, SOFT_GPU_WIDTH, SOFT_GPU_HEIGHT);
+        picture_unresolved = 1; /* whatever was drawn in this replay so far */
+        picture_resolve_all();
         free_multisampled(&picture_ms_fbo, &picture_ms_buffer);
     }
     wt->x1 = state.clip_x1;
@@ -1726,7 +1925,6 @@ static void sync_pack(void)
     const uint16_t *entry_map = TexturePack_EntryMap();
     const uint32_t *place_map = TexturePack_PlaceMap();
     int i;
-    if (!entry_map || !place_map) return;
     if (generation != pack_generation) {
         pack_generation = generation;
         for (i = 0; i < entry_texture_count; i++) {
@@ -1737,6 +1935,19 @@ static void sync_pack(void)
         entry_texture_count = 0;
         map_generation = maps - 1; /* the maps with them */
     }
+    if (TexturePack_BankGeneration() != bank_generation) {
+        int kept = 0;
+        bank_generation = TexturePack_BankGeneration();
+        for (i = 0; i < bank_texture_count; i++) {
+            if (!TexturePack_BankKeyLive(bank_textures[i].key)) {
+                glDeleteTextures(1, &bank_textures[i].texture);
+                continue;
+            }
+            bank_textures[kept++] = bank_textures[i];
+        }
+        bank_texture_count = kept;
+    }
+    if (!entry_map || !place_map) return;
     if (maps == map_generation) return;
     map_generation = maps;
     if (!entry_map_texture) entry_map_texture = make_map_texture(GL_R16UI, GL_UNSIGNED_SHORT);
@@ -1798,6 +2009,57 @@ static int bind_pack_entry(int entry)
     if (!TexturePack_EntryImage(entry, &rgba, &width, &height, &crop_left, &crop_width, &rows, &per)) return 0;
     texture_width = fitted(width);
     texture_height = fitted(height);
+    if (entry < 0) {
+        unsigned key = TexturePack_BankEntryKey(entry);
+        int u, v, w, h, sx, sy, sw, sh, level, at = 0;
+        while (at < bank_texture_count && bank_textures[at].key != key) at++;
+        gl_ActiveTexture(GL_TEXTURE5);
+        if (at == bank_texture_count) {
+            BankTexture *more = realloc(bank_textures, (size_t)(bank_texture_count + 1) * sizeof(*more));
+            unsigned char *smaller = NULL;
+            int levels = 1, fits = texture_width == width && texture_height == height;
+            if (!more) { gl_ActiveTexture(GL_TEXTURE0); return 0; }
+            bank_textures = more;
+            if (!fits && !(smaller = shrunk(rgba, width, height, texture_width, texture_height))) {
+                gl_ActiveTexture(GL_TEXTURE0);
+                return 0;
+            }
+            bank_textures[at].key = key;
+            bank_textures[at].texture = make_texture(GL_RGBA8, texture_width, texture_height, GL_RGBA, GL_UNSIGNED_BYTE);
+            glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, texture_width, texture_height, GL_RGBA, GL_UNSIGNED_BYTE,
+                            smaller ? smaller : rgba);
+            free(smaller);
+            /* Its smaller levels, for drawing it smaller than it is; one
+             * shrunk to fit the driver is drawn from that alone. */
+            if (fits) {
+                const unsigned char *pixels;
+                int level_w, level_h;
+                while (TexturePack_BankEntryLevel(entry, levels, &pixels, &level_w, &level_h)) {
+                    glTexImage2D(GL_TEXTURE_2D, levels++, GL_RGBA8, level_w, level_h, 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                                 pixels);
+                }
+            }
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, levels - 1);
+            if (levels > 1) glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+            bank_textures[at].levels = levels;
+            bank_texture_count++;
+        } else glBindTexture(GL_TEXTURE_2D, bank_textures[at].texture);
+        gl_ActiveTexture(GL_TEXTURE0);
+        if (!TexturePack_BankEntryRect(entry, &u, &v, &w, &h) ||
+            !TexturePack_BankEntrySource(entry, &sx, &sy, &sw, &sh)) return 0;
+        level = TexturePack_BankEntryLevelFor(entry, scale);
+        if (level >= bank_textures[at].levels) level = bank_textures[at].levels - 1;
+        sx = sx * texture_width / width;
+        sy = sy * texture_height / height;
+        sw = (sw * texture_width + width - 1) / width;
+        sh = (sh * texture_height + height - 1) / height;
+        gl_Uniform4i(u_bank_sprite, u, v, w, h);
+        gl_Uniform4i(u_bank_source, sx, sy, sw, sh);
+        gl_Uniform1i(u_bank_level, level);
+        gl_Uniform4i(u_pack_entry, 0, 0, 0, 0);
+        gl_Uniform3i(u_pack_size, texture_width, texture_height, 1);
+        return 1;
+    }
     if (entry > entry_texture_count) {
         GLuint *more = realloc(entry_textures, (size_t)entry * sizeof(*entry_textures));
         if (!more) return 0;
@@ -1826,6 +2088,9 @@ static int bind_pack_entry(int entry)
         glBindTexture(GL_TEXTURE_2D, entry_textures[entry - 1]);
     }
     gl_ActiveTexture(GL_TEXTURE0);
+    gl_Uniform4i(u_bank_sprite, 0, 0, 0, 0);
+    gl_Uniform4i(u_bank_source, 0, 0, 0, 0);
+    gl_Uniform1i(u_bank_level, 0);
     /* The maps name the head of the entry's readings; this entry's image. */
     gl_Uniform4i(u_pack_entry, TexturePack_EntryHead(entry), crop_left, crop_width, rows);
     gl_Uniform3i(u_pack_size, texture_width, texture_height, per);
@@ -1905,6 +2170,7 @@ static void flush_runs(void)
     glBlendFunc(GL_ONE, GL_SRC_ALPHA);
     bind_attributes();
     gl_BufferData(GL_ARRAY_BUFFER, (GLsizeiptr)(vertex_count * sizeof(GlVertex)), vertices, GL_STREAM_DRAW);
+    stats.draws += (unsigned)run_count;
     for (i = 0; i < run_count; i++) {
         const Run *run = &runs[i];
         if (i == 0 || run->wide != runs[i - 1].wide) {
@@ -1924,7 +2190,11 @@ static void flush_runs(void)
         scissor_words(run->clip[0], run->clip[1], run->clip[2], run->clip[3], origin_x, origin_y);
         gl_Uniform4i(u_window, run->window[0] * 8, run->window[1] * 8, (run->window[2] & run->window[0]) * 8,
                     (run->window[3] & run->window[1]) * 8);
-        if (!run->pack || !bind_pack_entry(run->pack)) gl_Uniform4i(u_pack_entry, 0, 0, 0, 0);
+        if (!run->pack || !bind_pack_entry(run->pack)) {
+            gl_Uniform4i(u_pack_entry, 0, 0, 0, 0);
+            gl_Uniform4i(u_bank_sprite, 0, 0, 0, 0);
+            gl_Uniform4i(u_bank_source, 0, 0, 0, 0);
+        }
         if (!run->subtractive) {
             gl_Uniform1i(u_pass, 0);
             glDrawArrays(GL_TRIANGLES, (GLint)run->first, (GLsizei)run->count);
@@ -1969,6 +2239,8 @@ static void copy_quad_into(GLuint fbo, int origin_x, int origin_y, int op, int x
     bind_attributes();
     gl_BufferData(GL_ARRAY_BUFFER, sizeof(quad), quad, GL_STREAM_DRAW);
     glDrawArrays(GL_TRIANGLES, 0, 6);
+    stats.quads++;
+    stats.quad_px += (double)w * h * (samples ? samples : 1);
     unbind_attributes();
 }
 
@@ -2016,7 +2288,7 @@ static void apply_load(int x, int y, int w, int h, const uint16_t *pixels)
 
 static void apply_fill(int x, int y, int w, int h, uint32_t rgb24)
 {
-    /* The colour VRAM gets: 15 bits, expanded as the picture expands them. */
+    /* The color VRAM gets: 15 bits, expanded as the picture expands them. */
     uint32_t r = (rgb24 >> 3) & 0x1f, g = (rgb24 >> 11) & 0x1f, b = (rgb24 >> 19) & 0x1f;
     uint16_t word = (uint16_t)(r | (g << 5) | (b << 10));
     flush_runs();
@@ -2069,6 +2341,8 @@ static void apply_move(int sx, int sy, int dx, int dy, int w, int h)
     gl_BindFramebuffer(GL_READ_FRAMEBUFFER, picture_fbo);
     glBindTexture(GL_TEXTURE_2D, picture_scratch);
     glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, sx * scale, sy * scale, w * scale, h * scale);
+    stats.copies++;
+    stats.copy_px += (double)w * h * scale * scale;
     gl_BindFramebuffer(GL_READ_FRAMEBUFFER, 0);
     glBindTexture(GL_TEXTURE_2D, vram_texture); /* unit 0 samples VRAM again */
     gl_UseProgram(program);
@@ -2122,6 +2396,8 @@ static void apply_capture(int sx, int sy, int dx, int dy, int w, int h)
     gl_ActiveTexture(GL_TEXTURE7);
     glBindTexture(GL_TEXTURE_2D, capture_texture);
     glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, sx * scale, sy * scale, w * scale, h * scale);
+    stats.copies++;
+    stats.copy_px += (double)w * h * scale * scale;
     gl_ActiveTexture(GL_TEXTURE0);
     gl_BindFramebuffer(GL_READ_FRAMEBUFFER, 0);
     glBindTexture(GL_TEXTURE_2D, vram_texture); /* unit 0 samples VRAM again */
@@ -2190,6 +2466,7 @@ static void set_samples(int wanted)
         samples_clamped_to = given;
     }
     wide_free();
+    picture_resolve_all(); /* the picture carries on from its texture */
     free_multisampled(&picture_ms_fbo, &picture_ms_buffer);
     samples = given;
     if (!samples || scale < 2) return;
@@ -2241,6 +2518,24 @@ int GlPicture_Replay(void)
     gl_ActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, picture_scratch);
     gl_ActiveTexture(GL_TEXTURE0);
+    {
+        /* Texture xBR turned on or off: the program with its code, or
+         * without (TEXTURE_XBR_SOURCE). Tried once a change: a program that
+         * does not link leaves the one there was. */
+        static int xbr_asked = -1;
+        int xbr = Settings_Get(SET_XBR) != 0;
+        if (xbr != xbr_asked && (xbr_asked = xbr) != program_xbr) {
+            GLuint old = program;
+            if (make_program(xbr)) {
+                gl_DeleteProgram(old);
+                gl_UseProgram(program);
+                if (scale >= 2) {
+                    gl_Uniform1i(u_scale, scale);
+                    gl_Uniform2f(u_picture_size, (float)(SOFT_GPU_WIDTH * scale), (float)(SOFT_GPU_HEIGHT * scale));
+                }
+            }
+        }
+    }
     gl_UseProgram(program);
     gl_Uniform1i(u_vram, 0);
     gl_Uniform1i(u_scratch, 1);
@@ -2320,9 +2615,10 @@ int GlPicture_Replay(void)
         int t;
         flush_runs();
         upload_vram();
-        picture_resolve(0, 0, SOFT_GPU_WIDTH, SOFT_GPU_HEIGHT);
+        /* Resolved where they are read (picture_unresolved). */
+        if (picture_ms_fbo) picture_unresolved = 1;
         for (t = 0; t < WIDE_TARGETS; t++) {
-            if (wide[t].ms_fbo) resolve(wide[t].ms_fbo, wide[t].fbo, 0, 0, wide[t].width, wide[t].height);
+            if (wide[t].ms_fbo) wide[t].unresolved = 1;
         }
     }
     if (!SoftGpu_Widescreen() && wide[0].fbo + wide[1].fbo + wide[2].fbo + wide[3].fbo) wide_free();
@@ -2333,6 +2629,13 @@ int GlPicture_Replay(void)
         total_us += (unsigned)((t1.tv_sec - t0.tv_sec) * 1000000 + (t1.tv_nsec - t0.tv_nsec) / 1000);
         if (++replays == 120) {
             LOG(LOG_FRAMES, "OpenGL picture: %u us per replay at %dx", total_us / 120, scale);
+            LOG(LOG_FRAMES,
+                "OpenGL picture per replay at %dx, %dx MSAA: %.1f resolves (%.1f Msamples), %.1f blits (%.1f Mpx), "
+                "%.1f copies (%.1f Mpx), %.1f copy quads (%.1f Msamples), %.1f draw calls",
+                scale, samples, stats.resolves / 120.0, stats.resolve_px / 120e6, stats.blits / 120.0,
+                stats.blit_px / 120e6, stats.copies / 120.0, stats.copy_px / 120e6, stats.quads / 120.0,
+                stats.quad_px / 120e6, stats.draws / 120.0);
+            memset(&stats, 0, sizeof(stats));
             replays = total_us = 0;
         }
     }
@@ -2353,7 +2656,9 @@ unsigned GlPicture_Texture(int *picture_w, int *picture_h)
 {
     if (picture_w) *picture_w = SOFT_GPU_WIDTH * scale;
     if (picture_h) *picture_h = SOFT_GPU_HEIGHT * scale;
-    return scale >= 2 ? picture_texture : 0;
+    if (scale < 2) return 0;
+    picture_resolve_all();
+    return picture_texture;
 }
 
 /* The shown area in a texture of its own (see gl_picture.h). */
@@ -2377,15 +2682,25 @@ unsigned GlPicture_ShownTexture(int x, int y, int w, int h)
         shown_h = shown_fbo ? h : 0;
         if (!shown_fbo) return 0;
     }
+    picture_resolve_pixels(x, y, w, h);
     glDisable(GL_SCISSOR_TEST);
     gl_BindFramebuffer(GL_READ_FRAMEBUFFER, picture_fbo);
     gl_BindFramebuffer(GL_DRAW_FRAMEBUFFER, shown_fbo);
     gl_BlitFramebuffer(x, y, x + w, y + h, 0, 0, w, h, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    stats.blits++;
+    stats.blit_px += (double)w * h;
     gl_BindFramebuffer(GL_FRAMEBUFFER, 0);
     return shown_texture;
 }
 
 int GlPicture_Scale(void) { return on ? scale : 0; }
+
+/* A target's multisampled picture into its texture, before it is read. */
+static void wide_resolve(GlWide *wt)
+{
+    if (wt->ms_fbo && wt->unresolved) resolve(wt->ms_fbo, wt->fbo, 0, 0, wt->width, wt->height);
+    wt->unresolved = 0;
+}
 
 static GlWide *wide_for(int x, int y, int w, int h)
 {
@@ -2404,8 +2719,9 @@ unsigned GlPicture_WideTexture(int x, int y, int w, int h, int *picture_w, int *
     if (!wt) return 0;
     if (!wt->drawn) { /* nothing drew them since: stale (SoftGpu_WideFrame) */
         wide_sides(wt, y, h, 0, 0, 0);
-        if (wt->ms_fbo) resolve(wt->ms_fbo, wt->fbo, 0, 0, wt->width, wt->height);
+        wt->unresolved = 1;
     }
+    wide_resolve(wt);
     wt->drawn = 0;
     *picture_w = wt->width;
     *picture_h = wt->height;
@@ -2414,7 +2730,7 @@ unsigned GlPicture_WideTexture(int x, int y, int w, int h, int *picture_w, int *
 
 int GlPicture_ReadWide(int x, int y, int w, int h, int wide_w, int want_scale, uint32_t *out)
 {
-    const GlWide *wt = wide_for(x, y, w, h);
+    GlWide *wt = wide_for(x, y, w, h);
     int i, j, width, height;
     uint8_t *rgba;
     if (!wt || scale != want_scale || wt->width != wide_w * scale) return 0;
@@ -2422,6 +2738,7 @@ int GlPicture_ReadWide(int x, int y, int w, int h, int wide_w, int want_scale, u
     height = h * scale;
     rgba = malloc((size_t)width * (size_t)height * 4);
     if (!rgba) return 0;
+    wide_resolve(wt);
     gl_BindFramebuffer(GL_READ_FRAMEBUFFER, wt->fbo);
     glPixelStorei(GL_PACK_ALIGNMENT, 4);
     glReadPixels(0, (y - wt->y1) * scale, width, height, GL_RGBA, GL_UNSIGNED_BYTE, rgba);
@@ -2445,6 +2762,7 @@ int GlPicture_Read(int x, int y, int w, int h, uint32_t *out)
     if (!on || scale < 2 || w <= 0 || h <= 0) return 0;
     rgba = malloc((size_t)w * (size_t)h * 4);
     if (!rgba) return 0;
+    picture_resolve_pixels(x, y, w, h);
     gl_BindFramebuffer(GL_READ_FRAMEBUFFER, picture_fbo);
     glPixelStorei(GL_PACK_ALIGNMENT, 4);
     glReadPixels(x, y, w, h, GL_RGBA, GL_UNSIGNED_BYTE, rgba);
@@ -2471,9 +2789,11 @@ int GlPicture_CopyInto(unsigned from, int x, int y, int w, int h, unsigned to)
         read = picture_fbo;
         from_w = SOFT_GPU_WIDTH * scale;
         from_h = SOFT_GPU_HEIGHT * scale;
+        picture_resolve_pixels(x, y, w, h);
     }
     for (t = 0; !read && t < WIDE_TARGETS; t++) {
         if (wide[t].fbo && wide[t].texture == from) {
+            wide_resolve(&wide[t]);
             read = wide[t].fbo;
             from_w = wide[t].width;
             from_h = wide[t].height;
@@ -2518,7 +2838,44 @@ int GlPicture_CopyInto(unsigned from, int x, int y, int w, int h, unsigned to)
     return ok;
 }
 
-void GlPicture_Lost(void)
+/* Every name the pass holds, deleted in the current context (its own). */
+static void delete_names(void)
+{
+    int i;
+    if (program) {
+        gl_UseProgram(0);
+        gl_DeleteProgram(program);
+    }
+    if (buffer) gl_DeleteBuffers(1, &buffer);
+    if (vertex_array && glDeleteVertexArrays_) glDeleteVertexArrays_(1, &vertex_array);
+    if (vram_fbo) gl_DeleteFramebuffers(1, &vram_fbo);
+    if (vram_scratch_fbo) gl_DeleteFramebuffers(1, &vram_scratch_fbo);
+    if (vram_texture) glDeleteTextures(1, &vram_texture);
+    if (vram_scratch) glDeleteTextures(1, &vram_scratch);
+    if (picture_fbo) gl_DeleteFramebuffers(1, &picture_fbo);
+    if (picture_scratch_fbo) gl_DeleteFramebuffers(1, &picture_scratch_fbo);
+    if (picture_texture) glDeleteTextures(1, &picture_texture);
+    if (picture_scratch) glDeleteTextures(1, &picture_scratch);
+    free_multisampled(&picture_ms_fbo, &picture_ms_buffer);
+    wide_free();
+    if (banks_texture) glDeleteTextures(1, &banks_texture);
+    if (entry_map_texture) glDeleteTextures(1, &entry_map_texture);
+    if (place_map_texture) glDeleteTextures(1, &place_map_texture);
+    for (i = 0; i < entry_texture_count; i++) {
+        if (entry_textures[i]) glDeleteTextures(1, &entry_textures[i]);
+    }
+    if (capture_texture) glDeleteTextures(1, &capture_texture);
+    if (glyphs_texture) glDeleteTextures(1, &glyphs_texture);
+    if (shown_fbo) gl_DeleteFramebuffers(1, &shown_fbo);
+    if (shown_texture) glDeleteTextures(1, &shown_texture);
+    if (copy_fbo) gl_DeleteFramebuffers(1, &copy_fbo);
+}
+
+/* Every name the pass holds forgotten (deleted or not), and what was made
+ * from them. The record (the arena) is kept: a recorder call already under
+ * way when the recorder is taken out may still reserve room in it, and a
+ * start after a lost context uses it again. */
+static void forget_names(void)
 {
     int bank;
     on = 0;
@@ -2537,6 +2894,10 @@ void GlPicture_Lost(void)
     free(entry_textures);
     entry_textures = NULL;
     entry_texture_count = 0;
+    free(bank_textures);
+    bank_textures = NULL;
+    bank_texture_count = 0;
+    bank_generation = ~0u;
     pack_generation = map_generation = ~0u;
     capture_texture = 0;
     capture_w = capture_h = 0;
@@ -2552,8 +2913,12 @@ void GlPicture_Lost(void)
     want_resync = 1; /* VRAM whole into the new picture, at the next replay after Init */
 }
 
+void GlPicture_Lost(void) { forget_names(); } /* they went with the lost context */
+
 void GlPicture_Stop(void)
 {
     on = 0;
     SoftGpu_SetRecorder(NULL); /* the software GPU draws its own picture again, from VRAM */
+    delete_names(); /* the picture, its scratch copy and anti-aliasing: hundreds of MiB at 4x */
+    forget_names();
 }

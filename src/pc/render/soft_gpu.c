@@ -27,6 +27,7 @@ static int shadow_on;
 /* Where texels and palettes are read: VRAM, or one of the banks below. Set by
  * every texture-page word, so it is never stale and never part of a state. */
 static uint16_t *texture_source;
+static int texture_bank;
 
 static uint16_t *banks[SOFT_GPU_BANKS];
 
@@ -108,9 +109,9 @@ static void picture_from_words(int x, int y, int w, int h)
     if (!picture) return;
     for (j = 0; j < h; j++) {
         for (i = 0; i < w; i++) {
-            uint32_t colour = expand(vram[((y + j) & 511) * SOFT_GPU_WIDTH + ((x + i) & 1023)]);
+            uint32_t color = expand(vram[((y + j) & 511) * SOFT_GPU_WIDTH + ((x + i) & 1023)]);
             for (sy = 0; sy < scale; sy++) {
-                for (sx = 0; sx < scale; sx++) *picture_pixel((x + i) * scale + sx, (y + j) * scale + sy) = colour;
+                for (sx = 0; sx < scale; sx++) *picture_pixel((x + i) * scale + sx, (y + j) * scale + sy) = color;
             }
         }
     }
@@ -155,6 +156,7 @@ void SoftGpu_Reset(void)
 {
     memset(&gpu, 0, sizeof(gpu));
     texture_source = vram;
+    texture_bank = 0;
     TextureDump_Init();
     gpu.clip_x2 = SOFT_GPU_WIDTH - 1;
     gpu.clip_y2 = SOFT_GPU_HEIGHT - 1;
@@ -251,10 +253,10 @@ static void wide_picture_words(WideTarget *wt, int x, int y, int w, int h)
     if (!wt->picture) return;
     for (int row = y; row < y + h; row++) {
         for (int col = x; col < x + w; col++) {
-            uint32_t colour = expand(wt->pixels[row * SOFT_GPU_WIDTH + col]);
+            uint32_t color = expand(wt->pixels[row * SOFT_GPU_WIDTH + col]);
             for (int sy = 0; sy < scale; sy++) {
                 uint32_t *out = wt->picture + (size_t)(row * scale + sy) * PICTURE_WIDTH + col * scale;
-                for (int sx = 0; sx < scale; sx++) out[sx] = colour;
+                for (int sx = 0; sx < scale; sx++) out[sx] = color;
             }
         }
     }
@@ -271,7 +273,7 @@ static void wide_picture_prepare(WideTarget *wt)
 /* Copies what VRAM now holds in x,y,w,h into the centre of every
  * widescreen target it overlaps. A fill spanning a target's whole width
  * also fills its sides, as a cleared screen is cleared edge to edge. */
-static void wide_mirror(int x, int y, int w, int h, int fill, uint16_t colour)
+static void wide_mirror(int x, int y, int w, int h, int fill, uint16_t color)
 {
     int t;
     for (t = 0; t < WIDE_TARGETS; t++) {
@@ -287,8 +289,8 @@ static void wide_mirror(int x, int y, int w, int h, int fill, uint16_t colour)
             memcpy(out + x1 + wt->margin, vram + row * SOFT_GPU_WIDTH + x1, (size_t)(x2 - x1 + 1) * 2);
             if (fill && x <= wt->x1 && x + w - 1 >= wt->x2) {
                 for (column = 0; column < wt->margin; column++) {
-                    out[wt->x1 + column] = colour;
-                    out[wt->x2 + wt->margin + 1 + column] = colour;
+                    out[wt->x1 + column] = color;
+                    out[wt->x2 + wt->margin + 1 + column] = color;
                 }
             }
         }
@@ -508,14 +510,14 @@ static uint16_t pack(uint32_t rgb24)
 static void fill_words(int x, int y, int w, int h, uint32_t rgb24)
 {
     int i, j;
-    uint16_t colour = pack(rgb24);
+    uint16_t color = pack(rgb24);
     if (TextureDump_Tags) TextureDump_Cleared(x, y, w, h);
     for (j = 0; j < h; j++) {
         for (i = 0; i < w; i++) {
-            *vram_pixel(x + i, y + j) = colour;
+            *vram_pixel(x + i, y + j) = color;
         }
     }
-    wide_mirror(x, y, w, h, 1, colour);
+    wide_mirror(x, y, w, h, 1, color);
     picture_from_words(x, y, w, h);
 }
 
@@ -567,10 +569,10 @@ static inline __attribute__((always_inline)) uint16_t texel(int u, int v)
         word = sample(gpu.page_x + u, y);
     }
     if (shadow_on == 1) {
-        /* A replaced texel: the pack's colour, 0 for one painted transparent.
+        /* A replaced texel: the pack's color, 0 for one painted transparent.
          * The texel's own semi-transparency bit stays: a pack replaces the
-         * colour, not how the game draws it. Black is 0x8000 with that bit
-         * and the darkest non-zero colour without it (texture_dump.h).
+         * color, not how the game draws it. Black is 0x8000 with that bit
+         * and the darkest non-zero color without it (texture_dump.h).
          * (2: the primitive reads the words with another palette than the
          * shadow's image; the scaled picture has that image, VRAM stays.) */
         uint16_t cell = gpu.depth == 0 ? *TextureDump_Cell(gpu.page_x + u / 4, y, u & 3)
@@ -672,10 +674,21 @@ static inline __attribute__((always_inline)) void plot(int x, int y, int r, int 
 static inline __attribute__((always_inline)) int picture_texel(int u, int v, uint32_t *rgb)
 {
     uint16_t word;
+    if (texture_bank && scale > 1 && TextureDump_BankSample) { /* 1x: the bank's own texels */
+        int got = TextureDump_BankSample(texture_bank, gpu.page_x, gpu.page_y, gpu.depth, gpu.clut_x, gpu.clut_y,
+                                         u, v, scale, rgb);
+        if (got == 1) {
+            /* The PNG supplies color and coverage, but the bank texel still
+             * controls PS1 semi-transparency. */
+            *rgb = (*rgb & 0x7fffffffu) | ((uint32_t)(texel(u >> 16, v >> 16) & 0x8000) << 16);
+            return 1;
+        }
+        if (got == 2) return 0;
+    }
     if (shadow_on && TextureDump_Sample) {
         int got = TextureDump_Sample(gpu.page_x, gpu.page_y, gpu.depth, u, v, rgb);
         if (got == 1) {
-            /* The pack's colour and how much it covers; the texel's own
+            /* The pack's color and how much it covers; the texel's own
              * semi-transparency bit. */
             *rgb = (*rgb & 0x7fffffffu) | ((uint32_t)(texel(u >> 16, v >> 16) & 0x8000) << 16);
             return 1;
@@ -991,7 +1004,7 @@ static void line(Vertex a, Vertex b, int flags)
     }
 }
 
-static void set_colour(Vertex *vertex, uint32_t word)
+static void set_color(Vertex *vertex, uint32_t word)
 {
     vertex->r = word & 0xff;
     vertex->g = (word >> 8) & 0xff;
@@ -1008,6 +1021,7 @@ static void set_page(uint32_t value)
 {
     int bank = (int)((value >> 11) & (SOFT_GPU_BANKS - 1));
     texture_source = bank && banks[bank] ? banks[bank] : vram;
+    texture_bank = texture_source == vram ? 0 : bank;
     gpu.page_x = (value & 0xf) * 64;
     gpu.page_y = ((value >> 4) & 1) * 256;
     gpu.blend = (value >> 5) & 3;
@@ -1016,6 +1030,10 @@ static void set_page(uint32_t value)
         gpu.depth = 2;
     }
 }
+
+static int panel_piece(int u0, int v0, int w, int h);
+static void name_over_panel(int x, int y, int width, int height, int u0, int v0, int w, int h, const Vertex *color,
+                            int flags);
 
 static size_t polygon(const uint32_t *words, size_t count)
 {
@@ -1035,7 +1053,7 @@ static size_t polygon(const uint32_t *words, size_t count)
     memset(v, 0, sizeof(v));
     for (i = 0; i < vertices; i++) {
         if (i == 0 || shaded) {
-            set_colour(&v[i], words[at++]);
+            set_color(&v[i], words[at++]);
         } else {
             v[i].r = v[0].r; v[i].g = v[0].g; v[i].b = v[0].b;
         }
@@ -1082,25 +1100,66 @@ static size_t polygon(const uint32_t *words, size_t count)
         triangle(v[1], v[2], v[3], flags);
     }
     fade = 0;
+    /* A piece of the life-point panel a mod's "ui" draws at another size. */
+    if (quad && textured && SoftGpu_PanelCut) {
+        int x0 = v[0].x, y0 = v[0].y, x1 = v[0].x, y1 = v[0].y, u0 = v[0].u, v0 = v[0].v, u1 = v[0].u, v1 = v[0].v;
+        for (i = 1; i < 4; i++) {
+            if (v[i].x < x0) x0 = v[i].x;
+            if (v[i].y < y0) y0 = v[i].y;
+            if (v[i].x > x1) x1 = v[i].x;
+            if (v[i].y > y1) y1 = v[i].y;
+            if (v[i].u < u0) u0 = v[i].u;
+            if (v[i].v < v0) v0 = v[i].v;
+            if (v[i].u > u1) u1 = v[i].u;
+            if (v[i].v > v1) v1 = v[i].v;
+        }
+        if (panel_piece(u0, v0, u1 - u0, v1 - v0))
+            name_over_panel(x0, y0, x1 - x0, y1 - y0, u0, v0, u1 - u0, v1 - v0, &v[0], (int)(command & 3) | 4);
+    }
     return need;
 }
 
 const uint8_t *(*SoftGpu_PanelName)(int which, int *x, int *y, int *width, int *height, int *stride);
+int SoftGpu_PanelCut;
 
 /* The opponent's name over the life-point panel just drawn, and the
  * player's for YOU, at the console's resolution (the OpenGL picture draws
  * them above it): the boxes' palette indices through the panel's CLUT, as
- * the panel's own texels would be, so the inactive side's dimming applies. */
-static void name_over_panel(const Vertex *base, int flags)
+ * the panel's own texels would be, so the inactive side's dimming applies.
+ * The panel whole, or a piece of it drawn at any size (a mod's "ui"): its
+ * texels u0, v0 on (w x h) over x, y to x + width, y + height; a box goes
+ * with the piece that has its rows and the column it meets the panel at. */
+static int panel_piece(int u0, int v0, int w, int h)
 {
-    int which, x, y, width, height, stride, i, j;
+    return SoftGpu_PanelName && scale == 1 && texture_source == vram && gpu.depth == 0 && gpu.page_x == 704 &&
+           gpu.page_y == 0 && (gpu.clut_x == 736 || gpu.clut_x == 752) && gpu.clut_y == 252 && w > 0 && h > 0 &&
+           u0 >= 128 && v0 >= 128 && u0 + w <= 192 && v0 + h <= 168;
+}
+
+static void name_over_panel(int x, int y, int width, int height, int u0, int v0, int w, int h, const Vertex *color,
+                            int flags)
+{
+    int which, bx, by, bw, bh, stride, i, j;
     for (which = 0; which < 2; which++) {
-        const uint8_t *box = SoftGpu_PanelName(which, &x, &y, &width, &height, &stride);
-        if (!box) return;
-        for (j = 0; j < height; j++) {
-            for (i = 0; i < width; i++) {
-                uint16_t word = vram[gpu.clut_y * SOFT_GPU_WIDTH + gpu.clut_x + box[(size_t)j * stride + i]];
-                plot(base->x + x + i, base->y + y + j, base->r, base->g, base->b, word, 0, (flags & 3) | 4 | 16);
+        const uint8_t *box = SoftGpu_PanelName(which, &bx, &by, &bw, &bh, &stride);
+        int left, top, right, bottom;
+        /* As ever, no player's box without the opponent's; but a mod's
+         * label may be for YOU alone. */
+        if (!box) {
+            if (!SoftGpu_PanelCut) return;
+            continue;
+        }
+        if (by < v0 - 128 || by + bh > v0 - 128 + h || bx + bw <= u0 - 128 || bx + bw > u0 - 128 + w) continue;
+        left = x + (bx - (u0 - 128)) * width / w;
+        top = y + (by - (v0 - 128)) * height / h;
+        right = x + (bx + bw - (u0 - 128)) * width / w;
+        bottom = y + (by + bh - (v0 - 128)) * height / h;
+        for (j = top; j < bottom; j++) {
+            for (i = left; i < right; i++) {
+                /* Each pixel the box texel under it, as a quad samples. */
+                int tx = (i - left) * bw / (right - left), ty = (j - top) * bh / (bottom - top);
+                uint16_t word = vram[gpu.clut_y * SOFT_GPU_WIDTH + gpu.clut_x + box[(size_t)ty * stride + tx]];
+                plot(i, j, color->r, color->g, color->b, word, 0, (flags & 3) | 4 | 16);
             }
         }
     }
@@ -1118,7 +1177,7 @@ static size_t rectangle(const uint32_t *words, size_t count)
         return 0;
     }
     memset(&base, 0, sizeof(base));
-    set_colour(&base, words[0]);
+    set_color(&base, words[0]);
     set_position(&base, words[1]);
     if (textured) {
         base.u = words[at] & 0xff;
@@ -1159,11 +1218,11 @@ static size_t rectangle(const uint32_t *words, size_t count)
     CASE(0) CASE(1) CASE(2) CASE(3) CASE(4) CASE(5) CASE(6) CASE(7)
 #undef CASE
     }
-    /* The life-point panel (gl_picture.c's name_over_panel finds it so). */
-    if (SoftGpu_PanelName && scale == 1 && textured && texture_source == vram && gpu.depth == 0 &&
-        gpu.page_x == 704 && gpu.page_y == 0 && (gpu.clut_x == 736 || gpu.clut_x == 752) && gpu.clut_y == 252 &&
-        base.u == 128 && base.v == 128 && w == 64 && h == 40) {
-        name_over_panel(&base, flags);
+    /* The life-point panel (gl_picture.c's name_over_panel finds it so):
+     * whole, or a piece of it a mod's "ui" draws apart. */
+    if (textured && panel_piece(base.u, base.v, w, h) &&
+        ((base.u == 128 && base.v == 128 && w == 64 && h == 40) || SoftGpu_PanelCut)) {
+        name_over_panel(base.x, base.y, w, h, base.u, base.v, w, h, &base, flags);
     }
     return need;
 }
@@ -1178,7 +1237,7 @@ static size_t lines(const uint32_t *words, size_t count)
     if (count < (shaded ? 4u : 3u)) {
         return 0;
     }
-    set_colour(&previous, words[at++]);
+    set_color(&previous, words[at++]);
     set_position(&previous, words[at++]);
     for (;;) {
         if (poly && at < count && (words[at] & 0xf000f000u) == 0x50005000u) {
@@ -1187,7 +1246,7 @@ static size_t lines(const uint32_t *words, size_t count)
         next = previous;
         if (shaded) {
             if (at >= count) { return 0; }
-            set_colour(&next, words[at++]);
+            set_color(&next, words[at++]);
         }
         if (at >= count) { return 0; }
         set_position(&next, words[at++]);

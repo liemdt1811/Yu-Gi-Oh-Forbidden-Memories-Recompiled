@@ -19,6 +19,8 @@ int (*TextureDump_Prepare)(int page_x, int page_y, int depth, int clut_x, int cl
 uint32_t (*TextureDump_Recall)(const uint16_t *pixels, size_t words);
 void (*TextureDump_Restored)(void);
 int (*TextureDump_Sample)(int page_x, int page_y, int depth, int u, int v, uint32_t *rgb);
+int (*TextureDump_BankSample)(int bank, int page_x, int page_y, int depth, int clut_x, int clut_y, int u, int v,
+                              int scale, uint32_t *rgb);
 void (*TextureDump_Forget)(int x, int y, int w, int h);
 void (*TextureDump_Follow)(int sx, int sy, int dx, int dy, int w, int h);
 static char directory[1024];
@@ -408,12 +410,20 @@ void TextureDump_Moved(int sx, int sy, int dx, int dy, int w, int h)
 
 void TextureDump_Cleared(int x, int y, int w, int h)
 {
-    int i, j;
+    int j;
     if (!TextureDump_Tags) return;
     for (j = 0; j < h; j++) {
-        for (i = 0; i < w; i++) {
-            *tag_at(x + i, y + j) = 0;
-            if (TextureDump_Shadow) memset(TextureDump_Cell(x + i, y + j, 0), 0, 4 * sizeof(uint16_t));
+        /* Clear contiguous spans, retaining VRAM's horizontal wrap. This
+         * also avoids resolving each cell in the translated backend. */
+        int left = w, column = x & (SOFT_GPU_WIDTH - 1);
+        while (left > 0) {
+            int count = SOFT_GPU_WIDTH - column;
+            if (count > left) count = left;
+            memset(tag_at(column, y + j), 0, (size_t)count * sizeof(uint32_t));
+            if (TextureDump_Shadow)
+                memset(TextureDump_Cell(column, y + j, 0), 0, (size_t)count * 4 * sizeof(uint16_t));
+            left -= count;
+            column = 0;
         }
     }
     if (TextureDump_Forget) TextureDump_Forget(x, y, w, h);
@@ -637,17 +647,17 @@ static uint64_t fnv(uint64_t hash, const void *data, size_t length)
     return hash;
 }
 
-static void expand(unsigned char *out, uint16_t colour)
+static void expand(unsigned char *out, uint16_t color)
 {
-    if (colour == 0) {
-        out[0] = out[1] = out[2] = out[3] = 0; /* the transparent colour */
+    if (color == 0) {
+        out[0] = out[1] = out[2] = out[3] = 0; /* the transparent color */
         return;
     }
     /* As the picture expands a word (soft_gpu.c): the PNG is what the game
      * shows, and extract_images.py writes the same bytes from the disc. */
-    out[0] = (unsigned char)(((colour & 0x1f) << 3) | ((colour & 0x1f) >> 2));
-    out[1] = (unsigned char)((((colour >> 5) & 0x1f) << 3) | (((colour >> 5) & 0x1f) >> 2));
-    out[2] = (unsigned char)((((colour >> 10) & 0x1f) << 3) | (((colour >> 10) & 0x1f) >> 2));
+    out[0] = (unsigned char)(((color & 0x1f) << 3) | ((color & 0x1f) >> 2));
+    out[1] = (unsigned char)((((color >> 5) & 0x1f) << 3) | (((color >> 5) & 0x1f) >> 2));
+    out[2] = (unsigned char)((((color >> 10) & 0x1f) << 3) | (((color >> 10) & 0x1f) >> 2));
     out[3] = 255;
 }
 

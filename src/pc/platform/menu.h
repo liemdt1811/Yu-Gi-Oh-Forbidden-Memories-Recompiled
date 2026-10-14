@@ -14,7 +14,8 @@
  * Game  > Mods opens the searchable mod manager; Restart game goes back to
  *         the title screen once confirmed (title_jump.h)
  * Debug > development helpers (src/pc/debug)
- * Help  > update checks and this build's version (update_check.h) */
+ * Help  > update checks and this build's version (update_check.h); on
+ *         Android, whether a crash's report is offered (android_report.c) */
 
 typedef struct MenuCanvas {
     uint32_t *pixels; /* 0xAARRGGBB (alpha ignored unless `alpha`), row-major */
@@ -80,8 +81,14 @@ typedef enum {
     MENU_ITEM_OPPONENT_NAME, /* View > Opponent's name for COM: drawn by the OpenGL picture pass at
                               * Internal 2x and up (Menu_SetHdPicture), by the software GPU at 1x */
     MENU_ITEM_RESTART, /* Game > Restart game: asks, then goes back as MENU_ITEM_TITLE does */
-    MENU_ITEM_PGXP /* Video > Precise geometry: needs the OpenGL picture pass at Internal 2x and up,
-                    * no software-GPU fallback (Menu_SetHdPicture) */
+    MENU_ITEM_PGXP, /* Video > Precise geometry: needs the OpenGL picture pass at Internal 2x and up,
+                     * no software-GPU fallback (Menu_SetHdPicture) */
+    MENU_ITEM_COLOR, /* Video > Color, and Effects > CRT scanlines and Reduce flashes: the desktop
+                      * presenter's (present_pass.c, Menu_SetPresentPass) */
+    MENU_ITEM_CRT,
+    MENU_ITEM_FLASH,
+    MENU_ITEM_XBR /* Video > Effects > xBR: the desktop presenter's, or the OpenGL picture
+                   * pass's at Internal 2x and up */
 } MenuItemId;
 
 /* The stored settings (settings.txt in the user directory, see paths.h;
@@ -102,10 +109,10 @@ int Menu_AutoScale(int window_h);
 void Menu_Draw(MenuCanvas *canvas);
 /* Text is UTF-8: a character the face has no glyph for, or a byte that is
  * not UTF-8, is drawn as "?". */
-void Menu_DrawText(MenuCanvas *canvas, int x, int y, const char *text, uint32_t colour);
+void Menu_DrawText(MenuCanvas *canvas, int x, int y, const char *text, uint32_t color);
 int Menu_TextWidth(const char *text);
 /* Auxiliary windows can fit their UI without changing the game menu scale. */
-void Menu_DrawTextScaled(MenuCanvas *canvas, int x, int y, const char *text, uint32_t colour, int scale);
+void Menu_DrawTextScaled(MenuCanvas *canvas, int x, int y, const char *text, uint32_t color, int scale);
 int Menu_TextWidthScaled(const char *text, int scale);
 
 /* For code that cuts UTF-8 text to fit, so a cut never splits a character.
@@ -145,6 +152,9 @@ void Menu_Open(void);
  * (48 dp): the bar, the rows and a notice's buttons are at least that tall.
  * 0, the default, keeps the mouse's sizes. */
 void Menu_SetTouchTarget(int pixels);
+/* That height (0 with a mouse): the Mods and Controls panels drawn inside
+ * the window (panel.h) size their rows and buttons by it too. */
+int Menu_TouchTarget(void);
 /* The part of the window what is drawn over the picture keeps within (the
  * save slot and deck slot menus): across, between `left` and `right` (the
  * touch controls hold the sides while they show; the whole width when
@@ -164,12 +174,19 @@ void Menu_SetItemEnabled(int id, int enabled);
 /* What the platform lacks, dimmed once after Menu_Init: 0 for `windows`
  * dims Game > Controls... and Mods (second windows), for `window_modes`
  * Video > Window scale, Fullscreen and Borderless, for `update_check` Help's
- * update check rows. The SDL backend on Android passes all three 0. */
+ * update check rows. The SDL backend on Android passes 1, 0, 0: Mods and
+ * Controls open as panels inside the window there (panel.h). */
 void Menu_SetPlatformItems(int windows, int window_modes, int update_check);
 /* Whether the backend runs the OpenGL picture pass (gl_picture.h). Without
  * it, or at console resolution, the Video menu's HD items could show
  * nothing: they are dimmed with the reason beside them. */
 void Menu_SetHdPicture(int on);
+/* Whether the backend runs the present pass (present_pass.h: the desktop
+ * OpenGL presenter). Without it Video > Color, CRT scanlines, Reduce
+ * flashes and Sharp bilinear would do nothing, and xBR needs the OpenGL
+ * picture pass at Internal 2x: they are dimmed with the reason beside
+ * them. On until the backend says otherwise. */
+void Menu_SetPresentPass(int on);
 
 /* A notice over the middle of the picture, drawn with the menu (also while
  * the bar is hidden in fullscreen): a title, text wrapped to fit (newlines

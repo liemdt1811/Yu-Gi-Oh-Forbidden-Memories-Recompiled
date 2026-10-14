@@ -181,7 +181,7 @@ The codes:
 | `{jump L}`, `{call L}` | go on at `L`; insert the text at `L` (`{call L125A}` is the player's name) |
 | `{if FFFF L}`, `{set FFFF}` | go to `L` if a story flag is set; set one |
 | `{state ...}`, `{fx ...}` | pictures, pauses and effects of the story |
-| `{f8 ...}` | the text's formatting and inserts: `{f8 00 20}` the card's name, `{f8 00 40}` its text, `{f8 03 ...}` a number, `{f8 0A NN}` a colour, `{f8 01 NN}`/`{f8 02 NN}`/`{f8 06 ...}` positions, `{f8 0E ...}`/`{f8 10 ...}` music and sound |
+| `{f8 ...}` | the text's formatting and inserts: `{f8 00 20}` the card's name, `{f8 00 40}` its text, `{f8 03 ...}` a number, `{f8 0A NN}` a color, `{f8 01 NN}`/`{f8 02 NN}`/`{f8 06 ...}` positions, `{f8 0E ...}`/`{f8 10 ...}` music and sound |
 | `{g NN}` | a glyph by its number: the few symbols with no character to type |
 
 Move a code with the words it belongs to; do not change its numbers. The
@@ -230,6 +230,7 @@ Simon Muran{end}
 | `FE10` | the card shop's menu (string `0011`): the entry under BUILD DECK | the menu's box shows 44 letters in all (spaces are none; 79 with a PAL language on, whose text entries are the PAL game's); retail's four lines have 35, so 9; a line is 15 wide |
 | `FE11` | the Free Duel grid's page line, between the L1 and R1 hints, when a duelist mod gives the grid more than one page (`notes/more-duelists.md`) | centred on the picture between the two hints: 30 letters, numbers and spaces included, before it reaches them |
 | `FE20`-`FE39` | the card packs on the Password screen ([card packs](card-packs.md)): `FE20` PACKS (after OK END), `FE21` BUY, `FE22` QUIT, `FE23` BACK, `FE24` INFO, `FE25` NEXT, `FE26` SKIP, `FE27` OK, `FE28` END, `FE29` SOLD OUT, `FE2A` LEFT %d, `FE2B` %d CARDS (`FE38` %d CARD for one), `FE2C` LOCKED; what opens a locked pack: `FE2D` BEAT %s, `FE2E` BEAT %s %d TIMES, `FE2F` WIN %d DUELS, `FE30` GO ON IN THE STORY, `FE31` HOLD %s, `FE32` HOLD %d %s, `FE33` SPEND %d MORE, `FE34` OPEN %d MORE PACKS, `FE35` OPEN %s x%d; the details: `FE36` AT LEAST %d %s, `FE37` %s IN %d PACKS; `FE39` ALL OWNED (why BUY is refused: every card of the pack held `max_copies` times) | the message box's line: 20 letters, a button's icon two; `%s` is a name (a duelist's, a card's, a pack's or a tier's), put in as the game writes it. Only shown when a mod sells packs |
+| `FE70`-`FE7F` | the [tower](tower-mode.md)'s screen: `FE70` FLOOR %d OF %d: %s, `FE71` DUEL, `FE72` LEAVE, `FE73` NO FUSIONS, `FE74` NO EQUIPS, `FE75` LP YOU %d COM %d, `FE76` CLEARED x%d, `FE77` FLOOR %d CLEARED!, `FE78` %d STARCHIPS, `FE79` %s UNLOCKED, `FE7A` CHECKPOINT, `FE7B` THE TOWER IS CLEARED!, `FE7C` YOU LOST. BACK TO FLOOR %d., `FE7D` SAVE YOUR PROGRESS?, `FE7E` YES, `FE7F` NO | a box's line: 32 letters; `%s` is a duelist's name. Only shown when a mod has a tower |
 | `FE41`-`FE67` | the opponent's name in place of COM (View > Opponent's name for COM): `FE40` + the duelist's id, 1-39 (the names bank's `8328` + id is the same duelist) | 14 letters, spaces and full stops (H.M. Anubisius, the longest English one); past that, the first 14 |
 
 Letters and spaces only: a string with other codes is not used (the port's
@@ -241,7 +242,7 @@ The shop's menu with the entry is rebuilt from the translation's string
 `0011` when it has one: its four lines as they are, `FE10` (or the English)
 added under the second, centred as the others are, and its `{choice}` given
 the fifth entry. A `0011` that is not four lines of letters, spaces,
-`{f8 02}` steps and `{f8 0A}` colours, or five lines past the box's 44
+`{f8 02}` steps and `{f8 0A}` colors, or five lines past the box's 44
 letters, leaves the menu the translation's four entries, and the log
 (`MEMORIES_TRACE=mods`) says so. A translation whose own four lines have
 more letters than retail's has less room for `FE10`: the pt-BR menu has 38,
@@ -293,7 +294,7 @@ the first time a text uses them:
   caron, macron, breve, dot, double acute and ogonek, on any letter Unicode
   combines them with (251 of them: á, Ž, ő, ę, ǎ, ẽ...; Vietnamese below). Also
   ¿ ¡ ı ø Ø ł Ł đ Đ ħ Ħ, and `:` in the 8x8 font, which has none (two of its
-  `·`, in the letters' colours).
+  `·`, in the letters' colors).
 * **How a mark fits** a cell with no room above the letter. In the 16x16
   font a capital is squeezed down to leave the mark its rows. The small
   fonts have none to spare: an 8x12 capital's outline is on the cell's top
@@ -353,8 +354,8 @@ the first time a text uses them:
   machines, and a machine may have none.
 
 The added letters live in the software GPU's texture bank 15, not in the
-console's VRAM, and take their colours from the text's own palettes, so they
-fade, flash and change colour as the retail ones do. Up to 672 of them.
+console's VRAM, and take their colors from the text's own palettes, so they
+fade, flash and change color as the retail ones do. Up to 672 of them.
 
 ## How the port does it
 
@@ -697,7 +698,7 @@ US box the name, ATK/DEF and icons sat on the stone above the bar: it gets
 the US lines there and back (`F8 01 E4` ... `F8 01 1C`) around the PAL's
 words. Free Duel's record (`0C`) is, in every PAL language, the duelist's
 name and, a line below, the wins and losses (Victoria/Derrota, Sieg/
-Niederlage...) in colours at their own x, where the US has WIN and LOSS on
+Niederlage...) in colors at their own x, where the US has WIN and LOSS on
 the name's line at x 0xA0: in the US box, one line high, they never showed.
 They do not fit on the US line: the longest names take 144 to 162 pixels
 at the PAL's spacing (Magier des Labyrinths, K le Maître des Duels) and

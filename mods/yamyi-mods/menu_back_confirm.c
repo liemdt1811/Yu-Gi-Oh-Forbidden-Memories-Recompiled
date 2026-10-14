@@ -80,6 +80,7 @@
 
 #include "game/input.h"
 #include "game/main_menu_selection.h"
+#include "game/ordering_tables.h"
 #include "overlays/main_menu/frontend.h"
 
 s32 MainMenu_UpdateFrontendMenu(void);
@@ -92,18 +93,14 @@ void SD_SEPlay(s32 id, s32 volume, s32 pan);
 int SaveMenu_Active(void);
 int Menu_IsOpen(void);
 
-/* The sprite ordering table the game's own screen-space primitives go to:
- * func_80015EF4.c takes `tab = D_800E9D90` and sorts into `tab[2]`. */
-extern void *D_800E9D90[];
-void GsSortPoly(void *primitive, void *ot, unsigned short priority);
+/* The sprite ordering table the game's own screen-space primitives go to,
+ * D_800E9D90 (game/ordering_tables.h, which brings GsSortPoly, LoadImage and
+ * DrawSync with it): func_80015EF4.c takes `tab = D_800E9D90` and sorts into
+ * `tab[2]`. */
 
-typedef struct { s16 x, y, w, h; } ModRect;   /* psyq/libgpu.h RECT */
-int LoadImage(ModRect *rect, u32 *pixels);
-int DrawSync(int mode);
-
-/* psyq/libgpu.h layouts, spelled here so the mod carries no SDK headers it
- * would otherwise only need for two structs. The port's GsSortPoly reads the
- * code out of word 1 and walks the vertices from it, so these must match. */
+/* psyq/libgpu.h layouts, spelled here as the mod first had them. The port's
+ * GsSortPoly reads the code out of word 1 and walks the vertices from it, so
+ * these must match. */
 typedef struct {
     u32 tag;
     u8 r0, g0, b0, code;
@@ -298,7 +295,7 @@ static int s_ui_recent;
  * over them. Settled on screen; a constant rather than a knob. */
 #define OT_INDEX 1
 
-static void *table(void)
+static GsOT *table(void)
 {
     return D_800E9D90[OT_INDEX];
 }
@@ -453,7 +450,7 @@ static void load_art(void)
  * which is why the text kept drawing after the box had vanished. */
 static void upload_art(void)
 {
-    ModRect rect;
+    RECT rect;
 
     if (s_art <= 0 || s_sheet == NULL) {
         return;

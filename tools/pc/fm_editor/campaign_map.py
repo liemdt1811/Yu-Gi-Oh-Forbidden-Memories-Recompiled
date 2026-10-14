@@ -186,7 +186,7 @@ class MapData:
     names: list             # 16 place names
     resource: bytes = b""   # the display resource bank (one sector)
     strip: bytes = b""      # the sprite strip, 256x256 at four bits
-    palettes: bytes = b""   # 256x4 colours
+    palettes: bytes = b""   # 256x4 colors
     notes: list = field(default_factory=list)
     wa: bytes = field(default=b"", repr=False, compare=False)   # the archive, for the map's model and pictures
 
@@ -478,7 +478,7 @@ def edges(locations, index: int) -> list:
     out = []
     for n, e in enumerate(loc.exits):
         if e.used and 0 <= e.destination < COUNT:
-            out.append((f"exit {n + 1}", e.destination, e.condition))
+            out.append((f"arrow {n + 1}", e.destination, e.condition))
     if 0 < loc.confirm < COUNT:
         out.append(("confirm", loc.confirm, loc.exits[0].condition if loc.gate else 0))
     if index >= TOWN_FIRST:
@@ -515,9 +515,9 @@ def check(project, out: list):
         for n, e in enumerate(loc.exits):
             if not e.used:
                 continue
-            what = f"exit {n + 1}"
+            what = f"arrow {n + 1}"   # an exit, as the Map tab names it
             if e.destination > NO_EXIT:
-                add("error", index, f"{what} leads to {e.destination}: there are only places 0-15 (16 is no exit)")
+                add("error", index, f"{what} leads to {e.destination}: there are only places 0-15 (16 is none)")
                 continue
             if e.steps == 0:
                 add("error", index, f"{what} takes 0 frames: the move divides by its length, so it must be 1 or more")
@@ -537,15 +537,15 @@ def check(project, out: list):
                 add("warning", index, f"{what}'s arrow picture {e.arrow} is not one of the eight the map has")
             for m, other in seen:
                 if other.buttons & e.buttons & DIRECTION_BITS and (other.condition == 0 or other.condition == e.condition):
-                    add("warning", index, f"{what} is never taken while exit {m + 1} is: the game takes the first "
-                                          "exit whose direction is held")
+                    add("warning", index, f"{what} is never taken while arrow {m + 1} is: the game takes the first "
+                                          "arrow whose direction is held")
                     break
             seen.append((n, e))
         if index >= TOWN_FIRST and not (0 <= loc.marker_x < SCREEN[0] and 0 <= loc.marker_y < SCREEN[1]):
             add("warning", index, f"the marker at {loc.marker_x},{loc.marker_y} is off the screen")
     lost = [i for i in unreachable(locations) if i not in unreachable(st.retail.locations)]
     for index in lost:
-        add("warning", index, "no exit, Confirm or Cancel of another place leads here any more")
+        add("warning", index, "no arrow, Confirm or Cancel of another place leads here any more")
 
 
 # --- sprites -------------------------------------------------------------------------------
@@ -554,8 +554,8 @@ def _u16(blob: bytes, at: int) -> int:
     return blob[at] | (blob[at + 1] << 8)
 
 
-def colour(word: int):
-    """RGBA of a VRAM colour word; 0 is transparent."""
+def color(word: int):
+    """RGBA of a VRAM color word; 0 is transparent."""
     if word == 0:
         return 0, 0, 0, 0
     r, g, b = word & 31, (word >> 5) & 31, (word >> 10) & 31
@@ -594,7 +594,7 @@ class SpritePart:
     v: int
     width: int
     height: int
-    palette: int        # 16-colour palette index in the 256x4 block (x / 16 + y * 16)
+    palette: int        # 16-color palette index in the 256x4 block (x / 16 + y * 16)
     mirror: bool
 
 
@@ -618,9 +618,9 @@ def strip_index(strip: bytes, u: int, v: int) -> int:
     return byte >> 4 if u & 1 else byte & 15
 
 
-def palette_colours(palettes: bytes, palette: int) -> list:
+def palette_colors(palettes: bytes, palette: int) -> list:
     base = palette * 16
-    return [colour(_u16(palettes, (base + i) * 2)) for i in range(16)]
+    return [color(_u16(palettes, (base + i) * 2)) for i in range(16)]
 
 
 def sprite_image(data: MapData, animation: int, variant: int = 0, strips=None):
@@ -640,7 +640,7 @@ def sprite_image(data: MapData, animation: int, variant: int = 0, strips=None):
     height = max(p.dy + p.height for p in parts) - top
     out = bytearray(width * height * 4)
     for p in parts:
-        colours = palette_colours(data.palettes, p.palette)
+        colors = palette_colors(data.palettes, p.palette)
         own = (strips or {}).get(p.palette)
         scale = own.width // 256 if own is not None and own.width >= 256 else 0
         for j in range(p.height):
@@ -651,7 +651,7 @@ def sprite_image(data: MapData, animation: int, variant: int = 0, strips=None):
                     c = tuple(own.rgba[at:at + 4])
                     c = c if c[3] >= 128 else (0, 0, 0, 0)
                 else:
-                    c = colours[strip_index(data.strip, u, v)]
+                    c = colors[strip_index(data.strip, u, v)]
                 if c[3]:
                     at = ((p.dy - top + j) * width + (p.dx - left + i)) * 4
                     out[at:at + 4] = bytes(c)

@@ -11,7 +11,13 @@ int Cards_EffectId(int id) { return id; }
 int Cards_BaseId(int id) { return id; }
 int Cards_TrapId(int id) { return id >= 681 && id <= 686 ? id : 0; }
 int Cards_TrapThreshold(int id, int fallback) { (void)id; return fallback; }
+int Cards_CardEffectsReplace(int id) { (void)id; return 0; }
+void MonsterEffects_AttackTrapPlayed(int card, int side) { (void)card; (void)side; }
+void DuelCard_RemoveFromField(DuelCardRecord *card) { (void)card; abort(); }
 int Cards_Type(int id) { (void)id; abort(); }
+/* The translated ritual fixture does not load the card-type registry. Its
+ * selected retail-rule paths only need the framework's monster predicate. */
+int Cards_IsMonsterType(int type) { return type >= 0 && (type < CARD_TYPE_MAGIC || type > CARD_TYPE_EQUIP); }
 int Cards_Level(int id) { (void)id; abort(); }
 int Cards_InFusionGroup(int id, int group) { (void)id; (void)group; abort(); }
 int Tables_HasRitual(int id) { (void)id; return 0; }
@@ -19,6 +25,7 @@ int Tables_RitualRequirements(int id, TablesRitualRequirement *req, unsigned sho
     (void)id; (void)req; (void)out; return 0;
 }
 int Tables_Ritual(int id, unsigned short *out) { (void)id; (void)out; return -1; }
+int Tables_RitualRule(int id, TablesRitualRule *rule) { (void)id; (void)rule; return 0; }
 int Tables_TrapThreshold(int id, int retail) { (void)id; return retail; }
 int Tables_StatCap(int defense) { (void)defense; return 9999; }
 extern s32 Duel_SelectAttackTrap(u8 *);

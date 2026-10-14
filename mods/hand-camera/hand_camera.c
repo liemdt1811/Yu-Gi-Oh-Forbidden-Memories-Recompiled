@@ -19,12 +19,12 @@
 #include "psyq/libgs.h"
 #include "game/view_state.h"
 #include "game/view_state_orbit.h"
+#include "game/main_services.h"
 #include "pc/mods/modapi.h"
 #include <stdint.h>
 
 extern ViewState D_800F2848;
 extern u16 gDuel_wSceneStateFlags;
-extern void (*D_800E9DB0[4])(void); /* the frame service callbacks */
 extern void Duel_DrawFieldCards(void);
 
 #define HAND_STATE 4

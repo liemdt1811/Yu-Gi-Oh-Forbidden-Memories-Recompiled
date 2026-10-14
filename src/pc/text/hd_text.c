@@ -1,7 +1,7 @@
 /* HD text (hd_text.h).
  *
  * The retail font is anti-aliased in its indices, which the text palettes
- * run from black to the text's colour: the dark outline is the lowest (1,
+ * run from black to the text's color: the dark outline is the lowest (1,
  * with 2 and 3 in the large font), and above it an index is how bright the
  * texel is. The letters are shaded too, brightest at the top of the cell.
  * An HD picture is made the same way at `factor` pixels per texel, from the
@@ -21,7 +21,7 @@
  *   round it.
  *
  * Everything else is index 0, which the palettes make transparent, as in the
- * cells. So the same letter stands in the same place in the same colours,
+ * cells. So the same letter stands in the same place in the same colors,
  * finer. */
 #include "hd_text.h"
 #include "glyphs.h"
@@ -32,6 +32,7 @@
 #include "pc/cards/art.h"
 #include "pc/cards/cards.h"
 #include "pc/cards/tables.h"
+#include "pc/cards/duel_ui.h"
 #include "pc/saves/save_slots.h"
 #include "game/save_data.h"
 #include <ft2build.h>
@@ -39,6 +40,7 @@
 #include FT_OUTLINE_H
 #include FT_BBOX_H
 #include <ctype.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -858,6 +860,12 @@ void HdText_TitleUploaded(int card, int x, int y)
 int HdText_Title(int page_x, int page_y, int u, int v, int wanted, int *atlas_u, int *atlas_v, int *title_u,
                  int *title_v)
 {
+    return HdText_TitleCard(page_x, page_y, u, v, wanted, atlas_u, atlas_v, title_u, title_v, NULL);
+}
+
+int HdText_TitleCard(int page_x, int page_y, int u, int v, int wanted, int *atlas_u, int *atlas_v, int *title_u,
+                     int *title_v, int *card)
+{
     const uint16_t *words = SoftGpu_Vram();
     int vx = page_x + (u & 255) / 4, vy = page_y + (v & 255), i, place = -1, oldest = 0;
     const TitleUpload *upload = NULL;
@@ -900,6 +908,7 @@ int HdText_Title(int page_x, int page_y, int u, int v, int wanted, int *atlas_u,
     *atlas_v = (TITLE_TOP + place / TITLES_ACROSS) * CELL;
     *title_u = (upload->x - page_x) * 4;
     *title_v = upload->y - page_y;
+    if (card) *card = upload->card;
     return 1;
 }
 
@@ -914,7 +923,7 @@ static int texel(const uint16_t *words, int depth, int page_x, int page_y, int u
 }
 
 /* A palette entry as 0-255 red, green, blue. */
-static void colour(const uint16_t *words, int clut_x, int clut_y, int index, double rgb[3])
+static void color(const uint16_t *words, int clut_x, int clut_y, int index, double rgb[3])
 {
     uint16_t word = words[(clut_y & (SOFT_GPU_HEIGHT - 1)) * SOFT_GPU_WIDTH + ((clut_x + index) & (SOFT_GPU_WIDTH - 1))];
     rgb[0] = (word & 31) * 8.0;
@@ -923,23 +932,23 @@ static void colour(const uint16_t *words, int clut_x, int clut_y, int index, dou
 }
 
 /* The ramp from index `from` to index `to` through the indices between
- * them: those of `used` whose colours lie on the way (near the line from
- * one colour to the other, in order along it). A colour off the way, like
+ * them: those of `used` whose colors lie on the way (near the line from
+ * one color to the other, in order along it). A color off the way, like
  * the purple the duel's digits have in a few corners, is left out. */
 static int make_ramp(const uint16_t *words, int clut_x, int clut_y, int from, int to, const int *used, int count,
                      unsigned char *ramp, int room)
 {
     double a[3], b[3], ab[3], length2, along[256];
     int i, j, k, n = 1, middle[256], middles = 0;
-    colour(words, clut_x, clut_y, from, a);
-    colour(words, clut_x, clut_y, to, b);
+    color(words, clut_x, clut_y, from, a);
+    color(words, clut_x, clut_y, to, b);
     for (k = 0; k < 3; k++) ab[k] = b[k] - a[k];
     length2 = ab[0] * ab[0] + ab[1] * ab[1] + ab[2] * ab[2];
     if (length2 <= 0) return 0;
     for (i = 0; i < count; i++) {
         double c[3], t = 0, off = 0;
         if (used[i] == from || used[i] == to) continue;
-        colour(words, clut_x, clut_y, used[i], c);
+        color(words, clut_x, clut_y, used[i], c);
         for (k = 0; k < 3; k++) t += (c[k] - a[k]) * ab[k];
         t /= length2;
         for (k = 0; k < 3; k++) {
@@ -1166,7 +1175,7 @@ typedef struct {
  * letters from their baseline (the commonest foot of their columns) to
  * their tops, at most as wide, centred, as heavy (no more than a fifth of
  * their height: a pixel font's two-texel strokes would blot a font's), in
- * the ramp's colours by coverage. `outlined`: ramp[0] is an outline a texel
+ * the ramp's colors by coverage. `outlined`: ramp[0] is an outline a texel
  * wide round the letters, the rest of the box clear (0). `shadow`: that
  * index a texel right of and below the letters, where they are not.
  * `span`: across the whole box (a texel in from each side) rather than as
@@ -1301,7 +1310,7 @@ static int set_text(void *face_pointer, const unsigned char *texels, int pitch, 
 
 /* One of the panel's labels, in the font the text is set in: its box's
  * background (the commonest index across the panel in the label's rows:
- * inside the label the letters can be the commoner) to the letters' colour
+ * inside the label the letters can be the commoner) to the letters' color
  * farthest from it. */
 static int set_label(const uint16_t *words, uint8_t *origin, unsigned char texels[PANEL_H][PANEL_W], int label)
 {
@@ -1317,12 +1326,12 @@ static int set_label(const uint16_t *words, uint8_t *origin, unsigned char texel
     for (i = 1; i < 16; i++) {
         if (counts[i] > counts[background]) background = i;
     }
-    colour(words, PANEL_CLUT_X, PANEL_CLUT_Y, background, bg);
+    color(words, PANEL_CLUT_X, PANEL_CLUT_Y, background, bg);
     for (i = 1; i < 16; i++) {
         double rgb[3], by;
         if (!inside[i] || i == background) continue;
         used[n_used++] = i;
-        colour(words, PANEL_CLUT_X, PANEL_CLUT_Y, i, rgb);
+        color(words, PANEL_CLUT_X, PANEL_CLUT_Y, i, rgb);
         by = (rgb[0] - bg[0]) * (rgb[0] - bg[0]) + (rgb[1] - bg[1]) * (rgb[1] - bg[1]) + (rgb[2] - bg[2]) * (rgb[2] - bg[2]);
         if (by > far_by) far_by = by, far = i;
     }
@@ -1356,9 +1365,9 @@ static int make_panel(const uint16_t *words)
  * text over one sprite or several side by side (a name the game cuts in two,
  * MEAD + OW), found by page, palette and rectangle as #47's HD pack recipe
  * lists them. Styles: BOX, letters on the sprite's own background (the
- * ramp from the commonest index to the letters' colour farthest from it);
+ * ramp from the commonest index to the letters' color farthest from it);
  * OUTLINE, letters with the index round them next to nothing; CLEAR,
- * letters on nothing (the ramp from 0 to the colour farthest from black),
+ * letters on nothing (the ramp from 0 to the color farthest from black),
  * with `shadow` a texel right and down when not 0. The card view's inks
  * are CLEAR: their palette is subtracted, so the farthest is the darkest.
  * A picture is made again when the sprites' texels change (a terrain's own
@@ -1483,7 +1492,7 @@ static void count_indices(const unsigned char texels[16][64], int width, int hei
 }
 
 /* A label's ramp from its indices' counts (all[], border[]): what its
- * style says the letters' colours are. Returns its length, 0 for none. */
+ * style says the letters' colors are. Returns its length, 0 for none. */
 static int label_ramp(const uint16_t *words, const Label *l, const int all[256], const int border[256],
                       unsigned char ramp[8])
 {
@@ -1507,11 +1516,11 @@ static int label_ramp(const uint16_t *words, const Label *l, const int all[256],
                 if (all[i] > all[from]) from = i;
             }
         }
-        colour(words, l->clut_x, l->clut_y, from, base);
+        color(words, l->clut_x, l->clut_y, from, base);
         for (i = 0; i < count; i++) {
             double rgb[3], by;
             if (used[i] == from) continue;
-            colour(words, l->clut_x, l->clut_y, used[i], rgb);
+            color(words, l->clut_x, l->clut_y, used[i], rgb);
             by = (rgb[0] - base[0]) * (rgb[0] - base[0]) + (rgb[1] - base[1]) * (rgb[1] - base[1]) +
                  (rgb[2] - base[2]) * (rgb[2] - base[2]);
             if (by > far_by) far_by = by, to = used[i];
@@ -1609,7 +1618,7 @@ static const struct {
 } name_boxes[2] = {{1, 9, 0, 3, 64}, {2, 21, 24, 0, 64}};
 static int name_duelist, name_width[2];
 static unsigned name_made[2];
-static char name_player[16];
+static char name_player[16], name_opponent[64];
 
 /* The player's name as the save has it (SaveSlots_StateName), else You. */
 const char *HdText_PlayerName(void)
@@ -1638,7 +1647,7 @@ static int make_name(const uint16_t *words, const char *name, int which, int *wi
             texels[y][x] = (unsigned char)texel(words, 0, PANEL_PAGE_X, PANEL_PAGE_Y, PANEL_U + x, PANEL_V + y);
         }
     }
-    /* The label's colours and its box's background, as set_label finds
+    /* The label's colors and its box's background, as set_label finds
      * them. */
     for (y = panel_labels[label].y0; y < panel_labels[label].y1; y++) {
         for (x = 0; x < PANEL_W; x++) counts[texels[y][x]]++;
@@ -1646,14 +1655,14 @@ static int make_name(const uint16_t *words, const char *name, int which, int *wi
     for (i = 1; i < 16; i++) {
         if (counts[i] > counts[background]) background = i;
     }
-    /* The letters' colour farthest from it. */
-    colour(words, PANEL_CLUT_X, PANEL_CLUT_Y, background, bg);
+    /* The letters' color farthest from it. */
+    color(words, PANEL_CLUT_X, PANEL_CLUT_Y, background, bg);
     for (y = panel_labels[label].y0; y < panel_labels[label].y1; y++) {
         for (x = panel_labels[label].x0; x < panel_labels[label].x1; x++) {
             double rgb[3], by;
             int c = texels[y][x];
             if (!c || c == background) continue;
-            colour(words, PANEL_CLUT_X, PANEL_CLUT_Y, c, rgb);
+            color(words, PANEL_CLUT_X, PANEL_CLUT_Y, c, rgb);
             by = (rgb[0] - bg[0]) * (rgb[0] - bg[0]) + (rgb[1] - bg[1]) * (rgb[1] - bg[1]) +
                  (rgb[2] - bg[2]) * (rgb[2] - bg[2]);
             if (by > far_by) far_by = by, far = c;
@@ -1706,6 +1715,12 @@ int HdText_NameBox(int wanted, int which, int *atlas_u, int *atlas_v, int *x, in
     const uint16_t *words = SoftGpu_Vram();
     int duelist = Tables_OpponentId();
     const char *name = Text_OpponentName(duelist);
+    /* A mod's "ui" may put words of its own in place of COM or YOU
+     * (pc/cards/duel_ui.h); without View > Opponent's name for COM only
+     * those show. */
+    const char *label = which >= 0 && which <= 1 ? DuelUi_Label(which) : NULL;
+    if (!label && !Settings_Get(SET_OPPONENT_NAME)) return 0;
+    if (label && !which) name = label;
     if (!name || which < 0 || which > 1 || wanted < 1 || wanted > MAX_FACTOR || !words ||
         panel_sum(words) != PANEL_SUM) {
         return 0;
@@ -1715,8 +1730,12 @@ int HdText_NameBox(int wanted, int which, int *atlas_u, int *atlas_v, int *x, in
         name_duelist = duelist;
         name_made[0] = name_made[1] = 0;
     }
+    if (!which && strncmp(name_opponent, name, sizeof(name_opponent) - 1)) {
+        snprintf(name_opponent, sizeof(name_opponent), "%s", name);
+        name_made[0] = 0;
+    }
     if (which) {
-        const char *player = HdText_PlayerName();
+        const char *player = label ? label : HdText_PlayerName();
         if (strcmp(name_player, player)) {
             strcpy(name_player, player);
             name_made[1] = 0;
@@ -1724,7 +1743,7 @@ int HdText_NameBox(int wanted, int which, int *atlas_u, int *atlas_v, int *x, in
     }
     if (name_made[which] != generation) {
         name_made[which] = generation;
-        if (!make_name(words, which ? name_player : name, which, &name_width[which])) name_width[which] = 0;
+        if (!make_name(words, which ? name_player : name_opponent, which, &name_width[which])) name_width[which] = 0;
     }
     if (!name_width[which]) return 0;
     *atlas_u = name_boxes[which].column * CELL;
@@ -1746,7 +1765,12 @@ const uint8_t *HdText_NamePixels(int which, int *x, int *y, int *width, int *hei
 
 int HdText_NameEnabled(void)
 {
-    return Settings_Get(SET_OPPONENT_NAME) != 0;
+    return Settings_Get(SET_OPPONENT_NAME) != 0 || DuelUi_Label(0) || DuelUi_Label(1);
+}
+
+int HdText_PanelCut(void)
+{
+    return DuelUi_PanelCut();
 }
 
 int HdText_HudEnabled(void)
@@ -1760,13 +1784,19 @@ int HdText_Hud(int depth, int page_x, int page_y, int clut_x, int clut_y, int u,
     const uint16_t *words = SoftGpu_Vram();
     unsigned i;
     if (wanted < 2 || wanted > MAX_FACTOR || !words || w < 1 || h < 1) return 0;
-    /* The whole panel, or its right half: a mod's "limits" past 9999 LP draw
-     * that half again beside a copy to widen it (duel_draw_status_numbers.c,
-     * LIFE_POINT_PANEL_SPLIT), and it must come from the same picture as the
-     * rest. Only that half: no other sprite of the panel's texels changes. */
+    /* The whole panel or a piece of it: a mod's "limits" past 9999 LP draw
+     * its right half again beside a copy to widen it
+     * (duel_draw_status_numbers.c, LIFE_POINT_PANEL_SPLIT), and a mod's "ui"
+     * draws its top and bottom halves apart (pc/cards/duel_ui.c); each must
+     * come from the same picture as the rest. Without that mod, only the
+     * whole and that right half: no other sprite of the panel's texels
+     * changes. */
     if (!depth && page_x == PANEL_PAGE_X && page_y == PANEL_PAGE_Y &&
-        (clut_x == PANEL_CLUT_X || clut_x == PANEL_CLUT_X_TURN) && clut_y == PANEL_CLUT_Y && v == PANEL_V &&
-        h == PANEL_H && ((u == PANEL_U && w == PANEL_W) || (u == PANEL_U + PANEL_SPLIT && w == PANEL_W - PANEL_SPLIT))) {
+        (clut_x == PANEL_CLUT_X || clut_x == PANEL_CLUT_X_TURN) && clut_y == PANEL_CLUT_Y &&
+        (DuelUi_PanelCut() ? u >= PANEL_U && v >= PANEL_V && u + w <= PANEL_U + PANEL_W && v + h <= PANEL_V + PANEL_H
+                           : v == PANEL_V && h == PANEL_H &&
+                                 ((u == PANEL_U && w == PANEL_W) ||
+                                  (u == PANEL_U + PANEL_SPLIT && w == PANEL_W - PANEL_SPLIT)))) {
         if (panel_sum(words) != PANEL_SUM) return 0;
         if (wanted != factor && !make_atlas(wanted)) return 0;
         if (panel_made != generation) {

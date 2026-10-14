@@ -7,6 +7,8 @@
 #include <unistd.h>
 static int test_scale = 1;
 int Menu_Scale(void) { return test_scale; }
+static int test_touch; /* Menu_TouchTarget: 0 with a mouse */
+int Menu_TouchTarget(void) { return test_touch; }
 int Menu_TextWidth(const char *s) { return (int)strlen(s) * 7 * test_scale; }
 void Menu_DrawText(MenuCanvas *c, int x, int y, const char *s, uint32_t color)
 {

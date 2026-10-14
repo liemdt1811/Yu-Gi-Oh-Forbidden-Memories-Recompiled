@@ -52,6 +52,7 @@ static int choice_mode = STARS_CHOICE_ASK;
 static int built;
 static int any;          /* whether any mod has a "guardian_stars" */
 static int no_star;      /* whether a mod made a monster with no star */
+void (*Stars_IconsCleared)(void);
 
 /* --- the disc's rule -------------------------------------------------- */
 
@@ -252,7 +253,7 @@ static void read_stars(const char *mod, const char *directory, const JsonValue *
             } else if (same_letters(palette, "game")) {
                 star->own_palette = 0;
             } else {
-                Mods_Note(mod, "guardian_stars: star %d: \"palette\" is \"game\" (the stars' colours) or \"own\"", id);
+                Mods_Note(mod, "guardian_stars: star %d: \"palette\" is \"game\" (the stars' colors) or \"own\"", id);
             }
         }
     }
@@ -384,6 +385,7 @@ void Stars_Clear(void)
         free(stars[i].icon);
         free(stars[i].fallback);
     }
+    if (Stars_IconsCleared) Stars_IconsCleared();
     memset(stars, 0, sizeof(stars));
     memset(bonus_of, 0, sizeof(bonus_of));
     memset(decided, 0, sizeof(decided));

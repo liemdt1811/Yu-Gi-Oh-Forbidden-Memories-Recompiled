@@ -1,4 +1,4 @@
-/* Synthetic drop tables verify that colours and the Library agree after
+/* Synthetic drop tables verify that colors and the Library agree after
  * other mods change pools, including added cards and unequal rank scores. */
 #include "../../mods/yamyi-mods/card_name_color.c"
 #include <assert.h>
@@ -27,7 +27,7 @@ const unsigned char *Text_Resolve(int id, const unsigned char *p) { (void)id; re
 unsigned Glyphs_Character(int code) { (void)code; return 'A'; }
 const unsigned short *Tables_PoolFor(int duelist, int pool, const unsigned short *retail)
 { assert(duelist == 1 && retail[0] == 2048); return pool == 2 ? edited : NULL; }
-int LoadImage(ModRect *r, u32 *p) { (void)r; (void)p; uploads++; return 0; }
+int LoadImage(RECT *r, u32 *p) { (void)r; (void)p; uploads++; return 0; }
 int DrawSync(int mode) { (void)mode; return 0; }
 int Menu_Height(void) { return 26; }
 static int disc_start(const MemoriesModHost *h, const char *s) { (void)h; (void)s; return 0; }

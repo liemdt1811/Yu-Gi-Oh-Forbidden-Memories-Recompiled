@@ -8,14 +8,18 @@
 #include "pc/mods/json.h"
 #include "pc/mods/mods.h"
 #include "paths.h"
+#include "pc/tower/tower.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 /* The retail layout (frontend.c): the entries 32 apart, the first menu's
  * from y 50 (its middle 114), the second's from 42 (122). A menu's items
- * stay between TOP and TOP + MOST, closer together when they would not fit. */
-enum { SPACING = 32, FIRST_MIDDLE = 50 + 2 * SPACING, SECOND_MIDDLE = 42 + 5 * SPACING / 2, TOP = 16, MOST = 188 };
+ * stay between TOP and TOP + MOST, closer together when they would not fit:
+ * an entry's 28 rows (HALF either side of its middle) between y 2 and 218.
+ * A bigger or smaller first or last item moves that end by as much. */
+enum { SPACING = 32, FIRST_MIDDLE = 50 + 2 * SPACING, SECOND_MIDDLE = 42 + 5 * SPACING / 2, TOP = 16, MOST = 188,
+       HALF = 14 };
 /* About a minute at the title's 60 frames a second before the retail
  * counter, 3000 of D_8009B0D8's ticks, plays the movie again. */
 enum { FRAMES_PER_SECOND = 60 };
@@ -32,7 +36,7 @@ static void background_defaults(TitleBackground *background)
 {
     memset(background, 0, sizeof(*background));
     background->picture = background->shade = 1;
-    background->colour = -1;
+    background->color = -1;
     background->tint = 0xFFFFFF;
 }
 
@@ -57,44 +61,61 @@ static void defaults(void)
         item->menu = i >= TITLE_FIRST_MENU;
     }
     config.spacing = SPACING;
+    config.scale = 100;
 }
 
 /* "#RRGGBB", "RRGGBB" or a number; -1 when it is none of those. */
-static long read_colour(const JsonValue *value)
+static long read_color(const JsonValue *value)
 {
     const char *text;
     char *end;
-    long colour;
+    long color;
     if (!value) return -1;
     if (Json_TypeOf(value) == JSON_NUMBER) {
-        colour = Json_Number(value, -1);
-        return colour >= 0 && colour <= 0xFFFFFF ? colour : -1;
+        color = Json_Number(value, -1);
+        return color >= 0 && color <= 0xFFFFFF ? color : -1;
     }
     text = Json_String(value, NULL);
     if (!text) return -1;
     if (*text == '#') text++;
     if (strlen(text) != 6) return -1;
-    colour = strtol(text, &end, 16);
-    return *end ? -1 : colour;
+    color = strtol(text, &end, 16);
+    return *end ? -1 : color;
 }
 
 /* The key being read, "title" or "menu", for the notes. */
 static const char *reading = "title";
 
-static void colour_member(const char *mod, const JsonValue *object, const char *key, uint32_t *out)
+static void color_member(const char *mod, const JsonValue *object, const char *key, uint32_t *out)
 {
     const JsonValue *value = Json_Member(object, key);
-    long colour;
+    long color;
     if (!value) return;
-    colour = read_colour(value);
-    if (colour < 0) Mods_Note(mod, "%s: \"%s\" is a colour, \"#RRGGBB\"", reading, key);
-    else *out = (uint32_t)colour;
+    color = read_color(value);
+    if (color < 0) Mods_Note(mod, "%s: \"%s\" is a color, \"#RRGGBB\"", reading, key);
+    else *out = (uint32_t)color;
 }
 
 static void int_member(const JsonValue *object, const char *key, int *out)
 {
     const JsonValue *value = Json_Member(object, key);
     if (value) *out = (int)Json_Number(value, *out);
+}
+
+/* "scale": a size in percent, TITLE_SCALE_MIN to TITLE_SCALE_MAX; any
+ * other is noted and left out. */
+static void scale_member(const char *mod, const char *where, const JsonValue *object, int *out)
+{
+    const JsonValue *value = Json_Member(object, "scale");
+    long number;
+    if (!value) return;
+    number = Json_Number(value, TITLE_SCALE_MIN - 1);
+    if (Json_TypeOf(value) != JSON_NUMBER || number < TITLE_SCALE_MIN || number > TITLE_SCALE_MAX) {
+        Mods_Note(mod, "%s: %s%s\"scale\" is a whole number from %d to %d (percent)", reading, where, *where ? " " : "",
+                  TITLE_SCALE_MIN, TITLE_SCALE_MAX);
+        return;
+    }
+    *out = (int)number;
 }
 
 /* "wide_x", "wide_y": a place for widescreen. */
@@ -184,12 +205,12 @@ static void read_image(const char *mod, const char *directory, const char *where
     if (image->height < 0 || image->height > 240) image->height = 0;
 }
 
-static const char *const action_names[] = {"back", "notice", "quit", "debug_menu", "event", "none"};
+static const char *const action_names[] = {"back", "notice", "quit", "debug_menu", "event", "none", "tower"};
 
 const char *TitleConfig_ActionName(int action)
 {
     if (action >= 0 && action < TITLE_ENTRIES) return TitleConfig_EntryNames[action];
-    if (action >= TITLE_ACTION_BACK && action <= TITLE_ACTION_NONE) return action_names[action - TITLE_ACTION_BACK];
+    if (action >= TITLE_ACTION_BACK && action <= TITLE_ACTION_TOWER) return action_names[action - TITLE_ACTION_BACK];
     return "its own";
 }
 
@@ -209,7 +230,7 @@ static int action_index(const char *name)
 
 /* The keys an entry and a button share. */
 static const char *const item_keys[] = {"hide", "x", "y", "tint", "image", "selected_image", "width", "height",
-                                        "label", "action", "value", "notice", "wide_x", "wide_y"};
+                                        "label", "action", "value", "notice", "wide_x", "wide_y", "scale"};
 
 static void read_item(const char *mod, const char *directory, const JsonValue *part, TitleItem *item)
 {
@@ -222,7 +243,8 @@ static void read_item(const char *mod, const char *directory, const JsonValue *p
         item->set_y = 1;
     }
     read_wide(part, &item->wide);
-    colour_member(mod, part, "tint", &item->tint);
+    scale_member(mod, item->name, part, &item->scale);
+    color_member(mod, part, "tint", &item->tint);
     read_image(mod, directory, item->name, part, "image", &item->image);
     read_image(mod, directory, item->name, part, "selected_image", &item->selected);
     if ((value = Json_Member(part, "label"))) {
@@ -236,7 +258,8 @@ static void read_item(const char *mod, const char *directory, const JsonValue *p
         const char *name = Json_String(value, "");
         int action = action_index(name);
         if (action == -2)
-            Mods_Note(mod, "%s: %s: no action \"%s\" (an entry's name, back, notice, quit, debug_menu, event or none)",
+            Mods_Note(mod, "%s: %s: no action \"%s\" (an entry's name, back, notice, quit, debug_menu, event, none "
+                           "or tower)",
                       reading, item->name, name);
         else item->action = action;
     }
@@ -302,7 +325,7 @@ static void read_buttons(const char *mod, const char *directory, const JsonValue
     for (part = Json_At(list, 0); part; part = Json_Next(part)) {
         static const char *const button_keys[] = {"id", "menu", "hide", "x", "y", "tint", "image", "selected_image",
                                                   "width", "height", "label", "action", "value", "notice", "wide_x",
-                                                  "wide_y"};
+                                                  "wide_y", "scale"};
         const char *id = Json_String(Json_Member(part, "id"), ""), *menu = Json_String(Json_Member(part, "menu"), NULL);
         const char *colon = strchr(id, ':');
         int i = item_index(mod, id);
@@ -391,18 +414,61 @@ static void read_lines(const char *mod, const JsonValue *list)
         line->x = 160;
         line->y = 220;
         line->size = 1;
-        line->colour = 0xFFFFFF;
+        line->color = 0xFFFFFF;
         int_member(item, "x", &line->x);
         int_member(item, "y", &line->y);
         read_wide(item, &line->wide);
         int_member(item, "size", &line->size);
         if (line->size < 1) line->size = 1;
         if (line->size > 8) line->size = 8;
-        colour_member(mod, item, "color", &line->colour);
+        color_member(mod, item, "color", &line->color);
         align = Json_String(Json_Member(item, "align"), "center");
         line->align = !strcmp(align, "left") ? TITLE_ALIGN_LEFT : !strcmp(align, "right") ? TITLE_ALIGN_RIGHT : TITLE_ALIGN_CENTRE;
         show = Json_String(Json_Member(item, "show"), "always");
         line->show = !strcmp(show, "press_start") ? TITLE_SHOW_PROMPT : !strcmp(show, "menu") ? TITLE_SHOW_MENU : TITLE_SHOW_ALWAYS;
+    }
+}
+
+/* "images": pictures of the mods' own over the title, adding up. */
+static void read_pictures(const char *mod, const char *directory, const JsonValue *list)
+{
+    static const char *const known[] = {"image", "x", "y", "width", "height", "tint", "show", "wide_x", "wide_y"};
+    const JsonValue *item;
+    if (!list) return;
+    if (Json_TypeOf(list) != JSON_ARRAY) {
+        Mods_Note(mod, "title: \"images\" is a list of pictures ({\"image\": \"art/seal.png\", \"x\": 160, \"y\": 120})");
+        return;
+    }
+    for (item = Json_At(list, 0); item; item = Json_Next(item)) {
+        TitlePicture *picture;
+        const char *show;
+        if (Json_TypeOf(item) != JSON_OBJECT || !Json_String(Json_Member(item, "image"), NULL)) {
+            Mods_Note(mod, "title: a picture in \"images\" without an \"image\"");
+            continue;
+        }
+        if (config.pictures >= TITLE_MAX_PICTURES) {
+            Mods_Note(mod, "title: more than %d pictures in \"images\"; the rest are left out", TITLE_MAX_PICTURES);
+            return;
+        }
+        picture = &config.picture[config.pictures];
+        memset(picture, 0, sizeof(*picture));
+        picture->x = 160;
+        picture->y = 120;
+        picture->tint = 0xFFFFFF;
+        read_image(mod, directory, "images", item, "image", &picture->image);
+        if (!picture->image.file[0]) continue;   /* noted: outside the mod */
+        config.pictures++;
+        int_member(item, "x", &picture->x);
+        int_member(item, "y", &picture->y);
+        read_wide(item, &picture->wide);
+        color_member(mod, item, "tint", &picture->tint);
+        if ((show = Json_String(Json_Member(item, "show"), NULL))) {
+            if (!strcmp(show, "always")) picture->show = TITLE_SHOW_ALWAYS;
+            else if (!strcmp(show, "press_start")) picture->show = TITLE_SHOW_PROMPT;
+            else if (!strcmp(show, "menu")) picture->show = TITLE_SHOW_MENU;
+            else Mods_Note(mod, "title: a picture's \"show\" is always, press_start or menu");
+        }
+        only(mod, "images", item, known, sizeof(known) / sizeof(known[0]));
     }
 }
 
@@ -430,14 +496,14 @@ static void read_background(const char *mod, const char *directory, const JsonVa
     }
     bool_member(part, "picture", &background->picture);
     bool_member(part, "shade", &background->shade);
-    colour_member(mod, part, "tint", &background->tint);
+    color_member(mod, part, "tint", &background->tint);
     if (Json_Member(part, "color")) {
-        long colour = read_colour(Json_Member(part, "color"));
-        if (colour < 0) {
-            Mods_Note(mod, "%s: \"color\" is a colour, \"#RRGGBB\"", reading);
+        long color = read_color(Json_Member(part, "color"));
+        if (color < 0) {
+            Mods_Note(mod, "%s: \"color\" is a color, \"#RRGGBB\"", reading);
         } else {
-            background->colour = colour;
-            *set |= TITLE_BACKGROUND_COLOUR;
+            background->color = color;
+            *set |= TITLE_BACKGROUND_COLOR;
         }
     }
     int_member(part, "dim", &config.dim);
@@ -450,7 +516,7 @@ static void read_background(const char *mod, const char *directory, const JsonVa
 static void read_title(const char *mod, const char *directory, const JsonValue *title)
 {
     static const char *const known[] = {"music", "skip_intro", "press_start", "idle_seconds", "background",
-                                        "logo", "copyright", "prompt", "spacing", "entries", "text"};
+                                        "logo", "copyright", "prompt", "spacing", "entries", "text", "images"};
     static const char *const layer_keys[] = {"hide", "x", "y", "tint", "image", "width", "height", "show", "wide_x",
                                              "wide_y"};
     const JsonValue *part;
@@ -477,7 +543,7 @@ static void read_title(const char *mod, const char *directory, const JsonValue *
         int_member(part, "x", &config.layers[i].x);
         int_member(part, "y", &config.layers[i].y);
         read_wide(part, &config.layers[i].wide);
-        colour_member(mod, part, "tint", &config.layers[i].tint);
+        color_member(mod, part, "tint", &config.layers[i].tint);
         read_image(mod, directory, TitleConfig_LayerNames[i], part, "image", &config.layers[i].image);
         if ((show = Json_String(Json_Member(part, "show"), NULL))) {
             if (!strcmp(show, "always")) config.layers[i].show = TITLE_SHOW_ALWAYS;
@@ -491,25 +557,50 @@ static void read_title(const char *mod, const char *directory, const JsonValue *
     int_member(title, "spacing", &config.spacing);
     read_entries(mod, directory, Json_Member(title, "entries"));
     read_lines(mod, Json_Member(title, "text"));
+    read_pictures(mod, directory, Json_Member(title, "images"));
     only(mod, "", title, known, sizeof(known) / sizeof(known[0]));
 }
 
 static void read_menu(const char *mod, const char *directory, const JsonValue *menu)
 {
-    static const char *const known[] = {"background", "spacing", "entries", "buttons", "order"};
+    static const char *const known[] = {"background", "spacing", "scale", "entries", "buttons", "order"};
     const JsonValue *part;
     reading = "menu";
     if ((part = Json_Member(menu, "background"))) read_background(mod, directory, part, &config.background[1], &config.menu_set);
     int_member(menu, "spacing", &config.spacing);
+    scale_member(mod, "", menu, &config.scale);
     read_entries(mod, directory, Json_Member(menu, "entries"));
     read_buttons(mod, directory, Json_Member(menu, "buttons"));
     read_order(mod, Json_Member(menu, "order"));
     only(mod, "", menu, known, sizeof(known) / sizeof(known[0]));
 }
 
+/* The tower's button (pc/tower/tower.h), made for the mod whose tower the
+ * run has before its "menu" is read, so the mod can move it, give it a
+ * picture or put it in its "order" by "tower". */
+static void tower_button(const char *mod)
+{
+    TitleItem *item;
+    int i;
+    if (!Tower_Mod() || strcmp(mod, Tower_Mod()) || item_index(mod, "tower") >= 0) return;
+    for (i = TITLE_ENTRIES; i < TITLE_ITEMS && config.items[i].used; i++) {}
+    if (i == TITLE_ITEMS) {
+        Mods_Note(mod, "menu: more than %d buttons; the tower's is left out", TITLE_MAX_BUTTONS);
+        return;
+    }
+    item = &config.items[i];
+    item->used = 1;
+    item->menu = 1;
+    item->action = TITLE_ACTION_TOWER;
+    snprintf(item->name, sizeof(item->name), "%s:tower", mod);
+    snprintf(item->mod, sizeof(item->mod), "%s", mod);
+    snprintf(item->label, sizeof(item->label), "%s", Tower_Label());
+}
+
 void TitleConfig_Read(const char *mod, const char *directory, const JsonValue *manifest)
 {
     const JsonValue *title = Json_Member(manifest, "title"), *menu = Json_Member(manifest, "menu");
+    tower_button(mod);
     if (title && Json_TypeOf(title) != JSON_OBJECT)
         Mods_Note(mod, "\"title\" is an object (notes/modding.md, \"The title screen\")");
     else if (title)
@@ -532,6 +623,7 @@ int TitleConfig_Drawn(const TitleItem *item)
  * (campaign to password) are the second's. */
 static int allowed(int action, int menu)
 {
+    if (action == TITLE_ACTION_TOWER) return menu == 1;   /* a save's climb: a game loaded */
     if (action == TITLE_ACTION_OWN || action >= TITLE_ACTION_BACK) return 1;
     if (action == 0 || action == 4) return 1;
     return menu == 0 ? action < TITLE_FIRST_MENU : action >= TITLE_FIRST_MENU;
@@ -576,22 +668,37 @@ static void arrange(int menu)
     }
 }
 
-/* The shown items one under another, `spacing` apart (closer when they
- * would not fit), around the middle of the retail menu; a "y" of the mod's
- * own stands. */
+/* The shown items one under another around the middle of the retail
+ * menu, `spacing` apart at their size 100: each takes room as its size,
+ * two the halves of theirs between their middles (all closer together
+ * when they would not fit between TOP and TOP + MOST -- the ends moved by
+ * the first's and the last's size -- by the most `spacing` that fits). A
+ * "y" of the mod's own stands. With every item at 100 that is `spacing`
+ * apart between TOP and TOP + MOST, as it always was. */
 static void stack(int menu, int middle)
 {
-    int shown = config.shown[menu], spacing = config.spacing, first, row, i;
-    if (shown > 1 && (shown - 1) * spacing > MOST) spacing = MOST / (shown - 1);
-    first = middle - (shown - 1) * spacing / 2;
-    if (first < TOP) first = TOP;
-    if (first + (shown - 1) * spacing > TOP + MOST) first = TOP + MOST - (shown - 1) * spacing;
+    int shown = config.shown[menu], spacing = config.spacing, first, row, i, total, top = TOP, most = MOST;
+    /* reach[row]: the halves of the sizes, in percent, from the first's middle to the row's. */
+    int reach[TITLE_ITEMS];
+    reach[0] = 0;
+    for (row = 1; row < shown; row++)
+        reach[row] = reach[row - 1] + config.items[config.order[menu][row - 1]].scale +
+                     config.items[config.order[menu][row]].scale;
+    if (shown) {
+        top = TOP - HALF + (HALF * config.items[config.order[menu][0]].scale + 50) / 100;
+        most = TOP + MOST + HALF - (HALF * config.items[config.order[menu][shown - 1]].scale + 50) / 100 - top;
+    }
+    if (shown > 1 && spacing * reach[shown - 1] / 200 > most) spacing = most * 200 / reach[shown - 1];
+    total = shown > 1 ? spacing * reach[shown - 1] / 200 : 0;
+    first = middle - total / 2;
+    if (first < top) first = top;
+    if (first + total > top + most) first = top + most - total;
     for (i = 0; i < TITLE_ITEMS; i++) {
         if (config.items[i].used && config.items[i].menu == menu && config.items[i].hidden) config.items[i].y = TITLE_PARKED_Y;
     }
     for (row = 0; row < shown; row++) {
         TitleItem *item = &config.items[config.order[menu][row]];
-        if (!item->set_y) item->y = first + row * spacing;
+        if (!item->set_y) item->y = first + spacing * reach[row] / 200;
     }
 }
 
@@ -617,6 +724,7 @@ void TitleConfig_Finish(void)
             snprintf(item->label, sizeof(item->label), "%s", strchr(item->name, ':') + 1);
         }
         if (i >= TITLE_ENTRIES && item->action == TITLE_ACTION_OWN) item->action = TITLE_ACTION_NONE;
+        if (!item->scale) item->scale = config.scale;
     }
     arrange(0);
     arrange(1);
@@ -625,7 +733,7 @@ void TitleConfig_Finish(void)
     /* The menus' background: the title's, but for what "menu" set. */
     if (config.menu_set & TITLE_BACKGROUND_PICTURE) menu.picture = given->picture;
     if (config.menu_set & TITLE_BACKGROUND_SHADE) menu.shade = given->shade;
-    if (config.menu_set & TITLE_BACKGROUND_COLOUR) menu.colour = given->colour;
+    if (config.menu_set & TITLE_BACKGROUND_COLOR) menu.color = given->color;
     if (config.menu_set & TITLE_BACKGROUND_TINT) menu.tint = given->tint;
     if (config.menu_set & TITLE_BACKGROUND_IMAGE) menu.image = given->image;
     if (config.menu_set & TITLE_BACKGROUND_WIDE) menu.wide = given->wide;

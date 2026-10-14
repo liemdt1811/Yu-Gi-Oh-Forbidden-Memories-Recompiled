@@ -44,7 +44,7 @@ extern int rcos(int angle);
 extern int Psx_csin(int angle);
 extern int Psx_ccos(int angle);
 /* src/game/func_80058938.h, whose types this file cannot include (its s32 is
- * a store here): the colours are the words their registers hold. */
+ * a store here): the colors are the words their registers hold. */
 extern void Model_QueueTintRequestForPartList(int32_t slot, int32_t part, uint32_t start, uint32_t end,
                                               int32_t duration, const int32_t *parts);
 
@@ -108,8 +108,8 @@ static int ensure_stack(void)
     if (stack_top) {
         return 0;
     }
-    if (mmap(wanted, STACK_SIZE, PROT_READ | PROT_WRITE, MAP_FIXED_NOREPLACE | MAP_PRIVATE | MAP_ANONYMOUS, -1, 0) !=
-        wanted) {
+    if (Memories_MapFixed(wanted, STACK_SIZE, PROT_READ | PROT_WRITE, MAP_FIXED_NOREPLACE | MAP_PRIVATE | MAP_ANONYMOUS,
+                          -1, 0) != wanted) {
         static uint32_t fallback[STACK_SIZE / 4] __attribute__((aligned(16)));
         fprintf(stderr, "memories-pc: cannot map the overlay stack at 0x%08x; using host memory\n", STACK_BASE);
         stack_top = (uint32_t)(uintptr_t)(fallback + STACK_SIZE / 4) - 16;

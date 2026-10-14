@@ -22,6 +22,7 @@
  * its stats in the tables, and its own name, text and artwork here, which
  * the game's lookups of the retail ones (Text_Resolve) then give. */
 #include "game/card_constants.h"
+struct MonsterEffect;
 
 /* The number of cards this run has: CARD_COUNT without a card mod. */
 extern int gCard_nCount;
@@ -45,6 +46,10 @@ const char *Cards_Identity(int id);
 int Cards_FindIdentity(const char *identity);
 int Cards_ModelId(int id);
 int Cards_EffectId(int id);
+/* Data-defined effects for a Magic or Trap card.  "card_effects" either
+ * supplements its retail/aliased effect or replaces it entirely. */
+int Cards_CardEffects(int id, const struct MonsterEffect **effects);
+int Cards_CardEffectsReplace(int id);
 /* The trap a card set on the field springs as: a trap card's effect (its
  * own, its base's or the one "effect" names), 0 for a card of another type,
  * which springs as none even where it was a trap on the disc. */
@@ -62,8 +67,8 @@ int Cards_RetailType(int id);
 int Cards_KindChanged(int id);
 /* The disc card the opponent's scripts take `id` for when they look a card up
  * by number: its effect (Cards_EffectId) while it is still that card's kind,
- * -1 when a "replace" made it another kind. Reshiram replacing Dark Hole is
- * no Dark Hole to play; a magic card whose "effect" is Dark Hole is one. */
+ * or an explicit card_effects replacement's "ai_effect". -1 means the CPU
+ * must not confuse this card with a retail behavior. */
 int Cards_AiId(int id);
 /* Whether the disc has a 3D model for `id` to stand as: a magic, trap, ritual
  * or equip card a mod made a monster has none unless it borrows one. */
@@ -72,14 +77,42 @@ int Cards_HasModel(int id);
  * each in a deck, all five in hand win): a piece a mod replaced is not,
  * unless its entry says "exodia": true. */
 int Cards_ExodiaPiece(int id);
-/* The frame a mod's "frame" gives `id`, whatever its type (left out, a
- * monster with "monster_effects" is CARD_FRAME_ORANGE): CARD_FRAME_*, or
- * -1 for its type's (monster, magic and equip, trap, ritual). The card view,
- * the duel's hand and field cards and the Library's grid draw it through
- * that frame's palette row; the disc has purple and orange rows it never
- * uses. */
+/* The disc's six frame colors, in the order of their palette rows: the card
+ * view's frame sheet (rows 8-13), the duel hand's (rows 1-6) and the
+ * Library's grid. A card's frame color is one of these, or the type's. The
+ * disc draws monster gold, magic and equip green, trap pink and ritual blue;
+ * purple and orange it never uses. (The names are of the colors: the enum's
+ * MONSTER, MAGIC, TRAP and RITUAL are the disc's own labels for gold, green,
+ * pink and blue, and a cards mod's "frame" accepts either.) */
 enum { CARD_FRAME_MONSTER, CARD_FRAME_MAGIC, CARD_FRAME_TRAP, CARD_FRAME_RITUAL, CARD_FRAME_PURPLE,
        CARD_FRAME_ORANGE, CARD_FRAME_COUNT };
+/* What a card is, for choosing its frame (card_layout.h): worked out from its
+ * type and its "monster_effects", never written by a mod. Every card is in
+ * exactly one class. */
+enum { CARD_CLASS_MONSTER, CARD_CLASS_EFFECT_MONSTER, CARD_CLASS_SPELL, CARD_CLASS_EQUIP,
+       CARD_CLASS_RITUAL_SPELL, CARD_CLASS_TRAP, CARD_CLASS_COUNT };
+int Cards_Class(int id);
+/* The class's name as a layout's rules write it ("effect_monster"). */
+const char *Cards_ClassName(int cls);
+/* Whether a cards mod's entry gave `id` the tag (its "tags": ["god"]): a
+ * card is free to carry any, and a layout may give each its own frame
+ * ("tag" in card_layout's "frame_for"). A copy has its base's unless it says. */
+int Cards_HasTag(int id, const char *tag);
+/* The color a mod's "frame" chose for `id`, CARD_FRAME_*, or -1 (left out,
+ * or "Type"). */
+int Cards_FrameOverride(int id);
+/* An optional named frame style selected by a card's "frame_style".  The
+ * style itself belongs to the active card_layout mod; this is merely the
+ * card-side link, so a cards mod can request a newly defined style without
+ * having to overload one of the six palette colors or add a throwaway tag.
+ * "" means that the layout's frame_for/default_style rules choose it. */
+const char *Cards_FrameStyle(int id);
+/* The frame color `id` is drawn in when it is not its type's (-1: its
+ * type's, which is what the disc does). With the anime frame on this is the
+ * color of the frame style the layout picked (card_layout.h); otherwise a
+ * mod's "frame", or orange for a monster with "monster_effects". The card
+ * view, the duel's hand and field cards and the Library's grid draw it
+ * through that color's palette row. */
 int Cards_FrameColor(int id);
 /* Whether a mod's "unknown_stats": true marks `id`: its printed ATK and DEF are
  * not a number the card means (the duel's own rule gives its real one), so a
@@ -100,11 +133,24 @@ int Cards_Fusion(int a, int b, int *result);
 struct JsonValue;
 int Cards_Reference(const struct JsonValue *value);
 int Cards_Named(const char *text);
-/* A monster type by name ("Winged Beast"), or -1; and the type of a card. */
+/* A type by name ("Winged Beast"), or -1; and the type of a card.  Mods may
+ * rename any retail type and declare new monster types in unused encodings
+ * 24-255 through their "card_types" section. */
 int Cards_TypeNamed(const char *text);
+const char *Cards_TypeName(int type);
+/* The full PNG path a mod declares for a custom type's marker, or NULL.
+ * Retail types deliberately return NULL: their icons remain the disc/HD-pack
+ * assets rather than becoming global replacements. */
+const char *Cards_TypeIcon(int type);
+/* A mod's own name for the type, glyph-encoded (0xFF-terminated) for the
+ * card view's text stream (func_80037DA4): a custom type's, or a retail
+ * type's a mod renamed. NULL where the disc's own spelling stands.
+ * Cards_TypeName's UTF-8 is not the game's own glyph codes. */
+const unsigned char *Cards_TypeNameText(int type);
+int Cards_IsMonsterType(int type);
 int Cards_Type(int id);
-/* An attribute by name ("Light", "Dark", "Earth", "Water", "Fire",
- * "Wind"), 0-5, or -1; and the attribute of a card. */
+/* An attribute by name (the six retail ones or one a mod's "attributes"
+ * declares), its id (0-5 or 8-255), or -1; and the attribute of a card. */
 int Cards_AttributeNamed(const char *text);
 int Cards_Attribute(int id);
 /* A monster's printed level (the number of stars), or -1 for no card. */

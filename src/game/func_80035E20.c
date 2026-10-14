@@ -32,6 +32,8 @@
 #include "pc/text/glyphs.h"
 #include "pc/text/hd_text.h"
 #include "pc/cards/stars.h"
+#include "pc/cards/duel_ui.h"
+#include "pc/cards/type_icons.h"
 
 /* A glyph past the retail font's is in a texture bank (glyphs.h), which a
    sprite packet names in bits the sprite's own tpage cannot carry through
@@ -198,7 +200,9 @@ void func_80035E20(DisplayObject *obj, GsOT *ot)
                 }
 #ifdef MEMORIES_PC
                 /* A guardian star's icon the disc has not got (11-15) or a
-                   mod redrew: the entry's code says which (stars.h). */
+                   mod redrew, or a monster type past the disc's 24 with an
+                   icon of its own: the entry's code says which (stars.h,
+                   type_icons.h). An entry marks at most one of the two. */
                 {
                     int tpage;
                     int u;
@@ -206,7 +210,8 @@ void func_80035E20(DisplayObject *obj, GsOT *ot)
                     int cx;
                     int cy;
 
-                    if (Stars_IconCell((u16)c, &tpage, &u, &v, &cx, &cy)) {
+                    if (Stars_IconCell((u16)c, &tpage, &u, &v, &cx, &cy) ||
+                        TypeIcons_IconCell((u16)c, &tpage, &u, &v, &cx, &cy)) {
                         spr->tpage = tpage;
                         spr->u = u;
                         spr->v = v;
@@ -419,6 +424,13 @@ placed:
                 spr->y = *(u16 *)(p - 8) + y + 2;
             }
         }
+#ifdef MEMORIES_PC
+        /* The card bar's parts a mod's "ui" moves, colors or hides
+           (duel_ui.h); its color goes back after. */
+        if (DuelUi_BarEntry(obj, code, spr)) {
+            goto next_entry;
+        }
+#endif
         switch (p[-1]) {
         case 0:
             GsSortFastSprite(spr, ot, pri);
@@ -532,6 +544,10 @@ placed:
             GsSortPoly(gt4, ot, pri);
             break;
         }
+#ifdef MEMORIES_PC
+        GS_SPRITE_COLOR_WORD(spr) = obj->field_0C;
+    next_entry:
+#endif
         p += 0x1C;
         code += 0xE;
     }

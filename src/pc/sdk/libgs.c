@@ -237,10 +237,13 @@ static u32 *make_packet(u32 *packet, u32 *ot, unsigned pri, unsigned words)
 {
     int index = (int)(pri & 0xffff) - (int)ot[2];
     u32 *entry;
-    if (index < 0) {
-        fprintf(stderr, "memories-pc: LIBGS packet priority %u is below the table offset %u\n",
-                pri & 0xffff, (unsigned)ot[2]);
-    }
+    /* Some interpreted model effects (including Exodia's rays) project
+     * beyond the table's depth range. Retail's unchecked link then writes
+     * into neighboring tables/descriptors. Keep those polygons at the
+     * nearest endpoint instead, without changing valid priorities. */
+    if (index < 0) index = 0;
+    if (ot[0] <= MEMORIES_GSOT_MAX_LENGTH && (unsigned)index >= (1u << ot[0]))
+        index = (int)(1u << ot[0]) - 1;
     entry = (u32 *)(uintptr_t)(ot[1] + (u32)index * 4);
     packet[0] = (*entry & 0x00ffffffu) | ((u32)words << 24);
     *entry = (u32)(uintptr_t)packet & 0x00ffffffu;
@@ -271,7 +274,7 @@ void GsSortBoxFill(BoxFill *box, GsOT *table, unsigned short pri)
 }
 
 /* GsLINE and GsGLINE share their first fields; the shaded one carries a
- * second colour. Each becomes a draw-mode word (dither on, the attribute's
+ * second color. Each becomes a draw-mode word (dither on, the attribute's
  * semi-transparency rate) followed by the line primitive, offset like every
  * LIBGS 2D primitive. Attribute bit 31 hides it. */
 typedef struct Line {
@@ -310,7 +313,7 @@ _Static_assert(sizeof(GsOT) == 20 && sizeof(GsSPRITE) == 36 && offsetof(GsSPRITE
                    sizeof(GsLINE) == 16 && sizeof(GsGLINE) == 20 && sizeof(GsBOXF) == 16,
                "LIBGS records must keep their 32-bit layouts");
 
-static u32 sprite_colour(const Sprite *sprite, u32 code)
+static u32 sprite_color(const Sprite *sprite, u32 code)
 {
     u32 attribute = sprite->attribute;
     return code | ((attribute >> 5) & 0x02000000u) | ((attribute << 18) & 0x01000000u) |
@@ -326,8 +329,16 @@ static void sort_plain_sprite(const Sprite *sprite, u32 *ot, unsigned pri, int m
 {
     u32 *packet = (u32 *)(uintptr_t)D_800FE240;
     u32 attribute = sprite->attribute;
-    packet[1] = 0xe1000200u | ((attribute >> 17) & 0x180) | (sprite->tpage & 0x1f) | ((attribute >> 23) & 0x60);
-    packet[2] = sprite_colour(sprite, 0x64000000u);
+    /* Bits 11-14 of tpage name a software-GPU bank (soft_gpu.c's set_page;
+     * star_icons.c, attribute_icons.c, card_layout_art.c and duel_ui.c all
+     * OR ICON_BANK<<11 or similar into a tpage they hand the game). Real
+     * hardware never used these bits, so a retail tpage's are always 0, and
+     * passing them through costs real sprites nothing. Masked off here
+     * before, a bank-naming sprite drawn through GsSortFastSprite always
+     * read real VRAM's page 0 instead -- soft_gpu.c's set_page() reads this
+     * word's bits 11-14 unmasked once it gets there. */
+    packet[1] = 0xe1000200u | ((attribute >> 17) & 0x180) | (sprite->tpage & 0x781f) | ((attribute >> 23) & 0x60);
+    packet[2] = sprite_color(sprite, 0x64000000u);
     packet[3] = ((u32)(sprite->x + D_800FE0BC - mx) & 0xffff) | ((u32)(sprite->y + D_800FE0BE - my) << 16);
     packet[4] = sprite->u | ((u32)sprite->v << 8) | sprite_clut(sprite);
     packet[5] = sprite->w | ((u32)sprite->h << 16);
@@ -380,7 +391,7 @@ void GsSortSprite(Sprite *sprite, GsOT *table, unsigned short pri)
     v_top = attribute & 0x400000 ? sprite->v + sprite->h - 1 : sprite->v;
     v_bottom = attribute & 0x400000 ? sprite->v : sprite->v + sprite->h - 1;
     packet = (u32 *)(uintptr_t)D_800FE240;
-    packet[1] = sprite_colour(sprite, 0x2c000000u);
+    packet[1] = sprite_color(sprite, 0x2c000000u);
     packet[2] = xy[0];
     packet[3] = (u32)(u_left & 0xff) | ((u32)(v_top & 0xff) << 8) | sprite_clut(sprite);
     packet[4] = xy[1];
@@ -394,8 +405,8 @@ void GsSortSprite(Sprite *sprite, GsOT *table, unsigned short pri)
 }
 
 /* Copy a LIBGPU polygon primitive into the packet area, applying the
- * GTE-mode buffer offset to every vertex. The word order is colour, then per
- * vertex: [next colour when Gouraud], position, [texture word]. */
+ * GTE-mode buffer offset to every vertex. The word order is color, then per
+ * vertex: [next color when Gouraud], position, [texture word]. */
 void GsSortPoly(void *pp, GsOT *table, unsigned short pri)
 {
     u32 *primitive = pp, *ot = (u32 *)table;
@@ -444,7 +455,7 @@ void GsSortFlipSprite(Sprite *sprite, GsOT *table, unsigned short pri)
     top = (u32)y << 16;
     bottom = (u32)(y + sprite->h) << 16;
     packet = (u32 *)(uintptr_t)D_800FE240;
-    packet[1] = sprite_colour(sprite, 0x2c000000u);
+    packet[1] = sprite_color(sprite, 0x2c000000u);
     packet[2] = left | top;
     packet[3] = (u32)(u_left & 0xff) | ((u32)(v_top & 0xff) << 8) | sprite_clut(sprite);
     packet[4] = right | top;

@@ -4,7 +4,7 @@
 entry, so the editor keeps it there (card_extra, or an added card's extra)."""
 from __future__ import annotations
 
-from .gamedata import ATTRIBUTE_NAMES, TYPE_NAMES, TYPE_MAGIC
+from .gamedata import ATTRIBUTE_NAMES, TYPE_NAMES, TYPE_MAGIC, is_monster_type
 
 # The game's names, in the order of its enums, and the editor's for them.
 WHEN = ("summon", "flip", "draw", "combat", "destroyed", "destroy_opponent", "face_up")
@@ -30,6 +30,13 @@ TARGET_LABELS = ("This card", "Its owner's monsters", "Its owner's other monster
                  "Every monster", "The monster it battles")
 # Whose: the boosts' and destroys' choices for each "when" (allowed()).
 FILTERED = ("boost", "destroy")
+# "for_each": whose face-up monsters are counted, the number made that many
+# times (monster_effects.c MonsterEffect_EachAllowed: a boost, heal or damage).
+EACH = ("own", "opponent", "all")
+EACH_LABELS = ("On its owner's field", "On the opponent's field", "On the whole field")
+EACH_FIELDS = ("its owner's field", "the opponent's field", "the field")
+EACH_DO = ("boost", "heal", "damage")
+NO_EACH = "\u2014"
 # The disc's magic cards whose effect a monster may use: Magic cards whose
 # effect group does something at play time and asks nothing (no ritual).
 MAGIC = (320, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348,
@@ -84,9 +91,11 @@ def _name(names, value) -> str | None:
     return key if key in names else None
 
 
-def normalize(effect: dict, resolve=None) -> dict | None:
+def normalize(effect: dict, resolve=None, attribute_resolve=None, type_names=None) -> dict | None:
     """The entry with its names in the game's spelling, or None when the
-    game would leave it out. `resolve` turns a card reference into an id."""
+    game would leave it out. `resolve` turns a card reference into an id;
+    `type_names` is the mod's type bank (Project.type_names), for its own
+    monster types."""
     if not isinstance(effect, dict):
         return None
     when, do = _name(WHEN, effect.get("when")), _name(DO, effect.get("do"))
@@ -110,28 +119,54 @@ def normalize(effect: dict, resolve=None) -> dict | None:
                 out[key] = value
         if do == "boost" and "attack" not in out and "defense" not in out:
             return None
-        # Names in any case and spacing, as cards.c same_letters() takes them.
-        if "type" in effect:
-            t = effect["type"]
-            t = _letters_index(t, TYPE_NAMES) if isinstance(t, str) else t
-            if not isinstance(t, int) or isinstance(t, bool) or not 0 <= t < TYPE_MAGIC:
-                return None
-            out["type"] = TYPE_NAMES[t]
-        if "attribute" in effect:
-            a = effect["attribute"]
-            a = _letters_index(a, ATTRIBUTE_NAMES) if isinstance(a, str) else a
-            if not isinstance(a, int) or isinstance(a, bool) or not 0 <= a < 6:
-                return None
-            out["attribute"] = ATTRIBUTE_NAMES[a]
+        if not _filter(effect, out, attribute_resolve, type_names):
+            return None
     else:
         amount = effect.get("amount")
         if not isinstance(amount, int) or isinstance(amount, bool) or not 0 < amount <= AMOUNT_MAX:
             return None
         out["amount"] = amount
+    if "for_each" in effect:
+        each = effect["for_each"]
+        if do not in EACH_DO or not isinstance(each, dict):
+            return None
+        whose = _name(EACH, each["whose"]) if "whose" in each else "all"
+        if whose is None:
+            return None
+        out["for_each"] = {"whose": whose}
+        if not _filter(each, out["for_each"], attribute_resolve, type_names):
+            return None
     return out
 
 
-def problems(effects, resolve=None) -> list:
+def _filter(source: dict, out: dict, attribute_resolve=None, type_names=None) -> bool:
+    """`source`'s "type" and "attribute" into `out` by name; False when the
+    game would not take one (monster_effects.c filter())."""
+    names = type_names or TYPE_NAMES
+    # Names in any case and spacing, as cards.c same_letters() takes them;
+    # a renamed retail type keeps its disc spelling too.
+    if "type" in source:
+        t = source["type"]
+        if isinstance(t, str):
+            found = _letters_index(t, [name or "" for name in names])
+            t = found if found is not None else _letters_index(t, TYPE_NAMES)
+        # 255 is the game's "any" byte (MonsterEffect.type), so no filter.
+        if not isinstance(t, int) or isinstance(t, bool) or not is_monster_type(t) or t == 0xFF:
+            return False
+        if t >= TYPE_MAGIC and not (t < len(names) and names[t]):
+            return False
+        out["type"] = names[t] if t < len(names) and names[t] else TYPE_NAMES[t]
+    if "attribute" in source:
+        a = source["attribute"]
+        a = attribute_resolve(a) if attribute_resolve else (_letters_index(a, ATTRIBUTE_NAMES) if isinstance(a, str) else a)
+        if type(a) is not int or not 0 <= a <= 255 or a in (6, 7) or \
+                (attribute_resolve is None and a >= len(ATTRIBUTE_NAMES)):
+            return False
+        out["attribute"] = ATTRIBUTE_NAMES[a] if a < len(ATTRIBUTE_NAMES) else a
+    return True
+
+
+def problems(effects, resolve=None, attribute_resolve=None, type_names=None) -> list:
     """What the game would say of a card's "monster_effects"."""
     if effects is None:
         return []
@@ -145,7 +180,7 @@ def problems(effects, resolve=None) -> list:
         if taken == MAX_EFFECTS:
             out.append(f"at most {MAX_EFFECTS} monster effects; the rest (from effect {n + 1}) are left out")
             break
-        if normalize(effect, resolve) is None:
+        if normalize(effect, resolve, attribute_resolve, type_names) is None:
             out.append(f"monster effect {n + 1} is not one the game takes ({describe_raw(effect)})")
         else:
             taken += 1
@@ -162,14 +197,16 @@ def when_label(when: str) -> str:
 
 def describe(effect: dict, card_name=lambda cid: f"#{cid}") -> str:
     """What the effect does, in a line: "Raigeki", "Its owner's other
-    Dragon monsters +500 ATK", "Heal its owner 800 LP"."""
+    Dragon monsters +500 ATK", "Heal its owner 800 LP", "This card: +300
+    ATK for each face-up Dragon on the field"."""
     do = effect.get("do")
+    each = for_each_words(effect.get("for_each"))
     if do == "magic":
         return f"{card_name(effect.get('card'))} (its effect)"
     if do == "heal":
-        return f"Its owner gains {effect.get('amount')} LP"
+        return f"Its owner gains {effect.get('amount')} LP{each}"
     if do == "damage":
-        return f"The opponent loses {effect.get('amount')} LP"
+        return f"The opponent loses {effect.get('amount')} LP{each}"
     target = effect.get("target", default_target(effect.get("when"), do))
     who = TARGET_LABELS[TARGET.index(target)] if target in TARGET else str(target)
     which = " ".join(str(effect[k]) for k in ("attribute", "type") if k in effect)
@@ -180,4 +217,16 @@ def describe(effect: dict, card_name=lambda cid: f"#{cid}") -> str:
     stats = " ".join(f"{effect[k]:+d} {label}" for k, label in (("attack", "ATK"), ("defense", "DEF"))
                      if effect.get(k))
     lasting = " for the battle" if effect.get("when") == "combat" else ""
-    return f"{who}: {stats}{lasting}"
+    return f"{who}: {stats}{each}{lasting}"
+
+
+def for_each_words(each) -> str:
+    """" for each face-up Light Dragon on the field", or "" without one."""
+    if not isinstance(each, dict):
+        return ""
+    which = " ".join(str(each[k]) for k in ("attribute", "type") if k in each)
+    if "type" not in each:
+        which = f"{which} monster" if which else "monster"
+    whose = each.get("whose", "all")
+    field = EACH_FIELDS[EACH.index(whose)] if whose in EACH else str(whose)
+    return f" for each face-up {which} on {field}"

@@ -4,7 +4,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-/* Software PS1 GPU: 1024x512 words of 15-bit colour plus the mask bit.
+/* Software PS1 GPU: 1024x512 words of 15-bit color plus the mask bit.
  * Single-threaded. Timing, interlace and 24-bit display are not modelled. */
 #define SOFT_GPU_WIDTH 1024
 #define SOFT_GPU_HEIGHT 512
@@ -64,6 +64,9 @@ int SoftGpu_WideRastered(void);
  * resolution (hd_text.h, HdText_NamePixels): set while View > Opponent's
  * name for COM is on (libgpu.c), NULL otherwise, when nothing changes. */
 extern const uint8_t *(*SoftGpu_PanelName)(int which, int *x, int *y, int *width, int *height, int *stride);
+/* With it, whether the panel is drawn in pieces at any size (a mod's "ui",
+ * pc/cards/duel_ui.h): the names then go over its quads too. */
+extern int SoftGpu_PanelCut;
 /* Scaled widened picture, SOFT_GPU_WIDTH * scale pixels per row. NULL at
  * console resolution, while a recorder draws the picture (it draws the
  * widened ones too), or if allocation failed. Call after WideFrame to also
@@ -71,7 +74,7 @@ extern const uint8_t *(*SoftGpu_PanelName)(int which, int *x, int *y, int *width
 const uint32_t *SoftGpu_WidePicture(int x, int y, int w, int h);
 /* Internal resolution: with a scale above 1 every primitive is also drawn,
  * at scale x scale pixels per VRAM word, into a second picture of the whole
- * of VRAM in 24-bit colour, which is what is presented; VRAM itself stays
+ * of VRAM in 24-bit color, which is what is presented; VRAM itself stays
  * exactly what the console's would be, since the game reads it back and
  * states hold it. Uploads, fills and moves keep the picture in step; a
  * texture pack's images are sampled at their own resolution there
@@ -107,7 +110,7 @@ typedef struct SoftGpuRecorder {
 /* The game read w x h of the picture at sx,sy (StoreImage) and loaded it,
  * as good as unchanged, at dx,dy to draw with (LoadImage): the recorder
  * keeps that part of its scaled picture for primitives textured from
- * dx,dy, which VRAM only has at the console's resolution. Colour only: a
+ * dx,dy, which VRAM only has at the console's resolution. Color only: a
  * texel's transparency and semi-transparency bit stay VRAM's. */
 void SoftGpu_Capture(int sx, int sy, int dx, int dy, int w, int h);
 void SoftGpu_SetRecorder(const SoftGpuRecorder *recorder);

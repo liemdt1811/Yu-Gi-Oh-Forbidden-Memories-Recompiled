@@ -3,17 +3,15 @@
 The schema is the one the port reads (notes/modding.md, notes/more-cards.md,
 notes/gameplay-tables.md; src/pc/mods/mods.c, src/pc/cards/cards.c and
 tables.c, starter.c and packs.c): "cards" (replace and copy), "fusions",
-"equips", "rituals", "drops", "decks", "starter", "packs" and "pack_shop".
-Every other top-level key a mod
-has (data, text, textures, audio, library, requires..., and "duelists") is
-kept as it was written.
+"equips", "rituals", "drops", "decks", "starter", "packs", "pack_shop" and
+"duelists". Every other top-level key a mod has (data, text, textures, audio,
+library, requires...) is kept as it was written.
 
-The duelists the editor knows are the forty the disc lays out, because it
-reads the game's own files; a mod's own duelists (notes/more-duelists.md) are
-made at run time, from whichever mods are applied. So a "decks" or "drops"
-entry naming one of those, or either table given as the name of a file, is
-kept as it was written rather than resolved -- and the four roster folders
-beside the manifest are copied with the rest of the mod's files (save_mod).
+The duelists a mod adds (notes/more-duelists.md) are roster.py's: its own,
+from "duelists" and the duelists/, decks/, drops/ and portraits/ folders,
+are read and written back as editable duelists. A "decks" or "drops" entry
+naming a duelist neither the disc nor this mod has -- another mod's -- or
+either table given as the name of a file, is kept as it was written.
 """
 from __future__ import annotations
 
@@ -24,13 +22,14 @@ import re
 import shutil
 from pathlib import Path
 
-from .gamedata import (FUSION_GROUPS, RITUAL_REQUIREMENT_KEYS, fusion_group_named, ATTRIBUTE_NAMES, CARD_COUNT, DECK_SIZE, DUELIST_NAMES, FRAME_NAMES, POOLS, STAR_NAMES,
-                       EQUIP_BONUS_MAX, STARTER_WEIGHT_LIMIT, TYPE_NAMES, TYPE_MAGIC, GameData)
-from .model import AddedCard, ModInfo, Project, StarterDeck, duelist_named, type_named, KEY_RE
-from . import art, campaign_map, fixed_decks, guardian_stars, packs as packmath, pools as poolmath
+from .gamedata import (FUSION_GROUPS, RITUAL_ORIGINS, RITUAL_REQUIREMENT_KEYS, RITUAL_TRIBUTE_MAX, fusion_group_named, ATTRIBUTE_NAMES, CARD_COUNT, DECK_SIZE, DUELIST_NAMES, FRAME_COLOR_NAMES, FRAME_NAMES, POOLS, STAR_NAMES,
+                       EQUIP_BONUS_MAX, STARTER_WEIGHT_LIMIT, TYPE_NAMES, TYPE_MAGIC, TYPE_LIMIT, GameData, is_monster_type)
+from .model import AddedCard, ModInfo, Project, StarterDeck, duelist_named, same_letters, KEY_RE
+from . import art, board_art, campaign_map, compat, fixed_decks, guardian_stars, packs as packmath, pools as poolmath, roster
 
 INFO_KEYS = ("id", "name", "version", "author", "description")
-TABLE_KEYS = ("settings", "cards", "fusions", "equips", "rituals", "drops", "decks", "starter", "packs", "pack_shop")
+TABLE_KEYS = ("settings", "cards", "fusions", "equips", "rituals", "drops", "decks", "starter", "packs", "pack_shop",
+              "duelists")
 REPLACE_EXTRA = ("art", "thumbnail", "title", "model", "effect", "exodia")
 POOL_ALIASES = {"deck": "deck", "pow": "pow", "sapow": "pow", "bcd": "bcd", "tec": "tec", "satec": "tec"}
 
@@ -55,8 +54,9 @@ def password_text(value):
     return None
 
 
-def _type_value(t: int):
-    return TYPE_NAMES[t] if 0 <= t < len(TYPE_NAMES) else t
+def _type_value(t: int, project=None):
+    names = getattr(project, "type_names", TYPE_NAMES) if project is not None else TYPE_NAMES
+    return names[t] if 0 <= t < len(names) and names[t] else (TYPE_NAMES[t] if 0 <= t < len(TYPE_NAMES) else t)
 
 
 def _attribute_value(a: int):
@@ -67,7 +67,7 @@ def _star_value(s: int):
     return STAR_NAMES[s] if 1 <= s < len(STAR_NAMES) else s
 
 
-def _card_fields(card, base, everything=False) -> dict:
+def _card_fields(card, base, everything=False, project=None) -> dict:
     out = {}
     if everything or card.name != base.name:
         out["name"] = card.name
@@ -78,7 +78,7 @@ def _card_fields(card, base, everything=False) -> dict:
     if everything or card.defense != base.defense:
         out["defense"] = card.defense
     if everything or card.type != base.type:
-        out["type"] = _type_value(card.type)
+        out["type"] = _type_value(card.type, project)
     if everything or card.attribute != base.attribute:
         out["attribute"] = _attribute_value(card.attribute)
     if everything or card.level != base.level:
@@ -86,7 +86,7 @@ def _card_fields(card, base, everything=False) -> dict:
     # A card made a monster without "stars" gets default ones in the game
     # (cards.c default_stars): written, even as none, they stay as shown.
     if everything or (card.star1, card.star2) != (base.star1, base.star2) or \
-            card.type < TYPE_MAGIC <= base.type:
+            is_monster_type(card.type) and not is_monster_type(base.type):
         out["stars"] = [_star_value(card.star1), _star_value(card.star2)]
     if card.frame != base.frame:
         out["frame"] = FRAME_NAMES[card.frame] if 0 <= card.frame < len(FRAME_NAMES) else "Type"
@@ -97,7 +97,7 @@ def build_cards(project: Project) -> list:
     entries = []
     for cid in sorted(project.retail.cards):
         card, retail = project.cards[cid], project.retail.cards[cid]
-        fields = _card_fields(card, retail)
+        fields = _card_fields(card, retail, project=project)
         for name, value in project.text_cards.get(cid, {}).items():
             if fields.get(name) == value:
                 del fields[name]        # the mod's text file carries it, codes and all
@@ -117,7 +117,7 @@ def build_cards(project: Project) -> list:
         base = project.cards[added.base]
         entry = {"copy": added.base, "id": added.key}
         fields = {"name": card.name}
-        fields.update(_card_fields(card, base))     # what is left out is the base's, as the port has it
+        fields.update(_card_fields(card, base, project=project))     # what is left out is the base's, as the port has it
         if not card.is_monster() and card.type != base.type:
             effect = project.retail.cards.get(project.effect_of(cid))
             # The port refuses a copy made another non-monster without a
@@ -260,25 +260,30 @@ def build_rituals(project: Project) -> list:
     retail = project.retail.rituals
     for ritual in sorted(set(retail) | set(project.rituals)):
         now = project.rituals.get(ritual)
-        if retail.get(ritual) == now and ritual not in project.ritual_requirements:
+        if retail.get(ritual) == now and ritual not in project.ritual_requirements and \
+                ritual not in project.ritual_from and not (now is None and project.ritual_removed(ritual)):
             continue
-        if now is None:
+        if now is None:     # a disc ritual's taken away, or an added copy's (its base's too)
             entries.append({"card": project.ref(ritual), "result": None})
+            continue
+        entry = {"card": project.ref(ritual)}
+        if ritual in project.ritual_from:
+            entry["tributes_from"] = project.ritual_from[ritual]
+        requirements = project.ritual_requirements.get(ritual)
+        if requirements:
+            tributes = []
+            for req in requirements:
+                body = dict(req)
+                if body.get("card"):
+                    body["card"] = project.ref(body["card"])
+                else:
+                    body.pop("card", None)
+                tributes.append(body)
+            entry["tributes"] = tributes
         else:
-            requirements = project.ritual_requirements.get(ritual)
-            if requirements:
-                tributes = []
-                for req in requirements:
-                    body = dict(req)
-                    if body.get("card"):
-                        body["card"] = project.ref(body["card"])
-                    else:
-                        body.pop("card", None)
-                    tributes.append(body)
-                entries.append({"card": project.ref(ritual), "tributes": tributes, "result": project.ref(now[3])})
-            else:
-                entries.append({"card": project.ref(ritual), "tributes": [project.ref(t) for t in now[:3]],
-                                "result": project.ref(now[3])})
+            entry["tributes"] = [project.ref(t) for t in now[:-1]]
+        entry["result"] = project.ref(now[-1])
+        entries.append(entry)
     return entries + project.kept["rituals"]
 
 
@@ -295,13 +300,16 @@ def _pool_body(project: Project, listed: dict, replace: bool, kept: dict) -> dic
 
 
 def _pool_edits(project: Project, pool: str):
-    """{duelist key: body} for one kind of pool. An edit that turns every
-    opponent's pool into the edited one (say, one card taken out
-    everywhere) is written once, as "all", before the opponents' own."""
+    """{duelist key: body} for one kind of pool: a disc duelist's by its
+    name, a copy the mod adds by its roster entry (its own file). An edit
+    that turns every opponent's pool into the edited one (say, one card
+    taken out everywhere) is written once, as "all", before the opponents'
+    own; "all" reaches the mod's own duelists too, as it does in the game."""
     deck = pool == "deck"
-    count = len(project.pools)
-    retail = [project.retail.pools[d][pool] for d in range(count)]
-    edited = [{c: w for c, w in project.pools[d][pool].items() if w} for d in range(count)]
+    subjects = roster.subjects(project)
+    count = len(subjects)
+    retail = [roster.retail_pool(project, s, pool) for s in subjects]
+    edited = [{c: w for c, w in roster.pools_of(project, s)[pool].items() if w} for s in subjects]
     edits = [poolmath.edit_for(retail[d], edited[d], deck) for d in range(count)]
     out = {}
     bases = retail
@@ -327,16 +335,18 @@ def _pool_edits(project: Project, pool: str):
         body = out.get("all", {})
         body.update(kept_all)
         out["all"] = body
-    for d in range(count):
-        kept = project.kept_pools.get((d, pool), {})
+    for d, s in enumerate(subjects):
+        kept = roster.kept_of(project, s, pool)
         if edits[d] is None and not kept:
             continue
         listed, replace = edits[d] if edits[d] else ({}, False)
-        out[_duelist_key(d)] = _pool_body(project, listed, replace, kept)
+        out[_duelist_key(s) if isinstance(s, int) else s] = _pool_body(project, listed, replace, kept)
     return out
 
 
-def build_pools(project: Project):
+def _pool_tables(project: Project):
+    """(drops, decks) by duelist: mod.json's keys, and a copy's roster entry
+    for what goes in its own files (roster.files)."""
     decks = _pool_edits(project, "deck")
     decks.update(fixed_decks.build(project))     # a fixed deck wins over weighted edits of it anyway
     if "all" in decks:
@@ -347,7 +357,14 @@ def build_pools(project: Project):
             drops.setdefault(name, {})[pool] = body
     if "all" in drops:     # "all" first, so the opponents' own edits go over it
         drops = {"all": drops.pop("all"), **drops}
-    # Entries naming a duelist the editor could not place -- one a mod added --
+    return drops, decks
+
+
+def build_pools(project: Project):
+    drops, decks = _pool_tables(project)
+    drops = {k: v for k, v in drops.items() if isinstance(k, str)}
+    decks = {k: v for k, v in decks.items() if isinstance(k, str)}
+    # Entries naming a duelist the editor could not place -- another mod's --
     # go back after the ones it wrote, where the mod had them.
     decks.update(project.kept_opponents.get("decks", {}))
     drops.update(project.kept_opponents.get("drops", {}))
@@ -431,6 +448,17 @@ def build(project: Project) -> dict:
         if getattr(info, key):
             manifest[key] = getattr(info, key)
     manifest.update(project.other)
+    # Starter pools by their cards as they are named now (the mod's id, an
+    # added card's key may have changed since the Weighted pools page wrote
+    # them), as the written decks are.
+    if getattr(project, "starter_pool_state", None) is not None and \
+            isinstance(project.other.get("starter_pools"), (list, dict)):
+        from . import starter_pools as sp
+        pools = sp.build(sp.state(project), project.ref)
+        if pools is None:
+            manifest.pop("starter_pools", None)
+        else:
+            manifest["starter_pools"] = pools
     passwords = build_passwords(project)
     if passwords:
         manifest["passwords"] = passwords
@@ -445,6 +473,9 @@ def build(project: Project) -> dict:
         rules = builder(project)
         if rules:
             manifest[key] = rules
+    duelists = roster.manifest_value(project)
+    if duelists is not None:
+        manifest["duelists"] = duelists
     drops, decks = build_pools(project)
     if drops:
         manifest["drops"] = drops
@@ -454,13 +485,16 @@ def build(project: Project) -> dict:
     if starter:
         manifest["starter"] = starter
     campaign_map.build_into(project, manifest)
+    board_art.build_into(project, manifest)
     packs = build_packs(project)
     if packs:
         manifest["packs"] = packs
     rules = packmath.minimize_rules(project.pack_shop) if project.pack_shop is not None else None
     if rules:
         manifest["pack_shop"] = rules
-    return manifest
+    # A game older than a feature used would play the mod without it: the
+    # mod says which game it needs (compat.py), and an older one refuses it.
+    return compat.stamp(manifest, project)
 
 
 def _format(value, indent: int) -> str:
@@ -524,7 +558,7 @@ def item_ids(key: str) -> list:
 
 def listing_plain(item: str) -> str:
     """An item's text as the editor shows it: the key line and the end
-    left out, line breaks as lines; colour and icon codes kept as spelled."""
+    left out, line breaks as lines; color and icon codes kept as spelled."""
     body = item.split("\n", 1)[1] if "\n" in item else ""
     for code in ("{end}", "{cont}"):
         body = body.replace(code, "")
@@ -551,7 +585,7 @@ def card_texts(listing: str) -> dict:
 
 def read_text_cards(project: Project, folder: Path, messages: list):
     """Cards whose name or text the mod's "text" file carries (an imported
-    mod's coloured names, texts with codes, texts empty on purpose): shown
+    mod's colored names, texts with codes, texts empty on purpose): shown
     in the editor, and left to the file while unchanged."""
     name = project.other.get("text")
     if not isinstance(name, str) or not (folder / name).is_file():
@@ -579,9 +613,68 @@ def _choice(value, names):
         for i, name in enumerate(names):
             if name and value.lower() == name.lower():
                 return i
-        if value.strip().lstrip("-").isdigit():
-            return int(value)
+        # choice() falls back to Json_Number for an unmatched string, which
+        # reads "0x18" as hex the same as a plain number (json.c); _number
+        # already does that.
+        return _number(value)
     return -1
+
+
+def _type_choice(project, value):
+    """The runtime type resolver, including retail aliases after a rename."""
+    names = getattr(project, "type_names", TYPE_NAMES)
+    choice = _choice(value, names)
+    # cards.c accepts a numeric choice only when the slot is registered.
+    if 0 <= choice < len(names) and names[choice]:
+        return choice
+    if isinstance(value, str):
+        choice = next((i for i, name in enumerate(names) if name and same_letters(value, name)), -1)
+        if choice >= 0:
+            return choice
+        choice = next((i for i, name in enumerate(TYPE_NAMES) if same_letters(value, name)), -1)
+        if choice >= 0 and choice < len(names) and names[choice]:
+            return choice
+    return -1
+
+
+def read_card_types(project: Project, section, messages: list):
+    """Read the registry before cards so a card may name a new type."""
+    if section is None:
+        return
+    if not isinstance(section, dict) or not isinstance(section.get("types"), list):
+        messages.append("\"card_types\" is an object with a \"types\" list; left out")
+        return
+    for index, entry in enumerate(section["types"]):
+        where = f"card_types.types[{index}]"
+        if not isinstance(entry, dict) or type(entry.get("id")) is not int or not isinstance(entry.get("name"), str):
+            messages.append(f"{where}: an object with numeric \"id\" and string \"name\"; left out")
+            continue
+        type_, name = entry["id"], entry["name"]
+        if not (0 <= type_ < TYPE_LIMIT) or not name:
+            messages.append(f"{where}: id is 0-23 or 24-255 with a non-empty name; left out")
+            continue
+        normalized = "".join(c.lower() for c in name if c.isascii() and c.isalnum())
+        # Match encode_type_name(): a name with no glyph the game can show
+        # is never registered, the same as an empty one -- the editor's
+        # model must not hold a type the runtime would refuse to build, or
+        # a card assigned to it here would point at nothing there.
+        if not normalized:
+            messages.append(f'{where}: "{name}" has no glyph the game can display; declaration left out')
+            continue
+        # Match add_card_types_section(): a later declaration may replace its
+        # own ID, but must not shadow another active spelling or a retail
+        # alias retained after that retail type was renamed.
+        collision = next((other for other, other_name in enumerate(project.type_names)
+                          if other != type_ and other_name and
+                          "".join(c.lower() for c in other_name if c.isascii() and c.isalnum()) == normalized), None)
+        if collision is None:
+            collision = next((other for other, other_name in enumerate(TYPE_NAMES)
+                              if other != type_ and
+                              "".join(c.lower() for c in other_name if c.isascii() and c.isalnum()) == normalized), None)
+        if collision is not None:
+            messages.append(f'{where}: "{name}" is already type {collision}\'s name or retail alias; declaration left out')
+            continue
+        project.type_names[type_] = name
 
 
 def _number(value, default=-1):
@@ -606,7 +699,92 @@ def _clamp(value, low, high):
     return max(low, min(high, value))
 
 
-def _apply_fields(card, entry: dict, is_replace: bool, messages: list, where: str, stars_section=None, effect_type=None):
+def _attribute_letters(value: str) -> bytes:
+    """attributes.c same_letters(): punctuation skipped, ASCII folded only.
+
+    The runtime compares UTF-8 bytes rather than Unicode case-folded
+    characters. Keep that deliberately narrow rule here so the editor never
+    resolves a declaration differently from the game.
+    """
+    return bytes(c for c in value.encode("utf-8")
+                 if 48 <= c <= 57 or 65 <= c <= 90 or 97 <= c <= 122 or c >= 0x80).lower()
+
+
+def _attribute_name_has_letters(value: str) -> bool:
+    return bool(_attribute_letters(value))
+
+
+def _attribute_numeric_name(value: str) -> bool:
+    folded = _attribute_letters(value)
+    return bool(folded) and all(48 <= c <= 57 for c in folded)
+
+
+def _attribute_registry(section):
+    """The declarations Attributes_Add() would accept from this manifest.
+
+    The editor loads one mod manifest at a time, so this deliberately models
+    that manifest's registry, including its declaration order. Runtime mods
+    may additionally provide declarations from earlier active mods.
+    """
+    names = list(ATTRIBUTE_NAMES) + [""] * (256 - len(ATTRIBUTE_NAMES))
+    declared = set()
+    entries = section.get("attributes") if isinstance(section, dict) else None
+    if not isinstance(entries, list):
+        return names, declared
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        ident, name = entry.get("id"), entry.get("name")
+        if type(ident) is not int or not isinstance(name, str) or not name:
+            continue
+        if not 0 <= ident <= 255 or ident in (6, 7):
+            continue
+        if not _attribute_name_has_letters(name) or _attribute_numeric_name(name):
+            continue
+        duplicate = any(i != ident and _attribute_letters(name) == _attribute_letters(retail)
+                        for i, retail in enumerate(ATTRIBUTE_NAMES))
+        duplicate = duplicate or any(i != ident and existing and _attribute_letters(name) == _attribute_letters(existing)
+                                     for i, existing in enumerate(names))
+        if duplicate:
+            continue
+        names[ident] = name
+        declared.add(ident)
+    return names, declared
+
+
+def _attribute_choice(value, section) -> int:
+    """The runtime-valid retail or declared attribute represented by value."""
+    names, declared = _attribute_registry(section)
+    found = -1
+    if type(value) is int:
+        found = value
+    elif isinstance(value, str):
+        # Attributes_Find uses strtol(..., 10) before names. Python's int()
+        # accepts trailing whitespace, which strtol does not, so keep the
+        # spelling rule explicit.
+        if re.fullmatch(r"[ \t\n\r\f\v]*[+-]?[0-9]+", value):
+            found = int(value, 10)
+        else:
+            folded = _attribute_letters(value)
+            for i, name in enumerate(ATTRIBUTE_NAMES):
+                if folded == _attribute_letters(name) or folded == _attribute_letters(names[i]):
+                    found = i
+                    break
+            if found < 0:
+                for i in range(len(ATTRIBUTE_NAMES), len(names)):
+                    if names[i] and folded == _attribute_letters(names[i]):
+                        found = i
+                        break
+    # 6 and 7 are the retail magic/trap attributes: never declarable, but a
+    # card may carry them as a number (the editor writes them for a
+    # Magic/Trap card), as the game takes them (cards.c add_entry).
+    if found in (6, 7):
+        return found if type(value) is int else -1
+    return found if 0 <= found < len(ATTRIBUTE_NAMES) or found in declared else -1
+
+
+def _apply_fields(project: Project, card, entry: dict, is_replace: bool, messages: list, where: str,
+                  stars_section=None, attributes_section=None, effect_type=None):
     name = entry.get("name")
     if isinstance(name, str) and name:
         card.name = name
@@ -620,10 +798,10 @@ def _apply_fields(card, entry: dict, is_replace: bool, messages: list, where: st
     if value >= 0:
         card.defense = _clamp(value // 10, 0, 0x1FF) * 10
     if "type" in entry:
-        value = _choice(entry["type"], TYPE_NAMES)
+        value = _type_choice(project, entry["type"])
         if value >= 0:
-            value = _clamp(value, 0, 23)
-            if (not is_replace and value >= TYPE_MAGIC and value != card.type and value != effect_type and
+            value = _clamp(value, 0, TYPE_LIMIT - 1)
+            if (not is_replace and not is_monster_type(value) and value != card.type and value != effect_type and
                     value != 23):     # cards.c
                 messages.append(f"{where}: a copy becomes a non-monster only with a matching retail effect; "
                                 f"\"type\" left out")
@@ -651,15 +829,24 @@ def _apply_fields(card, entry: dict, is_replace: bool, messages: list, where: st
     if value >= 0:
         card.level = _clamp(value, 0, 12)
     if "attribute" in entry:
-        value = _choice(entry["attribute"], ATTRIBUTE_NAMES)
+        value = _attribute_choice(entry["attribute"], attributes_section)
         if value >= 0:
-            card.attribute = _clamp(value, 0, 15)
+            card.attribute = _clamp(value, 0, 255)
+        else:
+            messages.append(f"{where}: \"attribute\" is a retail attribute, or an id/name this mod's own "
+                            f"\"attributes\" declares; left out")
     if "frame" in entry:
         value = _choice(entry["frame"], FRAME_NAMES + ["Type"])
+        if not 0 <= value <= len(FRAME_NAMES):
+            # Gold, Green, Pink and Blue: Monster, Magic, Trap and Ritual by their color.
+            value = _choice(entry["frame"], FRAME_COLOR_NAMES)
+            if value >= len(FRAME_COLOR_NAMES):
+                value = -1
         if 0 <= value <= len(FRAME_NAMES):
             card.frame = -2 if value == len(FRAME_NAMES) else value  # -2: "Type", never orange
         else:
-            messages.append(f"{where}: \"frame\" is Monster, Magic, Trap, Ritual, Purple, Orange or Type; left out")
+            messages.append(f"{where}: \"frame\" is Gold, Green, Pink, Blue, Purple, Orange or Type (or the disc's "
+                            f"Monster, Magic, Trap, Ritual); left out")
 
 
 def _base_id(project: Project, value) -> int:
@@ -682,11 +869,11 @@ def _read_notes(entry: dict, messages: list, where: str):
 def _default_stars(project: Project, card, entry: dict, was_monster: bool, model_default: int):
     """As cards.c default_stars: a card made a monster with no "stars" and
     none of its own takes its model's, or the Sun and the Moon."""
-    if card.type >= TYPE_MAGIC or was_monster or "stars" in entry or card.star1 or card.star2:
+    if not is_monster_type(card.type) or was_monster or "stars" in entry or card.star1 or card.star2:
         return
     model = project.resolve(entry.get("model")) if "model" in entry else model_default
     source = project.retail.cards.get(model) if 1 <= model <= CARD_COUNT else None
-    if source is not None and source.type < TYPE_MAGIC:
+    if source is not None and is_monster_type(source.type):
         card.star1, card.star2 = source.star1, source.star2
     else:
         card.star1, card.star2 = STAR_NAMES.index("Sun"), STAR_NAMES.index("Moon")
@@ -710,8 +897,9 @@ def read_cards(project: Project, entries, messages: list):
             continue
         notes = _read_notes(entry, messages, where)
         if is_replace:
-            was_monster = project.cards[base].type < TYPE_MAGIC
-            _apply_fields(project.cards[base], entry, True, messages, where, project.other.get("guardian_stars"))
+            was_monster = is_monster_type(project.cards[base].type)
+            _apply_fields(project, project.cards[base], entry, True, messages, where, project.other.get("guardian_stars"),
+                          project.other.get("attributes"))
             _default_stars(project, project.cards[base], entry, was_monster, base)
             if notes:
                 had = project.notes.get(base)
@@ -742,9 +930,9 @@ def read_cards(project: Project, entries, messages: list):
         if not effect_id or effect_id > CARD_COUNT:
             effect_id = project.effect_of(base)
         effect = project.retail.cards.get(effect_id)
-        was_monster = project.cards[cid].type < TYPE_MAGIC
-        _apply_fields(project.cards[cid], entry, False, messages, where, project.other.get("guardian_stars"),
-                      effect.type if effect else None)
+        was_monster = is_monster_type(project.cards[cid].type)
+        _apply_fields(project, project.cards[cid], entry, False, messages, where, project.other.get("guardian_stars"),
+                      project.other.get("attributes"), effect.type if effect else None)
         _default_stars(project, project.cards[cid], entry, was_monster, base)
         added = project.added[cid]
         added.drops = _json_bool(entry.get("drops"), True)
@@ -890,7 +1078,10 @@ def equip_rules(project: Project, entries, messages: list, kept: list = None) ->
         for allow, key in ((True, "add"), (False, "remove")):
             targets = entry.get(key)
             for target in targets if isinstance(targets, list) else []:
-                t = type_named(target) if isinstance(target, str) else -1
+                # tables.c checks a type name before a card reference.  Use
+                # the project registry so custom types and retail aliases
+                # behave exactly as they do in the game.
+                t = _type_choice(project, target) if isinstance(target, str) else -1
                 if t >= 0 and project.resolve(target) <= 0:
                     rules.append((equip, EQUIP_TYPE, t, allow, order))
                     continue
@@ -965,12 +1156,15 @@ def read_rituals(project: Project, entries, messages: list):
                             "or \"effect\" naming one); left out")
             continue
         if "result" in entry and entry["result"] is None:
-            project.rituals.pop(ritual, None)
-            project.ritual_requirements.pop(ritual, None)
+            project.remove_ritual(ritual)
             continue
         tributes = entry.get("tributes")
-        if not isinstance(tributes, list) or len(tributes) != 3:
-            messages.append(f"{where}: \"tributes\" names three monsters; left out")
+        if not isinstance(tributes, list) or not 1 <= len(tributes) <= RITUAL_TRIBUTE_MAX:
+            messages.append(f"{where}: \"tributes\" names one to five monsters; left out")
+            continue
+        origin = entry.get("tributes_from", "field")
+        if origin not in RITUAL_ORIGINS:
+            messages.append(f"{where}: \"tributes_from\" is \"field\", \"hand\" or \"both\"; left out")
             continue
         result = project.resolve(entry.get("result"))
         conditional = any(isinstance(t, dict) for t in tributes)
@@ -989,11 +1183,11 @@ def read_rituals(project: Project, entries, messages: list):
                             req["card"] = cid
                     if "type" in tribute:
                         value = tribute["type"]
-                        named = type_named(value) if isinstance(value, str) else -1
-                        if named < 0 or named >= TYPE_MAGIC:
+                        named = _type_choice(project, value)
+                        if named < 0 or not is_monster_type(named):
                             valid = False
                         else:
-                            req["type"] = TYPE_NAMES[named]
+                            req["type"] = _type_value(named, project)
                     if "fusion_group" in tribute:
                         value = fusion_group_named(tribute["fusion_group"])
                         if not value:
@@ -1041,16 +1235,15 @@ def read_rituals(project: Project, entries, messages: list):
                 messages.append(f"{where}: has a ritual requirement the editor cannot place; kept as written")
                 project.kept["rituals"].append(entry)
                 continue
-            project.ritual_requirements[ritual] = requirements
-            project.rituals[ritual] = tuple(display_ids + [result])
+            project.set_ritual(ritual, requirements, result, origin, objects=True)
         else:
             ids = [project.resolve(t) for t in tributes] + [result]
             if not all(ids):
                 messages.append(f"{where}: names a card the editor cannot place; kept as written")
                 project.kept["rituals"].append(entry)
                 continue
-            project.rituals[ritual] = tuple(ids)
-            project.ritual_requirements.pop(ritual, None)   # a later mod's plain recipe wins
+            # A later mod's plain recipe wins over conditions and a place.
+            project.set_ritual(ritual, [{"card": c} for c in ids[:-1]], result, origin)
 
 
 def _read_pool(project: Project, where, duelists, pool, body, messages):
@@ -1075,16 +1268,19 @@ def _read_pool(project: Project, where, duelists, pool, body, messages):
     if kept:
         # Kept under the name they were written for: an "all" edit's own
         # stays one body, before the opponents' edits.
-        key = "all" if len(duelists) > 1 else duelists[0]
-        project.kept_pools.setdefault((key, pool), {}).update(kept)
+        if len(duelists) > 1:
+            project.kept_pools.setdefault(("all", pool), {}).update(kept)
+        else:
+            roster.keep(project, duelists[0], pool, kept)
     for d in duelists:
         if not listed and not replace:
             continue
-        result = poolmath.apply_edit(project.pools[d][pool], listed, replace, pool == "deck")
+        pools = roster.pools_of(project, d)
+        result = poolmath.apply_edit(pools[pool], listed, replace, pool == "deck")
         if result is None:
-            messages.append(f"{where}: {DUELIST_NAMES[d]}'s {pool} left as it was (the port refuses this edit)")
+            messages.append(f"{where}: {roster.label(project, d)}'s {pool} left as it was (the port refuses this edit)")
         else:
-            project.pools[d][pool] = result
+            pools[pool] = result
 
 
 def read_pools(project: Project, table, decks: bool, messages: list):
@@ -1106,12 +1302,15 @@ def read_pools(project: Project, table, decks: bool, messages: list):
             fixed_decks.read_entry(project, name, entry, messages)
             continue
         if same_all(name):
-            duelists = list(range(len(project.pools)))
+            duelists = roster.subjects(project)
         else:
             d = duelist_named(name)
             if d < 0:
-                # A duelist a mod added, or a misspelling: either way the
-                # editor cannot place it, and dropping it would throw away
+                d = roster.named(project, name)
+                d = -1 if d is None else d
+            if isinstance(d, int) and d < 0:
+                # A duelist another mod adds, or a misspelling: either way
+                # the editor cannot place it, and dropping it would throw away
                 # somebody else's roster. Kept exactly as written.
                 project.kept_opponents.setdefault(label, {})[name] = entry
                 messages.append(f"{label}: \"{name}\" is no duelist the disc has; kept as written")
@@ -1208,7 +1407,7 @@ def read_packs(project: Project, manifest: dict, messages: list):
     project.packs, project.packs_file = [], None
     if isinstance(value, str):
         project.packs_file = value
-        messages.append(f"\"packs\" names the file {value}; kept as written (the editor does not read it)")
+        messages.append(f"\"packs\" names the file {value}; kept as written (checked for compatibility, not editable here)")
     elif isinstance(value, list):
         project.packs = copy.deepcopy(value)
     elif value is not None:
@@ -1258,10 +1457,11 @@ def same_all(name: str) -> bool:
     return "".join(c for c in name.lower() if c.isalnum()) == "all"
 
 
-def apply(project: Project, manifest: dict, messages: list = None, default_id: str = None) -> list:
+def apply(project: Project, manifest: dict, messages: list = None, default_id: str = None, folder=None) -> list:
     """Lay a mod.json over the project (which should be retail): what the
     editor understands becomes edits, the rest is kept as written. A mod
-    with no "id" is named after its folder, as the port does."""
+    with no "id" is named after its folder, as the port does. With the
+    folder, the files beside mod.json the roster is made of are read too."""
     messages = [] if messages is None else messages
     if not isinstance(manifest, dict):
         raise ValueError("mod.json is not a JSON object")
@@ -1276,16 +1476,22 @@ def apply(project: Project, manifest: dict, messages: list = None, default_id: s
     info.settings = settings if isinstance(settings, list) else []
     project.info = info
     project.other = {k: v for k, v in manifest.items() if k not in INFO_KEYS and k not in TABLE_KEYS}
+    read_card_types(project, manifest.get("card_types"), messages)
     read_cards(project, manifest.get("cards"), messages)
     read_fusions(project, manifest.get("fusions"), messages)
     read_equips(project, manifest.get("equips"), messages)
     read_rituals(project, manifest.get("rituals"), messages)
+    # The duelists before the pools, which may name them; the folders' pools
+    # after the manifest's, as tables.c reads them.
+    roster.read(project, manifest.get("duelists"), folder, messages)
     read_pools(project, manifest.get("drops"), False, messages)
     read_pools(project, manifest.get("decks"), True, messages)
+    roster.read_pool_folders(project, folder, messages)
     read_starter(project, manifest.get("starter"), messages)
     read_packs(project, manifest, messages)
     read_passwords(project, messages)
     campaign_map.read_mod(project, messages)
+    board_art.read_patches(project, messages)
     return messages
 
 
@@ -1321,7 +1527,7 @@ def open_mod(retail: GameData, folder) -> tuple:
     """(project, messages): retail with the mod folder's mod.json on top."""
     folder = Path(folder)
     project = Project(retail)
-    messages = apply(project, read_json(folder / "mod.json"), default_id=folder.name)
+    messages = apply(project, read_json(folder / "mod.json"), default_id=folder.name, folder=folder)
     read_text_cards(project, folder, messages)
     project.source_dir = folder
     art.read_mod(project, folder, messages)
@@ -1353,7 +1559,10 @@ def save_mod(project: Project, folder, manifest: dict = None, copy_source: bool 
             subdirs[:] = [name for name in subdirs if (directory / name).resolve() != destination]
             for name in files:
                 item = directory / name
-                if item.is_file() and item.name != "mod.json":
+                # The roster's files it read are written afresh below, or
+                # are gone with the duelist they were for.
+                if item.is_file() and item.name != "mod.json" and \
+                        not roster.owned(project, item.relative_to(source).as_posix()):
                     target = folder / item.relative_to(source)
                     target.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copy2(item, target)
@@ -1362,6 +1571,8 @@ def save_mod(project: Project, folder, manifest: dict = None, copy_source: bool 
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(blob)
     art.write_mod(project, folder)     # the art's PNGs and texture pack, and "textures" in mod.json
+    drops, decks = _pool_tables(project)
+    roster.write(project, folder, decks, drops)
     manifest = build(project) if manifest is None else manifest
     path = folder / "mod.json"
     temporary = folder / "mod.json.tmp"

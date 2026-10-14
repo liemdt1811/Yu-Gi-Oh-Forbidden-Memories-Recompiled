@@ -28,6 +28,11 @@ Accepted exceptions:
     native build's own .data, so it stays a native pointer everywhere,
     including its plain extern declarations; D_8009AF18 is the documented
     case. G32 on such a name is allowed (D_8009B074 is `= 0` and G32).
+    TRANSLATED_G32 (G32 only in the translated macOS build) fits only such
+    a name: the fixed-memory 64-bit builds expand it to nothing, so it does
+    not count as G32 anywhere else. #301 put it on the pinned D_80090F18,
+    the text command table of the retail image, and the 64-bit games read
+    it 8 bytes an entry and crashed.
   - MainMenuComparators (main_menu/module_rodata.h) only holds a static
     initializer's table of native function pointers; its members stay plain.
 
@@ -35,11 +40,14 @@ Every preprocessor branch is read, so each region's declarations are checked,
 except `#if 0` and C++-only ones. Names are resolved by spelling, not by type:
 the 64-bit compile ("changes address space of nested pointer", or LLVM
 failing to lower a call) stays the complete check for what text cannot see,
-such as guest storage reached through a helper's return value.
+such as guest storage reached through a helper's return value. An
+object-like macro of src/port_ptr.h that this file does not know, found where
+a declarator's name or type should be, is reported too: TRANSLATED_G32 once
+was, and the name it hid from every rule above was D_80090F18's.
 
 --fix inserts G32 at every member, global and local finding and respells a
 plain long; a call needs the callee's type for CALL32 and is left to the
-author.
+author, as is a line with TRANSLATED_G32, which the author respells.
 """
 
 from __future__ import annotations
@@ -65,13 +73,17 @@ KEYWORDS = {
     "void", "volatile", "while", "__inline", "__inline__", "__volatile__",
     "__const", "__signed__", "_Bool", "__asm__", "asm", "__attribute__",
     "__extension__", "__restrict", "__restrict__", "restrict", "G32", "CALL32",
+    "TRANSLATED_G32",
 }
 BASIC_TYPE_WORDS = {
     "void", "char", "short", "int", "long", "float", "double", "signed",
     "unsigned", "_Bool", "__signed__", "PSXLONG",
 }
-QUALIFIERS = {"const", "volatile", "G32", "__restrict", "__restrict__",
-              "restrict", "__const", "__volatile__"}
+# TRANSLATED_G32 is read as a qualifier, so the declarator's name is the one
+# after it, but it is not G32: it is empty on the fixed-memory 64-bit builds
+# (Windows x64, Android arm64), so it only fits native .data.
+QUALIFIERS = {"const", "volatile", "G32", "TRANSLATED_G32", "__restrict",
+              "__restrict__", "restrict", "__const", "__volatile__"}
 STORAGE = {"typedef", "extern", "static", "register", "auto", "inline",
            "__inline", "__inline__"}
 DROP_GROUPS = {"__attribute__", "__asm__", "asm", "__asm"}
@@ -259,7 +271,8 @@ def split_top(tokens: list, separator: str) -> list:
 
 class Declarator:
     __slots__ = ("name", "line", "stars", "missing", "g32", "base", "function",
-                 "function_pointer", "initialized", "array", "record_base", "init")
+                 "function_pointer", "initialized", "array", "record_base", "init",
+                 "translated")
 
     def __repr__(self) -> str:  # pragma: no cover - debugging aid
         return (f"Declarator({self.name}@{self.line} stars={self.stars} "
@@ -278,6 +291,7 @@ def declaration(tokens: list):
     words: set = set()
     typed = False
     spec_g32 = False
+    spec_translated = False
     record_base = False
     while index < len(tokens):
         token = tokens[index]
@@ -299,6 +313,8 @@ def declaration(tokens: list):
             spec_g32 = True
             index += 1
             continue
+        if token == "TRANSLATED_G32":
+            spec_translated = True
         if token in STORAGE or token in QUALIFIERS:
             words.add(token)
             index += 1
@@ -322,6 +338,7 @@ def declaration(tokens: list):
         item.base = base
         item.record_base = record_base
         item.g32 = item.g32 or spec_g32
+        item.translated = item.translated or spec_translated
         found.append(item)
     return words, found
 
@@ -369,6 +386,7 @@ def declarator(tokens: list):
     item.stars = len(stars)
     item.missing = missing
     item.g32 = any(token == "G32" for token in tokens[:name]) and not stars
+    item.translated = "TRANSLATED_G32" in tokens[:name]
     after = name + 1
     item.function = after < len(tokens) and tokens[after] == "("
     item.array = after < len(tokens) and tokens[after] == "["
@@ -768,10 +786,26 @@ def postfix_root(tokens: list):
     return root
 
 
-def check(units: list):
+def check(units: list, macros=frozenset()):
     counts: Counter = Counter()
     sites: list = []   # (path, line, kind, name) of every annotated site
     findings: list = []
+
+    # An object-like macro of src/port_ptr.h that this file does not know is
+    # read as the declarator's name, and every rule below then looks at the
+    # wrong name: TRANSLATED_G32 was, so its initialized tables put it in
+    # `initialized` and exempted every pinned global written with it.
+    for unit in units:
+        named = [item for _, item in unit.members] + unit.globals + unit.typedefs + \
+            [item for function in unit.functions
+             for item in function.pointer_pointers.values()]
+        for item in named:
+            for word in [item.name] + item.base:
+                if word in macros:
+                    findings.append((unit.path, item.line,
+                                     f"'{word}' ({MACRO_HEADER}) is read as the "
+                                     "declarator's name or type: teach "
+                                     "tools/project/check_g32.py what it means", None))
 
     # Typedefs, to a fixed point (a typedef of a pointer typedef).
     pointer_typedefs, function_typedefs, fnptr_typedefs = set(), set(), set()
@@ -814,6 +848,13 @@ def check(units: list):
     def how(item) -> str:
         return "after each '*'" if item.stars else "after the typedef name"
 
+    def translated(item, pinned=False) -> str:
+        if not item.translated:
+            return ""
+        return (", not TRANSLATED_G32 (empty on the fixed-memory 64-bit builds"
+                + (", so only for native .data, a name some declaration initializes)"
+                   if pinned else ")"))
+
     def exempt(unit: Unit, record) -> bool:
         while record is not None:
             if unit.record_names.get(record, set()) & EXEMPT_RECORDS:
@@ -834,7 +875,8 @@ def check(units: list):
             else:
                 findings.append((unit.path, item.line,
                                  f"member '{item.name}' is a stored pointer: "
-                                 f"write G32 {how(item)}", fix(item, "all")))
+                                 f"write G32 {how(item)}{translated(item)}",
+                                 fix(item, "all")))
 
     initialized = {item.name for unit in units for item in unit.globals
                    if item.initialized and not item.function}
@@ -851,7 +893,8 @@ def check(units: list):
             else:
                 findings.append((unit.path, item.line,
                                  f"global '{item.name}' has no initializer, so it is "
-                                 f"pinned to a retail address: write G32 {how(item)}",
+                                 f"pinned to a retail address: write G32 {how(item)}"
+                                 f"{translated(item, pinned=True)}",
                                  fix(item, "all")))
 
     for unit in units:
@@ -879,7 +922,8 @@ def check(units: list):
                 item = function.pointer_pointers[key]
                 findings.append((unit.path, item.line,
                                  f"local '{item.name}' walks guest pointer storage "
-                                 f"(line {flagged[key]}): write T *G32 *{item.name}",
+                                 f"(line {flagged[key]}): write T *G32 *{item.name}"
+                                 f"{translated(item)}",
                                  fix(item, "first")))
         for line, kind, name in unit.calls:
             if kind == "local" or kind == "member" and name in fn_members or \
@@ -911,6 +955,11 @@ def apply_fix(text: str, line: int, name: str, stars: str):
             return None
         lines[line - 1] = fixed
         return "\n".join(lines)
+    # Inserting G32 around TRANSLATED_G32 can land on the wrong '*' (the
+    # #301 local would become `(*TRANSLATED_G32 *G32 handlers)`, its entries
+    # still 8 bytes): the author respells it.
+    if re.search(r"\bTRANSLATED_G32\b", source):
+        return None
     for match in re.finditer(rf"\b{re.escape(name)}\b", source):
         start = match.start()
         if stars == "typedef":
@@ -997,15 +1046,23 @@ def sources(root: Path = ROOT) -> list:
                   if path.suffix in (".c", ".h") and path.is_file())
 
 
+def macro_names(text: str) -> set:
+    """The object-like macros a header defines (not `NAME(args)` ones)."""
+    return set(re.findall(r"^[ \t]*#[ \t]*define[ \t]+([A-Za-z_]\w*)(?![\w(])",
+                          strip_comments(text), re.M))
+
+
 def run(root: Path = ROOT):
     units = []
+    macros: set = set()
     for path in sources(root):
         relative = path.relative_to(root).as_posix()
-        if relative == MACRO_HEADER:
-            continue
         text = path.read_text(encoding="utf-8", errors="surrogateescape")
+        if relative == MACRO_HEADER:
+            macros = macro_names(text)
+            continue
         units.append(parse(relative, text))
-    findings, counts, extra = check(units)
+    findings, counts, extra = check(units, macros)
     # The native port's own code (src/pc) is host code: its pointers are
     # native ones, and its longs are the host's. It is still read above, so
     # a name it initializes keeps its exemption in game code.
@@ -1072,7 +1129,35 @@ CASES = (
      "    table[1](0);\n"
      "    CALL32(void (*)(u8 *), gHandlers[2])(0);\n"
      "}\n", {4, 7, 9}),
+    # TRANSLATED_G32 is not G32: it fits an initialized (native .data) table
+    # and its extern, not a pinned global, a member or a local walking one.
+    ("extern void (*TRANSLATED_G32 gPinnedT[])(u8 *);\n"
+     "extern void (*TRANSLATED_G32 gNative[2])(void);\n"
+     "void (*TRANSLATED_G32 gNative[2])(void) = { 0 };\n"
+     "typedef struct { u8 *TRANSLATED_G32 p; } R;\n"
+     "void k(void) {\n"
+     "    void (*TRANSLATED_G32 *t)(u8 *);\n"
+     "    void (*TRANSLATED_G32 *n)(void) = gNative;\n"
+     "    t = gPinnedT;\n"
+     "    CALL32(void (*)(u8 *), t[0])(0);\n"
+     "    n[1]();\n"
+     "}\n"
+     "extern Key *TRANSLATED_G32 gP;\n"
+     "extern Key *TRANSLATED_G32 gN;\n"
+     "Key *TRANSLATED_G32 gN PSX_SECTION(\".sdata\") = 0;\n", {1, 4, 6, 12}),
+    # A port_ptr.h macro this file does not know is reported, even on an
+    # initialized table, where it would otherwise exempt its own name.
+    ("extern void (*NATIVE_G32 gPinnedN[])(u8 *);\n"
+     "void (*NATIVE_G32 gTableN[2])(void) = { 0 };\n"
+     "typedef struct { u8 *NATIVE_G32 m; } RN;\n"
+     "u8 *gS PSX_SECTION(\".sdata\") = 0;\n"
+     "extern NATIVE_G32 u8 *gBefore;\n"
+     "extern NATIVE_G32 H gBeforeH[];\n"
+     "extern u8 *G32 PSX_SECTION;\n", {1, 2, 3, 5, 6}),
 )
+# The macros the cases see, as run() reads them from src/port_ptr.h.
+CASE_MACROS = "#define G32\n#define TRANSLATED_G32 G32\n#define NATIVE_G32\n" \
+    "#define PSX_SECTION(name)\n#define PSXLONG long\n"
 
 # (line, name, stars, fixed line) for --fix.
 FIXES = (
@@ -1086,14 +1171,19 @@ FIXES = (
     ("extern T *volatile gV;", "gV", "all", "extern T *G32 volatile gV;"),
     ("    unsigned long*  addr;", "addr", "all", "    unsigned long*G32  addr;"),
     ("    Callback update;", "update", "typedef", "    Callback G32 update;"),
+    # TRANSLATED_G32 is respelled by the author, never fixed around.
+    ("extern void (*TRANSLATED_G32 gT[])(u8 *);", "gT", "all", None),
+    ("    void (*TRANSLATED_G32 *handlers)(u8 *);", "handlers", "first", None),
+    ("extern H TRANSLATED_G32 gH[];", "gH", "typedef", None),
 )
 
 
 def self_test() -> int:
     failures = 0
+    macros = macro_names(CASE_MACROS)
     for number, (source, expected) in enumerate(CASES, 1):
         unit = parse(f"case{number}.c", source)
-        found = {finding[1] for finding in check([unit])[0]}
+        found = {finding[1] for finding in check([unit], macros)[0]}
         if found != expected:
             failures += 1
             print(f"check-g32 self-test case {number}: expected lines "

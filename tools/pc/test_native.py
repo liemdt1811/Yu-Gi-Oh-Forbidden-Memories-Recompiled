@@ -113,6 +113,22 @@ def main():
     if args.sanitize:
         flags += ["-fsanitize=address,undefined", "-fno-omit-frame-pointer"]
     cases = [
+        ("state-requests", ["tests/pc/state_requests_test.c", "src/pc/guest/state_requests.c"], [], [None]),
+        ("ot-chain", ["tests/pc/ot_chain_test.c"], [], [None]),
+        ("image-loader", ["tests/pc/image_loader_test.c", "src/pc/guest/image_loader.c"], [], [None]),
+        (
+            "translated-function-map",
+            ["tests/pc/function_map_test.c"],
+            [],
+            [None],
+        ),
+        (
+            "gte-native-guest-boundary",
+            ["tests/pc/gte_test.c", "src/pc/compat/gte.c", "src/pc/compat/pgxp.c",
+             "src/pc/guest/translated_runtime.c", "src/pc/memory.c"],
+            ["-DMEMORIES_NATIVE_GTE", "-DMEMORIES_TRANSLATED"],
+            [None],
+        ),
         (
             "darwin-image",
             ["tests/pc/darwin_image_test.c", "src/pc/platform/darwin_image.c"],
@@ -124,6 +140,18 @@ def main():
             [
                 "tests/pc/translated_runtime_test.c",
                 "src/pc/guest/translated_runtime.c",
+                "src/pc/memory.c",
+            ],
+            [],
+            [None],
+        ),
+        (
+            "translated-libc",
+            [
+                "tests/pc/translated_libc_test.c",
+                "src/pc/guest/translated_libc.c",
+                "src/pc/guest/translated_runtime.c",
+                "src/pc/guest/state_io.c",
                 "src/pc/memory.c",
             ],
             [],
@@ -209,6 +237,12 @@ def main():
             "deck-shop-translated",
             ["tests/pc/deck_shop_test.c", "src/pc/saves/deck_shop.c"],
             ["-DMEMORIES_TRANSLATED"],
+            [None],
+        ),
+        (
+            "texture-clear-native",
+            ["tests/pc/texture_dump_clear_test.c", "src/pc/render/texture_dump.c"],
+            ["-Wno-strict-prototypes"],
             [None],
         ),
         (

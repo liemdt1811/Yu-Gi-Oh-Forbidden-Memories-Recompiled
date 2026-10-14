@@ -1,5 +1,13 @@
 # Controls
 
+On a phone or tablet (Android) this is a panel inside the game's window
+(`panel.h`; [Android](pc-build.md#mods-and-controls-as-panels-inside-the-window)):
+one page that a drag scrolls, between a fixed header (Keyboard/Controller,
+Player 1/2) and a fixed footer (Clear, Rebind, Cancel, Apply, OK over the
+message line), with rows and buttons 48 dp tall. Tap a binding, then Rebind,
+and press the key or the controller's button; a second tap on a binding also
+starts listening. Back is Escape. Everything below holds there too.
+
 Open **Game > Controls...**. The header holds the window title, the Player 1 /
 Player 2 segmented control, the Keyboard and Controller tabs and an "Unsaved
 changes" marker. Below it the Controller row holds the device list and a state

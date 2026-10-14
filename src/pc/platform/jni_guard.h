@@ -22,7 +22,8 @@
  * reaches it: events and joysticks (Android_JNI_PollInputDevices), the
  * window's mode and title, the cursor, the clipboard, message boxes, URLs,
  * text input, gamepads and rumble, audio devices, file dialogs, the app's
- * storage paths and files opened through SDL, and SDL's own set-up. */
+ * storage paths and files opened through SDL, SDL's own set-up, and the
+ * JNI environment and activity our own Java calls start from (android.c). */
 #if defined(SDL_PLATFORM_ANDROID) && defined(__aarch64__)
 #include "pc/guest/state.h"
 
@@ -59,6 +60,8 @@
 #define SDL_GetAndroidInternalStoragePath(...) MEMORIES_JNI(SDL_GetAndroidInternalStoragePath, __VA_ARGS__)
 #define SDL_GetAndroidExternalStoragePath(...) MEMORIES_JNI(SDL_GetAndroidExternalStoragePath, __VA_ARGS__)
 #define SDL_GetAndroidCachePath(...) MEMORIES_JNI(SDL_GetAndroidCachePath, __VA_ARGS__)
+#define SDL_GetAndroidJNIEnv(...) MEMORIES_JNI(SDL_GetAndroidJNIEnv, __VA_ARGS__)
+#define SDL_GetAndroidActivity(...) MEMORIES_JNI(SDL_GetAndroidActivity, __VA_ARGS__)
 #define SDL_IOFromFile(...) MEMORIES_JNI(SDL_IOFromFile, __VA_ARGS__)
 #define SDL_LoadFile(...) MEMORIES_JNI(SDL_LoadFile, __VA_ARGS__)
 #define SDL_InitSubSystem(...) MEMORIES_JNI(SDL_InitSubSystem, __VA_ARGS__)

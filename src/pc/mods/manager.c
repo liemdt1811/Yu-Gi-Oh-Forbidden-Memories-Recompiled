@@ -615,6 +615,7 @@ static void log_applied(void)
     for (int i = 0; i < Mods_Count(); i++) enabled[i] = Mods_Active(i);
     Mods_Overlaps(enabled, NULL, NULL);
 }
+void Mods_OverlapsForget(void) { overlap_generation++; }
 void Mods_SetOverlapCards(int (*card)(const char *text, long number), int (*name)(int id, char *out, size_t size),
                           int (*info)(int id, int *base, int *type, int *attribute))
 {

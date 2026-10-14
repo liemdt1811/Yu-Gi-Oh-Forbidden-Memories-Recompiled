@@ -4,6 +4,7 @@
 #include "translated_state_backend.h"
 #include "state_arm64.h"
 #include "state_io.h"
+#include "state_requests.h"
 #include "state_subsystems.h"
 #include "translated_state_memory.h"
 #include "translated_runtime.h"
@@ -18,6 +19,7 @@
 #include <sys/mman.h>
 #include <signal.h>
 #include <unistd.h>
+#include "pc/tower/tower.h"
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>
@@ -38,11 +40,8 @@ static NativeEntry saved_entry;
 static uint8_t *game_stack, *stack_mapping;
 static size_t mapping_size;
 static int (*game_entry)(void), game_result;
-static volatile sig_atomic_t requested, requested_slot = 1;
-static int startup_done, last_slot;
-static unsigned scripted_frame;
-static const char *scripted_path;
-static int scripted_done;
+static MemoriesStateRequests requests = MEMORIES_STATE_REQUESTS_INIT;
+static int last_slot;
 static uint8_t *pending_image;
 static size_t pending_size;
 static MemoriesNativeMemoryState *pending_memory;
@@ -182,19 +181,26 @@ int Memories_NativeStateRunGame(int (*entry)(void))
 }
 void Memories_NativeStateRequest(int what, int slot)
 {
-    if (slot > 0) requested_slot = slot;
-    requested = what;
+    Memories_StateQueue(&requests, what, slot);
 }
 int Memories_NativeStateSave(const char *path)
 {
     NativeEntry entry = {0};
+    /* A tower whose mod turns save states off (tower.h, Tower_Guard). */
+    if (Tower_Guard(TOWER_GUARD_SAVE_STATE, 0, NULL, 0)) return -1;
     uint32_t header[2] = {STATE_VERSION, Memories_StateBuildId()};
     char partial[1024];
     MemoriesState state = {0, NULL, NULL, 0};
     MemoriesStateField field;
-    int failed;
-    if (!boundary()) return -2;
-    if (!path || snprintf(partial, sizeof(partial), "%s.partial", path) >= (int)sizeof(partial) || executable(&entry)) return -1;
+    int failed, error = 0, length;
+    if (!boundary()) { errno = EINVAL; return -2; }
+    if (!path) { errno = EINVAL; return -1; }
+    length = snprintf(partial, sizeof(partial), "%s.partial", path);
+    if (length < 0 || (size_t)length >= sizeof(partial)) {
+        errno = ENAMETOOLONG;
+        return -1;
+    }
+    if (executable(&entry)) { errno = EINVAL; return -1; }
     entry.context = Memories_Arm64Boundary;
     entry.stack_base = (uintptr_t)game_stack;
     entry.stack_size = STACK_SIZE;
@@ -208,21 +214,37 @@ int Memories_NativeStateSave(const char *path)
     field = (MemoriesStateField){GuestRuntime_Memory(), sizeof(MemoriesMemory)};
     Memories_StateChunk(&state, "memory", &field, 1);
     failed = Memories_NativeMemorySave(&state);
+    if (failed) error = errno ? errno : EIO;
     Memories_StateSubsystems(&state);
     field = (MemoriesStateField){(void *)(uintptr_t)entry.context.sp,
                                 (uintptr_t)game_stack + STACK_SIZE - entry.context.sp};
     Memories_StateChunk(&state, "arm64-stack", &field, 1);
-    if (Memories_StateSeal(&state)) failed = -1;
+    if (Memories_StateSeal(&state) && !failed) {
+        failed = -1;
+        error = errno ? errno : EIO;
+    }
+    if (ferror(state.file) && !failed) {
+        failed = -1;
+        error = errno ? errno : EIO;
+    }
     hold(0);
-    if (ferror(state.file)) failed = -1;
-    if (fclose(state.file)) failed = -1;
-    if (!failed && rename(partial, path)) failed = -1;
-    if (failed) remove(partial);
-    else fprintf(stderr, "memories-pc: ARM64 state saved: %s\n", path);
+    if (fclose(state.file) && !failed) {
+        failed = -1;
+        error = errno ? errno : EIO;
+    }
+    if (!failed && rename(partial, path)) {
+        failed = -1;
+        error = errno;
+    }
+    if (failed) {
+        remove(partial);
+        errno = error;
+    } else fprintf(stderr, "memories-pc: ARM64 state saved: %s\n", path);
     return failed ? -1 : 0;
 }
 int Memories_NativeStateLoad(const char *path, char *why, size_t size)
 {
+    if (Tower_Guard(TOWER_GUARD_LOAD_STATE, 0, why, size)) return -1;   /* the caller tells */
     FILE *file;
     long length;
     uint8_t *image = NULL;
@@ -273,12 +295,7 @@ int Memories_NativeStateLoad(const char *path, char *why, size_t size)
     if (!pending_memory) { free(image); return -1; }
     pending_image = image;
     pending_size = state.image_size;
-    {
-        const char *name = strrchr(path, '/');
-        int slot = 0, consumed = 0;
-        name = name ? name + 1 : path;
-        last_slot = sscanf(name, "slot%d.state%n", &slot, &consumed) == 1 && consumed && !name[consumed] && slot > 0 ? slot : 0;
-    }
+    last_slot = Memories_StateSlotFromPath(path);
     fprintf(stderr, "memories-pc: ARM64 state loading: %s\n", path);
     Memories_Arm64Restore(&service, 2);
 refused:
@@ -286,22 +303,19 @@ refused:
     if (why && size) snprintf(why, size, "%s", reason);
     return -1;
 }
-static void slot_path(char *out, size_t size, int slot)
+static int save_requested(const char *path, int tell)
 {
-    const char *directory = getenv("MEMORIES_STATE_DIR");
-    char relative[64];
-    if (directory) {
-        Paths_MakeDirs(directory);
-        snprintf(out, size, "%s/slot%d.state", directory, slot);
-    } else {
-        snprintf(relative, sizeof(relative), "states/slot%d.state", slot);
-        Paths_User(out, size, relative);
-    }
+    if (Tower_Guard(TOWER_GUARD_SAVE_STATE, tell, NULL, 0)) return -1;
+    Paths_WriteBegin();
+    if (Memories_NativeStateSave(path)) return Memories_StateSaveFailure(path, tell);
+    Paths_WriteDone(path);
+    return 0;
 }
-static void load_path(const char *path)
+static void load_requested(const char *path, int slot)
 {
     char why[900] = "not at a game state boundary";
     static const char *const ok[] = {"OK"};
+    (void)slot; /* The native loader records the slot before switching stacks. */
     if (Memories_NativeStateLoad(path, why, sizeof(why))) {
         fprintf(stderr, "memories-pc: ARM64 state: %s\n", why);
         Menu_ShowNotice("Save state not loaded", why, ok, 1, 0, NULL);
@@ -309,61 +323,10 @@ static void load_path(const char *path)
 }
 void Memories_NativeStatePoint(unsigned frames)
 {
-    char path[1024];
-    int what;
-    if (!boundary()) return;
-    if (!startup_done && frames >= 30) {
-        const char *wanted = getenv("MEMORIES_LOAD_STATE"), *script = getenv("MEMORIES_SAVE_STATE");
-        startup_done = 1;
-        if (script && strchr(script, ':')) {
-            scripted_frame = (unsigned)strtoul(script, NULL, 10);
-            scripted_path = strchr(script, ':') + 1;
-        }
-        if (wanted && *wanted) {
-            if (strspn(wanted, "0123456789") == strlen(wanted)) {
-                slot_path(path, sizeof(path), atoi(wanted));
-            } else snprintf(path, sizeof(path), "%s", wanted);
-            load_path(path);
-        }
-    }
-    if (scripted_path && !scripted_done && frames >= scripted_frame) {
-        scripted_done = 1;
-        Memories_NativeStateSave(scripted_path);
-    }
-    {
-        static unsigned every, next, index;
-        static int read;
-        if (!read) {
-            const char *setting = getenv("MEMORIES_AUTOSAVE");
-            unsigned long seconds = setting ? strtoul(setting, NULL, 10) : 0;
-            read = 1;
-            every = seconds <= UINT32_MAX / 60u ? (unsigned)seconds * 60u : 0;
-            next = frames + every;
-        }
-        if (every && frames >= next) {
-            const char *directory = getenv("MEMORIES_AUTOSAVE_DIR");
-            next = frames + every;
-            if (directory) {
-                Paths_MakeDirs(directory);
-                snprintf(path, sizeof(path), "%s/auto%u.state", directory, index % 3 + 1);
-            } else {
-                char relative[64];
-                snprintf(relative, sizeof(relative), "states/auto%u.state", index % 3 + 1);
-                Paths_User(path, sizeof(path), relative);
-            }
-            ++index;
-            if (Memories_NativeStateSave(path)) Crash_ReportSoft("autosave failed", path);
-        }
-    }
-    what = __atomic_exchange_n(&requested, 0, __ATOMIC_SEQ_CST);
-    if (what) {
-        slot_path(path, sizeof(path), requested_slot);
-        if (what == 1) {
-            if (Memories_NativeStateSave(path)) Crash_ReportSoft("state save failed", path);
-        } else if (what == 2) load_path(path);
-    }
+    static const MemoriesStateActions actions = {save_requested, load_requested};
+    if (boundary()) Memories_StateProcess(&requests, frames, &actions);
 }
-int Memories_NativeStateStartupDone(void) { return startup_done; }
+int Memories_NativeStateStartupDone(void) { return requests.startup_done; }
 int Memories_NativeStateLastSlot(void) { return last_slot; }
 void Memories_NativeStateRemapRange(MemoriesState *state, uint32_t from, uint32_t to, uint32_t size)
 {

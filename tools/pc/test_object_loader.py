@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Test the code mod loader in a 32-bit process on Linux, on Windows, or both.
+"""Test the code mod loader in a 32-bit process on Linux, on Windows, or both;
+and (--target windows-x64) in a 64-bit Windows process with the
+x86_64-windows objects.
 
 Builds the fixtures in tests/pc/mod_fixtures with build_mod.py (the good one
 as a mod is built; the broken ones with the flag that breaks each), builds
@@ -21,31 +23,42 @@ SOURCES = ["src/pc/compat/fs.c", "tests/pc/object_loader_test.c", "src/pc/mods/o
            "src/pc/guest/branch_thunks.c"]
 
 
-def fixtures():
-    directory = os.path.join(OUT, "fixtures")
-    objects = os.path.join(OUT, "objects")
+def fixtures(target="i386"):
+    directory = os.path.join(OUT, "fixtures" if target == "i386" else f"fixtures-{target}")
+    objects = os.path.join(OUT, "objects" if target == "i386" else f"objects-{target}")
     source = lambda *names: [os.path.join(FIXTURES, name) for name in names]
-    build_mod.compile_object(source("good.c", "good_other.c"), os.path.join(directory, "good.o"), objects)
+    compile_object = lambda sources, output, folder, flags=(): build_mod.compile_object(sources, output, folder, flags,
+                                                                                       target)
+    compile_object(source("good.c", "good_other.c"), os.path.join(directory, "good.o"), objects)
+    if target != "i386":
+        # The 32-bit object, the 64-bit one without its tag, and one tagged
+        # for another x86-64 ABI: all refused.
+        build_mod.compile_object(source("good.c", "good_other.c"), os.path.join(directory, "i386.o"),
+                                 os.path.join(objects, "i386"))
+        objcopy = build_mod.tool("llvm-objcopy")
+        subprocess.run([objcopy, "--remove-section", ".memories.abi", os.path.join(directory, "good.o"),
+                        os.path.join(directory, "untagged.o")], check=True)
+        build_mod.tag_abi(shutil.copy(os.path.join(directory, "untagged.o"), os.path.join(directory, "linux-abi.o")),
+                          "x86_64-linux")
     for name, files, flags in (("pic", ["good.c", "good_other.c"], ["-fPIC"]),
                                ("unknown", ["unknown.c"], []),
                                ("common", ["common.c"], ["-fcommon"]),
                                ("ctor", ["ctor.c"], []),
                                ("protected", ["protected.c"], ["-fstack-protector-all"])):
-        build_mod.compile_object(source(*files), os.path.join(directory, name + ".o"),
-                                 os.path.join(objects, name), flags)
+        compile_object(source(*files), os.path.join(directory, name + ".o"), os.path.join(objects, name), flags)
     # The same code without debugging information, and built from another
     # folder: both must hash as good.o does (save states keep the hash).
     # Built at -O1, the code differs and so must the hash.
-    build_mod.compile_object(source("good.c", "good_other.c"), os.path.join(directory, "good-nodebug.o"),
-                             os.path.join(objects, "nodebug"), ["-g0"])
+    compile_object(source("good.c", "good_other.c"), os.path.join(directory, "good-nodebug.o"),
+                   os.path.join(objects, "nodebug"), ["-g0"])
     moved = os.path.join(OUT, "moved-sources")
     os.makedirs(moved, exist_ok=True)
     for name in ("good.c", "good_other.c"):
         shutil.copy(os.path.join(FIXTURES, name), moved)
-    build_mod.compile_object([os.path.join(moved, "good.c"), os.path.join(moved, "good_other.c")],
-                             os.path.join(directory, "good-moved.o"), os.path.join(objects, "moved"))
-    build_mod.compile_object(source("good.c", "good_other.c"), os.path.join(directory, "good-o1.o"),
-                             os.path.join(objects, "o1"), ["-O1"])
+    compile_object([os.path.join(moved, "good.c"), os.path.join(moved, "good_other.c")],
+                   os.path.join(directory, "good-moved.o"), os.path.join(objects, "moved"))
+    compile_object(source("good.c", "good_other.c"), os.path.join(directory, "good-o1.o"),
+                   os.path.join(objects, "o1"), ["-O1"])
     with open(os.path.join(directory, "good.o"), "rb") as handle:
         good = handle.read()
     with open(os.path.join(directory, "truncated.o"), "wb") as handle:
@@ -65,8 +78,10 @@ def run_test(target, directory):
     else:
         import build_win32_deps
         build_win32_deps.use_toolchain()
-        program = os.path.join(OUT, "object_loader_test.exe")
-        command = ["i686-w64-mingw32-clang", *flags, *SOURCES, "-static", "-o", program]
+        wide = target == "windows-x64"
+        program = os.path.join(OUT, "object_loader_test" + ("64" if wide else "") + ".exe")
+        command = ["x86_64-w64-mingw32-clang" if wide else "i686-w64-mingw32-clang", *flags, *SOURCES, "-static",
+                   "-o", program]
         launch, environment = [program], dict(os.environ)
         if sys.platform != "win32":
             launch = ["wine", program]
@@ -88,12 +103,12 @@ def run_test(target, directory):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--target", choices=("linux", "windows", "both"), default="both")
+    parser.add_argument("--target", choices=("linux", "windows", "windows-x64", "both"), default="both")
     options = parser.parse_args()
     os.chdir(ROOT)
-    directory = fixtures()
     targets = ["linux", "windows"] if options.target == "both" else [options.target]
-    ok = all([run_test(target, directory) for target in targets])
+    ok = all([run_test(target, fixtures("x86_64-windows" if target == "windows-x64" else "i386"))
+              for target in targets])
     return 0 if ok else 1
 
 

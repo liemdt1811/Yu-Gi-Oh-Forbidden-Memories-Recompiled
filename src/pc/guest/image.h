@@ -17,11 +17,7 @@
  * readable holds it, an untranslated access would silently reach that. */
 #include <stddef.h>
 
-#define MEMORIES_GUEST_RAM 0x80000000u
-#define MEMORIES_GUEST_RAM_SIZE 0x200000u
-#define MEMORIES_GUEST_SCRATCHPAD 0x9f800000u
-#define MEMORIES_GUEST_SCRATCHPAD_RETAIL 0x1f800000u
-#define MEMORIES_GUEST_SCRATCHPAD_SIZE 0x400u
+#include "pc/memory_map.h"
 /* The retail scratchpad view's address as the port's (the console's two
  * views of the same RAM); any other address as it is. */
 #define MEMORIES_SCRATCHPAD_VIEW(address) \
@@ -34,6 +30,17 @@ extern int Memories_ScratchpadRetailView;
 
 /* Both return 0 on success and print the reason on failure. */
 int Memories_GuestMap(void);
+/* What Memories_GuestMap could not do, in a few words for the player (the
+ * Linux and Android one says; "" otherwise). */
+const char *Memories_GuestMapError(void);
+/* The mappings that held the range Memories_GuestMap could not have, one
+ * per line ("start-end perms name", from /proc/self/maps), or "" (Linux and
+ * Android; "" elsewhere). */
+const char *Memories_GuestMapOccupants(void);
+/* Whether this kernel refuses MAP_FIXED_NOREPLACE over a mapping (Linux
+ * 4.17 and later): 1 yes, 0 no (it takes the address as a hint), -1 not
+ * known (not Linux, or the probe failed). */
+int Memories_KernelRefusesTakenRange(void);
 /* Copy a user-supplied PS-X EXE's initialized image to its load address.
  * MIPS text comes along unused; it keeps every data offset exact. */
 int Memories_GuestLoadExe(const char *path);

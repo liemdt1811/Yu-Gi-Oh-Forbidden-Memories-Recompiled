@@ -8,15 +8,20 @@
  *
  * The compiler's own helpers are here too: 32-bit x86 code does 64-bit
  * division and some conversions by calling them, and both toolchains
- * (libgcc, compiler-rt) have the same ones under the same names. So are the
- * game's indirect-branch thunks, which build_mod.py has every indirect call
- * of a mod go through (src/pc/guest/branch_thunks.c).
+ * (libgcc, compiler-rt) have the same ones under the same names; 64-bit
+ * Windows code probes a stack frame over 4 KiB with ___chkstk_ms. So are
+ * the game's indirect-branch thunks, which build_mod.py has every indirect
+ * call of a mod go through (src/pc/guest/branch_thunks.c): seven registers
+ * on i386, r11 alone on x86-64 (clang's retpoline uses no other), and on
+ * AArch64 the SLS thunks of x0-x29 but x18, which a mod's own weak copies
+ * are bound to.
  *
  * Adding a name here is a promise to every mod built afterwards; removing one
  * breaks the mods that use it. The SDK's headers (sdk/include) declare
  * exactly this list. */
 #include "exports.h"
 #include <math.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -46,12 +51,24 @@ extern void __x86_indirect_thunk_ecx(void);
 extern void __x86_indirect_thunk_edi(void);
 extern void __x86_indirect_thunk_edx(void);
 extern void __x86_indirect_thunk_esi(void);
+#elif defined(__x86_64__) && defined(_WIN32)
+extern void ___chkstk_ms(void);
+extern void __x86_indirect_thunk_r11(void);
+#elif defined(__aarch64__) && !defined(__APPLE__)   /* the macOS game links dylibs */
+/* The game's SLS thunks (branch_thunks.c), for the weak copies clang puts
+ * in each AArch64 unit of a mod (object_loader.c binds those to these). */
+#define T(n) extern void __llvm_slsblr_thunk_x##n(void);
+T(0) T(1) T(2) T(3) T(4) T(5) T(6) T(7) T(8) T(9) T(10) T(11) T(12) T(13) T(14) T(15) T(16) T(17)
+T(19) T(20) T(21) T(22) T(23) T(24) T(25) T(26) T(27) T(28) T(29)
+#undef T
 #endif
 
 /* rand as the C standard's own example has it, so a mod draws the same
  * numbers on both systems (glibc's and the Windows runtime's differ). One
- * sequence for all mods; the game's own random numbers are separate. */
-static unsigned long mod_seed = 1;
+ * sequence for all mods; the game's own random numbers are separate. The
+ * seed is 32 bits on every target (the C standard's `unsigned long` is 64 on
+ * LP64), which is what the save states' "mod-rng" chunk has always held. */
+static uint32_t mod_seed = 1;
 static int mod_rand(void)
 {
     mod_seed = mod_seed * 1103515245u + 12345u;
@@ -82,6 +99,17 @@ static const struct { const char *name; Function function; } functions[] = {
     F(__udivmoddi4), F(__umoddi3), F(__x86_indirect_thunk_eax), F(__x86_indirect_thunk_ebp),
     F(__x86_indirect_thunk_ebx), F(__x86_indirect_thunk_ecx), F(__x86_indirect_thunk_edi),
     F(__x86_indirect_thunk_edx), F(__x86_indirect_thunk_esi),
+#elif defined(__x86_64__) && defined(_WIN32)
+    F(___chkstk_ms), F(__x86_indirect_thunk_r11),
+#elif defined(__aarch64__) && !defined(__APPLE__)   /* the macOS game links dylibs */
+    F(__llvm_slsblr_thunk_x0), F(__llvm_slsblr_thunk_x1), F(__llvm_slsblr_thunk_x10), F(__llvm_slsblr_thunk_x11),
+    F(__llvm_slsblr_thunk_x12), F(__llvm_slsblr_thunk_x13), F(__llvm_slsblr_thunk_x14), F(__llvm_slsblr_thunk_x15),
+    F(__llvm_slsblr_thunk_x16), F(__llvm_slsblr_thunk_x17), F(__llvm_slsblr_thunk_x19), F(__llvm_slsblr_thunk_x2),
+    F(__llvm_slsblr_thunk_x20), F(__llvm_slsblr_thunk_x21), F(__llvm_slsblr_thunk_x22), F(__llvm_slsblr_thunk_x23),
+    F(__llvm_slsblr_thunk_x24), F(__llvm_slsblr_thunk_x25), F(__llvm_slsblr_thunk_x26), F(__llvm_slsblr_thunk_x27),
+    F(__llvm_slsblr_thunk_x28), F(__llvm_slsblr_thunk_x29), F(__llvm_slsblr_thunk_x3), F(__llvm_slsblr_thunk_x4),
+    F(__llvm_slsblr_thunk_x5), F(__llvm_slsblr_thunk_x6), F(__llvm_slsblr_thunk_x7), F(__llvm_slsblr_thunk_x8),
+    F(__llvm_slsblr_thunk_x9),
 #endif
     F(abs), F(acos), F(asin), F(atan), F(atan2), F(atan2f), F(atoi), F(bsearch), F(calloc), F(ceil),
     F(ceilf), F(cos), F(cosf), F(exp), F(expf), F(fabs), F(fabsf), F(fclose), F(fgets), F(floor),

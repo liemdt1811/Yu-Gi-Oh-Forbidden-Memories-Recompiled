@@ -113,7 +113,7 @@ You may give one pool, two or all three. A pool you leave out stays the base's.
 ### Its own face
 
 **`portraits/dark-simon.png`** — any size, any proportions. The middle of it is
-taken at the portrait's shape and reduced to the 48×48 of 64 colours the
+taken at the portrait's shape and reduced to the 48×48 of 64 colors the
 console's slot holds, **and** the file itself is kept whole for the scaled
 picture. So one file gives both: the portrait is as sharp as your image is at
 View → Internal 2x and above, and correct at 1x.
@@ -312,9 +312,22 @@ Every condition given must hold. Without `unlock` it is shown from the start.
 | `story` | a campaign story flag. `0x6E0 + n` is "duelist *n* is unlocked in Free Duel", so `1762` is Teana's |
 | `card` | a card the trunk or deck must hold — by id or name |
 | `copies` | how many of `card` (**1** by default) |
+| `tower` | this run's [tower](tower-mode.md) (the last mod's that has one; with none on, it does not hold): `true` for it won to its top, or a floor, `1` up, won on this save |
+
+**Only in the tower.** `"tower_only": true` on an added duelist keeps it off
+the Free Duel grid until the [tower](tower-mode.md) lets it out: a won floor
+fights it, or names it in its reward's `unlock_duelist`. Whatever else its
+`unlock` says must hold too. The tower itself fights it all the same; a
+stock duelist keeps its campaign (`tower_only` on a `replace` is noted and
+left out).
+
+```json
+{ "id": "ghost", "copy": "Simon Muran", "name": "Ghost Simon", "tower_only": true }
+```
 
 **Nothing is stored.** Each condition is read from the save's own records,
-trunk and flags every time the Free Duel screen is built. So an unlock follows
+trunk and flags (and its climb of the tower) every time the Free Duel screen
+is built. So an unlock follows
 whichever save is loaded, needs no file of its own, and a win in the duel you
 just left opens up whatever it was the condition for — the screen is built
 again on the way back.
@@ -751,13 +764,19 @@ The Free Duel grid's slot is tiny: 48×48 pixels, 8 bits a pixel, through a
 Your PNG becomes both of these:
 
 1. **The console's portrait.** Centre-cropped to a square, box-averaged down to
-   48×48, and reduced to a palette of 64 colours. This is what the game draws at
-   View → Internal 1x, and it is what the grid's cell genuinely contains.
-2. **The picture itself, kept whole.** At Internal 2x and above, the renderer
-   draws your file at its own resolution instead of the 48×48 cell.
+   48×48, and reduced to a palette of 64 colors. It is what the grid's cell
+   genuinely contains, and what the game draws when your picture is 48×48 or
+   smaller.
+2. **The picture itself, kept whole.** A picture bigger than 48×48 is
+   registered the way a texture pack's image is, and a pack's image stands in
+   for the cell's texels at every scale: at View → Internal 1x its middle
+   square averaged down to 48×48 in the console's 15-bit color (not reduced
+   to 64), and at Internal 2x and above drawn at its own resolution.
 
 So a portrait is as sharp as the file you give it, with no second image and no
-"hd" folder. Give it one good picture.
+"hd" folder. Give it one good picture. The FM Editor's Duelists tab shows each
+of these as the game draws it, and `tests/pc/editor_duelists_runtime.py`
+holds its 1x picture to the game's frames pixel for pixel.
 
 #### What to give it
 
@@ -767,8 +786,9 @@ So a portrait is as sharp as the file you give it, with no second image and no
 - **Large is fine.** 512×512 or more is drawn at its own size when the internal
   resolution is high enough.
 - Transparency is not kept: the portrait slot has no alpha.
-- Strong, flat colour survives the 64-colour reduction better than a soft
-  gradient, which can band at 1x. The full-size picture is unaffected.
+- A picture of 48×48 or less is shown in its 64 colors: strong, flat color
+  survives that reduction better than a soft gradient, which can band. A
+  bigger picture is unaffected.
 
 ---
 
@@ -1053,7 +1073,7 @@ along the top of the picture, above the FREE DUEL artwork: the button to go
 back at the left, "PAGE n/m" centred, the button to go on at the right, and
 beside each button the game's own red arrow — the sprite the card viewer puts
 at the foot of its page and the hand's card cycling puts either side of a card
-(texture `0x20C`, the operand before the colour choosing which way it faces).
+(texture `0x20C`, the operand before the color choosing which way it faces).
 A single page says nothing at all.
 
 All three runs are one string in one box on channel 2. Channel 3 is Build
@@ -1068,7 +1088,7 @@ number goes, and the English when a translation gives anything else. "L1" and
 "R1" are the buttons' own names and stay as they are.
 
 **The size command decides whether a box is drawn from the font.** `0xF8 0x04`
-is the cell size, not the colour — the colour is `0x0A`. Size 1 is the 8x8
+is the cell size, not the color — the color is `0x0A`. Size 1 is the 8x8
 sheet the card counts are drawn in and it sets `flags_34`'s `0x100`, after
 which `DuelEffect_AppendEntry` stamps every entry `flags_11 = 0xC0` and
 `func_80035E20` draws them through `sprites[2]` from that sheet. Those entries
@@ -1216,8 +1236,12 @@ What the rest of the port does with a roster it cannot see is covered too.
 `pc_tables`, `pc_free_duel_progress`, `pc_card_drops` and `pc_rank` link units
 this touches, and share `tests/pc/duelists_stubs.c`: the list as a run with no
 duelist mod, the disc's forty, which is what their cases are written against.
-`pc_fm_editor` keeps a `decks` or `drops` entry naming an added duelist, or
-either table named as a file, exactly as the mod wrote it.
+`pc_fm_editor_roster` reads a mod's own roster as duelists to edit and writes it back
+in these folders (`fm_editor/tests/test_roster.py`), and keeps a `decks` or
+`drops` entry naming another mod's duelist, or either table named as a file,
+exactly as the mod wrote it. `tests/pc/editor_duelists_runtime.py` plays a
+roster the FM Editor made: the pages, the portraits against the game's frames,
+a duel's deck and its drop.
 
 `tests/pc/duelists_test.c` (`ctest -R pc_duelists`) covers what is settled
 without a screen: slots and their collisions, replacement precedence, the AI

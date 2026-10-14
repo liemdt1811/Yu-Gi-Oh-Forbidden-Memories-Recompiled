@@ -1,4 +1,4 @@
-/* A menu button of words (menu_label.h). The frames' colours are the retail
+/* A menu button of words (menu_label.h). The frames' colors are the retail
  * entries' own, read off the title at the console's resolution
  * (2026-09-30): LOAD's dark rim, olive border (96, 96, 8), fill about
  * (40, 32, 32) and grey lines (128, 120, 120) five rows in; NEW GAME's red,
@@ -17,13 +17,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-enum { F = MENU_LABEL_FACTOR, H = MENU_LABEL_HEIGHT, PAD = 14, MIN_WIDTH = 64, MAX_WIDTH = 240, TEXT_PX = 17 };
+enum { H = MENU_LABEL_HEIGHT, PAD = 14, MIN_WIDTH = 64, MAX_WIDTH = 240, TEXT_PX = 17 };
+/* How many times the drawn size the PNG is made: MENU_LABEL_FACTOR, more
+ * for a button drawn bigger (MenuLabel_Make's `factor`). */
+static int F = MENU_LABEL_FACTOR;
 /* Bumped when the drawing changes, so an old file is not used. */
 enum { STYLE = 1 };
 
-typedef struct { unsigned char r, g, b; } Colour;
+typedef struct { unsigned char r, g, b; } Color;
 
-static void fill(unsigned char *rgba, int width, int x0, int y0, int x1, int y1, Colour c)
+static void fill(unsigned char *rgba, int width, int x0, int y0, int x1, int y1, Color c)
 {
     int x, y;
     for (y = y0 * F; y < y1 * F; y++) {
@@ -38,7 +41,7 @@ static void fill(unsigned char *rgba, int width, int x0, int y0, int x1, int y1,
 }
 
 /* The ink over what is there at coverage `cover`. */
-static void blend(unsigned char *p, Colour c, int cover)
+static void blend(unsigned char *p, Color c, int cover)
 {
     p[0] = (unsigned char)((p[0] * (255 - cover) + c.r * cover) / 255);
     p[1] = (unsigned char)((p[1] * (255 - cover) + c.g * cover) / 255);
@@ -124,10 +127,10 @@ static void spread(const unsigned char *cover, unsigned char *out, int wide, int
 
 static void draw(const char *text, int selected, int width, int words, unsigned char *rgba)
 {
-    const Colour rim = {16, 8, 16}, olive = {96, 96, 8}, body = {40, 32, 32}, grey_line = {128, 120, 120};
-    const Colour red = {168, 16, 16}, orange = {232, 136, 0}, dark = {40, 24, 24};
-    const Colour blue_a = {104, 96, 200}, white_line = {224, 224, 248}, blue_b = {48, 64, 184};
-    const Colour grey = {176, 176, 176}, shadow = {8, 0, 8}, green = {56, 144, 48}, heart = {224, 248, 216};
+    const Color rim = {16, 8, 16}, olive = {96, 96, 8}, body = {40, 32, 32}, grey_line = {128, 120, 120};
+    const Color red = {168, 16, 16}, orange = {232, 136, 0}, dark = {40, 24, 24};
+    const Color blue_a = {104, 96, 200}, white_line = {224, 224, 248}, blue_b = {48, 64, 184};
+    const Color grey = {176, 176, 176}, shadow = {8, 0, 8}, green = {56, 144, 48}, heart = {224, 248, 216};
     int wide = width * F, high = H * F, i;
     unsigned char *cover = calloc((size_t)wide * high, 1), *around = calloc((size_t)wide * high, 1);
     if (!cover || !around) {
@@ -177,21 +180,29 @@ static uint32_t fnv(const char *text, uint32_t hash)
     return hash;
 }
 
-int MenuLabel_Make(const char *text, int selected, char *path, size_t size, int *width, int *height, char *why,
-                   size_t why_size)
+int MenuLabel_Make(const char *text, int selected, int factor, char *path, size_t size, int *width, int *height,
+                   char *why, size_t why_size)
 {
-    char relative[96];
-    int words = set_words(text, NULL, 0), w;
+    char relative[96], larger[16] = "";
+    int words, w;
     unsigned char *rgba;
     png_image image;
     FILE *file;
     FT_Face face = label_face();
+    /* Its width as at 100, whatever size it is made at: measured at
+     * MENU_LABEL_FACTOR, then the words set again at `factor`. */
+    F = MENU_LABEL_FACTOR;
+    words = set_words(text, NULL, 0);
     /* No face at all: the frame alone, so the button is still there. */
     if (words < 0) {
         fprintf(stderr, "memories-pc: menu: no font for the label \"%s\"; its frame is drawn empty\n", text);
         words = 0;
     }
     w = words / F + 2 * PAD;
+    if (factor > MENU_LABEL_FACTOR && words > 0) {
+        F = factor;
+        words = set_words(text, NULL, 0);
+    }
     if (w < MIN_WIDTH) w = MIN_WIDTH;
     if (w > MAX_WIDTH) w = MAX_WIDTH;
     w = (w + 1) & ~1;
@@ -199,9 +210,10 @@ int MenuLabel_Make(const char *text, int selected, char *path, size_t size, int 
     *height = H;
     /* Named by the words, the face and the style: another face (a serif
      * installed since) makes another file. */
-    snprintf(relative, sizeof(relative), "cache/menu-labels/%08x-%d-%d.png",
+    if (F != MENU_LABEL_FACTOR) snprintf(larger, sizeof(larger), "-x%d", F);
+    snprintf(relative, sizeof(relative), "cache/menu-labels/%08x-%d-%d%s.png",
              (unsigned)fnv(text, fnv(face && face->family_name ? face->family_name : "-", 2166136261u + STYLE)),
-             selected ? 1 : 0, w);
+             selected ? 1 : 0, w, larger);
     if (Paths_User(path, size, relative) != 0) {
         snprintf(why, why_size, "the user directory's path is too long");
         return 0;

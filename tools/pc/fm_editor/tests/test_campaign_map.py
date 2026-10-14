@@ -183,7 +183,7 @@ class CheckTest(unittest.TestCase):
         self.assertIn("takes 0 frames", text)
         self.assertIn("leads to 17", text)
         self.assertIn("Confirm leads to 16", text)
-        self.assertIn("never taken while exit 1 is", text)
+        self.assertIn("never taken while arrow 1 is", text)
         self.assertIn("needs no direction", text)
         self.assertIn("off the screen", text)
         self.assertTrue(all(isinstance(i.target, int) for i in issues))
@@ -212,12 +212,12 @@ class SpriteTest(unittest.TestCase):
         data = mf.map_fixture().game().campaign_map
         image, left, top = cm.arrow_image(data, 0)
         self.assertEqual((image.width, image.height, left, top), (16, 16, -4, -8))
-        colour = cm.colour(mf.STRIP_COLOUR)
-        self.assertEqual(image.pixel(0, 0), colour)
+        color = cm.color(mf.STRIP_COLOR)
+        self.assertEqual(image.pixel(0, 0), color)
         self.assertEqual(image.pixel(15, 0)[3], 0)           # the clear columns on the right
         mirrored, left, top = cm.arrow_image(data, 4)
         self.assertEqual((left, top), (-12, -8))            # -(dx + width)
-        self.assertEqual(mirrored.pixel(15, 0), colour)
+        self.assertEqual(mirrored.pixel(15, 0), color)
         self.assertEqual(mirrored.pixel(0, 0)[3], 0)
 
     def test_marker_and_panel(self):
@@ -237,7 +237,7 @@ class ViewTest(unittest.TestCase):
         m = self.model()
         self.assertEqual(len(m.polygons), 1)
         self.assertEqual(len(m.images), 1)
-        self.assertEqual(m.vram[240 * 1024 + 1], mf.TEXTURE_COLOUR)
+        self.assertEqual(m.vram[240 * 1024 + 1], mf.TEXTURE_COLOR)
         self.assertEqual(m.world((300, 0, 0)), (300 * mv.SCALE, 0, 0))
 
     def test_render(self):

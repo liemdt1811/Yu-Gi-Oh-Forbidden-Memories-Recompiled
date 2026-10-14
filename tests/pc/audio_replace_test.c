@@ -408,6 +408,50 @@ static void test_manifest(void)
     Json_Free(bad);
 }
 
+/* A code mod's own sounds (host->sound_add): converted, played on the sfx
+ * bus by the driver's volume and pan law, started over rather than twice
+ * while they play, and gone when freed or when their mod is. */
+static void test_clips(void)
+{
+    int16_t flat[8];
+    int sums[6], last[6], a, b, i;
+    for (i = 0; i < 8; i++) flat[i] = 8000; /* mono, 44.1 kHz */
+    assert(AudioReplace_AddClip(5, "clips", NULL, 8, 1, AUDIO_RATE) == -1);
+    assert(AudioReplace_AddClip(5, "clips", flat, 8, 0, AUDIO_RATE) == -1);
+    assert(AudioReplace_AddClip(5, "clips", flat, 8, 1, 0) == -1);
+    a = AudioReplace_AddClip(5, "clips", flat, 8, 1, AUDIO_RATE);
+    b = AudioReplace_AddClip(6, "other", flat, 8, 1, AUDIO_RATE);
+    assert(a > 0 && b > 0 && a != b);
+    /* Not a game id: no replaced sound effect answers to it. */
+    assert(!AudioReplace_Sfx(a, 255, 0) && !AudioReplace_Count(AUDIO_SFX));
+    /* Only its own mod plays it. */
+    assert(!AudioReplace_PlayClip(6, a, 255, 0) && !AudioReplace_PlayClip(5, 0x7FFFFFF, 255, 0));
+    assert(AudioReplace_PlayClip(5, a, 255, 64));
+    mix(1, sums, last);
+    assert(last[2] == 4000 && last[3] == 8000);
+    mix(3, sums, NULL);
+    /* Played again while it plays: it starts over on its channel. */
+    assert(AudioReplace_PlayClip(5, a, 255, 0));
+    mix(1, sums, last);
+    assert(last[2] == 8000 && last[3] == 8000);
+    mix(7, sums, NULL);
+    assert(sums[2] == 7 * 8000);
+    mix(2, sums, NULL);
+    assert(!sums[2]);
+    /* Two clips at once still mix. */
+    assert(AudioReplace_PlayClip(5, a, 255, 0) && AudioReplace_PlayClip(6, b, 255, 0));
+    mix(1, sums, last);
+    assert(last[2] == 16000);
+    /* Freed while it plays: silent at once, and the handle plays nothing. */
+    AudioReplace_FreeClip(5, a);
+    mix(1, sums, last);
+    assert(last[2] == 8000 && !AudioReplace_PlayClip(5, a, 255, 0));
+    /* Removing a mod frees its clips. */
+    AudioReplace_Unload(6);
+    mix(1, sums, NULL);
+    assert(!sums[2] && !AudioReplace_PlayClip(6, b, 255, 0));
+}
+
 int main(void)
 {
     char *made;
@@ -417,6 +461,7 @@ int main(void)
     made = scratch_dir(root, sizeof(root), "memories-audio");
     assert(made);
     test_manifest();
+    test_clips();
     printf("audio replacement: ok\n");
     return 0;
 }

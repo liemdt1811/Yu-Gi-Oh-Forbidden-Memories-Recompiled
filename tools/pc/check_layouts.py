@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
-"""Check that 32-bit Linux and 32-bit Windows lay the game's structures out alike.
+"""Check that the game's structures are laid out alike wherever a mod meets them.
+
+Two pairs, one per mod target (--target, default both):
+
+  i386            32-bit Linux against 32-bit Windows, below
+  x86_64-windows  the 64-bit Windows game's view (x86_64-w64-mingw32, as
+                  build_game32.py --target windows-x64 compiles it) against a
+                  mod's (x86_64-w64-windows-gnu-elf, freestanding, as
+                  build_mod.py --target x86_64-windows compiles it): the same
+                  ABI in another object format, so every structure must come
+                  out the same, G32 pointers 4 bytes on both sides
 
 Both executables share one memory image with the retail game, and a code mod
 is one object file for both (notes/portable-mods-plan.md), so every structure
@@ -20,14 +30,25 @@ portable i386 mod ABI."""
 import argparse, concurrent.futures, glob, os, re, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-CLANG = os.path.join(ROOT, "tmp/pc/llvm-mingw/bin/clang")
+import shutil
+# The llvm-mingw build_win32_deps.py fetches, else one on PATH.
+CLANG = next((path for path in (os.path.join(ROOT, "tmp/pc/llvm-mingw/bin/clang"),)
+              if os.path.exists(path) or os.path.exists(path + ".exe")), None) or shutil.which("clang") or     os.path.join(ROOT, "tmp/pc/llvm-mingw/bin/clang")
 FLAGS = ["-std=gnu11", "-fsyntax-only", "-w", "-DMEMORIES_PC", "-D_LANGUAGE_C", "-DLANGUAGE_C", "-Isrc",
          "-Xclang", "-fdump-record-layouts-complete", "-Xclang", "-fdump-record-layouts-simple"]
 # The psyq headers expect the SDK's order (libgte.h, libgpu.h, libgs.h) and find one
 # another with <angled> includes; a header that fails alone is tried again so.
 PRELUDE = ["-isystem", "src/psyq", "-include", "src/psyq/libgte.h", "-include", "src/psyq/libgpu.h",
            "-include", "src/psyq/libgs.h"]
-TARGETS = {"linux": ["--target=i386-pc-linux-gnu"], "windows": ["--target=i686-w64-mingw32", "-mno-ms-bitfields"]}
+TARGETS = {"linux": ["--target=i386-pc-linux-gnu"], "windows": ["--target=i686-w64-mingw32", "-mno-ms-bitfields"],
+           # The x86_64-windows pair: the game's flags (build_game32.py's
+           # X64_FLAGS) and a mod's (build_mod.py's FLAGS64 and prelude).
+           "x64-game": ["--target=x86_64-w64-mingw32", "-mno-ms-bitfields", "-fms-extensions",
+                        "-include", "src/pc/compat/ptr32.h"],
+           "x64-mod": ["--target=x86_64-w64-windows-gnu-elf", "-mno-ms-bitfields", "-fms-extensions",
+                       "-ffreestanding", "-nostdinc", "-DMEMORIES_MOD", "-isystem", "src/pc/mods/sdk",
+                       "-include", "src/pc/mods/prelude64.h"]}
+PAIRS = {"i386": ("linux", "windows"), "x86_64-windows": ("x64-game", "x64-mod")}
 
 
 TAGS = None  # struct and union tags defined under src/
@@ -59,9 +80,10 @@ def ours(name):
 
 def layouts(header, target):
     """{record: its layout text} from one header, or None if it does not compile."""
+    extra = ["-isystem", RESOURCE] if target == "x64-mod" else []
     for prelude in ([], PRELUDE):
-        result = subprocess.run([CLANG, *TARGETS[target], *FLAGS, *prelude, "-include", header, "-x", "c", os.devnull],
-                                cwd=ROOT, capture_output=True, text=True)
+        result = subprocess.run([CLANG, *TARGETS[target], *extra, *FLAGS, *prelude, "-include", header, "-x", "c",
+                                 os.devnull], cwd=ROOT, capture_output=True, text=True)
         if not result.returncode:
             break
     else:
@@ -81,23 +103,30 @@ def layouts(header, target):
     return found
 
 
-def check(header):
-    linux, windows = layouts(header, "linux"), layouts(header, "windows")
-    if linux is None or windows is None:
-        return header, None, []
-    # A record only one side has is port code behind #ifdef _WIN32.
-    return header, len(linux), [(name, linux[name], windows[name]) for name in sorted(linux)
-                                if name in windows and linux[name] != windows[name]]
+def check(job):
+    header, pair = job
+    first, second = (layouts(header, side) for side in PAIRS[pair])
+    if first is None or second is None:
+        return header, pair, None, []
+    # A record only one side has is port code behind #ifdef _WIN32 (or,
+    # for a mod, behind MEMORIES_MOD).
+    return header, pair, len(first), [(name, first[name], second[name]) for name in sorted(first)
+                                      if name in second and first[name] != second[name]]
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("headers", nargs="*", help="headers to check (default: every one under src/)")
     parser.add_argument("--verbose", action="store_true", help="show both layouts of every difference")
+    parser.add_argument("--target", action="append", choices=list(PAIRS),
+                        help="a mod target's pair to compare (repeatable; default: both)")
     options = parser.parse_args()
-    if not os.path.exists(CLANG):
+    if not os.path.exists(CLANG) and not os.path.exists(CLANG + ".exe"):
         sys.exit(f"{CLANG} is missing; run tools/pc/build_win32_deps.py first")
-    global TAGS
+    global TAGS, RESOURCE
+    RESOURCE = os.path.join(subprocess.run([CLANG, "-print-resource-dir"], capture_output=True, text=True).stdout.strip(),
+                            "include")
+    pairs = options.target or list(PAIRS)
     TAGS = set()
     for path in glob.glob("src/**/*.h", recursive=True, root_dir=ROOT):
         if native_only(path):
@@ -106,25 +135,29 @@ def main():
             TAGS.update(re.findall(r"\b(?:struct|union)\s+(\w+)\s*\{", handle.read()))
     headers = options.headers or sorted(path for path in glob.glob("src/**/*.h", recursive=True, root_dir=ROOT)
                                         if not native_only(path))
-    skipped, records, differing = [], set(), {}
-    with concurrent.futures.ThreadPoolExecutor(os.cpu_count()) as pool:
-        for header, count, differences in pool.map(check, headers):
-            if count is None:
-                skipped.append(header)
-                continue
-            records.add(header)
-            for name, linux, windows in differences:
-                differing.setdefault(name, (header, linux, windows))
-    for name, (header, linux, windows) in sorted(differing.items()):
-        print(f"{name} ({header}) differs between Linux and Windows")
-        if options.verbose:
-            print("  linux:\n    " + linux.replace("\n", "\n    "))
-            print("  windows:\n    " + windows.replace("\n", "\n    "))
-    print(f"check_layouts: {len(records)} headers compared, {len(skipped)} do not compile alone, "
-          f"{len(differing)} structures differ")
-    if skipped and options.verbose:
-        print("  not compiled: " + " ".join(skipped))
-    return 1 if differing else 0
+    failed = False
+    for pair in pairs:
+        skipped, records, differing = [], set(), {}
+        with concurrent.futures.ThreadPoolExecutor(os.cpu_count()) as pool:
+            for header, _, count, differences in pool.map(check, [(header, pair) for header in headers]):
+                if count is None:
+                    skipped.append(header)
+                    continue
+                records.add(header)
+                for name, first, second in differences:
+                    differing.setdefault(name, (header, first, second))
+        sides = PAIRS[pair]
+        for name, (header, first, second) in sorted(differing.items()):
+            print(f"{name} ({header}) differs between {sides[0]} and {sides[1]}")
+            if options.verbose:
+                print(f"  {sides[0]}:\n    " + first.replace("\n", "\n    "))
+                print(f"  {sides[1]}:\n    " + second.replace("\n", "\n    "))
+        print(f"check_layouts: {pair}: {len(records)} headers compared, {len(skipped)} do not compile alone, "
+              f"{len(differing)} structures differ")
+        if skipped and options.verbose:
+            print("  not compiled: " + " ".join(skipped))
+        failed = failed or bool(differing)
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

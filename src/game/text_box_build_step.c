@@ -27,6 +27,7 @@
 #include "text_control_commands.h"
 #include "pc/text/language.h"
 #include "pc/text/text.h"
+#include "pc/cards/duel_ui.h"
 #endif
 
 /* Defined rather than declared: the assembler only resolves a small global
@@ -46,7 +47,7 @@ void TextBox_BuildStep(DuelEffectChannel *object)
     u8 *script;
     DuelEffectEntry *entry;
     s32 op;
-    void (*TRANSLATED_G32 *handlers)(u8 *);
+    void (*G32 *handlers)(u8 *);
 #ifdef MEMORIES_PC
     int pal_shift, pal_advance, pal_done;
 #endif
@@ -89,6 +90,9 @@ void TextBox_BuildStep(DuelEffectChannel *object)
         text = (u8 *)Duelists_Text((u16)object->field_36, text);
 #endif
         object->text_00 = text;
+#ifdef MEMORIES_PC
+        DuelUi_NameStream(object, 0);   /* a new text: no name read yet (duel_ui.h) */
+#endif
         object->field_56 = 0;
         object->state_51 = 0;
         DisplayObject_ReleaseIfPresent(object->field_30);

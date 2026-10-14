@@ -14,14 +14,17 @@
 #include "pc/saves/deck_menu.h"
 #include "pc/render/present_pass.h"
 #include "mods_window.h"
+#include "pc/mods/hd_pack.h"
 #include "controls_window.h"
 #include "controls_linux.h"
+#include "panel.h"
 #include "quit_prompt.h"
 #include "host_actions.h"
 #include "settings.h"
 #include "pc/audio/spu.h"
 #include "pc/debug/cheats.h"
 #include "pc/cards/cards.h"
+#include "pc/tower/tower.h"
 #include "pc/free_duel/duelists.h"
 #include "pc/cards/fusion_helper.h"
 #include "update_check.h"
@@ -132,6 +135,9 @@ static int focus_clock_rate = 100, focus_paused;
 /* A phone or tablet app sent to the background (SDL's application events,
  * which desktops never send): the game clock stops until it comes back. */
 static int background_clock_rate, background_paused;
+/* Android: until when (real_now_us) a still picture is repainted after
+ * the app comes back (repaint_menu, below). */
+static uint64_t foreground_repaint_until;
 static float known_refresh; /* what the wayland driver reported before a fallback to x11 */
 
 static void show(void);
@@ -141,6 +147,9 @@ static void reset_renderer(void);
  * whether the pass is then made not to start again. */
 static long test_reset_at = -2;
 static int test_reset_fails;
+/* MEMORIES_TEST_GL_COPY_FAIL=<frame> (es_take_frame): the frame whose copy
+ * into es_shown fails, as when SDL cannot make that texture. */
+static long test_copy_fail_at = -2;
 /* Menu changes from events are coalesced: a pointer sweeping the bar
  * reports hundreds of motions a second, and each used to repaint and
  * present a frame. Now they mark the menu dirty and it is repainted once,
@@ -150,13 +159,16 @@ static void save_window_image(void);
 static int window_shot_pending;
 
 /* Window pixels per density-independent pixel where the screen is touched
- * (Android: SDL's content scale is the display's densityDpi / 160), 0 on a
+ * (Android: the display's densityDpi / 160, as the system has it now; SDL's
+ * content scale is the density at the start, and stays so after Display
+ * size changes it: pump() reads it again and lays out anew), 0 on a
  * desktop, which keeps the mouse's sizes. */
 static float touch_density(void)
 {
 #ifdef SDL_PLATFORM_ANDROID
     SDL_DisplayID display = window ? SDL_GetDisplayForWindow(window) : SDL_GetPrimaryDisplay();
-    float density = display ? SDL_GetDisplayContentScale(display) : 0.0f;
+    float density = Android_Density();
+    if (density <= 0.0f) density = display ? SDL_GetDisplayContentScale(display) : 0.0f;
     return density > 0.0f ? density : 1.0f;
 #else
     return 0.0f;
@@ -262,6 +274,12 @@ static void resize_mods(int w, int h)
 }
 int HERE(Platform_OpenFolder)(const char *path)
 {
+#ifdef SDL_PLATFORM_ANDROID
+    /* An app has no file manager window to open: SDL_OpenURL there takes a
+     * URI for an activity, and a plain path opens nothing. */
+    (void)path;
+    return -1;
+#endif
     /* xdg-open on Linux, ShellExecute on Windows: both take a plain path. */
 #ifdef _WIN32
     char native[1024];
@@ -272,9 +290,12 @@ int HERE(Platform_OpenFolder)(const char *path)
     return SDL_OpenURL(path) ? 0 : -1;
 }
 int HERE(Platform_OpenUrl)(const char *url) { return SDL_OpenURL(url) ? 0 : -1; }
+static int panel_overlay(void);
+static void open_panel(int kind);
 void HERE(Platform_OpenMods)(void)
 {
     sigset_t previous;
+    if (panel_overlay()) { open_panel(PANEL_MODS); return; }
     if (mods_window) { SDL_RaiseWindow(mods_window); return; }
     ModsWindow_Init();
     ModsWindow_Size(&mods_canvas.width, &mods_canvas.height);
@@ -368,6 +389,7 @@ static void resize_controls(int w, int h)
 void HERE(Platform_OpenControls)(void)
 {
     sigset_t previous;
+    if (panel_overlay()) { open_panel(PANEL_CONTROLS); return; }
     if(controls_window){SDL_RaiseWindow(controls_window);return;}
     controls_key_labels();
     ControlsWindow_Init();controls_sync_keys();ControlsWindow_Size(&controls_canvas.width,&controls_canvas.height);
@@ -389,6 +411,90 @@ void HERE(Platform_OpenControls)(void)
     ControlsWindow_MinSize(&min_w,&min_h);
     SDL_SetWindowMinimumSize(controls_window,min_w,min_h);
     mouse_bits=wheel_now=0;wheel_frames=0;show_cursor();draw_controls();
+}
+
+/* --- Mods and Controls as panels inside the window (panel.h) --------- */
+
+/* Where a second window cannot open (Android), Mods and Controls are
+ * panels inside this one; MEMORIES_PANELS=overlay shows them so on a
+ * desktop too, for testing. The game is paused while one shows (its picture
+ * is covered and the panel has the input) and goes on at its speed after. */
+static int panel_paused, panel_clock_rate, panel_typing;
+static int panel_overlay(void)
+{
+#ifdef SDL_PLATFORM_ANDROID
+    return 1;
+#else
+    const char *wanted = getenv("MEMORIES_PANELS");
+    return wanted && !strcmp(wanted, "overlay");
+#endif
+}
+/* The window's size, and the part clear of a phone's cutouts: across, the
+ * safe area; down, the whole height, since the system bars it also leaves
+ * out are hidden over the game (a fullscreen, immersive window) and a
+ * landscape phone's cutout is at a side. */
+static void layout_panel(void)
+{
+    SDL_Rect safe;
+    static SDL_Rect logged;
+    if (window && SDL_GetWindowSafeArea(window, &safe)) {
+        if (memcmp(&safe, &logged, sizeof(safe))) {
+            logged = safe;
+            LOG(LOG_WINDOW, "panel: safe area %d,%d %dx%d of %dx%d", safe.x, safe.y, safe.w, safe.h, layout.win_w,
+                layout.win_h);
+        }
+        Panel_Layout(layout.win_w, layout.win_h, safe.x, 0, safe.w, layout.win_h);
+    } else
+        Panel_Layout(layout.win_w, layout.win_h, 0, 0, layout.win_w, layout.win_h);
+}
+static void open_panel(int kind)
+{
+    if (kind == PANEL_CONTROLS) controls_key_labels();
+#ifdef SDL_PLATFORM_ANDROID
+    /* An app has no mods folder the player can open: Import mod... takes a
+     * mod's .zip through the system's file picker instead. */
+    if (kind == PANEL_MODS) {
+        /* and HD pack... downloads the release's HD pack into it */
+        HdPack_SetNet(Platform_HdNet());
+        ModsWindow_SetImport(Platform_PickModZip, Platform_PickedModZip, Platform_FetchModZip);
+    }
+#endif
+    if (!Panel_Open(kind)) return;
+    if (kind == PANEL_CONTROLS) controls_sync_keys();
+    layout_panel();
+    if (!panel_paused) {
+        panel_paused = 1;
+        /* Turbo ends with the panel (its key is let go behind it), so
+         * closing it resumes the chosen speed, not 400%, as focus loss does. */
+        panel_clock_rate = Platform_ClockRate() && ControlsRuntime_HostHeld() >> CTRL_HOST_TURBO & 1
+                               ? Settings_Get(SET_SPEED)
+                               : Platform_ClockRate();
+        if (Platform_ClockRate()) Platform_SetClockRate(0);
+    }
+    mouse_bits = wheel_now = 0;
+    wheel_frames = 0;
+    menu_dirty = 1;
+    LOG(LOG_WINDOW, "panel %s shown in the window, game paused (was %d%%)", kind == PANEL_MODS ? "Mods" : "Controls",
+        panel_clock_rate);
+}
+/* After every event the panel took: the on-screen keyboard follows the
+ * focused field, and a panel that closed gives the game back. */
+static void panel_after(int tapped)
+{
+    int typing = Panel_TextFocus();
+    if (typing && (!panel_typing || tapped)) SDL_StartTextInput(window); /* a tap on the field shows it again */
+    else if (!typing && panel_typing) SDL_StopTextInput(window);
+    panel_typing = typing;
+    if (Panel_Shown()) return;
+    if (panel_paused) {
+        panel_paused = 0;
+        if (panel_clock_rate && Platform_ClockRate() == 0 && !background_paused) Platform_SetClockRate(panel_clock_rate);
+    }
+    mouse_bits = wheel_now = 0;
+    wheel_frames = 0;
+    ControlsRuntime_ResetKeys();
+    menu_dirty = 1;
+    LOG(LOG_WINDOW, "panel closed, game at %d%%", Platform_ClockRate());
 }
 
 static void pump(void);
@@ -508,6 +614,7 @@ static void apply_swap_interval(void)
     swap_interval = wanted;
     if (use_gl) SDL_GL_SetSwapInterval(wanted);
     else if (renderer) SDL_SetRenderVSync(renderer, wanted);
+    Platform_SetVSync(wanted);
     LOG(LOG_WINDOW, "vsync %s (game %.2f Hz, display %.2f Hz)", wanted ? "on" : "off",
         Platform_GameHz(), Platform_PresentRefresh());
 }
@@ -1082,6 +1189,7 @@ static void relayout(void)
     layout.win_w = window_w;
     layout.win_h = window_h;
     if (TouchPad_Layout(window_w, window_h, menu)) menu_dirty = 1;
+    if (Panel_Shown()) layout_panel();
     layout.pixel_x = (float)output_w / (float)window_w;
     layout.pixel_y = (float)output_h / (float)window_h;
     if (window_w != logged_window_w || window_h != logged_window_h ||
@@ -1165,6 +1273,9 @@ static void apply_display_settings(void)
 {
     int fullscreen = Settings_Get(SET_FULLSCREEN), pw, ph;
     display_picture_size(&pw, &ph);
+#ifdef SDL_PLATFORM_ANDROID
+    Android_ApplyScreenRotation(Settings_Get(SET_SCREEN_ROTATION));
+#endif
     if (fullscreen == 2) {
         SDL_DisplayID display = SDL_GetDisplayForWindow(window);
         const SDL_DisplayMode *current = SDL_GetCurrentDisplayMode(display);
@@ -1326,14 +1437,30 @@ static int es_copy_shown(void)
 /* OpenGL ES, before the pass's frame is shown: into es_shown. Where it
  * cannot be (SDL's texture cannot be made or drawn into) the pass is given
  * up, so the software GPU draws the picture again, and the caller shows
- * another picture this time (0). */
+ * another picture this time (0). Given up for good: a device reset starts
+ * again only a pass that was on (reset_renderer). */
 static int es_take_frame(void)
 {
-    es_shown_last = es_copy_shown();
+    if (test_copy_fail_at == -2) {
+        const char *at = getenv("MEMORIES_TEST_GL_COPY_FAIL");
+        test_copy_fail_at = at && *at ? strtol(at, NULL, 10) : -1;
+    }
+    if (test_copy_fail_at >= 0 && current_frame >= (unsigned long)test_copy_fail_at) {
+        test_copy_fail_at = -1;
+        fprintf(stderr, "memories-pc: MEMORIES_TEST_GL_COPY_FAIL: frame %u's copy fails\n", current_frame);
+        es_shown_last = 0;
+    } else {
+        es_shown_last = es_copy_shown();
+    }
     if (!es_shown_last) {
         fprintf(stderr, "memories-pc: the OpenGL picture cannot be shown; the software GPU draws it\n");
         es_picture = 0;
+        es_enter(); /* its names are deleted in the renderer's context */
         GlPicture_Stop();
+        es_leave();
+        if (es_shown) SDL_DestroyTexture(es_shown); /* nothing copies into it now */
+        es_shown = NULL;
+        es_shown_w = es_shown_h = 0;
         Menu_SetHdPicture(0);
     }
     return es_shown_last;
@@ -1343,6 +1470,17 @@ static void draw_overlay(int *x, int *y, int *w, int *h)
 {
     int hx, hy, hw, hh, tx, ty, tw, th, left, right;
     FusionHelper_Viewport((int)layout.dst.x, (int)layout.dst.y, (int)layout.dst.w, (int)layout.dst.h);
+    if (Panel_Shown()) { /* the panel covers the window: nothing else shows */
+        Panel_Draw(&canvas);
+        *x = *y = 0;
+        *w = layout.win_w;
+        *h = layout.win_h;
+        return;
+    }
+    /* The mods' overlays go under the pad, so a mod's full-screen list does
+     * not hide where to tap; the port's HUD and the menu stay over both.
+     * Without the pad they keep their place in Hud_Draw. */
+    if (TouchPad_Shown()) Hud_DrawMods(&canvas);
     TouchPadArt_Draw(&canvas, &tx, &ty, &tw, &th); /* under the menu and the HUD */
     /* The save and deck slot menus keep between the pad's columns (they are
      * played with the pad), and below the bar while it shows (pushing the
@@ -1403,18 +1541,22 @@ static void show(void)
         glDisable(GL_BLEND);
         if (gl_pass_shown) {
             int pw = gl_pass_size[0], ph = gl_pass_size[1], x = gl_pass_rect[0], y = gl_pass_rect[1];
-            GLuint texture = gl_pass_texture ? gl_pass_texture : (GLuint)GlPicture_Texture(&pw, &ph), shown;
+            GLuint texture = gl_pass_texture, shown;
             /* Every filter reads the shown area alone: past its edges lies
              * the rest of VRAM, which bilinear would blend in (gl_picture.h),
              * and the area moves between the game's two buffers every frame,
              * so nearest at a scale that is not whole would round its edge
-             * texels one way, then the other, and the picture would shake. */
+             * texels one way, then the other, and the picture would shake.
+             * The whole picture only when that area runs past its edge
+             * (with anti-aliasing it is then resolved whole). */
             if (!gl_pass_texture &&
                 (shown = (GLuint)GlPicture_ShownTexture(x, y, gl_pass_rect[2], gl_pass_rect[3]))) {
                 texture = shown;
                 pw = gl_pass_rect[2];
                 ph = gl_pass_rect[3];
                 x = y = 0;
+            } else if (!gl_pass_texture) {
+                texture = (GLuint)GlPicture_Texture(&pw, &ph);
             }
             glBindTexture(GL_TEXTURE_2D, texture);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, Settings_Get(SET_FILTER) ? GL_LINEAR : GL_NEAREST);
@@ -1605,6 +1747,53 @@ static int dispatch_controls(const SDL_Event *event, const MenuEvent *menu_event
     return 0;
 }
 
+/* Input while a panel shows is the panel's (window events, quitting and
+ * controllers coming and going are not input). A key's release still lets
+ * go of what the game held. */
+static int dispatch_panel(const SDL_Event *event, const MenuEvent *menu_event)
+{
+    int redraw = 0, tapped = 0;
+    switch (event->type) {
+    case SDL_EVENT_MOUSE_BUTTON_DOWN: case SDL_EVENT_MOUSE_BUTTON_UP:
+        redraw = Panel_Pointer(menu_event, event->button.which == SDL_TOUCH_MOUSEID);
+        tapped = event->type == SDL_EVENT_MOUSE_BUTTON_UP && Panel_Tapped(); /* not a drag's end */
+        break;
+    case SDL_EVENT_MOUSE_MOTION:
+        redraw = Panel_Pointer(menu_event, event->motion.which == SDL_TOUCH_MOUSEID);
+        break;
+    case SDL_EVENT_MOUSE_WHEEL:
+        redraw = Panel_Pointer(menu_event, 0);
+        break;
+    case SDL_EVENT_WINDOW_MOUSE_LEAVE:
+        Panel_Pointer(menu_event, 0);
+        return 0; /* the window's own handling too */
+    case SDL_EVENT_KEY_DOWN: case SDL_EVENT_KEY_UP: {
+        /* Back is Esc here, as in a menu: it closes the panel (or what is open in it). */
+        int key = event->key.key == SDLK_AC_BACK ? CTRL_KEY_ESCAPE : controls_key(event->key.scancode);
+        int mods = (event->key.mod & SDL_KMOD_SHIFT ? 1 : 0) |
+                   (event->key.mod & (SDL_KMOD_CTRL | SDL_KMOD_ALT | SDL_KMOD_GUI) ? 2 : 0);
+        if ((event->key.mod & ~SDL_KMOD_RSHIFT & (SDL_KMOD_SHIFT | SDL_KMOD_CTRL | SDL_KMOD_ALT | SDL_KMOD_GUI)) == 0)
+            mods = 0; /* Right Shift alone is the default Select binding */
+        if (event->type == SDL_EVENT_KEY_UP) ControlsRuntime_Key(controls_key(event->key.scancode), 0);
+        redraw = Panel_Key(menu_event, key, event->key.repeat, mods);
+        break;
+    }
+    case SDL_EVENT_TEXT_INPUT:
+        redraw = Panel_Key(menu_event, 0, 0, 0);
+        break;
+    case SDL_EVENT_WINDOW_CLOSE_REQUESTED: /* MEMORIES_PANELS=overlay: the quit prompt would ask under the panel */
+        if (SDL_GetWindowFromEvent(event) != window) return 0;
+        Panel_RequestClose();
+        redraw = 1;
+        break;
+    default:
+        return 0;
+    }
+    if (redraw) menu_dirty = 1;
+    panel_after(tapped);
+    return 1;
+}
+
 /* The application events SDL sends only to event watchers, from inside
  * the pump (SDL_PollEvent) on this thread: a phone or tablet app going to
  * the background and coming back; desktops never send them. SDL stops its
@@ -1629,6 +1818,13 @@ static bool SDLCALL app_event(void *userdata, SDL_Event *event)
             background_paused = 0;
             if (background_clock_rate && Platform_ClockRate() == 0) Platform_SetClockRate(background_clock_rate);
             menu_dirty = 1;
+#ifdef SDL_PLATFORM_ANDROID
+            /* The window's surface comes back a moment after this event:
+             * a still picture (a panel, which pauses the game, or the
+             * system's file picker it opened) repainted only now stayed
+             * black until the next touch. Repainted for a second instead. */
+            foreground_repaint_until = real_now_us() + 1000000;
+#endif
             LOG(LOG_WINDOW, "app in the foreground: clock at %d%%", Platform_ClockRate());
         }
         break;
@@ -1641,6 +1837,16 @@ static bool SDLCALL app_event(void *userdata, SDL_Event *event)
 static void pump(void)
 {
     SDL_Event event;
+#ifdef SDL_PLATFORM_ANDROID
+    /* The display's density changed under the running game (Display size in
+     * the system settings): the window keeps its pixels, so no resize
+     * comes; the menu, its touch targets and the touch controls are laid
+     * out again for the new density. */
+    if (window && Android_DensityChanged()) {
+        relayout();
+        menu_dirty = 1;
+    }
+#endif
     if (test_reset_at == -2) {
         const char *at = getenv("MEMORIES_TEST_GL_RESET");
         test_reset_at = at && *at ? strtol(at, NULL, 10) : -1;
@@ -1685,6 +1891,7 @@ static void pump(void)
         if (event.type == SDL_EVENT_MOUSE_MOTION && event.motion.which == SDL_TOUCH_MOUSEID &&
             (touch_mouse_on_pad || TouchPad_Covers((int)event.motion.x, (int)event.motion.y)))
             continue;
+        if (Panel_Shown() && dispatch_panel(&event, &menu_event)) continue;
         /* A tap at the top of the screen shows the hidden bar under it, so
          * the press lands on the bar's menu there. */
         if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN && event.button.which == SDL_TOUCH_MOUSEID) {
@@ -1873,13 +2080,18 @@ static void pump(void)
         menu_dirty = 1;
     }
     update_menu_visibility();
-    if (TouchPad_Block(Menu_IsOpen() || Menu_NoticeShown() || (bar_overlays() && menu_visible))) menu_dirty = 1;
+    if (TouchPad_Block(Menu_IsOpen() || Menu_NoticeShown() || (bar_overlays() && menu_visible) || Panel_Shown()))
+        menu_dirty = 1;
     touch_bits = TouchPad_Update();
     Gamepad_Poll(current_frame);
     if (HostActions_Run(&quit)) menu_dirty = 1;
     /* A notice answers a controller and keeps the game's input at rest. */
     ControlsRuntime_Hold(Menu_NoticeShown());
     if (Menu_NoticePad(ControlsRuntime_TakePadPresses() | TouchPad_TakePresses(), &quit)) menu_dirty = 1;
+    if (Panel_Shown()) {
+        if (Panel_Tick()) menu_dirty = 1;
+        if (!Panel_Shown()) panel_after(0);
+    }
     if(controls_window) {
         static uint64_t last_draw;
         ControlsWindow_Tick();
@@ -1980,8 +2192,8 @@ static void create_window(const char *title)
     }
 }
 
-/* The renderer's context is OpenGL ES 3: the pass in it. */
-static void es_open(void)
+/* The renderer's context is OpenGL ES 3: the pass in it, when start_pass. */
+static void es_open(int start_pass)
 {
     es_context = SDL_GL_GetCurrentContext();
     es_bind_framebuffer = (PFNGLBINDFRAMEBUFFERPROC)SDL_GL_GetProcAddress("glBindFramebuffer");
@@ -1995,21 +2207,21 @@ static void es_open(void)
                  SDL_GetRendererName(renderer));
     LOG(LOG_WINDOW, "OpenGL ES renderer %s, version %s, video %s", glGetString(GL_RENDERER), glGetString(GL_VERSION),
         SDL_GetCurrentVideoDriver());
-    es_picture = GlPicture_Init();
+    es_picture = start_pass ? GlPicture_Init() : 0;
     es_leave();
 }
 
 /* The SDL renderer. On the OpenGL ES path SDL's opengles2 in the ES 3.0
  * context create_window asked for, with the pass in it; where that cannot be
  * had, or off that path, the renderer SDL picks, which shows the software
- * GPU's picture. */
-static void open_renderer(void)
+ * GPU's picture. start_pass 0: the pass is not started (reset_renderer). */
+static void open_renderer(int start_pass)
 {
     renderer = NULL;
     if (window && es_wanted) {
         renderer = SDL_CreateRenderer(window, "opengles2");
         if (renderer) {
-            es_open();
+            es_open(start_pass);
         } else {
             fprintf(stderr, "memories-pc: no OpenGL ES 3 renderer (%s); the software GPU draws the picture\n",
                     SDL_GetError());
@@ -2024,11 +2236,16 @@ static void open_renderer(void)
  * (its own context is the lost one), so it is made again, its textures with
  * it, and the pass in the new context, whose first replay draws the
  * picture again from VRAM; where the pass does not start again, the
- * software GPU draws the picture. MEMORIES_TEST_GL_RESET=<frame> sends the
+ * software GPU draws the picture. A pass that was off (given up by
+ * es_take_frame or an earlier reset) stays off: this runs inside a present
+ * (pump, from begin_present) that may hold the software GPU's picture, and
+ * GlPicture_Init's SoftGpu_SetRecorder would free it under the copy.
+ * MEMORIES_TEST_GL_RESET=<frame> sends the
  * event at that frame, with nothing lost, to try this anywhere;
  * <frame>fail also keeps the pass from starting again. */
 static void reset_renderer(void)
 {
+    int was_on = es_picture;
     fprintf(stderr, "memories-pc: the renderer's device was reset (%s); making it again\n",
             SDL_GetRendererName(renderer));
     GlPicture_Lost();
@@ -2040,13 +2257,17 @@ static void reset_renderer(void)
     picture_w = picture_h = 0;
     if (es_wanted) ask_for_es3();
     if (test_reset_fails) SDL_setenv_unsafe("MEMORIES_GL_PICTURE", "0", 1); /* the pass does not start again */
-    open_renderer();
+    open_renderer(was_on);
     if (!renderer) {
         fprintf(stderr, "memories-pc: SDL: %s\n", SDL_GetError());
         quit = 1;
         return;
     }
-    if (!es_picture) GlPicture_Stop(); /* not started again: the software GPU draws the picture */
+    if (!es_picture) { /* off, or not started again: the software GPU draws the picture */
+        es_enter();
+        GlPicture_Stop();
+        es_leave();
+    }
     Menu_SetHdPicture(es_picture);
     swap_interval = -1; /* set again on the new renderer */
     menu_dirty = 1;
@@ -2151,7 +2372,18 @@ void HERE(Platform_ShowError)(const char *title, const char *message)
     Monitor_Shared()->error_shown = 1;
     if (!headless || !*headless || !strcmp(headless, "0")) {
         Monitor_Modal(1);
+#ifdef __ANDROID__
+        {
+            /* SDL_ShowSimpleMessageBox's one button, in the system's alert */
+            static const SDL_MessageBoxButtonData ok[] = {
+                {SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT | SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT, 0, "OK"}};
+            const SDL_MessageBoxData box = {SDL_MESSAGEBOX_ERROR, NULL, title, message, 1, ok, NULL};
+            int button;
+            Android_ShowMessageBox(&box, &button);
+        }
+#else
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, title, message, NULL);
+#endif
         Monitor_Modal(0);
     }
 }
@@ -2202,7 +2434,7 @@ int Platform_Open(const char *title)
         SDL_SetWindowPosition(window, x == -1 ? SDL_WINDOWPOS_CENTERED : x,
                               y == -1 ? SDL_WINDOWPOS_CENTERED : y);
     }
-    open_renderer();
+    open_renderer(1);
     restore_signals(&previous);
     if (!use_gl && !renderer) {
         fprintf(stderr, "memories-pc: SDL: %s\n", SDL_GetError());
@@ -2225,16 +2457,22 @@ int Platform_Open(const char *title)
         Monitor_Fact("gpu", "no OpenGL: SDL renderer %s", SDL_GetRendererName(renderer));
         LOG(LOG_WINDOW, "SDL fallback renderer %s, video %s", SDL_GetRendererName(renderer), SDL_GetCurrentVideoDriver());
     }
+    Menu_SetPresentPass(use_gl); /* present_pass.c: the desktop presenter's alone */
     Menu_Init();
 #ifdef SDL_PLATFORM_ANDROID
     /* One window, always the whole screen, no update check (android.c):
-     * the rows for a second window, the window's size and mode, and the
-     * update check are dimmed. */
-    Menu_SetPlatformItems(0, 0, 0);
+     * the window's size and mode and the update check are dimmed; Mods and
+     * Controls open as panels inside the window. */
+    Menu_SetPlatformItems(1, 0, 0);
 #endif
     apply_display_settings();
     menu_visible = !covers_screen() || Settings_Get(SET_SHOW_MENU_FULLSCREEN);
     Menu_SetVisible(menu_visible);
+#ifdef SDL_PLATFORM_ANDROID
+    /* A crash in an earlier run: its report is offered to share or save,
+     * since the player cannot reach the reports folder (android_report.c). */
+    Android_OfferCrashReport();
+#endif
     return 0;
 }
 
@@ -2434,6 +2672,8 @@ void HERE(Platform_PumpEvents)(void)
     pump();
     Update_Frame();
     if (Menu_TakeChanged()) menu_dirty = 1;
+    if (foreground_repaint_until && real_now_us() < foreground_repaint_until) menu_dirty = 1;
+    else foreground_repaint_until = 0;
     if (gl_pass() && GlPicture_Behind()) replay();
     /* A running game shows the change with its next frame; paused, the wait
      * loop pumps every half millisecond, so keep hover repaints to ~120/s. */
@@ -2605,6 +2845,7 @@ void HERE(Platform_Frame)(unsigned frame)
     Cheats_Frame();
     Cards_Frame();
     Duelists_Frame();
+    Tower_Frame();
     Update_Frame();
     if (Menu_TakeChanged()) menu_dirty = 1;
     if (window) {

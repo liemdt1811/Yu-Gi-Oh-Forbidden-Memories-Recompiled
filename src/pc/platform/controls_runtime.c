@@ -157,6 +157,10 @@ void ControlsRuntime_ResetKeys(void)
 {
     memset(keys, 0, sizeof(keys));
     memset(tapped, 0, sizeof(tapped));
+    /* A tap of a key let go here (Esc or Back closing a Controls panel) is
+     * no host action either: else the next update, open again with every
+     * key reset, fires it (Exit game's prompt behind the closed panel). */
+    host_taps = 0;
     ControlsRuntime_Gate();
 }
 int ControlsRuntime_Keys(ControlSource *out)

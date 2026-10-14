@@ -55,6 +55,17 @@ TYPE_NAMES = ["Dragon", "Spellcaster", "Zombie", "Warrior", "Beast-Warrior", "Be
               "Fairy", "Insect", "Dinosaur", "Reptile", "Fish", "Sea Serpent", "Machine", "Thunder", "Aqua",
               "Pyro", "Rock", "Plant", "Magic", "Trap", "Ritual", "Equip"]
 TYPE_MAGIC, TYPE_TRAP, TYPE_RITUAL, TYPE_EQUIP = 20, 21, 22, 23
+TYPE_LIMIT = 256
+
+
+def is_monster_type(type_: int) -> bool:
+    """Whether the five-bit card type is a monster kind.
+
+    24-255 are reserved for a mod's declared card
+    types.  The runtime treats every declared value in that range as a
+    monster; the editor uses the same classification while reading a mod.
+    """
+    return 0 <= type_ < TYPE_MAGIC or TYPE_EQUIP < type_ < TYPE_LIMIT
 ATTACK_TRAP_FIRST = 681
 # What an equip adds on the disc: +500, Megamorph +1000 (duel_scene_card_
 # placement.c); a mod's "bonus" goes from -32767 to 32767 (tables.c).
@@ -67,6 +78,10 @@ FUSION_GROUPS = ("AngelWinged", "Bugrothian", "Egg", "Elf", "FeatherFromBear", "
                  "Mirror", "MusKingian", "MystElfian", "Rainbow", "Sheepian", "Thronian", "Turtle", "UsableBeast")
 RITUAL_REQUIREMENT_KEYS = ("card", "type", "fusion_group", "min_attack", "min_defense", "max_attack", "max_defense",
                            "min_level", "max_level", "defense_gt_attack")
+# A mod's ritual takes one to five tributes (the disc's take three), from
+# the field, the hand or both: its "tributes_from" (tables.c read_rituals).
+RITUAL_TRIBUTE_MAX = 5
+RITUAL_ORIGINS = ("field", "hand", "both")
 
 
 def fusion_group_named(text) -> str:
@@ -79,6 +94,13 @@ def fusion_group_named(text) -> str:
 # A card's "frame" (cards.c frame_names): the palette rows the game draws a
 # card through. Retail picks one by type; purple and orange it never uses.
 FRAME_NAMES = ["Monster", "Magic", "Trap", "Ritual", "Purple", "Orange"]
+# The first four by the color they are (cards.c frame_color_names): a mod may
+# write either; the editor writes the disc's names, which older builds read too.
+FRAME_COLOR_NAMES = ["Gold", "Green", "Pink", "Blue"]
+# A card's "tags" (cards.c tag_bit): 32 different ones in all the mods, each
+# at most 31 letters (bytes, as the game counts them); more are left out.
+TAGS_MAX = 32
+TAG_LENGTH_MAX = 31
 
 
 def type_frame(t: int) -> int:
@@ -95,6 +117,52 @@ DUELIST_NAMES = [
     "Guardian Neku", "Heishin 2nd", "Seto 3rd", "DarkNite", "Nitemare", "Duel Master K"]
 POOLS = ("deck", "pow", "bcd", "tec")
 POOL_LABELS = {"deck": "Deck", "pow": "S/A-POW drops", "bcd": "B/C/D drops", "tec": "S/A-TEC drops"}
+
+# How each duelist plays: game/ai_opponent_data.c gDuel_aOpponentData, nine
+# bytes a duelist (notes/more-duelists.md "The nine bytes").
+AI_ROWS = [
+    (5, 20, 10, 1, 1, 0, 0, 25, 50), (5, 20, 10, 1, 1, 0, 0, 25, 50), (5, 30, 20, 1, 2, 0, 0, 25, 25),
+    (5, 10, 5, 2, 1, 0, 0, 25, 75), (5, 20, 10, 2, 2, 1, 1, 25, 50), (5, 30, 20, 3, 1, 1, 1, 25, 75),
+    (5, 10, 5, 1, 3, 1, 1, 25, 25), (10, 20, 10, 3, 3, 2, 2, 50, 50), (20, 20, 10, 2, 2, 3, 3, 75, 50),
+    (8, 10, 5, 3, 2, 2, 2, 25, 75), (8, 10, 5, 2, 3, 2, 2, 25, 50), (10, 20, 10, 3, 3, 2, 2, 75, 25),
+    (12, 20, 10, 2, 2, 2, 2, 50, 50), (12, 30, 20, 2, 2, 2, 2, 50, 25), (14, 20, 10, 3, 3, 3, 3, 75, 25),
+    (16, 20, 10, 3, 3, 3, 3, 75, 0), (16, 20, 10, 3, 3, 3, 3, 75, 25), (16, 20, 10, 3, 3, 3, 3, 75, 50),
+    (12, 10, 5, 1, 1, 1, 1, 25, 75), (10, 10, 5, 1, 2, 1, 1, 25, 75), (10, 30, 20, 2, 1, 1, 1, 25, 25),
+    (14, 10, 5, 2, 2, 2, 2, 50, 50), (16, 20, 10, 2, 3, 3, 3, 50, 25), (14, 10, 5, 2, 2, 2, 2, 50, 50),
+    (16, 20, 10, 3, 3, 3, 3, 50, 25), (14, 10, 5, 3, 2, 2, 2, 50, 50), (16, 20, 10, 3, 3, 3, 3, 50, 25),
+    (14, 10, 5, 2, 2, 2, 2, 50, 50), (16, 20, 10, 2, 3, 3, 3, 50, 25), (14, 10, 5, 3, 2, 2, 2, 50, 50),
+    (16, 20, 10, 3, 3, 3, 3, 50, 25), (16, 20, 10, 3, 3, 3, 3, 75, 75), (18, 10, 5, 1, 2, 3, 3, 50, 25),
+    (20, 10, 5, 2, 2, 3, 3, 50, 50), (20, 30, 20, 2, 1, 3, 3, 50, 75), (20, 20, 10, 2, 2, 3, 3, 75, 0),
+    (20, 20, 10, 2, 2, 4, 4, 75, 0), (20, 20, 10, 2, 2, 5, 5, 50, 0), (20, 10, 5, 2, 2, 5, 5, 75, 0),
+    (15, 20, 10, 3, 3, 5, 5, 50, 25)]
+AI_FIELDS = 9                       # DUELIST_AI_FIELDS
+AI_SEARCH = (5, 20)                 # byte 0, held there by settle_ai
+AI_FIELD_LABELS = ("Deck search", "LP threshold ÷100", "Low-deck threshold", "Fusion depth", "Second depth",
+                   "Byte 5 (unread)", "Byte 6 (unread)", "Duster / hold %", "Blind attack %")
+# The six the AI script lets read face-down cards (duelists.c Duelists_HidesFaceDown).
+SIGHT_DUELISTS = (8, 15, 35, 36, 37, 38)    # Heishin, Pegasus, Heishin 2nd, Seto 3rd, DarkNite, Nitemare
+
+# How a duel is scored (tables.c rank_rule_names), each rule five
+# [threshold, change] pairs; the disc's rows, the same for every duelist
+# (notes/research/the-game.md, tests/pc/rank_test.c). The last threshold is
+# "and above": the game makes it 32767 whatever is written.
+RANK_RULES = ("turns", "effective attacks", "defensive wins", "face-down plays", "pure magic",
+              "traps triggered", "cards used", "remaining lp", "initiate fusion", "equip magic")
+RANK_STEPS = 5
+RANK_ABOVE = 0x7FFF
+RANK_RETAIL = (
+    ((5, 12), (9, 8), (29, 0), (33, -8), (RANK_ABOVE, -12)),
+    ((2, 4), (4, 2), (10, 0), (20, -2), (RANK_ABOVE, -4)),
+    ((2, 0), (6, -10), (10, -20), (15, -30), (RANK_ABOVE, -40)),
+    ((1, 0), (11, -2), (21, -4), (31, -6), (RANK_ABOVE, -8)),
+    ((1, 2), (4, -4), (7, -8), (10, -12), (RANK_ABOVE, -16)),
+    ((1, 2), (3, -8), (5, -16), (7, -24), (RANK_ABOVE, -32)),
+    ((9, 15), (13, 12), (33, 0), (37, -5), (RANK_ABOVE, -7)),
+    ((100, -7), (1000, -5), (7000, 0), (8000, 4), (RANK_ABOVE, 6)),
+    ((1, 4), (5, 0), (10, -4), (15, -8), (RANK_ABOVE, -12)),
+    ((1, 4), (5, 0), (10, -4), (15, -8), (RANK_ABOVE, -12)))
+# "unlock": {"story": 0x6E0 + n} is "duelist n is unlocked in Free Duel".
+STORY_FREE_DUEL = 0x6E0
 
 # --- SLUS ---------------------------------------------------------------
 EXE_DELTA = 0x8000F800
@@ -154,7 +222,7 @@ class Card:
         return dc_replace(self, **changes)
 
     def is_monster(self) -> bool:
-        return self.type < TYPE_MAGIC
+        return is_monster_type(self.type)
 
     def shown_frame(self) -> int:
         """The frame the game draws it in."""
@@ -177,6 +245,7 @@ class GameData:
     starchips: dict = field(default_factory=dict)      # id -> the disc's Password shop price
     notes: list = field(default_factory=list)          # oddities found while reading
     campaign_map: object = None                        # campaign_map.MapData, None without the overworld packages
+    board: object = None                               # board_art.BoardData: the duel board's textures
 
 
 # --- reading the executable ----------------------------------------------
@@ -210,7 +279,7 @@ def decode_text(image, address: int, glyphs: dict, limit: int = 1024) -> str:
             out.append("{g %X}" % (((code - 0xF0) << 8) | image.bytes(at + 1, 1)[0]))
             at += 2
         elif code == 0xF8 and image.bytes(at + 1, 1) and image.bytes(at + 1, 1)[0] in (0x0A, 0x0B):
-            out.append("{f8 %02X %02X}" % tuple(image.bytes(at + 1, 2)))      # a colour or an icon, as the listing
+            out.append("{f8 %02X %02X}" % tuple(image.bytes(at + 1, 2)))      # a color or an icon, as the listing
             at += 3
         else:
             out.append("{%02X}" % code)
@@ -219,7 +288,7 @@ def decode_text(image, address: int, glyphs: dict, limit: int = 1024) -> str:
 
 
 def plain_names(image, glyphs: dict) -> dict:
-    """Card names as text: a colour or icon code (F8 0A NN, F8 0B NN) at
+    """Card names as text: a color or icon code (F8 0A NN, F8 0B NN) at
     the start or inside, as community mods write them, is skipped."""
     names = {}
     for cid in range(1, CARD_COUNT + 1):
@@ -424,8 +493,9 @@ def read_game(slus: bytes, wa: bytes) -> GameData:
     if data.passwords:
         data.starchips = {cid: struct.unpack_from("<I", wa, PASSWORD_TABLE + 8 * cid)[0]
                           for cid in data.passwords}
-    from . import campaign_map
+    from . import board_art, campaign_map
     data.campaign_map = campaign_map.read(slus, wa)
+    data.board = board_art.read(wa)
     if data.campaign_map is not None:
         data.notes.extend(data.campaign_map.notes)
     return data

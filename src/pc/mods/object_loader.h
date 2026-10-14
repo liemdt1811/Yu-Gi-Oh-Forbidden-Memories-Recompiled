@@ -1,10 +1,12 @@
 #ifndef MEMORIES_PC_MODS_OBJECT_LOADER_H
 #define MEMORIES_PC_MODS_OBJECT_LOADER_H
-/* The loader for code mods: one 32-bit x86 ELF relocatable object (`.o`),
- * the same file on Linux and on Windows (notes/modding.md). Both builds are
- * 32-bit x86 with the same calling convention, so the machine code in a mod
- * runs on either; only the container differs, and this reads the one
- * container on both.
+/* The loader for code mods: one ELF relocatable object (`.o`) per target
+ * (notes/modding.md). The 32-bit games, Linux and Windows, read the same
+ * 32-bit x86 object: both are 32-bit x86 with the same calling convention,
+ * so the machine code in a mod runs on either; only the container differs,
+ * and this reads the one container on both. The 64-bit Windows game reads
+ * an x86-64 object of the Windows ABI in the same container (ELF64), whose
+ * `.memories.abi` section names it (build_mod.py --target x86_64-windows).
  *
  * Loading lays the object's allocated sections out in fresh memory, binds
  * each name it leaves undefined through `resolve` (the game's export table
@@ -17,6 +19,24 @@
  * them. */
 #include <stddef.h>
 #include <stdint.h>
+
+/* The target this game loads mods for: build_mod.py's name for it, the
+ * `.memories.abi` tag a 64-bit object carries, and the middle of its file
+ * name (`<library>.<target>.o`; the 32-bit games' is `<library>.o`). The
+ * macOS ARM64 game links a dylib instead (build_mod.py --target macos,
+ * ObjectLoader_LoadPath, `<library>.dylib`): its "libraries" key is "macos",
+ * so an Android object named under "aarch64" is never handed to it. */
+#if defined(__APPLE__) && defined(__aarch64__) && defined(MEMORIES_TRANSLATED)
+#define OBJECT_LOADER_TARGET "macos"
+#elif defined(__x86_64__) && defined(_WIN32)
+#define OBJECT_LOADER_TARGET "x86_64-windows"
+#elif defined(__x86_64__)
+#define OBJECT_LOADER_TARGET "x86_64-linux"   /* no game is built so; the loader's tests are */
+#elif defined(__aarch64__)
+#define OBJECT_LOADER_TARGET "aarch64"
+#else
+#define OBJECT_LOADER_TARGET "i386"
+#endif
 
 typedef void *(*ObjectResolver)(const char *name, void *context);
 

@@ -285,7 +285,8 @@ replay can begin at a state.
      `run_tick` in libetc.c) and at every `Platform_WaitVBlank` turn, keyed
      by a count of service calls since the start; a play feeds the same
      values to the same calls. About two thousand service calls a second
-     (the VBlank wait wakes every 0.5 ms), so a few tens of KB a second
+     (the VBlank wait wakes every 0.5 ms on Linux, about every millisecond
+     on Windows), so a few tens of KB a second
      before compression; the interrupt clock (`MEMORIES_CLOCK=interrupt`,
      the profiler) would be left out. Not built: the first way makes every
      session replayable with nothing recorded but the pads.
@@ -363,7 +364,7 @@ CI can hold retail inputs.
   loaded again in the same game, must replay its 600 frames; it failed at
   the first before "Port: a loaded state finishes the VSync(0) it resumes
   in", and passes with it), and `x64-data-mods` (recorded with two data
-  mods, a card pack and a recoloured texture pack, made by its `mods.py`:
+  mods, a card pack and a recolored texture pack, made by its `mods.py`:
   the 64-bit build's data mods gate), `dark-hole` and `spellbinding` (the
   bolt effect, 17 and 13, which crashed the 64-bit build until its vertex
   step stopped sign-extending a guest address; recorded on 32-bit, they

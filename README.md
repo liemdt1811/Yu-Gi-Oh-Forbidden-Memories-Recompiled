@@ -4,6 +4,9 @@
 native PC game for Windows and Linux, with a macOS ARM64 source build. Bring your own disc image; no game data is
 included but the text of the European translations (below).
 
+This is not a static recompilation: the game code was decompiled
+by hand into C that matches the original byte for byte, then ported to PC.
+
 ![Your field at 4x resolution with 3D Monsters](docs/screenshots/field.jpg)
 
 ## Features
@@ -12,6 +15,7 @@ included but the text of the European translations (below).
 - **3D Monsters**: face-up monsters stand on the field as their battle models
 - Optional **Forbidden Memories HD** pack: redrawn cards, frames and portraits
 - Mods: framework for new cards past the original 722, fusions, textures, music, gameplay tables
+- **FM Editor**: make mods without writing JSON: cards, art, fusions, duelists, decks, packs, the title screen and more ([guide](tools/pc/fm_editor/README.md))
 - Save slots, fusion helper, card drop rates, rebindable controls
 - **Game > Language**: the European releases' own English, French, German, Italian and Spanish
 
@@ -23,6 +27,16 @@ Download the latest build from [Releases](https://github.com/Unchiga/Yu-Gi-Oh-Fo
 extract it and run `memories-pc.exe` (Windows) or `./memories-pc` (Linux). On first
 launch, pick your USA disc's `.bin`. The game can tell you when a newer release is out
 (**Help > Check for updates at start** turns it off; see [Updates](notes/updates.md)).
+
+### Bring your save from an emulator
+
+Your save from the original game (an emulator's memory card, or a PS1 card copied to a PC)
+loads in the port. Copy the memory card file (`.mcr`, `.mcd`, `.srm`, `.gme`, `.mcs`, `.psv`,
+...; DuckStation keeps its cards in its `memcards` folder, ePSXe in `memcards`) into the
+port's `saves` folder: `Documents\My Games\YFM Re-Decomp\saves` on Windows,
+`~/.local/share/YFM Re-Decomp/saves` on Linux. Then pick **LOAD** on the title screen: the
+save is copied into an empty slot (the card file is renamed `.imported`) and you can load it.
+Emulator save states are not memory cards and cannot be imported; save in game first.
 
 ### HD pack
 
@@ -92,7 +106,7 @@ _Generated from `config/slus_01411/functions.csv` and `config/slus_01411/overlay
 
 ## Docs
 
-[Modding](notes/modding.md) · [More cards](notes/more-cards.md) · [Fusion helper](notes/fusion-helper.md) ·
+[Modding](notes/modding.md) · [FM Editor](tools/pc/fm_editor/README.md) · [More cards](notes/more-cards.md) · [Fusion helper](notes/fusion-helper.md) ·
 [Card drops](notes/card-drops.md) · [Card packs](notes/card-packs.md) · [Translations](notes/translation.md) · [Updates](notes/updates.md) · [Setup](notes/setup.md) · [Build](notes/build.md) ·
 [Releases](notes/pc-release.md)
 

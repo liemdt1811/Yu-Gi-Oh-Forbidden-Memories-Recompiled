@@ -533,12 +533,36 @@ void AudioReplace_MusicLevel(int left, int right, int full)
     music_level[1] = right * GAIN_ONE / full;
 }
 
+/* Start `sound` on a sound-effect channel: `again`, on the one it is
+ * playing on if it is. */
+static void play_sfx(const Sound *sound, int volume, int pan, int again)
+{
+    int left, right, tries, channel = 0;
+    /* The driver's own pan law (func_8004803C): one side falls off
+     * linearly as the sound moves to the other. */
+    volume = volume < 0 ? 0 : volume > 255 ? 255 : volume;
+    left = right = volume * GAIN_ONE / 255;
+    if (pan > 0 && pan <= 128) left = left * (128 - pan) / 128;
+    if (pan < 0 && pan >= -128) right = right * (pan + 128) / 128;
+    for (tries = 0; again && tries < SFX_CHANNELS; tries++) {
+        if (requests[CHANNEL_SFX + tries].sound == sound && __atomic_load_n(&sfx_busy, __ATOMIC_SEQ_CST) >> tries & 1) {
+            post(CHANNEL_SFX + tries, sound, (uint32_t)left | (uint32_t)right << 16);
+            return;
+        }
+    }
+    /* A free channel if there is one, else the oldest-started. */
+    for (tries = 0; tries < SFX_CHANNELS; tries++) {
+        channel = (int)(__atomic_fetch_add(&sfx_next, 1, __ATOMIC_SEQ_CST) % SFX_CHANNELS);
+        if (!(__atomic_load_n(&sfx_busy, __ATOMIC_SEQ_CST) >> channel & 1)) break;
+    }
+    post(CHANNEL_SFX + channel, sound, (uint32_t)left | (uint32_t)right << 16);
+}
+
 int AudioReplace_Sfx(int id, int volume, int pan)
 {
     static int last_id = -1;
     static unsigned repeats;
     const Sound *sound = find(AUDIO_SFX, id & 0xFFFF);
-    int left, right, tries, channel = 0;
     /* Some screens start one sound every frame: the trace says so every 60th time. */
     if ((id & 0xFFFF) != last_id || ++repeats % 60 == 0) {
         if ((id & 0xFFFF) != last_id) repeats = 0;
@@ -546,18 +570,7 @@ int AudioReplace_Sfx(int id, int volume, int pan)
         TRACE("sfx 0x%lX plays", id & 0xFFFF, sound);
     }
     if (!sound) return 0;
-    /* The driver's own pan law (func_8004803C): one side falls off
-     * linearly as the sound moves to the other. */
-    volume = volume < 0 ? 0 : volume > 255 ? 255 : volume;
-    left = right = volume * GAIN_ONE / 255;
-    if (pan > 0 && pan <= 128) left = left * (128 - pan) / 128;
-    if (pan < 0 && pan >= -128) right = right * (pan + 128) / 128;
-    /* A free channel if there is one, else the oldest-started. */
-    for (tries = 0; tries < SFX_CHANNELS; tries++) {
-        channel = (int)(__atomic_fetch_add(&sfx_next, 1, __ATOMIC_SEQ_CST) % SFX_CHANNELS);
-        if (!(__atomic_load_n(&sfx_busy, __ATOMIC_SEQ_CST) >> channel & 1)) break;
-    }
-    post(CHANNEL_SFX + channel, sound, (uint32_t)left | (uint32_t)right << 16);
+    play_sfx(sound, volume, pan, 0);
     return 1;
 }
 
@@ -773,6 +786,18 @@ int AudioReplace_Load(int mod, const char *mod_id, const char *directory, const 
     return added_count;
 }
 
+/* No channel or request holds any of `gone` any more. Mixer held. */
+static void let_go(Sound *const *gone, int count)
+{
+    int i, g;
+    for (i = 0; i < CHANNELS; i++) {
+        for (g = 0; g < count; g++) {
+            if (channels[i].sound == gone[g]) channels[i].sound = NULL;
+            if (requests[i].sound == gone[g]) requests[i].sound = NULL;
+        }
+    }
+}
+
 void AudioReplace_Unload(int mod)
 {
     Sound *gone[64];
@@ -799,13 +824,7 @@ void AudioReplace_Unload(int mod)
         /* Nothing may hold a Sound that is about to be freed: not a channel,
          * not a request the mixer has yet to take, not the driver's side. */
         hold_mixer(1);
-        for (i = 0; i < CHANNELS; i++) {
-            int g;
-            for (g = 0; g < gone_count; g++) {
-                if (channels[i].sound == gone[g]) channels[i].sound = NULL;
-                if (requests[i].sound == gone[g]) requests[i].sound = NULL;
-            }
-        }
+        let_go(gone, gone_count);
         for (i = 0; i < gone_count; i++) {
             if (music_sound == gone[i]) music_gone = 1;
             if (xa_sound == gone[i]) {
@@ -825,6 +844,73 @@ void AudioReplace_Unload(int mod)
         block_clock(0, &previous);
         for (i = 0; i < gone_count; i++) free_sound(gone[i]);
     }
+}
+
+/* --- a code mod's own sounds (host->sound_add) ----------------------------- */
+
+/* Not a kind a manifest names: find() for a game id never meets one. */
+#define CLIP_KIND AUDIO_KINDS
+
+int AudioReplace_AddClip(int mod, const char *mod_id, const int16_t *samples, size_t frames, int channels,
+                         unsigned rate)
+{
+    static int next_handle = 1;
+    Sound *sound, **grown, **old;
+    sigset_t previous;
+    if (!samples || !frames || channels < 1 || channels > 32 || !rate || !(sound = calloc(1, sizeof(*sound))))
+        return -1;
+    /* A new array rather than realloc: the clock may be reading the old one
+     * until it is swapped in with the clock held. */
+    if (AudioReplace_Convert(samples, frames, channels, NULL, rate, &sound->clip) ||
+        !(grown = malloc((size_t)(table_count + 1) * sizeof(*table)))) {
+        free_sound(sound);
+        return -1;
+    }
+    sound->kind = CLIP_KIND;
+    sound->mod = mod;
+    sound->mod_id = mod_id;
+    sound->gain = GAIN_ONE;
+    block_clock(1, &previous);
+    if (table_count) memcpy(grown, table, (size_t)table_count * sizeof(*table));
+    old = table;
+    table = grown;
+    sound->id = next_handle++;
+    if (next_handle > 0x7FFFFFF) next_handle = 1;
+    table[table_count++] = sound;
+    block_clock(0, &previous);
+    free(old);
+    return sound->id;
+}
+
+int AudioReplace_PlayClip(int mod, int handle, int volume, int pan)
+{
+    const Sound *sound = find(CLIP_KIND, handle);
+    if (!sound || sound->mod != mod) return 0;
+    play_sfx(sound, volume, pan, 1);
+    return 1;
+}
+
+void AudioReplace_FreeClip(int mod, int handle)
+{
+    Sound *gone = NULL;
+    int i, kept = 0;
+    sigset_t previous;
+    block_clock(1, &previous);
+    for (i = 0; i < table_count; i++) {
+        if (!gone && table[i]->kind == CLIP_KIND && table[i]->id == handle && table[i]->mod == mod) {
+            gone = table[i];
+            continue;
+        }
+        table[kept++] = table[i];
+    }
+    table_count = kept;
+    if (gone) {
+        hold_mixer(1);
+        let_go(&gone, 1);
+        hold_mixer(0);
+    }
+    block_clock(0, &previous);
+    free_sound(gone);
 }
 
 /* --- the mixer ------------------------------------------------------------- */

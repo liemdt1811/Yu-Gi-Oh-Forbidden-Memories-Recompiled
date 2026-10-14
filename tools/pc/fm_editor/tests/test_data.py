@@ -855,10 +855,10 @@ class ManifestTest(unittest.TestCase):
         other = Project(self.retail)
         messages = manifest.apply(other, {"id": "t", "cards": [
             {"replace": 3, "frame": "ritual"}, {"replace": 4, "frame": 1}, {"replace": 4, "frame": "Type"},
-            {"replace": 5, "frame": "Gold"}]})
+            {"replace": 5, "frame": "Mauve"}]})
         self.assertEqual([other.cards[c].frame for c in (3, 4, 5)], [3, -2, -1])
-        self.assertEqual(messages, ["cards[3]: \"frame\" is Monster, Magic, Trap, Ritual, Purple, Orange or Type; "
-                                    "left out"])
+        self.assertEqual(messages, ["cards[3]: \"frame\" is Gold, Green, Pink, Blue, Purple, Orange or Type (or the "
+                                    "disc's Monster, Magic, Trap, Ritual); left out"])
         self.assertEqual(other.cards[4].shown_frame(), g.type_frame(other.cards[4].type))
         # "Type" (an effect monster kept gold) is not the same as leaving it out (orange): kept through a save.
         typed = Project(self.retail)
@@ -866,6 +866,60 @@ class ManifestTest(unittest.TestCase):
         typed.set_monster_effects(1, [{"when": "summon", "do": "heal", "amount": 100}])
         self.assertEqual(manifest.build(typed)["cards"][0]["frame"], "Type")
         self.assertEqual(self.reopen(typed).cards[1].frame, -2)
+
+    def test_frame_color_names(self):
+        # cards.c frame_color_names: Gold, Green, Pink and Blue are Monster,
+        # Magic, Trap and Ritual, in any case; saved as the disc's names.
+        p = Project(self.retail)
+        messages = manifest.apply(p, {"id": "t", "cards": [
+            {"replace": 1, "frame": "Gold"}, {"replace": 2, "frame": "green"}, {"replace": 3, "frame": "PINK"},
+            {"replace": 4, "frame": "Blue"}, {"copy": 5, "id": "c", "frame": "Gold"}, {"replace": 6, "frame": 7}]})
+        self.assertEqual([p.cards[c].frame for c in (1, 2, 3, 4, max(p.added), 6)], [0, 1, 2, 3, 0, -1])
+        self.assertEqual(len(messages), 1)
+        self.assertIn("cards[5]", messages[0])
+        cards = manifest.build(p)["cards"]
+        self.assertEqual([e.get("frame") for e in cards], ["Monster", "Magic", "Trap", "Ritual", "Monster"])
+
+    def test_tags_round_trip(self):
+        """A card's "tags" (cards.c): the editor's own field, written back as
+        read; left out an added card has its base's, [] is none."""
+        from fm_editor.model import parse_tags, tags_text
+        written = {"id": "t", "cards": [
+            {"replace": 1, "tags": ["god", "dragon"]},
+            {"replace": 2, "frame": "Gold", "tags": []},
+            {"copy": 1, "id": "own", "name": "A", "tags": ["fiend"]},
+            {"copy": 1, "id": "inherits", "name": "B"},
+            {"copy": 1, "id": "none", "name": "C", "tags": []}]}
+        p = Project(self.retail)
+        self.assertEqual(manifest.apply(p, json.loads(json.dumps(written))), [])
+        own, inherits, none = sorted(p.added)
+        self.assertEqual(p.tags_of(1), (["god", "dragon"], False))
+        self.assertEqual(p.tags_of(2), ([], False))
+        self.assertEqual(p.tags_of(own), (["fiend"], False))
+        self.assertEqual(p.tags_of(inherits), (["god", "dragon"], True))
+        self.assertEqual(p.tags_of(none), ([], False))
+        self.assertEqual(p.tags_of(3), ([], False))
+        built = manifest.build(p)
+        self.assertEqual(built["cards"], [
+            {"replace": 1, "tags": ["god", "dragon"]}, {"replace": 2, "frame": "Monster", "tags": []},
+            {"copy": 1, "id": "own", "name": "A", "tags": ["fiend"]}, {"copy": 1, "id": "inherits", "name": "B"},
+            {"copy": 1, "id": "none", "name": "C", "tags": []}])
+        self.assertEqual(manifest.build(self.reopen(p)), built)
+        # Set and taken away: a disc card's entry goes with its last key.
+        p.set_tags(3, ["x"])
+        self.assertIn({"replace": 3, "tags": ["x"]}, manifest.build(p)["cards"])
+        p.set_tags(3, None)
+        self.assertNotIn(3, p.card_extra)
+        p.set_tags(none, None)
+        self.assertEqual(p.tags_of(none), (["god", "dragon"], True))
+        # Revert: a disc card loses them, an added card has its base's again.
+        p.revert_card(1)
+        p.revert_card(own)
+        self.assertEqual((p.tags_of(1), p.tags_of(own)), (([], False), ([], True)))
+        # The form's text.
+        self.assertEqual([tags_text(t) for t in (None, [], ["a", "b c"])], ["", "[]", "a, b c"])
+        self.assertEqual([parse_tags(t) for t in ("", " ", "[]", ",", " god ,fiend, god,")],
+                         [None, None, [], None, ["god", "fiend"]])
 
     def test_unnamed_copy_keeps_the_disc_name(self):
         p = Project(self.retail)
@@ -904,22 +958,32 @@ class ManifestTest(unittest.TestCase):
         self.assertEqual(p.fixed["Simon Muran"].duelist, 1)
         self.assertEqual(p.fixed["Simon Muran"].kept, {"Card 1": 40})
 
-    def test_a_mods_own_duelists_are_kept_as_written(self):
-        """The editor knows the forty the disc lays out; a duelist a mod added
-        exists only at run time (notes/more-duelists.md), so an entry naming
-        one survives a round trip untouched rather than being dropped."""
+    def test_a_mods_own_duelists_are_its_own_to_edit(self):
+        """A duelist the mod adds is one of the editor's (roster.py): "decks"
+        and "drops" naming it by its identity or its slot reach it, and it
+        goes back into "duelists" as written, its pools into its own files;
+        one naming another mod's duelist is still kept as written."""
         p = Project(self.retail)
         data = {"id": "t", "duelists": [{"id": "dark-simon", "copy": "Heishin", "slot": 45}],
-                "decks": {"t:dark-simon": {"replace": True, "Card 1": 200},
+                "decks": {"t:dark-simon": {"replace": True, "Blue Dragon": 200},
+                          "other:somebody": {"Card 3": 9},
                           "Heishin": {"Card 2": 100}},
-                "drops": {"45": {"tec": {"replace": True, "Card 1": 1}}}}
+                "drops": {"45": {"tec": {"replace": True, "Blue Dragon": 1}}}}
         messages = manifest.apply(p, data)
         built = manifest.build(p)
-        self.assertEqual(built["duelists"], data["duelists"])          # an unknown key, kept
-        self.assertEqual(built["decks"]["t:dark-simon"], data["decks"]["t:dark-simon"])
-        self.assertEqual(built["drops"]["45"], data["drops"]["45"])
+        self.assertEqual(built["duelists"], data["duelists"])
+        e = p.roster[0]
+        self.assertEqual((e.key, e.base, e.slot), ("dark-simon", 8, 45))
+        self.assertEqual(e.pools["tec"], {1: 2048})
+        # One card is no deck: the game refuses the edit, and so the deck stays Heishin's.
+        self.assertEqual(e.pools["deck"], p.retail.pools[8]["deck"])
+        self.assertTrue(any("refuses" in m for m in messages))
+        self.assertNotIn("t:dark-simon", built["decks"])
+        self.assertNotIn("45", built.get("drops", {}))
+        self.assertEqual(built["decks"]["other:somebody"], {"Card 3": 9})
         self.assertIn("Card 2", str(built["decks"]["Heishin"]))        # and the disc's own is edited
-        self.assertTrue(any("t:dark-simon" in m for m in messages))
+        drops, decks = manifest._pool_tables(p)
+        self.assertEqual(drops[e], {"tec": {"replace": True, "Blue Dragon": 2048}})
 
     def test_a_table_named_as_a_file_stays_that_file(self):
         """"decks": "tables/decks.json" is a file the editor does not read, so
@@ -945,6 +1009,27 @@ class ManifestTest(unittest.TestCase):
 
 
 class ValidateTest(unittest.TestCase):
+    def test_tags(self):
+        p = Project(fixture().game())
+        p.set_tags(1, ["", "x" * 31, "y" * 32, 7])
+        found = [i.message for i in validate.validate_card(p, 1)]
+        self.assertEqual(sum("empty tag" in m for m in found), 2)
+        self.assertEqual([m for m in found if "over 31 letters" in m], [f'the tag "{"y" * 32}" is over 31 letters: '
+                                                                        "the game notes it and leaves it out"])
+        p.card_extra[1]["tags"] = "god"         # as a mod may write it
+        self.assertTrue(any('"tags" is a list' in i.message for i in validate.validate_card(p, 1)))
+        # 32 different in all; the 33rd met (cards in the order written) is left out.
+        p.set_tags(1, [f"t{n}" for n in range(30)])
+        p.set_tags(2, ["t0", "t30", "t31"])
+        self.assertFalse([i for i in validate.validate(p) if "different tags" in i.message])
+        added = p.add_card(3)
+        p.set_tags(added, ["t5", "t32", "t33"])
+        over = [i for i in validate.validate(p) if "different tags" in i.message]
+        self.assertEqual(len(over), 1)
+        self.assertEqual((over[0].level, over[0].target), ("warning", added))
+        self.assertIn("34 different tags", over[0].message)
+        self.assertIn("t32, t33 left out", over[0].message)
+
     def test_trap_threshold_inheritance_and_effect_defaults(self):
         p = Project(fixture().game())
         p.retail.cards[681].type = p.cards[681].type = g.TYPE_TRAP
@@ -997,7 +1082,7 @@ class ValidateTest(unittest.TestCase):
         self.assertEqual(validate.text_lines("a b"), 1)
         self.assertEqual(validate.text_lines("x" * 20 + " y"), 2)
         self.assertEqual(validate.text_lines("a\nb\nc"), 3)
-        # An icon is two letters of the line, a colour none (cards.c text_code).
+        # An icon is two letters of the line, a color none (cards.c text_code).
         self.assertEqual(validate.text_lines("x" * 15 + " {f8 0B 04} y"), 1)
         self.assertEqual(validate.text_lines("x" * 16 + " {f8 0B 04} y"), 2)
         self.assertEqual(validate.text_lines("{f8 0A 02}" + "x" * 18 + " y"), 1)
@@ -1256,11 +1341,12 @@ class PasswordTest(unittest.TestCase):
 
 class DumpsTest(unittest.TestCase):
     def test_a_number_key_is_written_as_a_string(self):
-        """A card named by its number (480, Kuwagata α) is a key like any: a
-        long object laid over lines wrote it bare, which no JSON reader takes."""
-        written = manifest.dumps({"decks": {"Simon Muran": {
-            **{f"Card name number {n}": n for n in range(12)}, 480: 5}}})
-        self.assertEqual(json.loads(written)["decks"]["Simon Muran"]["480"], 5)
+        """A card named by its number (two share its name) is a key like any:
+        a long object laid over lines wrote it bare, which no JSON reader
+        takes."""
+        written = manifest.dumps({"starter_pools": [{"draws": 40, "cards": {
+            **{f"Card name number {n}": n for n in range(12)}, 480: 5}}]})
+        self.assertEqual(json.loads(written)["starter_pools"][0]["cards"]["480"], 5)
 
 
 if __name__ == "__main__":
@@ -1346,6 +1432,44 @@ class MonsterEffectsTest(unittest.TestCase):
         p.set_monster_effects(2, [{"when": "summon", "do": "heal", "amount": 100}] * 9)
         self.assertTrue(any("at most 8" in i.message for i in validate.validate_card(p, 2)))
 
+    def test_for_each(self):
+        """"for_each": a boost, heal or damage made once per face-up monster
+        counted, as monster_effects.c read_each() takes it."""
+        from fm_editor import monster_effects as fx
+        boost = {"when": "face_up", "do": "boost", "target": "self", "attack": 300, "defense": 300,
+                 "for_each": {"whose": "Own", "type": "dragon"}}
+        self.assertEqual(fx.normalize(boost)["for_each"], {"whose": "own", "type": "Dragon"})
+        self.assertEqual(fx.describe(fx.normalize(boost)),
+                         "This card: +300 ATK +300 DEF for each face-up Dragon on its owner's field")
+        # "whose" left out: both sides'.
+        heal = {"when": "summon", "do": "heal", "amount": 200, "for_each": {"attribute": "Light"}}
+        self.assertEqual(fx.normalize(heal)["for_each"], {"whose": "all", "attribute": "Light"})
+        self.assertEqual(fx.describe(fx.normalize(heal)),
+                         "Its owner gains 200 LP for each face-up Light monster on the field")
+        combat = {"when": "combat", "do": "boost", "target": "battle", "attack": -100,
+                  "for_each": {"whose": "opponent", "type": "Dragon", "attribute": "Light"}}
+        self.assertEqual(fx.describe(fx.normalize(combat)),
+                         "The monster it battles: -100 ATK for each face-up Light Dragon on the opponent's field "
+                         "for the battle")
+        # Not on a magic or destroy, nor whose it does not know, nor a Trap counted.
+        for effect in ({"when": "summon", "do": "magic", "card": 337, "for_each": {}},
+                       {"when": "summon", "do": "destroy", "for_each": {}},
+                       {"when": "summon", "do": "heal", "amount": 1, "for_each": {"whose": "mine"}},
+                       {"when": "summon", "do": "heal", "amount": 1, "for_each": "Dragon"},
+                       {"when": "summon", "do": "heal", "amount": 1, "for_each": None},
+                       {"when": "summon", "do": "heal", "amount": 1, "for_each": {"type": "Trap"}}):
+            self.assertIsNone(fx.normalize(effect), effect)
+        # Kept through the manifest, checked by validate.
+        p = self.project
+        p.set_monster_effects(1, [fx.normalize(boost), fx.normalize(heal)])
+        data = manifest.build(p)
+        again = Project(p.retail)
+        self.assertEqual(manifest.apply(again, data), [])
+        self.assertEqual(again.monster_effects_of(1)[0], [fx.normalize(boost), fx.normalize(heal)])
+        self.assertEqual([i.message for i in validate.validate_card(again, 1) if i.level == "error"], [])
+        p.set_monster_effects(2, [{"when": "summon", "do": "destroy", "for_each": {}}])
+        self.assertTrue(any("not one the game takes" in i.message for i in validate.validate_card(p, 2)))
+
     def test_counted_and_named_as_the_game_does(self):
         from fm_editor import monster_effects as fx
         heal = {"when": "summon", "do": "heal", "amount": 100}
@@ -1387,7 +1511,7 @@ class MonsterEffectsTest(unittest.TestCase):
         magic = next(cid for cid, card in sorted(p.cards.items()) if card.type == g.TYPE_MAGIC)
         cid = p.add_card(magic, "magic-monster")
         card = p.cards[cid]
-        card.type, card.attack, card.defense, card.level, card.star1, card.star2 = 0, 1500, 1200, 4, 1, 2
+        card.type, card.attribute, card.attack, card.defense, card.level, card.star1, card.star2 = 0, 0, 1500, 1200, 4, 1, 2
         p.set_monster_effects(cid, [{"when": "summon", "do": "heal", "amount": 500}])
         found = validate.validate_card(p, cid)
         self.assertEqual([i.message for i in found if i.level == "error"], [])

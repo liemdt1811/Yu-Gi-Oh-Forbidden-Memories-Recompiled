@@ -136,6 +136,17 @@ class SameAsTheGame(unittest.TestCase):
         found = overlaps.check(mods, FixtureSource(setup))
         self.assertEqual([o.text for o in found], [DUELISTS_64])
 
+    def test_ritual_tributes_from(self):
+        # Where a ritual's tributes come from is part of its recipe; "field"
+        # written out is the default (mods_overlap_test.c too).
+        setup, _ = fixture_mods()
+        entry = {"card": "Black Luster Ritual", "tributes": ["Kuriboh"], "result": "Black Luster Soldier"}
+        plain = overlaps.Mod("r1", "r1", {"id": "r1", "rituals": [entry]}, FIXTURE)
+        for origin, outcome in (("field", "agree"), ("hand", "later")):
+            other = overlaps.Mod("r2", "r2", {"id": "r2", "rituals": [dict(entry, tributes_from=origin)]}, FIXTURE)
+            found = overlaps.check([plain, other], FixtureSource(setup))
+            self.assertEqual([o.outcome for o in found], [outcome], origin)
+
     def test_starter_pools(self):
         # tests/pc/mod_overlaps/starter-pools: each "# a, b" a set of its mods
         # in load order, then the lines it makes (mods_overlap_test.c too).
@@ -219,12 +230,30 @@ class ConflictsTab(unittest.TestCase):
         project.other["limits"] = {"stats": 12000}
         (self.folder / "settings.txt").write_text("mod.alpha=1\nmod.beta=0\n", encoding="utf-8")
         issues, summary = validate.cross_mod(project, [self.folder], self.folder / "settings.txt")
-        stats = [i for i in issues if i.where.startswith("Limit stats")]
+        stats = [i for i in issues if i.where.startswith("Value stats")]
         self.assertEqual(len(stats), 1)
         self.assertEqual(stats[0].level, "warning")
         self.assertIn("Mine wins (later in load order)", stats[0].message)
         self.assertIn("2 installed mods", summary)
         self.assertIn("beta is off in the game now", summary)
+
+    def test_two_card_drops_locks(self):
+        # "limits" "card_drops": two mods' locks meet, and the later one
+        # deals (tables.c read_values notes the earlier one in the game).
+        (self.folder / "gamma").mkdir()
+        (self.folder / "gamma" / "mod.json").write_text(
+            json.dumps({"id": "gamma", "name": "Gamma", "limits": {"card_drops": 7}}), encoding="utf-8")
+        project = Project(fixture().game())
+        project.info.id = "mine"
+        project.info.name = "Mine"
+        project.other["priority"] = 5
+        project.other["limits"] = {"card_drops": 5}
+        (self.folder / "settings.txt").write_text("mod.alpha=0\nmod.beta=0\nmod.gamma=1\n", encoding="utf-8")
+        issues, _ = validate.cross_mod(project, [self.folder], self.folder / "settings.txt")
+        drops = [i for i in issues if i.where.startswith("Value card_drops")]
+        self.assertEqual(len(drops), 1)
+        self.assertIn("Gamma", drops[0].message)
+        self.assertIn("Mine wins (later in load order)", drops[0].message)
 
     def test_renamed_mod_is_itself(self):
         # Opened from alpha/ and given another id: the folder it came from is

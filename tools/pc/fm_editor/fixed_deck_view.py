@@ -7,7 +7,7 @@ from __future__ import annotations
 import tkinter as tk
 from tkinter import messagebox, ttk
 
-from . import fixed_decks
+from . import fixed_decks, roster
 from .gamedata import DECK_COPY_LIMIT, DECK_SIZE, DUELIST_NAMES, POOL_TOTAL, TYPE_NAMES
 from .widgets import pick_card, px, scrolled_tree
 
@@ -16,12 +16,12 @@ STYLES = (("Hint.TLabel", "#777"), ("Ok.TLabel", "#26a269"), ("Error.TLabel", "#
 
 def ensure_styles(widget):
     """The label styles the tabs name; left alone when a theme set them.
-    (lookup() would answer with the colour TLabel inherits, so ask the
+    (lookup() would answer with the color TLabel inherits, so ask the
     style for what it sets itself.)"""
     style = ttk.Style(widget)
-    for name, colour in STYLES:
+    for name, color in STYLES:
         if not (style.configure(name) or {}).get("foreground"):
-            style.configure(name, foreground=colour)
+            style.configure(name, foreground=color)
 
 
 class FixedDeckView:
@@ -44,8 +44,8 @@ class FixedDeckView:
         self.panel = ttk.Frame(right)
         frame, self.tree = scrolled_tree(self.panel, [("id", "#"), ("name", "Card"), ("type", "Type"),
                                                       ("atk", "ATK"), ("def", "DEF"),
-                                                      ("copies", "Copies"), ("weight", "Weighted"), ("note", "")],
-                                         [50, 220, 100, 50, 50, 60, 70, 170], 20, selectmode="extended",
+                                                      ("copies", "Copies"), ("weight", "Weighted"), ("note", "Note")],
+                                         [50, 220, 100, 50, 50, 60, 70, 170], 14, selectmode="extended",
                                          sort_numeric=("id", "atk", "def", "copies", "weight"))
         frame.pack(fill="both", expand=True, pady=4)
         self.tree.bind("<<TreeviewSelect>>", lambda e: self.pick_row())
@@ -80,9 +80,12 @@ class FixedDeckView:
         if fixed == self.fixed_shown:
             return
         if self.weighted is None:
-            # Taken when first needed, so the tab may pack its own after this was made.
-            self.weighted = [(w, w.pack_info()) for w in self.right.pack_slaves()
-                             if w not in (self.top, self.bar, self.panel)]
+            # Taken when first needed, so the tab may pack its own after this
+            # was made; what is above the pool choice (the duelist's header)
+            # stays.
+            slaves = self.right.pack_slaves()
+            below = slaves[slaves.index(self.top) + 1:] if self.top in slaves else slaves
+            self.weighted = [(w, w.pack_info()) for w in below if w not in (self.bar, self.panel)]
         if fixed:
             for widget, _ in self.weighted:
                 widget.pack_forget()
@@ -97,7 +100,11 @@ class FixedDeckView:
         p = self.tab.project
         if p is None or self.tab.pool.get() != "deck":
             return None
-        return fixed_decks.deck_of(p, self.tab.duelist)
+        return fixed_decks.deck_of(p, self.tab.subject())
+
+    def weights(self) -> dict:
+        """The weighted deck pool of the duelist shown."""
+        return roster.pools_of(self.tab.project, self.tab.subject())["deck"]
 
     def fill(self) -> bool:
         """Called first by DuelistsTab.fill: True when the fixed deck is what
@@ -105,6 +112,7 @@ class FixedDeckView:
         p = self.tab.project
         if p is not self.stash_of:
             self.stash, self.stash_of = {}, p
+        # A duelist the mod adds has either deck in decks/<id>.json (roster.py).
         if self.tab.pool.get() == "deck":
             self.bar.pack(fill="x", after=self.top, pady=(4, 0))
         else:
@@ -114,7 +122,7 @@ class FixedDeckView:
         self.show(deck is not None)
         if deck is None:
             return False
-        weights = p.pools[self.tab.duelist]["deck"]
+        weights = self.weights()
         self.tree.delete(*self.tree.get_children())
         for cid in sorted(deck.cards):
             copies = deck.cards[cid]
@@ -138,7 +146,7 @@ class FixedDeckView:
         self.tree.sorting.apply()
         total = deck.total()
         good = total == DECK_SIZE and not deck.kept
-        self.tab.total.configure(text=f"{DUELIST_NAMES[self.tab.duelist]}: fixed deck, {total} / {DECK_SIZE} cards",
+        self.tab.total.configure(text=f"{roster.label(p, self.tab.subject())}: fixed deck, {total} / {DECK_SIZE} cards",
                                  style="Ok.TLabel" if good else "Error.TLabel", foreground="")
         return True
 
@@ -154,9 +162,10 @@ class FixedDeckView:
     # --- the choice -------------------------------------------------------
 
     def switch(self):
-        p, d = self.tab.project, self.tab.duelist
+        p = self.tab.project
         if p is None or self.tab.pool.get() != "deck":
             return
+        d = self.tab.subject()
         if self.mode.get() == "fixed":
             if fixed_decks.deck_of(p, d) is None:
                 if self.stash.get(d):
@@ -164,7 +173,7 @@ class FixedDeckView:
                 else:
                     # A start that deals: the forty the weighted deck most
                     # likely deals. Clear starts from nothing.
-                    fixed_decks.set_deck(p, d, fixed_decks.most_likely(p.pools[d]["deck"]))
+                    fixed_decks.set_deck(p, d, fixed_decks.most_likely(self.weights()))
         else:
             taken = fixed_decks.remove(p, d)
             if taken:
@@ -179,8 +188,7 @@ class FixedDeckView:
                 "Fixed deck", f"Replace the {deck.total()} cards of this fixed deck with the {DECK_SIZE} the "
                               "weighted deck most likely deals?", parent=self.tab):
             return
-        fixed_decks.set_deck(self.tab.project, self.tab.duelist,
-                             fixed_decks.most_likely(self.tab.project.pools[self.tab.duelist]["deck"]))
+        fixed_decks.set_deck(self.tab.project, self.tab.subject(), fixed_decks.most_likely(self.weights()))
         self.edited()
 
     def clear(self):
@@ -191,16 +199,22 @@ class FixedDeckView:
         self.edited()
 
     def revert(self):
-        """Back to the disc's: no fixed deck, and the weighted deck retail's."""
-        p, d = self.tab.project, self.tab.duelist
+        """Back to the disc's: no fixed deck, and the weighted deck retail's
+        (an added duelist's, its base's)."""
+        p, d = self.tab.project, self.tab.subject()
         if p is None:
             return
-        if not messagebox.askyesno("Revert to retail", f"Deal {DUELIST_NAMES[d]} the disc's weighted deck again? "
-                                   "The fixed deck and the weighted deck's edits are taken out.", parent=self.tab):
+        whose = (f"Deal {DUELIST_NAMES[d]} the disc's weighted deck again?" if isinstance(d, int) else
+                 f"Deal {roster.label(p, d)} {DUELIST_NAMES[d.base]}'s weighted deck from the disc again?")
+        if not messagebox.askyesno("Revert to retail", f"{whose} The fixed deck and the weighted deck's edits are "
+                                   "taken out.", parent=self.tab):
             return
         fixed_decks.remove(p, d)
         self.stash.pop(d, None)
-        p.revert_pool(d, "deck")
+        if isinstance(d, int):
+            p.revert_pool(d, "deck")
+        else:
+            d.pools["deck"] = dict(roster.retail_pool(p, d, "deck"))
         self.edited()
 
     # --- cards -------------------------------------------------------------

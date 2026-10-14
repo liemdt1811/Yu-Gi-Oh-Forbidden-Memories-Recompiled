@@ -63,8 +63,21 @@ int AudioReplace_Convert(const int16_t *samples, size_t frames, int channels, co
  * several applied mods that replace one id, the one applied last wins. */
 int AudioReplace_Load(int mod, const char *mod_id, const char *directory, const struct JsonValue *audio,
                       char *error, size_t error_size);
-/* Drop what a mod added, stopping whatever of it is playing. */
+/* Drop what a mod added, stopping whatever of it is playing: its clips
+ * below too. */
 void AudioReplace_Unload(int mod);
+/* A code mod's own sound (host->sound_add): `frames` frames of `channels`
+ * interleaved s16 samples at `rate` Hz, copied and converted. Returns a
+ * handle above 0, or -1. Not from the clock or the mixer. */
+int AudioReplace_AddClip(int mod, const char *mod_id, const int16_t *samples, size_t frames, int channels,
+                         unsigned rate);
+/* Plays `mod`'s clip once on a sound-effect channel, as AudioReplace_Sfx
+ * plays a replaced sound effect; one already playing starts again where it
+ * plays, as the driver gives a sound effect its own voice again
+ * (func_800482B0). Nonzero when it started. */
+int AudioReplace_PlayClip(int mod, int handle, int volume, int pan);
+/* Stops and frees `mod`'s clip. Not from the clock or the mixer. */
+void AudioReplace_FreeClip(int mod, int handle);
 /* How many ids are replaced now, of one kind, and whether `id` is. */
 int AudioReplace_Count(AudioKind kind);
 /* The mod index replacing `id`, or -1. */

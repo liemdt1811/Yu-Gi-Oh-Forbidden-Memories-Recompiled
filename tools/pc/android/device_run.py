@@ -7,7 +7,8 @@ callers start it with their MEMORIES_* environment, and this forwards it.
     python tools/pc/android/device_run.py run BUILD        (what BUILD/device.cmd runs)
 
 setup builds tools/pc/android/runner.c with the NDK, pushes it with
-libgame.so, libSDL3.so and the disc (MEMORIES_DISC, or game/*.bin) to
+libgame.so, libSDL3.so, the build's mods and the disc (MEMORIES_DISC, or
+game/*.bin) to
 /data/local/tmp/yfm64, and writes BUILD/device.cmd (Windows) and
 BUILD/device.sh, which replay.py takes as --executable:
 
@@ -68,6 +69,11 @@ def setup(build):
     # the runner saves states as build 0, and the app refuses them.
     if os.path.isfile(os.path.join(build, "buildid")):
         call("push", os.path.join(build, "buildid"), f"{REMOTE}/")
+    # The mods beside the game (the shipped ones, with their aarch64 objects),
+    # where the runner's program directory has them: replaced whole.
+    if os.path.isdir(os.path.join(build, "mods")):
+        call("shell", f"rm -rf {REMOTE}/mods")
+        call("push", os.path.join(build, "mods"), f"{REMOTE}/mods")
     if call("shell", f"ls {REMOTE}/game/disc.bin", quiet=True).strip() != f"{REMOTE}/game/disc.bin":
         call("push", disc, f"{REMOTE}/game/disc.bin")
     call("shell", f"chmod 755 {REMOTE}/runner")

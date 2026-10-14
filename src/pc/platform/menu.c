@@ -19,9 +19,11 @@
 #include "pc/audio/spu.h"
 #include "pc/audio/replace.h"
 #include "pc/debug/cheats.h"
+#include "pc/tower/tower.h"
 #include "pc/debug/log.h"
 #include "pc/guest/state.h"
 #include "pc/mods/mods.h"
+#include "pc/cards/tables.h"
 #include "pc/render/texture_pack.h"
 #include "paths.h"
 #include "pc/sdk/display.h"
@@ -69,7 +71,7 @@ static int ui = 1, touch_row;
 #define SHADOW (6 * ui)
 #define FONT_PX (13 * ui)
 
-/* Colours: a dark bar that stays out of the picture's way. */
+/* Colors: a dark bar that stays out of the picture's way. */
 #define C_BAR 0x1e1f22u
 #define C_BAR_EDGE 0x0b0b0dU
 #define C_BAR_HOVER 0x33353aU
@@ -112,7 +114,17 @@ typedef struct {
 typedef struct { const char *label; Item items[20]; int count; int x, w; } Menu;
 
 enum { MENU_FILE, MENU_VIDEO, MENU_AUDIO, MENU_GAME, MENU_VIEW, MENU_DEBUG, MENU_HELP, MENU_COUNT };
-enum { SUB_SCALE, SUB_MENU_SIZE, SUB_SPEED, SUB_FPS, SUB_CHEATS, SUB_TRACE, SUB_SCALING, SUB_ASPECT, SUB_RESOLUTION, SUB_COLOR, SUB_EFFECTS, SUB_JUMP, SUB_ANTIALIAS, SUB_FILTER, SUB_RANK, SUB_LANGUAGE, SUB_PGXP, SUB_TOUCH, SUB_COUNT };
+#ifdef __ANDROID__
+#define HELP_ITEMS 7 /* with Offer crash reports at start */
+#else
+#define HELP_ITEMS 6
+#endif
+enum { SUB_SCALE, SUB_MENU_SIZE, SUB_SPEED, SUB_FPS, SUB_CHEATS, SUB_TRACE, SUB_SCALING, SUB_ASPECT, SUB_RESOLUTION, SUB_COLOR, SUB_EFFECTS, SUB_JUMP, SUB_ANTIALIAS, SUB_FILTER, SUB_RANK, SUB_LANGUAGE, SUB_PGXP, SUB_TOUCH, SUB_ROTATION, SUB_COUNT };
+#ifdef __ANDROID__
+#define VIDEO_ITEMS 15 /* with Screen rotation */
+#else
+#define VIDEO_ITEMS 14
+#endif
 static Menu menus[MENU_COUNT] = {
     {"File", {{"Save state", "F5", ITEM_ACTION, ACT_SAVE_STATE, -1},
               {"Load state", "F7", ITEM_ACTION, ACT_LOAD_STATE, -1},
@@ -128,6 +140,9 @@ static Menu menus[MENU_COUNT] = {
               {"Menu size", 0, ITEM_SUBMENU, 0, -1, SUB_MENU_SIZE},
               {"Fullscreen", "F11", ITEM_CHECK, MENU_ITEM_FULLSCREEN, SET_FULLSCREEN, 0, ITEM_GROUP_BREAK},
               {"Borderless fullscreen", 0, ITEM_CHECK, MENU_ITEM_BORDERLESS, SET_BORDERLESS},
+#ifdef __ANDROID__
+              {"Screen rotation", 0, ITEM_SUBMENU, 0, -1, SUB_ROTATION},
+#endif
               {"Scaling", 0, ITEM_SUBMENU, 0, -1, SUB_SCALING, ITEM_GROUP_BREAK},
               {"Aspect Ratio", 0, ITEM_SUBMENU, 0, -1, SUB_ASPECT},
               {"Resolution", 0, ITEM_SUBMENU, 0, -1, SUB_RESOLUTION},
@@ -135,9 +150,9 @@ static Menu menus[MENU_COUNT] = {
               {"Anti-aliasing", 0, ITEM_SUBMENU, 0, -1, SUB_ANTIALIAS},
               {"Filtering", 0, ITEM_SUBMENU, MENU_ITEM_FILTER, -1, SUB_FILTER, ITEM_GROUP_BREAK},
               {"VSync", 0, ITEM_CHECK, MENU_ITEM_VSYNC, SET_VSYNC},
-              {"Color", 0, ITEM_SUBMENU, 0, -1, SUB_COLOR, ITEM_GROUP_BREAK},
+              {"Color", 0, ITEM_SUBMENU, MENU_ITEM_COLOR, -1, SUB_COLOR, ITEM_GROUP_BREAK},
               {"Effects", 0, ITEM_SUBMENU, 0, -1, SUB_EFFECTS},
-              {"Precise geometry", 0, ITEM_SUBMENU, MENU_ITEM_PGXP, -1, SUB_PGXP, ITEM_GROUP_BREAK}}, 14},
+              {"Precise geometry", 0, ITEM_SUBMENU, MENU_ITEM_PGXP, -1, SUB_PGXP, ITEM_GROUP_BREAK}}, VIDEO_ITEMS},
     {"Audio", {{"Master", 0, ITEM_SLIDER, SLIDER_MASTER, SET_MASTER_VOLUME},
                {"Music", 0, ITEM_SLIDER, SLIDER_MUSIC, SET_MUSIC_VOLUME},
                {"Sound FX", 0, ITEM_SLIDER, SLIDER_SFX, SET_SFX_VOLUME},
@@ -176,13 +191,18 @@ static Menu menus[MENU_COUNT] = {
                {"Dump VRAM (PPM)", 0, ITEM_ACTION, ACT_DUMP_VRAM, -1},
                {"Trace", 0, ITEM_SUBMENU, 0, -1, SUB_TRACE, ITEM_GROUP_BREAK}}, 8},
     /* Update checks against the project's GitHub releases (update_check.h).
-     * The last row's label is this build's version, set by Menu_Init. */
+     * On Android, whether the last crash's report is offered at start
+     * (android_report.c), the way back from its "Don't ask again". The last
+     * row's label is this build's version, set by Menu_Init. */
     {"Help", {{"Check for updates at start", 0, ITEM_CHECK, 0, SET_UPDATE_CHECK},
               {"Include pre-releases", 0, ITEM_CHECK, 0, SET_UPDATE_PRERELEASES},
               {"Check for updates now", 0, ITEM_ACTION, ACT_CHECK_UPDATES, -1, 0, ITEM_GROUP_BREAK},
               {"Releases page", 0, ITEM_ACTION, ACT_RELEASES, -1},
               {"System info for bug reports...", 0, ITEM_ACTION, ACT_SYSTEM_INFO, -1, 0, ITEM_GROUP_BREAK},
-              {"Version", 0, ITEM_ACTION, ACT_VERSION, -1, 0, ITEM_GROUP_BREAK | ITEM_DISABLED}}, 6},
+#ifdef __ANDROID__
+              {"Offer crash reports at start", 0, ITEM_CHECK, 0, SET_CRASH_REPORT_OFFER},
+#endif
+              {"Version", 0, ITEM_ACTION, ACT_VERSION, -1, 0, ITEM_GROUP_BREAK | ITEM_DISABLED}}, HELP_ITEMS},
 };
 static Menu submenus[SUB_COUNT] = {
     {"Window scale", {{"1x", 0, ITEM_RADIO, MENU_ITEM_SCALE_1, SET_SCALE, 1},
@@ -242,9 +262,9 @@ static Menu submenus[SUB_COUNT] = {
                {"Saturation", 0, ITEM_SLIDER, 0, SET_SATURATION},
                {"Gamma", 0, ITEM_SLIDER, 0, SET_GAMMA},
                {"Reset", 0, ITEM_ACTION, ACT_RESET_COLOR, -1, 0, ITEM_GROUP_BREAK}}, 5},
-    {"Effects", {{"CRT scanlines", 0, ITEM_CHECK, 0, SET_CRT},
-                 {"Reduce flashes", 0, ITEM_CHECK, 0, SET_FLASH},
-                 {"xBR pixel smoothing", 0, ITEM_CHECK, 0, SET_XBR}}, 3},
+    {"Effects", {{"CRT scanlines", 0, ITEM_CHECK, MENU_ITEM_CRT, SET_CRT},
+                 {"Reduce flashes", 0, ITEM_CHECK, MENU_ITEM_FLASH, SET_FLASH},
+                 {"xBR pixel smoothing", 0, ITEM_CHECK, MENU_ITEM_XBR, SET_XBR}}, 3},
     /* The others go by way of the title and the game's debug menu, as the
      * control channel's `jump` does (title_jump.h); a duel needs a deck. */
     {"Jump to", {{"Title Screen", 0, ITEM_ACTION, MENU_ITEM_TITLE, -1, 0, ITEM_DISABLED},
@@ -284,6 +304,10 @@ static Menu submenus[SUB_COUNT] = {
     {"Touch controls", {{"Automatic (after a touch)", 0, ITEM_RADIO, 0, SET_TOUCH_PAD, 0},
                         {"Show", 0, ITEM_RADIO, 0, SET_TOUCH_PAD, 1},
                         {"Hide", 0, ITEM_RADIO, 0, SET_TOUCH_PAD, 2}}, 3},
+    /* Android (android.c, Android_ApplyScreenRotation): turned over with the
+     * phone by its sensor, or only as the system's auto-rotate allows. */
+    {"Screen rotation", {{"Turn with the phone", 0, ITEM_RADIO, 0, SET_SCREEN_ROTATION, 0},
+                         {"Follow auto-rotate", 0, ITEM_RADIO, 0, SET_SCREEN_ROTATION, 1}}, 2},
 };
 
 static int open_menu = -1, hot_item = -1, hover_bar = -1, grabbed, ready, visible = 1;
@@ -579,17 +603,17 @@ static inline uint32_t blend(uint32_t under, uint32_t over, unsigned alpha)
     return 0xff000000u | r << 16 | g << 8 | b;
 }
 
-static void put(int x, int y, uint32_t colour, unsigned alpha)
+static void put(int x, int y, uint32_t color, unsigned alpha)
 {
     uint32_t *at;
     if (x < 0 || y < 0 || x >= canvas->width || y >= canvas->height || !alpha || y < clip_top || y >= clip_bottom) {
         return;
     }
     at = canvas->pixels + (size_t)y * (size_t)canvas->stride + (size_t)x;
-    *at = alpha >= 255 ? (colour | 0xff000000u) : blend(*at, colour, alpha);
+    *at = alpha >= 255 ? (color | 0xff000000u) : blend(*at, color, alpha);
 }
 
-static void fill(int x, int y, int w, int h, uint32_t colour, unsigned alpha)
+static void fill(int x, int y, int w, int h, uint32_t color, unsigned alpha)
 {
     int i, j;
     if (x < 0) { w += x; x = 0; }
@@ -601,9 +625,9 @@ static void fill(int x, int y, int w, int h, uint32_t colour, unsigned alpha)
     for (j = 0; j < h; j++) {
         uint32_t *row = canvas->pixels + (size_t)(y + j) * (size_t)canvas->stride + (size_t)x;
         if (alpha >= 255) {
-            for (i = 0; i < w; i++) row[i] = colour | 0xff000000u;
+            for (i = 0; i < w; i++) row[i] = color | 0xff000000u;
         } else {
-            for (i = 0; i < w; i++) row[i] = blend(row[i], colour, alpha);
+            for (i = 0; i < w; i++) row[i] = blend(row[i], color, alpha);
         }
     }
 }
@@ -621,28 +645,28 @@ static void clear_alpha_rect(int x, int y, int w, int h)
     }
 }
 
-static void outline(int x, int y, int w, int h, uint32_t colour)
+static void outline(int x, int y, int w, int h, uint32_t color)
 {
-    fill(x, y, w, 1, colour, 255);
-    fill(x, y + h - 1, w, 1, colour, 255);
-    fill(x, y, 1, h, colour, 255);
-    fill(x + w - 1, y, 1, h, colour, 255);
+    fill(x, y, w, 1, color, 255);
+    fill(x, y + h - 1, w, 1, color, 255);
+    fill(x, y, 1, h, color, 255);
+    fill(x + w - 1, y, 1, h, color, 255);
 }
 
 /* An anti-aliased disc: coverage from the distance to the edge. */
-static void disc(int cx, int cy, int radius, uint32_t colour)
+static void disc(int cx, int cy, int radius, uint32_t color)
 {
     int x, y;
     for (y = -radius - 1; y <= radius + 1; y++) {
         for (x = -radius - 1; x <= radius + 1; x++) {
             float d = (float)__builtin_sqrtf((float)(x * x + y * y)) - (float)radius + 0.5f;
             unsigned alpha = d <= 0 ? 255 : d >= 1 ? 0 : (unsigned)((1 - d) * 255);
-            put(cx + x, cy + y, colour, alpha);
+            put(cx + x, cy + y, color, alpha);
         }
     }
 }
 
-static void draw_bitmap_text(int x, int middle, const char *text, uint32_t colour)
+static void draw_bitmap_text(int x, int middle, const char *text, uint32_t color)
 {
     for (; *text; x += 12 * ui) {
         uint32_t character = Glyphs_NextCharacter(&text);
@@ -656,7 +680,7 @@ static void draw_bitmap_text(int x, int middle, const char *text, uint32_t colou
             for (row = 0; row < 7; row++) {
                 for (column = 0; column < 5; column++) {
                     if (bitmap_font[i].rows[row] & (0x10 >> column)) {
-                        fill(x + column * 2 * ui, middle - 7 * ui + row * 2 * ui, 2 * ui, 2 * ui, colour, 255);
+                        fill(x + column * 2 * ui, middle - 7 * ui + row * 2 * ui, 2 * ui, 2 * ui, color, 255);
                     }
                 }
             }
@@ -666,11 +690,11 @@ static void draw_bitmap_text(int x, int middle, const char *text, uint32_t colou
 }
 
 /* Text with its vertical centre on `middle`. */
-static void draw_text(int x, int middle, const char *text, uint32_t colour)
+static void draw_text(int x, int middle, const char *text, uint32_t color)
 {
     int baseline;
     if (!font_loaded) {
-        draw_bitmap_text(x, middle, text, colour);
+        draw_bitmap_text(x, middle, text, color);
         return;
     }
     baseline = middle + (font_ascent - font_descent + 1) / 2;
@@ -679,17 +703,17 @@ static void draw_text(int x, int middle, const char *text, uint32_t colour)
         int row, column;
         for (row = 0; row < g->h && g->coverage; row++) {
             for (column = 0; column < g->w; column++) {
-                put(x + g->left + column, baseline - g->top + row, colour, g->coverage[row * g->w + column]);
+                put(x + g->left + column, baseline - g->top + row, color, g->coverage[row * g->w + column]);
             }
         }
         x += g->advance;
     }
 }
 
-void Menu_DrawText(MenuCanvas *into, int x, int y, const char *text, uint32_t colour)
+void Menu_DrawText(MenuCanvas *into, int x, int y, const char *text, uint32_t color)
 {
     canvas = into;
-    draw_text(x, y, text, colour);
+    draw_text(x, y, text, color);
 }
 
 int Menu_TextWidth(const char *text) { return text_width(text); }
@@ -736,12 +760,12 @@ static const Glyph *big_glyph_for(uint32_t character, int scale)
     return b->missing ? NULL : &b->glyph;
 }
 
-void Menu_DrawTextScaled(MenuCanvas *into, int x, int middle, const char *text, uint32_t colour, int scale)
+void Menu_DrawTextScaled(MenuCanvas *into, int x, int middle, const char *text, uint32_t color, int scale)
 {
     canvas = into;
-    if (scale == ui) { draw_text(x, middle, text, colour); return; }
+    if (scale == ui) { draw_text(x, middle, text, color); return; }
     if (!font_loaded) {
-        int previous = ui; ui = scale; draw_bitmap_text(x, middle, text, colour); ui = previous; return;
+        int previous = ui; ui = scale; draw_bitmap_text(x, middle, text, color); ui = previous; return;
     }
     int baseline = middle + (font_ascent - font_descent + 1) * scale / (2 * ui);
     int advance = 0;
@@ -753,7 +777,7 @@ void Menu_DrawTextScaled(MenuCanvas *into, int x, int middle, const char *text, 
         if (big) {
             for (int row = 0; row < big->h && big->coverage; row++)
                 for (int col = 0; col < big->w; col++)
-                    put(x + advance * scale / ui + big->left + col, baseline - big->top + row, colour,
+                    put(x + advance * scale / ui + big->left + col, baseline - big->top + row, color,
                         big->coverage[row * big->w + col]);
             advance += g->advance;
             continue;
@@ -761,7 +785,7 @@ void Menu_DrawTextScaled(MenuCanvas *into, int x, int middle, const char *text, 
         for (int row = 0; row < g->h * scale / ui && g->coverage; row++)
             for (int col = 0; col < g->w * scale / ui; col++)
                 put(x + advance * scale / ui + g->left * scale / ui + col,
-                    baseline - g->top * scale / ui + row, colour,
+                    baseline - g->top * scale / ui + row, color,
                     g->coverage[(row * ui / scale) * g->w + col * ui / scale]);
         advance += g->advance;
     }
@@ -783,6 +807,7 @@ void Menu_LoadSettings(void)
     Mods_SetTexturePack(TexturePack_Load, TexturePack_Unload);
     Mods_SetAssets(TexturePack_LoadAssets, TexturePack_LoadAssetFolder);
     Mods_SetAudio(AudioReplace_Load, AudioReplace_Unload);
+    Mods_SetAudioClips(AudioReplace_AddClip, AudioReplace_PlayClip, AudioReplace_FreeClip);
     Mods_Load(); /* the mods the settings say are applied, once they are read */
 }
 
@@ -801,6 +826,7 @@ static void setting_changed(SettingId id, int value)
     case SET_SPEED: Platform_SetClockRate(value); break;
     case SET_FPS: Platform_SetPresentCap(value); break;
     case SET_MENU_SCALE: Platform_ApplyDisplaySettings(); break;
+    case SET_SCREEN_ROTATION: Platform_ApplyDisplaySettings(); break;
     default: break;
     }
 }
@@ -958,7 +984,42 @@ void Menu_SetPlatformItems(int windows, int window_modes, int update_check)
     }
 }
 
-static int hd_picture;
+static int hd_picture, present_pass = 1;
+
+/* An item's reason beside it, and dimmed while it has one. Only a row
+ * dimmed here is enabled again (these rows have no shortcut of their own):
+ * a backend may dim one for good (x11.c, Sharp bilinear). */
+static void set_reason(int id, const char *why)
+{
+    int menu, item, had = 0;
+    for (menu = 0; menu < MENU_COUNT + SUB_COUNT; menu++) {
+        Menu *m = menu < MENU_COUNT ? &menus[menu] : &submenus[menu - MENU_COUNT];
+        for (item = 0; item < m->count; item++) {
+            if (m->items[item].id != id) continue;
+            had |= m->items[item].shortcut != NULL;
+            m->items[item].shortcut = why;
+        }
+    }
+    if (why || had) Menu_SetItemEnabled(id, !why);
+}
+
+/* The desktop presenter's effects (present_pass.c) are not run on the
+ * OpenGL ES path (Android, sdl.c's es_picture) or by the SDL fallback.
+ * xBR is also the OpenGL picture pass's, on the textures, at Internal 2x
+ * and up (gl_picture.c). */
+static void update_effect_items(int console, const char *no_picture)
+{
+#ifdef __ANDROID__
+    const char *why = present_pass ? NULL : "not on Android yet";
+#else
+    const char *why = present_pass ? NULL : "needs desktop OpenGL";
+#endif
+    set_reason(MENU_ITEM_COLOR, why);
+    set_reason(MENU_ITEM_CRT, why);
+    set_reason(MENU_ITEM_FLASH, why);
+    set_reason(MENU_ITEM_FILTER_SHARP, why);
+    set_reason(MENU_ITEM_XBR, present_pass ? NULL : !hd_picture ? no_picture : console ? "needs Internal 2x" : NULL);
+}
 
 /* HD text takes effect in the OpenGL pass at Internal 2x and up; the
  * opponent's name also at 1x, where the software GPU draws it. */
@@ -987,6 +1048,11 @@ static void update_hd_items(void)
             }
         }
     }
+#ifdef __ANDROID__
+    update_effect_items(console, "needs OpenGL ES 3");
+#else
+    update_effect_items(console, "needs OpenGL 3");
+#endif
 }
 
 void Menu_SetHdPicture(int on)
@@ -995,10 +1061,17 @@ void Menu_SetHdPicture(int on)
     update_hd_items();
 }
 
+void Menu_SetPresentPass(int on)
+{
+    present_pass = !!on;
+    update_hd_items();
+}
+
 void Menu_SetVisible(int wanted) { visible = !!wanted; }
 int Menu_IsOpen(void) { return open_menu >= 0; }
 
 void Menu_SetTouchTarget(int pixels) { touch_row = pixels > 0 ? pixels : 0; }
+int Menu_TouchTarget(void) { return touch_row; }
 
 static void close_menu(void);
 
@@ -1225,23 +1298,23 @@ static void slider_geometry(int level, int index, int *sx, int *middle)
 }
 
 /* A small triangle pointing right, for rows that open a submenu. */
-static void draw_arrow(int x, int middle, uint32_t colour)
+static void draw_arrow(int x, int middle, uint32_t color)
 {
     int span = 4 * ui, c;
     for (c = 0; c < span; c++) {
         int half = (span - c) * 7 * ui / (2 * span);
-        fill(x + c, middle - half, 1, 2 * half + 1, colour, 255);
+        fill(x + c, middle - half, 1, 2 * half + 1, color, 255);
     }
 }
 
 /* A triangle pointing up (-1) or down (1) with its middle at cx, middle:
  * a scrolling menu's arrow band. */
-static void draw_band_arrow(int cx, int middle, int direction, uint32_t colour)
+static void draw_band_arrow(int cx, int middle, int direction, uint32_t color)
 {
     int span = 5 * ui, r;
     for (r = 0; r < span; r++) {
         int half = direction < 0 ? r : span - 1 - r;
-        fill(cx - half * 3 / 2, middle - span / 2 + r, half * 3 + 1, 1, colour, 255);
+        fill(cx - half * 3 / 2, middle - span / 2 + r, half * 3 + 1, 1, color, 255);
     }
 }
 
@@ -1528,6 +1601,9 @@ static int notice_event(const MenuEvent *event, int *quit)
 }
 
 
+static void update_card_drops_item(void);
+static int slider_value(const Item *item);
+
 void Menu_Draw(MenuCanvas *into)
 {
     int i, level;
@@ -1535,6 +1611,7 @@ void Menu_Draw(MenuCanvas *into)
     if (!ready) {
         return;
     }
+    update_card_drops_item();
     if (!visible) {
         if (notice.shown) draw_notice();
         return;
@@ -1616,14 +1693,17 @@ void Menu_Draw(MenuCanvas *into)
                 int sx, sm, knob, filled;
                 char value[8];
                 int minimum = Settings_Min(item->setting), maximum = Settings_Max(item->setting);
-                int setting = Settings_Get(item->setting);
+                int setting = slider_value(item);
                 slider_geometry(level, i, &sx, &sm);
                 knob = sx + KNOB_R + (setting - minimum) * (SLIDER_W - KNOB_R * 2) / (maximum - minimum);
                 filled = knob - sx;
                 fill(sx, sm - SLIDER_H / 2, SLIDER_W, SLIDER_H, C_TRACK, 255);
-                fill(sx, sm - SLIDER_H / 2, filled, SLIDER_H, hot ? C_TEXT_ON_ACCENT : C_ACCENT, 255);
+                /* A slider that is off (a mod's Card drops) is grey all
+                 * through, as its label is. */
+                fill(sx, sm - SLIDER_H / 2, filled, SLIDER_H,
+                     disabled ? C_TEXT_DIM : hot ? C_TEXT_ON_ACCENT : C_ACCENT, 255);
                 disc(knob, sm, KNOB_R, C_KNOB_EDGE);
-                disc(knob, sm, KNOB_R - 1, C_KNOB);
+                disc(knob, sm, KNOB_R - 1, disabled ? C_TEXT_DIM : C_KNOB);
                 snprintf(value, sizeof(value), "%d", setting);
                 draw_text(sx + SLIDER_W + 12 * ui, middle, value, setting ? ink : dim);
             }
@@ -1646,8 +1726,11 @@ void Menu_Draw(MenuCanvas *into)
 
 /* --- behaviour ------------------------------------------------------- */
 
+/* A slider that is off (Card drops while a mod locks it) keeps the
+ * player's value as it is, whichever way it is reached. */
 static void set_slider(const Item *item, int value)
 {
+    if (item->flags & ITEM_DISABLED) return;
     Settings_Set(item->setting, value);
 }
 
@@ -1832,9 +1915,15 @@ static void activate(const Item *item, int *quit)
     case ACT_LOAD_STATE: Memories_StateRequest(2, Platform_StateSlot()); break;
     case ACT_SCREENSHOT: Platform_Screenshot(0); break;
     case ACT_EXIT: QuitPrompt_Request(quit); break;
-    case ACT_GIVE_CARDS: give_cards(item->value); break;
-    case ACT_UNLOCK_FREE_DUELISTS: need_save(Cheats_UnlockAllFreeDuelists()); break;
-    case ACT_SET_STARCHIPS: need_save(Cheats_SetStarchips((unsigned)item->value)); break;
+    /* A tower whose mod turns cheats off refuses them while the player is
+     * in it (tower.h, Tower_Guard), with a notice. */
+    case ACT_GIVE_CARDS: if (!Tower_Guard(TOWER_GUARD_CHEAT, 1, NULL, 0)) give_cards(item->value); break;
+    case ACT_UNLOCK_FREE_DUELISTS:
+        if (!Tower_Guard(TOWER_GUARD_CHEAT, 1, NULL, 0)) need_save(Cheats_UnlockAllFreeDuelists());
+        break;
+    case ACT_SET_STARCHIPS:
+        if (!Tower_Guard(TOWER_GUARD_CHEAT, 1, NULL, 0)) need_save(Cheats_SetStarchips((unsigned)item->value));
+        break;
     case ACT_RESET_COLOR:
         Settings_Set(SET_BRIGHTNESS, 100);
         Settings_Set(SET_CONTRAST, 100);
@@ -1848,6 +1937,7 @@ static void activate(const Item *item, int *quit)
     case MENU_ITEM_TITLE: TitleJump_Request(); break;
     case ACT_JUMP: {
         char why[120];
+        if (Tower_Guard(TOWER_GUARD_JUMP, 1, NULL, 0)) break;   /* a tower's duel: refused, with a notice */
         if (TitleJump_RequestTo(item->value, 0, NULL, why, sizeof(why))) fprintf(stderr, "memories-pc: jump: %s\n", why);
         break;
     }
@@ -1926,6 +2016,48 @@ static int item_action(const Item *item)
     default: return -1;
     }
 }
+/* Game > Card drops while a mod locks it ("limits": {"card_drops": n},
+ * notes/card-drops.md): the row is off, its slider stands at the mod's
+ * number and its label names the mod. The player's own value stays in the
+ * settings, untouched, for when the mod is gone. The lock is read at
+ * startup (tables.c), after the menu is made, so this is asked as the menu
+ * is drawn and used. */
+static int card_drops_lock;
+static void update_card_drops_item(void)
+{
+    static char label[96];
+    static Item *item;
+    static int shown = -1;
+    const char *id = NULL, *name = NULL;
+    int i;
+    card_drops_lock = Tables_CardDropsLock(&id);
+    if (!item) {
+        for (i = 0; i < menus[MENU_GAME].count && !item; i++)
+            if (menus[MENU_GAME].items[i].setting == SET_CARD_DROPS) item = &menus[MENU_GAME].items[i];
+        if (!item) return;
+    }
+    if (card_drops_lock == shown) return;
+    shown = card_drops_lock;
+    if (!card_drops_lock) {
+        item->label = "Card drops";
+        item->flags &= ~ITEM_DISABLED;
+        return;
+    }
+    for (i = 0; i < Mods_Count() && !name; i++)
+        if (id && !strcmp(Mods_Id(i), id)) name = Mods_Name(i);
+    snprintf(label, sizeof(label), "Card drops (set by %.48s)", name ? name : id ? id : "a mod");
+    item->label = label;
+    item->flags |= ITEM_DISABLED;
+}
+
+/* What a slider shows: Card drops shows a mod's lock in place of the
+ * player's own value. */
+static int slider_value(const Item *item)
+{
+    if (item->setting == SET_CARD_DROPS && card_drops_lock) return card_drops_lock;
+    return Settings_Get(item->setting);
+}
+
 static void update_shortcuts(void)
 {
     static char labels[CTRL_HOST_COUNT][32];
@@ -1945,6 +2077,7 @@ static void update_shortcuts(void)
 int Menu_Event(const MenuEvent *event, int *quit)
 {
     update_shortcuts();
+    update_card_drops_item();
     if (ready && notice.shown) {
         return notice_event(event, quit);
     }
@@ -2101,8 +2234,12 @@ int Menu_Event(const MenuEvent *event, int *quit)
             int level = active_level(), *hot = active_hot();
             const Item *item = *hot >= 0 ? &level_menu(level)->items[*hot] : NULL;
             if (item && item->kind == ITEM_SLIDER) {
-                set_slider(item, Settings_Get(item->setting) + (event->key == MENU_KEY_RIGHT ? 1 : -1) * slider_step(item));
-                Settings_Save();
+                /* The pointer can rest on a slider that is off: the key
+                 * does nothing there. */
+                if (!(item->flags & ITEM_DISABLED)) {
+                    set_slider(item, Settings_Get(item->setting) + (event->key == MENU_KEY_RIGHT ? 1 : -1) * slider_step(item));
+                    Settings_Save();
+                }
             } else if (event->key == MENU_KEY_RIGHT && item && item->kind == ITEM_SUBMENU) {
                 open_submenu(*hot);
                 hot_sub = step_item(1, -1, 1);

@@ -1,6 +1,18 @@
 #ifndef MEMORIES_MOD_TYPES_H
 #define MEMORIES_MOD_TYPES_H
-#define MEMORIES_MOD_API 10
+#define MEMORIES_MOD_API 16
+/* API 15: card_types names the existing type ids and declares monster ids
+ * 24-255, with optional per-custom-type icons. It has no host entry: cards
+ * and gameplay tables resolve its names. */
+/* API 16: "attributes" renames the retail six and declares monster
+ * attributes 8-255, with optional icons; no host entry either. */
+/* API 11 adds no host entry or event: it marks the mod.json features a game
+ * of API 10 would leave out (notes/modding.md, "Which game a mod needs"), so
+ * a mod that uses them says "min_api": 11 and an older game refuses it.
+ * API 13 does the same for "limits": {"card_drops": n}, a lock on the cards
+ * a won duel deals (notes/card-drops.md); API 14 for the tower: a mod's
+ * "tower", a duelist's "tower_only" and "unlock" "tower", a menu item's
+ * action "tower". */
 /* API 3: before hooks may alter arguments/result, or set handled to replace
  * the operation (including cancellation). Highest priority runs first;
  * equal priorities follow registration/load order. After hooks observe the
@@ -18,9 +30,12 @@ enum {
      * named after the token (open_data), so each slot has its own. */
     MEMORIES_EVENT_SLOT_SAVE, MEMORIES_EVENT_SLOT_LOAD,
     /* API 6: end-of-duel StarChip prize about to be added to the save
-     * (Mods_AwardStarchips). a is the retail prize (rank tier + 1); edit it
+     * (Mods_AwardStarchips). a is the configured prize (limits.starchip_prize,
+     * otherwise rank tier + 1); edit it
      * to change the award, or handle to skip adding. After observes result
-     * as the amount actually credited. On-screen star icons stay retail. */
+     * as the amount actually credited, capped by limits.starchips. The
+     * results display shows the configured prize (one icon and xN past 8);
+     * changing a here does not change that already displayed prize. */
     MEMORIES_EVENT_STARCHIP,
     /* API 9: an item of the title's menus chosen (notes/modding.md, "The
      * title's menus"): a the item (0-10 the game's entries, as

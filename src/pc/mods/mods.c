@@ -29,6 +29,7 @@
 #include "exports.h"
 #include "object_loader.h"
 #include "json.h"
+#include "manifest_code.h"
 #include "events.h"
 #include "hooks.h"
 #include "pc/platform/paths.h"
@@ -95,6 +96,7 @@ typedef struct {
     const JsonValue *assets;     /* named image replacements from mod.json, or NULL */
     char asset_dir[PATH_MAX_];   /* "assets": a directory whose PNGs are named by their path */
     const JsonValue *audio;      /* the "audio" object: replacement sounds (src/pc/audio/replace.h) */
+    int sounds;                  /* its code added sounds of its own (host->sound_add) */
 } Mod;
 
 /* One stretch of the disc a mod replaces, and one run of patched bytes
@@ -340,19 +342,12 @@ static void *host_map_fixed(const MemoriesModHost *host, uintptr_t address, size
 {
     void *wanted = (void *)address, *got;
     if (!owner(host) || !address || address % 0x10000u || !size || address + size < address) return NULL;
-#ifdef _WIN32
-    /* VirtualAlloc refuses an address that is already reserved. */
-    got = VirtualAlloc(wanted, size, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
-    return got == wanted ? got : NULL;
-#else
-    got = mmap(wanted, size, PROT_READ | PROT_WRITE, MAP_FIXED_NOREPLACE | MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-    if (got == MAP_FAILED) return NULL;
-    if (got != wanted) {   /* a kernel older than MAP_FIXED_NOREPLACE takes it as a hint */
-        munmap(got, size);
-        return NULL;
-    }
-    return got;
-#endif
+    /* On Windows compat/mman.h's VirtualAlloc, which refuses an address
+     * that is already taken; the 64-bit game holds the mod arenas' range
+     * from the start (image.c), and the mmap there gives it back first. */
+    got = Memories_MapFixed(wanted, size, PROT_READ | PROT_WRITE, MAP_FIXED_NOREPLACE | MAP_PRIVATE | MAP_ANONYMOUS,
+                            -1, 0);
+    return got == MAP_FAILED ? NULL : got;
 }
 
 static int (*card_resolver)(const char *);
@@ -390,6 +385,31 @@ static const char *(*menu_item_source)(int);
 void Mods_SetMenuItemSource(const char *(*source)(int)) { menu_item_source = source; }
 static const char *host_menu_item(const MemoriesModHost *host, int index)
 { (void)host; return menu_item_source ? menu_item_source(index) : NULL; }
+/* Mods_SetAudioClips: the audio replacement's clips. */
+static int (*clip_add)(int, const char *, const int16_t *, size_t, int, unsigned);
+static int (*clip_play)(int, int, int, int);
+static void (*clip_free)(int, int);
+static int host_sound_add(const MemoriesModHost *host, const int16_t *samples, size_t frames, int channels,
+                          unsigned rate)
+{
+    Mod *mod = owner(host);
+    /* Only while applied: turning the mod off frees them (Mods_Apply), and
+     * from MemoriesModInit, which runs once, they would not come back. */
+    int sound = mod && mod->active && clip_add ? clip_add((int)(mod - mods), mod->id, samples, frames, channels, rate)
+                                               : -1;
+    if (sound > 0) mod->sounds = 1;
+    return sound;
+}
+static int host_sound_play(const MemoriesModHost *host, int sound, int volume, int pan)
+{
+    Mod *mod = owner(host);
+    return mod && mod->active && clip_play ? clip_play((int)(mod - mods), sound, volume, pan) : 0;
+}
+static void host_sound_free(const MemoriesModHost *host, int sound)
+{
+    Mod *mod = owner(host);
+    if (mod && clip_free) clip_free((int)(mod - mods), sound);
+}
 static const char *(*notes_source)(int);
 static int (*tag_source)(int, const char *, char *, size_t);
 void Mods_SetCardNotes(const char *(*notes)(int), int (*tag)(int, const char *, char *, size_t))
@@ -542,6 +562,9 @@ static void fill_host(Mod *mod)
     mod->host.card_tag = host_card_tag;
     mod->host.limit = host_limit;
     mod->host.menu_item = host_menu_item;
+    mod->host.sound_add = host_sound_add;
+    mod->host.sound_play = host_sound_play;
+    mod->host.sound_free = host_sound_free;
     mod->host.api = MEMORIES_MOD_API;
     mod->host.id = mod->id;
     mod->host.directory = mod->directory;
@@ -1186,6 +1209,20 @@ static void *load_object(Mod *mod, const char *path)
 #endif
 }
 
+#if !defined(MEMORIES_NO_CODE_MODS) && !(defined(__APPLE__) && defined(__aarch64__) && defined(MEMORIES_TRANSLATED))
+/* Whether the mod's object for this game is there to load. */
+static int library_present(const Mod *mod)
+{
+    char path[PATH_MAX_];
+    FILE *file;
+    if (snprintf(path, sizeof(path), "%s/%s", mod->directory, mod->library) >= (int)sizeof(path)) return 0;
+    file = fopen(path, "rb");
+    if (!file) return 0;
+    fclose(file);
+    return 1;
+}
+#endif
+
 static int load_library(Mod *mod)
 {
     char path[PATH_MAX_];
@@ -1218,6 +1255,9 @@ static int load_library(Mod *mod)
     }
     mod->initialized = 1;
     say("%s: loaded %s", mod->id, mod->library);
+    /* Always said (stderr, which an Android app sends to logcat): which code
+     * ran is the first thing to know about a report. */
+    fprintf(stderr, "memories-pc: mods: %s loaded its code (%s)\n", mod->id, mod->library);
     return 1;
 }
 
@@ -1225,12 +1265,12 @@ static int load_library(Mod *mod)
  * notes/modding.md and mod-api-3.md). Anything else is most likely a typo
  * that would leave the mod doing nothing, so it is a warning, not an error. */
 static const char *const manifest_keys[] = {
-    "id", "name", "version", "author", "description", "library", "enabled", "restart", "legacy_setting",
+    "id", "name", "version", "author", "description", "library", "libraries", "enabled", "restart", "legacy_setting",
     "data", "textures", "assets", "cards", "audio", "min_api", "game", "requires", "after", "conflicts", "priority",
     "settings", "fusions", "equips", "rituals", "drops", "decks", "duelists", "text", "font",
     "chest_overflow", "terrain_bonus", "trap_thresholds", "equip_bonus_default", "passwords", "starter",
-    "starter_pools", "title", "menu", "limits", "guardian_stars", "packs", "pack_shop",
-    "card_text_colors", "card_layout",
+    "starter_pools", "title", "menu", "limits", "guardian_stars", "attributes", "packs", "pack_shop",
+    "card_text_colors", "card_layout", "palette_ramps", "ui", "tower", "card_types",
 };
 
 /* How many letters to add, remove or change to turn one word into the
@@ -1314,25 +1354,46 @@ static int read_manifest(Mod *mod, const char *directory, const char *origin)
         note(mod, "id must be 1-63 letters, digits, hyphens or underscores");
     } else copy_text(mod->id, sizeof(mod->id), text);
     copy_text(mod->name, sizeof(mod->name), Json_String(Json_Member(root, "name"), mod->id));
-    text = Json_String(Json_Member(root, "library"), NULL);
-    if (text && *text) {
-        if (!Paths_Contained(text)) {
-            mod->broken = 1;
-            note(mod, "\"library\": %s is outside the mod", text);
-        } else if (strchr(text, '.')) {
+    /* The object for this game's target (object_loader.h): "libraries"
+     * names it outright, else it comes from "library", as it is written (or
+     * with ".o") for the 32-bit games, whose one object serves Linux and
+     * Windows, and as <library>.<target>.o for the others (its ".o" taken
+     * off first). A mod with "libraries" and no "library" is a code mod
+     * too: without this target's entry it looks for <id>.<target>.o. */
+    {
+        const JsonValue *libraries = Json_Member(root, "libraries");
+        const char *named = Json_String(Json_Member(libraries, OBJECT_LOADER_TARGET), NULL);
+        text = Json_String(Json_Member(root, "library"), NULL);
+        if (named && *named) text = named;
+        else if ((!text || !*text) && Manifest_HasCode(root)) text = mod->id;
+        if (text && *text) {
+            if (!Paths_Contained(text)) {
+                mod->broken = 1;
+                note(mod, "\"library\": %s is outside the mod", text);
+            } else if (named && *named) {
+                copy_text(mod->library, sizeof(mod->library), text);
 #if defined(__APPLE__) && defined(__aarch64__) && defined(MEMORIES_TRANSLATED)
-            size_t length = strlen(text);
-            if (length >= 2 && !strcmp(text + length - 2, ".o"))
-                snprintf(mod->library, sizeof(mod->library), "%.*s.dylib", (int)(length - 2), text);
-            else
-#endif
-            copy_text(mod->library, sizeof(mod->library), text);
-        } else {
-#if defined(__APPLE__) && defined(__aarch64__) && defined(MEMORIES_TRANSLATED)
-            snprintf(mod->library, sizeof(mod->library), "%s.dylib", text);
+            } else if (strchr(text, '.')) {
+                /* The macOS game links a dylib (build_mod.py --target macos):
+                 * "x.o" means x.dylib; a name with another extension is kept. */
+                size_t length = strlen(text);
+                if (length >= 2 && !strcmp(text + length - 2, ".o"))
+                    snprintf(mod->library, sizeof(mod->library), "%.*s.dylib", (int)(length - 2), text);
+                else
+                    copy_text(mod->library, sizeof(mod->library), text);
+            } else {
+                snprintf(mod->library, sizeof(mod->library), "%s.dylib", text);
 #else
-            snprintf(mod->library, sizeof(mod->library), "%s.o", text);   /* one object for every system */
+            } else if (strcmp(OBJECT_LOADER_TARGET, "i386")) {
+                size_t stem = strlen(text);
+                if (stem > 2 && !strcmp(text + stem - 2, ".o")) stem -= 2;
+                snprintf(mod->library, sizeof(mod->library), "%.*s.%s.o", (int)stem, text, OBJECT_LOADER_TARGET);
+            } else if (strchr(text, '.')) {
+                copy_text(mod->library, sizeof(mod->library), text);
+            } else {
+                snprintf(mod->library, sizeof(mod->library), "%s.o", text);   /* one object for both 32-bit systems */
 #endif
+            }
         }
     }
     mod->restart = Json_Bool(Json_Member(root, "restart"), 0);
@@ -1411,7 +1472,8 @@ static int read_manifest(Mod *mod, const char *directory, const char *origin)
         static const char *const tables[] = {"fusions", "equips", "rituals", "drops", "decks", "duelists",
                                              "text", "font", "terrain_bonus", "trap_thresholds",
                                              "chest_overflow", "passwords", "starter", "starter_pools",
-                                             "limits", "guardian_stars", "packs", "pack_shop"};
+                                             "limits", "guardian_stars", "attributes", "packs", "pack_shop",
+                                             "palette_ramps", "tower"};
         for (size_t t = 0; t < sizeof(tables) / sizeof(tables[0]); t++) {
             const JsonValue *value = Json_Member(root, tables[t]);
             /* "text": "text.txt" is one file named as a string. */
@@ -1538,6 +1600,15 @@ void Mods_SetAudio(int (*load)(int mod, const char *id, const char *directory, c
 {
     audio_load = load;
     audio_unload = unload;
+}
+
+void Mods_SetAudioClips(int (*add)(int mod, const char *id, const int16_t *samples, size_t frames, int channels,
+                                   unsigned rate),
+                        int (*play)(int mod, int handle, int volume, int pan), void (*release)(int mod, int handle))
+{
+    clip_add = add;
+    clip_play = play;
+    clip_free = release;
 }
 
 void Mods_SetTexturePack(int (*load)(const char *directory, unsigned rank,
@@ -1698,16 +1769,38 @@ static void activate_once(int index, int on)
             }
         }
 #ifdef MEMORIES_NO_CODE_MODS
-        /* The 64-bit game (build_game32.py --target windows-x64): a mod's
-         * code is a 32-bit x86 object, which this game cannot link or call.
-         * The mod stays off with the reason beside it, and its choice and
-         * the other mods' Apply are left alone: it is not a broken mod. */
+        /* A game built without code mods (none is now: the arm64 game links
+         * them since Mod SDK M2). The mod stays off with the reason beside it,
+         * and its choice and the other mods' Apply are left alone: it is not
+         * a broken mod. */
         if (!mod->broken && mod->library[0]) {
-            note(mod, "needs a 64-bit build of this mod: its code was built for the 32-bit game, which is the one "
-                      "to play it with");
+            note(mod, "is a code mod, which this game does not load yet");
             drop_overrides(index);
             return;
         }
+#else
+        /* A 64-bit game loads the mod's object for its own target
+         * (<library>.x86_64-windows.o). A mod made before there was one has
+         * only the 32-bit object: it stays off with the reason beside it, as
+         * above, and is not a broken mod. The macOS game, which has no 32-bit
+         * one to send the player to, reports a missing dylib as broken. On a
+         * phone there is no other game to point to either: the note says
+         * which object is missing. Both say how one is made (notes/modding.md,
+         * "Building one"). */
+#if !(defined(__APPLE__) && defined(__aarch64__) && defined(MEMORIES_TRANSLATED))
+        if (strcmp(OBJECT_LOADER_TARGET, "i386") && !mod->broken && mod->library[0] && !mod->object.image &&
+            !mod->object.native_handle && !library_present(mod)) {
+#ifdef __ANDROID__
+            note(mod, "needs an Android build of this mod: it has no %s (rebuild it with build_mod.py using clang)",
+                 mod->library);
+#else
+            note(mod, "needs a 64-bit build of this mod (%s): the one it has is for the 32-bit game, which is the one "
+                      "to play it with, or rebuild it with build_mod.py using clang", mod->library);
+#endif
+            drop_overrides(index);
+            return;
+        }
+#endif
 #endif
         /* A mod that cannot load keeps the player's choice and its reason:
          * the window shows both, and removing it still works. */
@@ -1746,7 +1839,9 @@ static void activate_once(int index, int on)
         if (mod->hooks.applied) mod->hooks.applied(1);
     } else {
         drop_overrides(index);
-        if (mod->audio && audio_unload) audio_unload(index);
+        /* The manifest's sounds, and those its code added (host->sound_add). */
+        if ((mod->audio || mod->sounds) && audio_unload) audio_unload(index);
+        mod->sounds = 0;
         if (has_images(mod) && texture_pack_unload) {
             /* The packs add up: the others' come back without this one's. */
             load_texture_packs(-1, index, NULL, 0);
@@ -1765,6 +1860,55 @@ int Mods_InstallDirectory(char *out, size_t size)
         return -1;
     }
     return Paths_MakeDirs(out);
+}
+
+/* A mod folder that came while the game runs (Import mod..., import.h).
+ * Never put in place before: borrowed strings live until exit, so an old
+ * manifest it replaces stays allocated. */
+static Mod *at(int index);
+static int untouched(const Mod *mod)
+{
+    return !mod->active && !mod->initialized && !mod->data_prepared && !mod->runtime_options && !mod->sequence &&
+           !mod->object.image && !mod->object.native_handle;
+}
+int Mods_InUse(int index) { return at(index) && !untouched(&mods[index]); }
+int Mods_Discover(const char *directory, int *later)
+{
+    Mod candidate;
+    char error[160], key[256];
+    int index;
+    *later = 0;
+    if (!read_manifest(&candidate, directory, "installed")) return -1;
+    index = by_id(candidate.id);
+    if (index < 0) {
+        if (mod_count >= MODS_MAX) {
+            Json_Free(candidate.manifest);
+            fprintf(stderr, "memories-pc: more than %d mods; %s was skipped\n", MODS_MAX, candidate.id);
+            return -1;
+        }
+        /* New: off until the player turns it on, at this launch and the next. */
+        candidate.enabled = 0;
+        if (setting_key(key, sizeof(key), candidate.id, NULL)) Settings_SetNamed(key, 0);
+        index = mod_count++;
+        mods[index] = candidate;
+    } else if (untouched(&mods[index])) {
+        /* The player's choice is the setting, which read_manifest read. */
+        mods[index] = candidate;
+    } else {
+        /* In place (or once was): its object, data and pictures are the old
+         * files' until the game starts again, so a change to it waits for
+         * that launch too. */
+        Json_Free(candidate.manifest);
+        mods[index].restart = 1;
+        note(&mods[index], "its files were replaced: the new ones are used from the next launch");
+        *later = 1;
+        Mods_OverlapsForget();
+        return index;
+    }
+    if (!Mods_CheckManifest(index, error, sizeof(error))) { mods[index].broken = 1; note(&mods[index], "%s", error); }
+    Mods_OverlapsForget();
+    say("%s: found in %s", mods[index].id, directory);
+    return index;
 }
 
 void Mods_Load(void)
@@ -1968,6 +2112,16 @@ void Mods_VisitCards(void (*visit)(const char *id, const char *directory, const 
     }
 }
 
+void Mods_VisitManifests(void (*visit)(const char *id, const char *directory,
+                                       const struct JsonValue *manifest, void *context), void *context)
+{
+    int i;
+    for (i = 0; i < loaded_count; i++) {
+        const Mod *mod = &mods[loaded[i]];
+        if (mod->active) visit(mod->id, mod->directory, Json_Root(mod->manifest), context);
+    }
+}
+
 int Mods_Setting(const char *id, const char *key, int fallback)
 {
     char name[256];
@@ -2022,6 +2176,7 @@ const char *Mods_Directory(int index) { return at(index) ? mods[index].directory
 const char *Mods_Origin(int index) { return at(index) ? mods[index].origin : ""; }
 int Mods_Active(int index) { return at(index) && mods[index].active; }
 int Mods_Failed(int index) { return at(index) && (mods[index].broken || mods[index].failed); }
+int Mods_HasCode(int index) { return at(index) && Manifest_HasCode(Mods_Manifest(index)); }
 
 unsigned Mods_CodeHash(int index) { return at(index) ? mods[index].code_hash : 0; }
 

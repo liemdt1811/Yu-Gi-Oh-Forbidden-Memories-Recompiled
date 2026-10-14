@@ -19,6 +19,7 @@
 #include "build_deck_update_pane_transition.h"
 #ifdef MEMORIES_PC
 #include "pc/cards/cards.h"
+#include "pc/cards/tables.h"
 #endif
 
 void BuildDeck_UpdateDeckPaneInput(BuildDeckTransitionState *state) {
@@ -125,11 +126,14 @@ void BuildDeck_UpdateChestPaneInput(BuildDeckTransitionState *state)
     if (r != 0 && c != 0) {
         if (state->deck_total < DECK_SIZE &&
             state->chest_card_quantities[r] != 0 &&
-            state->deck_card_quantities[r] <
 #ifdef MEMORIES_PC
-                Cards_CopyLimit(r)) {
+            /* A card's own "copy_limit" (cards.h), else three or a mod's "deck_copies" (tables.h). */
+            state->deck_card_quantities[r] <
+                (Cards_CopyLimit(r) != DECK_CARD_COPY_LIMIT
+                     ? Cards_CopyLimit(r)
+                     : Tables_Value(TABLES_VALUE_DECK_COPIES, DECK_CARD_COPY_LIMIT))) {
 #else
-                DECK_CARD_COPY_LIMIT) {
+            state->deck_card_quantities[r] < DECK_CARD_COPY_LIMIT) {
 #endif
             SD_SEPlayFull(7);
             BuildDeck_AddCard((s32)state, r);

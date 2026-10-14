@@ -43,6 +43,7 @@
 #include "game/duel_screen_tables.h"
 #include "game/view_state.h"
 #include "game/main_services.h"
+#include "game/ordering_tables.h"
 #include "game/duel_display.h"
 #include "game/model.h"
 #include "game/card_constants.h"
@@ -58,7 +59,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-extern GsOT *D_800E9D90[4];    /* the four ordering tables of the frame */
 extern MATRIX D_800FE148;      /* GsWSMATRIX: GsSetRefView2's world-screen matrix */
 
 static const MemoriesModHost *host;
@@ -209,7 +209,7 @@ static Art *acquire(int card)
 static int project(int x, int y, int z, int *sx, int *sy)
 {
     SVECTOR v;
-    long sxy, p, flag, depth;
+    PSXLONG sxy, p, flag, depth;   /* the Psy-Q long: 32 bits on every target */
     v.vx = (short)x;
     v.vy = (short)y;
     v.vz = (short)z;
