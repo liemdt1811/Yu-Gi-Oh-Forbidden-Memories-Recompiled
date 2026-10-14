@@ -179,6 +179,9 @@ typedef struct {
     unsigned short recipe[6];   /* ritual, three tributes, result, 0 */
     TablesRitualRequirement requirements[DUEL_RITUAL_TRIBUTE_COUNT];
     unsigned char removed, conditional;
+    unsigned char fusion;       /* "fusion": two monsters of the field fuse by the fusion rules */
+    unsigned char poly_count;   /* "recipes" of a "fusion" ritual: materials (0 ends), result */
+    unsigned short poly[TABLES_POLY_RECIPES][TABLES_POLY_WIDTH];
 } RitualRule;
 
 typedef struct {
@@ -830,6 +833,44 @@ static void read_rituals(const char *mod, const JsonValue *list)
         rule.recipe[0] = (unsigned short)ritual;
         if (result && Json_TypeOf(result) == JSON_NULL) {
             rule.removed = 1;
+        } else if (Json_Bool(Json_Member(entry, "fusion"), 0)) {
+            const JsonValue *recipes = Json_Member(entry, "recipes");
+            rule.fusion = 1;
+            for (j = 0; j < Json_Count(recipes); j++) {
+                const JsonValue *recipe = Json_At(recipes, j);
+                const JsonValue *materials = Json_Member(recipe, "materials");
+                unsigned short *r;
+                int m, made;
+                if (rule.poly_count >= TABLES_POLY_RECIPES) {
+                    Mods_Note(mod, "%s: a fusion ritual takes %d recipes; the rest are left out", where,
+                              TABLES_POLY_RECIPES);
+                    break;
+                }
+                if (Json_Count(materials) < 2 || Json_Count(materials) > TABLES_POLY_MATERIALS) {
+                    Mods_Note(mod, "%s: a recipe has two to %d \"materials\"; left out", where, TABLES_POLY_MATERIALS);
+                    continue;
+                }
+                r = rule.poly[rule.poly_count];
+                made = card(mod, where, Json_Member(recipe, "result"));
+                for (m = 0; m < Json_Count(materials) && made; m++) {
+                    const JsonValue *material = Json_At(materials, m);
+                    /* {"type": "Dragon"}: any monster of the type */
+                    if (Json_TypeOf(material) == JSON_OBJECT) {
+                        int type = Cards_TypeNamed(Json_String(Json_Member(material, "type"), ""));
+                        if (type < 0 || type >= CARD_TYPE_MAGIC) {
+                            Mods_Note(mod, "%s: a material's \"type\" is a monster type", where);
+                            made = 0;
+                        } else {
+                            r[m] = (unsigned short)(TABLES_POLY_TYPE | type);
+                        }
+                    } else if (!(r[m] = (unsigned short)card(mod, where, material))) {
+                        made = 0;
+                    }
+                }
+                if (!made) continue;
+                r[TABLES_POLY_MATERIALS] = (unsigned short)made;
+                rule.poly_count++;
+            }
         } else {
             if (Json_Count(tributes) != DUEL_RITUAL_TRIBUTE_COUNT) {
                 Mods_Note(mod, "%s: \"tributes\" names three monsters or requirement objects", where);
@@ -864,6 +905,25 @@ int Tables_HasRitual(int ritual)
     return 0;
 }
 
+int Tables_RitualFusion(int ritual)
+{
+    int i;
+    for (i = ritual_count - 1; i >= 0; i--)
+        if (rituals[i].recipe[0] == ritual) return rituals[i].fusion;
+    return 0;
+}
+
+int Tables_RitualFusionRecipes(int ritual, const unsigned short (**list)[TABLES_POLY_WIDTH])
+{
+    int i;
+    for (i = ritual_count - 1; i >= 0; i--) {
+        if (rituals[i].recipe[0] != ritual) continue;
+        *list = rituals[i].poly;
+        return rituals[i].poly_count;
+    }
+    return 0;
+}
+
 int Tables_Ritual(int ritual, unsigned short recipe[6])
 {
     int i;
@@ -882,7 +942,7 @@ int Tables_RitualRequirements(int ritual, TablesRitualRequirement requirements[3
     int i;
     for (i = ritual_count - 1; i >= 0; i--) {
         if (rituals[i].recipe[0] != ritual) continue;
-        if (rituals[i].removed || !rituals[i].conditional) return 0;
+        if (rituals[i].removed || rituals[i].fusion || !rituals[i].conditional) return 0;
         memcpy(requirements, rituals[i].requirements, sizeof(rituals[i].requirements));
         if (result) *result = rituals[i].recipe[4];
         return 1;

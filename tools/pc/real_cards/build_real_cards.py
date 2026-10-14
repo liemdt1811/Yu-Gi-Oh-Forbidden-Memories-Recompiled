@@ -205,6 +205,8 @@ def build():
         if c.get("unknown_stats"):               # a rule gives its real ATK and DEF: it prints 0 and 0 (cards.h)
             e["unknown_stats"] = True
             e["attack"] = e["defense"] = 0       # "attack" here stays the strength fusions are built from
+        if c.get("no_fusion"):                   # a god: fuses with no card, and Polymerization does not take it
+            e["no_fusion"] = True
         if "frame" in c:                         # "Orange" is an effect monster's, as in the card game
             e["frame"] = c["frame"]
         if (MOD / "images" / f"{cid}.png").exists():
@@ -278,7 +280,16 @@ def spell_cards(spells, cat, entries, monsters):
                     rule[k] = s[k]
             equips.append(rule)
         else:
-            rituals.append({"card": ref[s["name"]], "result": ref[s["result"]], "tributes": s["tributes"]})
+            if s.get("fusion"):      # a Polymerization: two monsters of the field fuse by the fusion rules
+                # "poly" on a target: three (or two) monsters of the field that Polymerization fuses into it directly
+                recipes = [{"materials": [m if isinstance(m, (int, dict)) else ref.get(m, m) for m in mats], "result": ref[t["name"]]}
+                           for t in monsters for mats in t.get("poly", [])]
+                # "recipes" on the spell itself: the same for a retail result (names of retail cards)
+                recipes += [{"materials": [m if isinstance(m, dict) else ref.get(m, m) for m in r["materials"]], "result": ref.get(r["result"], r["result"])}
+                            for r in s.get("recipes", [])]
+                rituals.append({"card": ref[s["name"]], "fusion": True, **({"recipes": recipes} if recipes else {})})
+            else:
+                rituals.append({"card": ref[s["name"]], "result": ref[s["result"]], "tributes": s["tributes"]})
     return equips, rituals
 
 
@@ -445,6 +456,10 @@ def check():
         if not any(k in r for k in ("bonus", "bonus_if", "bonus_attack", "bonus_defense")):
             errors.append(f"equips {r['card']}: no bonus")
     for r in mod.get("rituals", []):
+        if r.get("fusion"):
+            if r["card"] not in ritual_cards:
+                errors.append(f"rituals {r['card']}: card")
+            continue
         if r["card"] not in ritual_cards or r["result"] not in refs or "attack" not in refs[r["result"]]:
             errors.append(f"rituals {r['card']}: card or result")
         if len(r["tributes"]) != 3 or any(not t or set(t) - RITUAL_KEYS for t in r["tributes"]):

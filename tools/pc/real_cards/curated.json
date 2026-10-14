@@ -1098,5 +1098,49 @@
   "defense": 400,
   "description": "This monster wanders\nthe seas, sucking\ndry any creatures it\nmay encounter.",
   "date": "2003-03-01"
+ },
+ {
+  "password": "65622692",
+  "name": "Y-Dragon Head",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1500,
+  "defense": 1600,
+  "description": "A machine with a\ndragon head that\nfires from its\njaws. It can unite\nwith other machines.",
+  "date": "2003-10-10"
+ },
+ {
+  "password": "64500000",
+  "name": "Z-Metal Tank",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1500,
+  "defense": 1300,
+  "description": "A heavy tank\narmored in metal.\nIt can unite with\nother machines.",
+  "date": "2003-10-10"
+ },
+ {
+  "password": "51638941",
+  "name": "V-Tiger Jet",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1600,
+  "defense": 1800,
+  "description": "A jet shaped like a\ntiger. It can unite\nwith other\nmachines.",
+  "date": "2003-10-10"
+ },
+ {
+  "password": "96300057",
+  "name": "W-Wing Catapult",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1300,
+  "defense": 1500,
+  "description": "A winged catapult.\nIt can unite with\nother machines.",
+  "date": "2003-10-10"
  }
 ]

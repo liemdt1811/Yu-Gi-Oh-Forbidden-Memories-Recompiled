@@ -100,7 +100,20 @@ void DuelEffect_ApplyRitual(void)
             D_8009B19C = D_800E9EF0.slots[3]->field_6A;
             DuelCard_DeactivateRecord(&D_801A7AD8[D_800E9EF0.slots[2]->field_6A]);
             DuelCard_DeactivateRecord(&D_801A7AD8[D_800E9EF0.slots[3]->field_6A]);
+#ifdef MEMORIES_PC
+            /* A fusion (Polymerization) has two tributes: the third is the second. */
+            if (D_800E9EF0.slots[4] != D_800E9EF0.slots[3])
+#endif
             DuelCard_DeactivateRecord(&D_801A7AD8[D_800E9EF0.slots[4]->field_6A]);
+#ifdef MEMORIES_PC
+            {
+                s32 more;
+                for (more = 0; more < 2; more++) {
+                    DuelCardRecord *extra = Duel_RitualExtra(more);
+                    if (extra != 0) DuelCard_DeactivateRecord(extra);
+                }
+            }
+#endif
             D_8009B210 = 1;
         }
         break;

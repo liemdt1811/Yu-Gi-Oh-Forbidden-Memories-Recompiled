@@ -250,5 +250,37 @@
     "Labyrinth Mage"
    ]
   }
+ },
+ {
+  "kind": "ritual",
+  "name": "Polymerization",
+  "password": "24094653",
+  "base": "Dark Magic Ritual",
+  "description": "Fuse two or three monsters on your field into one fusion monster. The strongest result is used.",
+  "date": "2003-03-01",
+  "fusion": true,
+  "drop": {
+   "weight": 12,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  },
+  "recipes": [
+   {
+    "materials": [
+     "Blue-eyes White Dragon",
+     "Blue-eyes White Dragon",
+     "Blue-eyes White Dragon"
+    ],
+    "result": "Blue-eyes Ultimate Dragon"
+   }
+  ]
  }
 ]

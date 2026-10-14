@@ -166,6 +166,20 @@ Every tribute takes a monster that is exactly it before any takes a copy,
 so a recipe naming both a retail monster and a copy of it is met whatever
 order they stand in on the field.
 
+`{"card": "Polymerization", "fusion": true}` (no `tributes`, no `result`) makes a
+ritual card fuse instead: when it is played, two or three monsters of the
+side's field are fused by the fusion rules (the mods' and the disc's, as a
+fusion in the hand; three monsters are fused two first, then that result
+with the third, in any order), whatever makes the strongest monster, and
+the monster is put where the second one stood. It needs a set that makes a
+monster. `"recipes"` adds sets of its own, whatever the fusion rules say about
+them: `[{"materials": ["Alpha The Magnet Warrior", "Beta The Magnet Warrior",
+"Gamma the Magnet Warrior"], "result": "Valkyrion the Magna Warrior"}]`, two to
+five monsters of the field in any order (up to 32 recipes), and the strongest
+result of all the sets is made. A material may be `{"type": "Dragon"}`: any
+monster of the type (the weakest are spent, after the named cards are met),
+so five of them make Five-Headed Dragon.
+
 A tribute may also be an object of conditions, all of which the monster
 must meet:
 

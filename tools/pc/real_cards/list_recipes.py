@@ -20,6 +20,8 @@ def group(g):
         text += f' with "{g["name_has"]}" in its name'
     if "not_name_has" in g:
         text += f' without "{g["not_name_has"]}" in its name'
+    if "min_atk" in g:
+        text += f" (ATK at least {g['min_atk']})"
     return text
 
 

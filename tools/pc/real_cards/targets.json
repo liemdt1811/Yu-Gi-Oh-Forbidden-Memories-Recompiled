@@ -158,7 +158,14 @@
     "Nitemare",
     "Duel Master K"
    ]
-  }
+  },
+  "poly": [
+   [
+    "Alpha The Magnet Warrior",
+    "Beta The Magnet Warrior",
+    "Gamma the Magnet Warrior"
+   ]
+  ]
  },
  {
   "password": "37663536",
@@ -422,6 +429,171 @@
   }
  },
  {
+  "password": "15270885",
+  "name": "VW-Tiger Catapult",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 6,
+  "attack": 2000,
+  "defense": 2100,
+  "description": "A tiger jet and a catapult wing joined as one.",
+  "date": "2005-11-05",
+  "fusions": [
+   [
+    "V-Tiger Jet",
+    "W-Wing Catapult"
+   ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "02111707",
+  "name": "XY-Dragon Cannon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 6,
+  "attack": 2200,
+  "defense": 1900,
+  "description": "A cannon with a dragon head, firing from both ends.",
+  "date": "2005-11-05",
+  "fusions": [
+   [
+    "X-Head Cannon",
+    "Y-Dragon Head"
+   ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "99724761",
+  "name": "XZ-Tank Cannon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 6,
+  "attack": 1900,
+  "defense": 2600,
+  "description": "A cannon mounted on a metal tank.",
+  "date": "2005-11-05",
+  "fusions": [
+   [
+    "X-Head Cannon",
+    "Z-Metal Tank"
+   ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "25119460",
+  "name": "YZ-Tank Dragon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 6,
+  "attack": 2100,
+  "defense": 1200,
+  "description": "A dragon head on a metal tank.",
+  "date": "2005-11-05",
+  "fusions": [
+   [
+    "Y-Dragon Head",
+    "Z-Metal Tank"
+   ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "91998119",
+  "name": "XYZ-Dragon Cannon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2600,
+  "description": "Three machines united. Its triple attack destroys everything in its path.",
+  "date": "2005-11-05",
+  "fusions": [
+   [
+    "XY-Dragon Cannon",
+    "Z-Metal Tank"
+   ],
+   [
+    "XZ-Tank Cannon",
+    "Y-Dragon Head"
+   ],
+   [
+    "YZ-Tank Dragon",
+    "X-Head Cannon"
+   ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  },
+  "poly": [
+   [
+    "X-Head Cannon",
+    "Y-Dragon Head",
+    "Z-Metal Tank"
+   ]
+  ]
+ },
+ {
   "password": "84243274",
   "name": "VWXYZ-Dragon Catapult Cannon",
   "type": "Machine",
@@ -433,20 +605,8 @@
   "date": "2005-11-05",
   "fusions": [
    [
-    "X-Head Cannon",
-    "Cyber Falcon"
-   ],
-   [
-    "X-Head Cannon",
-    "Gradius"
-   ],
-   [
-    "X-Head Cannon",
-    "Spikebot"
-   ],
-   [
-    "X-Head Cannon",
-    "Luster Dragon"
+    "VW-Tiger Catapult",
+    "XYZ-Dragon Cannon"
    ]
   ],
   "drop": {
@@ -936,20 +1096,56 @@
   "defense": 1000,
   "description": "A dragon with blades along its body. It slashes foes with blade wings.",
   "date": "2004-10-01",
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "44508094",
+  "name": "Stardust Dragon",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 2500,
+  "defense": 2000,
+  "description": "A shining dragon of the wind. It protects its allies from destruction.",
+  "date": "2008-01-01",
   "fusions": [],
   "mass": [
    {
     "groups": [
      {
       "type": "Dragon",
-      "attribute": "Wind"
+      "attribute": "Wind",
+      "min_atk": 1600
      },
      {
       "type": "Machine"
      }
     ],
-    "max_atk": 2200,
-    "min_one": 1600
+    "max_atk": 2400
    }
   ],
   "drop": {
@@ -970,6 +1166,52 @@
     "Seto 2nd",
     "Guardian Sebek",
     "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "61257789",
+  "name": "Stardust Dragon/Assault Mode",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "Stardust Dragon in a battle form. Its wings blaze with starlight.",
+  "date": "2009-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Stardust Dragon"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 2900
+   },
+   {
+    "groups": [
+     {
+      "name": "Stardust Dragon"
+     },
+     {
+      "attribute": "Wind"
+     }
+    ],
+    "max_atk": 2900
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
     "Heishin 2nd",
     "Seto 3rd",
     "DarkNite",
@@ -1608,7 +1850,8 @@
    "from": [
     "Duel Master K"
    ]
-  }
+  },
+  "no_fusion": true
  },
  {
   "password": "10000020",
@@ -1629,7 +1872,8 @@
    ]
   },
   "frame": "Orange",
-  "unknown_stats": true
+  "unknown_stats": true,
+  "no_fusion": true
  },
  {
   "password": "10000010",
@@ -1650,7 +1894,8 @@
    ]
   },
   "frame": "Orange",
-  "unknown_stats": true
+  "unknown_stats": true,
+  "no_fusion": true
  },
  {
   "password": "97642679",
@@ -3118,14 +3363,14 @@
   }
  },
  {
-  "password": "73125233",
-  "name": "Raiza the Storm Monarch",
+  "password": "63261835",
+  "name": "Cyber Slash Harpie Lady",
   "type": "Winged Beast",
   "attribute": "Wind",
-  "level": 6,
-  "attack": 2400,
-  "defense": 1000,
-  "description": "The monarch of the storm. Its gale tears everything from the field.",
+  "level": 8,
+  "attack": 2600,
+  "defense": 1400,
+  "description": "A cyber harpie with blades for wings. Her slash tears through anything in her path.",
   "date": "2005-01-01",
   "fusions": [],
   "mass": [
@@ -3148,42 +3393,6 @@
     "Seto 2nd",
     "Guardian Sebek",
     "Guardian Neku",
-    "Heishin 2nd",
-    "Seto 3rd",
-    "DarkNite",
-    "Nitemare",
-    "Duel Master K"
-   ]
-  }
- },
- {
-  "password": "69327790",
-  "name": "Raiza the Mega Monarch",
-  "type": "Winged Beast",
-  "attribute": "Wind",
-  "level": 8,
-  "attack": 2800,
-  "defense": 1000,
-  "description": "The storm monarch grown into a hurricane.",
-  "date": "2018-01-01",
-  "fusions": [],
-  "mass": [
-   {
-    "groups": [
-     {
-      "name": "Raiza the Storm Monarch"
-     },
-     {
-      "type": "Winged Beast"
-     }
-    ],
-    "max_atk": 2400,
-    "min_one": 1600
-   }
-  ],
-  "drop": {
-   "weight": 5,
-   "from": [
     "Heishin 2nd",
     "Seto 3rd",
     "DarkNite",
@@ -3241,14 +3450,14 @@
   "fusions": [
    [
     "Roc from the Valley of Haze",
-    "Raiza the Storm Monarch"
+    "Cyber Slash Harpie Lady"
    ],
    [
     "Roc from the Valley of Haze",
     "Sacred Phoenix of Nephthys"
    ],
    [
-    "Raiza the Storm Monarch",
+    "Cyber Slash Harpie Lady",
     "Sacred Phoenix of Nephthys"
    ]
   ],
@@ -3276,14 +3485,10 @@
   "fusions": [
    [
     "Windrose the Elemental Lord",
-    "Raiza the Mega Monarch"
+    "Cyber Slash Harpie Lady"
    ],
    [
     "Windrose the Elemental Lord",
-    "Sacred Fire King Garunix"
-   ],
-   [
-    "Raiza the Mega Monarch",
     "Sacred Fire King Garunix"
    ]
   ],
@@ -3873,5 +4078,93 @@
   "defense": 1200,
   "description": "A dark knight with a heart as cold as his blade.",
   "date": "2007-11-14"
+ },
+ {
+  "password": "99267150",
+  "name": "Five-Headed Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 12,
+  "attack": 5000,
+  "defense": 5000,
+  "description": "Five dragons joined into one. It can only be made with Polymerization.",
+  "date": "2003-03-01",
+  "fusions": [],
+  "poly": [
+   [
+    {
+     "type": "Dragon"
+    },
+    {
+     "type": "Dragon"
+    },
+    {
+     "type": "Dragon"
+    },
+    {
+     "type": "Dragon"
+    },
+    {
+     "type": "Dragon"
+    }
+   ]
+  ],
+  "drop": {
+   "weight": 1,
+   "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "11443677",
+  "name": "Blue-Eyes Tyrant Dragon",
+  "type": "Dragon",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 3400,
+  "defense": 2900,
+  "description": "A blue-eyed dragon fused with another dragon. Its tyrant fury knows no limit.",
+  "date": "2017-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Blue-eyes White Dragon"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 3300,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd"
+   ]
+  }
+ },
+ {
+  "password": "38517737",
+  "name": "Blue-Eyes Alternative White Dragon",
+  "type": "Dragon",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "This card's name\nbecomes \"Blue-Eyes\nWhite Dragon\".",
+  "date": "2015-01-01",
+  "fusions": [],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd"
+   ]
+  }
  }
 ]

@@ -77,6 +77,10 @@ if mod.get("equips"):
 if mod.get("rituals"):
     out += ["## Ritual cards", "", "| Card | Summons | Tributes |", "|---|---|---|"]
     for r in mod["rituals"]:
+        if r.get("fusion"):
+            out.append(f"| {spells[r['card']]['name']} | the strongest fusion of two or three monsters of the field "
+                       f"| {len(r.get('recipes', []))} recipes of its own |")
+            continue
         t = " + ".join(", ".join(f"{k.replace('_', ' ')} {v}" for k, v in x.items()) for x in r["tributes"])
         out.append(f"| {spells[r['card']]['name']} | {new[r['result']]['name']} | {t} |")
     out.append("")

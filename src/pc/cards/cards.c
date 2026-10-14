@@ -79,6 +79,9 @@ static unsigned char frames[CARD_TABLE_ID_END];
 /* "unknown_stats": a monster whose printed ATK and DEF are shown as "?" (cards.h Cards_UnknownStats). */
 static unsigned char unknown_stats[CARD_TABLE_ID_END];
 int Cards_UnknownStats(int id) { return Cards_Valid(id) && unknown_stats[id]; }
+/* "no_fusion": a card that takes part in no fusion (cards.h Cards_NoFusion). */
+static unsigned char no_fusion[CARD_TABLE_ID_END];
+int Cards_NoFusion(int id) { return Cards_Valid(id) && no_fusion[id]; }
 /* "monster_effects" (monster_effects.h): an entry's list, shared by its cards. */
 static const MonsterEffect *monster_effects[CARD_TABLE_ID_END];
 static unsigned char monster_effect_counts[CARD_TABLE_ID_END];
@@ -1117,7 +1120,7 @@ static void add_entry(const char *mod, const char *directory, int index, const J
     MonsterEffect *own_effects = NULL;
     int effect_count;
     unsigned int trap_threshold;
-    unsigned char level_attr, frame, unknown;
+    unsigned char level_attr, frame, unknown, nofuse;
     if (Json_TypeOf(entry) != JSON_OBJECT) {
         Mods_Note(mod, "cards[%d] is not an object", index);
         return;
@@ -1275,6 +1278,7 @@ static void add_entry(const char *mod, const char *directory, int index, const J
      * chose one); "type" goes back to the type's. */
     frame = frames[base];
     unknown = Json_Bool(Json_Member(entry, "unknown_stats"), unknown_stats[base]) ? 1 : 0;
+    nofuse = Json_Bool(Json_Member(entry, "no_fusion"), 0) ? 1 : 0;
     if (Json_Member(entry, "frame")) {
         value = choice(Json_Member(entry, "frame"), frame_names, CARD_FRAME_COUNT + 1);
         if (value < 0 || value > CARD_FRAME_COUNT) {
@@ -1402,6 +1406,7 @@ static void add_entry(const char *mod, const char *directory, int index, const J
         gDuel_abCardLevelAttr[id] = level_attr;
         frames[id] = frame;
         unknown_stats[id] = unknown;
+        no_fusion[id] = nofuse;
         names[id] = name && *name ? encode_name(mod, name, n, id) : NULL;
         descriptions[id] = description && *description ? encode_description(mod, description, id) : NULL;
         add_notes(mod, index, id, Json_Member(entry, "notes"));
