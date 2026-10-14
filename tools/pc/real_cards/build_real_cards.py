@@ -41,6 +41,8 @@ import time
 import urllib.request
 from pathlib import Path
 
+import modio
+
 ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
 MOD = ROOT / "mods" / "z"
@@ -50,6 +52,7 @@ DISC = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions.csv"
 BY_RESULT = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions_by_result.csv"
 CURATED = HERE / "curated.json"
 TARGETS = HERE / "targets.json"
+PACKS = HERE / "packs.json"
 SPELLS = HERE / "spells.json"
 DUELISTS = HERE / "duelists.json"
 API = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=Normal%20Monster&misc=yes"
@@ -171,6 +174,39 @@ def fetch_art(password, dest):
     img.crop((0, top, w, top + ch)).resize((408, 384), Image.LANCZOS).save(dest, optimize=True)
 
 
+def fetch_pack_image(url, dest):
+    """A picture of a pack or its box from a URL, cut to what it shows: to the opaque part when it has a
+    transparent background (kept so), else to what is not white."""
+    from PIL import Image, ImageChops
+    import io
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        img = Image.open(io.BytesIO(r.read()))
+    if img.mode in ("RGBA", "LA", "P") and img.convert("RGBA").getchannel("A").getextrema()[0] < 255:
+        img = img.convert("RGBA")
+        box = img.getchannel("A").point(lambda v: 255 if v > 24 else 0).getbbox()
+    else:
+        img = img.convert("RGB")
+        box = ImageChops.difference(img, Image.new("RGB", img.size, (255, 255, 255))).convert("L").point(
+            lambda v: 255 if v > 24 else 0).getbbox()
+    if box:
+        img = img.crop(box)
+    img.thumbnail((600, 600), Image.LANCZOS)
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    img.save(dest, optimize=True)
+
+
+def fetch_set_image(code, dest):
+    """A booster pack's picture from YGOPRODeck (images/sets/<code>.jpg), kept at its own size."""
+    from PIL import Image
+    import io
+    req = urllib.request.Request(f"https://images.ygoprodeck.com/images/sets/{code}.jpg", headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        img = Image.open(io.BytesIO(r.read())).convert("RGB")
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    img.save(dest, optimize=True)
+
+
 def art():
     out = MOD / "images"
     for c in (json.loads(CURATED.read_text(encoding="utf-8")) + json.loads(TARGETS.read_text(encoding="utf-8"))
@@ -181,6 +217,16 @@ def art():
         fetch_art(c["password"], dest)
         print("art", dest.name)
         time.sleep(0.15)
+    if PACKS.exists():
+        for p in json.loads(PACKS.read_text(encoding="utf-8")):
+            dest = MOD / "images" / "packs" / f"{p['id']}.png"
+            if p.get("image_url") and not dest.exists():
+                fetch_pack_image(p["image_url"], dest)
+                print("art", f"packs/{dest.name}")
+            elif p.get("set") and not dest.exists():
+                fetch_set_image(p["set"], dest)
+                print("art", f"packs/{dest.name}")
+                time.sleep(0.15)
 
 
 def build():
@@ -229,13 +275,176 @@ def build():
            "cards": entries, "drops": target_drops(targets + spells), "fusions": target_fusions(targets, cards, monsters, fusions(nodes, monsters, extra), nodes + extra, inter)}
     duelists = json.loads(DUELISTS.read_text(encoding="utf-8"))
     mod_duelists(mod, duelists, cards + targets + spells)
+    packs = mod_packs(monsters, cards, targets, spells)
+    if packs:
+        mod["packs"] = packs
     if equips:
         mod["equips"] = equips
     if rituals:
         mod["rituals"] = rituals
     MOD.mkdir(parents=True, exist_ok=True)
+    # "drops" and "decks" are files of the mod's (tables.c read_pools): the manifest names them
+    for key in ("drops", "decks", "packs"):
+        if key not in mod:
+            continue
+        (MOD / f"{key}.json").write_text(json.dumps(mod[key], indent=1, ensure_ascii=True) + "\n", encoding="utf-8")
+        mod[key] = f"{key}.json"
     (MOD / "mod.json").write_text(json.dumps(mod, indent=1, ensure_ascii=True) + "\n", encoding="utf-8")
     print(f"{len(entries)} cards, {len(mod['fusions'])} fusions -> {MOD / 'mod.json'}")
+
+
+def pack_pool(pack, tier, monsters, cards, targets, spells):
+    """The cards one tier of a themed pack deals: the disc's monsters and the mod's whose type or name the pack
+    names, within the tier's ATK. A card that fuses with nothing (the gods) or has no drop (made by a ritual)
+    is not in one; a pack's "rare_extra" spell cards are in its rare tier."""
+    def fits(name, kind, atk):
+        return (tier.get("min_atk", 0) <= atk <= tier.get("max_atk", 4000)
+                and (kind in pack["type"] or any(w in name for w in pack["names"])))
+    pool = {}
+    for m in monsters:
+        if fits(m["name"], m["type"], m["atk"]):
+            pool[m["name"]] = 1
+    for c in cards + targets:
+        if c.get("no_fusion") or ("fusions" in c and not c.get("drop")):
+            continue
+        if fits(c["name"], c["type"], c["attack"]):
+            pool[f"{MOD_ID}:{slug(c['name'])}:1"] = 1
+    if tier["id"] == "rare":
+        for name in pack.get("rare_extra", []):
+            pool[f"{MOD_ID}:{slug(name)}:1"] = 1
+    return pool
+
+
+def game_name(card, cards, targets, spells):
+    """A card as the packs name it (the disc's name, or the mod card's) as its name."""
+    if not card.startswith(f"{MOD_ID}:"):
+        return card
+    for c in cards + targets + spells:
+        if f"{MOD_ID}:{slug(c['name'])}:1" == card:
+            return c["name"]
+    return card
+
+
+def set_pack(pack, monsters, cat, cards, targets, spells):
+    """A pack made from a real set's card list (sets/*.json: code, name, rarity): the cards the disc or the mod has,
+    in tiers by rarity, as the set's pack dealt them (a slot of the rarest cards last). Returns the pack's tiers
+    and slots, and the names of the set's cards that are in neither."""
+    norm = lambda text: re.sub(r"[^a-z0-9]", "", text.lower())
+    alias = {norm(k): v for k, v in pack.get("aliases", {}).items()}
+    game = {norm(r["name"]): r["name"] for r in cat}
+    mine = {norm(c["name"]): f"{MOD_ID}:{slug(c['name'])}:1" for c in cards + targets + spells}
+    tier_of = {"Common": "common", "Short Print": "common", "Super Short Print": "common", "Rare": "rare",
+               "Super Rare": "super", "Ultra Rare": "ultra", "Secret Rare": "secret"}
+    weight = {"Common": 4, "Short Print": 2, "Super Short Print": 1}
+    pools, missing = {name: {} for name in ("common", "rare", "super", "ultra", "secret")}, []
+    rarity_of, missing_lists = {}, []
+    for code, name, rarity in json.loads((HERE / pack["set_list"]).read_text(encoding="utf-8")):
+        key = norm(alias.get(norm(name), name))
+        card = game.get(key) or mine.get(key)
+        if not card:
+            missing.append((code, name, rarity))
+            continue
+        pools[tier_of[rarity]][card] = pools[tier_of[rarity]].get(card, 0) + weight.get(rarity, 1)
+        rarity_of[card] = rarity
+    also = pack.get("also")
+    if also:                 # cards beyond the set's list: a duelist's deck, or names; their rarity by ATK
+        ladder = [("Common", 0)] + [(kind, floor) for floor, kind in also["rarity_by_atk"]]
+        have = {c for pool in pools.values() for c in pool}
+        by_id = {int(r["id"]): r for r in cat}
+        extra = {}
+        with open(ROOT / "notes" / "research" / "fusion-and-drop-tables" / "drops.csv", encoding="utf-8", newline="") as handle:
+            for r in csv.DictReader(handle):
+                if r["pool"] == "deck" and r["duelist"] in also.get("duelists", ()) and int(r["card_id"]) in by_id:
+                    row = by_id[int(r["card_id"])]
+                    extra[row["name"]] = int(row["attack"]) if row["attack"] else 0
+        for row in cat:
+            if row["name"] in also.get("cards", ()):
+                extra[row["name"]] = int(row["attack"]) if row["attack"] else 0
+            if any(w in row["name"] for w in also.get("names", ())) and row["attack"]:
+                extra[row["name"]] = int(row["attack"])
+        for c in cards + targets:
+            if c["name"] in also.get("cards", ()):
+                extra[f"{MOD_ID}:{slug(c['name'])}:1"] = c["attack"]
+            if (any(w in c["name"] for w in also.get("names", ())) and not c.get("no_fusion")
+                    and not ("fusions" in c and not c.get("drop"))):
+                extra[f"{MOD_ID}:{slug(c['name'])}:1"] = c["attack"]
+        for card, strength in extra.items():
+            if card in have or strength > 4000:
+                continue
+            kind = [name for name, floor in ladder if strength >= floor][-1]
+            tier = tier_of[kind]
+            pools[tier][card] = pools[tier].get(card, 0) + weight.get(kind, 1)
+            rarity_of[card] = kind
+    listed = set()           # "lists": more sets' card lists; only the cards the pack lacks, at the list's rarity
+    for source in (also or {}).get("lists", ()):
+        have = {c for pool in pools.values() for c in pool}
+        for code, name, rarity in json.loads((HERE / source).read_text(encoding="utf-8")):
+            key = norm(alias.get(norm(name), name))
+            card = game.get(key) or mine.get(key)
+            if not card:
+                missing_lists.append((code, name, rarity))
+            elif card not in have:
+                pools[tier_of[rarity]][card] = weight.get(rarity, 1)
+                rarity_of[card] = rarity
+                listed.add(card)
+                have.add(card)
+    # a rarity of the pack's own: its spell cards' ("spells_are"), then card by card ("rarity_overrides")
+    kinds = {c["name"]: c["kind"] for c in spells}
+    spell_type = {r["name"] for r in cat if r["type"] in ("Magic", "Trap", "Ritual", "Equip")}
+    spell_ref = {f"{MOD_ID}:{slug(c['name'])}:1" for c in spells}
+    named = {norm(k): v for k, v in pack.get("rarity_overrides", {}).items()}
+    for card in list(rarity_of):
+        label = game_name(card, cards, targets, spells)
+        kind = named.get(norm(label)) or (pack.get("spells_are") if (card in spell_type or card in spell_ref)
+                                          and card not in listed else None)
+        if not kind or kind == rarity_of[card]:
+            continue
+        pools[tier_of[rarity_of[card]]].pop(card, None)
+        pools[tier_of[kind]][card] = weight.get(kind, 1)
+        rarity_of[card] = kind
+    tiers = {}
+    for name, entry in pack["tiers"].items():
+        if pools[name]:
+            tiers[name] = {**entry, "cards": pools[name]}
+    last = {"tiers": {name: tiers[name]["odds"] for name in tiers if name != "common"}}
+    return tiers, ["common"] * (pack["count"] - 1) + [last], missing + [(c, n, f"{r} (list)") for c, n, r in missing_lists]
+
+
+def mod_packs(monsters, cards, targets, spells):
+    """packs.json -> the mod's "packs": one themed pack each (disc cards and mod cards), 50 starchips, opened one
+    at a time by beating a duelist, with the pack's own picture (images/packs, "set" in packs.json)."""
+    if not PACKS.exists():
+        return []
+    out, cat = [], read_catalog()
+    for p in json.loads(PACKS.read_text(encoding="utf-8")):
+        tiers = {}
+        if "set_list" in p:
+            tiers, slots, missing = set_pack(p, monsters, cat, cards, targets, spells)
+            print(f"pack {p['name']}: {sum(len(t['cards']) for t in tiers.values())} cards of the set; "
+                  f"{len(missing)} not in the disc or the mod: " + ", ".join(f"{n} ({r})" for _, n, r in missing))
+            pack = {k: p[k] for k in ("id", "name", "description", "price", "count") if k in p}
+            pack.update({"tiers": tiers, "slots": slots, "unlock": {"beat": p["beat"]}, "locked": "shown"})
+            if (MOD / "images" / "packs" / f"{p['id']}.png").exists():
+                pack["image"] = f"images/packs/{p['id']}.png"
+                pack["image_style"] = "full"
+            out.append(pack)
+            continue
+        for t in p["tiers"]:
+            entry = {"odds": t["odds"], "cards": pack_pool(p, t, monsters, cards, targets, spells)}
+            for key in ("label", "color"):
+                if key in t:
+                    entry[key] = t[key]
+            if entry["cards"]:
+                tiers[t["id"]] = entry
+        pack = {k: p[k] for k in ("id", "name", "description", "price", "count", "guarantee") if k in p}
+        pack["tiers"] = tiers
+        pack["unlock"] = {"beat": p["beat"]}
+        pack["locked"] = "shown"
+        if (MOD / "images" / "packs" / f"{p['id']}.png").exists():
+            pack["image"] = f"images/packs/{p['id']}.png"
+            pack["image_style"] = "full"
+        out.append(pack)
+    return out
 
 
 def mod_duelists(mod, duelists, known):
@@ -390,7 +599,9 @@ def target_fusions(targets, cards, monsters, rules, pool, inter=()):
             ga, gb = rule["groups"]
             # a result is stronger than both materials: never take a material as strong as the result,
             # nor the result itself
-            cap, floor = min(rule["max_atk"], t["attack"] - 10), rule.get("min_one", 0)
+            strength = (next(m["atk"] for m in monsters if m["name"] == rule["result"]) if "result" in rule
+                        else t["attack"])
+            cap, floor = min(rule["max_atk"], strength - 10), rule.get("min_one", 0)
 
             def fits(m, g):
                 for k, v in g.items():
@@ -407,7 +618,7 @@ def target_fusions(targets, cards, monsters, rules, pool, inter=()):
                 return True
 
             def pick(g):
-                return [m for m in mats if m["atk"] <= cap and m["name"] != t["name"] and fits(m, g)]
+                return [m for m in mats if m["atk"] <= cap and ("result" in rule or m["name"] != t["name"]) and fits(m, g)]
 
             for a in pick(ga):
                 for b in pick(gb):
@@ -424,7 +635,7 @@ def target_fusions(targets, cards, monsters, rules, pool, inter=()):
 
 
 def check():
-    mod = json.loads((MOD / "mod.json").read_text(encoding="utf-8"))
+    mod = modio.load(MOD / "mod.json")
     cat = read_catalog()
     ids = {c["id"]: c for c in cat}
     passwords = {c["password"] for c in cat if c["password"]}

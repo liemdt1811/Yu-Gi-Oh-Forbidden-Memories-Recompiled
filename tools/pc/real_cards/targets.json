@@ -4226,5 +4226,69 @@
     "Duel Master K"
    ]
   }
+ },
+ {
+  "password": "36262024",
+  "name": "Black Dragon's Chick",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 1,
+  "attack": 800,
+  "defense": 500,
+  "description": "A baby dragon of the\nblack line. With\nTime Wizard it grows\ninto Red-eyes B.\nDragon.",
+  "date": "2002-01-01",
+  "fusions": [],
+  "steps": [
+   [
+    "Black Dragon's Chick",
+    "Time Wizard",
+    "Red-eyes B. Dragon"
+   ]
+  ]
+ },
+ {
+  "password": "67300516",
+  "name": "Red-Eyes Wyvern",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 4,
+  "attack": 1800,
+  "defense": 1600,
+  "description": "A red-eyed wyvern.\nWith a dragon it\nbecomes Red-eyes B.\nDragon.",
+  "date": "2002-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Red-Eyes Wyvern"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 2300,
+    "result": "Red-eyes B. Dragon",
+    "override": true
+   }
+  ]
+ },
+ {
+  "password": "88264978",
+  "name": "Red-Eyes Darkness Metal Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 10,
+  "attack": 2800,
+  "defense": 2400,
+  "description": "Red-Eyes Darkness\nDragon in metal.\nGains 300 ATK for\neach Dragon on its\nowner's side.",
+  "date": "2002-01-01",
+  "fusions": [
+   [
+    "Red-Eyes Darkness Dragon",
+    "Metalmorph"
+   ]
+  ],
+  "frame": "Orange"
  }
 ]

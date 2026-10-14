@@ -10,6 +10,7 @@
 #include "types.h"
 
 #define CARD_DROPS_MAX 99
+#define CARD_DROPS_RELEASE 10          /* the cards a release build deals: Game > Card drops is not in it */
 #define CARD_DROPS_PER_PAGE 7          /* one per plate of the SPECIAL ARTS page */
 #define CARD_DROPS_FIRST_PAGE 3        /* result pages 0-2 are the game's */
 #define CARD_DROPS_TEXT_ID 0xFFFF      /* the string id the added pages show */

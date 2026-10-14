@@ -16,6 +16,8 @@ import csv
 import json
 from pathlib import Path
 
+import modio
+
 ROOT = Path(__file__).resolve().parents[3]
 TABLES = ROOT / "notes" / "research" / "fusion-and-drop-tables"
 MOD = ROOT / "mods" / "z" / "mod.json"
@@ -48,7 +50,7 @@ def main():
                 d[int(r["card_id"])] = int(r["weight"])
 
     if args.mod:
-        mod = json.loads(MOD.read_text(encoding="utf-8"))
+        mod = modio.load(MOD)
         for c in mod["cards"]:
             if "attack" in c:
                 cat[f"{mod['id']}:{c['id']}:1"] = (c["name"], c["attack"])

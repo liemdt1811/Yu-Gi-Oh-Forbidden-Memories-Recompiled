@@ -272,6 +272,9 @@ void Update_OpenReleases(void) { open_url(RELEASES_PAGE); }
 
 void Update_Start(void)
 {
+#ifdef MEMORIES_RELEASE
+    /* a release build has no update check (menu.c) */
+#else
     const char *url = getenv("MEMORIES_UPDATE_URL");
     int tested = url && *url;
     if (flag("MEMORIES_NO_UPDATE_CHECK") || getenv("MEMORIES_HEADLESS") || !Settings_Get(SET_UPDATE_CHECK) ||
@@ -280,4 +283,5 @@ void Update_Start(void)
     /* Scripted runs are tests: they reach the network only when told where. */
     if (!tested && (getenv("MEMORIES_SDL_SCRIPT") || getenv("MEMORIES_INPUT"))) return;
     start(0);
+#endif
 }

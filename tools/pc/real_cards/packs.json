@@ -1,0 +1,126 @@
+[
+ {
+  "id": "legend-of-bewd",
+  "name": "Legend of BEWD",
+  "price": 50,
+  "count": 9,
+  "beat": "Simon Muran",
+  "description": "Legend of Blue Eyes White Dragon: nine cards, one rare or better.",
+  "set_list": "sets/lob.json",
+  "image_url": "https://m.media-amazon.com/images/I/817WCKbIryL.jpg",
+  "aliases": {
+   "Red-Eyes Black Dragon": "Red-eyes B. Dragon",
+   "Exodia the Forbidden One": "Exodia the Forbidden",
+   "Trial of Nightmare": "Trial of Nightmares"
+  },
+  "tiers": {
+   "common": {
+    "odds": 0
+   },
+   "rare": {
+    "odds": 760,
+    "label": "RARE!",
+    "color": 2
+   },
+   "super": {
+    "odds": 150,
+    "label": "SUPER RARE!",
+    "color": 2
+   },
+   "ultra": {
+    "odds": 80,
+    "label": "ULTRA RARE!",
+    "color": 1
+   },
+   "secret": {
+    "odds": 10,
+    "label": "SECRET RARE!",
+    "color": 1
+   }
+  }
+ },
+ {
+  "id": "beyond-the-brave",
+  "name": "Beyond the Brave",
+  "price": 50,
+  "count": 9,
+  "beat": "Jono",
+  "description": "Joey's pack: Red-Eyes and the cards Jono and Jono 2nd play. Nine cards, one rare or better.",
+  "set_list": "sets/betb.json",
+  "image_url": "https://img.yugioh-card.com/en/wp-content/uploads/2026/08/BETB_550.png",
+  "also": {
+   "duelists": [
+    "Jono",
+    "Jono 2nd"
+   ],
+   "names": [
+    "Red-eyes",
+    "Red-Eyes"
+   ],
+   "rarity_by_atk": [
+    [
+     2100,
+     "Super Rare"
+    ],
+    [
+     2800,
+     "Ultra Rare"
+    ],
+    [
+     3300,
+     "Secret Rare"
+    ]
+   ],
+   "cards": [
+    "Thousand Dragon",
+    "Alligator's Sword Dragon",
+    "Alligator's Sword",
+    "Panther Warrior",
+    "Jinzo"
+   ],
+   "lists": [
+    "sets/lcjw.json"
+   ]
+  },
+  "tiers": {
+   "common": {
+    "odds": 0
+   },
+   "rare": {
+    "odds": 760,
+    "label": "RARE!",
+    "color": 2
+   },
+   "super": {
+    "odds": 150,
+    "label": "SUPER RARE!",
+    "color": 2
+   },
+   "ultra": {
+    "odds": 80,
+    "label": "ULTRA RARE!",
+    "color": 1
+   },
+   "secret": {
+    "odds": 10,
+    "label": "SECRET RARE!",
+    "color": 1
+   }
+  },
+  "spells_are": "Rare",
+  "rarity_overrides": {
+   "Time Wizard": "Super Rare",
+   "Red-Eyes Baby Dragon": "Rare",
+   "Thousand Dragon": "Super Rare",
+   "Red-Eyes Black Dragon Exceed": "Secret Rare",
+   "Alligator's Sword Dragon": "Rare",
+   "Alligator's Sword": "Common",
+   "Red-Eyes Darkness Dragon": "Common"
+  },
+  "aliases": {
+   "Red-Eyes Black Dragon": "Red-eyes B. Dragon",
+   "Black Skull Dragon": "B. Skull Dragon",
+   "Exodia the Forbidden One": "Exodia the Forbidden"
+  }
+ }
+]

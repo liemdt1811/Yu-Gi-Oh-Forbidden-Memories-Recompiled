@@ -45,7 +45,11 @@ static int owned(int id)
  * card a roll gives (notes/card-drops.md, "Mods"). */
 int CardDrops_Roll(int pool)
 {
+#ifdef MEMORIES_RELEASE
+    int wanted = CARD_DROPS_RELEASE, i;      /* a release deals this many, whatever a settings file says */
+#else
     int wanted = Settings_Get(SET_CARD_DROPS), i;
+#endif
     CardDrops_Begin();
     if (wanted <= 1) return Duel_SelectCardDrop(pool);
     if (wanted > CARD_DROPS_MAX) wanted = CARD_DROPS_MAX;

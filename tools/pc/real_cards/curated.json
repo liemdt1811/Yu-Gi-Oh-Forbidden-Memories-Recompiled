@@ -1142,5 +1142,193 @@
   "defense": 1500,
   "description": "A winged catapult.\nIt can unite with\nother machines.",
   "date": "2003-10-10"
+ },
+ {
+  "password": "42035044",
+  "name": "Panther Warrior",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 2000,
+  "defense": 1600,
+  "description": "A warrior with the\npower of a panther.\nIt attacks only by\ntributing a monster.",
+  "date": "2002-03-08"
+ },
+ {
+  "password": "77585513",
+  "name": "Jinzo",
+  "type": "Machine",
+  "attribute": "Dark",
+  "level": 6,
+  "attack": 2400,
+  "defense": 1500,
+  "description": "This cyborg's power\nnegates all traps\nin play.",
+  "date": "2002-03-08"
+ },
+ {
+  "password": "48766543",
+  "name": "Cyber-Tech Alligator",
+  "type": "Machine",
+  "attribute": "Wind",
+  "level": 5,
+  "attack": 2500,
+  "defense": 1600,
+  "description": "A cyborg alligator\nwith a metal jaw.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "03643300",
+  "name": "The Legendary Fisherman",
+  "type": "Warrior",
+  "attribute": "Water",
+  "level": 5,
+  "attack": 1850,
+  "defense": 1600,
+  "description": "Warrior from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "51345461",
+  "name": "Sword Hunter",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 7,
+  "attack": 2450,
+  "defense": 1700,
+  "description": "Warrior from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "21015833",
+  "name": "Hayabusa Knight",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 3,
+  "attack": 1000,
+  "defense": 700,
+  "description": "Warrior from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "79870141",
+  "name": "Mad Sword Beast",
+  "type": "Dinosaur",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 1400,
+  "defense": 1200,
+  "description": "Dinosaur from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "78658564",
+  "name": "Goblin Attack Force",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 2300,
+  "defense": 0,
+  "description": "Warrior from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "66362965",
+  "name": "The Fiend Megacyber",
+  "type": "Warrior",
+  "attribute": "Dark",
+  "level": 6,
+  "attack": 2200,
+  "defense": 1200,
+  "description": "Warrior from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "00423705",
+  "name": "Gearfried the Iron Knight",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 1800,
+  "defense": 1600,
+  "description": "Warrior from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "02460565",
+  "name": "Marauding Captain",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 3,
+  "attack": 1200,
+  "defense": 400,
+  "description": "Warrior from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "78706415",
+  "name": "Fiber Jar",
+  "type": "Plant",
+  "attribute": "Earth",
+  "level": 3,
+  "attack": 500,
+  "defense": 500,
+  "description": "Plant from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "16222645",
+  "name": "Sasuke Samurai",
+  "type": "Warrior",
+  "attribute": "Wind",
+  "level": 2,
+  "attack": 500,
+  "defense": 800,
+  "description": "Warrior from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "11021521",
+  "name": "Neko Mane King",
+  "type": "Beast",
+  "attribute": "Earth",
+  "level": 1,
+  "attack": 0,
+  "defense": 0,
+  "description": "Beast from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "90790253",
+  "name": "Little-Winguard",
+  "type": "Warrior",
+  "attribute": "Wind",
+  "level": 4,
+  "attack": 1400,
+  "defense": 1800,
+  "description": "Warrior from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "91512835",
+  "name": "Insect Queen",
+  "type": "Insect",
+  "attribute": "Earth",
+  "level": 7,
+  "attack": 2200,
+  "defense": 2400,
+  "description": "Insect from Joey's\nLegendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "96561011",
+  "name": "Red-Eyes Darkness Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 9,
+  "attack": 2400,
+  "defense": 2000,
+  "description": "A dragon of the red-\neyed line. Gains 300\nATK for each Dragon\non its owner's side.",
+  "date": "2002-01-01",
+  "frame": "Orange"
  }
 ]
