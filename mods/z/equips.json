@@ -1,0 +1,69 @@
+[
+ {
+  "card": "z:mage-power:1",
+  "replace": true,
+  "add": [
+   "Spellcaster"
+  ],
+  "bonus": 1000
+ },
+ {
+  "card": "z:united-we-stand:1",
+  "replace": true,
+  "add": [
+   "Dragon",
+   "Spellcaster",
+   "Zombie",
+   "Warrior",
+   "Beast-Warrior",
+   "Beast",
+   "Winged Beast",
+   "Fiend",
+   "Fairy",
+   "Insect",
+   "Dinosaur",
+   "Reptile",
+   "Fish",
+   "Sea Serpent",
+   "Machine",
+   "Thunder",
+   "Aqua",
+   "Pyro",
+   "Rock",
+   "Plant"
+  ],
+  "bonus": 600
+ },
+ {
+  "card": "z:divine-sword-phoenix-blade:1",
+  "replace": true,
+  "add": [
+   "Warrior",
+   "Beast-Warrior"
+  ],
+  "bonus": 800,
+  "bonus_if": {
+   "Fire": 1000
+  }
+ },
+ {
+  "card": "z:lightning-blade:1",
+  "replace": true,
+  "add": [
+   "Warrior",
+   "Thunder"
+  ],
+  "bonus_attack": 800,
+  "bonus_defense": 0
+ },
+ {
+  "card": "z:rod-of-silence-kay-est:1",
+  "replace": true,
+  "add": [
+   "Spellcaster",
+   "Fairy"
+  ],
+  "bonus_attack": 200,
+  "bonus_defense": 1000
+ }
+]

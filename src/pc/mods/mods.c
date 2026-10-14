@@ -90,6 +90,7 @@ typedef struct {
     JsonDocument *manifest;
     const JsonValue *data;       /* the "data" array, applied when enabled */
     const JsonValue *cards;      /* the "cards" array: cards the mod adds (src/pc/cards) */
+    JsonDocument *cards_document; /* "cards" named as a file of the mod's: what cards points into */
     char textures[PATH_MAX_];    /* a texture pack directory inside the mod, or empty */
     const JsonValue *assets;     /* named image replacements from mod.json, or NULL */
     char asset_dir[PATH_MAX_];   /* "assets": a directory whose PNGs are named by their path */
@@ -1378,6 +1379,19 @@ static int read_manifest(Mod *mod, const char *directory, const char *origin)
         note(mod, "\"audio\" is not an object");
     }
     mod->cards = Json_Member(root, "cards");
+    if (mod->cards && Json_TypeOf(mod->cards) == JSON_STRING) {
+        /* "cards": "cards.json": the array is a file of the mod's, kept for as long as the mod is. */
+        const char *relative = Json_String(mod->cards, "");
+        char file[PATH_MAX_ + 64], failure[256];
+        mod->cards = NULL;
+        if (!Paths_Contained(relative) || snprintf(file, sizeof(file), "%s/%s", mod->directory, relative) >= (int)sizeof(file) ||
+            !(mod->cards_document = Json_ParseFile(file, failure, sizeof(failure)))) {
+            mod->broken = 1;
+            note(mod, "\"cards\": %s is not a file of the mod's that can be read", relative);
+        } else {
+            mod->cards = Json_Root(mod->cards_document);
+        }
+    }
     if (mod->cards && Json_TypeOf(mod->cards) != JSON_ARRAY) {
         mod->broken = 1;
         note(mod, "\"cards\" is not an array");

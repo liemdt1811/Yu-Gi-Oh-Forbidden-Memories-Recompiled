@@ -331,5 +331,23 @@
     "Labyrinth Mage"
    ]
   }
+ },
+ {
+  "kind": "ritual",
+  "name": "Release Restraint",
+  "password": "75417459",
+  "base": "Hamburger Recipe",
+  "description": "Tribute Gearfried the Iron Knight to summon Gearfried the Swordmaster.",
+  "date": "2002-01-01",
+  "fusion": true,
+  "recipes_only": true,
+  "recipes": [
+   {
+    "materials": [
+     "Gearfried the Iron Knight"
+    ],
+    "result": "Gearfried the Swordmaster"
+   }
+  ]
  }
 ]

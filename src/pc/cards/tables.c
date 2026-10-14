@@ -1278,6 +1278,36 @@ typedef struct {
  * key would have held. */
 static const char *pool_directory;
 
+/* A rule table written out in the manifest, or named as a file of the mod's
+ * ("fusions": "fusions.json"): the table to read, or NULL after a note. A file's
+ * document goes in *document, for the caller to free once it has read the table. */
+static const JsonValue *table_or_file(const char *mod, const char *key, const JsonValue *table, JsonDocument **document)
+{
+    const char *relative;
+    char path[1024], error[256];
+    *document = NULL;
+    if (Json_TypeOf(table) != JSON_STRING) return table;
+    relative = Json_String(table, NULL);
+    if (!pool_directory) {
+        Mods_Note(mod, "\"%s\": a file cannot be read from here", key);
+        return NULL;
+    }
+    if (!relative || !Paths_Contained(relative)) {
+        Mods_Note(mod, "\"%s\": %s is not a path inside the mod", key, relative ? relative : "(nothing)");
+        return NULL;
+    }
+    if (snprintf(path, sizeof path, "%s/%s", pool_directory, relative) >= (int)sizeof path) {
+        Mods_Note(mod, "\"%s\": %s is too long a path", key, relative);
+        return NULL;
+    }
+    *document = Json_ParseFile(path, error, sizeof error);
+    if (!*document) {
+        Mods_Note(mod, "\"%s\": %s: %s", key, relative, error);
+        return NULL;
+    }
+    return Json_Root(*document);
+}
+
 static void read_pools(const char *mod, const JsonValue *table, int decks)
 {
     const char *key = decks ? "decks" : "drops";
@@ -2295,10 +2325,19 @@ void Tables_AddFrom(const char *mod, const char *directory, const JsonValue *man
 {
     forget_pools();
     pool_directory = directory;
-    read_fusions(mod, Json_Member(manifest, "fusions"));
-    read_equips(mod, Json_Member(manifest, "equips"));
-    read_equip_default(mod, Json_Member(manifest, "equip_bonus_default"));
-    read_rituals(mod, Json_Member(manifest, "rituals"));
+    {   /* each may be a file of the mod's (table_or_file) */
+        JsonDocument *document;
+        const JsonValue *list = table_or_file(mod, "fusions", Json_Member(manifest, "fusions"), &document);
+        if (list || !document) read_fusions(mod, list);
+        Json_Free(document);
+        list = table_or_file(mod, "equips", Json_Member(manifest, "equips"), &document);
+        if (list || !document) read_equips(mod, list);
+        Json_Free(document);
+        read_equip_default(mod, Json_Member(manifest, "equip_bonus_default"));
+        list = table_or_file(mod, "rituals", Json_Member(manifest, "rituals"), &document);
+        if (list || !document) read_rituals(mod, list);
+        Json_Free(document);
+    }
     read_pools(mod, Json_Member(manifest, "drops"), 0);
     read_pools(mod, Json_Member(manifest, "decks"), 1);
     read_chest_overflow(mod, Json_Member(manifest, "chest_overflow"));

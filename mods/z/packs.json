@@ -283,7 +283,8 @@
      "Kunai with Chain": 1,
      "Salamandra": 1,
      "z:alligator-s-sword-dragon:1": 1,
-     "z:red-eyes-baby-dragon:1": 1
+     "z:red-eyes-baby-dragon:1": 1,
+     "z:release-restraint:1": 1
     }
    },
    "super": {
@@ -296,7 +297,8 @@
      "z:jinzo:1": 1,
      "z:black-dragon-s-chick:1": 1,
      "z:polymerization:1": 1,
-     "Time Wizard": 1
+     "Time Wizard": 1,
+     "z:gearfried-the-swordmaster:1": 1
     }
    },
    "ultra": {
@@ -308,7 +310,9 @@
      "z:red-eyes-dark-dragoon:1": 1,
      "z:red-eyes-flare-metal-dragon:1": 1,
      "z:red-eyes-slash-dragon:1": 1,
-     "z:red-eyes-zombie-dragon-lord:1": 1
+     "z:red-eyes-zombie-dragon-lord:1": 1,
+     "z:rocket-warrior:1": 1,
+     "z:gilford-the-legend:1": 1
     }
    },
    "secret": {
@@ -318,7 +322,8 @@
     "cards": {
      "z:red-eyes-darkness-metal-dragon:1": 1,
      "Raigeki": 1,
-     "z:red-eyes-black-dragon-exceed:1": 1
+     "z:red-eyes-black-dragon-exceed:1": 1,
+     "z:gilford-the-lightning:1": 1
     }
    }
   },
@@ -340,9 +345,17 @@
     }
    }
   ],
-  "unlock": {
-   "beat": "Jono"
-  },
+  "unlock": [
+   {
+    "beat": "Jono"
+   },
+   {
+    "beat": "Jono 2nd"
+   },
+   {
+    "beat": "jonouchi"
+   }
+  ],
   "locked": "shown",
   "image": "images/packs/beyond-the-brave.png",
   "image_style": "full"

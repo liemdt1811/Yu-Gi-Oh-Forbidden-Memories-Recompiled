@@ -159,7 +159,7 @@ Legend of Blue Eyes White Dragon: nine cards, one rare or better.
 Joey's pack: Red-Eyes and the cards Jono and Jono 2nd play. Nine cards, one rare or better.
 
 - Price: 50 starchips; 9 cards
-- Unlocks: beat **Jono**
+- Unlocks: beat **Jono** or beat **Jono 2nd** or beat **jonouchi**
 - Slots: 8 of the common tier, then one by the odds rare 76%, super 15%, ultra 8%, secret 1%
 
 ### Common (69 cards)
@@ -234,7 +234,7 @@ Joey's pack: Red-Eyes and the cards Jono and Jono 2nd play. Nine cards, one rare
 - Metalmorph (0) - Common
 - Neko Mane King (0) - Common
 
-### Rare (15 cards)
+### Rare (16 cards)
 
 - B. Skull Dragon (3200) - Rare
 - Alligator's Sword Dragon (1700) - Rare
@@ -251,9 +251,11 @@ Joey's pack: Red-Eyes and the cards Jono and Jono 2nd play. Nine cards, one rare
 - Umi (0) - Rare
 - Wasteland (0) - Rare
 - Yami (0) - Rare
+- Release Restraint - Rare
 
-### Super (6 cards)
+### Super (7 cards)
 
+- Gearfried the Swordmaster (2600) - Super Rare
 - Jinzo (2400) - Super Rare
 - Red-eyes B. Dragon (2400) - Super Rare
 - Thousand Dragon (2400) - Super Rare
@@ -261,17 +263,20 @@ Joey's pack: Red-Eyes and the cards Jono and Jono 2nd play. Nine cards, one rare
 - Time Wizard (500) - Super Rare
 - Polymerization - Super Rare
 
-### Ultra (5 cards)
+### Ultra (7 cards)
 
 - Red-Eyes Dark Dragoon (3000) - Ultra Rare
 - Red-Eyes Black Metal Dragon (2800) - Ultra Rare
 - Red-Eyes Flare Metal Dragon (2800) - Ultra Rare
 - Red-Eyes Slash Dragon (2800) - Ultra Rare
 - Red-Eyes Zombie Dragon Lord (2800) - Ultra Rare
+- Gilford the Legend (2600) - Ultra Rare
+- Rocket Warrior (1500) - Ultra Rare
 
-### Secret (3 cards)
+### Secret (4 cards)
 
 - Red-Eyes Black Dragon Exceed (3400) - Secret Rare
+- Gilford the Lightning (2800) - Secret Rare
 - Red-Eyes Darkness Metal Dragon (2800) - Secret Rare
 - Raigeki (0) - Secret Rare
 

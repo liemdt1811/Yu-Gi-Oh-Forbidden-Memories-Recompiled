@@ -707,5 +707,55 @@
    }
   },
   "slot": 60
+ },
+ {
+  "id": "jonouchi",
+  "name": "Jonouchi",
+  "copy": "Jono 2nd",
+  "slot": 52,
+  "unlock": {
+   "beat": "Jono 2nd"
+  },
+  "ai": {
+   "copy": "Seto 3rd",
+   "search": 10
+  },
+  "deck": {
+   "Red-eyes B. Dragon": 120,
+   "Red-Eyes Black Dragon Exceed": 25,
+   "Archfiend Black Skull Dragon": 30,
+   "Red-Eyes Dark Dragoon": 30,
+   "Red-Eyes Darkness Metal Dragon": 30,
+   "Red-Eyes Darkness Dragon": 60,
+   "Red-Eyes Black Metal Dragon": 50,
+   "Red-Eyes Flare Metal Dragon": 50,
+   "Red-Eyes Slash Dragon": 50,
+   "Red-Eyes Zombie Dragon Lord": 50,
+   "Red-Eyes Wyvern": 70,
+   "Black Dragon's Chick": 70,
+   "Red-Eyes Baby Dragon": 70,
+   "Baby Dragon": 60,
+   "Time Wizard": 90,
+   "Metalmorph": 40,
+   "Dark Magician": 40,
+   "Metal Dragon": 50,
+   "Flame Swordsman": 50,
+   "Axe Raider": 40,
+   "Dragon Zombie": 50,
+   "Gearfried the Iron Knight": 30,
+   "Release Restraint": 20,
+   "Dragon Treasure": 50,
+   "Legendary Sword": 40,
+   "Sword of Dark Destruction": 40,
+   "Axe of Despair": 30,
+   "Megamorph": 30,
+   "United We Stand": 30,
+   "Divine Sword - Phoenix Blade": 30
+  },
+  "portrait_file": "portraits/jonouchi.png",
+  "drops_like_pack": {
+   "pack": "beyond-the-brave",
+   "from": "Jono 2nd"
+  }
  }
 ]

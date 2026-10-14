@@ -1,0 +1,142 @@
+[
+ {
+  "card": "z:curse-of-the-masked-beast:1",
+  "result": "z:the-masked-beast:1",
+  "tributes": [
+   {
+    "type": "Fiend"
+   },
+   {
+    "type": "Beast-Warrior"
+   },
+   {
+    "min_attack": 1600
+   }
+  ]
+ },
+ {
+  "card": "z:contract-with-the-dark-master:1",
+  "result": "z:dark-master-zorc:1",
+  "tributes": [
+   {
+    "type": "Fiend",
+    "min_attack": 1800
+   },
+   {
+    "type": "Spellcaster"
+   },
+   {
+    "min_level": 4
+   }
+  ]
+ },
+ {
+  "card": "z:pyramid-of-light:1",
+  "result": "z:andro-sphinx:1",
+  "tributes": [
+   {
+    "type": "Beast"
+   },
+   {
+    "type": "Fairy"
+   },
+   {
+    "min_attack": 1600
+   }
+  ]
+ },
+ {
+  "card": "z:polymerization:1",
+  "fusion": true,
+  "recipes": [
+   {
+    "materials": [
+     "z:alpha-the-magnet-warrior:1",
+     "z:beta-the-magnet-warrior:1",
+     "z:gamma-the-magnet-warrior:1"
+    ],
+    "result": "z:valkyrion-the-magna-warrior:1"
+   },
+   {
+    "materials": [
+     "z:x-head-cannon:1",
+     "z:y-dragon-head:1",
+     "z:z-metal-tank:1"
+    ],
+    "result": "z:xyz-dragon-cannon:1"
+   },
+   {
+    "materials": [
+     {
+      "type": "Dragon"
+     },
+     {
+      "type": "Dragon"
+     },
+     {
+      "type": "Dragon"
+     },
+     {
+      "type": "Dragon"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "result": "z:five-headed-dragon:1"
+   },
+   {
+    "materials": [
+     "Blue-eyes White Dragon",
+     "Blue-eyes White Dragon",
+     "Blue-eyes White Dragon"
+    ],
+    "result": "Blue-eyes Ultimate Dragon"
+   }
+  ]
+ },
+ {
+  "card": "z:chaos-form:1",
+  "fusion": true,
+  "recipes_only": true,
+  "recipes": [
+   {
+    "materials": [
+     "Blue-eyes White Dragon"
+    ],
+    "result": "z:blue-eyes-chaos-max-dragon:1"
+   },
+   {
+    "materials": [
+     "Dark Magician"
+    ],
+    "result": "Magician of Black Chaos"
+   },
+   {
+    "materials": [
+     "Gaia the Fierce Knight"
+    ],
+    "result": "Black Luster Soldier"
+   },
+   {
+    "materials": [
+     "Gaia the Dragon Champion"
+    ],
+    "result": "Black Luster Soldier"
+   }
+  ]
+ },
+ {
+  "card": "z:release-restraint:1",
+  "fusion": true,
+  "recipes_only": true,
+  "recipes": [
+   {
+    "materials": [
+     "z:gearfried-the-iron-knight:1"
+    ],
+    "result": "z:gearfried-the-swordmaster:1"
+   }
+  ]
+ }
+]

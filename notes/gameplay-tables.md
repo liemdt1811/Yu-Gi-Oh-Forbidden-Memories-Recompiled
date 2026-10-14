@@ -42,6 +42,14 @@ names that the game does not have (a misspelt card, an opponent that does
 not exist) is reported in the Mods window and in `MEMORIES_TRACE=mods`, and
 that one rule is left out.
 
+
+**In files.** `"fusions"`, `"equips"`, `"rituals"`, `"drops"` and `"decks"` (and
+`"cards"`, [more-cards.md](more-cards.md)) may each be the name of a file of the
+mod's instead of the list or table written out: `"fusions": "fusions.json"`,
+a file holding what the key would, beside `mod.json`. A big mod (the Z mod's 20,000
+fusions) keeps its manifest short that way. Only a path inside the mod is read; a
+file that cannot be read is a note and the table is left out.
+
 ## Naming cards
 
 Anywhere a rule names a card it may use:

@@ -4290,5 +4290,22 @@
    ]
   ],
   "frame": "Orange"
+ },
+ {
+  "password": "57046845",
+  "name": "Gearfried the Swordmaster",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 7,
+  "attack": 2600,
+  "defense": 2200,
+  "description": "Gearfried the Iron\nKnight, released\nfrom his armor by\nRelease Restraint.",
+  "date": "2002-01-01",
+  "fusions": [
+   [
+    "Gearfried the Iron Knight",
+    "Release Restraint"
+   ]
+  ]
  }
 ]

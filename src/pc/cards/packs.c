@@ -314,7 +314,15 @@ static const char *const unlock_keys[] = {"beat", "wins", "story", "card", "copi
 
 /* 1 when there is at least one condition. A value of the wrong kind is a
  * note, and the condition is kept unmeetable, so nothing opens by mistake. */
-static int read_unlock(const char *mod, const char *where, const JsonValue *value, PackUnlock *unlock)
+static PackUnlock alternatives[PACK_UNLOCK_ALT_POOL];
+static int alternative_count;
+
+const PackUnlock *Packs_UnlockAlt(const PackUnlock *unlock, int k)
+{
+    return unlock->alt_first + k < alternative_count ? &alternatives[unlock->alt_first + k] : NULL;
+}
+
+static int read_unlock_one(const char *mod, const char *where, const JsonValue *value, PackUnlock *unlock)
 {
     const JsonValue *opened, *item;
     char at[160];
@@ -368,6 +376,32 @@ static int read_unlock(const char *mod, const char *where, const JsonValue *valu
     }
     if (!any) Mods_Note(mod, "%s: names no condition, so it is open from the start", at);
     return any;
+}
+
+/* "unlock": an object of conditions, or a list of such objects of which any one opens it. */
+static int read_unlock(const char *mod, const char *where, const JsonValue *value, PackUnlock *unlock)
+{
+    const JsonValue *item;
+    if (!value || Json_TypeOf(value) != JSON_ARRAY) return read_unlock_one(mod, where, value, unlock);
+    memset(unlock, 0, sizeof(*unlock));
+    unlock->story = -1;
+    unlock->alt_first = alternative_count;
+    for (item = Json_At(value, 0); item; item = Json_Next(item)) {
+        if (alternative_count >= PACK_UNLOCK_ALT_POOL) {
+            Mods_Note(mod, "%s: more than %d alternatives of \"unlock\" in all; the rest are left out", where,
+                      PACK_UNLOCK_ALT_POOL);
+            break;
+        }
+        if (Json_TypeOf(item) != JSON_OBJECT) {
+            Mods_Note(mod, "%s: \"unlock\" as a list holds objects of conditions; this entry is left out", where);
+            continue;
+        }
+        read_unlock_one(mod, where, item, &alternatives[alternative_count]);   /* no condition in it: open, as a lone object is */
+        alternative_count++;
+    }
+    unlock->alt_count = alternative_count - unlock->alt_first;
+    if (!unlock->alt_count) unlock->never = 1;      /* an empty list opens nothing */
+    return 1;
 }
 
 /* --- a pack ----------------------------------------------------------------- */
@@ -1135,6 +1169,8 @@ void Packs_Finish(void)
         PackUnlock *unlock = &rules.shops[k].unlock;
         for (j = 0; j < unlock->opened_count; j++) unlock->opened_pack[j] = Packs_Find(unlock->opened_name[j]);
     }
+    for (k = 0; k < alternative_count; k++)
+        for (j = 0; j < alternatives[k].opened_count; j++) alternatives[k].opened_pack[j] = Packs_Find(alternatives[k].opened_name[j]);
     /* Two packs with one password: the first in the list is the one sold. */
     for (i = 0; i < pack_count; i++) {
         for (k = 0; k < i && packs[i].has_password; k++) {
@@ -1159,6 +1195,7 @@ void Packs_Clear(void)
     free(packs);
     packs = NULL;
     pack_count = pack_room = declared = 0;
+    alternative_count = 0;
     signature = 0;
     default_rules();
     memset(shop_names, 0, sizeof(shop_names));
@@ -1449,6 +1486,13 @@ int Packs_UnlockMet(const PackUnlock *unlock, const PacksProgress *progress, Pac
     int k;
     if (!progress) progress = &none;
     if (unlock->never) return 0;
+    if (unlock->alt_count) {
+        for (k = 0; k < unlock->alt_count; k++) {
+            const PackUnlock *alt = Packs_UnlockAlt(unlock, k);
+            if (alt && Packs_UnlockMet(alt, progress, save, context)) return 1;
+        }
+        return 0;
+    }
     if (progress->starchips_spent < unlock->starchips_spent) return 0;
     if (progress->packs_opened < unlock->packs_opened) return 0;
     for (k = 0; k < unlock->opened_count; k++) {

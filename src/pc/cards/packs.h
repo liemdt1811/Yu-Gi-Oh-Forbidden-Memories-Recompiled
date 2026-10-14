@@ -84,7 +84,7 @@ typedef struct {
     int card;                      /* PACK_SLOT_CARD */
 } PackSlot;
 
-/* "unlock": every condition given must hold. The first five are the
+/* "unlock": every condition given must hold; written as a list of such objects, any one list entry will do. The first five are the
  * duelists' own (pc/free_duel/duelists.h), read from the save. */
 typedef struct {
     char beat[PACK_TEXT_MAX];
@@ -99,7 +99,9 @@ typedef struct {
     int opened_pack[PACK_OPENED_MAX];   /* resolved once every pack is read; -1 for none */
     unsigned opened_times[PACK_OPENED_MAX];
     int never;                     /* written wrong: kept locked, so nothing opens by mistake */
+    int alt_first, alt_count;      /* "unlock" as a list: any one of these (Packs_UnlockAlt) opens the pack; none of the above */
 } PackUnlock;
+#define PACK_UNLOCK_ALT_POOL 256   /* alternatives in all, over every pack and shop */
 
 typedef struct {
     char mod[PACK_KEY_MAX];
@@ -236,6 +238,8 @@ void Packs_Record(int pack, const PackResult *result, unsigned starchips, PacksP
  * the conditions only the save holds (beat, wins, story, card, copies);
  * it is not asked when there are none. */
 typedef int (*PackSaveCondition)(const PackUnlock *unlock, void *context);
+/* The k-th of an unlock's alternatives (0 to alt_count - 1). */
+const PackUnlock *Packs_UnlockAlt(const PackUnlock *unlock, int k);
 int Packs_UnlockMet(const PackUnlock *unlock, const PacksProgress *progress, PackSaveCondition save, void *context);
 int Packs_Unlocked(int pack, const PacksProgress *progress, PackSaveCondition save, void *context);
 /* Purchases left, or -1 for no limit. */

@@ -50,7 +50,7 @@ def main():
         src = source.get(p["id"], {})
         out += [f"## {p['name']}", "", p.get("description", ""), "",
                 f"- Price: {p['price']} starchips; {p['count']} cards",
-                f"- Unlocks: beat **{p['unlock']['beat']}**"]
+                "- Unlocks: " + " or ".join(f"beat **{u['beat']}**" for u in (p["unlock"] if isinstance(p["unlock"], list) else [p["unlock"]]))]
         if "slots" in p:
             out.append(f"- Slots: {p['count'] - 1} of the common tier, then one by the odds " +
                        ", ".join(f"{t} {w / 10:g}%" for t, w in p["slots"][-1]["tiers"].items()))

@@ -1330,5 +1330,40 @@
   "description": "A dragon of the red-\neyed line. Gains 300\nATK for each Dragon\non its owner's side.",
   "date": "2002-01-01",
   "frame": "Orange"
+ },
+ {
+  "password": "69933858",
+  "name": "Gilford the Legend",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 8,
+  "attack": 2600,
+  "defense": 2000,
+  "description": "A legendary warrior\nof the Legendary\nCollection.",
+  "date": "2002-01-01"
+ },
+ {
+  "password": "36354007",
+  "name": "Gilford the Lightning",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 2800,
+  "defense": 1400,
+  "description": "A lightning warrior.\nGains 300 ATK for\neach Warrior on the\nfield.",
+  "date": "2002-01-01",
+  "frame": "Orange"
+ },
+ {
+  "password": "30860696",
+  "name": "Rocket Warrior",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1500,
+  "defense": 1300,
+  "description": "After a battle it\nfights in, its\nopponent loses 500\nATK.",
+  "date": "2002-01-01",
+  "frame": "Orange"
  }
 ]

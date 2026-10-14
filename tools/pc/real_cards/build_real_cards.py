@@ -58,6 +58,10 @@ DUELISTS = HERE / "duelists.json"
 API = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=Normal%20Monster&misc=yes"
 UA = "fm-recomp-study/1.0"
 MOD_ID = "z"
+# The title screen: the banner (tools/pc/real_cards/banner/make_banner.py) for the 4:3 and the 16:9 picture, in place of the
+# hieroglyph wall and the logo (the banner carries the title); PUSH START BUTTON and the menus stay the game's.
+TITLE = {"background": {"image": "art/title.png", "wide_image": "art/title-wide.png", "dim": 96},
+         "logo": {"hide": True}}
 COUNT = 100
 MAX_ATK = 3000            # keeps new cards inside the disc's normal range
 ERA_END = "2005"          # TCG release date before this
@@ -268,14 +272,15 @@ def build():
                           "attribute": c["attribute"].title(), "atk": c["attack"], "base": base["id"], "level": c["level"]})
     spells = json.loads(SPELLS.read_text(encoding="utf-8"))
     equips, rituals = spell_cards(spells, cat, entries, cards + targets)
-    mod = {"id": MOD_ID, "name": "Z", "version": "0.1",
+    mod = {"id": MOD_ID, "name": "Yu-Gi-Oh! Legendary Duelist", "version": "0.1",
            "author": "community", "enabled": False,
-           "description": f"{len(entries)} real Yu-Gi-Oh! cards the disc lacks, with fusions. "
+           "description": f"{len(entries)} real Yu-Gi-Oh! cards the disc lacks, with fusions, packs and duelists. "
                           "Study project; art is Konami's.",
-           "cards": entries, "drops": target_drops(targets + spells), "fusions": target_fusions(targets, cards, monsters, fusions(nodes, monsters, extra), nodes + extra, inter)}
+           "title": TITLE,
+           "cards": entries, "drops": target_drops(targets + spells), "fusions": target_fusions(targets, cards, monsters, fusions(nodes, monsters, extra), nodes + extra, inter, spells)}
     duelists = json.loads(DUELISTS.read_text(encoding="utf-8"))
-    mod_duelists(mod, duelists, cards + targets + spells)
     packs = mod_packs(monsters, cards, targets, spells)
+    mod_duelists(mod, duelists, cards + targets + spells, packs)
     if packs:
         mod["packs"] = packs
     if equips:
@@ -284,13 +289,14 @@ def build():
         mod["rituals"] = rituals
     MOD.mkdir(parents=True, exist_ok=True)
     # "drops" and "decks" are files of the mod's (tables.c read_pools): the manifest names them
-    for key in ("drops", "decks", "packs"):
+    fusion_count = len(mod["fusions"])
+    for key in ("cards", "fusions", "equips", "rituals", "drops", "decks", "packs"):
         if key not in mod:
             continue
         (MOD / f"{key}.json").write_text(json.dumps(mod[key], indent=1, ensure_ascii=True) + "\n", encoding="utf-8")
         mod[key] = f"{key}.json"
     (MOD / "mod.json").write_text(json.dumps(mod, indent=1, ensure_ascii=True) + "\n", encoding="utf-8")
-    print(f"{len(entries)} cards, {len(mod['fusions'])} fusions -> {MOD / 'mod.json'}")
+    print(f"{len(entries)} cards, {fusion_count} fusions -> {MOD / 'mod.json'}")
 
 
 def pack_pool(pack, tier, monsters, cards, targets, spells):
@@ -423,7 +429,7 @@ def mod_packs(monsters, cards, targets, spells):
             print(f"pack {p['name']}: {sum(len(t['cards']) for t in tiers.values())} cards of the set; "
                   f"{len(missing)} not in the disc or the mod: " + ", ".join(f"{n} ({r})" for _, n, r in missing))
             pack = {k: p[k] for k in ("id", "name", "description", "price", "count") if k in p}
-            pack.update({"tiers": tiers, "slots": slots, "unlock": {"beat": p["beat"]}, "locked": "shown"})
+            pack.update({"tiers": tiers, "slots": slots, "unlock": p["unlock"] if "unlock" in p else {"beat": p["beat"]}, "locked": "shown"})
             if (MOD / "images" / "packs" / f"{p['id']}.png").exists():
                 pack["image"] = f"images/packs/{p['id']}.png"
                 pack["image_style"] = "full"
@@ -438,7 +444,7 @@ def mod_packs(monsters, cards, targets, spells):
                 tiers[t["id"]] = entry
         pack = {k: p[k] for k in ("id", "name", "description", "price", "count", "guarantee") if k in p}
         pack["tiers"] = tiers
-        pack["unlock"] = {"beat": p["beat"]}
+        pack["unlock"] = p["unlock"] if "unlock" in p else {"beat": p["beat"]}
         pack["locked"] = "shown"
         if (MOD / "images" / "packs" / f"{p['id']}.png").exists():
             pack["image"] = f"images/packs/{p['id']}.png"
@@ -447,7 +453,48 @@ def mod_packs(monsters, cards, targets, spells):
     return out
 
 
-def mod_duelists(mod, duelists, known):
+def pack_rates(pack):
+    """The chance each card of a pack has of turning up in one pack: a slot of a tier deals a card by its weight in
+    the tier's pool; a slot by the tiers' odds first picks the tier."""
+    rates = {}
+    for slot in pack.get("slots", []) or [{"tiers": {t: v["odds"] for t, v in pack["tiers"].items()}}] * pack["count"]:
+        odds = {slot: 1} if isinstance(slot, str) else dict(slot["tiers"])
+        total = sum(odds.values())
+        for tier, odd in odds.items():
+            pool = pack["tiers"][tier]["cards"]
+            for card, weight in pool.items():
+                rates[card] = rates.get(card, 0) + odd / total * weight / sum(pool.values())
+    return rates
+
+
+def pack_drops(duelist, name, packs):
+    """A duelist's "drops_like_pack": the cards another duelist drops and the ones its own deck holds, each at the
+    chance a pack of that name gives it ({"pack": id, "from": duelist, "pools": ...}); a card the pack lacks counts as
+    the pack's commonest, scaled by how likely the other duelist drops it."""
+    spec = duelist["drops_like_pack"]
+    rates = pack_rates(next(p for p in packs if p["id"] == spec["pack"]))
+    plain = sorted(rates.values())[len(rates) // 2]
+    pools = {"pow": "S/A POW", "tec": "S/A TEC", "bcd": "B/C/D"}
+    held = {}
+    with open(ROOT / "notes" / "research" / "fusion-and-drop-tables" / "drops.csv", encoding="utf-8", newline="") as f:
+        for r in csv.DictReader(f):
+            if r["duelist"] == spec["from"]:
+                held.setdefault(r["pool"], {})[r["card"]] = int(r["weight"])
+    out = {}
+    for pool, label in pools.items():
+        retail = held.get(label, {})
+        middle = sorted(retail.values())[len(retail) // 2] if retail else 1
+        out[pool] = {}
+        for card in list(retail) + [name(c) for c in duelist["deck"]]:
+            if card in rates:                       # the pack's chance
+                weight = rates[card] * 2000
+            else:                                   # not in the pack: its place in the other duelist's pool
+                weight = plain * 2000 * retail.get(card, middle) / middle
+            out[pool][card] = max(1, round(weight))
+    return out
+
+
+def mod_duelists(mod, duelists, known, packs=()):
     """duelists.json -> the mod's "duelists", "decks" and "drops" entries, and each portrait."""
     ref = {c["name"]: f"{MOD_ID}:{slug(c['name'])}:1" for c in known}
     name = lambda n: ref.get(n, n)
@@ -466,7 +513,8 @@ def mod_duelists(mod, duelists, known):
                 entry["portrait"] = f"portraits/{d['id']}.png"
         mod["duelists"].append(entry)
         mod["decks"][d["id"]] = {"replace": True, **{name(c): w for c, w in d["deck"].items()}}
-        mod["drops"][d["id"]] = {pool: {name(c): w for c, w in cards.items()} for pool, cards in d["drops"].items()}
+        mod["drops"][d["id"]] = (pack_drops(d, name, packs) if "drops_like_pack" in d else
+                                 {pool: {name(c): w for c, w in cards.items()} for pool, cards in d["drops"].items()})
 
 
 def spell_cards(spells, cat, entries, monsters):
@@ -494,7 +542,8 @@ def spell_cards(spells, cat, entries, monsters):
             if s.get("fusion"):      # a Polymerization: two monsters of the field fuse by the fusion rules
                 # "poly" on a target: three (or two) monsters of the field that Polymerization fuses into it directly
                 recipes = [{"materials": [m if isinstance(m, (int, dict)) else ref.get(m, m) for m in mats], "result": ref[t["name"]]}
-                           for t in monsters for mats in t.get("poly", [])]
+                           for t in monsters for mats in t.get("poly", [])
+                           if not s.get("recipes_only")]      # only Polymerization takes the targets' "poly" sets
                 # "recipes" on the spell itself: the same for a retail result (names of retail cards)
                 recipes += [{"materials": [m if isinstance(m, dict) else ref.get(m, m) for m in r["materials"]], "result": ref.get(r["result"], r["result"])}
                             for r in s.get("recipes", [])]
@@ -560,7 +609,7 @@ def target_drops(targets):
     return drops
 
 
-def target_fusions(targets, cards, monsters, rules, pool, inter=()):
+def target_fusions(targets, cards, monsters, rules, pool, inter=(), spells=()):
     """Add targets.json's recipes; a recipe replaces a generated rule for the same pair.
 
     A target's "mass" rules are the disc's Twin-headed Thunder Dragon style: any
@@ -568,7 +617,7 @@ def target_fusions(targets, cards, monsters, rules, pool, inter=()):
     "max_atk", makes the target. They only fill pairs that make nothing yet, on
     the disc (as the cards' bases) or in this mod, so no other recipe is lost,
     unless the rule says "override": true, which takes the pair over."""
-    ref = {c["name"]: f"{MOD_ID}:{slug(c['name'])}:1" for c in cards + targets}
+    ref = {c["name"]: f"{MOD_ID}:{slug(c['name'])}:1" for c in cards + targets + list(spells)}
     retail = {m["name"]: m["id"] for m in monsters}
     retail.update({r["name"]: r["id"] for r in read_catalog() if r["type"] == "Equip"})   # Metalmorph fuses with a monster
 
@@ -686,7 +735,7 @@ def check():
     def stats(x):
         if isinstance(x, int):
             return ids[x]["atk"] if x in ids else None
-        return refs[x]["attack"] if x in refs else None
+        return refs[x].get("attack", 0) if x in refs else None      # a spell card has no strength
     cardrefs = set(refs) | {r["name"] for r in cat}
     for d in mod.get("duelists", []):
         if d["copy"] not in OPPONENTS_ALL:

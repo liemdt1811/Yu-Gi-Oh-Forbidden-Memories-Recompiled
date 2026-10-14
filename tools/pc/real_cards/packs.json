@@ -44,7 +44,6 @@
   "name": "Beyond the Brave",
   "price": 50,
   "count": 9,
-  "beat": "Jono",
   "description": "Joey's pack: Red-Eyes and the cards Jono and Jono 2nd play. Nine cards, one rare or better.",
   "set_list": "sets/betb.json",
   "image_url": "https://img.yugioh-card.com/en/wp-content/uploads/2026/08/BETB_550.png",
@@ -115,12 +114,28 @@
    "Red-Eyes Black Dragon Exceed": "Secret Rare",
    "Alligator's Sword Dragon": "Rare",
    "Alligator's Sword": "Common",
-   "Red-Eyes Darkness Dragon": "Common"
+   "Red-Eyes Darkness Dragon": "Common",
+   "Gearfried the Swordmaster": "Super Rare",
+   "Release Restraint": "Rare",
+   "Gilford the Legend": "Ultra Rare",
+   "Gilford the Lightning": "Secret Rare",
+   "Rocket Warrior": "Ultra Rare"
   },
   "aliases": {
    "Red-Eyes Black Dragon": "Red-eyes B. Dragon",
    "Black Skull Dragon": "B. Skull Dragon",
    "Exodia the Forbidden One": "Exodia the Forbidden"
-  }
+  },
+  "unlock": [
+   {
+    "beat": "Jono"
+   },
+   {
+    "beat": "Jono 2nd"
+   },
+   {
+    "beat": "jonouchi"
+   }
+  ]
  }
 ]

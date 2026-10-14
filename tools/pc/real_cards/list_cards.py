@@ -14,6 +14,8 @@ spells = {f"{mod['id']}:{c['id']}:1": c for c in mod["cards"] if "attack" not in
 def label(x):
     if isinstance(x, int):
         return cat[x]["name"], int(cat[x]["attack"])
+    if x in spells:                      # a spell card as a material (Release Restraint)
+        return spells[x]["name"] + " *", 0
     return new[x]["name"] + " *", new[x]["attack"]
 
 

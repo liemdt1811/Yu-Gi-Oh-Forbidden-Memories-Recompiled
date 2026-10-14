@@ -20,6 +20,8 @@ import json
 import sys
 from pathlib import Path
 
+import modio
+
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 MOD = ROOT / "mods" / "z" / "mod.json"
@@ -42,7 +44,7 @@ def main():
             name[int(r["id"])] = r["name"]
             if r["attack"]:
                 atk[int(r["id"])] = int(r["attack"])
-    mod = json.loads(MOD.read_text(encoding="utf-8"))
+    mod = modio.load(MOD)
     real = {c["name"]: c["attack"] for c in json.loads((HERE / "targets.json").read_text(encoding="utf-8"))}
     base = {}
     for c in mod["cards"]:

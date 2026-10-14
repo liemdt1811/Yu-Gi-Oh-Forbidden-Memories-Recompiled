@@ -719,7 +719,7 @@ def write_release_manifest(path, destination, name):
 
 
 # Files a release takes though git does not track them (build_mods).
-GENERATED_MOD_FILES = ("mods/z/images/", "mods/z/portraits/")
+GENERATED_MOD_FILES = ("mods/z/images/", "mods/z/portraits/", "mods/z/art/")
 
 
 def build_mods(build, release=False, code=True):

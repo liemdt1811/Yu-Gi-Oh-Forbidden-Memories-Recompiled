@@ -123,6 +123,12 @@ read from the save and its progress each time the list opens.
 | `packs_opened` | the save has opened this many packs in all |
 | `opened` | `{pack: n}`: the save has opened that pack n times (up to 8 packs, by identity or id) |
 
+`unlock` may also be a **list** of such objects, and then any one of them opens the
+pack: `"unlock": [{"beat": "Jono"}, {"beat": "Jono 2nd"}]` opens it once either has
+been beaten. A locked pack's details name what each alternative still wants, with OR
+between them. An empty list opens nothing; an entry that is not an object is left
+out with a note.
+
 A condition that names something not here this run (a duelist of a mod turned
 off, a pack no mod has) or is written wrong leaves the pack locked, so nothing
 opens by mistake.
