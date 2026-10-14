@@ -1162,8 +1162,9 @@
   "level": 6,
   "attack": 2400,
   "defense": 1500,
-  "description": "This cyborg's power\nnegates all traps\nin play.",
-  "date": "2002-03-08"
+  "description": "Traps cannot be\nactivated while this\ncyborg is face up.\nTrap effects on the\nfield are negated.",
+  "date": "2002-03-08",
+  "frame": "Orange"
  },
  {
   "password": "48766543",

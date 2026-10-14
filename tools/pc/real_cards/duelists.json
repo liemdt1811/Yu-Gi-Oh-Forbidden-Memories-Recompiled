@@ -49,7 +49,8 @@
     "Umi": 30
    }
   },
-  "portrait_file": "portraits/mako-tsunami.png"
+  "portrait_file": "portraits/mako-tsunami.png",
+  "frame": "blue"
  },
  {
   "id": "duke-devlin",
@@ -101,7 +102,8 @@
     "Big Eye": 40
    }
   },
-  "portrait_file": "portraits/duke-devlin.png"
+  "portrait_file": "portraits/duke-devlin.png",
+  "frame": "blue"
  },
  {
   "id": "bonz",
@@ -153,7 +155,8 @@
     "Vampire Voivode": 15
    }
   },
-  "portrait_file": "portraits/bonz.png"
+  "portrait_file": "portraits/bonz.png",
+  "frame": "blue"
  },
  {
   "id": "espa-roba",
@@ -208,7 +211,8 @@
     "Skull Dog Marron": 40
    }
   },
-  "portrait_file": "portraits/espa-roba.png"
+  "portrait_file": "portraits/espa-roba.png",
+  "frame": "blue"
  },
  {
   "id": "mokuba-kaiba",
@@ -260,7 +264,8 @@
     "Dragon Capture Jar": 30
    }
   },
-  "portrait_file": "portraits/mokuba-kaiba.png"
+  "portrait_file": "portraits/mokuba-kaiba.png",
+  "frame": "blue"
  },
  {
   "id": "arkana",
@@ -315,7 +320,8 @@
     "Wall of Illusion": 40
    }
   },
-  "portrait_file": "portraits/arkana.png"
+  "portrait_file": "portraits/arkana.png",
+  "frame": "blue"
  },
  {
   "id": "panik",
@@ -370,7 +376,8 @@
     "Mystic Clown": 40
    }
   },
-  "portrait_file": "portraits/panik.png"
+  "portrait_file": "portraits/panik.png",
+  "frame": "blue"
  },
  {
   "id": "yugi-muto",
@@ -428,7 +435,8 @@
     "Curse of Dragon": 40
    }
   },
-  "portrait_file": "portraits/yugi-muto.png"
+  "portrait_file": "portraits/yugi-muto.png",
+  "frame": "red"
  },
  {
   "id": "rishid",
@@ -482,7 +490,8 @@
     "Dokurorider": 40
    }
   },
-  "portrait_file": "portraits/rishid.png"
+  "portrait_file": "portraits/rishid.png",
+  "frame": "red"
  },
  {
   "id": "marik-ishtar",
@@ -533,7 +542,8 @@
     "Gil Garth": 40
    }
   },
-  "portrait_file": "portraits/marik-ishtar.png"
+  "portrait_file": "portraits/marik-ishtar.png",
+  "frame": "red"
  },
  {
   "id": "yami-marik",
@@ -590,7 +600,8 @@
     "Gil Garth": 40
    }
   },
-  "portrait_file": "portraits/yami-marik.png"
+  "portrait_file": "portraits/yami-marik.png",
+  "frame": "red"
  },
  {
   "id": "atemu",
@@ -648,7 +659,8 @@
     "Summoned Skull": 40
    }
   },
-  "portrait_file": "portraits/atemu.png"
+  "portrait_file": "portraits/atemu.png",
+  "frame": "red"
  },
  {
   "id": "jaden-yuki",
@@ -658,6 +670,7 @@
    "beat": "Jono 2nd"
   },
   "portrait_file": "portraits/jaden-yuki.png",
+  "frame": "red",
   "deck": {
    "Elemental HERO Avian": 120,
    "Elemental HERO Burstinatrix": 120,
@@ -753,6 +766,8 @@
    "Divine Sword - Phoenix Blade": 30
   },
   "portrait_file": "portraits/jonouchi.png",
+  "frame": "blue",
+  "portrait_crop": [110, 10, 290],
   "drops_like_pack": {
    "pack": "beyond-the-brave",
    "from": "Jono 2nd"

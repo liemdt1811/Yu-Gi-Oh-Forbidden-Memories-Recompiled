@@ -494,6 +494,27 @@ def pack_drops(duelist, name, packs):
     return out
 
 
+PORTRAIT_SIZE = 384          # the retail frame is 4x at 192 (the disc's picture at 48), doubled here
+
+
+def frame_portrait(src, frame, crop, dest):
+    """A square of the picture (crop = [left, top, size], else its middle) with the Free Duel frame of the
+    retail duelists on it: blue for the early ones, red for the later (frames/*.png, taken from the disc's)."""
+    from PIL import Image
+    pic = Image.open(src).convert("RGB")
+    if crop:
+        left, top, size = crop
+    else:
+        size = min(pic.size)
+        left, top = (pic.width - size) // 2, (pic.height - size) // 2
+    pic = pic.crop((left, top, left + size, top + size)).resize((PORTRAIT_SIZE, PORTRAIT_SIZE), Image.LANCZOS)
+    ring = Image.open(HERE / "frames" / f"{frame}.png").convert("RGBA").resize((PORTRAIT_SIZE, PORTRAIT_SIZE),
+                                                                              Image.LANCZOS)
+    pic.paste(ring, (0, 0), ring)
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    pic.save(dest)
+
+
 def mod_duelists(mod, duelists, known, packs=()):
     """duelists.json -> the mod's "duelists", "decks" and "drops" entries, and each portrait."""
     ref = {c["name"]: f"{MOD_ID}:{slug(c['name'])}:1" for c in known}
@@ -509,7 +530,8 @@ def mod_duelists(mod, duelists, known, packs=()):
                    else MOD / "images" / f"{slug(d['portrait_from'])}.png")
             if src.exists():
                 (MOD / "portraits").mkdir(parents=True, exist_ok=True)
-                (MOD / "portraits" / f"{d['id']}.png").write_bytes(src.read_bytes())
+                frame_portrait(src, d.get("frame", "blue"), d.get("portrait_crop"),
+                               MOD / "portraits" / f"{d['id']}.png")
                 entry["portrait"] = f"portraits/{d['id']}.png"
         mod["duelists"].append(entry)
         mod["decks"][d["id"]] = {"replace": True, **{name(c): w for c, w in d["deck"].items()}}

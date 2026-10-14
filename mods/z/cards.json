@@ -1578,7 +1578,7 @@
   "id": "jinzo",
   "copy": 407,
   "name": "Jinzo",
-  "description": "This cyborg's power\nnegates all traps\nin play.",
+  "description": "Traps cannot be\nactivated while this\ncyborg is face up.\nTrap effects on the\nfield are negated.",
   "type": "Machine",
   "attribute": "Dark",
   "level": 6,
@@ -1587,6 +1587,7 @@
   "password": "77585513",
   "drops": true,
   "opponents": true,
+  "frame": "Orange",
   "art": "images/jinzo.png"
  },
  {
@@ -2943,7 +2944,7 @@
   "id": "dragon-master-knight",
   "copy": 1,
   "name": "Dragon Master Knight",
-  "description": "The legendary knight\nwho rides the\nultimate dragon. His\npower is without\nequal.",
+  "description": "\"Black Luster\nSoldier\" +\n\"Blue-Eyes Ultimate\nDragon.\nThis card gains 500\nATK for each Dragon\nmonster you control,\nexcept this card.",
   "type": "Dragon",
   "attribute": "Light",
   "level": 12,
@@ -2952,6 +2953,7 @@
   "password": "62873545",
   "drops": false,
   "opponents": false,
+  "frame": "Purple",
   "art": "images/dragon-master-knight.png"
  },
  {
@@ -3758,7 +3760,7 @@
   "id": "blue-eyes-tyrant-dragon",
   "copy": 1,
   "name": "Blue-Eyes Tyrant Dragon",
-  "description": "A blue-eyed dragon\nfused with another\ndragon. Its tyrant\nfury knows no limit.",
+  "description": "A blue-eyed dragon\nfused with another\ndragon. Its tyrant\nfury knows no limit.\nUnaffected by Trap\nCards or effects.",
   "type": "Dragon",
   "attribute": "Light",
   "level": 8,
@@ -3767,6 +3769,7 @@
   "password": "11443677",
   "drops": false,
   "opponents": false,
+  "frame": "Purple",
   "art": "images/blue-eyes-tyrant-dragon.png"
  },
  {

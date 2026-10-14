@@ -17,6 +17,11 @@
  *    end of that battle on (state.shrink, by record, with the card's id as Slifer's loss has).
  *  - Elemental HERO Air / Aqua / Dark / Flare / Grand Neos: +500 ATK for each face-up WIND / WATER / DARK / FIRE /
  *    EARTH monster on the field, either side's and itself.
+ *  - Dragon Master Knight: +500 ATK for each other face-up Dragon on its owner's side (not itself).
+ *  - Jinzo: while it is face up on the field (either side's), no trap can be activated: an attack trap does not
+ *    spring and Goblin Fan, Bad Reaction to Simochi and Reverse Trap stay set (hooks on Duel_SelectAttackTrap and
+ *    Duel_SelectTrapByCardId, the two places a trap is picked).
+ *  - Blue-Eyes Tyrant Dragon: unaffected by traps; no trap springs on its attack.
  * Forbidden Memories has no graveyard, so Buster Blader has no "or in the
  * Graveyard" half, and Dark Magician Girl's "graveyard" is a count of those
  * two monsters when they are destroyed (MEMORIES_MONSTER_DESTROYED: in a battle or by
@@ -37,6 +42,8 @@
 #include "game/duel_init_scene.h"
 #include "game/duel_side_state.h"
 #include "game/duel_card_record_lifecycle.h"
+#include "game/duel_trap_resolution.h"
+#include "game/func_80025028.h"
 #include "game/duel_battle_stats.h"
 #include "game/display_object.h"
 #include "game/display_object_work_slots.h"
@@ -47,6 +54,8 @@
 #define DARK_MAGICIAN_GIRL "z:dark-magician-girl:1"
 #define SLIFER "z:slifer-the-sky-dragon:1"
 #define RA "z:the-winged-dragon-of-ra:1"
+#define JINZO "z:jinzo:1"
+#define BLUE_EYES_TYRANT_DRAGON "z:blue-eyes-tyrant-dragon:1"
 #define DARK_MAGICIAN 35            /* the disc's own cards */
 #define MAGICIAN_OF_BLACK_CHAOS 722
 #define PER_ATTRIBUTE 500
@@ -54,6 +63,7 @@
 #define PER_WARRIOR 300
 #define ROCKET_LOSS 500
 #define PER_DRAGON 500
+#define PER_OTHER_DRAGON 500
 #define PER_MAGICIAN 300
 #define PER_HAND_CARD 1000
 #define SLIFER_LOSS 2000
@@ -64,12 +74,12 @@
 /* The five Neos forms follow the others: neos_attribute[which - AIR_NEOS] is the attribute (card.h order: Light, Dark, Earth,
  * Water, Fire, Wind) they count. Slifer and Ra stay last of the first group, as the "which >= SLIFER_CARD" tests expect. */
 enum { BUSTER, GIRL, AIR_NEOS, AQUA_NEOS, DARK_NEOS, FLARE_NEOS, GRAND_NEOS, DARKNESS_DRAGON, DARKNESS_METAL, GILFORD,
-       ROCKET_WARRIOR, SLIFER_CARD, RA_CARD, CARDS };
+       ROCKET_WARRIOR, DRAGON_MASTER_KNIGHT, SLIFER_CARD, RA_CARD, CARDS };
 static const char *const identity[CARDS] = {BUSTER_BLADER, DARK_MAGICIAN_GIRL,
     "z:elemental-hero-air-neos:1", "z:elemental-hero-aqua-neos:1", "z:elemental-hero-dark-neos:1",
     "z:elemental-hero-flare-neos:1", "z:elemental-hero-grand-neos:1",
     "z:red-eyes-darkness-dragon:1", "z:red-eyes-darkness-metal-dragon:1", "z:gilford-the-lightning:1",
-    "z:rocket-warrior:1", SLIFER, RA};
+    "z:rocket-warrior:1", "z:dragon-master-knight:1", SLIFER, RA};
 static const int neos_attribute[5] = {5, 3, 1, 4, 2};
 
 static const MemoriesModHost *host;
@@ -103,6 +113,7 @@ static s32 (*original)(DuelCardRecord *card);
 static void (*original_init)(void);
 static int id[CARDS];       /* the cards' ids this run, 0 until the tables are built */
 static int logged[CARDS];
+static int jinzo_id, tyrant_id;   /* the trap cards' ids this run, 0 until the tables are built */
 static struct { int destroyed; short weak[2 * SIDE_RECORDS]; short shrink_card[2 * SIDE_RECORDS]; short shrink[2 * SIDE_RECORDS]; } state;     /* in save states: Magicians destroyed this duel; the cards Slifer weakened, by record */
 
 /* A fighter of the battle on screen. The battle takes both fighters' records off the field (DuelCard_DeactivateRecord
@@ -204,6 +215,16 @@ static int effect_attack(const DuelCardRecord *card, int record, int now, int *w
                     n++;
             }
         return n ? now + n * PER_WARRIOR : -1;
+    case DRAGON_MASTER_KNIGHT:   /* 500 for each other face-up Dragon on its owner's side */
+        n = 0;
+        for (zone = FIRST_MONSTER; zone <= LAST_MONSTER; zone++) {
+            int own_record = side * SIDE_RECORDS + zone;
+            const DuelCardRecord *own = &D_801A7AD8[own_record];
+            if (own_record != record && present(own, own_record) && face_up(own, own_record) &&
+                own->card_id > 0 && is_dragon(own))
+                n++;
+        }
+        return n ? now + n * PER_OTHER_DRAGON : -1;
     case ROCKET_WARRIOR:   /* no ATK of its own: its effect is the loss it deals (monster_event) */
         return -1;
     case SLIFER_CARD:      /* 1000 for each card in its owner's hand, whatever its printed ATK and DEF */
@@ -218,6 +239,14 @@ static int effect_attack(const DuelCardRecord *card, int record, int now, int *w
 static void resolve_ids(void)
 {
     int which;
+    if (!jinzo_id) {
+        jinzo_id = host->card_id(host, JINZO);
+        if (jinzo_id < 0) jinzo_id = 0;
+    }
+    if (!tyrant_id) {
+        tyrant_id = host->card_id(host, BLUE_EYES_TYRANT_DRAGON);
+        if (tyrant_id < 0) tyrant_id = 0;
+    }
     for (which = 0; which < CARDS; which++) {
         if (!id[which]) {
             id[which] = host->card_id(host, identity[which]);
@@ -317,9 +346,51 @@ static s32 battle_result(DisplayObject *left, DisplayObject *right)
     return result;
 }
 
+/* Whether a face-up Jinzo is on the field, either side's. */
+static int jinzo_on_field(void)
+{
+    int side, zone;
+
+    resolve_ids();
+    if (!jinzo_id) return 0;
+    for (side = 0; side < 2; side++)
+        for (zone = FIRST_MONSTER; zone <= LAST_MONSTER; zone++) {
+            int record = side * SIDE_RECORDS + zone;
+            const DuelCardRecord *other = &D_801A7AD8[record];
+            if (present(other, record) && face_up(other, record) && other->card_id == jinzo_id) return 1;
+        }
+    return 0;
+}
+
+/* An attack trap springs on the attacker: neither Jinzo's field nor Blue-Eyes Tyrant Dragon (as the attacker) lets one. */
+static s32 (*original_attack_trap)(u8 *attacker);
+static s32 attack_trap(u8 *attacker)
+{
+    int record = attacker ? ((DisplayObject *)attacker)->field_6A : -1;
+    resolve_ids();
+    if (jinzo_on_field() ||
+        (tyrant_id && record >= 0 && record < 2 * SIDE_RECORDS && D_801A7AD8[record].card_id == tyrant_id)) {
+        D_8009B22A = 0;
+        return 0;
+    }
+    return original_attack_trap(attacker);
+}
+
+/* Goblin Fan, Bad Reaction to Simochi and Reverse Trap: none springs while Jinzo is face up. */
+static s32 (*original_trap_by_id)(s32 card_id);
+static s32 trap_by_card_id(s32 card_id)
+{
+    if (jinzo_on_field()) {
+        D_8009B22A = 0;
+        return 0;
+    }
+    return original_trap_by_id(card_id);
+}
+
 static void reset(void)
 {
     int i;
+    jinzo_id = tyrant_id = 0;
     for (i = 0; i < CARDS; i++) id[i] = 0;     /* the card tables may differ in a loaded state */
 }
 
@@ -381,6 +452,9 @@ int MemoriesModInit(const MemoriesModHost *from, MemoriesMod *mod)
         return 0;
     }
     host->hook(host, (void *)func_8001EFD4, (void *)battle_result, (void **)&original_battle);
+    if (!host->hook(host, (void *)Duel_SelectAttackTrap, (void *)attack_trap, (void **)&original_attack_trap) ||
+        !host->hook(host, (void *)Duel_SelectTrapByCardId, (void *)trap_by_card_id, (void **)&original_trap_by_id))
+        host->log(host, "z-effects: could not hook the trap selection (Jinzo, Blue-Eyes Tyrant Dragon)");
     mod->api = MEMORIES_MOD_API;
     mod->reset = reset;
     return 1;

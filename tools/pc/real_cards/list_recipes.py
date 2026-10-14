@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write notes/real-cards-z-recipes.md: how each fusion-only card of the "z" mod is made, step by step.
+"""Write notes/z-recipes.md: how each fusion-only card of the "z" mod is made, step by step.
 
 Reads targets.json: a card's "fusions" (fixed pairs), "steps" (a pair that first makes a middle card)
 and "mass" rules (any monster of one group with any of another). A material that is itself one of
@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE.parents[2] / "notes" / "real-cards-z-recipes.md"
+OUT = HERE.parents[2] / "notes" / "z-recipes.md"
 
 
 def group(g):

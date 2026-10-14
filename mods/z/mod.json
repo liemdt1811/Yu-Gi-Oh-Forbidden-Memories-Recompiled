@@ -9,7 +9,7 @@
   "background": {
    "image": "art/title.png",
    "wide_image": "art/title-wide.png",
-   "dim": 96
+   "dim": 128
   },
   "logo": {
    "hide": true

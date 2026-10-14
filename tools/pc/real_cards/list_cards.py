@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write notes/real-cards-list.md: the "z" mod's cards and fusion formulas."""
+"""Write notes/z-list.md: the "z" mod's cards and fusion formulas."""
 import csv, json
 import modio
 from pathlib import Path
@@ -106,5 +106,5 @@ for k, c in sorted(new.items(), key=lambda kv: kv[1]["name"]):
     if len(rules) > 60:
         out.append(f"- ... and {len(rules) - 60} more (all in mod.json)")
     out.append("")
-(ROOT / "notes/real-cards-list.md").write_text("\n".join(out), encoding="utf-8")
+(ROOT / "notes/z-list.md").write_text("\n".join(out), encoding="utf-8")
 print(len(out), "lines")

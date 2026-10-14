@@ -2430,8 +2430,9 @@
   "level": 12,
   "attack": 5000,
   "defense": 5000,
-  "description": "The legendary knight who rides the ultimate dragon. His power is without equal.",
+  "description": "\"Black Luster Soldier\" + \"Blue-Eyes Ultimate Dragon.\nThis card gains 500 ATK for each Dragon monster you control, except this card.",
   "date": "2006-11-11",
+  "frame": "Purple",
   "fusions": [
    [
     "Black Luster Soldier",
@@ -4133,8 +4134,9 @@
   "level": 8,
   "attack": 3400,
   "defense": 2900,
-  "description": "A blue-eyed dragon fused with another dragon. Its tyrant fury knows no limit.",
+  "description": "A blue-eyed dragon fused with another dragon. Its tyrant fury knows no limit. Unaffected by Trap Cards or effects.",
   "date": "2017-01-01",
+  "frame": "Purple",
   "fusions": [],
   "mass": [
    {
