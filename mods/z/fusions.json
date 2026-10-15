@@ -12840,9 +12840,9 @@
  {
   "with": [
    "z:soul-of-purity-and-light:1",
-   "z:luster-dragon:1"
+   "z:silent-swordsman-lv3:1"
   ],
-  "result": 82
+  "result": 33
  },
  {
   "with": [
@@ -12938,16 +12938,16 @@
  {
   "with": [
    "z:the-rock-spirit:1",
-   "z:luster-dragon:1"
+   "z:silent-swordsman-lv3:1"
   ],
-  "result": 465
+  "result": 533
  },
  {
   "with": [
    "z:the-rock-spirit:1",
-   "z:x-head-cannon:1"
+   "z:ultimate-insect-lv1:1"
   ],
-  "result": 426
+  "result": 533
  },
  {
   "with": [
@@ -13022,51 +13022,366 @@
  {
   "with": [
    "z:the-unfriendly-amazon:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": 69
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": 82
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   118
+  ],
+  "result": 294
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   160
+  ],
+  "result": 412
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   166
+  ],
+  "result": 457
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   236
+  ],
+  "result": 294
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   267
+  ],
+  "result": 171
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   110
+  ],
+  "result": 502
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   45
+  ],
+  "result": 294
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   114
+  ],
+  "result": 502
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   276
+  ],
+  "result": 641
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   584
+  ],
+  "result": 294
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   429
+  ],
+  "result": 502
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   530
+  ],
+  "result": 641
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": 294
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": 117
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
    "z:luster-dragon:1"
   ],
   "result": 33
  },
  {
   "with": [
-   "z:the-unfriendly-amazon:1",
+   "z:ultimate-insect-lv1:1",
+   72
+  ],
+  "result": 485
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   499
+  ],
+  "result": 100
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   278
+  ],
+  "result": 157
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   397
+  ],
+  "result": 485
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   501
+  ],
+  "result": 157
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   50
+  ],
+  "result": 479
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   395
+  ],
+  "result": 485
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   411
+  ],
+  "result": 479
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   191
+  ],
+  "result": 479
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   200
+  ],
+  "result": 479
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   207
+  ],
+  "result": 479
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   144
+  ],
+  "result": 595
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": 117
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   "z:luster-dragon:1"
+  ],
+  "result": 571
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
    "z:x-head-cannon:1"
   ],
   "result": 390
  },
  {
   "with": [
-   "z:the-unfriendly-amazon:1",
+   "z:armed-dragon-lv3:1",
+   4
+  ],
+  "result": 117
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   561
+  ],
+  "result": 10
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   603
+  ],
+  "result": 31
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   7
+  ],
+  "result": 357
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   10
+  ],
+  "result": 99
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   31
+  ],
+  "result": 409
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   13
+  ],
+  "result": 117
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   53
+  ],
+  "result": 10
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   294
+  ],
+  "result": 10
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   468
+  ],
+  "result": 117
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   552
+  ],
+  "result": 10
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   62
+  ],
+  "result": 168
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   "z:luster-dragon:1"
+  ],
+  "result": 465
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   "z:x-head-cannon:1"
+  ],
+  "result": 386
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
    "z:gazelle-the-king-of-mythical-beasts:1"
   ],
-  "result": 33
+  "result": 375
  },
  {
   "with": [
    "z:cyber-dragon:1",
    390
   ],
-  "result": 392
+  "result": 613
  },
  {
   "with": [
    "z:cyber-dragon:1",
    407
   ],
-  "result": 613
+  "result": 392
  },
  {
   "with": [
    "z:cyber-dragon:1",
    645
   ],
-  "result": 392
+  "result": 613
  },
  {
   "with": [
    "z:cyber-dragon:1",
    409
   ],
-  "result": 69
+  "result": 37
  },
  {
   "with": [
@@ -13080,49 +13395,49 @@
    "z:cyber-dragon:1",
    370
   ],
-  "result": 613
+  "result": 392
  },
  {
   "with": [
    "z:cyber-dragon:1",
    704
   ],
-  "result": 392
+  "result": 613
  },
  {
   "with": [
    "z:cyber-dragon:1",
    427
   ],
-  "result": 37
+  "result": 613
  },
  {
   "with": [
    "z:cyber-dragon:1",
    389
   ],
-  "result": 392
+  "result": 613
  },
  {
   "with": [
    "z:cyber-dragon:1",
    90
   ],
-  "result": 613
+  "result": 392
  },
  {
   "with": [
    "z:cyber-dragon:1",
    126
   ],
-  "result": 392
+  "result": 613
  },
  {
   "with": [
    "z:cyber-dragon:1",
    582
   ],
-  "result": 613
+  "result": 392
  },
  {
   "with": [
@@ -13144,104 +13459,6 @@
    "z:zombyra-the-dark:1"
   ],
   "result": 82
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   705
-  ],
-  "result": 217
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   37
-  ],
-  "result": 217
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   358
-  ],
-  "result": 713
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   69
-  ],
-  "result": 217
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   82
-  ],
-  "result": 217
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   372
-  ],
-  "result": 217
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   465
-  ],
-  "result": 713
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   472
-  ],
-  "result": 217
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   522
-  ],
-  "result": 713
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   63
-  ],
-  "result": 217
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   458
-  ],
-  "result": 713
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   "z:gilford-the-lightning:1"
-  ],
-  "result": 217
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   "z:metal-armored-bug:1"
-  ],
-  "result": 713
- },
- {
-  "with": [
-   "z:armed-dragon-lv7:1",
-   "z:wingweaver:1"
-  ],
-  "result": 217
  },
  {
   "with": [
@@ -15458,23 +15675,23 @@
  {
   "with": [
    "z:gravekeeper-s-spy:1",
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": 149
+ },
+ {
+  "with": [
+   "z:gravekeeper-s-spy:1",
    "z:gradius:1"
   ],
-  "result": 633
+  "result": 433
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    "z:marauding-captain:1"
   ],
-  "result": 149
- },
- {
-  "with": [
-   "z:gravekeeper-s-spy:1",
-   "z:neo-aqua-madoor:1"
-  ],
-  "result": 149
+  "result": 23
  },
  {
   "with": [
@@ -16514,6 +16731,13 @@
  },
  {
   "with": [
+   "z:armed-dragon-lv5:1",
+   "z:level-up:1"
+  ],
+  "result": "z:armed-dragon-lv7:1"
+ },
+ {
+  "with": [
    "z:alpha-the-magnet-warrior:1",
    "z:beta-the-magnet-warrior:1"
   ],
@@ -16843,6 +17067,55 @@
  },
  {
   "with": [
+   "z:silent-swordsman-lv3:1",
+   "z:level-up:1"
+  ],
+  "result": "z:silent-swordsman-lv5:1"
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv5:1",
+   "z:level-up:1"
+  ],
+  "result": "z:silent-swordsman-lv7:1"
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   "z:level-up:1"
+  ],
+  "result": "z:ultimate-insect-lv3:1"
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv3:1",
+   "z:level-up:1"
+  ],
+  "result": "z:ultimate-insect-lv5:1"
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv5:1",
+   "z:level-up:1"
+  ],
+  "result": "z:ultimate-insect-lv7:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   "z:level-up:1"
+  ],
+  "result": "z:armed-dragon-lv5:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv7:1",
+   "z:level-up:1"
+  ],
+  "result": "z:armed-dragon-lv10:1"
+ },
+ {
+  "with": [
    613,
    1
   ],
@@ -17103,7 +17376,7 @@
  {
   "with": [
    613,
-   "z:armed-dragon-lv7:1"
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:thunder-dragon-titan:1"
  },
@@ -17125,6 +17398,13 @@
   "with": [
    613,
    "z:red-dragon-archfiend:1"
+  ],
+  "result": "z:thunder-dragon-titan:1"
+ },
+ {
+  "with": [
+   613,
+   "z:armed-dragon-lv7:1"
   ],
   "result": "z:thunder-dragon-titan:1"
  },
@@ -17216,6 +17496,20 @@
   "with": [
    613,
    "z:red-eyes-darkness-metal-dragon:1"
+  ],
+  "result": "z:thunder-dragon-titan:1"
+ },
+ {
+  "with": [
+   613,
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:thunder-dragon-titan:1"
+ },
+ {
+  "with": [
+   613,
+   "z:armed-dragon-lv10:1"
   ],
   "result": "z:thunder-dragon-titan:1"
  },
@@ -24460,7 +24754,21 @@
  {
   "with": [
    594,
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   594,
    "z:neo-spacian-flare-scarab:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   594,
+   "z:ultimate-insect-lv3:1"
   ],
   "result": "z:tytannial-princess-of-camellias:1"
  },
@@ -24845,7 +25153,21 @@
  {
   "with": [
    638,
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   638,
    "z:neo-spacian-flare-scarab:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   638,
+   "z:ultimate-insect-lv3:1"
   ],
   "result": "z:tytannial-princess-of-camellias:1"
  },
@@ -34301,6 +34623,69 @@
  },
  {
   "with": [
+   "z:armed-dragon-lv3:1",
+   87
+  ],
+  "result": "z:red-dragon-archfiend:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   204
+  ],
+  "result": "z:red-dragon-archfiend:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   377
+  ],
+  "result": "z:red-dragon-archfiend:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   379
+  ],
+  "result": "z:red-dragon-archfiend:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   523
+  ],
+  "result": "z:red-dragon-archfiend:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   526
+  ],
+  "result": "z:red-dragon-archfiend:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   650
+  ],
+  "result": "z:red-dragon-archfiend:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   "z:opticlops:1"
+  ],
+  "result": "z:red-dragon-archfiend:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv3:1",
+   "z:gil-garth:1"
+  ],
+  "result": "z:red-dragon-archfiend:1"
+ },
+ {
+  "with": [
    "z:mirage-dragon:1",
    5
   ],
@@ -37052,6 +37437,13 @@
  },
  {
   "with": [
+   "z:silent-swordsman-lv3:1",
+   "z:shining-abyss:1"
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
    "z:queen-s-knight:1",
    "z:shining-abyss:1"
   ],
@@ -37948,6 +38340,76 @@
  },
  {
   "with": [
+   "z:silent-swordsman-lv3:1",
+   44
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   106
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   495
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   532
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   551
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   619
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   622
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   720
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   "z:neo-the-magic-swordsman:1"
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
+   "z:silent-swordsman-lv3:1",
+   "z:dark-magician-girl:1"
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
    "z:king-s-knight:1",
    2
   ],
@@ -42134,6 +42596,489 @@
  },
  {
   "with": [
+   "z:armed-dragon-lv5:1",
+   124
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   275
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   283
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   286
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   297
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   355
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   370
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   388
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   390
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   394
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   405
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   406
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   407
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   408
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   409
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   410
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   411
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   412
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   413
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   414
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   415
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   416
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   417
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   418
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   419
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   420
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   421
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   422
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   423
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   438
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   441
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   508
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   512
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   513
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   514
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   544
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   557
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   580
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   585
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   643
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   645
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   648
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:x-head-cannon:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:slot-machine:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:gadget-soldier:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:gradius:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:overdrive:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:spikebot:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:robotic-knight:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:oni-tank-t-34:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:steel-ogre-grotto-2:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:cyber-falcon:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:inpachi:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:battle-footballer:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:robolady:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:roboyarou:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:acrobat-monkey:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:shapesnatch:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:y-dragon-head:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:z-metal-tank:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:v-tiger-jet:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:w-wing-catapult:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:jinzo:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:cyber-dragon:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:cyber-ogre:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:vw-tiger-catapult:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:xy-dragon-cannon:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:xz-tank-cannon:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
+   "z:armed-dragon-lv5:1",
+   "z:yz-tank-dragon:1"
+  ],
+  "result": "z:stardust-dragon:1"
+ },
+ {
+  "with": [
    "z:stardust-dragon:1",
    4
   ],
@@ -42387,7 +43332,7 @@
  {
   "with": [
    "z:stardust-dragon:1",
-   "z:armed-dragon-lv7:1"
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:stardust-dragon-assault-mode:1"
  },
@@ -42395,6 +43340,13 @@
   "with": [
    "z:stardust-dragon:1",
    "z:mirage-dragon:1"
+  ],
+  "result": "z:stardust-dragon-assault-mode:1"
+ },
+ {
+  "with": [
+   "z:stardust-dragon:1",
+   "z:armed-dragon-lv7:1"
   ],
   "result": "z:stardust-dragon-assault-mode:1"
  },
@@ -42465,6 +43417,13 @@
   "with": [
    "z:stardust-dragon:1",
    "z:red-eyes-darkness-metal-dragon:1"
+  ],
+  "result": "z:stardust-dragon-assault-mode:1"
+ },
+ {
+  "with": [
+   "z:stardust-dragon:1",
+   "z:armed-dragon-lv5:1"
   ],
   "result": "z:stardust-dragon-assault-mode:1"
  },
@@ -42807,6 +43766,13 @@
  {
   "with": [
    "z:stardust-dragon:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:stardust-dragon-assault-mode:1"
+ },
+ {
+  "with": [
+   "z:stardust-dragon:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:stardust-dragon-assault-mode:1"
@@ -42869,6 +43835,27 @@
  },
  {
   "with": [
+   "z:stardust-dragon:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:stardust-dragon-assault-mode:1"
+ },
+ {
+  "with": [
+   "z:stardust-dragon:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:stardust-dragon-assault-mode:1"
+ },
+ {
+  "with": [
+   "z:stardust-dragon:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:stardust-dragon-assault-mode:1"
+ },
+ {
+  "with": [
    275,
    426
   ],
@@ -48532,6 +49519,41 @@
  },
  {
   "with": [
+   "z:ultimate-insect-lv1:1",
+   403
+  ],
+  "result": "z:doom-dozer:1"
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   487
+  ],
+  "result": "z:doom-dozer:1"
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   528
+  ],
+  "result": "z:doom-dozer:1"
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   575
+  ],
+  "result": "z:doom-dozer:1"
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv1:1",
+   "z:great-angus:1"
+  ],
+  "result": "z:doom-dozer:1"
+ },
+ {
+  "with": [
    "z:neo-spacian-flare-scarab:1",
    403
   ],
@@ -48561,6 +49583,41 @@
  {
   "with": [
    "z:neo-spacian-flare-scarab:1",
+   "z:great-angus:1"
+  ],
+  "result": "z:doom-dozer:1"
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv3:1",
+   403
+  ],
+  "result": "z:doom-dozer:1"
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv3:1",
+   487
+  ],
+  "result": "z:doom-dozer:1"
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv3:1",
+   528
+  ],
+  "result": "z:doom-dozer:1"
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv3:1",
+   575
+  ],
+  "result": "z:doom-dozer:1"
+ },
+ {
+  "with": [
+   "z:ultimate-insect-lv3:1",
    "z:great-angus:1"
   ],
   "result": "z:doom-dozer:1"
@@ -48932,6 +49989,13 @@
  {
   "with": [
    35,
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:dark-magician-of-destruction:1"
+ },
+ {
+  "with": [
+   35,
    "z:cyber-dragon:1"
   ],
   "result": "z:dark-magician-of-destruction:1"
@@ -49038,6 +50102,13 @@
   "with": [
    35,
    "z:gearfried-the-swordmaster:1"
+  ],
+  "result": "z:dark-magician-of-destruction:1"
+ },
+ {
+  "with": [
+   35,
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:dark-magician-of-destruction:1"
  },
@@ -52187,6 +53258,13 @@
  {
   "with": [
    551,
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   551,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -52643,6 +53721,13 @@
   "with": [
    720,
    "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   720,
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
  },
@@ -53455,6 +54540,13 @@
   "with": [
    35,
    "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   35,
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
  },
@@ -116279,6 +117371,20 @@
  {
   "with": [
    "z:elemental-hero-neos:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos:1",
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos:1",
    "z:stardust-dragon:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -116334,6 +117440,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-neos:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-avian:1",
    4
   ],
@@ -116819,6 +117953,20 @@
   "with": [
    "z:elemental-hero-avian:1",
    "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -116887,6 +118035,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-avian:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-burstinatrix:1",
    4
   ],
@@ -117372,6 +118548,20 @@
   "with": [
    "z:elemental-hero-burstinatrix:1",
    "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -117440,6 +118630,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-burstinatrix:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-clayman:1",
    4
   ],
@@ -117925,6 +119143,20 @@
   "with": [
    "z:elemental-hero-clayman:1",
    "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -117993,6 +119225,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-clayman:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-sparkman:1",
    4
   ],
@@ -118478,6 +119738,20 @@
   "with": [
    "z:elemental-hero-sparkman:1",
    "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -118546,6 +119820,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-sparkman:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-absolute-zero:1",
    4
   ],
@@ -119031,6 +120333,20 @@
   "with": [
    "z:elemental-hero-absolute-zero:1",
    "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-absolute-zero:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-absolute-zero:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -119099,6 +120415,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-absolute-zero:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-absolute-zero:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-absolute-zero:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-absolute-zero:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-escuridao:1",
    4
   ],
@@ -119584,6 +120928,20 @@
   "with": [
    "z:elemental-hero-escuridao:1",
    "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-escuridao:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-escuridao:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -119652,6 +121010,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-escuridao:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-escuridao:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-escuridao:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-escuridao:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-gaia:1",
    4
   ],
@@ -120137,6 +121523,20 @@
   "with": [
    "z:elemental-hero-gaia:1",
    "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-gaia:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-gaia:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -120205,6 +121605,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-gaia:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-gaia:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-gaia:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-gaia:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-nova-master:1",
    4
   ],
@@ -120690,6 +122118,20 @@
   "with": [
    "z:elemental-hero-nova-master:1",
    "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-nova-master:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-nova-master:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -120758,6 +122200,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-nova-master:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-nova-master:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-nova-master:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-nova-master:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-the-shining:1",
    4
   ],
@@ -121243,6 +122713,20 @@
   "with": [
    "z:elemental-hero-the-shining:1",
    "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-the-shining:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-the-shining:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -121311,6 +122795,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-the-shining:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-the-shining:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-the-shining:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-the-shining:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-air-neos:1",
    4
   ],
@@ -121796,6 +123308,20 @@
   "with": [
    "z:elemental-hero-air-neos:1",
    "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-air-neos:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-air-neos:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -121864,6 +123390,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-air-neos:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-air-neos:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-air-neos:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-air-neos:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-aqua-neos:1",
    4
   ],
@@ -122349,6 +123903,20 @@
   "with": [
    "z:elemental-hero-aqua-neos:1",
    "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-aqua-neos:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-aqua-neos:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -122410,6 +123978,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-aqua-neos:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-aqua-neos:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-aqua-neos:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-aqua-neos:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-dark-neos:1",
    4
   ],
@@ -122895,6 +124491,20 @@
   "with": [
    "z:elemental-hero-dark-neos:1",
    "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-dark-neos:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-dark-neos:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -122963,6 +124573,34 @@
  },
  {
   "with": [
+   "z:elemental-hero-dark-neos:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-dark-neos:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-dark-neos:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-dark-neos:1",
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-flare-neos:1",
    4
   ],
@@ -123454,6 +125092,20 @@
  {
   "with": [
    "z:elemental-hero-flare-neos:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-flare-neos:1",
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-flare-neos:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -123511,6 +125163,34 @@
   "with": [
    "z:elemental-hero-flare-neos:1",
    "z:red-eyes-wyvern:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-flare-neos:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-flare-neos:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-flare-neos:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-flare-neos:1",
+   "z:armed-dragon-lv5:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -124007,6 +125687,20 @@
  {
   "with": [
    "z:elemental-hero-grand-neos:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-grand-neos:1",
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-grand-neos:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -124064,6 +125758,34 @@
   "with": [
    "z:elemental-hero-grand-neos:1",
    "z:red-eyes-wyvern:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-grand-neos:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-grand-neos:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-grand-neos:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-grand-neos:1",
+   "z:armed-dragon-lv5:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -124560,6 +126282,20 @@
  {
   "with": [
    "z:elemental-hero-neos-knight:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos-knight:1",
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos-knight:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -124617,6 +126353,34 @@
   "with": [
    "z:elemental-hero-neos-knight:1",
    "z:red-eyes-wyvern:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos-knight:1",
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos-knight:1",
+   "z:ultimate-insect-lv5:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos-knight:1",
+   "z:ultimate-insect-lv7:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos-knight:1",
+   "z:armed-dragon-lv5:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -128837,6 +130601,13 @@
  {
   "with": [
    "z:elemental-hero-neos:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -128920,6 +130691,13 @@
  },
  {
   "with": [
+   "z:elemental-hero-neos:1",
+   "z:silent-swordsman-lv5:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-avian:1",
    2
   ],
@@ -129418,6 +131196,13 @@
  {
   "with": [
    "z:elemental-hero-avian:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -129501,6 +131286,13 @@
  },
  {
   "with": [
+   "z:elemental-hero-avian:1",
+   "z:silent-swordsman-lv5:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
    "z:elemental-hero-burstinatrix:1",
    2
   ],
@@ -129999,6 +131791,13 @@
  {
   "with": [
    "z:elemental-hero-burstinatrix:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -130077,6 +131876,13 @@
   "with": [
    "z:elemental-hero-burstinatrix:1",
    "z:eldlich-the-golden-lord:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -130580,6 +132386,13 @@
  {
   "with": [
    "z:elemental-hero-clayman:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -130658,6 +132471,13 @@
   "with": [
    "z:elemental-hero-clayman:1",
    "z:eldlich-the-golden-lord:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -131161,6 +132981,13 @@
  {
   "with": [
    "z:elemental-hero-sparkman:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -131239,6 +133066,13 @@
   "with": [
    "z:elemental-hero-sparkman:1",
    "z:eldlich-the-golden-lord:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -131742,6 +133576,13 @@
  {
   "with": [
    "z:elemental-hero-absolute-zero:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-absolute-zero:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -131820,6 +133661,13 @@
   "with": [
    "z:elemental-hero-absolute-zero:1",
    "z:eldlich-the-golden-lord:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-absolute-zero:1",
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -132323,6 +134171,13 @@
  {
   "with": [
    "z:elemental-hero-escuridao:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-escuridao:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -132401,6 +134256,13 @@
   "with": [
    "z:elemental-hero-escuridao:1",
    "z:eldlich-the-golden-lord:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-escuridao:1",
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -132904,6 +134766,13 @@
  {
   "with": [
    "z:elemental-hero-gaia:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-gaia:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -132982,6 +134851,13 @@
   "with": [
    "z:elemental-hero-gaia:1",
    "z:eldlich-the-golden-lord:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-gaia:1",
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -133485,6 +135361,13 @@
  {
   "with": [
    "z:elemental-hero-air-neos:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-air-neos:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -133563,6 +135446,13 @@
   "with": [
    "z:elemental-hero-air-neos:1",
    "z:eldlich-the-golden-lord:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-air-neos:1",
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -134066,6 +135956,13 @@
  {
   "with": [
    "z:elemental-hero-aqua-neos:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-aqua-neos:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -134144,6 +136041,13 @@
   "with": [
    "z:elemental-hero-aqua-neos:1",
    "z:eldlich-the-golden-lord:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-aqua-neos:1",
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -134647,6 +136551,13 @@
  {
   "with": [
    "z:elemental-hero-dark-neos:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-dark-neos:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -134725,6 +136636,13 @@
   "with": [
    "z:elemental-hero-dark-neos:1",
    "z:eldlich-the-golden-lord:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-dark-neos:1",
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -135228,6 +137146,13 @@
  {
   "with": [
    "z:elemental-hero-flare-neos:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-flare-neos:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -135306,6 +137231,13 @@
   "with": [
    "z:elemental-hero-flare-neos:1",
    "z:eldlich-the-golden-lord:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-flare-neos:1",
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -135809,6 +137741,13 @@
  {
   "with": [
    "z:elemental-hero-grand-neos:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-grand-neos:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -135887,6 +137826,13 @@
   "with": [
    "z:elemental-hero-grand-neos:1",
    "z:eldlich-the-golden-lord:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-grand-neos:1",
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -136390,6 +138336,13 @@
  {
   "with": [
    "z:elemental-hero-neos-knight:1",
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos-knight:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -136468,6 +138421,13 @@
   "with": [
    "z:elemental-hero-neos-knight:1",
    "z:eldlich-the-golden-lord:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos-knight:1",
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -139904,6 +141864,20 @@
  {
   "with": [
    63,
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   63,
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   63,
    "z:alligator-s-sword-dragon:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
@@ -139917,6 +141891,13 @@
  },
  {
   "with": [
+   63,
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
    117,
    106
   ],
@@ -140548,6 +142529,20 @@
  {
   "with": [
    464,
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   464,
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   464,
    "z:alligator-s-sword-dragon:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
@@ -140561,6 +142556,13 @@
  },
  {
   "with": [
+   464,
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
    465,
    4
   ],
@@ -140779,6 +142781,20 @@
  {
   "with": [
    465,
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   465,
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   465,
    "z:alligator-s-sword-dragon:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
@@ -140792,6 +142808,13 @@
  },
  {
   "with": [
+   465,
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
    466,
    106
   ],
@@ -141143,6 +143166,20 @@
  {
   "with": [
    491,
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   491,
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   491,
    "z:alligator-s-sword-dragon:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
@@ -141156,6 +143193,13 @@
  },
  {
   "with": [
+   491,
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
    521,
    4
   ],
@@ -141374,6 +143418,20 @@
  {
   "with": [
    521,
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   521,
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   521,
    "z:alligator-s-sword-dragon:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
@@ -141387,6 +143445,13 @@
  },
  {
   "with": [
+   521,
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
    522,
    4
   ],
@@ -141612,6 +143677,20 @@
  {
   "with": [
    522,
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   522,
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   522,
    "z:alligator-s-sword-dragon:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
@@ -141625,6 +143704,13 @@
  },
  {
   "with": [
+   522,
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
    538,
    106
   ],
@@ -141983,6 +144069,20 @@
  {
   "with": [
    577,
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   577,
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   577,
    "z:alligator-s-sword-dragon:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
@@ -141996,6 +144096,13 @@
  },
  {
   "with": [
+   577,
+   "z:ultimate-insect-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
    581,
    106
   ],
@@ -142347,6 +144454,20 @@
  {
   "with": [
    636,
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   636,
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   636,
    "z:alligator-s-sword-dragon:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
@@ -142355,6 +144476,13 @@
   "with": [
    636,
    "z:red-eyes-wyvern:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   636,
+   "z:ultimate-insect-lv3:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
  },
@@ -142557,6 +144685,20 @@
  {
   "with": [
    "z:sky-scout:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sky-scout:1",
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sky-scout:1",
    "z:alligator-s-sword-dragon:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
@@ -142565,6 +144707,13 @@
   "with": [
    "z:sky-scout:1",
    "z:red-eyes-wyvern:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sky-scout:1",
+   "z:ultimate-insect-lv3:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
  },
@@ -142830,6 +144979,20 @@
  {
   "with": [
    "z:sonic-duck:1",
+   "z:ultimate-insect-lv1:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sonic-duck:1",
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sonic-duck:1",
    "z:alligator-s-sword-dragon:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
@@ -142838,6 +145001,13 @@
   "with": [
    "z:sonic-duck:1",
    "z:red-eyes-wyvern:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sonic-duck:1",
+   "z:ultimate-insect-lv3:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
  },
@@ -143349,6 +145519,13 @@
   "with": [
    35,
    "z:red-eyes-darkness-metal-dragon:1"
+  ],
+  "result": "z:red-eyes-dark-dragoon:1"
+ },
+ {
+  "with": [
+   35,
+   "z:armed-dragon-lv5:1"
   ],
   "result": "z:red-eyes-dark-dragoon:1"
  },
@@ -144503,6 +146680,13 @@
  {
   "with": [
    82,
+   "z:silent-swordsman-lv3:1"
+  ],
+  "result": "z:red-eyes-slash-dragon:1"
+ },
+ {
+  "with": [
+   82,
    "z:buster-blader:1"
   ],
   "result": "z:red-eyes-slash-dragon:1"
@@ -144665,6 +146849,13 @@
   "with": [
    82,
    "z:the-last-warrior-from-another-planet:1"
+  ],
+  "result": "z:red-eyes-slash-dragon:1"
+ },
+ {
+  "with": [
+   82,
+   "z:silent-swordsman-lv5:1"
   ],
   "result": "z:red-eyes-slash-dragon:1"
  },
@@ -145175,6 +147366,13 @@
  {
   "with": [
    "z:dark-magician-girl:1",
+   "z:armed-dragon-lv3:1"
+  ],
+  "result": "z:dark-magician-girl-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   "z:dark-magician-girl:1",
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-girl-the-dragon-knight:1"
@@ -145211,6 +147409,13 @@
   "with": [
    "z:dark-magician-girl:1",
    "z:red-eyes-wyvern:1"
+  ],
+  "result": "z:dark-magician-girl-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   "z:dark-magician-girl:1",
+   "z:armed-dragon-lv5:1"
   ],
   "result": "z:dark-magician-girl-the-dragon-knight:1"
  },
@@ -148549,7 +150754,7 @@
  {
   "with": [
    1,
-   "z:armed-dragon-lv7:1"
+   "z:armed-dragon-lv3:1"
   ],
   "result": "z:blue-eyes-tyrant-dragon:1"
  },
@@ -148571,6 +150776,13 @@
   "with": [
    1,
    "z:red-dragon-archfiend:1"
+  ],
+  "result": "z:blue-eyes-tyrant-dragon:1"
+ },
+ {
+  "with": [
+   1,
+   "z:armed-dragon-lv7:1"
   ],
   "result": "z:blue-eyes-tyrant-dragon:1"
  },
@@ -148674,6 +150886,20 @@
  },
  {
   "with": [
+   1,
+   "z:armed-dragon-lv5:1"
+  ],
+  "result": "z:blue-eyes-tyrant-dragon:1"
+ },
+ {
+  "with": [
+   1,
+   "z:armed-dragon-lv10:1"
+  ],
+  "result": "z:blue-eyes-tyrant-dragon:1"
+ },
+ {
+  "with": [
    38,
    94
   ],
@@ -148697,6 +150923,13 @@
   "with": [
    38,
    "z:alligator-s-sword-dragon:1"
+  ],
+  "result": "z:gaia-the-magical-knight-of-dragons:1"
+ },
+ {
+  "with": [
+   38,
+   "z:armed-dragon-lv5:1"
   ],
   "result": "z:gaia-the-magical-knight-of-dragons:1"
  },
@@ -148893,6 +151126,13 @@
   "with": [
    "z:red-eyes-wyvern:1",
    "z:manga-ryu-ran:1"
+  ],
+  "result": 82
+ },
+ {
+  "with": [
+   "z:red-eyes-wyvern:1",
+   "z:armed-dragon-lv3:1"
   ],
   "result": 82
  },

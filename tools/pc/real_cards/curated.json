@@ -1524,5 +1524,38 @@
   "defense": 1000,
   "description": "A fierce amazon who\nshows no mercy and\ntrusts nobody on the\nfield.",
   "date": "2003-03-01"
+ },
+ {
+  "password": "01995985",
+  "name": "Silent Swordsman LV3",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 3,
+  "attack": 1000,
+  "defense": 1000,
+  "description": "A swordsman who\ntrains in silence.\nWith Level Up! he\ngrows stronger.",
+  "date": "2004-11-20"
+ },
+ {
+  "password": "49441499",
+  "name": "Ultimate Insect LV1",
+  "type": "Insect",
+  "attribute": "Wind",
+  "level": 1,
+  "attack": 0,
+  "defense": 0,
+  "description": "A tiny larva that\ncan evolve with\nLevel Up! into a\nterrible insect.",
+  "date": "2004-10-01"
+ },
+ {
+  "password": "00980973",
+  "name": "Armed Dragon LV3",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 3,
+  "attack": 1200,
+  "defense": 900,
+  "description": "A young dragon with\nblades growing on\nits body. It grows\nwith Level Up!",
+  "date": "2004-10-01"
  }
 ]

@@ -92,6 +92,9 @@ static unsigned char no_fusion[CARD_TABLE_ID_END];
 int Cards_NoFusion(int id) { return Cards_Valid(id) && no_fusion[id]; }
 /* "copy_limit": how many of the card a deck holds (cards.h Cards_CopyLimit); 0 for the game's three. */
 static unsigned char copy_limit[CARD_TABLE_ID_END];
+/* "spell_immune": the opponent's magic cards neither destroy nor weaken the card (cards.h Cards_SpellImmune). */
+static unsigned char spell_immune[CARD_TABLE_ID_END];
+int Cards_SpellImmune(int id) { return Cards_Valid(id) && spell_immune[id]; }
 int Cards_CopyLimit(int id) { return Cards_Valid(id) && copy_limit[id] ? copy_limit[id] : DECK_CARD_COPY_LIMIT; }
 /* A card can name an arbitrary card_layout frame style, unlike "frame",
  * which is deliberately limited to the six palette rows the small cards
@@ -1421,7 +1424,7 @@ static void add_entry(const char *mod, const char *directory, int index, const J
     int card_effect_count, card_effect_replace = 0, card_effect_mode_given = 0;
     int ai_effect = 0, ai_effect_given = 0, spell_or_trap;
     unsigned int trap_threshold, trap_minimum;
-    unsigned char level_attr, frame, unknown, nofuse, limit;
+    unsigned char level_attr, frame, unknown, nofuse, limit, immune;
     char frame_style[FRAME_STYLE_NAME_LENGTH];
     unsigned short attribute;
     unsigned int tags;
@@ -1655,6 +1658,7 @@ static void add_entry(const char *mod, const char *directory, int index, const J
     frame = frames[base];
     unknown = Json_Bool(Json_Member(entry, "unknown_stats"), unknown_stats[base]) ? 1 : 0;
     nofuse = Json_Bool(Json_Member(entry, "no_fusion"), 0) ? 1 : 0;
+    immune = Json_Bool(Json_Member(entry, "spell_immune"), spell_immune[base]) ? 1 : 0;
     limit = (unsigned char)Json_Number(Json_Member(entry, "copy_limit"), 0);
     if (limit > DECK_SIZE) limit = DECK_SIZE;
     if (Json_Member(entry, "frame")) {
@@ -1857,6 +1861,7 @@ static void add_entry(const char *mod, const char *directory, int index, const J
         unknown_stats[id] = unknown;
         no_fusion[id] = nofuse;
         copy_limit[id] = limit;
+        spell_immune[id] = (unsigned char)immune;
         snprintf(frame_style_names[id], sizeof(frame_style_names[id]), "%s", frame_style);
         tag_masks[id] = tags;
         names[id] = name && *name ? encode_name(mod, name, n, id) : NULL;

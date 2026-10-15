@@ -197,6 +197,19 @@ apply:
     }
 }
 
+#ifdef MEMORIES_PC
+#include "pc/cards/cards.h"
+/* A "spell_immune" monster is left alone by the other side's magic card (duel_card_effects.h). */
+int DuelEffect_SpellImmune(const DuelCardRecord *record)
+{
+    return Cards_SpellImmune(record->card_id) &&
+           (int)(record - D_801A7AD8) / DUEL_CARD_SIDE_RECORD_COUNT != D_8009B1D5;
+}
+#define spell_immune(record) DuelEffect_SpellImmune(record)
+#else
+#define spell_immune(record) 0
+#endif
+
 void DuelEffect_ApplyMonsterRemoval(void) {
     DuelEffectRequest *p;
     DuelCardRecord *e;
@@ -271,6 +284,7 @@ head:
         goto next;
     }
 #ifdef MEMORIES_PC
+    if (spell_immune(e) && MonsterEffects_RemovalTakes((s32)(e - D_801A7AD8)) < 0) goto next;
     /* A monster's "destroy" plays this removal on the monsters it chose
        (monster_effects_duel.h). */
     switch (MonsterEffects_RemovalTakes((s32)(e - D_801A7AD8))) {
@@ -325,7 +339,7 @@ void DuelEffect_ApplyStopDefense(void) {
                 c = D_800907D8[D_8009B20C[1] + n];
                 r = &D_801A7AD8[c];
                 if ((*(s32 *)&r->terrain_modifier & 0x88000000) ==
-                    0x88000000) {
+                    0x88000000 && !spell_immune(r)) {
                     func_80019BA0(DISPLAY_OBJECT_VIEW(r->object), 0xC0, 0, 6);
                     r->flags &= ~DUEL_CARD_FLAG_DEFENSE_POSITION;
                 }
@@ -408,7 +422,7 @@ void DuelEffect_ApplyBoardDestruction(void) {
                 i + D_8009B1D5 * DUEL_FIELD_SIDE_GRID_SLOT_COUNT
             ] * DUEL_CARD_RECORD_SIZE + (u8 *)D_801A7AD8);
             if ((p->flags & DUEL_CARD_FLAG_OCCUPIED) != 0 &&
-                DISPLAY_OBJECT_VIEW(p->object)->field_68 == 0) {
+                DISPLAY_OBJECT_VIEW(p->object)->field_68 == 0 && !spell_immune(p)) {
                 DuelCard_RemoveFromField(p);
             }
             i++;
@@ -421,10 +435,10 @@ void DuelEffect_ApplyBoardDestruction(void) {
         q = p + DUEL_CARD_SIDE_RECORD_COUNT;
         i = 0;
         do {
-            if ((p->flags & DUEL_CARD_FLAG_OCCUPIED) != 0) {
+            if ((p->flags & DUEL_CARD_FLAG_OCCUPIED) != 0 && !spell_immune(p)) {
                 DuelCard_RemoveFromField(p);
             }
-            if ((q->flags & DUEL_CARD_FLAG_OCCUPIED) != 0) {
+            if ((q->flags & DUEL_CARD_FLAG_OCCUPIED) != 0 && !spell_immune(q)) {
                 DuelCard_RemoveFromField(q);
             }
             i++;
@@ -480,7 +494,7 @@ void DuelEffect_ApplyRaigeki(void) {
             D_800907D8[D_8009B20C[1] + n] * DUEL_CARD_RECORD_SIZE);
         v = r->flags & 0x8000;
         D_8009B20C[1] = *(u16 *)&D_8009B20C[1] + 1;
-        if (v != 0) {
+        if (v != 0 && !spell_immune(r)) {
             q = DUEL_EFFECT_REQUEST_VIEW(DuelEffect_AllocateRequest(0xB));
             q->buffer = (u8 *)q->buffer + D_8009B20C[1] * 0x3000;
             q->field_00 = DISPLAY_OBJECT_VIEW(r->object)->field_30.h.field_30;
@@ -549,7 +563,7 @@ void DuelEffect_ApplyDarkPiercingLight(void)
             /* The retail code tests the two halfwords at +0x14 as one
                word; 0x90000000 selects bits 0x9000 of flags at +0x16. */
             if ((*(u32 *)&record->terrain_modifier & 0x90000000) ==
-                0x90000000) {
+                0x90000000 && !spell_immune(record)) {
                 target = DUEL_FIELD_EFFECT_OBJECT_VIEW(record->object);
                 target->callback = DuelEffect_UpdateRevealCard;
                 target->active = 1;
@@ -593,7 +607,7 @@ void DuelEffect_ApplyStatPenalty(void) {
     base_slot = D_8009B1D5 * DUEL_FIELD_SIDE_GRID_SLOT_COUNT +
                 DUEL_FIELD_ROW_SIZE;
     record = &D_801A7AD8[D_800907D8_flat[(s16)D_8009B1D0 + base_slot]];
-    if ((record->flags & DUEL_CARD_FLAG_OCCUPIED) != 0) {
+    if ((record->flags & DUEL_CARD_FLAG_OCCUPIED) != 0 && !spell_immune(record)) {
         card = DISPLAY_OBJECT_VIEW(record->object);
         object = (DuelEffectObject *)DuelEffect_AllocateRequest(0xD);
         object->x = card->field_30.h.field_30;

@@ -60,6 +60,9 @@ int Cards_TrapId(int id);
 int Cards_TrapThreshold(int id, int fallback);
 /* The lowest attacker ATK an attack trap springs for ("trap_min_attack"), 0 for any. */
 int Cards_TrapMinAttack(int id);
+/* Whether the card is "spell_immune": the other side's magic cards (Dark Hole, Raigeki, the removals, Shadow Spell,
+ * Spellbinding Circle) leave it as it is. */
+int Cards_SpellImmune(int id);
 /* The type a card has on the disc, which is what its effect is; -1 past the disc. */
 int Cards_RetailType(int id);
 /* Nonzero for a card a mod's "replace" made another kind of card than its

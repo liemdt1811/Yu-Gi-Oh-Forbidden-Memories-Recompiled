@@ -136,5 +136,15 @@
   ],
   "bonus_attack": 200,
   "bonus_defense": 1000
+ },
+ {
+  "card": "z:silent-sword-slash:1",
+  "replace": true,
+  "add": [
+   "z:silent-swordsman-lv3:1",
+   "z:silent-swordsman-lv5:1",
+   "z:silent-swordsman-lv7:1"
+  ],
+  "bonus": 1500
  }
 ]

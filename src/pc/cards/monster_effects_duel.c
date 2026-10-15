@@ -422,6 +422,9 @@ static int resolve(void)
             DuelCardRecord *card = &D_801A7AD8[record];
             if (!monster_zone(record) || !(card->flags & DUEL_CARD_FLAG_OCCUPIED)) continue;
             if (!reaches(effect, trigger.record, record, card->card_id)) continue;
+            /* A "spell_immune" monster is left alone by the other side's magic card (not by its traps). */
+            if (card_effect && Cards_SpellImmune(card->card_id) && owner(record) != side &&
+                Cards_Type(trigger.card) != CARD_TYPE_TRAP) continue;
             boost(card, effect->attack * count, effect->defense * count);
             hit = 1;
         }
@@ -444,6 +447,9 @@ static int resolve(void)
             if (!monster_zone(record) ||
                 (!(card->flags & DUEL_CARD_FLAG_OCCUPIED) && !trap_participant(record))) continue;
             if (!reaches(effect, trigger.record, record, card->card_id)) continue;
+            /* A "spell_immune" monster is left alone by the other side's magic card (not by its traps). */
+            if (card_effect && Cards_SpellImmune(card->card_id) && owner(record) != side &&
+                Cards_Type(trigger.card) != CARD_TYPE_TRAP) continue;
             /* Crush Card only walks the opposing physical row.  A data
              * effect which explicitly names its owner (or all monsters)
              * removes that row here. Lifted battle participants have no

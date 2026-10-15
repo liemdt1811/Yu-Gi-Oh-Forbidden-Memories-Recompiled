@@ -259,6 +259,8 @@ def build():
             e["attack"] = e["defense"] = 0       # "attack" here stays the strength fusions are built from
         if c.get("no_fusion"):                   # a god: fuses with no card, and Polymerization does not take it
             e["no_fusion"] = True
+        if c.get("spell_immune"):                # the other side's magic cards leave it alone
+            e["spell_immune"] = True
         if "copy_limit" in c:                    # a god: one in a deck
             e["copy_limit"] = c["copy_limit"]
         if "frame" in c:                         # "Orange" is an effect monster's, as in the card game
@@ -566,7 +568,7 @@ def spell_cards(spells, cat, entries, monsters):
         if s["kind"] in ("magic", "trap"):
             continue
         if s["kind"] == "equip":
-            rule = {"card": ref[s["name"]], "replace": True, "add": s["add"]}
+            rule = {"card": ref[s["name"]], "replace": True, "add": [ref.get(a, a) for a in s["add"]]}   # types, or cards by name
             for k in ("bonus", "bonus_if", "bonus_attack", "bonus_defense"):
                 if k in s:
                     rule[k] = s[k]
@@ -765,7 +767,7 @@ def check():
     equip_cards = {f"{MOD_ID}:{e['id']}:1" for e in mod["cards"] if "attack" not in e and "copy" in e and ids[e["copy"]]["type"] == "Equip"}
     ritual_cards = {f"{MOD_ID}:{e['id']}:1" for e in mod["cards"] if "attack" not in e and "copy" in e and ids[e["copy"]]["type"] == "Ritual"}
     for r in mod.get("equips", []):
-        if r["card"] not in equip_cards or not r.get("add") or any(t not in TYPES for t in r["add"]):
+        if r["card"] not in equip_cards or not r.get("add") or any(t not in TYPES and t not in refs for t in r["add"]):
             errors.append(f"equips {r['card']}: card or types")
         if not any(k in r for k in ("bonus", "bonus_if", "bonus_attack", "bonus_defense")):
             errors.append(f"equips {r['card']}: no bonus")

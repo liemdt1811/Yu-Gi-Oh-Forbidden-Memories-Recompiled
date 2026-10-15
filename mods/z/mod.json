@@ -4,7 +4,7 @@
  "version": "0.1",
  "author": "community",
  "enabled": false,
- "description": "296 real Yu-Gi-Oh! cards the disc lacks, with fusions, packs and duelists. Study project; art is Konami's.",
+ "description": "308 real Yu-Gi-Oh! cards the disc lacks, with fusions, packs and duelists. Study project; art is Konami's.",
  "title": {
   "background": {
    "image": "art/title.png",
@@ -323,6 +323,10 @@
    },
    {
     "card": "z:rod-of-silence-kay-est:1",
+    "name": 3
+   },
+   {
+    "card": "z:silent-sword-slash:1",
     "name": 3
    }
   ]

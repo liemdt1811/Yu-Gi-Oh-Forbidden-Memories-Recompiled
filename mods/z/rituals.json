@@ -138,5 +138,60 @@
     "result": "z:gearfried-the-swordmaster:1"
    }
   ]
+ },
+ {
+  "card": "z:level-up:1",
+  "fusion": true,
+  "recipes_only": true,
+  "recipes": [
+   {
+    "materials": [
+     "z:silent-swordsman-lv3:1"
+    ],
+    "result": "z:silent-swordsman-lv5:1"
+   },
+   {
+    "materials": [
+     "z:silent-swordsman-lv5:1"
+    ],
+    "result": "z:silent-swordsman-lv7:1"
+   },
+   {
+    "materials": [
+     "z:ultimate-insect-lv1:1"
+    ],
+    "result": "z:ultimate-insect-lv3:1"
+   },
+   {
+    "materials": [
+     "z:ultimate-insect-lv3:1"
+    ],
+    "result": "z:ultimate-insect-lv5:1"
+   },
+   {
+    "materials": [
+     "z:ultimate-insect-lv5:1"
+    ],
+    "result": "z:ultimate-insect-lv7:1"
+   },
+   {
+    "materials": [
+     "z:armed-dragon-lv3:1"
+    ],
+    "result": "z:armed-dragon-lv5:1"
+   },
+   {
+    "materials": [
+     "z:armed-dragon-lv5:1"
+    ],
+    "result": "z:armed-dragon-lv7:1"
+   },
+   {
+    "materials": [
+     "z:armed-dragon-lv7:1"
+    ],
+    "result": "z:armed-dragon-lv10:1"
+   }
+  ]
  }
 ]

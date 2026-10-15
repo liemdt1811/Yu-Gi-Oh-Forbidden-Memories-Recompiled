@@ -48,6 +48,8 @@ def main():
     real = {c["name"]: c["attack"] for c in json.loads((HERE / "targets.json").read_text(encoding="utf-8"))}
     base = {}
     for c in mod["cards"]:
+        if "replace" in c:      # a retail card the mod rewrites
+            continue
         ref = f"{mod['id']}:{c['id']}:1"
         name[ref] = c["name"]
         if "attack" in c:

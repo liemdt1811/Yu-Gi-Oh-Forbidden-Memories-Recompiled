@@ -689,5 +689,106 @@
     "Labyrinth Mage"
    ]
   }
+ },
+ {
+  "kind": "ritual",
+  "name": "Level Up!",
+  "password": "25290459",
+  "base": "Black Luster Ritual",
+  "description": "Tribute 1 monster that can level up to summon its next form.",
+  "date": "2004-10-01",
+  "fusion": true,
+  "recipes_only": true,
+  "recipes": [
+   {
+    "materials": [
+     "Silent Swordsman LV3"
+    ],
+    "result": "Silent Swordsman LV5"
+   },
+   {
+    "materials": [
+     "Silent Swordsman LV5"
+    ],
+    "result": "Silent Swordsman LV7"
+   },
+   {
+    "materials": [
+     "Ultimate Insect LV1"
+    ],
+    "result": "Ultimate Insect LV3"
+   },
+   {
+    "materials": [
+     "Ultimate Insect LV3"
+    ],
+    "result": "Ultimate Insect LV5"
+   },
+   {
+    "materials": [
+     "Ultimate Insect LV5"
+    ],
+    "result": "Ultimate Insect LV7"
+   },
+   {
+    "materials": [
+     "Armed Dragon LV3"
+    ],
+    "result": "Armed Dragon LV5"
+   },
+   {
+    "materials": [
+     "Armed Dragon LV5"
+    ],
+    "result": "Armed Dragon LV7"
+   },
+   {
+    "materials": [
+     "Armed Dragon LV7"
+    ],
+    "result": "Armed Dragon LV10"
+   }
+  ],
+  "drop": {
+   "weight": 16,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "equip",
+  "name": "Silent Sword Slash",
+  "password": "18563744",
+  "base": "Legendary Sword",
+  "description": "Equip only to a Silent Swordsman. It gains 1500 ATK and DEF.",
+  "date": "2016-09-15",
+  "add": [
+   "Silent Swordsman LV3",
+   "Silent Swordsman LV5",
+   "Silent Swordsman LV7"
+  ],
+  "bonus": 1500,
+  "drop": {
+   "weight": 16,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  },
+  "name_color": 3
  }
 ]

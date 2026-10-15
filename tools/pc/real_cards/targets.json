@@ -1120,7 +1120,13 @@
     "Nitemare",
     "Duel Master K"
    ]
-  }
+  },
+  "fusions": [
+   [
+    "Armed Dragon LV5",
+    "Level Up!"
+   ]
+  ]
  },
  {
   "password": "44508094",
@@ -4386,6 +4392,137 @@
    [
     "Zombyra the Dark",
     "Maryokutai"
+   ]
+  ]
+ },
+ {
+  "password": "74388798",
+  "name": "Silent Swordsman LV5",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 5,
+  "attack": 2300,
+  "defense": 1000,
+  "description": "A swordsman who has found his strength in silence.",
+  "date": "2005-02-26",
+  "fusions": [
+   [
+    "Silent Swordsman LV3",
+    "Level Up!"
+   ]
+  ]
+ },
+ {
+  "password": "37267041",
+  "name": "Silent Swordsman LV7",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 7,
+  "attack": 2800,
+  "defense": 1000,
+  "description": "Unaffected by your opponent's Spell effects.",
+  "date": "2005-02-15",
+  "fusions": [
+   [
+    "Silent Swordsman LV5",
+    "Level Up!"
+   ]
+  ],
+  "spell_immune": true,
+  "frame": "Orange"
+ },
+ {
+  "password": "34088136",
+  "name": "Ultimate Insect LV3",
+  "type": "Insect",
+  "attribute": "Wind",
+  "level": 3,
+  "attack": 1400,
+  "defense": 900,
+  "description": "A growing insect with a hard shell.",
+  "date": "2004-11-20",
+  "fusions": [
+   [
+    "Ultimate Insect LV1",
+    "Level Up!"
+   ]
+  ]
+ },
+ {
+  "password": "34830502",
+  "name": "Ultimate Insect LV5",
+  "type": "Insect",
+  "attribute": "Wind",
+  "level": 5,
+  "attack": 2300,
+  "defense": 900,
+  "description": "An insect with a shell that blocks the light.",
+  "date": "2005-02-26",
+  "fusions": [
+   [
+    "Ultimate Insect LV3",
+    "Level Up!"
+   ]
+  ]
+ },
+ {
+  "password": "19877898",
+  "name": "Ultimate Insect LV7",
+  "type": "Insect",
+  "attribute": "Wind",
+  "level": 7,
+  "attack": 2600,
+  "defense": 1200,
+  "description": "While it remains on the field, all of your opponent's monsters lose 700 ATK and DEF.",
+  "date": "2005-05-28",
+  "fusions": [
+   [
+    "Ultimate Insect LV5",
+    "Level Up!"
+   ]
+  ],
+  "frame": "Orange",
+  "effects": [
+   {
+    "when": "face_up",
+    "do": "boost",
+    "target": "opponent",
+    "attack": -700,
+    "defense": -700
+   }
+  ]
+ },
+ {
+  "password": "46384672",
+  "name": "Armed Dragon LV5",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 5,
+  "attack": 2400,
+  "defense": 1700,
+  "description": "A dragon whose blades have grown sharp. It fights with its wings.",
+  "date": "2004-10-01",
+  "fusions": [
+   [
+    "Armed Dragon LV3",
+    "Level Up!"
+   ]
+  ]
+ },
+ {
+  "password": "59464593",
+  "name": "Armed Dragon LV10",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 10,
+  "attack": 3000,
+  "defense": 2000,
+  "description": "The full form of the armed dragon. Its blades cut through everything.",
+  "date": "2006-02-08",
+  "fusions": [
+   [
+    "Armed Dragon LV7",
+    "Level Up!"
    ]
   ]
  }
