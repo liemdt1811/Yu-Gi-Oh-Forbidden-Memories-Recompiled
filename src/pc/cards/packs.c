@@ -319,7 +319,7 @@ static int alternative_count;
 
 const PackUnlock *Packs_UnlockAlt(const PackUnlock *unlock, int k)
 {
-    return unlock->alt_first + k < alternative_count ? &alternatives[unlock->alt_first + k] : NULL;
+    return PACK_UNLOCK_ALT_FIRST(unlock) + k < alternative_count ? &alternatives[PACK_UNLOCK_ALT_FIRST(unlock) + k] : NULL;
 }
 
 static int read_unlock_one(const char *mod, const char *where, const JsonValue *value, PackUnlock *unlock)
@@ -382,10 +382,11 @@ static int read_unlock_one(const char *mod, const char *where, const JsonValue *
 static int read_unlock(const char *mod, const char *where, const JsonValue *value, PackUnlock *unlock)
 {
     const JsonValue *item;
+    int first, count;
     if (!value || Json_TypeOf(value) != JSON_ARRAY) return read_unlock_one(mod, where, value, unlock);
     memset(unlock, 0, sizeof(*unlock));
     unlock->story = -1;
-    unlock->alt_first = alternative_count;
+    first = alternative_count;
     for (item = Json_At(value, 0); item; item = Json_Next(item)) {
         if (alternative_count >= PACK_UNLOCK_ALT_POOL) {
             Mods_Note(mod, "%s: more than %d alternatives of \"unlock\" in all; the rest are left out", where,
@@ -399,8 +400,8 @@ static int read_unlock(const char *mod, const char *where, const JsonValue *valu
         read_unlock_one(mod, where, item, &alternatives[alternative_count]);   /* no condition in it: open, as a lone object is */
         alternative_count++;
     }
-    unlock->alt_count = alternative_count - unlock->alt_first;
-    if (!unlock->alt_count) unlock->never = 1;      /* an empty list opens nothing */
+    count = alternative_count - first;
+    unlock->never = (count ? 0 : 1) | count << 1 | first << 10;     /* an empty list opens nothing */
     return 1;
 }
 
@@ -1485,9 +1486,9 @@ int Packs_UnlockMet(const PackUnlock *unlock, const PacksProgress *progress, Pac
     static const PacksProgress none;
     int k;
     if (!progress) progress = &none;
-    if (unlock->never) return 0;
-    if (unlock->alt_count) {
-        for (k = 0; k < unlock->alt_count; k++) {
+    if (PACK_UNLOCK_NEVER(unlock)) return 0;
+    if (PACK_UNLOCK_ALT_COUNT(unlock)) {
+        for (k = 0; k < PACK_UNLOCK_ALT_COUNT(unlock); k++) {
             const PackUnlock *alt = Packs_UnlockAlt(unlock, k);
             if (alt && Packs_UnlockMet(alt, progress, save, context)) return 1;
         }
