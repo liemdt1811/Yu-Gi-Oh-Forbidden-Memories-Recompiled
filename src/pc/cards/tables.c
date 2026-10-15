@@ -955,7 +955,7 @@ int Tables_RitualFusionRecipes(int ritual, const unsigned short (**list)[TABLES_
     int i;
     for (i = ritual_count - 1; i >= 0; i--) {
         if (rituals[i].recipe[0] != ritual) continue;
-        *list = rituals[i].poly;
+        *list = (const unsigned short (*)[TABLES_POLY_WIDTH])rituals[i].poly;   /* ISO C before C2X: array of const is not const array */
         return rituals[i].poly_count;
     }
     return 0;
