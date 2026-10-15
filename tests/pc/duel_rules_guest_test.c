@@ -21,6 +21,11 @@ int Cards_Type(int id) { (void)id; abort(); }
 int Cards_IsMonsterType(int type) { return type >= 0 && (type < CARD_TYPE_MAGIC || type > CARD_TYPE_EQUIP); }
 int Cards_Level(int id) { (void)id; abort(); }
 int Cards_InFusionGroup(int id, int group) { (void)id; (void)group; abort(); }
+int Cards_NoFusion(int id) { (void)id; return 0; }
+int CardRules_Fusion(int a, int b) { (void)a; (void)b; return 0; }
+int Tables_RitualFusion(int ritual) { (void)ritual; return 0; }
+int Tables_RitualFusionOnly(int ritual) { (void)ritual; return 0; }
+int Tables_RitualFusionRecipes(int ritual, const unsigned short (**list)[TABLES_POLY_WIDTH]) { (void)ritual; (void)list; return 0; }
 int Tables_HasRitual(int id) { (void)id; return 0; }
 int Tables_RitualRequirements(int id, TablesRitualRequirement *req, unsigned short *out) {
     (void)id; (void)req; (void)out; return 0;
