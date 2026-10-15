@@ -98,9 +98,13 @@ typedef struct {
     char opened_name[PACK_OPENED_MAX][PACK_IDENTITY_MAX];
     int opened_pack[PACK_OPENED_MAX];   /* resolved once every pack is read; -1 for none */
     unsigned opened_times[PACK_OPENED_MAX];
-    int never;                     /* written wrong: kept locked, so nothing opens by mistake */
-    int alt_first, alt_count;      /* "unlock" as a list: any one of these (Packs_UnlockAlt) opens the pack; none of the above */
+    int never;                     /* bit 0: written wrong, kept locked, so nothing opens by mistake. The rest hold an
+                                    * "unlock" given as a list (PACK_UNLOCK_ALT_*), in the spare bits so that PackUnlock,
+                                    * and the records that hold it, keep the layout of v0.3.0 */
 } PackUnlock;
+#define PACK_UNLOCK_NEVER(unlock) ((unlock)->never & 1)
+#define PACK_UNLOCK_ALT_COUNT(unlock) (((unlock)->never >> 1) & 0x1FF)    /* any one of this many alternatives opens it */
+#define PACK_UNLOCK_ALT_FIRST(unlock) (((unlock)->never >> 10) & 0x1FF)   /* the first of them in Packs_UnlockAlt's pool */
 #define PACK_UNLOCK_ALT_POOL 256   /* alternatives in all, over every pack and shop */
 
 typedef struct {
@@ -238,7 +242,7 @@ void Packs_Record(int pack, const PackResult *result, unsigned starchips, PacksP
  * the conditions only the save holds (beat, wins, story, card, copies);
  * it is not asked when there are none. */
 typedef int (*PackSaveCondition)(const PackUnlock *unlock, void *context);
-/* The k-th of an unlock's alternatives (0 to alt_count - 1). */
+/* The k-th of an unlock's alternatives (0 to PACK_UNLOCK_ALT_COUNT - 1). */
 const PackUnlock *Packs_UnlockAlt(const PackUnlock *unlock, int k);
 int Packs_UnlockMet(const PackUnlock *unlock, const PacksProgress *progress, PackSaveCondition save, void *context);
 int Packs_Unlocked(int pack, const PacksProgress *progress, PackSaveCondition save, void *context);

@@ -62,11 +62,11 @@ typedef struct MonsterEffect {
     unsigned short card;             /* MONSTER_DO_MAGIC: the retail magic card */
     short attack, defense;           /* MONSTER_DO_BOOST */
     int amount;                      /* MONSTER_DO_HEAL, MONSTER_DO_DAMAGE */
-    unsigned short lp_over;          /* a heal or damage only while the side it changes has more LP than this; 0 any */
-    unsigned char position;          /* a boost's or destroy's position filter: 0 any, 1 attack, 2 defense */
     unsigned char each;              /* MONSTER_EACH_*: a boost, heal or damage made once per monster counted */
     signed char each_type;
     signed short each_attribute;     /* what is counted: -1 any */
+    unsigned short lp_over;          /* a heal or damage only while the side it changes has more LP than this; 0 any */
+    unsigned char position;          /* a boost's or destroy's position filter: 0 any, 1 attack, 2 defense (last: the fields before keep v0.3.0's offsets) */
 } MonsterEffect;
 
 extern const char *const MonsterEffect_WhenNames[MONSTER_WHEN_COUNT];

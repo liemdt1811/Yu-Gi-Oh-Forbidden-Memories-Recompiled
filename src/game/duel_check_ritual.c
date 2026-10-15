@@ -21,7 +21,7 @@
 /* A fusion ritual's fourth and fifth tributes (a recipe of up to five monsters):
  * the effect keeps display objects for three only. Set whenever the ritual is
  * checked to be carried out, cleared when it makes no fusion. */
-static DuelCardRecord *ritual_extra[2];
+static DuelCardRecord *ritual_extra[2] = {0, 0};
 
 void *Duel_RitualExtra(s32 index) { return ritual_extra[index]; }
 
