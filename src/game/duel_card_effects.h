@@ -49,6 +49,11 @@ typedef char DuelFieldEffectObject_active_offset_must_be_0x6C[
 extern s16 D_8009B1AC;
 extern s16 D_8009B1AE;
 
+#ifdef MEMORIES_PC
+/* Whether the card at field record `record` is a "spell_immune" card of the side that is not playing the magic
+ * card now (cards.h Cards_SpellImmune): the magic card then leaves it alone. */
+int DuelEffect_SpellImmune(int card_id, int record);
+#endif
 void DuelEffect_ApplyLifePointRecovery(void);
 void DuelEffect_ApplyDirectDamage(void);
 void DuelEffect_ApplyMonsterRemoval(void);
