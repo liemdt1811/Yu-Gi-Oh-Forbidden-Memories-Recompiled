@@ -49,6 +49,8 @@ s32 Duel_CheckRitual(DuelRitualResult *out, s32 ritual_id);
  * ritual) leaves that card in gDuel_wEffectCardID, and its own recipe, when
  * a mod gave it one, is the one it summons by. */
 s32 Duel_RitualPlayed(void);
+/* The fourth and fifth tribute records of a fusion ritual's recipe (0 for none). */
+void *Duel_RitualExtra(s32 index);
 
 /* Every tribute of the last ritual Duel_CheckRitual matched. A mod's
  * ritual may take one to five monsters, from the field, the hand or both

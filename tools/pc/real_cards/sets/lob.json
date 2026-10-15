@@ -1,0 +1,632 @@
+[
+[
+"LOB-EN000",
+"Tri-Horned Dragon",
+"Secret Rare"
+],
+[
+"LOB-EN001",
+"Blue-Eyes White Dragon",
+"Ultra Rare"
+],
+[
+"LOB-EN002",
+"Hitotsu-Me Giant",
+"Common"
+],
+[
+"LOB-EN003",
+"Flame Swordsman",
+"Super Rare"
+],
+[
+"LOB-EN004",
+"Skull Servant",
+"Common"
+],
+[
+"LOB-EN005",
+"Dark Magician",
+"Ultra Rare"
+],
+[
+"LOB-EN006",
+"Gaia The Fierce Knight",
+"Ultra Rare"
+],
+[
+"LOB-EN007",
+"Celtic Guardian",
+"Super Rare"
+],
+[
+"LOB-EN008",
+"Basic Insect",
+"Common"
+],
+[
+"LOB-EN009",
+"Mammoth Graveyard",
+"Common"
+],
+[
+"LOB-EN010",
+"Silver Fang",
+"Common"
+],
+[
+"LOB-EN011",
+"Dark Gray",
+"Common"
+],
+[
+"LOB-EN012",
+"Trial of Nightmare",
+"Common"
+],
+[
+"LOB-EN013",
+"Nemuriko",
+"Common"
+],
+[
+"LOB-EN014",
+"The 13th Grave",
+"Common"
+],
+[
+"LOB-EN015",
+"Charubin the Fire Knight",
+"Rare"
+],
+[
+"LOB-EN016",
+"Flame Manipulator",
+"Common"
+],
+[
+"LOB-EN017",
+"Monster Egg",
+"Common"
+],
+[
+"LOB-EN018",
+"Firegrass",
+"Common"
+],
+[
+"LOB-EN019",
+"Darkfire Dragon",
+"Rare"
+],
+[
+"LOB-EN020",
+"Dark King of the Abyss",
+"Common"
+],
+[
+"LOB-EN021",
+"Fiend Reflection #2",
+"Common"
+],
+[
+"LOB-EN022",
+"Fusionist",
+"Rare"
+],
+[
+"LOB-EN023",
+"Turtle Tiger",
+"Common"
+],
+[
+"LOB-EN024",
+"Petit Dragon",
+"Common"
+],
+[
+"LOB-EN025",
+"Petit Angel",
+"Common"
+],
+[
+"LOB-EN026",
+"Hinotama Soul",
+"Common"
+],
+[
+"LOB-EN027",
+"Aqua Madoor",
+"Rare"
+],
+[
+"LOB-EN028",
+"Kagemusha of the Blue Flame",
+"Common"
+],
+[
+"LOB-EN029",
+"Flame Ghost",
+"Rare"
+],
+[
+"LOB-EN030",
+"Two-Mouth Darkruler",
+"Common"
+],
+[
+"LOB-EN031",
+"Dissolverock",
+"Common"
+],
+[
+"LOB-EN032",
+"Root Water",
+"Common"
+],
+[
+"LOB-EN033",
+"The Furious Sea King",
+"Common"
+],
+[
+"LOB-EN034",
+"Green Phantom King",
+"Common"
+],
+[
+"LOB-EN035",
+"Ray & Temperature",
+"Common"
+],
+[
+"LOB-EN036",
+"King Fog",
+"Common"
+],
+[
+"LOB-EN037",
+"Mystical Sheep #2",
+"Common"
+],
+[
+"LOB-EN038",
+"Masaki the Legendary Swordsman",
+"Common"
+],
+[
+"LOB-EN039",
+"Kurama",
+"Common"
+],
+[
+"LOB-EN040",
+"Legendary Sword",
+"Short Print"
+],
+[
+"LOB-EN041",
+"Beast Fangs",
+"Short Print"
+],
+[
+"LOB-EN042",
+"Violet Crystal",
+"Short Print"
+],
+[
+"LOB-EN043",
+"Book of Secret Arts",
+"Short Print"
+],
+[
+"LOB-EN044",
+"Power of Kaishin",
+"Short Print"
+],
+[
+"LOB-EN045",
+"Dragon Capture Jar",
+"Rare"
+],
+[
+"LOB-EN046",
+"Forest",
+"Common"
+],
+[
+"LOB-EN047",
+"Wasteland",
+"Common"
+],
+[
+"LOB-EN048",
+"Mountain",
+"Common"
+],
+[
+"LOB-EN049",
+"Sogen",
+"Common"
+],
+[
+"LOB-EN050",
+"Umi",
+"Common"
+],
+[
+"LOB-EN051",
+"Yami",
+"Common"
+],
+[
+"LOB-EN052",
+"Dark Hole",
+"Super Rare"
+],
+[
+"LOB-EN053",
+"Raigeki",
+"Super Rare"
+],
+[
+"LOB-EN054",
+"Red Medicine",
+"Common"
+],
+[
+"LOB-EN055",
+"Sparks",
+"Common"
+],
+[
+"LOB-EN056",
+"Hinotama",
+"Common"
+],
+[
+"LOB-EN057",
+"Fissure",
+"Rare"
+],
+[
+"LOB-EN058",
+"Trap Hole",
+"Super Rare"
+],
+[
+"LOB-EN059",
+"Polymerization",
+"Super Rare"
+],
+[
+"LOB-EN060",
+"Remove Trap",
+"Common"
+],
+[
+"LOB-EN061",
+"Two-Pronged Attack",
+"Rare"
+],
+[
+"LOB-EN062",
+"Mystical Elf",
+"Super Rare"
+],
+[
+"LOB-EN063",
+"Tyhone",
+"Common"
+],
+[
+"LOB-EN064",
+"Beaver Warrior",
+"Common"
+],
+[
+"LOB-EN065",
+"Gravedigger Ghoul",
+"Rare"
+],
+[
+"LOB-EN066",
+"Curse of Dragon",
+"Super Rare"
+],
+[
+"LOB-EN067",
+"Karbonala Warrior",
+"Rare"
+],
+[
+"LOB-EN068",
+"Giant Soldier of Stone",
+"Rare"
+],
+[
+"LOB-EN069",
+"Uraby",
+"Common"
+],
+[
+"LOB-EN070",
+"Red-Eyes Black Dragon",
+"Ultra Rare"
+],
+[
+"LOB-EN071",
+"Reaper of the Cards",
+"Rare"
+],
+[
+"LOB-EN072",
+"Witty Phantom",
+"Common"
+],
+[
+"LOB-EN073",
+"Larvas",
+"Common"
+],
+[
+"LOB-EN074",
+"Hard Armor",
+"Common"
+],
+[
+"LOB-EN075",
+"Man Eater",
+"Common"
+],
+[
+"LOB-EN076",
+"M-Warrior #1",
+"Common"
+],
+[
+"LOB-EN077",
+"M-Warrior #2",
+"Common"
+],
+[
+"LOB-EN078",
+"Spirit of the Harp",
+"Rare"
+],
+[
+"LOB-EN079",
+"Armaill",
+"Common"
+],
+[
+"LOB-EN080",
+"Terra the Terrible",
+"Common"
+],
+[
+"LOB-EN081",
+"Frenzied Panda",
+"Common"
+],
+[
+"LOB-EN082",
+"Kumootoko",
+"Common"
+],
+[
+"LOB-EN083",
+"Meda Bat",
+"Common"
+],
+[
+"LOB-EN084",
+"Enchanting Mermaid",
+"Common"
+],
+[
+"LOB-EN085",
+"Fireyarou",
+"Common"
+],
+[
+"LOB-EN086",
+"Dragoness the Wicked Knight",
+"Rare"
+],
+[
+"LOB-EN087",
+"One-Eyed Shield Dragon",
+"Common"
+],
+[
+"LOB-EN088",
+"Dark Energy",
+"Short Print"
+],
+[
+"LOB-EN089",
+"Laser Cannon Armor",
+"Short Print"
+],
+[
+"LOB-EN090",
+"Vile Germs",
+"Short Print"
+],
+[
+"LOB-EN091",
+"Silver Bow and Arrow",
+"Short Print"
+],
+[
+"LOB-EN092",
+"Dragon Treasure",
+"Short Print"
+],
+[
+"LOB-EN093",
+"Electro-Whip",
+"Common"
+],
+[
+"LOB-EN094",
+"Mystical Moon",
+"Short Print"
+],
+[
+"LOB-EN095",
+"Stop Defense",
+"Rare"
+],
+[
+"LOB-EN096",
+"Machine Conversion Factory",
+"Short Print"
+],
+[
+"LOB-EN097",
+"Raise Body Heat",
+"Short Print"
+],
+[
+"LOB-EN098",
+"Follow Wind",
+"Short Print"
+],
+[
+"LOB-EN099",
+"Goblin's Secret Remedy",
+"Rare"
+],
+[
+"LOB-EN100",
+"Final Flame",
+"Rare"
+],
+[
+"LOB-EN101",
+"Swords of Revealing Light",
+"Super Rare"
+],
+[
+"LOB-EN102",
+"Metal Dragon",
+"Rare"
+],
+[
+"LOB-EN103",
+"Spike Seadra",
+"Common"
+],
+[
+"LOB-EN104",
+"Tripwire Beast",
+"Common"
+],
+[
+"LOB-EN105",
+"Skull Red Bird",
+"Common"
+],
+[
+"LOB-EN106",
+"Armed Ninja",
+"Rare"
+],
+[
+"LOB-EN107",
+"Flower Wolf",
+"Rare"
+],
+[
+"LOB-EN108",
+"Man-Eater Bug",
+"Super Rare"
+],
+[
+"LOB-EN109",
+"Sand Stone",
+"Common"
+],
+[
+"LOB-EN110",
+"Hane-Hane",
+"Rare"
+],
+[
+"LOB-EN111",
+"Misairuzame",
+"Common"
+],
+[
+"LOB-EN112",
+"Steel Ogre Grotto #1",
+"Common"
+],
+[
+"LOB-EN113",
+"Lesser Dragon",
+"Common"
+],
+[
+"LOB-EN114",
+"Darkworld Thorns",
+"Common"
+],
+[
+"LOB-EN115",
+"Drooling Lizard",
+"Common"
+],
+[
+"LOB-EN116",
+"Armored Starfish",
+"Common"
+],
+[
+"LOB-EN117",
+"Succubus Knight",
+"Common"
+],
+[
+"LOB-EN118",
+"Monster Reborn",
+"Ultra Rare"
+],
+[
+"LOB-EN119",
+"Pot of Greed",
+"Rare"
+],
+[
+"LOB-EN120",
+"Right Leg of the Forbidden One",
+"Ultra Rare"
+],
+[
+"LOB-EN121",
+"Left Leg of the Forbidden One",
+"Ultra Rare"
+],
+[
+"LOB-EN122",
+"Right Arm of the Forbidden One",
+"Ultra Rare"
+],
+[
+"LOB-EN123",
+"Left Arm of the Forbidden One",
+"Ultra Rare"
+],
+[
+"LOB-EN124",
+"Exodia the Forbidden One",
+"Ultra Rare"
+],
+[
+"LOB-EN125",
+"Gaia the Dragon Champion",
+"Secret Rare"
+]
+]

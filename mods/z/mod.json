@@ -1,0 +1,337 @@
+{
+ "id": "z",
+ "name": "Yu-Gi-Oh! Legendary Duelist",
+ "version": "0.1",
+ "author": "community",
+ "enabled": false,
+ "description": "308 real Yu-Gi-Oh! cards the disc lacks, with fusions, packs and duelists. Study project; art is Konami's.",
+ "title": {
+  "background": {
+   "image": "art/title.png",
+   "wide_image": "art/title-wide.png",
+   "dim": 96
+  },
+  "logo": {
+   "hide": true
+  }
+ },
+ "cards": "cards.json",
+ "drops": "drops.json",
+ "fusions": "fusions.json",
+ "duelists": [
+  {
+   "id": "mako-tsunami",
+   "copy": "Seto",
+   "name": "Mako Tsunami",
+   "unlock": {
+    "beat": "Jono 2nd"
+   },
+   "slot": 40,
+   "ai": {
+    "copy": "Seto 2nd",
+    "search": 10
+   },
+   "portrait": "portraits/mako-tsunami.png"
+  },
+  {
+   "id": "duke-devlin",
+   "copy": "Mai Valentine",
+   "name": "Duke Devlin",
+   "unlock": {
+    "beat": "mako-tsunami"
+   },
+   "slot": 41,
+   "ai": {
+    "copy": "Mai Valentine",
+    "search": 10
+   },
+   "portrait": "portraits/duke-devlin.png"
+  },
+  {
+   "id": "bonz",
+   "copy": "Weevil Underwood",
+   "name": "Bonz",
+   "unlock": {
+    "beat": "duke-devlin"
+   },
+   "slot": 42,
+   "ai": {
+    "copy": "Weevil Underwood",
+    "search": 8
+   },
+   "portrait": "portraits/bonz.png"
+  },
+  {
+   "id": "espa-roba",
+   "copy": "Rex Raptor",
+   "name": "Espa Roba",
+   "unlock": {
+    "beat": "bonz"
+   },
+   "slot": 43,
+   "ai": {
+    "copy": "Rex Raptor",
+    "search": 8
+   },
+   "portrait": "portraits/espa-roba.png"
+  },
+  {
+   "id": "mokuba-kaiba",
+   "copy": "Kaiba",
+   "name": "Mokuba Kaiba",
+   "unlock": {
+    "beat": "espa-roba"
+   },
+   "slot": 44,
+   "ai": {
+    "copy": "Kaiba",
+    "search": 10
+   },
+   "portrait": "portraits/mokuba-kaiba.png"
+  },
+  {
+   "id": "arkana",
+   "copy": "Pegasus",
+   "name": "Arkana",
+   "unlock": {
+    "beat": "mokuba-kaiba"
+   },
+   "slot": 45,
+   "ai": {
+    "copy": "Pegasus",
+    "search": 12
+   },
+   "portrait": "portraits/arkana.png"
+  },
+  {
+   "id": "panik",
+   "copy": "Bandit Keith",
+   "name": "Panik",
+   "unlock": {
+    "beat": "arkana"
+   },
+   "slot": 46,
+   "ai": {
+    "copy": "Bandit Keith",
+    "search": 10
+   },
+   "portrait": "portraits/panik.png"
+  },
+  {
+   "id": "yugi-muto",
+   "copy": "Heishin 2nd",
+   "name": "Yugi Muto",
+   "unlock": {
+    "beat": "panik"
+   },
+   "slot": 47,
+   "ai": {
+    "copy": "Heishin 2nd",
+    "search": 14
+   },
+   "portrait": "portraits/yugi-muto.png"
+  },
+  {
+   "id": "rishid",
+   "copy": "Isis",
+   "name": "Rishid",
+   "unlock": {
+    "beat": "yugi-muto"
+   },
+   "slot": 48,
+   "ai": {
+    "copy": "Isis",
+    "search": 14
+   },
+   "portrait": "portraits/rishid.png"
+  },
+  {
+   "id": "marik-ishtar",
+   "copy": "Heishin 2nd",
+   "name": "Marik Ishtar",
+   "unlock": {
+    "beat": "rishid"
+   },
+   "slot": 49,
+   "ai": {
+    "copy": "Seto 3rd",
+    "search": 16
+   },
+   "portrait": "portraits/marik-ishtar.png"
+  },
+  {
+   "id": "yami-marik",
+   "copy": "Nitemare",
+   "name": "Yami Marik",
+   "unlock": {
+    "beat": "marik-ishtar"
+   },
+   "slot": 50,
+   "ai": {
+    "copy": "Nitemare"
+   },
+   "portrait": "portraits/yami-marik.png"
+  },
+  {
+   "id": "atemu",
+   "copy": "Seto 3rd",
+   "name": "Atemu",
+   "unlock": {
+    "beat": "yami-marik"
+   },
+   "slot": 51,
+   "ai": {
+    "copy": "Duel Master K"
+   },
+   "portrait": "portraits/atemu.png"
+  },
+  {
+   "id": "jaden-yuki",
+   "copy": "Heishin 2nd",
+   "name": "Jaden Yuki",
+   "unlock": {
+    "beat": "Jono 2nd"
+   },
+   "slot": 60,
+   "portrait": "portraits/jaden-yuki.png"
+  },
+  {
+   "id": "jonouchi",
+   "copy": "Jono 2nd",
+   "name": "Jonouchi",
+   "unlock": {
+    "beat": "Jono 2nd"
+   },
+   "slot": 52,
+   "ai": {
+    "copy": "Seto 3rd",
+    "search": 10
+   },
+   "portrait": "portraits/jonouchi.png"
+  }
+ ],
+ "decks": "decks.json",
+ "card_text_colors": {
+  "cards": [
+   {
+    "card": "z:jinzo:1",
+    "name": 5
+   },
+   {
+    "card": "z:red-eyes-darkness-dragon:1",
+    "name": 5
+   },
+   {
+    "card": "z:gilford-the-lightning:1",
+    "name": 5
+   },
+   {
+    "card": "z:rocket-warrior:1",
+    "name": 5
+   },
+   {
+    "card": "z:buster-blader:1",
+    "name": 5
+   },
+   {
+    "card": "z:dark-magician-girl:1",
+    "name": 5
+   },
+   {
+    "card": "z:dark-magician-of-destruction:1",
+    "name": 5
+   },
+   {
+    "card": "z:slifer-the-sky-dragon:1",
+    "name": 5
+   },
+   {
+    "card": "z:the-winged-dragon-of-ra:1",
+    "name": 5
+   },
+   {
+    "card": "z:dragon-master-knight:1",
+    "name": 5
+   },
+   {
+    "card": "z:elemental-hero-air-neos:1",
+    "name": 5
+   },
+   {
+    "card": "z:elemental-hero-aqua-neos:1",
+    "name": 5
+   },
+   {
+    "card": "z:elemental-hero-dark-neos:1",
+    "name": 5
+   },
+   {
+    "card": "z:elemental-hero-flare-neos:1",
+    "name": 5
+   },
+   {
+    "card": "z:elemental-hero-grand-neos:1",
+    "name": 5
+   },
+   {
+    "card": "z:dark-magician-girl-the-dragon-knight:1",
+    "name": 5
+   },
+   {
+    "card": "z:the-dark-magicians:1",
+    "name": 5
+   },
+   {
+    "card": "z:blue-eyes-tyrant-dragon:1",
+    "name": 5
+   },
+   {
+    "card": "z:red-eyes-darkness-metal-dragon:1",
+    "name": 5
+   },
+   {
+    "card": "z:mage-power:1",
+    "name": 3
+   },
+   {
+    "card": "z:united-we-stand:1",
+    "name": 3
+   },
+   {
+    "card": "z:divine-sword-phoenix-blade:1",
+    "name": 3
+   },
+   {
+    "card": "z:lightning-blade:1",
+    "name": 3
+   },
+   {
+    "card": "z:sword-of-dragon-s-soul:1",
+    "name": 3
+   },
+   {
+    "card": "z:7-completed:1",
+    "name": 3
+   },
+   {
+    "card": "z:burning-spear:1",
+    "name": 3
+   },
+   {
+    "card": "z:gust-fan:1",
+    "name": 3
+   },
+   {
+    "card": "z:rod-of-silence-kay-est:1",
+    "name": 3
+   },
+   {
+    "card": "z:silent-sword-slash:1",
+    "name": 3
+   }
+  ]
+ },
+ "packs": "packs.json",
+ "equips": "equips.json",
+ "rituals": "rituals.json"
+}

@@ -418,7 +418,8 @@ static const char *const own_words[LANGUAGE_COUNT] = {
                     "[FE36]\nAU MOINS %d %s{end}\n\n"
                     "[FE37]\n%s EN %d PAQUETS{end}\n\n"
                     "[FE38]\n%d CARTE{end}\n\n"
-                    "[FE39]\nPLUS RIEN{end}\n",
+                    "[FE39]\nPLUS RIEN{end}\n\n"
+                    "[FE3A]\nOU{end}\n",
     [LANGUAGE_DE] = "\n@bank dialog\n\n"
                     "[FE00]\nNEU{end}\n\n"
                     "[FE01]\n%d WEITERE KARTE{end}\n\n"
@@ -450,7 +451,8 @@ static const char *const own_words[LANGUAGE_COUNT] = {
                     "[FE36]\nMINDESTENS %d %s{end}\n\n"
                     "[FE37]\n%s IN %d BOOSTERN{end}\n\n"
                     "[FE38]\n%d KARTE{end}\n\n"
-                    "[FE39]\nSCHON ALLE{end}\n",
+                    "[FE39]\nSCHON ALLE{end}\n\n"
+                    "[FE3A]\nODER{end}\n",
     [LANGUAGE_IT] = "\n@bank dialog\n\n"
                     "[FE00]\nNUOVA{end}\n\n"
                     "[FE01]\n%d CARTA IN PIÙ{end}\n\n"
@@ -482,7 +484,8 @@ static const char *const own_words[LANGUAGE_COUNT] = {
                     "[FE36]\nALMENO %d %s{end}\n\n"
                     "[FE37]\n%s IN %d BUSTE{end}\n\n"
                     "[FE38]\n%d CARTA{end}\n\n"
-                    "[FE39]\nGIÀ TUTTE{end}\n",
+                    "[FE39]\nGIÀ TUTTE{end}\n\n"
+                    "[FE3A]\nO{end}\n",
     [LANGUAGE_ES] = "\n@bank dialog\n\n"
                     "[FE00]\nNUEVA{end}\n\n"
                     "[FE01]\n%d CARTA MÁS{end}\n\n"
@@ -514,7 +517,8 @@ static const char *const own_words[LANGUAGE_COUNT] = {
                     "[FE36]\nAL MENOS %d %s{end}\n\n"
                     "[FE37]\n%s EN %d SOBRES{end}\n\n"
                     "[FE38]\n%d CARTA{end}\n\n"
-                    "[FE39]\nYA TODAS{end}\n",
+                    "[FE39]\nYA TODAS{end}\n\n"
+                    "[FE3A]\nO{end}\n",
 };
 
 /* The opponents' short names (TEXT_OWN_OPPONENT + id), only where

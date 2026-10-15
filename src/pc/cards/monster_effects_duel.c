@@ -225,6 +225,10 @@ static int reaches(const MonsterEffect *effect, int source, int target, int card
     /* A type past 127 is stored as a negative byte; only -1 (0xFF) is "any". */
     if (effect->type != -1 && Cards_Type(card) != (unsigned char)effect->type) return 0;
     if (effect->attribute >= 0 && Cards_Attribute(card) != effect->attribute) return 0;
+    if (effect->position) {
+        int defending = (D_801A7AD8[target].flags & DUEL_CARD_FLAG_DEFENSE_POSITION) != 0;
+        if (effect->position == 1 ? defending : !defending) return 0;
+    }
     return 1;
 }
 
@@ -413,6 +417,9 @@ static int resolve(void)
             DuelCardRecord *card = &D_801A7AD8[record];
             if (!monster_zone(record) || !(card->flags & DUEL_CARD_FLAG_OCCUPIED)) continue;
             if (!reaches(effect, trigger.record, record, card->card_id)) continue;
+            /* A "spell_immune" monster is left alone by the other side's magic card (not by its traps). */
+            if (card_effect && Cards_SpellImmune(card->card_id) && owner(record) != side &&
+                Cards_Type(trigger.card) != CARD_TYPE_TRAP) continue;
             boost(card, effect->attack * count, effect->defense * count);
             hit = 1;
         }
@@ -420,9 +427,11 @@ static int resolve(void)
         SD_SEPlayFull(SE_BOOST);
         break;
     case MONSTER_DO_HEAL:
-        return count ? life_effect(life_side(effect, side, card_effect), effect->amount * count) : 0;
-    case MONSTER_DO_DAMAGE:
-        return count ? life_effect(life_side(effect, side, card_effect), -effect->amount * count) : 0;
+    case MONSTER_DO_DAMAGE: {
+        int changed = life_side(effect, side, card_effect);
+        if (!count || (effect->lp_over && D_800E9FF0[changed].life_points.signed_value <= (int)effect->lp_over)) return 0;
+        return life_effect(changed, (effect->action == MONSTER_DO_HEAL ? 1 : -1) * effect->amount * count);
+    }
     case MONSTER_DO_DESTROY:
         /* Crush Card's removal, on the monsters chosen here
          * (MonsterEffects_RemovalTakes): it takes the other side's, as
@@ -433,6 +442,9 @@ static int resolve(void)
             if (!monster_zone(record) ||
                 (!(card->flags & DUEL_CARD_FLAG_OCCUPIED) && !trap_participant(record))) continue;
             if (!reaches(effect, trigger.record, record, card->card_id)) continue;
+            /* A "spell_immune" monster is left alone by the other side's magic card (not by its traps). */
+            if (card_effect && Cards_SpellImmune(card->card_id) && owner(record) != side &&
+                Cards_Type(trigger.card) != CARD_TYPE_TRAP) continue;
             /* Crush Card only walks the opposing physical row.  A data
              * effect which explicitly names its owner (or all monsters)
              * removes that row here. Lifted battle participants have no
@@ -627,6 +639,28 @@ int MonsterEffects_PlayFaceUp(int card)
         seen |= effects[i].when == MONSTER_WHEN_DRAW || effects[i].when == MONSTER_WHEN_FACE_UP;
     }
     return summon || (seen && !flip);
+}
+
+int MonsterEffects_Destroy(int record)
+{
+    int side;
+    /* One removal at a time, and only a monster that is there. */
+    if (!S.ready || S.running || S.destroy_mask || !monster_zone(record) ||
+        !(D_801A7AD8[record].flags & DUEL_CARD_FLAG_OCCUPIED))
+        return 0;
+    /* As a "destroy" effect plays it (resolve): Crush Card's removal, on this monster
+     * alone, played by the other side's owner. */
+    side = owner(record) ^ 1;
+    S.destroy_mask = 1u << record;
+    if (side != D_8009B1D5) {
+        S.swapped = 1;
+        S.saved_turn = D_8009B1D5;
+        lend_turn(side);
+    }
+    S.running = 1;
+    S.magic_card = CRUSH_CARD;
+    DuelEffect_StartRetailCardEffect(CRUSH_CARD, 0);
+    return 1;
 }
 
 int MonsterEffects_RemovalTakes(int record)

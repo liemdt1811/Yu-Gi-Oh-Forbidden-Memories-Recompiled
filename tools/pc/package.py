@@ -73,7 +73,7 @@ FOLDER = {"windows-x64": "-x64"}
 # builds another system's archive takes that target's export list from, in
 # the order they are looked in (the 32-bit Windows game's for i386 first).
 MOD_TARGET = {"windows": "i386", "linux": "i386", "windows-x64": "x86_64-windows", "android-arm64": "aarch64"}
-SDK_TARGETS = ("i386", "x86_64-windows", "aarch64")
+SDK_TARGETS = ["i386", "x86_64-windows", "aarch64"]
 EXPORT_BUILDS = {"i386": ["windows", "linux"], "x86_64-windows": ["windows-x64"], "aarch64": ["android-arm64"]}
 # What the README's Mods section adds for the 64-bit Windows game, before
 # its paragraph on installing mods (tools/pc/release/README.txt).
@@ -368,7 +368,10 @@ def main():
     parser.add_argument("--exports-from", action="append", default=[], metavar="BUILD",
                         help="another target's game build folder (its sdk/exports.<target>.txt and source) to take "
                              "that target's export list from for the SDK (repeatable; default: tmp/pc's builds)")
+    parser.add_argument("--skip-sdk-target", action="append", default=[], choices=list(SDK_TARGETS), metavar="TARGET",
+                        help="leave this target's export list out of the SDK (e.g. aarch64 without an Android build)")
     options = parser.parse_args()
+    SDK_TARGETS[:] = [t for t in SDK_TARGETS if t not in options.skip_sdk_target]
     systems = options.systems or ["windows", "windows-x64", "linux"]
     if set(systems) - set(BUILDS):
         parser.error("systems are windows, windows-x64, linux and android-arm64")

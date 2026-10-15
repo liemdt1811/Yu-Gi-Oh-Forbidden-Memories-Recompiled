@@ -21,6 +21,29 @@
 #define POLY_FT4_BYTES(packet) ((u8 *)(packet))
 #define CARD_FRAME_SCRATCH_BYTES(scratch) ((u8 *)(scratch))
 
+#ifdef MEMORIES_PC
+/* A stat that is not what the card prints is drawn tinted, as the digit
+ * sprites' own modulation colour (GsSPRITE r, g, b: 0x80 leaves a texel as it
+ * is, each channel doubles at most): green when the duel raised it (an equip, a
+ * terrain, a mod's effect), red when it lowered it. `colour` is the object's own
+ * word, so a fade keeps dimming the digits. */
+static s32 stat_tint(s32 colour, s32 now, s32 printed)
+{
+    u32 word = (u32)colour, r = word & 0xFF, g = (word >> 8) & 0xFF, b = (word >> 16) & 0xFF;
+    if (now == printed) return colour;
+    if (now > printed) {
+        r = r * 5 / 8;
+        b = b * 5 / 8;
+        g = g * 2 > 0xFF ? 0xFF : g * 2;
+    } else {
+        g = g * 5 / 8;
+        b = b * 5 / 8;
+        r = r * 2 > 0xFF ? 0xFF : r * 2;
+    }
+    return (s32)((word & 0xFF000000u) | r | (g << 8) | (b << 16));
+}
+#endif
+
 /* Draws one card's frame on the duel field: position, the hand/field
  * flags, the card-number digits (via Duel_CalcCardStats and
  * Text_EncodeDecimalDigits) and the face/back sprite, through
@@ -175,11 +198,13 @@ void func_80016784(DisplayObject *object, s32 arg1, s32 arg2, s32 arg3) {
                             Text_EncodeDecimalDigits((u32)d >> 16, 5, sp20);
                             i = 4;
                             do {
+                                k->rgb = stat_tint(g2, d & 0xFFFF, Cards_UnknownStats(card->card_id) ? (d & 0xFFFF) : card->attack);
                                 k->uv.b.lo = sp18[i] * 8;
                                 DisplayObject_SubmitPacket(
                                     k, POLY_FT4_BYTES(y), arg1, fl,
                                     CARD_FRAME_SCRATCH_BYTES(o));
                                 k->xy.h.y = k->xy.h.y + 8;
+                                k->rgb = stat_tint(g2, (u32)d >> 16, Cards_UnknownStats(card->card_id) ? (s32)((u32)d >> 16) : card->defense);
                                 k->uv.b.lo = sp20[i] * 8;
                                 DisplayObject_SubmitPacket(
                                     k, POLY_FT4_BYTES(y), arg1, fl,
@@ -188,6 +213,7 @@ void func_80016784(DisplayObject *object, s32 arg1, s32 arg2, s32 arg3) {
                                 k->xy.h.x = k->xy.h.x + 7;
                                 k->xy.h.y = k->xy.h.y - 8;
                             } while (i >= 0);
+                            k->rgb = g2;
                             break;
                         }
 #endif
@@ -196,11 +222,17 @@ void func_80016784(DisplayObject *object, s32 arg1, s32 arg2, s32 arg3) {
                         Text_EncodeDecimalDigits(d >> 0x10, 4, sp20);
                         i = 3;
                         do {
+#ifdef MEMORIES_PC
+                            k->rgb = stat_tint(g2, (s16)d, Cards_UnknownStats(card->card_id) ? (s16)d : card->attack);
+#endif
                             k->uv.b.lo = sp18[i] * 8;
                             DisplayObject_SubmitPacket(
                                 k, POLY_FT4_BYTES(y), arg1, fl,
                                 CARD_FRAME_SCRATCH_BYTES(o));
                             k->xy.h.y = k->xy.h.y + 8;
+#ifdef MEMORIES_PC
+                            k->rgb = stat_tint(g2, d >> 0x10, Cards_UnknownStats(card->card_id) ? d >> 0x10 : card->defense);
+#endif
                             k->uv.b.lo = sp20[i] * 8;
                             DisplayObject_SubmitPacket(
                                 k, POLY_FT4_BYTES(y), arg1, fl,
@@ -209,6 +241,9 @@ void func_80016784(DisplayObject *object, s32 arg1, s32 arg2, s32 arg3) {
                             k->xy.h.x = k->xy.h.x + 8;
                             k->xy.h.y = k->xy.h.y - 8;
                         } while (i >= 0);
+#ifdef MEMORIES_PC
+                        k->rgb = g2;
+#endif
                         break;
                     }
 #ifdef MEMORIES_PC

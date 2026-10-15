@@ -92,6 +92,7 @@ static int ui = 1, touch_row;
 typedef enum { ITEM_ACTION, ITEM_CHECK, ITEM_RADIO, ITEM_SLIDER, ITEM_SEPARATOR, ITEM_SUBMENU } ItemKind;
 enum { ITEM_DISABLED = 1, ITEM_GROUP_BREAK = 2 };
 
+
 enum {
     ACT_SAVE_STATE = 1, ACT_LOAD_STATE, ACT_SCREENSHOT, ACT_EXIT, ACT_GIVE_CARDS,
     ACT_MODS, ACT_CONTROLS, ACT_RELOAD_SETTINGS, ACT_PAUSE, ACT_FRAME_STEP, ACT_DUMP_FRAME, ACT_DUMP_VRAM,
@@ -834,11 +835,22 @@ static void setting_changed(SettingId id, int value)
 
 int Menu_Height(void) { return MENU_H; }
 
+/* A release build has no Debug menu: it has no width, so the bar neither draws nor hits it. */
+static int bar_hidden(int menu)
+{
+#ifdef MEMORIES_RELEASE
+    return menu == MENU_DEBUG;
+#else
+    (void)menu;
+    return 0;
+#endif
+}
+
 static void layout_bar(void)
 {
     int i, at = 0;
     for (i = 0; i < MENU_COUNT; i++) {
-        menus[i].w = text_width(menus[i].label) + BAR_PAD * 2;
+        menus[i].w = bar_hidden(i) ? 0 : text_width(menus[i].label) + BAR_PAD * 2;
         menus[i].x = at;
         at += menus[i].w;
     }
@@ -903,6 +915,33 @@ void Menu_Init(void)
     int i;
     for (i = 0; i < menus[MENU_HELP].count; i++)
         if (menus[MENU_HELP].items[i].id == ACT_VERSION) menus[MENU_HELP].items[i].label = Update_VersionLabel();
+#ifdef MEMORIES_RELEASE
+    /* A release build has less menu: no Game > Cheats, Card drops (fixed at CARD_DROPS_RELEASE,
+     * src/pc/cards/drops.c) and Mods (build_game32.py gives the release's mods their defaults), no
+     * View > Fusion helper, no Debug menu (layout_bar), and no update check or Releases page in Help
+     * (Update_Start). The rows are taken out; the separator one had before it goes to the row that
+     * follows, when a row is above. */
+    {
+        int menu;
+        for (menu = 0; menu < MENU_COUNT; menu++) {
+            Menu *bar = &menus[menu];
+            for (i = 0; i < bar->count; i++) {
+                const Item *item = &bar->items[i];
+                if ((item->kind == ITEM_SUBMENU && item->value == SUB_CHEATS) ||
+                    (item->kind == ITEM_SLIDER && item->setting == SET_CARD_DROPS) ||
+                    (item->kind == ITEM_ACTION && (item->id == ACT_MODS || item->id == ACT_CHECK_UPDATES || item->id == ACT_RELEASES)) ||
+                    item->setting == SET_FUSION_HELPER || item->setting == SET_UPDATE_CHECK ||
+                    item->setting == SET_UPDATE_PRERELEASES) {
+                    int group = item->flags & ITEM_GROUP_BREAK;
+                    memmove(&bar->items[i], &bar->items[i + 1], (size_t)(bar->count - i - 1) * sizeof(Item));
+                    bar->count--;
+                    if (i > 0 && i < bar->count) bar->items[i].flags |= group;
+                    i--;
+                }
+            }
+        }
+    }
+#endif
     load_font();
     layout_bar();
     Settings_Observe(setting_changed);
@@ -1590,6 +1629,7 @@ void Menu_Draw(MenuCanvas *into)
     for (i = 0; i < MENU_COUNT; i++) {
         const Menu *menu = &menus[i];
         uint32_t ink = C_TEXT;
+        if (bar_hidden(i)) continue;
         if (i == open_menu) {
             fill(menu->x, 0, menu->w, MENU_H - 1, C_ACCENT, 255);
             ink = C_TEXT_ON_ACCENT;
@@ -2207,7 +2247,9 @@ int Menu_Event(const MenuEvent *event, int *quit)
             } else if (event->key == MENU_KEY_LEFT && open_sub >= 0) {
                 close_submenu();
             } else {
-                int next = (open_menu + (event->key == MENU_KEY_RIGHT ? 1 : MENU_COUNT - 1)) % MENU_COUNT;
+                int step = event->key == MENU_KEY_RIGHT ? 1 : MENU_COUNT - 1;
+                int next = (open_menu + step) % MENU_COUNT;
+                while (bar_hidden(next)) next = (next + step) % MENU_COUNT;
                 close_menu();
                 open_menu = next;
                 hot_item = step_item(0, -1, 1);

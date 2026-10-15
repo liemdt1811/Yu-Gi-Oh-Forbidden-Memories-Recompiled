@@ -59,9 +59,13 @@ static int owned(int id)
  * card a roll gives (notes/card-drops.md, "Mods"). */
 int CardDrops_Roll(int pool)
 {
+#ifdef MEMORIES_RELEASE
+    int wanted = CARD_DROPS_RELEASE, i;      /* a release deals this many, whatever a settings file says */
+#else
     /* In a tower's duel, the tower's "drops" (tower.h) over the count a
      * mod locks or the player set (CardDrops_Count). */
     int wanted = Tower_CardDrops(CardDrops_Count()), i;
+#endif
     CardDrops_Begin();
     if (wanted <= 1) return Duel_SelectCardDrop(pool);
     Memories_Rand();

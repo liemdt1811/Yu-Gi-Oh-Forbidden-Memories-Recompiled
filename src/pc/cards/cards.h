@@ -58,6 +58,11 @@ int Cards_TrapId(int id);
  * active for traps with one of the six retail attack-destruction effects.
  * Copies inherit their base's override; null clears it. */
 int Cards_TrapThreshold(int id, int fallback);
+/* The lowest attacker ATK an attack trap springs for ("trap_min_attack"), 0 for any. */
+int Cards_TrapMinAttack(int id);
+/* Whether the card is "spell_immune": the other side's magic cards (Dark Hole, Raigeki, the removals, Shadow Spell,
+ * Spellbinding Circle) leave it as it is. */
+int Cards_SpellImmune(int id);
 /* The type a card has on the disc, which is what its effect is; -1 past the disc. */
 int Cards_RetailType(int id);
 /* Nonzero for a card a mod's "replace" made another kind of card than its
@@ -114,6 +119,17 @@ const char *Cards_FrameStyle(int id);
  * view, the duel's hand and field cards and the Library's grid draw it
  * through that color's palette row. */
 int Cards_FrameColor(int id);
+/* Whether a mod's "unknown_stats": true marks `id`: its printed ATK and DEF are
+ * not a number the card means (the duel's own rule gives its real one), so a
+ * screen shows "?" for them and the duel does not tint them as raised or
+ * lowered. */
+int Cards_UnknownStats(int id);
+/* Whether a mod's "no_fusion": true marks `id`: it fuses with no card, by no rule
+ * of the disc or of a mod, and a Polymerization does not take it. */
+int Cards_NoFusion(int id);
+/* How many copies of `id` a deck holds: a mod's "copy_limit" (1 to the deck's size), else
+ * DECK_CARD_COPY_LIMIT. The build-deck screen and the opponents' dealt decks keep to it. */
+int Cards_CopyLimit(int id);
 int Cards_Fusion(int a, int b, int *result);
 
 /* A card a manifest names: its id, a stable identity ("mod:entry:n"), or a

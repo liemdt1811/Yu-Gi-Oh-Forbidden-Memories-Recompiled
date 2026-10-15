@@ -1,0 +1,410 @@
+[
+ {
+  "id": "legend-of-bewd",
+  "name": "Legend of BEWD",
+  "price": 50,
+  "count": 9,
+  "beat": "Simon Muran",
+  "description": "Legend of Blue Eyes White Dragon: nine cards, one rare or better.",
+  "set_list": "sets/lob.json",
+  "image_url": "https://m.media-amazon.com/images/I/817WCKbIryL.jpg",
+  "aliases": {
+   "Red-Eyes Black Dragon": "Red-eyes B. Dragon",
+   "Exodia the Forbidden One": "Exodia the Forbidden",
+   "Trial of Nightmare": "Trial of Nightmares"
+  },
+  "tiers": {
+   "common": {
+    "odds": 0
+   },
+   "rare": {
+    "odds": 760,
+    "label": "RARE!",
+    "color": 2
+   },
+   "super": {
+    "odds": 150,
+    "label": "SUPER RARE!",
+    "color": 2
+   },
+   "ultra": {
+    "odds": 80,
+    "label": "ULTRA RARE!",
+    "color": 1
+   },
+   "secret": {
+    "odds": 10,
+    "label": "SECRET RARE!",
+    "color": 1
+   }
+  }
+ },
+ {
+  "id": "dark-magician",
+  "name": "Dark Magician",
+  "set": "MFC",
+  "price": 50,
+  "beat": "Simon Muran",
+  "description": "Spellcasters and magicians, old and new. Chaos Form may turn up.",
+  "type": [
+   "Spellcaster"
+  ],
+  "names": [
+   "Dark Magician",
+   "Magician of Black Chaos",
+   "Dark Paladin",
+   "Buster Blader",
+   "Red-Eyes Dark Dragoon",
+   "Dark Master"
+  ],
+  "rare_extra": [
+   "Chaos Form"
+  ],
+  "count": 5,
+  "tiers": [
+   {
+    "id": "common",
+    "odds": 700,
+    "max_atk": 2199
+   },
+   {
+    "id": "rare",
+    "odds": 250,
+    "min_atk": 2200,
+    "max_atk": 2999,
+    "label": "RARE!",
+    "color": 2
+   },
+   {
+    "id": "ultra",
+    "odds": 50,
+    "min_atk": 3000,
+    "max_atk": 4000,
+    "label": "ULTRA RARE!",
+    "color": 1
+   }
+  ],
+  "guarantee": {
+   "rare": 1
+  }
+ },
+ {
+  "id": "red-eyes",
+  "name": "Red-Eyes",
+  "set": "PSV",
+  "price": 50,
+  "beat": "Jono",
+  "description": "Red-Eyes B. Dragon and its fusions, with the archfiends.",
+  "type": [],
+  "names": [
+   "Red-eyes",
+   "Red-Eyes",
+   "Archfiend",
+   "Time Wizard",
+   "Baby Dragon",
+   "Black Skull",
+   "Metal Dragon",
+   "Zombie Dragon",
+   "Dragon Zombie",
+   "Dark Dragoon"
+  ],
+  "rare_extra": [],
+  "count": 5,
+  "tiers": [
+   {
+    "id": "common",
+    "odds": 700,
+    "max_atk": 2199
+   },
+   {
+    "id": "rare",
+    "odds": 250,
+    "min_atk": 2200,
+    "max_atk": 2999,
+    "label": "RARE!",
+    "color": 2
+   },
+   {
+    "id": "ultra",
+    "odds": 50,
+    "min_atk": 3000,
+    "max_atk": 4000,
+    "label": "ULTRA RARE!",
+    "color": 1
+   }
+  ],
+  "guarantee": {
+   "rare": 1
+  }
+ },
+ {
+  "id": "blue-eyes",
+  "name": "Blue-Eyes",
+  "set": "LOB",
+  "price": 50,
+  "beat": "Kaiba",
+  "description": "Blue-eyes and the dragons of the disc and the Z mod. Chaos Form may turn up.",
+  "type": [
+   "Dragon"
+  ],
+  "names": [
+   "Blue-eyes",
+   "Blue-Eyes"
+  ],
+  "rare_extra": [
+   "Chaos Form"
+  ],
+  "count": 5,
+  "tiers": [
+   {
+    "id": "common",
+    "odds": 700,
+    "max_atk": 2199
+   },
+   {
+    "id": "rare",
+    "odds": 250,
+    "min_atk": 2200,
+    "max_atk": 2999,
+    "label": "RARE!",
+    "color": 2
+   },
+   {
+    "id": "ultra",
+    "odds": 50,
+    "min_atk": 3000,
+    "max_atk": 4000,
+    "label": "ULTRA RARE!",
+    "color": 1
+   }
+  ],
+  "guarantee": {
+   "rare": 1
+  }
+ },
+ {
+  "id": "warriors",
+  "name": "Gaia & Warriors",
+  "set": "MRD",
+  "price": 50,
+  "beat": "Jono 2nd",
+  "description": "Gaia, Black Luster Soldier and the swordsmen. Chaos Form may turn up.",
+  "type": [
+   "Beast-Warrior",
+   "Warrior"
+  ],
+  "names": [
+   "Gaia",
+   "Black Luster",
+   "Buster Blader",
+   "Flame Swordsman"
+  ],
+  "rare_extra": [
+   "Chaos Form"
+  ],
+  "count": 5,
+  "tiers": [
+   {
+    "id": "common",
+    "odds": 700,
+    "max_atk": 2199
+   },
+   {
+    "id": "rare",
+    "odds": 250,
+    "min_atk": 2200,
+    "max_atk": 2999,
+    "label": "RARE!",
+    "color": 2
+   },
+   {
+    "id": "ultra",
+    "odds": 50,
+    "min_atk": 3000,
+    "max_atk": 4000,
+    "label": "ULTRA RARE!",
+    "color": 1
+   }
+  ],
+  "guarantee": {
+   "rare": 1
+  }
+ },
+ {
+  "id": "harpies",
+  "name": "Harpies & Wings",
+  "set": "MRL",
+  "price": 50,
+  "beat": "Mai Valentine",
+  "description": "Harpies, birds and the winged beasts of the storm.",
+  "type": [
+   "Winged Beast"
+  ],
+  "names": [
+   "Harpie"
+  ],
+  "rare_extra": [],
+  "count": 5,
+  "tiers": [
+   {
+    "id": "common",
+    "odds": 700,
+    "max_atk": 2199
+   },
+   {
+    "id": "rare",
+    "odds": 250,
+    "min_atk": 2200,
+    "max_atk": 2999,
+    "label": "RARE!",
+    "color": 2
+   },
+   {
+    "id": "ultra",
+    "odds": 50,
+    "min_atk": 3000,
+    "max_atk": 4000,
+    "label": "ULTRA RARE!",
+    "color": 1
+   }
+  ],
+  "guarantee": {
+   "rare": 1
+  }
+ },
+ {
+  "id": "zombies",
+  "name": "Zombie Horde",
+  "set": "LON",
+  "price": 50,
+  "beat": "Seto 2nd",
+  "description": "The undead, from skeletons to Eldlich.",
+  "type": [
+   "Zombie"
+  ],
+  "names": [
+   "Eldlich"
+  ],
+  "rare_extra": [],
+  "count": 5,
+  "tiers": [
+   {
+    "id": "common",
+    "odds": 700,
+    "max_atk": 2199
+   },
+   {
+    "id": "rare",
+    "odds": 250,
+    "min_atk": 2200,
+    "max_atk": 2999,
+    "label": "RARE!",
+    "color": 2
+   },
+   {
+    "id": "ultra",
+    "odds": 50,
+    "min_atk": 3000,
+    "max_atk": 4000,
+    "label": "ULTRA RARE!",
+    "color": 1
+   }
+  ],
+  "guarantee": {
+   "rare": 1
+  }
+ },
+ {
+  "id": "machines",
+  "name": "Cyber Machines",
+  "set": "CRV",
+  "price": 50,
+  "beat": "Seto 3rd",
+  "description": "Machines from Cyber Dragon to the XYZ line. Polymerization may turn up.",
+  "type": [
+   "Machine"
+  ],
+  "names": [
+   "Cyber",
+   "-Head",
+   "Y-Dragon",
+   "Z-Metal",
+   "V-Tiger",
+   "W-Wing",
+   "XYZ"
+  ],
+  "rare_extra": [
+   "Polymerization"
+  ],
+  "count": 5,
+  "tiers": [
+   {
+    "id": "common",
+    "odds": 700,
+    "max_atk": 2199
+   },
+   {
+    "id": "rare",
+    "odds": 250,
+    "min_atk": 2200,
+    "max_atk": 2999,
+    "label": "RARE!",
+    "color": 2
+   },
+   {
+    "id": "ultra",
+    "odds": 50,
+    "min_atk": 3000,
+    "max_atk": 4000,
+    "label": "ULTRA RARE!",
+    "color": 1
+   }
+  ],
+  "guarantee": {
+   "rare": 1
+  }
+ },
+ {
+  "id": "heroes",
+  "name": "Elemental Heroes",
+  "set": "EEN",
+  "price": 50,
+  "beat": "Duke Devlin",
+  "description": "Neos and the heroes who fuse with him. Polymerization may turn up.",
+  "type": [],
+  "names": [
+   "Elemental HERO",
+   "Neo-Spacian"
+  ],
+  "rare_extra": [
+   "Polymerization"
+  ],
+  "count": 5,
+  "tiers": [
+   {
+    "id": "common",
+    "odds": 700,
+    "max_atk": 2199
+   },
+   {
+    "id": "rare",
+    "odds": 250,
+    "min_atk": 2200,
+    "max_atk": 2999,
+    "label": "RARE!",
+    "color": 2
+   },
+   {
+    "id": "ultra",
+    "odds": 50,
+    "min_atk": 3000,
+    "max_atk": 4000,
+    "label": "ULTRA RARE!",
+    "color": 1
+   }
+  ],
+  "guarantee": {
+   "rare": 1
+  }
+ }
+]

@@ -871,6 +871,10 @@ an unknown line). `serialize` still writes the stack chunk last.
 **Game > Cheats** (`src/pc/debug/cheats.c`). Every row is off, or at the
 console's value, until the player picks it; nothing changes on screen before.
 
+A release build (`build_game32.py --release`, so `package.py`) takes the Cheats menu out and
+ignores what a settings file or the `MEMORIES_DEBUG_*` and `MEMORIES_CHEAT_*` variables say for a
+cheat (`MEMORIES_RELEASE`, `Cheats_StartingLifePoints` and the others).
+
 The rows that change the save (Give, Unlock and Set StarChips) do nothing
 until a game is started or loaded, and say **Load a save first** instead
 (`Cheats_SaveLoaded`: the save workspace holds a deck, the same test as

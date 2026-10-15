@@ -1,0 +1,150 @@
+[
+ {
+  "card": "z:mage-power:1",
+  "replace": true,
+  "add": [
+   "Spellcaster"
+  ],
+  "bonus": 1000
+ },
+ {
+  "card": "z:united-we-stand:1",
+  "replace": true,
+  "add": [
+   "Dragon",
+   "Spellcaster",
+   "Zombie",
+   "Warrior",
+   "Beast-Warrior",
+   "Beast",
+   "Winged Beast",
+   "Fiend",
+   "Fairy",
+   "Insect",
+   "Dinosaur",
+   "Reptile",
+   "Fish",
+   "Sea Serpent",
+   "Machine",
+   "Thunder",
+   "Aqua",
+   "Pyro",
+   "Rock",
+   "Plant"
+  ],
+  "bonus": 0
+ },
+ {
+  "card": "z:divine-sword-phoenix-blade:1",
+  "replace": true,
+  "add": [
+   "Warrior",
+   "Beast-Warrior"
+  ],
+  "bonus": 800,
+  "bonus_if": {
+   "Fire": 1000
+  }
+ },
+ {
+  "card": "z:lightning-blade:1",
+  "replace": true,
+  "add": [
+   "Warrior"
+  ],
+  "bonus_attack": 800,
+  "bonus_defense": 0
+ },
+ {
+  "card": "z:sword-of-dragon-s-soul:1",
+  "replace": true,
+  "add": [
+   "Warrior"
+  ],
+  "bonus_attack": 700,
+  "bonus_defense": 0
+ },
+ {
+  "card": "z:7-completed:1",
+  "replace": true,
+  "add": [
+   "Machine"
+  ],
+  "bonus_attack": 700,
+  "bonus_defense": 0
+ },
+ {
+  "card": "z:burning-spear:1",
+  "replace": true,
+  "add": [
+   "Dragon",
+   "Spellcaster",
+   "Zombie",
+   "Warrior",
+   "Beast-Warrior",
+   "Beast",
+   "Winged Beast",
+   "Fiend",
+   "Fairy",
+   "Insect",
+   "Dinosaur",
+   "Reptile",
+   "Fish",
+   "Sea Serpent",
+   "Machine",
+   "Thunder",
+   "Aqua",
+   "Pyro",
+   "Rock",
+   "Plant"
+  ],
+  "bonus": 0
+ },
+ {
+  "card": "z:gust-fan:1",
+  "replace": true,
+  "add": [
+   "Dragon",
+   "Spellcaster",
+   "Zombie",
+   "Warrior",
+   "Beast-Warrior",
+   "Beast",
+   "Winged Beast",
+   "Fiend",
+   "Fairy",
+   "Insect",
+   "Dinosaur",
+   "Reptile",
+   "Fish",
+   "Sea Serpent",
+   "Machine",
+   "Thunder",
+   "Aqua",
+   "Pyro",
+   "Rock",
+   "Plant"
+  ],
+  "bonus": 0
+ },
+ {
+  "card": "z:rod-of-silence-kay-est:1",
+  "replace": true,
+  "add": [
+   "Spellcaster",
+   "Fairy"
+  ],
+  "bonus_attack": 200,
+  "bonus_defense": 1000
+ },
+ {
+  "card": "z:silent-sword-slash:1",
+  "replace": true,
+  "add": [
+   "z:silent-swordsman-lv3:1",
+   "z:silent-swordsman-lv5:1",
+   "z:silent-swordsman-lv7:1"
+  ],
+  "bonus": 1500
+ }
+]

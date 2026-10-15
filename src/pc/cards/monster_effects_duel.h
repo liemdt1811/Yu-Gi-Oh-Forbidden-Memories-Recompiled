@@ -105,6 +105,13 @@ void MonsterEffects_EffectStarted(int ritual);
 void MonsterEffects_Battle(void);
 /* The CPU puts this monster down face up (its effects want it seen). */
 int MonsterEffects_PlayFaceUp(int card);
+/* Destroy the monster at `record` (0-29) as a "destroy" effect does, with
+ * Crush Card's removal shown on it, played by the other side's owner. 1 when it
+ * is started: the duel waits for it, and the monster's `destroyed` effects and
+ * events follow. 0 when it cannot be now (another removal is running, or no
+ * monster is there): the caller may take the card off the field itself. A code
+ * mod calls it from an event (MEMORIES_EVENT_MONSTER). */
+int MonsterEffects_Destroy(int record);
 /* Crush Card's removal (DuelEffect_ApplyMonsterRemoval) as a
  * "destroy" runs it: -1 as ever, else whether it takes `record`. */
 int MonsterEffects_RemovalTakes(int record);

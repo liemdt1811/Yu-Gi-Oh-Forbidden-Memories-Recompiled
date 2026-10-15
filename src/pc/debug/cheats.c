@@ -99,17 +99,23 @@ int Cheats_SetStarchips(unsigned value)
     return 1;
 }
 
+/* A release build (build_game32.py --release, MEMORIES_RELEASE) has no Game > Cheats menu
+ * (menu.c), and ignores what a settings file or an environment variable says for a cheat. */
+#ifdef MEMORIES_RELEASE
+#define CHEATS_OFF 1
+#else
+#define CHEATS_OFF 0
+#endif
+
 int Cheats_StartingLifePoints(void)
 {
-    /* A tower whose mod turns cheats off: its duels begin as the console's
-     * (or the floor's "life_points"), whatever the menu says (tower.h). */
     if (Tower_CheatsOff()) return DUEL_STARTING_LIFE_POINTS;
-    return Settings_Get(SET_CHEAT_LIFE_POINTS);
+    return CHEATS_OFF ? 8000 : Settings_Get(SET_CHEAT_LIFE_POINTS);
 }
 
 int Cheats_FreeSpending(void)
 {
-    return Settings_Get(SET_CHEAT_FREE_SPENDING);
+    return CHEATS_OFF ? 0 : Settings_Get(SET_CHEAT_FREE_SPENDING);
 }
 
 extern signed char gDuel_bOpponentID;
@@ -122,7 +128,7 @@ extern signed char gDuel_bOpponentID;
 s8 Cheats_CardViewMode(const DuelSideState *side)
 {
     if (side->card_view_mode < 0 && side == &D_800E9FF0[1] && gDuel_bOpponentID >= 0 &&
-        Settings_Get(SET_CHEAT_SHOW_HAND) && !Tower_CheatsOff()) {
+        !CHEATS_OFF && Settings_Get(SET_CHEAT_SHOW_HAND) && !Tower_CheatsOff()) {
         return 0;
     }
     return side->card_view_mode;
@@ -169,6 +175,7 @@ void Cheats_Frame(void)
     static int wanted = -2; /* -2 unread, -1 off, else pending count */
     static long starchips = -1;
     static const char *deck;
+    if (CHEATS_OFF) return;
     if (wanted == -2) {
         const char *value = getenv("MEMORIES_DEBUG_CHEST");
         wanted = value && *value ? atoi(value) : -1;

@@ -160,3 +160,7 @@ above (`tmp/pc/card-drops-mod-smoke/`).
 `--windows` runs it on the Windows build under Wine; `--executable` names
 another build (a `.exe` runs directly on Windows) and `--out` another folder.
 Screenshots and frames are left in `tmp/pc/card-drops-smoke/`.
+
+A release build (`build_game32.py --release`, so `package.py`) has no Game > Card drops row and always
+deals 10 cards (`CARD_DROPS_RELEASE`, `src/pc/cards/drops.h`), whatever `card_drops` or
+`MEMORIES_CARD_DROPS` say.

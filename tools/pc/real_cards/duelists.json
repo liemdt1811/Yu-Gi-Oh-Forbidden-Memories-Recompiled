@@ -1,0 +1,776 @@
+[
+ {
+  "id": "mako-tsunami",
+  "name": "Mako Tsunami",
+  "copy": "Seto",
+  "slot": 40,
+  "unlock": {
+   "beat": "Jono 2nd"
+  },
+  "ai": {
+   "copy": "Seto 2nd",
+   "search": 10
+  },
+  "deck": {
+   "Spike Seadra": 100,
+   "Kairyu-shin": 60,
+   "7 Colored Fish": 100,
+   "Aqua Madoor": 70,
+   "Giant Red Seasnake": 70,
+   "Mermaid Knight": 100,
+   "Fortress Whale": 25,
+   "Umi": 40,
+   "Frog The Jam": 100,
+   "Monsturtle": 100,
+   "Dorover": 100,
+   "Yado Karu": 100,
+   "Catapult Turtle": 100,
+   "Island Turtle": 100,
+   "Enchanting Mermaid": 100,
+   "30,000-Year White Turtle": 100,
+   "Guardian of the Sea": 100,
+   "Red Archery Girl": 100,
+   "Rare Fish": 100,
+   "Fairy of the Fountain": 70,
+   "High Tide Gyojin": 70,
+   "Deepsea Shark": 70
+  },
+  "drops": {
+   "pow": {
+    "Fortress Whale": 40,
+    "Kairyu-shin": 40,
+    "Giant Red Seasnake": 40,
+    "Mermaid Knight": 40
+   },
+   "tec": {
+    "Spike Seadra": 40,
+    "Aqua Madoor": 40,
+    "7 Colored Fish": 40,
+    "Umi": 30
+   }
+  },
+  "portrait_file": "portraits/mako-tsunami.png",
+  "frame": "blue"
+ },
+ {
+  "id": "duke-devlin",
+  "name": "Duke Devlin",
+  "copy": "Mai Valentine",
+  "slot": 41,
+  "unlock": {
+   "beat": "mako-tsunami"
+  },
+  "ai": {
+   "copy": "Mai Valentine",
+   "search": 10
+  },
+  "deck": {
+   "Red-eyes B. Dragon": 40,
+   "B. Skull Dragon": 20,
+   "Dragon Master Knight": 10,
+   "Cyber Commander": 60,
+   "Gradius": 100,
+   "Flame Swordsman": 60,
+   "Dragon Piper": 100,
+   "Big Eye": 100,
+   "Dragon Capture Jar": 30,
+   "Cyber Dragon": 40,
+   "Cyber-Stein": 100,
+   "Roboyarou": 100,
+   "Holograh": 100,
+   "The Dragon Dwelling in the Cave": 100,
+   "Saber Slasher": 100,
+   "Crawling Dragon": 70,
+   "Yamadron": 70,
+   "Cyber Saurus": 70,
+   "Cyber Ogre": 70,
+   "Slot Machine": 45,
+   "Dragon Treasure": 30,
+   "Cyber Shield": 30
+  },
+  "drops": {
+   "pow": {
+    "Red-eyes B. Dragon": 30,
+    "B. Skull Dragon": 20,
+    "Cyber Dragon": 40,
+    "Cyber Commander": 40
+   },
+   "tec": {
+    "Gradius": 40,
+    "Flame Swordsman": 40,
+    "Dragon Piper": 40,
+    "Big Eye": 40
+   }
+  },
+  "portrait_file": "portraits/duke-devlin.png",
+  "frame": "blue"
+ },
+ {
+  "id": "bonz",
+  "name": "Bonz",
+  "copy": "Weevil Underwood",
+  "slot": 42,
+  "unlock": {
+   "beat": "duke-devlin"
+  },
+  "ai": {
+   "copy": "Weevil Underwood",
+   "search": 8
+  },
+  "deck": {
+   "Dark Necrofear": 30,
+   "Zombie Master": 70,
+   "Vampire Lord": 50,
+   "Pumpking the King of Ghosts": 70,
+   "Armored Zombie": 100,
+   "Ryu Kokki": 50,
+   "Master Kyonshee": 70,
+   "Dokurorider": 70,
+   "Skull Servant": 120,
+   "Great Mammoth of Goldfine": 70,
+   "Skelgon": 70,
+   "Shadow Ghoul": 70,
+   "Vampire Genesis": 10,
+   "Vampire Voivode": 15,
+   "Fire Reaper": 100,
+   "Blue-eyed Silver Zombie": 100,
+   "Temple of Skulls": 100,
+   "Three-legged Zombies": 100,
+   "Zombie Warrior": 100,
+   "Clown Zombie": 100,
+   "Eternal Rest": 30
+  },
+  "drops": {
+   "pow": {
+    "Dark Necrofear": 30,
+    "Vampire Lord": 40,
+    "Ryu Kokki": 40,
+    "Zombie Master": 40
+   },
+   "tec": {
+    "Pumpking the King of Ghosts": 40,
+    "Armored Zombie": 40,
+    "Dokurorider": 40,
+    "Master Kyonshee": 40,
+    "Vampire Voivode": 15
+   }
+  },
+  "portrait_file": "portraits/bonz.png",
+  "frame": "blue"
+ },
+ {
+  "id": "espa-roba",
+  "name": "Espa Roba",
+  "copy": "Rex Raptor",
+  "slot": 43,
+  "unlock": {
+   "beat": "bonz"
+  },
+  "ai": {
+   "copy": "Rex Raptor",
+   "search": 8
+  },
+  "deck": {
+   "Jirai Gumo": 70,
+   "Pendulum Machine": 70,
+   "Dark Elf": 70,
+   "Beast of Talwar": 70,
+   "Aqua Madoor": 70,
+   "Mystic Clown": 70,
+   "Spirit of the Pharaoh": 30,
+   "Skull Dog Marron": 70,
+   "Gil Garth": 60,
+   "Djinn the Watcher of the Wind": 100,
+   "Sleeping Lion": 100,
+   "Larvas": 100,
+   "Burglar": 100,
+   "Eldeen": 100,
+   "Ray & Temperature": 100,
+   "Bio-Mage": 100,
+   "Illusionist Faceless Mage": 100,
+   "Great Bill": 100,
+   "The All-Seeing White Tiger": 100,
+   "Gazelle the King of Mythical Beasts": 100,
+   "Doma The Angel of Silence": 70,
+   "Leogun": 70,
+   "Orion the Battle King": 70,
+   "Elf's Light": 30,
+   "Beast Fangs": 30
+  },
+  "drops": {
+   "pow": {
+    "Spirit of the Pharaoh": 40,
+    "Jirai Gumo": 40,
+    "Dark Elf": 40,
+    "Gil Garth": 40
+   },
+   "tec": {
+    "Pendulum Machine": 40,
+    "Beast of Talwar": 40,
+    "Mystic Clown": 40,
+    "Skull Dog Marron": 40
+   }
+  },
+  "portrait_file": "portraits/espa-roba.png",
+  "frame": "blue"
+ },
+ {
+  "id": "mokuba-kaiba",
+  "name": "Mokuba Kaiba",
+  "copy": "Kaiba",
+  "slot": 44,
+  "unlock": {
+   "beat": "espa-roba"
+  },
+  "ai": {
+   "copy": "Kaiba",
+   "search": 10
+  },
+  "deck": {
+   "Blue-eyes White Dragon": 15,
+   "Red-eyes B. Dragon": 35,
+   "Gadget Soldier": 100,
+   "Cyber Commander": 60,
+   "Dragon Capture Jar": 30,
+   "Battle Ox": 100,
+   "Beaver Warrior": 100,
+   "Mirage Dragon": 70,
+   "Armaill": 100,
+   "The Little Swordsman of Aile": 100,
+   "Wodan the Resident of the Forest": 100,
+   "Fairy Dragon": 100,
+   "Gradius": 100,
+   "Invader of the Throne": 100,
+   "Blackland Fire Dragon": 100,
+   "Beautiful Headhuntress": 70,
+   "Dice Armadillo": 70,
+   "Cyber Saurus": 70,
+   "Jack's Knight": 70,
+   "Swordstalker": 45,
+   "Dragon Treasure": 30,
+   "Silver Bow and Arrow": 30
+  },
+  "drops": {
+   "pow": {
+    "Blue-eyes White Dragon": 20,
+    "Red-eyes B. Dragon": 40,
+    "Cyber Commander": 40,
+    "Mirage Dragon": 40
+   },
+   "tec": {
+    "Gadget Soldier": 40,
+    "Battle Ox": 40,
+    "Beaver Warrior": 40,
+    "Dragon Capture Jar": 30
+   }
+  },
+  "portrait_file": "portraits/mokuba-kaiba.png",
+  "frame": "blue"
+ },
+ {
+  "id": "arkana",
+  "name": "Arkana",
+  "copy": "Pegasus",
+  "slot": 45,
+  "unlock": {
+   "beat": "mokuba-kaiba"
+  },
+  "ai": {
+   "copy": "Pegasus",
+   "search": 12
+  },
+  "deck": {
+   "Dark Magician of Chaos": 30,
+   "Magician of Black Chaos": 40,
+   "Dark Magician": 60,
+   "Dark Magician Girl": 60,
+   "Illusionist Faceless Mage": 70,
+   "Dark Elf": 70,
+   "Skull Knight": 50,
+   "Magical Ghost": 70,
+   "Rogue Doll": 70,
+   "Wall of Illusion": 70,
+   "Dark Magician of Destruction": 15,
+   "The Dark Magicians": 15,
+   "Djinn the Watcher of the Wind": 100,
+   "Angelwitch": 100,
+   "Flame Manipulator": 100,
+   "Akakieisu": 100,
+   "Lady of Faith": 100,
+   "Gravekeeper's Spy": 100,
+   "Kamion Wizard": 100,
+   "Ancient Elf": 100,
+   "Maha Vailo": 70,
+   "Spirit of the Winds": 70,
+   "Dark Hole": 20,
+   "Sword of Dark Destruction": 30,
+   "Mystical Moon": 30
+  },
+  "drops": {
+   "pow": {
+    "Dark Magician of Chaos": 30,
+    "Dark Magician": 40,
+    "Magician of Black Chaos": 40,
+    "The Dark Magicians": 15
+   },
+   "tec": {
+    "Dark Magician Girl": 40,
+    "Skull Knight": 40,
+    "Rogue Doll": 40,
+    "Wall of Illusion": 40
+   }
+  },
+  "portrait_file": "portraits/arkana.png",
+  "frame": "blue"
+ },
+ {
+  "id": "panik",
+  "name": "Panik",
+  "copy": "Bandit Keith",
+  "slot": 46,
+  "unlock": {
+   "beat": "arkana"
+  },
+  "ai": {
+   "copy": "Bandit Keith",
+   "search": 10
+  },
+  "deck": {
+   "Dark Necrofear": 25,
+   "Reaper of the Cards": 60,
+   "Dark Gray": 70,
+   "Doma The Angel of Silence": 70,
+   "Dark Assailant": 70,
+   "Mystic Clown": 70,
+   "Skull Dog Marron": 60,
+   "Wall of Illusion": 70,
+   "Gil Garth": 60,
+   "Zombie Master": 50,
+   "Fire Reaper": 100,
+   "Meda Bat": 100,
+   "Mask of Darkness": 100,
+   "Ancient Brain": 100,
+   "Ryu-kishin": 100,
+   "Metal Guardian": 100,
+   "The Portrait's Secret": 100,
+   "Lord of Zemia": 100,
+   "Crass Clown": 100,
+   "Armored Zombie": 100,
+   "Ryu-kishin Powered": 70,
+   "Master Kyonshee": 70,
+   "Dokurorider": 70,
+   "Air Eater": 45,
+   "Dark Hole": 20
+  },
+  "drops": {
+   "pow": {
+    "Dark Necrofear": 30,
+    "Reaper of the Cards": 40,
+    "Doma The Angel of Silence": 40,
+    "Gil Garth": 40
+   },
+   "tec": {
+    "Dark Gray": 40,
+    "Dark Assailant": 40,
+    "Zombie Master": 40,
+    "Mystic Clown": 40
+   }
+  },
+  "portrait_file": "portraits/panik.png",
+  "frame": "blue"
+ },
+ {
+  "id": "yugi-muto",
+  "name": "Yugi Muto",
+  "copy": "Heishin 2nd",
+  "slot": 47,
+  "unlock": {
+   "beat": "panik"
+  },
+  "ai": {
+   "copy": "Heishin 2nd",
+   "search": 14
+  },
+  "deck": {
+   "Dark Magician": 60,
+   "Dark Magician Girl": 60,
+   "Summoned Skull": 40,
+   "Gaia the Fierce Knight": 60,
+   "Celtic Guardian": 100,
+   "Kuriboh": 120,
+   "Curse of Dragon": 60,
+   "Buster Blader": 40,
+   "Mystical Elf": 100,
+   "Magician of Black Chaos": 30,
+   "Dark Magician of Chaos": 20,
+   "Black Luster Soldier - Envoy of the Beginning": 15,
+   "Armaill": 100,
+   "Science Soldier": 100,
+   "Ancient Sorcerer": 100,
+   "Witch of the Black Forest": 100,
+   "Tao the Chanter": 100,
+   "Gravekeeper's Assailant": 100,
+   "Skull Mariner": 70,
+   "Monster Tamer": 70,
+   "Swords of Revealing Light": 30,
+   "Dark Hole": 20,
+   "Dian Keto the Cure Master": 30,
+   "Sword of Dark Destruction": 30,
+   "Book of Secret Arts": 30,
+   "Legendary Sword": 30
+  },
+  "drops": {
+   "pow": {
+    "Dark Magician": 40,
+    "Summoned Skull": 40,
+    "Gaia the Fierce Knight": 40,
+    "Buster Blader": 40,
+    "Dark Magician of Chaos": 20
+   },
+   "tec": {
+    "Celtic Guardian": 40,
+    "Dark Magician Girl": 40,
+    "Magician of Black Chaos": 40,
+    "Black Luster Soldier - Envoy of the Beginning": 10,
+    "Curse of Dragon": 40
+   }
+  },
+  "portrait_file": "portraits/yugi-muto.png",
+  "frame": "red"
+ },
+ {
+  "id": "rishid",
+  "name": "Rishid",
+  "copy": "Isis",
+  "slot": 48,
+  "unlock": {
+   "beat": "yugi-muto"
+  },
+  "ai": {
+   "copy": "Isis",
+   "search": 14
+  },
+  "deck": {
+   "Gravekeeper's Assailant": 90,
+   "Gravekeeper's Guard": 90,
+   "Gravekeeper's Spy": 90,
+   "Reaper of the Cards": 50,
+   "Dokurorider": 60,
+   "Sphinx Teleia": 20,
+   "Mystic Lamp": 60,
+   "Spirit of the Pharaoh": 40,
+   "Dark Necrofear": 20,
+   "Magician of Black Chaos": 25,
+   "Fire Reaper": 100,
+   "Sectarian of Secrets": 100,
+   "Nemuriko": 100,
+   "Dokuroizo the Grim Reaper": 100,
+   "Akakieisu": 100,
+   "Wood Remains": 100,
+   "Dark Assailant": 100,
+   "Kamion Wizard": 100,
+   "Clown Zombie": 100,
+   "Dragon Zombie": 70,
+   "Skelgon": 70,
+   "Dark Magician Girl": 45,
+   "Mystical Moon": 30,
+   "Black Pendant": 30
+  },
+  "drops": {
+   "pow": {
+    "Spirit of the Pharaoh": 40,
+    "Dark Necrofear": 30,
+    "Sphinx Teleia": 30,
+    "Gravekeeper's Assailant": 40
+   },
+   "tec": {
+    "Gravekeeper's Guard": 40,
+    "Gravekeeper's Spy": 40,
+    "Reaper of the Cards": 40,
+    "Dokurorider": 40
+   }
+  },
+  "portrait_file": "portraits/rishid.png",
+  "frame": "red"
+ },
+ {
+  "id": "marik-ishtar",
+  "name": "Marik Ishtar",
+  "copy": "Heishin 2nd",
+  "slot": 49,
+  "unlock": {
+   "beat": "rishid"
+  },
+  "ai": {
+   "copy": "Seto 3rd",
+   "search": 16
+  },
+  "deck": {
+   "The Winged Dragon of Ra": 8,
+   "Dark Necrofear": 15,
+   "Fiend's Hand": 70,
+   "Dark Magician": 30,
+   "Skull Knight": 50,
+   "Judge Man": 50,
+   "Mirage Dragon": 50,
+   "Spirit of the Pharaoh": 20,
+   "Gil Garth": 50,
+   "Djinn the Watcher of the Wind": 100,
+   "Mystical Elf": 100,
+   "Eldeen": 100,
+   "Sangan": 100,
+   "Dryad": 100,
+   "Dark Titan of Terror": 100,
+   "Reaper of the Cards": 100,
+   "Mystic Clown": 100,
+   "Neo the Magic Swordsman": 70,
+   "Dragon Seeker": 45,
+   "Dark Hole": 20,
+   "Dark Energy": 30
+  },
+  "drops": {
+   "pow": {
+    "The Winged Dragon of Ra": 4,
+    "Dark Necrofear": 30,
+    "Spirit of the Pharaoh": 40,
+    "Fiend's Hand": 40
+   },
+   "tec": {
+    "Fiend's Hand": 40,
+    "Judge Man": 40,
+    "Skull Knight": 40,
+    "Gil Garth": 40
+   }
+  },
+  "portrait_file": "portraits/marik-ishtar.png",
+  "frame": "red"
+ },
+ {
+  "id": "yami-marik",
+  "name": "Yami Marik",
+  "copy": "Nitemare",
+  "slot": 50,
+  "unlock": {
+   "beat": "marik-ishtar"
+  },
+  "ai": {
+   "copy": "Nitemare"
+  },
+  "deck": {
+   "The Winged Dragon of Ra": 12,
+   "Dark Necrofear": 30,
+   "Fiend's Hand": 70,
+   "Dark Magician": 50,
+   "Magician of Black Chaos": 40,
+   "Skull Knight": 50,
+   "Judge Man": 50,
+   "Mirage Dragon": 50,
+   "Spirit of the Pharaoh": 30,
+   "Gil Garth": 50,
+   "Dark Magician of Chaos": 20,
+   "Djinn the Watcher of the Wind": 100,
+   "Mystical Elf": 100,
+   "Eldeen": 100,
+   "Sangan": 100,
+   "Dryad": 100,
+   "Dark Titan of Terror": 100,
+   "Reaper of the Cards": 100,
+   "Mystic Clown": 100,
+   "Neo the Magic Swordsman": 70,
+   "Dragon Seeker": 45,
+   "Dark Hole": 20,
+   "Raigeki": 15,
+   "Dark Energy": 30,
+   "Slifer the Sky Dragon": 12,
+   "Obelisk the Tormentor": 12
+  },
+  "drops": {
+   "pow": {
+    "The Winged Dragon of Ra": 8,
+    "Slifer the Sky Dragon": 8,
+    "Obelisk the Tormentor": 8,
+    "Dark Necrofear": 30,
+    "Magician of Black Chaos": 40,
+    "Spirit of the Pharaoh": 40
+   },
+   "tec": {
+    "Fiend's Hand": 40,
+    "Judge Man": 40,
+    "Skull Knight": 40,
+    "Gil Garth": 40
+   }
+  },
+  "portrait_file": "portraits/yami-marik.png",
+  "frame": "red"
+ },
+ {
+  "id": "atemu",
+  "name": "Atemu",
+  "copy": "Seto 3rd",
+  "slot": 51,
+  "unlock": {
+   "beat": "yami-marik"
+  },
+  "ai": {
+   "copy": "Duel Master K"
+  },
+  "deck": {
+   "Slifer the Sky Dragon": 12,
+   "Obelisk the Tormentor": 12,
+   "The Winged Dragon of Ra": 12,
+   "Dark Magician": 50,
+   "Dark Magician Girl": 50,
+   "Summoned Skull": 40,
+   "Gaia the Fierce Knight": 50,
+   "Celtic Guardian": 90,
+   "Kuriboh": 100,
+   "Buster Blader": 40,
+   "Black Luster Soldier - Envoy of the Beginning": 15,
+   "Magician of Black Chaos": 30,
+   "Dark Magician of Chaos": 20,
+   "Red-eyes B. Dragon": 30,
+   "Curse of Dragon": 50,
+   "Mystical Elf": 90,
+   "Mirage Dragon": 50,
+   "Armaill": 100,
+   "Flame Manipulator": 100,
+   "Dragon Statue": 100,
+   "Tao the Chanter": 100,
+   "Queen's Knight": 100,
+   "Warrior Dai Grepher": 70,
+   "Swords of Revealing Light": 30,
+   "Dark Hole": 20,
+   "Raigeki": 20,
+   "Dian Keto the Cure Master": 30
+  },
+  "drops": {
+   "pow": {
+    "Slifer the Sky Dragon": 10,
+    "Obelisk the Tormentor": 10,
+    "The Winged Dragon of Ra": 10,
+    "Dark Magician of Chaos": 30,
+    "Black Luster Soldier - Envoy of the Beginning": 15
+   },
+   "tec": {
+    "Dark Magician": 40,
+    "Dark Magician Girl": 40,
+    "Buster Blader": 40,
+    "Gaia the Fierce Knight": 40,
+    "Summoned Skull": 40
+   }
+  },
+  "portrait_file": "portraits/atemu.png",
+  "frame": "red"
+ },
+ {
+  "id": "jaden-yuki",
+  "name": "Jaden Yuki",
+  "copy": "Heishin 2nd",
+  "unlock": {
+   "beat": "Jono 2nd"
+  },
+  "portrait_file": "portraits/jaden-yuki.png",
+  "frame": "red",
+  "deck": {
+   "Elemental HERO Avian": 120,
+   "Elemental HERO Burstinatrix": 120,
+   "Elemental HERO Clayman": 120,
+   "Elemental HERO Sparkman": 120,
+   "Elemental HERO Neos": 60,
+   "Neo-Spacian Air Hummingbird": 100,
+   "Neo-Spacian Aqua Dolphin": 100,
+   "Neo-Spacian Dark Panther": 100,
+   "Neo-Spacian Flare Scarab": 100,
+   "Neo-Spacian Grand Mole": 100,
+   "Neo-Spacian Marine Dolphin": 60,
+   "Elemental HERO Air Neos": 40,
+   "Elemental HERO Aqua Neos": 40,
+   "Elemental HERO Dark Neos": 40,
+   "Elemental HERO Flare Neos": 40,
+   "Elemental HERO Grand Neos": 40,
+   "Elemental HERO Marine Neos": 40,
+   "Elemental HERO Neos Knight": 40,
+   "Elemental HERO Great Tornado": 30,
+   "Elemental HERO Nova Master": 30,
+   "Elemental HERO The Shining": 30,
+   "Elemental HERO Absolute Zero": 30,
+   "Elemental HERO Escuridao": 30,
+   "Elemental HERO Gaia": 30,
+   "United We Stand": 30,
+   "Divine Sword - Phoenix Blade": 30
+  },
+  "drops": {
+   "pow": {
+    "Elemental HERO Great Tornado": 40,
+    "Elemental HERO Nova Master": 40,
+    "Elemental HERO The Shining": 40,
+    "Elemental HERO Absolute Zero": 40,
+    "Elemental HERO Escuridao": 40,
+    "Elemental HERO Gaia": 40
+   },
+   "tec": {
+    "Elemental HERO Air Neos": 40,
+    "Elemental HERO Aqua Neos": 40,
+    "Elemental HERO Dark Neos": 40,
+    "Elemental HERO Flare Neos": 40,
+    "Elemental HERO Grand Neos": 40,
+    "Elemental HERO Marine Neos": 40,
+    "Elemental HERO Neos Knight": 40,
+    "Elemental HERO Storm Neos": 20
+   }
+  },
+  "slot": 60
+ },
+ {
+  "id": "jonouchi",
+  "name": "Jonouchi",
+  "copy": "Jono 2nd",
+  "slot": 52,
+  "unlock": {
+   "beat": "Jono 2nd"
+  },
+  "ai": {
+   "copy": "Seto 3rd",
+   "search": 10
+  },
+  "deck": {
+   "Red-eyes B. Dragon": 120,
+   "Red-Eyes Black Dragon Exceed": 25,
+   "Archfiend Black Skull Dragon": 30,
+   "Red-Eyes Dark Dragoon": 30,
+   "Red-Eyes Darkness Metal Dragon": 30,
+   "Red-Eyes Darkness Dragon": 60,
+   "Red-Eyes Black Metal Dragon": 50,
+   "Red-Eyes Flare Metal Dragon": 50,
+   "Red-Eyes Slash Dragon": 50,
+   "Red-Eyes Zombie Dragon Lord": 50,
+   "Red-Eyes Wyvern": 70,
+   "Black Dragon's Chick": 70,
+   "Red-Eyes Baby Dragon": 70,
+   "Baby Dragon": 60,
+   "Time Wizard": 90,
+   "Metalmorph": 40,
+   "Dark Magician": 40,
+   "Metal Dragon": 50,
+   "Flame Swordsman": 50,
+   "Axe Raider": 40,
+   "Dragon Zombie": 50,
+   "Gearfried the Iron Knight": 30,
+   "Release Restraint": 20,
+   "Dragon Treasure": 50,
+   "Legendary Sword": 40,
+   "Sword of Dark Destruction": 40,
+   "Axe of Despair": 30,
+   "Megamorph": 30,
+   "United We Stand": 30,
+   "Divine Sword - Phoenix Blade": 30
+  },
+  "portrait_file": "portraits/jonouchi.png",
+  "frame": "blue",
+  "portrait_crop": [110, 10, 290],
+  "drops_like_pack": {
+   "pack": "beyond-the-brave",
+   "from": "Jono 2nd"
+  }
+ }
+]

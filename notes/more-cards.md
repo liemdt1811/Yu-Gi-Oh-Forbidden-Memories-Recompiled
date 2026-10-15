@@ -57,6 +57,9 @@ The release ships no card mod; the checks below were made with test mods
 | `frame` | the color of the card's frame, whatever its type: `"Gold"` (the disc's `"Monster"`), `"Green"` (`"Magic"`), `"Pink"` (`"Trap"`), `"Blue"` (`"Ritual"`), `"Purple"` or `"Orange"`, or a number 0-5 in that order; `"Type"` goes back to its type's. Left out, a monster with `monster_effects` is orange ([below](#frame-color)) |
 | `tags` | words for the card, a list such as `["god"]` (31 letters at most; 32 different in all). They mean nothing to the game: a [card layout](modding.md#card-layout-repositioning-or-hiding-the-big-card-display) may give each tag a frame of its own. A copy has its base's unless it says; `[]` clears them ([below](#tags)) |
 | `fusion_groups` | the fusion guides' groups the card is in, for a ritual's `fusion_group` condition ([Gameplay tables](gameplay-tables.md#rituals)): a list such as `["Elf", "Female"]`, `[]` for none; without it, its base's |
+| `spell_immune` | `true`: the other side's magic cards leave this monster alone: Dark Hole, Raigeki, the type removals, Shadow Spell, Spellbinding Circle, Stop Defense, Dark-piercing Light, Swords of Revealing Light's reveal and a mod's own `card_effects` destroy or boost. Its owner's magic cards, traps and monsters' effects still reach it, and so does the Swords' attack lock (a side's, not a monster's) |
+| `copy_limit` | how many copies of the card a deck holds, 1 to 40 (default 3): the build-deck screen stops adding at it and an opponent's dealt deck keeps to it. A deck already built with more keeps them |
+| `no_fusion` | `true`: the card fuses with no other, by no disc or mod rule, and a Polymerization does not take it |
 | `drops` | whether the card can be won in its base's place (default `true`, below) |
 | `opponents` | whether an opponent's deck can be dealt it in its base's place (default `false`) |
 | `password` | the password used by the Password shop and shown on the card by View > Card passwords: up to eight digits as a string (`"08124921"`, leading zeros kept) or a number, `""` or `null` for none. The [gameplay tables'](gameplay-tables.md#passwords-and-prices-on-the-password-screen) `passwords` entry overrides it and sets the price, for added cards as well as replacements. Added cards default to 999999 starchips and allow repeat purchases. A copy without a password has none (its base's would give the base) |
@@ -318,6 +321,10 @@ with a note, and a copy made a monster drops the ones its base had.
 { "replace": "Hinotama", "card_effects_mode": "replace",
   "card_effects": [ { "do": "damage", "amount": 800 } ] }
 ```
+
+A `destroy` or `boost` may also say `"position": "attack"` or `"defense"` to reach only monsters in that
+position (a Mirror Force destroys the opponent's Attack Position monsters only), and a `heal` or `damage` may
+say `"lp_over": 3000` to happen only while the side it changes has more LP than that (Meteor of Destruction).
 
 `"card_effects_mode"` is `"add"` by default, which keeps the normal card
 effect (including one selected by `"effect"`) and then runs the listed

@@ -78,11 +78,24 @@ static const JsonValue *definitions[CARD_TABLE_ID_END];
 static unsigned short model_ids[CARD_TABLE_ID_END], effect_ids[CARD_TABLE_ID_END], ai_effect_ids[CARD_TABLE_ID_END];
 /* Threshold plus one: zero inherits the effect's global/retail threshold. */
 static unsigned int trap_thresholds[CARD_TABLE_ID_END];
+static unsigned short trap_minimums[CARD_TABLE_ID_END];   /* an attack trap's lowest attacker ATK, 0 any */
 static unsigned char not_exodia[EXODIA_PIECE_COUNT];  /* a replaced piece without Exodia's rules */
 /* The frame a card is drawn in when its entry says ("frame"), plus one: 0
  * left out, FRAME_TYPE "Type" (cards.h Cards_FrameColor). */
 #define FRAME_TYPE 0xFF
 static unsigned char frames[CARD_TABLE_ID_END];
+/* "unknown_stats": a monster whose printed ATK and DEF are shown as "?" (cards.h Cards_UnknownStats). */
+static unsigned char unknown_stats[CARD_TABLE_ID_END];
+int Cards_UnknownStats(int id) { return Cards_Valid(id) && unknown_stats[id]; }
+/* "no_fusion": a card that takes part in no fusion (cards.h Cards_NoFusion). */
+static unsigned char no_fusion[CARD_TABLE_ID_END];
+int Cards_NoFusion(int id) { return Cards_Valid(id) && no_fusion[id]; }
+/* "copy_limit": how many of the card a deck holds (cards.h Cards_CopyLimit); 0 for the game's three. */
+static unsigned char copy_limit[CARD_TABLE_ID_END];
+/* "spell_immune": the opponent's magic cards neither destroy nor weaken the card (cards.h Cards_SpellImmune). */
+static unsigned char spell_immune[CARD_TABLE_ID_END];
+int Cards_SpellImmune(int id) { return Cards_Valid(id) && spell_immune[id]; }
+int Cards_CopyLimit(int id) { return Cards_Valid(id) && copy_limit[id] ? copy_limit[id] : DECK_CARD_COPY_LIMIT; }
 /* A card can name an arbitrary card_layout frame style, unlike "frame",
  * which is deliberately limited to the six palette rows the small cards
  * have.  The layout resolves the name at draw time, after all mods load. */
@@ -147,6 +160,7 @@ int Cards_FindIdentity(const char *identity)
 int Cards_ModelId(int id) { return Cards_Valid(id) && model_ids[id] ? model_ids[id] : Cards_BaseId(id); }
 int Cards_EffectId(int id) { return Cards_Valid(id) && effect_ids[id] ? effect_ids[id] : Cards_BaseId(id); }
 int Cards_TrapId(int id) { return Cards_Valid(id) && Cards_Type(id) == CARD_TYPE_TRAP ? Cards_EffectId(id) : 0; }
+int Cards_TrapMinAttack(int id) { return Cards_Valid(id) ? trap_minimums[id] : 0; }
 int Cards_TrapThreshold(int id, int fallback)
 {
     int effect = Cards_TrapId(id);
@@ -1409,8 +1423,8 @@ static void add_entry(const char *mod, const char *directory, int index, const J
     MonsterEffect *own_card_effects = NULL;
     int card_effect_count, card_effect_replace = 0, card_effect_mode_given = 0;
     int ai_effect = 0, ai_effect_given = 0, spell_or_trap;
-    unsigned int trap_threshold;
-    unsigned char level_attr, frame;
+    unsigned int trap_threshold, trap_minimum;
+    unsigned char level_attr, frame, unknown, nofuse, limit, immune;
     char frame_style[FRAME_STYLE_NAME_LENGTH];
     unsigned short attribute;
     unsigned int tags;
@@ -1485,6 +1499,7 @@ static void add_entry(const char *mod, const char *directory, int index, const J
     stats = (unsigned)gDuel_adwCardStats[base - 1];
     logical_type = extended_types[base] >= 0 ? extended_types[base] : (int)((stats >> 26) & 0x1F);
     trap_threshold = trap_thresholds[base];
+    trap_minimum = trap_minimums[base];
     {
         const JsonValue *threshold = Json_Member(entry, "trap_threshold");
         if (threshold) {
@@ -1493,6 +1508,14 @@ static void add_entry(const char *mod, const char *directory, int index, const J
             else if (Json_TypeOf(threshold) == JSON_NUMBER && points >= 0 && points <= 65535)
                 trap_threshold = (unsigned int)points + 1;
             else Mods_Note(mod, "cards[%d]: \"trap_threshold\" must be a whole number, 0 to 65535, or null", index);
+        }
+    }
+    {
+        const JsonValue *minimum = Json_Member(entry, "trap_min_attack");
+        if (minimum) {
+            long points = Json_Number(minimum, -1);
+            if (Json_TypeOf(minimum) == JSON_NUMBER && points >= 0 && points <= 65535) trap_minimum = (unsigned int)points;
+            else Mods_Note(mod, "cards[%d]: \"trap_min_attack\" must be a whole number, 0 to 65535", index);
         }
     }
     was_monster = Cards_IsMonsterType((int)((stats >> 26) & 0x1F));
@@ -1633,6 +1656,11 @@ static void add_entry(const char *mod, const char *directory, int index, const J
     /* Left out, the frame is the base's (its type's unless an earlier entry
      * chose one); "type" goes back to the type's. */
     frame = frames[base];
+    unknown = Json_Bool(Json_Member(entry, "unknown_stats"), unknown_stats[base]) ? 1 : 0;
+    nofuse = Json_Bool(Json_Member(entry, "no_fusion"), 0) ? 1 : 0;
+    immune = Json_Bool(Json_Member(entry, "spell_immune"), spell_immune[base]) ? 1 : 0;
+    limit = (unsigned char)Json_Number(Json_Member(entry, "copy_limit"), 0);
+    if (limit > DECK_SIZE) limit = DECK_SIZE;
     if (Json_Member(entry, "frame")) {
         value = choice(Json_Member(entry, "frame"), frame_names, CARD_FRAME_COUNT + 1);
         if (value < 0 || value > CARD_FRAME_COUNT) {
@@ -1820,6 +1848,7 @@ static void add_entry(const char *mod, const char *directory, int index, const J
             ai_effect_ids[id] = ai_effect_ids[base];
         }
         trap_thresholds[id] = trap_threshold;
+        trap_minimums[id] = (unsigned short)trap_minimum;
         fusion_groups[id] = entry_fusion_groups;
         has_fusion_groups[id] = (unsigned char)entry_has_fusion_groups;
         gDuel_adwCardStats[id - 1] = (int)stats;
@@ -1829,6 +1858,10 @@ static void add_entry(const char *mod, const char *directory, int index, const J
         gDuel_abCardLevelAttr[id] = level_attr;
         attribute_ids[id] = attribute;
         frames[id] = frame;
+        unknown_stats[id] = unknown;
+        no_fusion[id] = nofuse;
+        copy_limit[id] = limit;
+        spell_immune[id] = (unsigned char)immune;
         snprintf(frame_style_names[id], sizeof(frame_style_names[id]), "%s", frame_style);
         tag_masks[id] = tags;
         names[id] = name && *name ? encode_name(mod, name, n, id) : NULL;

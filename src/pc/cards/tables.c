@@ -180,6 +180,10 @@ typedef struct {
     unsigned short recipe[6];   /* ritual, three tributes, result, 0 */
     TablesRitualRequirement requirements[TABLES_RITUAL_TRIBUTE_MAX];
     unsigned char removed, conditional;
+    unsigned char only_recipes; /* "recipes_only": no fusion by the rules, only its recipes */
+    unsigned char fusion;       /* "fusion": two monsters of the field fuse by the fusion rules */
+    unsigned char poly_count;   /* "recipes" of a "fusion" ritual: materials (0 ends), result */
+    unsigned short poly[TABLES_POLY_RECIPES][TABLES_POLY_WIDTH];
     /* How many tributes and from where (TABLES_TRIBUTES_*); `extended`
      * when that is not three from the field (Tables_RitualRule). */
     unsigned char count, from, extended;
@@ -839,6 +843,45 @@ static void read_rituals(const char *mod, const JsonValue *list)
         rule.recipe[0] = (unsigned short)ritual;
         if (result && Json_TypeOf(result) == JSON_NULL) {
             rule.removed = 1;
+        } else if (Json_Bool(Json_Member(entry, "fusion"), 0)) {
+            const JsonValue *recipes = Json_Member(entry, "recipes");
+            rule.fusion = 1;
+            rule.only_recipes = Json_Bool(Json_Member(entry, "recipes_only"), 0) ? 1 : 0;
+            for (j = 0; j < Json_Count(recipes); j++) {
+                const JsonValue *recipe = Json_At(recipes, j);
+                const JsonValue *materials = Json_Member(recipe, "materials");
+                unsigned short *r;
+                int m, made;
+                if (rule.poly_count >= TABLES_POLY_RECIPES) {
+                    Mods_Note(mod, "%s: a fusion ritual takes %d recipes; the rest are left out", where,
+                              TABLES_POLY_RECIPES);
+                    break;
+                }
+                if (Json_Count(materials) < 1 || Json_Count(materials) > TABLES_POLY_MATERIALS) {
+                    Mods_Note(mod, "%s: a recipe has one to %d \"materials\"; left out", where, TABLES_POLY_MATERIALS);
+                    continue;
+                }
+                r = rule.poly[rule.poly_count];
+                made = card(mod, where, Json_Member(recipe, "result"));
+                for (m = 0; m < Json_Count(materials) && made; m++) {
+                    const JsonValue *material = Json_At(materials, m);
+                    /* {"type": "Dragon"}: any monster of the type */
+                    if (Json_TypeOf(material) == JSON_OBJECT) {
+                        int type = Cards_TypeNamed(Json_String(Json_Member(material, "type"), ""));
+                        if (type < 0 || type >= CARD_TYPE_MAGIC) {
+                            Mods_Note(mod, "%s: a material's \"type\" is a monster type", where);
+                            made = 0;
+                        } else {
+                            r[m] = (unsigned short)(TABLES_POLY_TYPE | type);
+                        }
+                    } else if (!(r[m] = (unsigned short)card(mod, where, material))) {
+                        made = 0;
+                    }
+                }
+                if (!made) continue;
+                r[TABLES_POLY_MATERIALS] = (unsigned short)made;
+                rule.poly_count++;
+            }
         } else {
             count = Json_TypeOf(tributes) == JSON_ARRAY ? Json_Count(tributes) : 0;
             if (count < 1 || count > TABLES_RITUAL_TRIBUTE_MAX) {
@@ -891,6 +934,33 @@ int Tables_HasRitual(int ritual)
     return 0;
 }
 
+int Tables_RitualFusion(int ritual)
+{
+    int i;
+    for (i = ritual_count - 1; i >= 0; i--)
+        if (rituals[i].recipe[0] == ritual) return rituals[i].fusion;
+    return 0;
+}
+
+int Tables_RitualFusionOnly(int ritual)
+{
+    int i;
+    for (i = ritual_count - 1; i >= 0; i--)
+        if (rituals[i].recipe[0] == ritual) return rituals[i].fusion && rituals[i].only_recipes;
+    return 0;
+}
+
+int Tables_RitualFusionRecipes(int ritual, const unsigned short (**list)[TABLES_POLY_WIDTH])
+{
+    int i;
+    for (i = ritual_count - 1; i >= 0; i--) {
+        if (rituals[i].recipe[0] != ritual) continue;
+        *list = (const unsigned short (*)[TABLES_POLY_WIDTH])rituals[i].poly;   /* ISO C before C2X: array of const is not const array */
+        return rituals[i].poly_count;
+    }
+    return 0;
+}
+
 int Tables_Ritual(int ritual, unsigned short recipe[6])
 {
     int i;
@@ -909,7 +979,7 @@ int Tables_RitualRequirements(int ritual, TablesRitualRequirement requirements[3
     int i;
     for (i = ritual_count - 1; i >= 0; i--) {
         if (rituals[i].recipe[0] != ritual) continue;
-        if (rituals[i].removed || !rituals[i].conditional || rituals[i].extended) return 0;
+        if (rituals[i].removed || rituals[i].fusion || !rituals[i].conditional || rituals[i].extended) return 0;
         memcpy(requirements, rituals[i].requirements, DUEL_RITUAL_TRIBUTE_COUNT * sizeof(*requirements));
         if (result) *result = rituals[i].recipe[4];
         return 1;
@@ -1250,6 +1320,36 @@ typedef struct {
  * rather than in one manifest nobody can read. The file holds exactly what the
  * key would have held. */
 static const char *pool_directory;
+
+/* A rule table written out in the manifest, or named as a file of the mod's
+ * ("fusions": "fusions.json"): the table to read, or NULL after a note. A file's
+ * document goes in *document, for the caller to free once it has read the table. */
+static const JsonValue *table_or_file(const char *mod, const char *key, const JsonValue *table, JsonDocument **document)
+{
+    const char *relative;
+    char path[1024], error[256];
+    *document = NULL;
+    if (Json_TypeOf(table) != JSON_STRING) return table;
+    relative = Json_String(table, NULL);
+    if (!pool_directory) {
+        Mods_Note(mod, "\"%s\": a file cannot be read from here", key);
+        return NULL;
+    }
+    if (!relative || !Paths_Contained(relative)) {
+        Mods_Note(mod, "\"%s\": %s is not a path inside the mod", key, relative ? relative : "(nothing)");
+        return NULL;
+    }
+    if (snprintf(path, sizeof path, "%s/%s", pool_directory, relative) >= (int)sizeof path) {
+        Mods_Note(mod, "\"%s\": %s is too long a path", key, relative);
+        return NULL;
+    }
+    *document = Json_ParseFile(path, error, sizeof error);
+    if (!*document) {
+        Mods_Note(mod, "\"%s\": %s: %s", key, relative, error);
+        return NULL;
+    }
+    return Json_Root(*document);
+}
 
 static void read_pools(const char *mod, const JsonValue *table, int decks)
 {
@@ -2408,10 +2508,19 @@ void Tables_AddFrom(const char *mod, const char *directory, const JsonValue *man
 {
     forget_pools();
     pool_directory = directory;
-    read_fusions(mod, Json_Member(manifest, "fusions"));
-    read_equips(mod, Json_Member(manifest, "equips"));
-    read_equip_default(mod, Json_Member(manifest, "equip_bonus_default"));
-    read_rituals(mod, Json_Member(manifest, "rituals"));
+    {   /* each may be a file of the mod's (table_or_file) */
+        JsonDocument *document;
+        const JsonValue *list = table_or_file(mod, "fusions", Json_Member(manifest, "fusions"), &document);
+        if (list || !document) read_fusions(mod, list);
+        Json_Free(document);
+        list = table_or_file(mod, "equips", Json_Member(manifest, "equips"), &document);
+        if (list || !document) read_equips(mod, list);
+        Json_Free(document);
+        read_equip_default(mod, Json_Member(manifest, "equip_bonus_default"));
+        list = table_or_file(mod, "rituals", Json_Member(manifest, "rituals"), &document);
+        if (list || !document) read_rituals(mod, list);
+        Json_Free(document);
+    }
     read_pools(mod, Json_Member(manifest, "drops"), 0);
     read_pools(mod, Json_Member(manifest, "decks"), 1);
     read_chest_overflow(mod, Json_Member(manifest, "chest_overflow"));

@@ -1,0 +1,4529 @@
+[
+ {
+  "password": "70095154",
+  "name": "Cyber Dragon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 5,
+  "attack": 2100,
+  "defense": 1600,
+  "description": "A mechanical dragon built for battle. Fused with its own kind, it grows a second head, then a third.",
+  "date": "2005-08-06"
+ },
+ {
+  "password": "74157028",
+  "name": "Cyber Twin Dragon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2100,
+  "description": "Two Cyber Dragons joined into one. Its twin heads fire one blast after another.",
+  "date": "2005-08-06",
+  "fusions": [
+   [
+    "Cyber Dragon",
+    "Cyber Dragon"
+   ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "01546123",
+  "name": "Cyber End Dragon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 10,
+  "attack": 4000,
+  "defense": 2800,
+  "description": "A three-headed machine dragon of ultimate power. Its triple blast pierces any defense.",
+  "date": "2005-08-06",
+  "fusions": [
+   [
+    "Cyber Twin Dragon",
+    "Cyber Dragon"
+   ],
+   [
+    "Cyber Twin Dragon",
+    "Cyber Twin Dragon"
+   ]
+  ],
+  "drop": {
+   "weight": 2,
+   "from": [
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "06150044",
+  "name": "Arcana Knight Joker",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 9,
+  "attack": 3800,
+  "defense": 2500,
+  "description": "The ace knight born when the King, Queen and Jack unite. It wields the power of every suit.",
+  "date": "2009-09-01",
+  "fusions": [
+   [
+    "Judge Man",
+    "King's Knight"
+   ],
+   [
+    "Judge Man",
+    "Queen's Knight"
+   ],
+   [
+    "Judge Man",
+    "Jack's Knight"
+   ]
+  ],
+  "drop": {
+   "weight": 3,
+   "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  },
+  "steps": [
+   [
+    "King's Knight",
+    "Queen's Knight",
+    "Judge Man"
+   ],
+   [
+    "King's Knight",
+    "Jack's Knight",
+    "Judge Man"
+   ],
+   [
+    "Queen's Knight",
+    "Jack's Knight",
+    "Judge Man"
+   ]
+  ]
+ },
+ {
+  "password": "75347539",
+  "name": "Valkyrion the Magna Warrior",
+  "type": "Rock",
+  "attribute": "Earth",
+  "level": 8,
+  "attack": 3500,
+  "defense": 3850,
+  "description": "The three Magnet Warriors joined into one. Magnetic force binds its body into an unbreakable shield.",
+  "date": "2003-04-15",
+  "fusions": [
+   [
+    "Conduction Warrior Linear Magnum Plus Minus",
+    "Alpha The Magnet Warrior"
+   ],
+   [
+    "Conduction Warrior Linear Magnum Plus Minus",
+    "Beta The Magnet Warrior"
+   ],
+   [
+    "Conduction Warrior Linear Magnum Plus Minus",
+    "Gamma the Magnet Warrior"
+   ]
+  ],
+  "drop": {
+   "weight": 3,
+   "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  },
+  "poly": [
+   [
+    "Alpha The Magnet Warrior",
+    "Beta The Magnet Warrior",
+    "Gamma the Magnet Warrior"
+   ]
+  ]
+ },
+ {
+  "password": "37663536",
+  "name": "Ancient Gear Megaton Golem",
+  "type": "Machine",
+  "attribute": "Earth",
+  "level": 9,
+  "attack": 3300,
+  "defense": 3300,
+  "description": "An ancient war machine rebuilt from countless gears. Each step it takes shakes the earth.",
+  "date": "2018-02-22",
+  "fusions": [
+   [
+    "Machine King",
+    "Labyrinth Tank"
+   ],
+   [
+    "Machine King",
+    "Steel Ogre Grotto #2"
+   ],
+   [
+    "Labyrinth Tank",
+    "Steel Ogre Grotto #2"
+   ],
+   [
+    "Machine King",
+    "Launcher Spider"
+   ]
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "85520851",
+  "name": "Super Conductor Tyranno",
+  "type": "Dinosaur",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 3300,
+  "defense": 1400,
+  "description": "A dinosaur charged with lightning. Its bite carries a deadly electric shock.",
+  "date": "2006-10-20",
+  "fusions": [
+   [
+    "Kabazauls",
+    "Bracchio-raidus"
+   ],
+   [
+    "Pragtical",
+    "Bracchio-raidus"
+   ],
+   [
+    "Megazowler",
+    "Bracchio-raidus"
+   ],
+   [
+    "Thunder Dragon",
+    "Bracchio-raidus"
+   ]
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "41685633",
+  "name": "Thunder Dragon Titan",
+  "type": "Thunder",
+  "attribute": "Light",
+  "level": 10,
+  "attack": 3200,
+  "defense": 3200,
+  "description": "The final form of the thunder dragons. Its body is a storm, and every roar calls down lightning.",
+  "date": "2018-10-18",
+  "fusions": [
+   [
+    "Twin-headed Thunder Dragon",
+    "Thunder Dragon"
+   ]
+  ],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Twin-headed Thunder Dragon"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 3000,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "27346636",
+  "name": "Gladiator Beast Heraklinos",
+  "type": "Beast-Warrior",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2800,
+  "description": "The champion of the gladiator beasts. It rules the arena with a mighty spear and blazing flames.",
+  "date": "2007-11-14",
+  "fusions": [
+   [
+    "Garnecia Elefantis",
+    "Wolf Axwielder"
+   ],
+   [
+    "Garnecia Elefantis",
+    "Garoozis"
+   ],
+   [
+    "Garnecia Elefantis",
+    "Great Angus"
+   ],
+   [
+    "Wolf Axwielder",
+    "Sengenjin"
+   ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "32543380",
+  "name": "Volcanic Doomfire",
+  "type": "Pyro",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 3000,
+  "defense": 1800,
+  "description": "A fiend born from the heart of a volcano. Its molten body burns all that stand before it.",
+  "date": "2007-05-16",
+  "fusions": [
+   [
+    "Mr. Volcano",
+    "Twin-Headed Fire Dragon"
+   ],
+   [
+    "Mr. Volcano",
+    "Flame Champion"
+   ],
+   [
+    "Twin-Headed Fire Dragon",
+    "Blazing Inpachi"
+   ],
+   [
+    "Flame Champion",
+    "Blazing Inpachi"
+   ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "22056710",
+  "name": "Vampire Genesis",
+  "type": "Zombie",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2100,
+  "description": "The first vampire, reborn from the Vampire Lord. It commands the undead from its coffin throne.",
+  "date": "2005-01-01",
+  "fusions": [
+   [
+    "Master Kyonshee",
+    "Great Mammoth of Goldfine"
+   ],
+   [
+    "Master Kyonshee",
+    "Dokurorider"
+   ],
+   [
+    "Master Kyonshee",
+    "Pumpking the King of Ghosts"
+   ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "48229808",
+  "name": "Horus the Black Flame Dragon LV8",
+  "type": "Dragon",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 3000,
+  "defense": 1800,
+  "description": "The black flame dragon in its final form. Its dark fire can silence any spell.",
+  "date": "2004-10-01",
+  "fusions": [
+   [
+    "Ryu-Ran",
+    "Twin-Headed Fire Dragon"
+   ],
+   [
+    "Ryu-Ran",
+    "Mr. Volcano"
+   ],
+   [
+    "Ryu-Ran",
+    "Luster Dragon #2"
+   ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "15270885",
+  "name": "VW-Tiger Catapult",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 6,
+  "attack": 2000,
+  "defense": 2100,
+  "description": "A tiger jet and a catapult wing joined as one.",
+  "date": "2005-11-05",
+  "fusions": [
+   [
+    "V-Tiger Jet",
+    "W-Wing Catapult"
+   ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "02111707",
+  "name": "XY-Dragon Cannon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 6,
+  "attack": 2200,
+  "defense": 1900,
+  "description": "A cannon with a dragon head, firing from both ends.",
+  "date": "2005-11-05",
+  "fusions": [
+   [
+    "X-Head Cannon",
+    "Y-Dragon Head"
+   ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "99724761",
+  "name": "XZ-Tank Cannon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 6,
+  "attack": 1900,
+  "defense": 2600,
+  "description": "A cannon mounted on a metal tank.",
+  "date": "2005-11-05",
+  "fusions": [
+   [
+    "X-Head Cannon",
+    "Z-Metal Tank"
+   ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "25119460",
+  "name": "YZ-Tank Dragon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 6,
+  "attack": 2100,
+  "defense": 1200,
+  "description": "A dragon head on a metal tank.",
+  "date": "2005-11-05",
+  "fusions": [
+   [
+    "Y-Dragon Head",
+    "Z-Metal Tank"
+   ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "91998119",
+  "name": "XYZ-Dragon Cannon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2600,
+  "description": "Three machines united. Its triple attack destroys everything in its path.",
+  "date": "2005-11-05",
+  "fusions": [
+   [
+    "XY-Dragon Cannon",
+    "Z-Metal Tank"
+   ],
+   [
+    "XZ-Tank Cannon",
+    "Y-Dragon Head"
+   ],
+   [
+    "YZ-Tank Dragon",
+    "X-Head Cannon"
+   ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  },
+  "poly": [
+   [
+    "X-Head Cannon",
+    "Y-Dragon Head",
+    "Z-Metal Tank"
+   ]
+  ]
+ },
+ {
+  "password": "84243274",
+  "name": "VWXYZ-Dragon Catapult Cannon",
+  "type": "Machine",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2800,
+  "description": "Five combat machines united into one flying fortress. Its catapult cannon blasts any target away.",
+  "date": "2005-11-05",
+  "fusions": [
+   [
+    "VW-Tiger Catapult",
+    "XYZ-Dragon Cannon"
+   ]
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "98502113",
+  "name": "Dark Paladin",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2900,
+  "defense": 2400,
+  "description": "The dark knight born when the Dark Magician and Buster Blader join forces. Its sword slays dragons.",
+  "date": "2003-10-10",
+  "fusions": [
+   [
+    "Dark Magician",
+    "Buster Blader"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "32626733",
+  "name": "Spiral Serpent",
+  "type": "Sea Serpent",
+  "attribute": "Water",
+  "level": 8,
+  "attack": 2900,
+  "defense": 2900,
+  "description": "A giant serpent that coils around the sea. It wraps its prey in its spiral body.",
+  "date": "2007-02-28",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Sea Serpent"
+     },
+     {
+      "type": "Aqua"
+     }
+    ],
+    "max_atk": 2000,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Sea Serpent"
+     },
+     {
+      "type": "Fish"
+     }
+    ],
+    "max_atk": 2000,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Sea Serpent"
+     },
+     {
+      "type": "Fairy"
+     }
+    ],
+    "max_atk": 2000,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "86489182",
+  "name": "Simorgh, Bird of Ancestry",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 2900,
+  "defense": 2000,
+  "description": "A sacred bird of legend that rules the sky. Its wings call down a storm.",
+  "date": "2008-05-03",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Winged Beast"
+     },
+     {
+      "type": "Fairy"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "11819616",
+  "name": "Tytannial, Princess of Camellias",
+  "type": "Plant",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2600,
+  "description": "The princess of the camellia garden. Her blossoms bloom into a storm of petals.",
+  "date": "2008-11-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Plant"
+     },
+     {
+      "type": "Insect"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Plant"
+     },
+     {
+      "type": "Fairy"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "57610714",
+  "name": "Cloudian - Eye of the Typhoon",
+  "type": "Aqua",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 3000,
+  "defense": 1000,
+  "description": "The king of the clouds. It sits in the eye of a typhoon and rules the storm.",
+  "date": "2007-11-14",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Aqua"
+     },
+     {
+      "type": "Thunder"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Thunder"
+     },
+     {
+      "type": "Winged Beast"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "78651105",
+  "name": "Beast King Barbaros",
+  "type": "Beast-Warrior",
+  "attribute": "Earth",
+  "level": 8,
+  "attack": 3000,
+  "defense": 1200,
+  "description": "The king of all beasts. Its roar alone puts a whole army to flight.",
+  "date": "2009-06-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Beast-Warrior"
+     },
+     {
+      "type": "Beast"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Beast-Warrior"
+     },
+     {
+      "type": "Dinosaur"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "00324483",
+  "name": "Ultimate Flame Swordsman",
+  "type": "Warrior",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 2800,
+  "defense": 1600,
+  "description": "The flame swordsman at its peak, burning with more fire than ever. Its blade cuts through anything.",
+  "date": "2024-01-18",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Flame Swordsman"
+     },
+     {
+      "attribute": "Fire"
+     }
+    ],
+    "max_atk": 2600,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "70902743",
+  "name": "Red Dragon Archfiend",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2000,
+  "description": "A crimson dragon of flame and darkness. Its Absolute Powerforce scorches all.",
+  "date": "2008-08-18",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Dragon"
+     },
+     {
+      "type": "Fiend",
+      "attribute": "Dark"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "72989439",
+  "name": "Black Luster Soldier - Envoy of the Beginning",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "The soldier who appears at the start of a battle. Its blade of light banishes any foe.",
+  "date": "2004-03-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Warrior"
+     },
+     {
+      "type": "Fairy",
+      "attribute": "Light"
+     }
+    ],
+    "max_atk": 1700,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Warrior",
+      "attribute": "Light"
+     },
+     {
+      "type": "Spellcaster"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "73879377",
+  "name": "Armed Dragon LV7",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 7,
+  "attack": 2800,
+  "defense": 1000,
+  "description": "A dragon with blades along its body. It slashes foes with blade wings.",
+  "date": "2004-10-01",
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  },
+  "fusions": [
+   [
+    "Armed Dragon LV5",
+    "Level Up!"
+   ]
+  ]
+ },
+ {
+  "password": "44508094",
+  "name": "Stardust Dragon",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 2500,
+  "defense": 2000,
+  "description": "A shining dragon of the wind. It protects its allies from destruction.",
+  "date": "2008-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Dragon",
+      "attribute": "Wind",
+      "min_atk": 1600
+     },
+     {
+      "type": "Machine"
+     }
+    ],
+    "max_atk": 2400
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "61257789",
+  "name": "Stardust Dragon/Assault Mode",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "Stardust Dragon in a battle form. Its wings blaze with starlight.",
+  "date": "2009-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Stardust Dragon"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 2900
+   },
+   {
+    "groups": [
+     {
+      "name": "Stardust Dragon"
+     },
+     {
+      "attribute": "Wind"
+     }
+    ],
+    "max_atk": 2900
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "18891691",
+  "name": "Perfect Machine King",
+  "type": "Machine",
+  "attribute": "Earth",
+  "level": 8,
+  "attack": 2700,
+  "defense": 1500,
+  "description": "The king of machines. Every machine on the field is powered up by its might.",
+  "date": "2004-11-20",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Machine",
+      "attribute": "Earth"
+     },
+     {
+      "type": "Rock"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "49064413",
+  "name": "The Masked Beast",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 3200,
+  "defense": 1800,
+  "description": "A beast sealed behind a cursed mask. When the mask comes off, its fury is unstoppable.",
+  "date": "2003-03-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Ushi Oni"
+     },
+     {
+      "type": "Beast-Warrior"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "name": "Ushi Oni"
+     },
+     {
+      "type": "Zombie"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "name": "Soul Hunter"
+     },
+     {
+      "type": "Beast-Warrior"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "name": "Soul Hunter"
+     },
+     {
+      "type": "Zombie"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "76039636",
+  "name": "Doom Dozer",
+  "type": "Insect",
+  "attribute": "Earth",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2600,
+  "description": "A giant insect that bulldozes over everything. Nothing stands in its way.",
+  "date": "2006-02-18",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Insect"
+     },
+     {
+      "type": "Beast"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "78193831",
+  "name": "Buster Blader",
+  "name_color": 5,
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 7,
+  "attack": 2600,
+  "defense": 2300,
+  "description": "The swordsman who slays dragons. Gains 500 ATK for each face-up Dragon on the foe's side.",
+  "date": "2002-10-20",
+  "frame": "Orange"
+ },
+ {
+  "password": "38033121",
+  "name": "Dark Magician Girl",
+  "name_color": 5,
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 6,
+  "attack": 2000,
+  "defense": 1700,
+  "description": "A girl who studied magic beside the Dark Magician. Gains 300 ATK for each Dark Magician or Magician of Black Chaos destroyed.",
+  "date": "2003-10-10",
+  "frame": "Orange"
+ },
+ {
+  "password": "59400890",
+  "name": "Dark Magician of Destruction",
+  "name_color": 5,
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2600,
+  "description": "The Dark Magician reborn with a power of ruin. Gains 300 ATK for each Spellcaster on the field.",
+  "frame": "Purple",
+  "date": "2026-02-19",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Dark Magician"
+     },
+     {
+      "attribute": "Light"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   },
+   {
+    "groups": [
+     {
+      "name": "Dark Magician"
+     },
+     {
+      "attribute": "Dark"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "41721210",
+  "name": "Dark Magician the Dragon Knight",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "The dark magician who rides a dragon into battle. Together they strike as one.",
+  "date": "2017-10-05",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Spellcaster",
+      "attribute": "Dark"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "name": "Dark Magician"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 2900,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "64788463",
+  "name": "King's Knight",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1600,
+  "defense": 1400,
+  "description": "The king of the card knights. When the queen stands beside him, the jack answers his call.",
+  "date": "2005-11-05"
+ },
+ {
+  "password": "25652259",
+  "name": "Queen's Knight",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1500,
+  "defense": 1600,
+  "description": "The queen of the card knights. Her grace commands the loyalty of the king and the jack.",
+  "date": "2005-11-05"
+ },
+ {
+  "password": "90876561",
+  "name": "Jack's Knight",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 5,
+  "attack": 1900,
+  "defense": 1000,
+  "description": "The jack of the card knights. He serves the king and queen with a sharp blade.",
+  "date": "2005-11-05"
+ },
+ {
+  "password": "11321089",
+  "name": "Guardian Chimera",
+  "type": "Beast",
+  "attribute": "Dark",
+  "level": 9,
+  "attack": 3300,
+  "defense": 3300,
+  "description": "A beast of many bodies that guards the sacred ground. Its triple claws tear through all.",
+  "date": "2022-02-10",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Sphinx Teleia"
+     },
+     {
+      "type": "Beast"
+     }
+    ],
+    "max_atk": 2600,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "name": "Sphinx Teleia"
+     },
+     {
+      "type": "Beast-Warrior"
+     }
+    ],
+    "max_atk": 2600,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "21175632",
+  "name": "St. Joan",
+  "type": "Fairy",
+  "attribute": "Light",
+  "level": 7,
+  "attack": 2800,
+  "defense": 2000,
+  "description": "A holy maiden who leads armies into battle. Her faith turns the tide of every war.",
+  "date": "2003-03-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Fairy"
+     },
+     {
+      "type": "Spellcaster"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "10532969",
+  "name": "Hyper-Ancient Shark Megalodon",
+  "type": "Fish",
+  "attribute": "Water",
+  "level": 8,
+  "attack": 2900,
+  "defense": 1300,
+  "description": "A huge shark from the ancient seas. It bites through anything in its way.",
+  "date": "2013-01-25",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Fish"
+     },
+     {
+      "type": "Aqua"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "09053187",
+  "name": "Gagagigo the Risen",
+  "type": "Reptile",
+  "attribute": "Water",
+  "level": 4,
+  "attack": 2950,
+  "defense": 2800,
+  "description": "The lizard warrior who has risen again. His new strength comes from the pain he has felt.",
+  "date": "2012-11-09",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Reptile"
+     },
+     {
+      "type": "Aqua"
+     }
+    ],
+    "max_atk": 1800,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Reptile"
+     },
+     {
+      "type": "Fish"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "type": "Reptile"
+     },
+     {
+      "type": "Dinosaur"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "51402177",
+  "name": "Sphinx Teleia",
+  "type": "Beast",
+  "attribute": "Light",
+  "level": 10,
+  "attack": 2500,
+  "defense": 3000,
+  "description": "The sphinx that guards the tomb. It asks a riddle, and no one has ever answered.",
+  "date": "2004-07-25",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Beast"
+     },
+     {
+      "type": "Beast"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   },
+   {
+    "groups": [
+     {
+      "name": "Flame Cerebrus"
+     },
+     {
+      "type": "Beast"
+     }
+    ],
+    "max_atk": 2400,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "10000000",
+  "name": "Obelisk the Tormentor",
+  "type": "Fiend",
+  "attribute": "Earth",
+  "level": 10,
+  "attack": 4000,
+  "defense": 4000,
+  "description": "The giant god of the pharaoh. Its fists crush an enemy and its soul-energy blast wipes out all.",
+  "date": "2010-01-01",
+  "fusions": [],
+  "mass": [],
+  "drop": {
+   "weight": 1,
+   "from": [
+    "Duel Master K"
+   ]
+  },
+  "no_fusion": true,
+  "copy_limit": 1
+ },
+ {
+  "password": "10000020",
+  "name": "Slifer the Sky Dragon",
+  "name_color": 5,
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 10,
+  "attack": 4000,
+  "defense": 4000,
+  "description": "ATK and DEF are 1000 for each card in your hand. Foe's Attack Position monsters lose 2000 ATK; at 0 they are destroyed.",
+  "date": "2010-01-01",
+  "fusions": [],
+  "mass": [],
+  "drop": {
+   "weight": 1,
+   "from": [
+    "Duel Master K"
+   ]
+  },
+  "frame": "Orange",
+  "unknown_stats": true,
+  "no_fusion": true,
+  "copy_limit": 1
+ },
+ {
+  "password": "10000010",
+  "name": "The Winged Dragon of Ra",
+  "name_color": 5,
+  "type": "Winged Beast",
+  "attribute": "Fire",
+  "level": 10,
+  "attack": 4000,
+  "defense": 4000,
+  "description": "The winged dragon of the sun. Its ATK is its owner's life points.",
+  "date": "2010-01-01",
+  "fusions": [],
+  "mass": [],
+  "drop": {
+   "weight": 1,
+   "from": [
+    "Duel Master K"
+   ]
+  },
+  "frame": "Orange",
+  "unknown_stats": true,
+  "no_fusion": true,
+  "copy_limit": 1
+ },
+ {
+  "password": "97642679",
+  "name": "Dark Master - Zorc",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2700,
+  "defense": 1500,
+  "description": "The dark master who rules the darkness of the Shadow Realm. Its wrath drains all light.",
+  "date": "2003-12-01",
+  "fusions": [],
+  "mass": [],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "15013468",
+  "name": "Andro Sphinx",
+  "type": "Beast",
+  "attribute": "Light",
+  "level": 10,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "The sphinx of the pyramid. It guards the pharaoh's tomb and punishes any thief.",
+  "date": "2004-07-25",
+  "fusions": [],
+  "mass": []
+ },
+ {
+  "password": "44839512",
+  "name": "Conduction Warrior Linear Magnum Plus Minus",
+  "type": "Rock",
+  "attribute": "Earth",
+  "level": 7,
+  "attack": 2700,
+  "defense": 1300,
+  "description": "Two magnet warriors joined by a surge of plus and minus. The current between them fuels a third.",
+  "date": "2026-02-05",
+  "fusions": [
+   [
+    "Alpha The Magnet Warrior",
+    "Beta The Magnet Warrior"
+   ],
+   [
+    "Alpha The Magnet Warrior",
+    "Gamma the Magnet Warrior"
+   ],
+   [
+    "Beta The Magnet Warrior",
+    "Gamma the Magnet Warrior"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "64428736",
+  "name": "Alligator's Sword",
+  "type": "Beast",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 1500,
+  "defense": 1200,
+  "description": "A swordsman with the head of an alligator. His blade bites hard.",
+  "date": "2010-08-14"
+ },
+ {
+  "password": "77207191",
+  "name": "Berfomet",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 5,
+  "attack": 1400,
+  "defense": 1800,
+  "description": "A beast of the dark with the horns of a goat. It lurks in the shadows.",
+  "date": "2010-02-12"
+ },
+ {
+  "password": "64268668",
+  "name": "Cyber Ogre",
+  "type": "Machine",
+  "attribute": "Earth",
+  "level": 5,
+  "attack": 1900,
+  "defense": 1200,
+  "description": "A cyborg ogre built for war. It crushes its foes with sheer power.",
+  "date": "2006-11-15"
+ },
+ {
+  "password": "89943723",
+  "name": "Elemental HERO Neos",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 7,
+  "attack": 2500,
+  "defense": 2000,
+  "description": "The hero who came from outer space. He joins with the Neo-Spacians.",
+  "date": "2006-08-16"
+ },
+ {
+  "password": "21844576",
+  "name": "Elemental HERO Avian",
+  "type": "Warrior",
+  "attribute": "Wind",
+  "level": 3,
+  "attack": 1000,
+  "defense": 1000,
+  "description": "A hero of the wind with feathered wings. He glides over the battlefield.",
+  "date": "2005-05-28"
+ },
+ {
+  "password": "58932615",
+  "name": "Elemental HERO Burstinatrix",
+  "type": "Warrior",
+  "attribute": "Fire",
+  "level": 3,
+  "attack": 1200,
+  "defense": 800,
+  "description": "A hero of flame. She burns her foes with a blast of fire.",
+  "date": "2005-05-28"
+ },
+ {
+  "password": "84327329",
+  "name": "Elemental HERO Clayman",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 800,
+  "defense": 2000,
+  "description": "A hero made of clay. His sturdy body shrugs off any blow.",
+  "date": "2005-05-28"
+ },
+ {
+  "password": "20721928",
+  "name": "Elemental HERO Sparkman",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1600,
+  "defense": 1400,
+  "description": "A hero of light. He strikes with a lightning bolt.",
+  "date": "2005-06-01"
+ },
+ {
+  "password": "54959865",
+  "name": "Neo-Spacian Air Hummingbird",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 3,
+  "attack": 800,
+  "defense": 600,
+  "description": "A hummingbird from space. It drifts through the sky and heals its friends.",
+  "date": "2007-02-28"
+ },
+ {
+  "password": "17955766",
+  "name": "Neo-Spacian Aqua Dolphin",
+  "type": "Warrior",
+  "attribute": "Water",
+  "level": 3,
+  "attack": 600,
+  "defense": 800,
+  "description": "A dolphin from space. It swims through the sea and guides the hero.",
+  "date": "2006-08-16"
+ },
+ {
+  "password": "43237273",
+  "name": "Neo-Spacian Dark Panther",
+  "type": "Beast",
+  "attribute": "Dark",
+  "level": 3,
+  "attack": 1000,
+  "defense": 500,
+  "description": "A panther from space. It prowls the dark and copies a hero.",
+  "date": "2006-08-16"
+ },
+ {
+  "password": "89621922",
+  "name": "Neo-Spacian Flare Scarab",
+  "type": "Insect",
+  "attribute": "Fire",
+  "level": 3,
+  "attack": 500,
+  "defense": 500,
+  "description": "A scarab from space. Its body burns with a bright flame.",
+  "date": "2006-08-16"
+ },
+ {
+  "password": "80344569",
+  "name": "Neo-Spacian Grand Mole",
+  "type": "Rock",
+  "attribute": "Earth",
+  "level": 3,
+  "attack": 900,
+  "defense": 300,
+  "description": "A mole from space. It digs through the ground and shakes it.",
+  "date": "2007-02-28"
+ },
+ {
+  "password": "78734254",
+  "name": "Neo-Spacian Marine Dolphin",
+  "type": "Warrior",
+  "attribute": "Water",
+  "level": 4,
+  "attack": 900,
+  "defense": 1100,
+  "description": "A marine dolphin from space. It guards the oceans.",
+  "date": "2007-08-15"
+ },
+ {
+  "password": "03366982",
+  "name": "Alligator's Sword Dragon",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 5,
+  "attack": 1700,
+  "defense": 1500,
+  "description": "A dragon that fuses with an alligator swordsman. Its sword bites hard.",
+  "date": "2010-08-14",
+  "fusions": [
+   [
+    "Baby Dragon",
+    "Alligator's Sword"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "06602300",
+  "name": "Blaze Fenix, the Burning Bombardment Bird",
+  "type": "Pyro",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2300,
+  "description": "A firebird of metal and flame. It bombards its foes from the sky.",
+  "date": "2012-03-16",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Machine"
+     },
+     {
+      "type": "Pyro"
+     }
+    ],
+    "max_atk": 2800,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "04796100",
+  "name": "Chimera the Flying Mythical Beast",
+  "type": "Beast",
+  "attribute": "Wind",
+  "level": 6,
+  "attack": 2100,
+  "defense": 1800,
+  "description": "A beast of the sky that fuses with a goat fiend. It flies on two great wings.",
+  "date": "2010-02-12",
+  "fusions": [
+   [
+    "Gazelle the King of Mythical Beasts",
+    "Berfomet"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "38264974",
+  "name": "Chimera the Illusion Beast",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 3100,
+  "defense": 2800,
+  "description": "A dark chimera born from illusion. It tricks all who face it.",
+  "date": "2023-07-27",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Chimera the Flying Mythical Beast"
+     },
+     {
+      "type": "Spellcaster"
+     }
+    ],
+    "max_atk": 3100,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "01769875",
+  "name": "Chimera the King of Phantom Beasts",
+  "type": "Beast",
+  "attribute": "Wind",
+  "level": 6,
+  "attack": 2100,
+  "defense": 1800,
+  "description": "The king of phantom beasts. It bares its fangs and rules the night.",
+  "date": "2023-07-27",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Beast"
+     },
+     {
+      "type": "Fiend"
+     }
+    ],
+    "max_atk": 2100
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "37057012",
+  "name": "Cyber Ogre 2",
+  "type": "Machine",
+  "attribute": "Earth",
+  "level": 7,
+  "attack": 2600,
+  "defense": 1900,
+  "description": "Two cyber ogres fused into one. Its mighty strength is twice as much.",
+  "date": "2006-11-15",
+  "fusions": [
+   [
+    "Cyber Ogre",
+    "Cyber Ogre"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "62873545",
+  "name": "Dragon Master Knight",
+  "name_color": 5,
+  "type": "Dragon",
+  "attribute": "Light",
+  "level": 12,
+  "attack": 5000,
+  "defense": 5000,
+  "description": "\"Black Luster\nSoldier\" +\n\"Blue-Eyes Ultimate\nDragon.\nThis card gains 500\nATK for each Dragon\nmonster you control,\nexcept this card.",
+  "date": "2006-11-11",
+  "frame": "Purple",
+  "fusions": [
+   [
+    "Black Luster Soldier",
+    "Blue-eyes Ultimate Dragon"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 1,
+   "from": [
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "40854197",
+  "name": "Elemental HERO Absolute Zero",
+  "type": "Warrior",
+  "attribute": "Water",
+  "level": 8,
+  "attack": 2500,
+  "defense": 2000,
+  "description": "The hero of ice. He freezes the field and all that stands on it.",
+  "date": "2010-01-05",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name_has": "HERO"
+     },
+     {
+      "attribute": "Water",
+      "not_name_has": "HERO"
+     }
+    ],
+    "max_atk": 2500,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "33574806",
+  "name": "Elemental HERO Escuridao",
+  "type": "Warrior",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2500,
+  "defense": 2000,
+  "description": "The dark hero of the shadows. He swallows all in the dark.",
+  "date": "2011-08-07",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name_has": "Elemental HERO"
+     },
+     {
+      "attribute": "Dark",
+      "not_name_has": "HERO"
+     }
+    ],
+    "max_atk": 2500,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "16304628",
+  "name": "Elemental HERO Gaia",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 6,
+  "attack": 2200,
+  "defense": 2600,
+  "description": "The hero of the earth. He rises from the ground and crushes all.",
+  "date": "2009-09-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name_has": "Elemental HERO"
+     },
+     {
+      "attribute": "Earth",
+      "not_name_has": "HERO"
+     }
+    ],
+    "max_atk": 2200,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "03642509",
+  "name": "Elemental HERO Great Tornado",
+  "type": "Warrior",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2200,
+  "description": "The hero of the storm. He whirls up a great tornado that strips the foe.",
+  "date": "2011-10-04",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name_has": "Elemental HERO"
+     },
+     {
+      "attribute": "Wind",
+      "not_name_has": "HERO"
+     }
+    ],
+    "max_atk": 2800,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "01945387",
+  "name": "Elemental HERO Nova Master",
+  "type": "Warrior",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 2600,
+  "defense": 2100,
+  "description": "The hero of the flames. He burns with the power of a star.",
+  "date": "2011-08-06",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name_has": "Elemental HERO"
+     },
+     {
+      "attribute": "Fire",
+      "not_name_has": "HERO"
+     }
+    ],
+    "max_atk": 2600,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "22061412",
+  "name": "Elemental HERO The Shining",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 2600,
+  "defense": 2100,
+  "description": "The hero of light. He lights the field with a blinding flash.",
+  "date": "2011-03-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name_has": "Elemental HERO"
+     },
+     {
+      "attribute": "Light",
+      "not_name_has": "HERO"
+     }
+    ],
+    "max_atk": 2600,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "11502550",
+  "name": "Elemental HERO Air Neos",
+  "name_color": 5,
+  "type": "Warrior",
+  "attribute": "Wind",
+  "level": 7,
+  "attack": 2500,
+  "defense": 2000,
+  "description": "The Neos hero joined by the winged Neo-Spacian. He rides the wind. Gains 500 ATK for each face-up WIND monster on the field.",
+  "date": "2007-02-28",
+  "fusions": [
+   [
+    "Elemental HERO Neos",
+    "Neo-Spacian Air Hummingbird"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  },
+  "frame": "Orange"
+ },
+ {
+  "password": "55171412",
+  "name": "Elemental HERO Aqua Neos",
+  "name_color": 5,
+  "type": "Warrior",
+  "attribute": "Water",
+  "level": 7,
+  "attack": 2500,
+  "defense": 2000,
+  "description": "The Neos hero joined by the aqua Neo-Spacian. He sways the tides. Gains 500 ATK for each face-up WATER monster on the field.",
+  "date": "2006-08-16",
+  "fusions": [
+   [
+    "Elemental HERO Neos",
+    "Neo-Spacian Aqua Dolphin"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  },
+  "frame": "Orange"
+ },
+ {
+  "password": "28677304",
+  "name": "Elemental HERO Dark Neos",
+  "name_color": 5,
+  "type": "Warrior",
+  "attribute": "Dark",
+  "level": 7,
+  "attack": 2500,
+  "defense": 2000,
+  "description": "The Neos hero joined by the dark Neo-Spacian. He uses the dark. Gains 500 ATK for each face-up DARK monster on the field.",
+  "date": "2006-08-16",
+  "fusions": [
+   [
+    "Elemental HERO Neos",
+    "Neo-Spacian Dark Panther"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  },
+  "frame": "Orange"
+ },
+ {
+  "password": "81566151",
+  "name": "Elemental HERO Flare Neos",
+  "name_color": 5,
+  "type": "Warrior",
+  "attribute": "Fire",
+  "level": 7,
+  "attack": 2500,
+  "defense": 2000,
+  "description": "The Neos hero joined by the flare Neo-Spacian. He burns bright. Gains 500 ATK for each face-up FIRE monster on the field.",
+  "date": "2006-08-16",
+  "fusions": [
+   [
+    "Elemental HERO Neos",
+    "Neo-Spacian Flare Scarab"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  },
+  "frame": "Orange"
+ },
+ {
+  "password": "48996569",
+  "name": "Elemental HERO Grand Neos",
+  "name_color": 5,
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 7,
+  "attack": 2500,
+  "defense": 2000,
+  "description": "The Neos hero joined by the grand Neo-Spacian. He shakes the earth. Gains 500 ATK for each face-up EARTH monster on the field.",
+  "date": "2007-02-28",
+  "fusions": [
+   [
+    "Elemental HERO Neos",
+    "Neo-Spacian Grand Mole"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  },
+  "frame": "Orange"
+ },
+ {
+  "password": "05128859",
+  "name": "Elemental HERO Marine Neos",
+  "type": "Warrior",
+  "attribute": "Water",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2300,
+  "description": "The Neos hero joined by the marine Neo-Spacian. He rules the waves.",
+  "date": "2007-08-15",
+  "fusions": [
+   [
+    "Elemental HERO Neos",
+    "Neo-Spacian Marine Dolphin"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "49352945",
+  "name": "Elemental HERO Storm Neos",
+  "type": "Warrior",
+  "attribute": "Wind",
+  "level": 9,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "The Neos hero in the form of a storm. He joins air and water into a storm.",
+  "date": "2008-01-26",
+  "fusions": [
+   [
+    "Elemental HERO Air Neos",
+    "Neo-Spacian Aqua Dolphin"
+   ],
+   [
+    "Elemental HERO Aqua Neos",
+    "Neo-Spacian Air Hummingbird"
+   ]
+  ],
+  "mass": [],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "72926163",
+  "name": "Elemental HERO Neos Knight",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 7,
+  "attack": 2500,
+  "defense": 1000,
+  "description": "The Neos hero in a knight's armor. He fights with a holy sword.",
+  "date": "2011-04-30",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Elemental HERO Neos"
+     },
+     {
+      "type": "Warrior"
+     }
+    ],
+    "max_atk": 2500,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 6,
+   "from": [
+    "Teana 2nd",
+    "Ocean Mage",
+    "High Mage Secmeton",
+    "Forest Mage",
+    "High Mage Anubisius",
+    "Mountain Mage",
+    "High Mage Atenza",
+    "Desert Mage",
+    "High Mage Martis",
+    "Meadow Mage",
+    "High Mage Kepura",
+    "Labyrinth Mage",
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "57281778",
+  "name": "Ryu Kokki",
+  "type": "Zombie",
+  "attribute": "Dark",
+  "level": 6,
+  "attack": 2400,
+  "defense": 2000,
+  "description": "A fanged ghoul that drains the life of anything it bites.",
+  "date": "2003-07-01",
+  "fusions": [
+   [
+    "Dokurorider",
+    "Pumpking the King of Ghosts"
+   ],
+   [
+    "Great Mammoth of Goldfine",
+    "Armored Zombie"
+   ],
+   [
+    "Master Kyonshee",
+    "Skelgon"
+   ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite"
+   ]
+  }
+ },
+ {
+  "password": "04918855",
+  "name": "Vampire Voivode",
+  "type": "Zombie",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2100,
+  "description": "A vampire warlord who leads armies of the dead.",
+  "date": "2014-01-01",
+  "fusions": [
+   [
+    "Ryu Kokki",
+    "Master Kyonshee"
+   ],
+   [
+    "Ryu Kokki",
+    "Pumpking the King of Ghosts"
+   ],
+   [
+    "Ryu Kokki",
+    "Dokurorider"
+   ]
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare"
+   ]
+  }
+ },
+ {
+  "password": "39185163",
+  "name": "Doomking Balerdroch",
+  "type": "Zombie",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2000,
+  "description": "A towering undead king whose roar shakes the grave.",
+  "date": "2014-01-01",
+  "fusions": [
+   [
+    "Ryu Kokki",
+    "Great Mammoth of Goldfine"
+   ],
+   [
+    "Ryu Kokki",
+    "Dragon Zombie"
+   ]
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "71200730",
+  "name": "Despair from the Dark",
+  "type": "Zombie",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2800,
+  "defense": 3000,
+  "description": "A hulking horror from the dark that crushes all hope.",
+  "date": "2005-01-01",
+  "fusions": [
+   [
+    "Ryu Kokki",
+    "Shadow Ghoul"
+   ],
+   [
+    "Ryu Kokki",
+    "Wood Remains"
+   ]
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "95440947",
+  "name": "Eldlich the Golden Lord",
+  "type": "Zombie",
+  "attribute": "Light",
+  "level": 10,
+  "attack": 2500,
+  "defense": 2800,
+  "description": "A lich king of gold who rules the dead from a golden throne.",
+  "date": "2019-01-01",
+  "fusions": [
+   [
+    "Ryu Kokki",
+    "Skelgon"
+   ],
+   [
+    "Ryu Kokki",
+    "Armored Zombie"
+   ],
+   [
+    "Ryu Kokki",
+    "Blue-eyed Silver Zombie"
+   ]
+  ],
+  "drop": {
+   "weight": 3,
+   "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "74889525",
+  "name": "Eldlich the Mad Golden Lord",
+  "type": "Zombie",
+  "attribute": "Light",
+  "level": 10,
+  "attack": 3800,
+  "defense": 3500,
+  "description": "The golden lich king gone mad. Every undead bows before it.",
+  "date": "2019-01-01",
+  "fusions": [
+   [
+    "Eldlich the Golden Lord",
+    "Vampire Genesis"
+   ],
+   [
+    "Eldlich the Golden Lord",
+    "Despair from the Dark"
+   ],
+   [
+    "Eldlich the Golden Lord",
+    "Vampire Voivode"
+   ]
+  ],
+  "drop": {
+   "weight": 2,
+   "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "28143906",
+  "name": "Roc from the Valley of Haze",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 6,
+  "attack": 2400,
+  "defense": 1400,
+  "description": "A giant bird that carries off whatever it can lift.",
+  "date": "2004-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Winged Beast"
+     },
+     {
+      "type": "Winged Beast"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "61441708",
+  "name": "Sacred Phoenix of Nephthys",
+  "type": "Winged Beast",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 2400,
+  "defense": 1600,
+  "description": "A phoenix that burns itself away and rises again from the ashes.",
+  "date": "2007-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Winged Beast"
+     },
+     {
+      "attribute": "Fire"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "63261835",
+  "name": "Cyber Slash Harpie Lady",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 2600,
+  "defense": 1400,
+  "description": "A cyber harpie with blades for wings. Her slash tears through anything in her path.",
+  "date": "2005-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Winged Beast"
+     },
+     {
+      "attribute": "Wind"
+     }
+    ],
+    "max_atk": 2200,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "66431519",
+  "name": "Sacred Fire King Garunix",
+  "type": "Winged Beast",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 2700,
+  "defense": 1700,
+  "description": "A fire king in the shape of a bird. Its wings leave embers in the sky.",
+  "date": "2017-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Sacred Phoenix of Nephthys"
+     },
+     {
+      "type": "Winged Beast"
+     }
+    ],
+    "max_atk": 2400,
+    "min_one": 1600
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "53027855",
+  "name": "Windrose the Elemental Lord",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2200,
+  "description": "A lord of the winds. It rides the storm with its wings spread wide.",
+  "date": "2018-01-01",
+  "fusions": [
+   [
+    "Roc from the Valley of Haze",
+    "Cyber Slash Harpie Lady"
+   ],
+   [
+    "Roc from the Valley of Haze",
+    "Sacred Phoenix of Nephthys"
+   ],
+   [
+    "Cyber Slash Harpie Lady",
+    "Sacred Phoenix of Nephthys"
+   ]
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "52900000",
+  "name": "Shinobaron Peacock",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "The great peacock of the ninja. Its feathers are blades.",
+  "date": "2020-01-01",
+  "fusions": [
+   [
+    "Windrose the Elemental Lord",
+    "Cyber Slash Harpie Lady"
+   ],
+   [
+    "Windrose the Elemental Lord",
+    "Sacred Fire King Garunix"
+   ]
+  ],
+  "drop": {
+   "weight": 3,
+   "from": [
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "50287060",
+  "name": "Archfiend of Gilfer",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 6,
+  "attack": 2200,
+  "defense": 2500,
+  "description": "A fiend that drags the souls of its foes into the dark.",
+  "date": "2005-01-01"
+ },
+ {
+  "password": "84341431",
+  "name": "Archfiend Giant",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 6,
+  "attack": 2400,
+  "defense": 1600,
+  "description": "A giant fiend that shrugs off every blow.",
+  "date": "2013-11-08"
+ },
+ {
+  "password": "17242022",
+  "name": "Red-Eyes Black Dragon Exceed",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 9,
+  "attack": 3400,
+  "defense": 3000,
+  "description": "The Red-Eyes Black Dragon pushed past its limit by the power of time.",
+  "date": "2026-10-08",
+  "fusions": [
+   [
+    "Red-eyes B. Dragon",
+    "Time Wizard"
+   ]
+  ],
+  "drop": {
+   "weight": 3,
+   "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "64335804",
+  "name": "Red-Eyes Black Metal Dragon",
+  "type": "Machine",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2400,
+  "description": "The Red-Eyes Black Dragon remade in black steel.",
+  "date": "2002-11-25",
+  "fusions": [
+   [
+    "Red-eyes B. Dragon",
+    "Metalmorph"
+   ]
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "45349196",
+  "name": "Archfiend Black Skull Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 9,
+  "attack": 3200,
+  "defense": 2500,
+  "description": "A black skull dragon fused with an archfiend. Its breath burns the soul.",
+  "date": "2015-08-06",
+  "fusions": [
+   [
+    "Red-eyes B. Dragon",
+    "Archfiend of Gilfer"
+   ],
+   [
+    "Red-eyes B. Dragon",
+    "Archfiend Giant"
+   ]
+  ],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Red-eyes B. Dragon"
+     },
+     {
+      "name_has": "Archfiend"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 3,
+   "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "37818794",
+  "name": "Red-Eyes Dark Dragoon",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "The Dark Magician joined with a dragon of great strength.",
+  "date": "2020-08-27",
+  "fusions": [
+   [
+    "Dark Magician",
+    "Red-eyes B. Dragon"
+   ]
+  ],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Dark Magician"
+     },
+     {
+      "type": "Dragon",
+      "min_atk": 2400
+     }
+    ],
+    "max_atk": 2900,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "44405066",
+  "name": "Red-Eyes Flare Metal Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 7,
+  "attack": 2800,
+  "defense": 2400,
+  "description": "A red-eyed dragon in flame-forged armor.",
+  "date": "2015-08-06",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Red-eyes B. Dragon"
+     },
+     {
+      "type": "Machine"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "21140872",
+  "name": "Red-Eyes Slash Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 7,
+  "attack": 2800,
+  "defense": 2400,
+  "description": "A red-eyed dragon that fights with a warrior's blade.",
+  "date": "2017-09-07",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Red-eyes B. Dragon"
+     },
+     {
+      "type": "Warrior"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "38192988",
+  "name": "Red-Eyes Zombie Dragon Lord",
+  "type": "Zombie",
+  "attribute": "Dark",
+  "level": 10,
+  "attack": 2800,
+  "defense": 2400,
+  "description": "The undead lord of the red-eyed dragons.",
+  "date": "2022-05-19",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Red-eyes B. Dragon"
+     },
+     {
+      "type": "Zombie"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "43892408",
+  "name": "Dark Magician Girl the Dragon Knight",
+  "name_color": 5,
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 7,
+  "attack": 2600,
+  "defense": 1700,
+  "description": "The Dark Magician Girl in dragon armor, riding a great dragon. Gains 300 ATK for each Dark Magician or Magician of Black Chaos destroyed.",
+  "frame": "Orange",
+  "date": "2014-04-25",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Dark Magician Girl"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 2500,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "50237654",
+  "name": "The Dark Magicians",
+  "name_color": 5,
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2300,
+  "description": "The master and his apprentice cast side by side. Gains 300 ATK for each Spellcaster on the field.",
+  "frame": "Orange",
+  "date": "2020-01-16",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Dark Magician"
+     },
+     {
+      "type": "Spellcaster"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   },
+   {
+    "groups": [
+     {
+      "name": "Dark Magician Girl"
+     },
+     {
+      "type": "Spellcaster"
+     }
+    ],
+    "max_atk": 2700,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "00102380",
+  "name": "Lava Golem",
+  "type": "Fiend",
+  "attribute": "Fire",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "A giant of molten rock, raised by the dead. It burns everything it touches.",
+  "date": "2003-07-18",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "attribute": "Fire"
+     },
+     {
+      "type": "Rock"
+     }
+    ],
+    "max_atk": 1500,
+    "result": "Lava Battleguard"
+   },
+   {
+    "groups": [
+     {
+      "name": "Lava Battleguard"
+     },
+     {
+      "type": "Zombie"
+     }
+    ],
+    "max_atk": 1900,
+    "result": "Millennium Golem",
+    "override": true
+   },
+   {
+    "groups": [
+     {
+      "name": "Millennium Golem"
+     },
+     {
+      "attribute": "Fire"
+     }
+    ],
+    "max_atk": 2900,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 4,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "58257569",
+  "name": "Red-Eyes Baby Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 3,
+  "attack": 1200,
+  "defense": 700,
+  "description": "A small dragon with red eyes. Given time, it grows into a Red-Eyes Black Dragon.",
+  "date": "2017-09-07",
+  "fusions": [],
+  "steps": [
+   [
+    "Red-Eyes Baby Dragon",
+    "Time Wizard",
+    "Red-eyes B. Dragon"
+   ]
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite"
+   ]
+  }
+ },
+ {
+  "password": "31829185",
+  "name": "Dark Necrofear",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2200,
+  "defense": 2800,
+  "description": "A fallen doll that lures its foes into the dark.",
+  "date": "2003-03-01"
+ },
+ {
+  "password": "53839837",
+  "name": "Vampire Lord",
+  "type": "Zombie",
+  "attribute": "Dark",
+  "level": 5,
+  "attack": 2000,
+  "defense": 1500,
+  "description": "A lord of the night. It drinks the life of the living.",
+  "date": "2003-12-01"
+ },
+ {
+  "password": "17259470",
+  "name": "Zombie Master",
+  "type": "Zombie",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1800,
+  "defense": 0,
+  "description": "A necromancer who calls the dead back to fight.",
+  "date": "2007-08-15"
+ },
+ {
+  "password": "25262697",
+  "name": "Gravekeeper's Assailant",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1500,
+  "defense": 1500,
+  "description": "A tomb guard who strikes from the shadows.",
+  "date": "2003-07-18"
+ },
+ {
+  "password": "37101832",
+  "name": "Gravekeeper's Guard",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1000,
+  "defense": 1900,
+  "description": "A tomb guard who turns away those who enter.",
+  "date": "2003-07-18"
+ },
+ {
+  "password": "24317029",
+  "name": "Gravekeeper's Spy",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1200,
+  "defense": 2000,
+  "description": "A tomb guard who watches the dead and the living.",
+  "date": "2003-07-18"
+ },
+ {
+  "password": "40737112",
+  "name": "Dark Magician of Chaos",
+  "type": "Spellcaster",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 2800,
+  "defense": 2600,
+  "description": "The Dark Magician taken by chaos. Its spells bend the dead.",
+  "date": "2004-03-01"
+ },
+ {
+  "password": "24435369",
+  "name": "Mermaid Knight",
+  "type": "Aqua",
+  "attribute": "Water",
+  "level": 4,
+  "attack": 1500,
+  "defense": 700,
+  "description": "A knight of the sea who rides the waves into battle.",
+  "date": "2004-06-01"
+ },
+ {
+  "password": "25343280",
+  "name": "Spirit of the Pharaoh",
+  "type": "Zombie",
+  "attribute": "Light",
+  "level": 6,
+  "attack": 2500,
+  "defense": 2000,
+  "description": "The spirit of a king who walks the tombs.",
+  "date": "2004-06-01"
+ },
+ {
+  "password": "15960641",
+  "name": "Mirage Dragon",
+  "type": "Dragon",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1600,
+  "defense": 600,
+  "description": "A dragon of light that hides in the haze.",
+  "date": "2004-11-20"
+ },
+ {
+  "password": "86652646",
+  "name": "Skull Dog Marron",
+  "type": "Beast",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 1350,
+  "defense": 2000,
+  "description": "A hound of bone that guards the underworld.",
+  "date": "2004-10-01"
+ },
+ {
+  "password": "13945283",
+  "name": "Wall of Illusion",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1000,
+  "defense": 1850,
+  "description": "A wall that bends the minds of those who strike it.",
+  "date": "2002-03-29"
+ },
+ {
+  "password": "38445524",
+  "name": "Gil Garth",
+  "type": "Fiend",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1800,
+  "defense": 1200,
+  "description": "A dark knight with a heart as cold as his blade.",
+  "date": "2007-11-14"
+ },
+ {
+  "password": "99267150",
+  "name": "Five-Headed Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 12,
+  "attack": 5000,
+  "defense": 5000,
+  "description": "Five dragons joined into one. It can only be made with Polymerization.",
+  "date": "2003-03-01",
+  "fusions": [],
+  "poly": [
+   [
+    {
+     "type": "Dragon"
+    },
+    {
+     "type": "Dragon"
+    },
+    {
+     "type": "Dragon"
+    },
+    {
+     "type": "Dragon"
+    },
+    {
+     "type": "Dragon"
+    }
+   ]
+  ],
+  "drop": {
+   "weight": 1,
+   "from": [
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "11443677",
+  "name": "Blue-Eyes Tyrant Dragon",
+  "name_color": 5,
+  "type": "Dragon",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 3400,
+  "defense": 2900,
+  "description": "A blue-eyed dragon fused with another dragon. Its tyrant fury knows no limit. Unaffected by Trap Cards or effects.",
+  "date": "2017-01-01",
+  "frame": "Purple",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Blue-eyes White Dragon"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 3300,
+    "override": true
+   }
+  ],
+  "drop": {
+   "weight": 5,
+   "from": [
+    "Seto 3rd"
+   ]
+  }
+ },
+ {
+  "password": "38517737",
+  "name": "Blue-Eyes Alternative White Dragon",
+  "type": "Dragon",
+  "attribute": "Light",
+  "level": 8,
+  "attack": 3000,
+  "defense": 2500,
+  "description": "This card's name\nbecomes \"Blue-Eyes\nWhite Dragon\".",
+  "date": "2015-01-01",
+  "fusions": [],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 3rd"
+   ]
+  }
+ },
+ {
+  "password": "55410871",
+  "name": "Blue-Eyes Chaos MAX Dragon",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 8,
+  "attack": 4000,
+  "defense": 0,
+  "description": "The blue-eyed dragon, born again in chaos. It can only be made with Chaos Form.",
+  "date": "2011-01-01",
+  "fusions": []
+ },
+ {
+  "password": "15989522",
+  "name": "Gaia the Magical Knight of Dragons",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 7,
+  "attack": 2600,
+  "defense": 2100,
+  "description": "Gaia the Fierce Knight joined with a dragon. Its name becomes \"Gaia the Dragon Champion\".",
+  "date": "2020-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Gaia the Fierce Knight"
+     },
+     {
+      "type": "Dragon",
+      "level": 5,
+      "not_name_has": "Curse of Dragon"
+     }
+    ],
+    "max_atk": 2500
+   }
+  ],
+  "drop": {
+   "weight": 8,
+   "from": [
+    "Seto 2nd",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Heishin 2nd",
+    "Seto 3rd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K"
+   ]
+  }
+ },
+ {
+  "password": "36262024",
+  "name": "Black Dragon's Chick",
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 1,
+  "attack": 800,
+  "defense": 500,
+  "description": "A baby dragon of the\nblack line. With\nTime Wizard it grows\ninto Red-eyes B.\nDragon.",
+  "date": "2002-01-01",
+  "fusions": [],
+  "steps": [
+   [
+    "Black Dragon's Chick",
+    "Time Wizard",
+    "Red-eyes B. Dragon"
+   ]
+  ]
+ },
+ {
+  "password": "67300516",
+  "name": "Red-Eyes Wyvern",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 4,
+  "attack": 1800,
+  "defense": 1600,
+  "description": "A red-eyed wyvern.\nWith a dragon it\nbecomes Red-eyes B.\nDragon.",
+  "date": "2002-01-01",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Red-Eyes Wyvern"
+     },
+     {
+      "type": "Dragon"
+     }
+    ],
+    "max_atk": 2300,
+    "result": "Red-eyes B. Dragon",
+    "override": true
+   }
+  ]
+ },
+ {
+  "password": "88264978",
+  "name": "Red-Eyes Darkness Metal Dragon",
+  "name_color": 5,
+  "type": "Dragon",
+  "attribute": "Dark",
+  "level": 10,
+  "attack": 2800,
+  "defense": 2400,
+  "description": "Red-Eyes Darkness\nDragon in metal.\nGains 300 ATK for\neach Dragon on its\nowner's side.",
+  "date": "2002-01-01",
+  "fusions": [
+   [
+    "Red-Eyes Darkness Dragon",
+    "Metalmorph"
+   ]
+  ],
+  "frame": "Orange"
+ },
+ {
+  "password": "57046845",
+  "name": "Gearfried the Swordmaster",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 7,
+  "attack": 2600,
+  "defense": 2200,
+  "description": "Gearfried the Iron\nKnight, released\nfrom his armor by\nRelease Restraint.",
+  "date": "2002-01-01",
+  "fusions": [
+   [
+    "Gearfried the Iron Knight",
+    "Release Restraint"
+   ]
+  ]
+ },
+ {
+  "password": "05600127",
+  "name": "Humanoid Worm Drake",
+  "type": "Aqua",
+  "attribute": "Water",
+  "level": 7,
+  "attack": 2200,
+  "defense": 2000,
+  "description": "A humanoid slime\nfused with a worm\ndrake. It strikes\nwith a body that\nflows like water.",
+  "date": "2003-03-01",
+  "fusions": [
+   [
+    "Worm Drake",
+    "Humanoid Slime"
+   ]
+  ],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Reptile"
+     },
+     {
+      "type": "Aqua"
+     }
+    ],
+    "max_atk": 2000
+   }
+  ]
+ },
+ {
+  "password": "86099788",
+  "name": "The Last Warrior from Another Planet",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 7,
+  "attack": 2350,
+  "defense": 2300,
+  "description": "A lone warrior from\nanother planet, born\nwhen a dark warrior\nmeets a creature of\nwater.",
+  "date": "2003-03-01",
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Warrior",
+      "attribute": "Dark"
+     },
+     {
+      "type": "Aqua"
+     }
+    ],
+    "max_atk": 2100
+   }
+  ],
+  "fusions": [
+   [
+    "Zombyra the Dark",
+    "Maryokutai"
+   ]
+  ]
+ },
+ {
+  "password": "74388798",
+  "name": "Silent Swordsman LV5",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 5,
+  "attack": 2300,
+  "defense": 1000,
+  "description": "A swordsman who has found his strength in silence.",
+  "date": "2005-02-26",
+  "fusions": [
+   [
+    "Silent Swordsman LV3",
+    "Level Up!"
+   ]
+  ]
+ },
+ {
+  "password": "37267041",
+  "name": "Silent Swordsman LV7",
+  "type": "Warrior",
+  "attribute": "Light",
+  "level": 7,
+  "attack": 2800,
+  "defense": 1000,
+  "description": "Unaffected by your opponent's Spell effects.",
+  "date": "2005-02-15",
+  "fusions": [
+   [
+    "Silent Swordsman LV5",
+    "Level Up!"
+   ]
+  ],
+  "spell_immune": true,
+  "frame": "Orange"
+ },
+ {
+  "password": "34088136",
+  "name": "Ultimate Insect LV3",
+  "type": "Insect",
+  "attribute": "Wind",
+  "level": 3,
+  "attack": 1400,
+  "defense": 900,
+  "description": "A growing insect with a hard shell.",
+  "date": "2004-11-20",
+  "fusions": [
+   [
+    "Ultimate Insect LV1",
+    "Level Up!"
+   ]
+  ]
+ },
+ {
+  "password": "34830502",
+  "name": "Ultimate Insect LV5",
+  "type": "Insect",
+  "attribute": "Wind",
+  "level": 5,
+  "attack": 2300,
+  "defense": 900,
+  "description": "An insect with a shell that blocks the light.",
+  "date": "2005-02-26",
+  "fusions": [
+   [
+    "Ultimate Insect LV3",
+    "Level Up!"
+   ]
+  ]
+ },
+ {
+  "password": "19877898",
+  "name": "Ultimate Insect LV7",
+  "type": "Insect",
+  "attribute": "Wind",
+  "level": 7,
+  "attack": 2600,
+  "defense": 1200,
+  "description": "While it remains on the field, all of your opponent's monsters lose 700 ATK and DEF.",
+  "date": "2005-05-28",
+  "fusions": [
+   [
+    "Ultimate Insect LV5",
+    "Level Up!"
+   ]
+  ],
+  "frame": "Orange",
+  "effects": [
+   {
+    "when": "face_up",
+    "do": "boost",
+    "target": "opponent",
+    "attack": -700,
+    "defense": -700
+   }
+  ]
+ },
+ {
+  "password": "46384672",
+  "name": "Armed Dragon LV5",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 5,
+  "attack": 2400,
+  "defense": 1700,
+  "description": "A dragon whose blades have grown sharp. It fights with its wings.",
+  "date": "2004-10-01",
+  "fusions": [
+   [
+    "Armed Dragon LV3",
+    "Level Up!"
+   ]
+  ]
+ },
+ {
+  "password": "59464593",
+  "name": "Armed Dragon LV10",
+  "type": "Dragon",
+  "attribute": "Wind",
+  "level": 10,
+  "attack": 3000,
+  "defense": 2000,
+  "description": "The full form of the armed dragon. Its blades cut through everything.",
+  "date": "2006-02-08",
+  "fusions": [
+   [
+    "Armed Dragon LV7",
+    "Level Up!"
+   ]
+  ]
+ }
+]

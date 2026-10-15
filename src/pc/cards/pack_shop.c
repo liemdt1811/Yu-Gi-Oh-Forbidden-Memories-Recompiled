@@ -983,6 +983,18 @@ static int condition_lines(const PackUnlock *unlock, Out *out, int max, int firs
     const unsigned char *names[1];
     static const unsigned char nameless[] = {0xFF};
     #define LINE() do { if (n || !first) newline(out); n++; } while (0)
+    if (unlock->alt_count) {            /* a list: what each alternative still wants, OR between */
+        for (k = 0; k < unlock->alt_count && n < max; k++) {
+            const PackUnlock *alt = Packs_UnlockAlt(unlock, k);
+            if (!alt) break;
+            if (k) {
+                LINE();
+                own(out, TEXT_OWN_PACK_OR, "OR", NULL, NULL);
+            }
+            n += condition_lines(alt, out, max - n, n == 0 ? first : 0);
+        }
+        return n;
+    }
     if (unlock->never && n < max) {
         LINE();
         own(out, TEXT_OWN_PACK_LOCKED, "LOCKED", NULL, NULL);

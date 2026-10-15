@@ -24,3 +24,13 @@
 # Tool-generated language caches
 **/__pycache__/
 *.py[cod]
+
+# Konami card art fetched by tools/pc/real_cards/build_real_cards.py art
+/mods/z/images/
+/mods/z/portraits/
+/mods/z-effects/*.o
+/tools/pc/real_cards/backup/themed-packs/images/
+/mods/z/art/
+/tools/pc/real_cards/banner/art/
+/tools/pc/real_cards/banner/*.png
+/mods/assets-hd/

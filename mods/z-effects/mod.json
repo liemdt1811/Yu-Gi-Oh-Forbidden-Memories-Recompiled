@@ -1,0 +1,12 @@
+{
+    "id": "z-effects",
+    "name": "Z effects",
+    "version": "1.0",
+    "author": "community",
+    "description": "Card effects for the Z mod that the data rules cannot say: Buster Blader gains 500 ATK for each face-up Dragon on the opponent's side.",
+    "library": "z-effects",
+    "min_api": 8,
+    "requires": ["z"],
+    "after": ["z"],
+    "enabled": true
+}

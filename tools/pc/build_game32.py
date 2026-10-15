@@ -703,6 +703,27 @@ def library(source_dir):
     return bool(manifest.get("library") or manifest.get("libraries"))
 
 
+# A release has no Mods window (menu.c), so each mod's manifest says what the player gets: on, except
+# these.
+RELEASE_MODS_OFF = ("3d-monsters",)
+
+
+def write_release_manifest(path, destination, name):
+    """The mod's manifest as a release ships it: "enabled" set (Game > Mods is not in a release)."""
+    with open(path, encoding="utf-8") as handle:
+        manifest = json.load(handle)
+    manifest["enabled"] = name not in RELEASE_MODS_OFF
+    os.makedirs(os.path.dirname(destination), exist_ok=True)
+    text = json.dumps(manifest, indent=2, ensure_ascii=False) + "\n"
+    if not os.path.exists(destination) or open(destination, encoding="utf-8").read() != text:
+        with open(destination, "w", encoding="utf-8", newline="\n") as handle:
+            handle.write(text)
+
+
+# Files a release takes though git does not track them (build_mods).
+GENERATED_MOD_FILES = ("mods/z/images/", "mods/z/portraits/", "mods/z/art/")
+
+
 def build_mods(build, release=False, code=True, target="i386"):
     """Each directory under mods/ becomes a mod directory beside the game.
 
@@ -751,11 +772,17 @@ def build_mods(build, release=False, code=True, target="i386"):
             continue
         os.makedirs(out_dir, exist_ok=True)
         for path in sorted(glob.glob(f"{source_dir}/**/*", recursive=True)):
-            if tracked is not None and path not in tracked:
+            # A release takes what git tracks, and the Z mod's card art and portraits, which
+            # tools/pc/real_cards makes and git ignores (the mod is empty of pictures without them).
+            if tracked is not None and path not in tracked and not path.replace("\\", "/").startswith(GENERATED_MOD_FILES):
                 continue
             if path.endswith(".c") or path.endswith(".h") or os.path.isdir(path):
                 continue
-            copy_if_changed(path, os.path.join(out_dir, os.path.relpath(path, source_dir)))
+            destination = os.path.join(out_dir, os.path.relpath(path, source_dir))
+            if release and path.replace("\\", "/") == f"{source_dir}/mod.json".replace("\\", "/"):
+                write_release_manifest(path, destination, name)
+                continue
+            copy_if_changed(path, destination)
         mods.append((name, source_dir, out_dir))
     # All at once: a mod whose key is not remembered starts the preprocessor,
     # and a new key the compiler. Checked against this build's own export
@@ -1036,6 +1063,8 @@ def main():
     # memory against a program. smoke.py runs them in the other builds.
     if not options.release:
         NATIVE_CFLAGS.append("-DMEMORIES_TEST_HOOKS")
+    else:
+        NATIVE_CFLAGS.append("-DMEMORIES_RELEASE")     # Game > Cheats is disabled (src/pc/debug/cheats.c)
     native_newest = max(NEWEST_HEADER, flags_changed(f"{options.build}/native-flags.txt", NATIVE_CFLAGS))
     jobs = [(s, obj(s), CFLAGS, renames_file, NEWEST_HEADER) for s in game]
     jobs += [(s, obj(s), NATIVE_CFLAGS, None, native_newest) for s in NATIVE]

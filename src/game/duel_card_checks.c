@@ -8,6 +8,7 @@
 #include "pc/cards/cards.h"
 #include "pc/cards/tables.h"
 #include "pc/cards/rules.h"
+extern s32 gDuel_adwCardStats[];       /* duel_card.h, which the host tests cannot include */
 #include "pc/tower/tower.h"
 #endif
 
@@ -141,7 +142,23 @@ s32 Duel_CheckFusion(s32 arg0, s32 arg1)
 int CardRules_Fusion(int a, int b)
 {
     int result = 0;
-    if (!Tables_Fusion(a, b, &result) && !Cards_Fusion(a, b, &result)) {
+    if (Cards_NoFusion(a) || Cards_NoFusion(b)) return 0;
+    if (Tables_Fusion(a, b, &result)) {
+        /* A copy fuses as its base when no rule names it, but it may be a
+         * stronger card than its base (Dragon Master Knight is a Blue-eyes
+         * White Dragon in the disc's tables): it must not fuse into a
+         * monster weaker than itself by its base's recipes. */
+        s32 i;
+        s32 ids[2];
+        ids[0] = a;
+        ids[1] = b;
+        for (i = 0; i < 2 && result > 0 && Cards_Valid(result); i++) {
+            if (Cards_BaseId(ids[i]) != ids[i] && Cards_Valid(ids[i]) &&
+                (gDuel_adwCardStats[ids[i] - 1] & CARD_STAT_VALUE_MASK) >
+                    (gDuel_adwCardStats[result - 1] & CARD_STAT_VALUE_MASK))
+                result = 0;
+        }
+    } else if (!Cards_Fusion(a, b, &result)) {
         if (Cards_Valid(a) && Cards_Valid(b) && !Cards_KindChanged(a) && !Cards_KindChanged(b))
             result = Tables_FilterFusion(Duel_CheckFusionRetail(a, b));
         if (result && Cards_KindChanged(result)) result = 0;

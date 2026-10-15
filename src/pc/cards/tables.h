@@ -59,6 +59,20 @@ int Tables_Ritual(int ritual, unsigned short recipe[6]);
 /* Whether any mod has a "rituals" entry for this card (a card past the
  * disc's without one is its base's ritual). */
 int Tables_HasRitual(int ritual);
+/* Whether a mod's ritual rule for `ritual` is {"fusion": true}: it fuses two monsters
+ * of the field by the fusion rules instead of tributing three for one result. */
+int Tables_RitualFusion(int ritual);
+/* Whether it has "recipes_only": true, so only its recipes make anything (a single monster may do). */
+int Tables_RitualFusionOnly(int ritual);
+/* Its "recipes": up to TABLES_POLY_RECIPES of {up to TABLES_POLY_MATERIALS materials (0 ends
+ * them), result} that fuse the monsters of the field named into the result, whatever the fusion
+ * rules say. A material is a card, or TABLES_POLY_TYPE | a monster type for any monster of it.
+ * Returns how many, with them in *list. */
+#define TABLES_POLY_RECIPES 32
+#define TABLES_POLY_MATERIALS 5
+#define TABLES_POLY_WIDTH (TABLES_POLY_MATERIALS + 1)
+#define TABLES_POLY_TYPE 0x8000
+int Tables_RitualFusionRecipes(int ritual, const unsigned short (**list)[TABLES_POLY_WIDTH]);
 
 /* A condition-based ritual tribute. A slot may require a specific card,
  * a monster type, secondary fusion group (Elf/Female), minimum/maximum printed
