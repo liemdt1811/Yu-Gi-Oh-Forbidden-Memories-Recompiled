@@ -4,11 +4,11 @@
 #include "../types.h"
 #include "card_constants.h"
 #include "duel_card_checks.h"
-#include "duel_card.h"
 #ifdef MEMORIES_PC
 #include "pc/cards/cards.h"
 #include "pc/cards/tables.h"
 #include "pc/cards/rules.h"
+extern s32 gDuel_adwCardStats[];       /* duel_card.h, which the host tests cannot include */
 #include "pc/tower/tower.h"
 #endif
 

@@ -14,6 +14,8 @@ unsigned short gDuel_aFusionTable[0x10000 / 2];
 static int event_count, mod_result = -1, equip_rule = -1, removed, changed;
 int Cards_Valid(int id) { return id > 0 && id <= 800; }
 int Cards_KindChanged(int id) { return id == changed; }
+int Cards_NoFusion(int id) { (void)id; return 0; }
+int gDuel_adwCardStats[800];
 int Cards_BaseId(int id) { return id > 722 ? id - 722 : id; }
 /* Card `effect_card` is an equip whose "effect" is `effect_as`. */
 static int effect_card, effect_as;

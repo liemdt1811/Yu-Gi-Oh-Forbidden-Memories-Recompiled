@@ -217,11 +217,6 @@ static int reaches(const MonsterEffect *effect, int source, int target, int card
     case MONSTER_TARGET_OPPONENT: if (owner(target) == owner(source)) return 0; break;
     case MONSTER_TARGET_ALL: break;
     case MONSTER_TARGET_BATTLE:
-        /* A trap that springs on an attack: the attacker. */
-        if (S.trap_pending) {
-            if (target != S.trap_battle_record[0]) return 0;
-            break;
-        }
         /* The monster that attacked the flipped one, if it is still there. */
         if (source != S.defender || target != S.attacker || D_801A7AD8[target].card_id != S.attacker_card) return 0;
         break;

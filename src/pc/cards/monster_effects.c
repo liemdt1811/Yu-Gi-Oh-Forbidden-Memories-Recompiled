@@ -206,10 +206,10 @@ static int read_one(const char *mod, int index, int n, const JsonValue *entry, M
      * while it resolves, so own/opponent/all work just as they do for a
      * monster effect. */
     if (card_effect && (target == MONSTER_TARGET_SELF || target == MONSTER_TARGET_OTHERS ||
-                        (target == MONSTER_TARGET_BATTLE && action != MONSTER_DO_DESTROY) ||
+                        target == MONSTER_TARGET_BATTLE ||
                         ((action == MONSTER_DO_HEAL || action == MONSTER_DO_DAMAGE) &&
                          target == MONSTER_TARGET_ALL))) {
-        Mods_Note(mod, "cards[%d]: card_effects[%d]: a spell or trap target must be own, opponent or all (a trap's destroy may also take battle: the attacker)", index, n);
+        Mods_Note(mod, "cards[%d]: card_effects[%d]: a spell or trap target must be own, opponent or all", index, n);
         return 0;
     }
     out->when = (unsigned char)when;

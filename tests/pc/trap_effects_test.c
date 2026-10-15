@@ -26,6 +26,7 @@ static DisplayObject objects[30];
 static int effects[1024], thresholds[1024], attack, replace_id, played_card, played_side;
 int Cards_TrapId(int id) { return effects[id]; }
 int Cards_TrapThreshold(int id, int fallback) { return thresholds[id] >= 0 ? thresholds[id] : fallback; }
+int Cards_TrapMinAttack(int id) { (void)id; return 0; }
 int Cards_CardEffectsReplace(int id) { return id == replace_id; }
 void MonsterEffects_CardPlayed(int card, int side) { (void)card; (void)side; }
 void MonsterEffects_TrapPlayed(int card, int side) { (void)card; (void)side; }
