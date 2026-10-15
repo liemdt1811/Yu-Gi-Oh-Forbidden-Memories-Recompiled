@@ -12014,9 +12014,9 @@
  {
   "with": [
    "z:spherous-lady:1",
-   "z:luster-dragon:1"
+   "z:big-shield-gardna:1"
   ],
-  "result": 531
+  "result": 157
  },
  {
   "with": [
@@ -12105,14 +12105,14 @@
  {
   "with": [
    "z:zombyra-the-dark:1",
-   "z:luster-dragon:1"
+   "z:big-shield-gardna:1"
   ],
-  "result": 69
+  "result": 82
  },
  {
   "with": [
    "z:zombyra-the-dark:1",
-   "z:x-head-cannon:1"
+   "z:gilasaurus:1"
   ],
   "result": 82
  },
@@ -12203,23 +12203,842 @@
  {
   "with": [
    "z:maryokutai:1",
-   "z:luster-dragon:1"
+   "z:big-shield-gardna:1"
+  ],
+  "result": 642
+ },
+ {
+  "with": [
+   "z:maryokutai:1",
+   "z:gilasaurus:1"
+  ],
+  "result": 438
+ },
+ {
+  "with": [
+   "z:maryokutai:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": 82
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   362
+  ],
+  "result": 157
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   399
+  ],
+  "result": 485
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   156
+  ],
+  "result": 100
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   469
+  ],
+  "result": 157
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   635
+  ],
+  "result": 485
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   161
+  ],
+  "result": 157
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   72
+  ],
+  "result": 157
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   366
+  ],
+  "result": 485
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   394
+  ],
+  "result": 100
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   499
+  ],
+  "result": 157
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   278
+  ],
+  "result": 485
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   397
+  ],
+  "result": 100
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   "z:gilasaurus:1"
+  ],
+  "result": 434
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
+   "z:manga-ryu-ran:1"
   ],
   "result": 69
  },
  {
   "with": [
-   "z:maryokutai:1",
+   "z:big-shield-gardna:1",
+   "z:shining-angel:1"
+  ],
+  "result": 423
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   80
+  ],
+  "result": 375
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   570
+  ],
+  "result": 423
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   32
+  ],
+  "result": 376
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   59
+  ],
+  "result": 434
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   81
+  ],
+  "result": 375
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   573
+  ],
+  "result": 11
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   23
+  ],
+  "result": 434
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   41
+  ],
+  "result": 423
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   165
+  ],
+  "result": 11
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   352
+  ],
+  "result": 434
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   511
+  ],
+  "result": 423
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   557
+  ],
+  "result": 423
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": 37
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   "z:shining-angel:1"
+  ],
+  "result": 425
+ },
+ {
+  "with": [
+   "z:gilasaurus:1",
+   "z:sonic-bird:1"
+  ],
+  "result": 11
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   711
+  ],
+  "result": 37
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   427
+  ],
+  "result": 37
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   571
+  ],
+  "result": 82
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   706
+  ],
+  "result": 37
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   39
+  ],
+  "result": 69
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   69
+  ],
+  "result": 37
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   390
+  ],
+  "result": 37
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   714
+  ],
+  "result": 37
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   467
+  ],
+  "result": 37
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   529
+  ],
+  "result": 37
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   473
+  ],
+  "result": 69
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   "z:shining-angel:1"
+  ],
+  "result": 37
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   "z:sonic-bird:1"
+  ],
+  "result": 69
+ },
+ {
+  "with": [
+   "z:manga-ryu-ran:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": 82
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   633
+  ],
+  "result": 582
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   608
+  ],
+  "result": 425
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   396
+  ],
+  "result": 495
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   109
+  ],
+  "result": 582
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   111
+  ],
+  "result": 99
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   616
+  ],
+  "result": 495
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   363
+  ],
+  "result": 582
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   433
+  ],
+  "result": 495
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   462
+  ],
+  "result": 582
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   631
+  ],
+  "result": 551
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   493
+  ],
+  "result": 495
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   44
+  ],
+  "result": 551
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   "z:sonic-bird:1"
+  ],
+  "result": 582
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": 613
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   "z:the-rock-spirit:1"
+  ],
+  "result": 627
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   117
+  ],
+  "result": 63
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   581
+  ],
+  "result": 409
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   62
+  ],
+  "result": 458
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   125
+  ],
+  "result": 63
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   272
+  ],
+  "result": 409
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   595
+  ],
+  "result": 458
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   7
+  ],
+  "result": 458
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   4
+  ],
+  "result": 357
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   53
+  ],
+  "result": 409
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   294
+  ],
+  "result": 376
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   561
+  ],
+  "result": 357
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   106
+  ],
+  "result": 63
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": 37
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   "z:the-rock-spirit:1"
+  ],
+  "result": 458
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   "z:the-unfriendly-amazon:1"
+  ],
+  "result": 467
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   90
+  ],
+  "result": 613
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   126
+  ],
+  "result": 613
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   582
+  ],
+  "result": 613
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   111
+  ],
+  "result": 82
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   396
+  ],
+  "result": 613
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   633
+  ],
+  "result": 613
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   704
+  ],
+  "result": 613
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   389
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   495
+  ],
+  "result": 613
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   427
+  ],
+  "result": 613
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   513
+  ],
+  "result": 390
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   44
+  ],
+  "result": 613
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   "z:the-rock-spirit:1"
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   "z:the-unfriendly-amazon:1"
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:soul-of-purity-and-light:1",
+   "z:luster-dragon:1"
+  ],
+  "result": 82
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   632
+  ],
+  "result": 92
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   454
+  ],
+  "result": 533
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   426
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   453
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   74
+  ],
+  "result": 533
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   456
+  ],
+  "result": 627
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   26
+  ],
+  "result": 92
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   78
+  ],
+  "result": 533
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   127
+  ],
+  "result": 627
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   11
+  ],
+  "result": 483
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   403
+  ],
+  "result": 92
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   408
+  ],
+  "result": 426
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   "z:the-unfriendly-amazon:1"
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   "z:luster-dragon:1"
+  ],
+  "result": 465
+ },
+ {
+  "with": [
+   "z:the-rock-spirit:1",
+   "z:x-head-cannon:1"
+  ],
+  "result": 426
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   378
+  ],
+  "result": 564
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   702
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   701
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   704
+  ],
+  "result": 613
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   618
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   92
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   426
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   453
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   483
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   482
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
+   "z:luster-dragon:1"
+  ],
+  "result": 33
+ },
+ {
+  "with": [
+   "z:the-unfriendly-amazon:1",
    "z:x-head-cannon:1"
   ],
   "result": 390
  },
  {
   "with": [
-   "z:maryokutai:1",
+   "z:the-unfriendly-amazon:1",
    "z:gazelle-the-king-of-mythical-beasts:1"
   ],
-  "result": 11
+  "result": 33
  },
  {
   "with": [
@@ -12310,7 +13129,7 @@
    "z:cyber-dragon:1",
    "z:hyozanryu:1"
   ],
-  "result": 37
+  "result": 69
  },
  {
   "with": [
@@ -12464,133 +13283,133 @@
    "z:dark-magician-girl:1",
    85
   ],
-  "result": 82
+  "result": 471
  },
  {
   "with": [
    "z:dark-magician-girl:1",
    378
   ],
-  "result": 33
+  "result": 471
  },
  {
   "with": [
    "z:dark-magician-girl:1",
    500
   ],
-  "result": 564
+  "result": 82
  },
  {
   "with": [
    "z:dark-magician-girl:1",
    594
   ],
-  "result": 82
+  "result": 471
  },
  {
   "with": [
    "z:dark-magician-girl:1",
    702
   ],
-  "result": 33
+  "result": 471
  },
  {
   "with": [
    "z:dark-magician-girl:1",
    "z:panther-warrior:1"
   ],
-  "result": 471
+  "result": 564
  },
  {
   "with": [
    "z:dark-magician-girl:1",
    "z:slot-machine:1"
   ],
-  "result": 564
+  "result": 390
  },
  {
   "with": [
    "z:dark-magician-girl:1",
-   "z:the-earl-of-demise:1"
+   "z:soul-of-purity-and-light:1"
   ],
-  "result": 471
+  "result": 564
  },
  {
   "with": [
    "z:king-s-knight:1",
    234
   ],
-  "result": 375
+  "result": 376
  },
  {
   "with": [
    "z:king-s-knight:1",
    369
   ],
-  "result": 376
+  "result": 15
  },
  {
   "with": [
    "z:king-s-knight:1",
    554
   ],
-  "result": 15
+  "result": 375
  },
  {
   "with": [
    "z:king-s-knight:1",
    621
   ],
-  "result": 551
+  "result": 594
  },
  {
   "with": [
    "z:king-s-knight:1",
    43
   ],
-  "result": 376
+  "result": 15
  },
  {
   "with": [
    "z:king-s-knight:1",
    66
   ],
-  "result": 15
+  "result": 375
  },
  {
   "with": [
    "z:king-s-knight:1",
    44
   ],
-  "result": 376
+  "result": 582
  },
  {
   "with": [
    "z:king-s-knight:1",
    425
   ],
-  "result": 582
+  "result": 15
  },
  {
   "with": [
    "z:king-s-knight:1",
    622
   ],
-  "result": 15
+  "result": 376
  },
  {
   "with": [
    "z:king-s-knight:1",
    396
   ],
-  "result": 376
+  "result": 582
  },
  {
   "with": [
    "z:king-s-knight:1",
    493
   ],
-  "result": 582
+  "result": 15
  },
  {
   "with": [
@@ -12604,133 +13423,133 @@
    "z:king-s-knight:1",
    "z:inpachi:1"
   ],
-  "result": 375
+  "result": 376
  },
  {
   "with": [
    "z:king-s-knight:1",
    "z:overdrive:1"
   ],
-  "result": 376
+  "result": 15
  },
  {
   "with": [
    "z:king-s-knight:1",
    "z:robotic-knight:1"
   ],
-  "result": 15
+  "result": 376
  },
  {
   "with": [
    "z:queen-s-knight:1",
    43
   ],
-  "result": 434
+  "result": 495
  },
  {
   "with": [
    "z:queen-s-knight:1",
    66
   ],
-  "result": 495
+  "result": 11
  },
  {
   "with": [
    "z:queen-s-knight:1",
    93
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:queen-s-knight:1",
    554
   ],
-  "result": 434
+  "result": 495
  },
  {
   "with": [
    "z:queen-s-knight:1",
    649
   ],
-  "result": 495
+  "result": 11
  },
  {
   "with": [
    "z:queen-s-knight:1",
    41
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:queen-s-knight:1",
    462
   ],
-  "result": 495
+  "result": 15
  },
  {
   "with": [
    "z:queen-s-knight:1",
    631
   ],
-  "result": 15
+  "result": 434
  },
  {
   "with": [
    "z:queen-s-knight:1",
    396
   ],
-  "result": 434
+  "result": 495
  },
  {
   "with": [
    "z:queen-s-knight:1",
    433
   ],
-  "result": 495
+  "result": 15
  },
  {
   "with": [
    "z:queen-s-knight:1",
    493
   ],
-  "result": 15
+  "result": 434
  },
  {
   "with": [
    "z:queen-s-knight:1",
    44
   ],
-  "result": 15
+  "result": 376
  },
  {
   "with": [
    "z:queen-s-knight:1",
    "z:flying-kamakiri-2:1"
   ],
-  "result": 495
+  "result": 15
  },
  {
   "with": [
    "z:queen-s-knight:1",
    "z:gamma-the-magnet-warrior:1"
   ],
-  "result": 495
+  "result": 11
  },
  {
   "with": [
    "z:queen-s-knight:1",
    "z:gazelle-the-king-of-mythical-beasts:1"
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:jack-s-knight:1",
    618
   ],
-  "result": 571
+  "result": 33
  },
  {
   "with": [
@@ -12751,21 +13570,21 @@
    "z:jack-s-knight:1",
    12
   ],
-  "result": 571
+  "result": 33
  },
  {
   "with": [
    "z:jack-s-knight:1",
    15
   ],
-  "result": 390
+  "result": 529
  },
  {
   "with": [
    "z:jack-s-knight:1",
    376
   ],
-  "result": 531
+  "result": 571
  },
  {
   "with": [
@@ -12814,308 +13633,308 @@
    "z:jack-s-knight:1",
    "z:archfiend-soldier:1"
   ],
-  "result": 33
+  "result": 471
  },
  {
   "with": [
    "z:jack-s-knight:1",
    "z:flame-champion:1"
   ],
-  "result": 390
+  "result": 529
  },
  {
   "with": [
    "z:jack-s-knight:1",
    "z:luster-dragon:1"
   ],
-  "result": 465
+  "result": 571
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    597
   ],
-  "result": 434
+  "result": 375
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    23
   ],
-  "result": 375
+  "result": 11
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    528
   ],
-  "result": 375
+  "result": 376
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    404
   ],
-  "result": 434
+  "result": 375
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    91
   ],
-  "result": 375
+  "result": 11
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    163
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    43
   ],
-  "result": 434
+  "result": 15
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    51
   ],
-  "result": 375
+  "result": 11
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    52
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    55
   ],
-  "result": 434
+  "result": 375
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    66
   ],
-  "result": 15
+  "result": 11
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    80
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    "z:flying-kamakiri-2:1"
   ],
-  "result": 434
+  "result": 375
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    "z:gamma-the-magnet-warrior:1"
   ],
-  "result": 375
+  "result": 11
  },
  {
   "with": [
    "z:alligator-s-sword:1",
    "z:gazelle-the-king-of-mythical-beasts:1"
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:berfomet:1",
    136
   ],
-  "result": 377
+  "result": 650
  },
  {
   "with": [
    "z:berfomet:1",
    149
   ],
-  "result": 650
+  "result": 97
  },
  {
   "with": [
    "z:berfomet:1",
    84
   ],
-  "result": 97
+  "result": 377
  },
  {
   "with": [
    "z:berfomet:1",
    86
   ],
-  "result": 377
+  "result": 650
  },
  {
   "with": [
    "z:berfomet:1",
    95
   ],
-  "result": 650
+  "result": 97
  },
  {
   "with": [
    "z:berfomet:1",
    6
   ],
-  "result": 97
+  "result": 377
  },
  {
   "with": [
    "z:berfomet:1",
    225
   ],
-  "result": 377
+  "result": 650
  },
  {
   "with": [
    "z:berfomet:1",
    297
   ],
-  "result": 438
+  "result": 97
  },
  {
   "with": [
    "z:berfomet:1",
    512
   ],
-  "result": 97
+  "result": 377
  },
  {
   "with": [
    "z:berfomet:1",
    98
   ],
-  "result": 377
+  "result": 650
  },
  {
   "with": [
    "z:berfomet:1",
    405
   ],
-  "result": 545
+  "result": 423
  },
  {
   "with": [
    "z:berfomet:1",
    643
   ],
-  "result": 97
+  "result": 377
  },
  {
   "with": [
    "z:berfomet:1",
    "z:alpha-the-magnet-warrior:1"
   ],
-  "result": 377
+  "result": 423
  },
  {
   "with": [
    "z:berfomet:1",
    "z:cyber-falcon:1"
   ],
-  "result": 438
+  "result": 97
  },
  {
   "with": [
    "z:berfomet:1",
-   "z:little-winguard:1"
+   "z:gilasaurus:1"
   ],
-  "result": 97
+  "result": 377
  },
  {
   "with": [
    "z:cyber-ogre:1",
    645
   ],
-  "result": 571
+  "result": 33
  },
  {
   "with": [
    "z:cyber-ogre:1",
    409
   ],
-  "result": 571
+  "result": 465
  },
  {
   "with": [
    "z:cyber-ogre:1",
    415
   ],
-  "result": 531
+  "result": 571
  },
  {
   "with": [
    "z:cyber-ogre:1",
    441
   ],
-  "result": 571
+  "result": 33
  },
  {
   "with": [
    "z:cyber-ogre:1",
    508
   ],
-  "result": 33
+  "result": 531
  },
  {
   "with": [
    "z:cyber-ogre:1",
    388
   ],
-  "result": 531
+  "result": 571
  },
  {
   "with": [
    "z:cyber-ogre:1",
    482
   ],
-  "result": 571
+  "result": 33
  },
  {
   "with": [
    "z:cyber-ogre:1",
    532
   ],
-  "result": 33
+  "result": 531
  },
  {
   "with": [
    "z:cyber-ogre:1",
    533
   ],
-  "result": 531
+  "result": 571
  },
  {
   "with": [
    "z:cyber-ogre:1",
    618
   ],
-  "result": 571
+  "result": 33
  },
  {
   "with": [
    "z:cyber-ogre:1",
    627
   ],
-  "result": 33
+  "result": 531
  },
  {
   "with": [
@@ -13129,21 +13948,21 @@
    "z:cyber-ogre:1",
    "z:archfiend-soldier:1"
   ],
-  "result": 571
+  "result": 401
  },
  {
   "with": [
    "z:cyber-ogre:1",
    "z:flame-champion:1"
   ],
-  "result": 571
+  "result": 529
  },
  {
   "with": [
    "z:cyber-ogre:1",
    "z:luster-dragon:1"
   ],
-  "result": 465
+  "result": 531
  },
  {
   "with": [
@@ -13213,28 +14032,28 @@
    "z:neo-spacian-air-hummingbird:1",
    300
   ],
-  "result": 294
+  "result": 272
  },
  {
   "with": [
    "z:neo-spacian-air-hummingbird:1",
    538
   ],
-  "result": 642
+  "result": 294
  },
  {
   "with": [
    "z:neo-spacian-air-hummingbird:1",
    207
   ],
-  "result": 595
+  "result": 294
  },
  {
   "with": [
    "z:neo-spacian-air-hummingbird:1",
    186
   ],
-  "result": 272
+  "result": 595
  },
  {
   "with": [
@@ -13255,308 +14074,308 @@
    "z:neo-spacian-air-hummingbird:1",
    537
   ],
-  "result": 294
+  "result": 459
  },
  {
   "with": [
    "z:neo-spacian-air-hummingbird:1",
    122
   ],
-  "result": 272
+  "result": 595
  },
  {
   "with": [
    "z:neo-spacian-air-hummingbird:1",
    144
   ],
-  "result": 595
+  "result": 294
  },
  {
   "with": [
    "z:neo-spacian-air-hummingbird:1",
    174
   ],
-  "result": 294
+  "result": 272
  },
  {
   "with": [
    "z:neo-spacian-air-hummingbird:1",
    211
   ],
-  "result": 459
+  "result": 272
  },
  {
   "with": [
    "z:neo-spacian-air-hummingbird:1",
    266
   ],
-  "result": 272
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-air-hummingbird:1",
    "z:flying-fish:1"
   ],
-  "result": 251
+  "result": 294
  },
  {
   "with": [
    "z:neo-spacian-air-hummingbird:1",
    "z:humanoid-slime:1"
   ],
-  "result": 431
+  "result": 251
  },
  {
   "with": [
    "z:neo-spacian-air-hummingbird:1",
    "z:science-soldier:1"
   ],
-  "result": 138
+  "result": 215
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    147
   ],
-  "result": 479
+  "result": 610
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    185
   ],
-  "result": 610
+  "result": 244
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    586
   ],
-  "result": 228
+  "result": 193
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    100
   ],
-  "result": 244
+  "result": 193
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    161
   ],
-  "result": 610
+  "result": 244
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    172
   ],
-  "result": 620
+  "result": 244
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    227
   ],
-  "result": 193
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    452
   ],
-  "result": 138
+  "result": 431
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    451
   ],
-  "result": 431
+  "result": 193
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    524
   ],
-  "result": 193
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    152
   ],
-  "result": 138
+  "result": 431
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    436
   ],
-  "result": 431
+  "result": 193
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    "z:people-running-about:1"
   ],
-  "result": 193
+  "result": 133
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    "z:flame-dancer:1"
   ],
-  "result": 133
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-aqua-dolphin:1",
    "z:earthbound-spirit:1"
   ],
-  "result": 244
+  "result": 479
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    496
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    629
   ],
-  "result": 171
+  "result": 412
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    189
   ],
-  "result": 412
+  "result": 30
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    252
   ],
-  "result": 64
+  "result": 456
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    384
   ],
-  "result": 587
+  "result": 98
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    481
   ],
-  "result": 412
+  "result": 30
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    5
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    48
   ],
-  "result": 171
+  "result": 162
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    175
   ],
-  "result": 162
+  "result": 30
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    178
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    190
   ],
-  "result": 171
+  "result": 162
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    215
   ],
-  "result": 162
+  "result": 30
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    "z:acrobat-monkey:1"
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    "z:battle-footballer:1"
   ],
-  "result": 171
+  "result": 412
  },
  {
   "with": [
    "z:neo-spacian-dark-panther:1",
    "z:dark-bat:1"
   ],
-  "result": 294
+  "result": 30
  },
  {
   "with": [
    "z:neo-spacian-flare-scarab:1",
    50
   ],
-  "result": 100
+  "result": 157
  },
  {
   "with": [
    "z:neo-spacian-flare-scarab:1",
    56
   ],
-  "result": 157
+  "result": 479
  },
  {
   "with": [
    "z:neo-spacian-flare-scarab:1",
    485
   ],
-  "result": 244
+  "result": 479
  },
  {
   "with": [
    "z:neo-spacian-flare-scarab:1",
    501
   ],
-  "result": 100
+  "result": 157
  },
  {
   "with": [
    "z:neo-spacian-flare-scarab:1",
    476
   ],
-  "result": 610
+  "result": 244
  },
  {
   "with": [
@@ -13605,21 +14424,21 @@
    "z:neo-spacian-flare-scarab:1",
    417
   ],
-  "result": 643
+  "result": 133
  },
  {
   "with": [
    "z:neo-spacian-flare-scarab:1",
    "z:earthbound-spirit:1"
   ],
-  "result": 100
+  "result": 157
  },
  {
   "with": [
    "z:neo-spacian-flare-scarab:1",
    "z:fiber-jar:1"
   ],
-  "result": 157
+  "result": 479
  },
  {
   "with": [
@@ -13633,210 +14452,210 @@
    "z:neo-spacian-grand-mole:1",
    244
   ],
-  "result": 138
+  "result": 642
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    28
   ],
-  "result": 642
+  "result": 412
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    257
   ],
-  "result": 412
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    455
   ],
-  "result": 412
+  "result": 457
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    505
   ],
-  "result": 642
+  "result": 412
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    263
   ],
-  "result": 412
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    116
   ],
-  "result": 138
+  "result": 642
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    189
   ],
-  "result": 642
+  "result": 412
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    195
   ],
-  "result": 294
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    218
   ],
-  "result": 138
+  "result": 642
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    235
   ],
-  "result": 642
+  "result": 294
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    414
   ],
-  "result": 412
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    "z:maryokutai:1"
   ],
-  "result": 138
+  "result": 431
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    "z:pharaoh-s-servant:1"
   ],
-  "result": 539
+  "result": 642
  },
  {
   "with": [
    "z:neo-spacian-grand-mole:1",
    "z:roboyarou:1"
   ],
-  "result": 412
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    195
   ],
-  "result": 138
+  "result": 431
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    226
   ],
-  "result": 539
+  "result": 431
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    235
   ],
-  "result": 642
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    239
   ],
-  "result": 138
+  "result": 539
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    266
   ],
-  "result": 431
+  "result": 251
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    107
   ],
-  "result": 431
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    199
   ],
-  "result": 138
+  "result": 431
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    205
   ],
-  "result": 431
+  "result": 251
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    206
   ],
-  "result": 251
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    243
   ],
-  "result": 138
+  "result": 431
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    247
   ],
-  "result": 431
+  "result": 251
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    497
   ],
-  "result": 251
+  "result": 138
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    "z:maryokutai:1"
   ],
-  "result": 138
+  "result": 431
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    "z:pharaoh-s-servant:1"
   ],
-  "result": 539
+  "result": 431
  },
  {
   "with": [
    "z:neo-spacian-marine-dolphin:1",
    "z:roboyarou:1"
   ],
-  "result": 642
+  "result": 138
  },
  {
   "with": [
@@ -13871,7 +14690,7 @@
    "z:archfiend-of-gilfer:1",
    472
   ],
-  "result": 82
+  "result": 37
  },
  {
   "with": [
@@ -13892,7 +14711,7 @@
    "z:archfiend-of-gilfer:1",
    711
   ],
-  "result": 82
+  "result": 37
  },
  {
   "with": [
@@ -13906,7 +14725,7 @@
    "z:archfiend-of-gilfer:1",
    39
   ],
-  "result": 69
+  "result": 82
  },
  {
   "with": [
@@ -13920,7 +14739,7 @@
    "z:archfiend-of-gilfer:1",
    "z:empress-mantis:1"
   ],
-  "result": 69
+  "result": 82
  },
  {
   "with": [
@@ -13932,9 +14751,9 @@
  {
   "with": [
    "z:archfiend-of-gilfer:1",
-   "z:ryu-ran:1"
+   "z:manga-ryu-ran:1"
   ],
-  "result": 37
+  "result": 69
  },
  {
   "with": [
@@ -14060,7 +14879,7 @@
    "z:dark-necrofear:1",
    472
   ],
-  "result": 82
+  "result": 37
  },
  {
   "with": [
@@ -14081,7 +14900,7 @@
    "z:dark-necrofear:1",
    711
   ],
-  "result": 82
+  "result": 37
  },
  {
   "with": [
@@ -14095,7 +14914,7 @@
    "z:dark-necrofear:1",
    39
   ],
-  "result": 69
+  "result": 82
  },
  {
   "with": [
@@ -14116,7 +14935,7 @@
    "z:dark-necrofear:1",
    "z:empress-mantis:1"
   ],
-  "result": 69
+  "result": 82
  },
  {
   "with": [
@@ -14128,23 +14947,23 @@
  {
   "with": [
    "z:dark-necrofear:1",
-   "z:ryu-ran:1"
+   "z:manga-ryu-ran:1"
   ],
-  "result": 37
+  "result": 69
  },
  {
   "with": [
    "z:vampire-lord:1",
    719
   ],
-  "result": 471
+  "result": 564
  },
  {
   "with": [
    "z:vampire-lord:1",
    99
   ],
-  "result": 564
+  "result": 82
  },
  {
   "with": [
@@ -14158,504 +14977,504 @@
    "z:vampire-lord:1",
    545
   ],
-  "result": 471
+  "result": 564
  },
  {
   "with": [
    "z:vampire-lord:1",
    97
   ],
-  "result": 564
+  "result": 82
  },
  {
   "with": [
    "z:vampire-lord:1",
    368
   ],
-  "result": 82
+  "result": 471
  },
  {
   "with": [
    "z:vampire-lord:1",
    39
   ],
-  "result": 471
+  "result": 564
  },
  {
   "with": [
    "z:vampire-lord:1",
    85
   ],
-  "result": 564
+  "result": 82
  },
  {
   "with": [
    "z:vampire-lord:1",
    378
   ],
-  "result": 564
+  "result": 33
  },
  {
   "with": [
    "z:vampire-lord:1",
    500
   ],
-  "result": 471
+  "result": 564
  },
  {
   "with": [
    "z:vampire-lord:1",
    551
   ],
-  "result": 564
+  "result": 82
  },
  {
   "with": [
    "z:vampire-lord:1",
    594
   ],
-  "result": 82
+  "result": 471
  },
  {
   "with": [
    "z:vampire-lord:1",
    "z:panther-warrior:1"
   ],
-  "result": 33
+  "result": 471
  },
  {
   "with": [
    "z:vampire-lord:1",
    "z:slot-machine:1"
   ],
-  "result": 471
+  "result": 564
  },
  {
   "with": [
    "z:vampire-lord:1",
-   "z:the-earl-of-demise:1"
+   "z:soul-of-purity-and-light:1"
   ],
-  "result": 82
+  "result": 471
  },
  {
   "with": [
    "z:zombie-master:1",
    99
   ],
-  "result": 39
+  "result": 551
  },
  {
   "with": [
    "z:zombie-master:1",
    545
   ],
-  "result": 551
+  "result": 594
  },
  {
   "with": [
    "z:zombie-master:1",
    719
   ],
-  "result": 564
+  "result": 401
  },
  {
   "with": [
    "z:zombie-master:1",
    97
   ],
-  "result": 39
+  "result": 551
  },
  {
   "with": [
    "z:zombie-master:1",
    368
   ],
-  "result": 551
+  "result": 594
  },
  {
   "with": [
    "z:zombie-master:1",
    596
   ],
-  "result": 594
+  "result": 39
  },
  {
   "with": [
    "z:zombie-master:1",
    379
   ],
-  "result": 39
+  "result": 551
  },
  {
   "with": [
    "z:zombie-master:1",
    523
   ],
-  "result": 551
+  "result": 594
  },
  {
   "with": [
    "z:zombie-master:1",
    388
   ],
-  "result": 594
+  "result": 39
  },
  {
   "with": [
    "z:zombie-master:1",
    415
   ],
-  "result": 401
+  "result": 390
  },
  {
   "with": [
    "z:zombie-master:1",
    526
   ],
-  "result": 551
+  "result": 594
  },
  {
   "with": [
    "z:zombie-master:1",
    124
   ],
-  "result": 594
+  "result": 39
  },
  {
   "with": [
    "z:zombie-master:1",
    "z:dark-blade:1"
   ],
-  "result": 39
+  "result": 551
  },
  {
   "with": [
    "z:zombie-master:1",
    "z:dunames-dark-witch:1"
   ],
-  "result": 551
+  "result": 594
  },
  {
   "with": [
    "z:zombie-master:1",
    "z:gadget-soldier:1"
   ],
-  "result": 594
+  "result": 39
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    631
   ],
-  "result": 545
+  "result": 495
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    433
   ],
-  "result": 495
+  "result": 99
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    493
   ],
-  "result": 582
+  "result": 495
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    44
   ],
-  "result": 99
+  "result": 582
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    363
   ],
-  "result": 495
+  "result": 99
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    622
   ],
-  "result": 39
+  "result": 99
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    10
   ],
-  "result": 545
+  "result": 495
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    31
   ],
-  "result": 495
+  "result": 99
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    36
   ],
-  "result": 99
+  "result": 545
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    96
   ],
-  "result": 545
+  "result": 495
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    168
   ],
-  "result": 495
+  "result": 99
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    281
   ],
-  "result": 99
+  "result": 545
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    "z:flying-kamakiri-2:1"
   ],
-  "result": 545
+  "result": 495
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    "z:gamma-the-magnet-warrior:1"
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
    "z:gazelle-the-king-of-mythical-beasts:1"
   ],
-  "result": 434
+  "result": 545
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    114
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    190
   ],
-  "result": 171
+  "result": 162
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    259
   ],
-  "result": 162
+  "result": 30
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    530
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    142
   ],
-  "result": 171
+  "result": 162
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    174
   ],
-  "result": 294
+  "result": 30
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    5
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    48
   ],
-  "result": 171
+  "result": 162
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    175
   ],
-  "result": 162
+  "result": 30
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    178
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    215
   ],
-  "result": 171
+  "result": 162
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    228
   ],
-  "result": 162
+  "result": 30
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    "z:acrobat-monkey:1"
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    "z:battle-footballer:1"
   ],
-  "result": 171
+  "result": 412
  },
  {
   "with": [
    "z:gravekeeper-s-guard:1",
    "z:dark-bat:1"
   ],
-  "result": 294
+  "result": 30
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    42
   ],
-  "result": 149
+  "result": 433
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    128
   ],
-  "result": 633
+  "result": 433
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    213
   ],
-  "result": 460
+  "result": 149
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    216
   ],
-  "result": 23
+  "result": 41
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    284
   ],
-  "result": 41
+  "result": 149
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    115
   ],
-  "result": 36
+  "result": 10
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    30
   ],
-  "result": 149
+  "result": 433
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    112
   ],
-  "result": 433
+  "result": 10
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    132
   ],
-  "result": 10
+  "result": 149
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    169
   ],
-  "result": 149
+  "result": 433
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    171
   ],
-  "result": 433
+  "result": 10
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    194
   ],
-  "result": 10
+  "result": 149
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    "z:gradius:1"
   ],
-  "result": 149
+  "result": 633
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    "z:marauding-captain:1"
   ],
-  "result": 41
+  "result": 149
  },
  {
   "with": [
    "z:gravekeeper-s-spy:1",
    "z:neo-aqua-madoor:1"
   ],
-  "result": 460
+  "result": 149
  },
  {
   "with": [
@@ -14767,105 +15586,105 @@
    "z:mermaid-knight:1",
    647
   ],
-  "result": 617
+  "result": 73
  },
  {
   "with": [
    "z:mermaid-knight:1",
    518
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:mermaid-knight:1",
    599
   ],
-  "result": 639
+  "result": 73
  },
  {
   "with": [
    "z:mermaid-knight:1",
    131
   ],
-  "result": 73
+  "result": 440
  },
  {
   "with": [
    "z:mermaid-knight:1",
    249
   ],
-  "result": 73
+  "result": 440
  },
  {
   "with": [
    "z:mermaid-knight:1",
    430
   ],
-  "result": 440
+  "result": 617
  },
  {
   "with": [
    "z:mermaid-knight:1",
    230
   ],
-  "result": 617
+  "result": 73
  },
  {
   "with": [
    "z:mermaid-knight:1",
    353
   ],
-  "result": 73
+  "result": 440
  },
  {
   "with": [
    "z:mermaid-knight:1",
    494
   ],
-  "result": 639
+  "result": 73
  },
  {
   "with": [
    "z:mermaid-knight:1",
    60
   ],
-  "result": 73
+  "result": 440
  },
  {
   "with": [
    "z:mermaid-knight:1",
    438
   ],
-  "result": 440
+  "result": 508
  },
  {
   "with": [
    "z:mermaid-knight:1",
    448
   ],
-  "result": 639
+  "result": 73
  },
  {
   "with": [
    "z:mermaid-knight:1",
    "z:flying-kamakiri-2:1"
   ],
-  "result": 617
+  "result": 73
  },
  {
   "with": [
    "z:mermaid-knight:1",
    "z:gamma-the-magnet-warrior:1"
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:mermaid-knight:1",
    "z:gazelle-the-king-of-mythical-beasts:1"
   ],
-  "result": 434
+  "result": 617
  },
  {
   "with": [
@@ -14970,420 +15789,420 @@
    "z:mirage-dragon:1",
    94
   ],
-  "result": 487
+  "result": 375
  },
  {
   "with": [
    "z:mirage-dragon:1",
    357
   ],
-  "result": 15
+  "result": 582
  },
  {
   "with": [
    "z:mirage-dragon:1",
    10
   ],
-  "result": 582
+  "result": 39
  },
  {
   "with": [
    "z:mirage-dragon:1",
    31
   ],
-  "result": 39
+  "result": 99
  },
  {
   "with": [
    "z:mirage-dragon:1",
    168
   ],
-  "result": 99
+  "result": 582
  },
  {
   "with": [
    "z:mirage-dragon:1",
    555
   ],
-  "result": 39
+  "result": 386
  },
  {
   "with": [
    "z:mirage-dragon:1",
    44
   ],
-  "result": 386
+  "result": 582
  },
  {
   "with": [
    "z:mirage-dragon:1",
    425
   ],
-  "result": 582
+  "result": 458
  },
  {
   "with": [
    "z:mirage-dragon:1",
    622
   ],
-  "result": 39
+  "result": 386
  },
  {
   "with": [
    "z:mirage-dragon:1",
    396
   ],
-  "result": 386
+  "result": 582
  },
  {
   "with": [
    "z:mirage-dragon:1",
    493
   ],
-  "result": 582
+  "result": 39
  },
  {
   "with": [
    "z:mirage-dragon:1",
    513
   ],
-  "result": 39
+  "result": 386
  },
  {
   "with": [
    "z:mirage-dragon:1",
    "z:inpachi:1"
   ],
-  "result": 487
+  "result": 375
  },
  {
   "with": [
    "z:mirage-dragon:1",
    "z:overdrive:1"
   ],
-  "result": 375
+  "result": 376
  },
  {
   "with": [
    "z:mirage-dragon:1",
    "z:robotic-knight:1"
   ],
-  "result": 508
+  "result": 582
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    404
   ],
-  "result": 434
+  "result": 423
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    23
   ],
-  "result": 423
+  "result": 11
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    91
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    163
   ],
-  "result": 434
+  "result": 423
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    587
   ],
-  "result": 423
+  "result": 11
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    607
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    578
   ],
-  "result": 434
+  "result": 423
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    641
   ],
-  "result": 423
+  "result": 11
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    41
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    64
   ],
-  "result": 434
+  "result": 423
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    74
   ],
-  "result": 423
+  "result": 11
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    165
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    "z:alpha-the-magnet-warrior:1"
   ],
-  "result": 434
+  "result": 423
  },
  {
   "with": [
    "z:skull-dog-marron:1",
    "z:cyber-falcon:1"
   ],
-  "result": 438
+  "result": 423
  },
  {
   "with": [
    "z:skull-dog-marron:1",
-   "z:little-winguard:1"
+   "z:gilasaurus:1"
   ],
-  "result": 11
+  "result": 434
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    5
   ],
-  "result": 162
+  "result": 30
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    48
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    175
   ],
-  "result": 171
+  "result": 162
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    178
   ],
-  "result": 162
+  "result": 30
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    181
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    279
   ],
-  "result": 171
+  "result": 162
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    190
   ],
-  "result": 162
+  "result": 30
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    215
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    228
   ],
-  "result": 171
+  "result": 162
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    259
   ],
-  "result": 162
+  "result": 30
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    267
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    406
   ],
-  "result": 171
+  "result": 412
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    "z:acrobat-monkey:1"
   ],
-  "result": 412
+  "result": 30
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    "z:battle-footballer:1"
   ],
-  "result": 30
+  "result": 171
  },
  {
   "with": [
    "z:wall-of-illusion:1",
    "z:dark-bat:1"
   ],
-  "result": 171
+  "result": 294
  },
  {
   "with": [
    "z:gil-garth:1",
    379
   ],
-  "result": 594
+  "result": 39
  },
  {
   "with": [
    "z:gil-garth:1",
    523
   ],
-  "result": 39
+  "result": 551
  },
  {
   "with": [
    "z:gil-garth:1",
    526
   ],
-  "result": 551
+  "result": 594
  },
  {
   "with": [
    "z:gil-garth:1",
    204
   ],
-  "result": 594
+  "result": 39
  },
  {
   "with": [
    "z:gil-garth:1",
    650
   ],
-  "result": 39
+  "result": 551
  },
  {
   "with": [
    "z:gil-garth:1",
    87
   ],
-  "result": 551
+  "result": 594
  },
  {
   "with": [
    "z:gil-garth:1",
    99
   ],
-  "result": 594
+  "result": 39
  },
  {
   "with": [
    "z:gil-garth:1",
    388
   ],
-  "result": 39
+  "result": 551
  },
  {
   "with": [
    "z:gil-garth:1",
    415
   ],
-  "result": 390
+  "result": 471
  },
  {
   "with": [
    "z:gil-garth:1",
    124
   ],
-  "result": 594
+  "result": 39
  },
  {
   "with": [
    "z:gil-garth:1",
    419
   ],
-  "result": 39
+  "result": 551
  },
  {
   "with": [
    "z:gil-garth:1",
    545
   ],
-  "result": 551
+  "result": 594
  },
  {
   "with": [
    "z:gil-garth:1",
    "z:dark-blade:1"
   ],
-  "result": 594
+  "result": 39
  },
  {
   "with": [
    "z:gil-garth:1",
    "z:dunames-dark-witch:1"
   ],
-  "result": 39
+  "result": 551
  },
  {
   "with": [
    "z:gil-garth:1",
    "z:gadget-soldier:1"
   ],
-  "result": 551
+  "result": 594
  },
  {
   "with": [
@@ -16271,6 +17090,13 @@
   "with": [
    613,
    "z:red-eyes-darkness-dragon:1"
+  ],
+  "result": "z:thunder-dragon-titan:1"
+ },
+ {
+  "with": [
+   613,
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:thunder-dragon-titan:1"
  },
@@ -18348,6 +19174,20 @@
  },
  {
   "with": [
+   73,
+   "z:shining-angel:1"
+  ],
+  "result": "z:spiral-serpent:1"
+ },
+ {
+  "with": [
+   73,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:spiral-serpent:1"
+ },
+ {
+  "with": [
    353,
    90
   ],
@@ -18385,6 +19225,13 @@
   "with": [
    353,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:spiral-serpent:1"
+ },
+ {
+  "with": [
+   353,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:spiral-serpent:1"
  },
@@ -18614,6 +19461,20 @@
  },
  {
   "with": [
+   443,
+   "z:shining-angel:1"
+  ],
+  "result": "z:spiral-serpent:1"
+ },
+ {
+  "with": [
+   443,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:spiral-serpent:1"
+ },
+ {
+  "with": [
    448,
    90
   ],
@@ -18838,6 +19699,20 @@
  },
  {
   "with": [
+   448,
+   "z:shining-angel:1"
+  ],
+  "result": "z:spiral-serpent:1"
+ },
+ {
+  "with": [
+   448,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:spiral-serpent:1"
+ },
+ {
+  "with": [
    "z:sea-serpent-warrior-of-darkness:1",
    90
   ],
@@ -19062,6 +19937,20 @@
  },
  {
   "with": [
+   "z:sea-serpent-warrior-of-darkness:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:spiral-serpent:1"
+ },
+ {
+  "with": [
+   "z:sea-serpent-warrior-of-darkness:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:spiral-serpent:1"
+ },
+ {
+  "with": [
    13,
    90
   ],
@@ -19099,6 +19988,13 @@
   "with": [
    13,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   13,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
  },
@@ -19125,6 +20021,13 @@
  },
  {
   "with": [
+   62,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    63,
    90
   ],
@@ -19344,6 +20247,20 @@
   "with": [
    63,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   63,
+   "z:shining-angel:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   63,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
  },
@@ -19391,6 +20308,13 @@
  },
  {
   "with": [
+   117,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    125,
    90
   ],
@@ -19428,6 +20352,13 @@
   "with": [
    125,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   125,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
  },
@@ -19475,6 +20406,13 @@
  },
  {
   "with": [
+   186,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    207,
    90
   ],
@@ -19512,6 +20450,13 @@
   "with": [
    207,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   207,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
  },
@@ -19559,6 +20504,13 @@
  },
  {
   "with": [
+   272,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    300,
    90
   ],
@@ -19596,6 +20548,13 @@
   "with": [
    300,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   300,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
  },
@@ -19825,6 +20784,20 @@
  },
  {
   "with": [
+   464,
+   "z:shining-angel:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   464,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    465,
    90
   ],
@@ -20044,6 +21017,20 @@
   "with": [
    465,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   465,
+   "z:shining-angel:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   465,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
  },
@@ -20091,6 +21078,13 @@
  },
  {
   "with": [
+   466,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    468,
    90
   ],
@@ -20128,6 +21122,13 @@
   "with": [
    468,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   468,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
  },
@@ -20357,6 +21358,20 @@
  },
  {
   "with": [
+   491,
+   "z:shining-angel:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   491,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    521,
    90
   ],
@@ -20581,6 +21596,20 @@
  },
  {
   "with": [
+   521,
+   "z:shining-angel:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   521,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    522,
    90
   ],
@@ -20800,6 +21829,20 @@
   "with": [
    522,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   522,
+   "z:shining-angel:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   522,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
  },
@@ -20847,6 +21890,13 @@
  },
  {
   "with": [
+   538,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    552,
    90
   ],
@@ -20884,6 +21934,13 @@
   "with": [
    552,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   552,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
  },
@@ -21113,6 +22170,20 @@
  },
  {
   "with": [
+   577,
+   "z:shining-angel:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   577,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    581,
    90
   ],
@@ -21155,6 +22226,13 @@
  },
  {
   "with": [
+   581,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    595,
    90
   ],
@@ -21192,6 +22270,13 @@
   "with": [
    595,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   595,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
  },
@@ -21421,6 +22506,20 @@
  },
  {
   "with": [
+   636,
+   "z:shining-angel:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   636,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    "z:sky-scout:1",
    90
   ],
@@ -21645,6 +22744,20 @@
  },
  {
   "with": [
+   "z:sky-scout:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   "z:sky-scout:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    "z:harpie-girl:1",
    90
   ],
@@ -21682,6 +22795,13 @@
   "with": [
    "z:harpie-girl:1",
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   "z:harpie-girl:1",
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
  },
@@ -21911,6 +23031,20 @@
  },
  {
   "with": [
+   "z:sonic-duck:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   "z:sonic-duck:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
    "z:dark-bat:1",
    90
   ],
@@ -21947,6 +23081,55 @@
  {
   "with": [
    "z:dark-bat:1",
+   "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   "z:dark-bat:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   90
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   111
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   126
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   582
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   "z:shining-abyss:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
    "z:dunames-dark-witch:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
@@ -21990,6 +23173,13 @@
   "with": [
    "z:neo-spacian-air-hummingbird:1",
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:simorgh-bird-of-ancestry:1"
+ },
+ {
+  "with": [
+   "z:neo-spacian-air-hummingbird:1",
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:simorgh-bird-of-ancestry:1"
  },
@@ -23759,6 +24949,13 @@
  },
  {
   "with": [
+   8,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    75,
    90
   ],
@@ -23801,6 +24998,13 @@
  },
  {
   "with": [
+   75,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    123,
    90
   ],
@@ -23843,6 +25047,13 @@
  },
  {
   "with": [
+   123,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    157,
    90
   ],
@@ -23885,6 +25096,13 @@
  },
  {
   "with": [
+   157,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    158,
    90
   ],
@@ -23922,6 +25140,13 @@
   "with": [
    158,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   158,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:tytannial-princess-of-camellias:1"
  },
@@ -23948,6 +25173,13 @@
  },
  {
   "with": [
+   180,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    238,
    90
   ],
@@ -23985,6 +25217,13 @@
   "with": [
    238,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   238,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:tytannial-princess-of-camellias:1"
  },
@@ -24032,6 +25271,13 @@
  },
  {
   "with": [
+   273,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    274,
    90
   ],
@@ -24069,6 +25315,13 @@
   "with": [
    274,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   274,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:tytannial-princess-of-camellias:1"
  },
@@ -24116,6 +25369,13 @@
  },
  {
   "with": [
+   488,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    489,
    90
   ],
@@ -24153,6 +25413,13 @@
   "with": [
    489,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   489,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:tytannial-princess-of-camellias:1"
  },
@@ -24200,6 +25467,13 @@
  },
  {
   "with": [
+   510,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    511,
    90
   ],
@@ -24237,6 +25511,13 @@
   "with": [
    511,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   511,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:tytannial-princess-of-camellias:1"
  },
@@ -24284,6 +25565,13 @@
  },
  {
   "with": [
+   547,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    567,
    90
   ],
@@ -24326,6 +25614,13 @@
  },
  {
   "with": [
+   567,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    579,
    90
   ],
@@ -24368,6 +25663,13 @@
  },
  {
   "with": [
+   579,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    588,
    90
   ],
@@ -24410,6 +25712,13 @@
  },
  {
   "with": [
+   588,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    589,
    90
   ],
@@ -24447,6 +25756,13 @@
   "with": [
    589,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   589,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:tytannial-princess-of-camellias:1"
  },
@@ -24676,6 +25992,20 @@
  },
  {
   "with": [
+   594,
+   "z:shining-angel:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   594,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    620,
    90
   ],
@@ -24718,6 +26048,13 @@
  },
  {
   "with": [
+   620,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    637,
    90
   ],
@@ -24755,6 +26092,13 @@
   "with": [
    637,
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   637,
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:tytannial-princess-of-camellias:1"
  },
@@ -24984,6 +26328,20 @@
  },
  {
   "with": [
+   638,
+   "z:shining-angel:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   638,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
    "z:fiber-jar:1",
    90
   ],
@@ -25021,6 +26379,13 @@
   "with": [
    "z:fiber-jar:1",
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:tytannial-princess-of-camellias:1"
+ },
+ {
+  "with": [
+   "z:fiber-jar:1",
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:tytannial-princess-of-camellias:1"
  },
@@ -26756,6 +28121,13 @@
  {
   "with": [
    425,
+   "z:sonic-bird:1"
+  ],
+  "result": "z:cloudian-eye-of-the-typhoon:1"
+ },
+ {
+  "with": [
+   425,
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:cloudian-eye-of-the-typhoon:1"
@@ -26931,6 +28303,13 @@
  {
   "with": [
    458,
+   "z:sonic-bird:1"
+  ],
+  "result": "z:cloudian-eye-of-the-typhoon:1"
+ },
+ {
+  "with": [
+   458,
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:cloudian-eye-of-the-typhoon:1"
@@ -29387,6 +30766,13 @@
  },
  {
   "with": [
+   14,
+   "z:gilasaurus:1"
+  ],
+  "result": "z:beast-king-barbaros:1"
+ },
+ {
+  "with": [
    26,
    11
   ],
@@ -29478,6 +30864,13 @@
  },
  {
   "with": [
+   26,
+   "z:gilasaurus:1"
+  ],
+  "result": "z:beast-king-barbaros:1"
+ },
+ {
+  "with": [
    27,
    11
   ],
@@ -29674,6 +31067,13 @@
  },
  {
   "with": [
+   68,
+   "z:gilasaurus:1"
+  ],
+  "result": "z:beast-king-barbaros:1"
+ },
+ {
+  "with": [
    219,
    11
   ],
@@ -29870,6 +31270,13 @@
  },
  {
   "with": [
+   382,
+   "z:gilasaurus:1"
+  ],
+  "result": "z:beast-king-barbaros:1"
+ },
+ {
+  "with": [
    "z:wolf-axwielder:1",
    11
   ],
@@ -29942,6 +31349,13 @@
   "with": [
    "z:wolf-axwielder:1",
    "z:mad-sword-beast:1"
+  ],
+  "result": "z:beast-king-barbaros:1"
+ },
+ {
+  "with": [
+   "z:wolf-axwielder:1",
+   "z:gilasaurus:1"
   ],
   "result": "z:beast-king-barbaros:1"
  },
@@ -30187,6 +31601,13 @@
   "with": [
    15,
    "z:flame-dancer:1"
+  ],
+  "result": "z:ultimate-flame-swordsman:1"
+ },
+ {
+  "with": [
+   15,
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:ultimate-flame-swordsman:1"
  },
@@ -34588,6 +36009,13 @@
  },
  {
   "with": [
+   78,
+   "z:shining-angel:1"
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
    93,
    "z:shining-abyss:1"
   ],
@@ -34786,6 +36214,13 @@
   "with": [
    127,
    "z:bio-mage:1"
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
+   127,
+   "z:shining-angel:1"
   ],
   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
  },
@@ -35162,6 +36597,13 @@
  },
  {
   "with": [
+   369,
+   "z:shining-angel:1"
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
    399,
    "z:shining-abyss:1"
   ],
@@ -35386,6 +36828,13 @@
  },
  {
   "with": [
+   "z:warrior-dai-grepher:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
    "z:warrior-of-zera:1",
    109
   ],
@@ -35554,6 +37003,13 @@
  },
  {
   "with": [
+   "z:warrior-of-zera:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
    "z:science-soldier:1",
    "z:shining-abyss:1"
   ],
@@ -35583,6 +37039,13 @@
  {
   "with": [
    "z:rocket-warrior:1",
+   "z:shining-abyss:1"
+  ],
+  "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
+ },
+ {
+  "with": [
+   "z:big-shield-gardna:1",
    "z:shining-abyss:1"
   ],
   "result": "z:black-luster-soldier-envoy-of-the-beginning:1"
@@ -40917,6 +42380,13 @@
  {
   "with": [
    "z:stardust-dragon:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:stardust-dragon-assault-mode:1"
+ },
+ {
+  "with": [
+   "z:stardust-dragon:1",
    "z:armed-dragon-lv7:1"
   ],
   "result": "z:stardust-dragon-assault-mode:1"
@@ -41330,6 +42800,13 @@
  {
   "with": [
    "z:stardust-dragon:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:stardust-dragon-assault-mode:1"
+ },
+ {
+  "with": [
+   "z:stardust-dragon:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:stardust-dragon-assault-mode:1"
@@ -41427,6 +42904,13 @@
  },
  {
   "with": [
+   275,
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
    283,
    426
   ],
@@ -41462,6 +42946,13 @@
  },
  {
   "with": [
+   283,
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
    394,
    426
   ],
@@ -41492,6 +42983,13 @@
   "with": [
    394,
    "z:beta-the-magnet-warrior:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   394,
+   "z:the-rock-spirit:1"
   ],
   "result": "z:perfect-machine-king:1"
  },
@@ -41681,6 +43179,13 @@
   "with": [
    407,
    "z:spherous-lady:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   407,
+   "z:the-rock-spirit:1"
   ],
   "result": "z:perfect-machine-king:1"
  },
@@ -41917,6 +43422,13 @@
  },
  {
   "with": [
+   410,
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
    412,
    426
   ],
@@ -41952,6 +43464,13 @@
  },
  {
   "with": [
+   412,
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
    414,
    426
   ],
@@ -41987,6 +43506,13 @@
  },
  {
   "with": [
+   414,
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
    418,
    426
   ],
@@ -42017,6 +43543,13 @@
   "with": [
    418,
    "z:beta-the-magnet-warrior:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   418,
+   "z:the-rock-spirit:1"
   ],
   "result": "z:perfect-machine-king:1"
  },
@@ -42206,6 +43739,13 @@
   "with": [
    423,
    "z:spherous-lady:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   423,
+   "z:the-rock-spirit:1"
   ],
   "result": "z:perfect-machine-king:1"
  },
@@ -42402,6 +43942,13 @@
   "with": [
    508,
    "z:spherous-lady:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   508,
+   "z:the-rock-spirit:1"
   ],
   "result": "z:perfect-machine-king:1"
  },
@@ -42449,6 +43996,13 @@
  },
  {
   "with": [
+   557,
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
    580,
    426
   ],
@@ -42479,6 +44033,13 @@
   "with": [
    580,
    "z:beta-the-magnet-warrior:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   580,
+   "z:the-rock-spirit:1"
   ],
   "result": "z:perfect-machine-king:1"
  },
@@ -42668,6 +44229,13 @@
   "with": [
    645,
    "z:spherous-lady:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   645,
+   "z:the-rock-spirit:1"
   ],
   "result": "z:perfect-machine-king:1"
  },
@@ -42870,6 +44438,13 @@
  {
   "with": [
    648,
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   648,
    "z:neo-spacian-grand-mole:1"
   ],
   "result": "z:perfect-machine-king:1"
@@ -43066,6 +44641,13 @@
  {
   "with": [
    "z:overdrive:1",
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   "z:overdrive:1",
    "z:neo-spacian-grand-mole:1"
   ],
   "result": "z:perfect-machine-king:1"
@@ -43102,6 +44684,13 @@
   "with": [
    "z:oni-tank-t-34:1",
    "z:beta-the-magnet-warrior:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   "z:oni-tank-t-34:1",
+   "z:the-rock-spirit:1"
   ],
   "result": "z:perfect-machine-king:1"
  },
@@ -43297,6 +44886,13 @@
  {
   "with": [
    "z:steel-ogre-grotto-2:1",
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   "z:steel-ogre-grotto-2:1",
    "z:neo-spacian-grand-mole:1"
   ],
   "result": "z:perfect-machine-king:1"
@@ -43493,6 +45089,13 @@
  {
   "with": [
    "z:inpachi:1",
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   "z:inpachi:1",
    "z:neo-spacian-grand-mole:1"
   ],
   "result": "z:perfect-machine-king:1"
@@ -43534,6 +45137,13 @@
  },
  {
   "with": [
+   "z:robolady:1",
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
    "z:roboyarou:1",
    426
   ],
@@ -43569,6 +45179,13 @@
  },
  {
   "with": [
+   "z:roboyarou:1",
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
    "z:acrobat-monkey:1",
    426
   ],
@@ -43599,6 +45216,13 @@
   "with": [
    "z:acrobat-monkey:1",
    "z:beta-the-magnet-warrior:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   "z:acrobat-monkey:1",
+   "z:the-rock-spirit:1"
   ],
   "result": "z:perfect-machine-king:1"
  },
@@ -43788,6 +45412,13 @@
   "with": [
    "z:cyber-ogre:1",
    "z:spherous-lady:1"
+  ],
+  "result": "z:perfect-machine-king:1"
+ },
+ {
+  "with": [
+   "z:cyber-ogre:1",
+   "z:the-rock-spirit:1"
   ],
   "result": "z:perfect-machine-king:1"
  },
@@ -47287,6 +48918,20 @@
  {
   "with": [
    35,
+   "z:shining-angel:1"
+  ],
+  "result": "z:dark-magician-of-destruction:1"
+ },
+ {
+  "with": [
+   35,
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:dark-magician-of-destruction:1"
+ },
+ {
+  "with": [
+   35,
    "z:cyber-dragon:1"
   ],
   "result": "z:dark-magician-of-destruction:1"
@@ -48659,6 +50304,13 @@
  {
   "with": [
    34,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   34,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -48771,6 +50423,13 @@
  {
   "with": [
    42,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   42,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -48883,6 +50542,13 @@
  {
   "with": [
    104,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   104,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -48995,6 +50661,13 @@
  {
   "with": [
    115,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   115,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -49107,6 +50780,13 @@
  {
   "with": [
    129,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   129,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -49219,6 +50899,13 @@
  {
   "with": [
    143,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   143,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -49331,6 +51018,13 @@
  {
   "with": [
    145,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   145,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -49443,6 +51137,13 @@
  {
   "with": [
    179,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   179,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -49555,6 +51256,13 @@
  {
   "with": [
    190,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   190,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -49667,6 +51375,13 @@
  {
   "with": [
    220,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   220,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -49779,6 +51494,13 @@
  {
   "with": [
    253,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   253,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -49891,6 +51613,13 @@
  {
   "with": [
    259,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   259,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -50003,6 +51732,13 @@
  {
   "with": [
    268,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   268,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -50115,6 +51851,13 @@
  {
   "with": [
    387,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   387,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -50221,6 +51964,13 @@
   "with": [
    486,
    "z:ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   486,
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
  },
@@ -50430,6 +52180,13 @@
  {
   "with": [
    551,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   551,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -50556,6 +52313,13 @@
  {
   "with": [
    574,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   574,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -50662,6 +52426,13 @@
   "with": [
    628,
    "z:ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   628,
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
  },
@@ -50871,6 +52642,13 @@
  {
   "with": [
    720,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   720,
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -50983,6 +52761,13 @@
  {
   "with": [
    "z:thousand-eyes-idol:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   "z:thousand-eyes-idol:1",
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -51095,6 +52880,13 @@
  {
   "with": [
    "z:the-illusory-gentleman:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   "z:the-illusory-gentleman:1",
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -51207,6 +52999,13 @@
  {
   "with": [
    "z:gravekeeper-s-assailant:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   "z:gravekeeper-s-assailant:1",
    "z:mirage-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -51319,6 +53118,13 @@
  {
   "with": [
    "z:gravekeeper-s-guard:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   "z:gravekeeper-s-guard:1",
    "z:alligator-s-sword-dragon:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
@@ -51418,6 +53224,13 @@
   "with": [
    "z:gravekeeper-s-spy:1",
    "z:ryu-ran:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   "z:gravekeeper-s-spy:1",
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
  },
@@ -51635,6 +53448,13 @@
   "with": [
    35,
    "z:lizard-soldier:1"
+  ],
+  "result": "z:dark-magician-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   35,
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:dark-magician-the-dragon-knight:1"
  },
@@ -54776,6 +56596,34 @@
  },
  {
   "with": [
+   "z:shining-angel:1",
+   106
+  ],
+  "result": "z:st-joan:1"
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   495
+  ],
+  "result": "z:st-joan:1"
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   619
+  ],
+  "result": "z:st-joan:1"
+ },
+ {
+  "with": [
+   "z:shining-angel:1",
+   "z:neo-the-magic-swordsman:1"
+  ],
+  "result": "z:st-joan:1"
+ },
+ {
+  "with": [
    60,
    70
   ],
@@ -59557,6 +61405,13 @@
  },
  {
   "with": [
+   400,
+   "z:gilasaurus:1"
+  ],
+  "result": "z:gagagigo-the-risen:1"
+ },
+ {
+  "with": [
    475,
    11
   ],
@@ -59951,6 +61806,13 @@
   "with": [
    "z:gagagigo:1",
    "z:mad-sword-beast:1"
+  ],
+  "result": "z:gagagigo-the-risen:1"
+ },
+ {
+  "with": [
+   "z:gagagigo:1",
+   "z:gilasaurus:1"
   ],
   "result": "z:gagagigo-the-risen:1"
  },
@@ -108628,6 +110490,34 @@
  {
   "with": [
    "z:elemental-hero-avian:1",
+   "z:big-shield-gardna:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
+   "z:gilasaurus:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
+   "z:the-unfriendly-amazon:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
    "z:alligator-s-sword:1"
   ],
   "result": "z:elemental-hero-gaia:1"
@@ -110337,6 +112227,34 @@
   "with": [
    "z:elemental-hero-burstinatrix:1",
    "z:spherous-lady:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
+   "z:big-shield-gardna:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
+   "z:gilasaurus:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
+   "z:the-unfriendly-amazon:1"
   ],
   "result": "z:elemental-hero-gaia:1"
  },
@@ -112065,6 +113983,34 @@
  {
   "with": [
    "z:elemental-hero-clayman:1",
+   "z:big-shield-gardna:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
+   "z:gilasaurus:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
+   "z:the-unfriendly-amazon:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
    "z:alligator-s-sword:1"
   ],
   "result": "z:elemental-hero-gaia:1"
@@ -113787,6 +115733,34 @@
  {
   "with": [
    "z:elemental-hero-sparkman:1",
+   "z:big-shield-gardna:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
+   "z:gilasaurus:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
+   "z:the-rock-spirit:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
+   "z:the-unfriendly-amazon:1"
+  ],
+  "result": "z:elemental-hero-gaia:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
    "z:alligator-s-sword:1"
   ],
   "result": "z:elemental-hero-gaia:1"
@@ -114298,6 +116272,13 @@
  {
   "with": [
    "z:elemental-hero-neos:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos:1",
    "z:stardust-dragon:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -114837,6 +116818,13 @@
  {
   "with": [
    "z:elemental-hero-avian:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -115383,6 +117371,13 @@
  {
   "with": [
    "z:elemental-hero-burstinatrix:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -115929,6 +117924,13 @@
  {
   "with": [
    "z:elemental-hero-clayman:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -116475,6 +118477,13 @@
  {
   "with": [
    "z:elemental-hero-sparkman:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -117021,6 +119030,13 @@
  {
   "with": [
    "z:elemental-hero-absolute-zero:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-absolute-zero:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -117567,6 +119583,13 @@
  {
   "with": [
    "z:elemental-hero-escuridao:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-escuridao:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -118113,6 +120136,13 @@
  {
   "with": [
    "z:elemental-hero-gaia:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-gaia:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -118659,6 +120689,13 @@
  {
   "with": [
    "z:elemental-hero-nova-master:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-nova-master:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -119205,6 +121242,13 @@
  {
   "with": [
    "z:elemental-hero-the-shining:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-the-shining:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -119751,6 +121795,13 @@
  {
   "with": [
    "z:elemental-hero-air-neos:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-air-neos:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -120297,6 +122348,13 @@
  {
   "with": [
    "z:elemental-hero-aqua-neos:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-aqua-neos:1",
    "z:stardust-dragon:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -120830,6 +122888,13 @@
   "with": [
    "z:elemental-hero-dark-neos:1",
    "z:little-winguard:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-dark-neos:1",
+   "z:sonic-bird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -121382,6 +123447,13 @@
  {
   "with": [
    "z:elemental-hero-flare-neos:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-flare-neos:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -121928,6 +124000,13 @@
  {
   "with": [
    "z:elemental-hero-grand-neos:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-grand-neos:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
@@ -122468,6 +124547,13 @@
   "with": [
    "z:elemental-hero-neos-knight:1",
    "z:little-winguard:1"
+  ],
+  "result": "z:elemental-hero-great-tornado:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos-knight:1",
+   "z:sonic-bird:1"
   ],
   "result": "z:elemental-hero-great-tornado:1"
  },
@@ -122776,6 +124862,13 @@
   "with": [
    "z:elemental-hero-neos:1",
    "z:flame-dancer:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos:1",
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
  },
@@ -123028,6 +125121,13 @@
   "with": [
    "z:elemental-hero-avian:1",
    "z:flame-dancer:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
  },
@@ -123293,6 +125393,13 @@
  {
   "with": [
    "z:elemental-hero-burstinatrix:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
@@ -123552,6 +125659,13 @@
  {
   "with": [
    "z:elemental-hero-clayman:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
@@ -123811,6 +125925,13 @@
  {
   "with": [
    "z:elemental-hero-sparkman:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
@@ -124070,6 +126191,13 @@
  {
   "with": [
    "z:elemental-hero-absolute-zero:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-absolute-zero:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
@@ -124329,6 +126457,13 @@
  {
   "with": [
    "z:elemental-hero-escuridao:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-escuridao:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
@@ -124588,6 +126723,13 @@
  {
   "with": [
    "z:elemental-hero-gaia:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-gaia:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
@@ -124847,6 +126989,13 @@
  {
   "with": [
    "z:elemental-hero-air-neos:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-air-neos:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
@@ -125106,6 +127255,13 @@
  {
   "with": [
    "z:elemental-hero-aqua-neos:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-aqua-neos:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
@@ -125365,6 +127521,13 @@
  {
   "with": [
    "z:elemental-hero-dark-neos:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-dark-neos:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
@@ -125624,6 +127787,13 @@
  {
   "with": [
    "z:elemental-hero-flare-neos:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-flare-neos:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
@@ -125883,6 +128053,13 @@
  {
   "with": [
    "z:elemental-hero-grand-neos:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-grand-neos:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
@@ -126136,6 +128313,13 @@
   "with": [
    "z:elemental-hero-neos-knight:1",
    "z:flame-dancer:1"
+  ],
+  "result": "z:elemental-hero-nova-master:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos-knight:1",
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:elemental-hero-nova-master:1"
  },
@@ -126633,6 +128817,20 @@
   "with": [
    "z:elemental-hero-neos:1",
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos:1",
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -127206,6 +129404,20 @@
  {
   "with": [
    "z:elemental-hero-avian:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-avian:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -127773,6 +129985,20 @@
  {
   "with": [
    "z:elemental-hero-burstinatrix:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-burstinatrix:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -128340,6 +130566,20 @@
  {
   "with": [
    "z:elemental-hero-clayman:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-clayman:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -128907,6 +131147,20 @@
  {
   "with": [
    "z:elemental-hero-sparkman:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-sparkman:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -129474,6 +131728,20 @@
  {
   "with": [
    "z:elemental-hero-absolute-zero:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-absolute-zero:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-absolute-zero:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -130041,6 +132309,20 @@
  {
   "with": [
    "z:elemental-hero-escuridao:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-escuridao:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-escuridao:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -130608,6 +132890,20 @@
  {
   "with": [
    "z:elemental-hero-gaia:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-gaia:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-gaia:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -131175,6 +133471,20 @@
  {
   "with": [
    "z:elemental-hero-air-neos:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-air-neos:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-air-neos:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -131742,6 +134052,20 @@
  {
   "with": [
    "z:elemental-hero-aqua-neos:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-aqua-neos:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-aqua-neos:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -132309,6 +134633,20 @@
  {
   "with": [
    "z:elemental-hero-dark-neos:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-dark-neos:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-dark-neos:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -132876,6 +135214,20 @@
  {
   "with": [
    "z:elemental-hero-flare-neos:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-flare-neos:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-flare-neos:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -133443,6 +135795,20 @@
  {
   "with": [
    "z:elemental-hero-grand-neos:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-grand-neos:1",
+   "z:soul-of-purity-and-light:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-grand-neos:1",
    "z:cyber-dragon:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
@@ -134004,6 +136370,20 @@
   "with": [
    "z:elemental-hero-neos-knight:1",
    "z:dunames-dark-witch:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos-knight:1",
+   "z:shining-angel:1"
+  ],
+  "result": "z:elemental-hero-the-shining:1"
+ },
+ {
+  "with": [
+   "z:elemental-hero-neos-knight:1",
+   "z:soul-of-purity-and-light:1"
   ],
   "result": "z:elemental-hero-the-shining:1"
  },
@@ -134374,6 +136754,13 @@
  {
   "with": [
    63,
+   "z:sonic-bird:1"
+  ],
+  "result": "z:roc-from-the-valley-of-haze:1"
+ },
+ {
+  "with": [
+   63,
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:roc-from-the-valley-of-haze:1"
@@ -134794,6 +137181,13 @@
  {
   "with": [
    464,
+   "z:sonic-bird:1"
+  ],
+  "result": "z:roc-from-the-valley-of-haze:1"
+ },
+ {
+  "with": [
+   464,
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:roc-from-the-valley-of-haze:1"
@@ -134913,6 +137307,13 @@
  {
   "with": [
    465,
+   "z:sonic-bird:1"
+  ],
+  "result": "z:roc-from-the-valley-of-haze:1"
+ },
+ {
+  "with": [
+   465,
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:roc-from-the-valley-of-haze:1"
@@ -135088,6 +137489,13 @@
  {
   "with": [
    491,
+   "z:sonic-bird:1"
+  ],
+  "result": "z:roc-from-the-valley-of-haze:1"
+ },
+ {
+  "with": [
+   491,
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:roc-from-the-valley-of-haze:1"
@@ -135172,6 +137580,13 @@
  {
   "with": [
    521,
+   "z:sonic-bird:1"
+  ],
+  "result": "z:roc-from-the-valley-of-haze:1"
+ },
+ {
+  "with": [
+   521,
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:roc-from-the-valley-of-haze:1"
@@ -135249,6 +137664,13 @@
  {
   "with": [
    522,
+   "z:sonic-bird:1"
+  ],
+  "result": "z:roc-from-the-valley-of-haze:1"
+ },
+ {
+  "with": [
+   522,
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:roc-from-the-valley-of-haze:1"
@@ -135354,6 +137776,13 @@
  {
   "with": [
    577,
+   "z:sonic-bird:1"
+  ],
+  "result": "z:roc-from-the-valley-of-haze:1"
+ },
+ {
+  "with": [
+   577,
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:roc-from-the-valley-of-haze:1"
@@ -135431,6 +137860,13 @@
  {
   "with": [
    636,
+   "z:sonic-bird:1"
+  ],
+  "result": "z:roc-from-the-valley-of-haze:1"
+ },
+ {
+  "with": [
+   636,
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:roc-from-the-valley-of-haze:1"
@@ -135466,6 +137902,13 @@
  {
   "with": [
    "z:sky-scout:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:roc-from-the-valley-of-haze:1"
+ },
+ {
+  "with": [
+   "z:sky-scout:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:roc-from-the-valley-of-haze:1"
@@ -135487,6 +137930,13 @@
  {
   "with": [
    "z:sonic-duck:1",
+   "z:sonic-bird:1"
+  ],
+  "result": "z:roc-from-the-valley-of-haze:1"
+ },
+ {
+  "with": [
+   "z:sonic-duck:1",
    "z:neo-spacian-air-hummingbird:1"
   ],
   "result": "z:roc-from-the-valley-of-haze:1"
@@ -135535,6 +137985,13 @@
  },
  {
   "with": [
+   13,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
    62,
    529
   ],
@@ -135572,6 +138029,13 @@
   "with": [
    62,
    "z:robotic-knight:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   62,
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
  },
@@ -135635,6 +138099,13 @@
   "with": [
    63,
    "z:battle-footballer:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   63,
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
  },
@@ -135689,6 +138160,13 @@
  },
  {
   "with": [
+   117,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
    125,
    529
   ],
@@ -135731,6 +138209,13 @@
  },
  {
   "with": [
+   125,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
    186,
    529
   ],
@@ -135773,6 +138258,13 @@
  },
  {
   "with": [
+   186,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
    207,
    529
   ],
@@ -135815,6 +138307,13 @@
  },
  {
   "with": [
+   207,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
    272,
    529
   ],
@@ -135857,6 +138356,13 @@
  },
  {
   "with": [
+   272,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
    300,
    529
   ],
@@ -135894,6 +138400,13 @@
   "with": [
    300,
    "z:robotic-knight:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   300,
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
  },
@@ -135963,6 +138476,13 @@
  {
   "with": [
    464,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   464,
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
@@ -136033,6 +138553,13 @@
  {
   "with": [
    465,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   465,
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
@@ -136081,6 +138608,13 @@
  },
  {
   "with": [
+   466,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
    468,
    529
   ],
@@ -136118,6 +138652,13 @@
   "with": [
    468,
    "z:robotic-knight:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   468,
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
  },
@@ -136187,6 +138728,13 @@
  {
   "with": [
    491,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   491,
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
@@ -136257,6 +138805,13 @@
  {
   "with": [
    521,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   521,
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
@@ -136327,6 +138882,13 @@
  {
   "with": [
    522,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   522,
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
@@ -136375,6 +138937,13 @@
  },
  {
   "with": [
+   538,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
    552,
    529
   ],
@@ -136412,6 +138981,13 @@
   "with": [
    552,
    "z:robotic-knight:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   552,
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
  },
@@ -136481,6 +139057,13 @@
  {
   "with": [
    577,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   577,
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
@@ -136529,6 +139112,13 @@
  },
  {
   "with": [
+   581,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
    595,
    529
   ],
@@ -136566,6 +139156,13 @@
   "with": [
    595,
    "z:robotic-knight:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   595,
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
  },
@@ -136628,6 +139225,13 @@
  {
   "with": [
    636,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   636,
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
@@ -136684,6 +139288,13 @@
  {
   "with": [
    "z:sky-scout:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   "z:sky-scout:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
@@ -136727,6 +139338,13 @@
   "with": [
    "z:harpie-girl:1",
    "z:robotic-knight:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   "z:harpie-girl:1",
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
  },
@@ -136789,6 +139407,13 @@
  {
   "with": [
    "z:sonic-duck:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   "z:sonic-duck:1",
    "z:neo-spacian-flare-scarab:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
@@ -136831,6 +139456,55 @@
  {
   "with": [
    "z:dark-bat:1",
+   "z:robotic-knight:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   "z:dark-bat:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   529
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   "z:ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   "z:twin-headed-fire-dragon:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   "z:gadget-soldier:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   "z:great-angus:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
    "z:robotic-knight:1"
   ],
   "result": "z:sacred-phoenix-of-nephthys:1"
@@ -136879,6 +139553,13 @@
  },
  {
   "with": [
+   "z:neo-spacian-air-hummingbird:1",
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:sacred-phoenix-of-nephthys:1"
+ },
+ {
+  "with": [
    13,
    106
   ],
@@ -140226,6 +142907,69 @@
  {
   "with": [
    "z:dark-bat:1",
+   "z:red-eyes-wyvern:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   383
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   386
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   424
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   472
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   "z:luster-dragon:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   "z:girochin-kuwagata:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   "z:empress-mantis:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
+   "z:alligator-s-sword-dragon:1"
+  ],
+  "result": "z:cyber-slash-harpie-lady:1"
+ },
+ {
+  "with": [
+   "z:sonic-bird:1",
    "z:red-eyes-wyvern:1"
   ],
   "result": "z:cyber-slash-harpie-lady:1"
@@ -140486,6 +143230,13 @@
   "with": [
    "z:sacred-phoenix-of-nephthys:1",
    "z:dark-bat:1"
+  ],
+  "result": "z:sacred-fire-king-garunix:1"
+ },
+ {
+  "with": [
+   "z:sacred-phoenix-of-nephthys:1",
+   "z:sonic-bird:1"
   ],
   "result": "z:sacred-fire-king-garunix:1"
  },
@@ -141738,6 +144489,20 @@
  {
   "with": [
    82,
+   "z:big-shield-gardna:1"
+  ],
+  "result": "z:red-eyes-slash-dragon:1"
+ },
+ {
+  "with": [
+   82,
+   "z:the-unfriendly-amazon:1"
+  ],
+  "result": "z:red-eyes-slash-dragon:1"
+ },
+ {
+  "with": [
+   82,
    "z:buster-blader:1"
   ],
   "result": "z:red-eyes-slash-dragon:1"
@@ -142397,6 +145162,13 @@
   "with": [
    "z:dark-magician-girl:1",
    "z:red-eyes-darkness-dragon:1"
+  ],
+  "result": "z:dark-magician-girl-the-dragon-knight:1"
+ },
+ {
+  "with": [
+   "z:dark-magician-girl:1",
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:dark-magician-girl-the-dragon-knight:1"
  },
@@ -145448,6 +148220,13 @@
  {
   "with": [
    453,
+   "z:manga-ryu-ran:1"
+  ],
+  "result": "z:lava-golem:1"
+ },
+ {
+  "with": [
+   453,
    "z:elemental-hero-burstinatrix:1"
   ],
   "result": "z:lava-golem:1"
@@ -145757,6 +148536,13 @@
   "with": [
    1,
    "z:red-eyes-darkness-dragon:1"
+  ],
+  "result": "z:blue-eyes-tyrant-dragon:1"
+ },
+ {
+  "with": [
+   1,
+   "z:manga-ryu-ran:1"
   ],
   "result": "z:blue-eyes-tyrant-dragon:1"
  },
@@ -146100,6 +148886,13 @@
   "with": [
    "z:red-eyes-wyvern:1",
    "z:lizard-soldier:1"
+  ],
+  "result": 82
+ },
+ {
+  "with": [
+   "z:red-eyes-wyvern:1",
+   "z:manga-ryu-ran:1"
   ],
   "result": 82
  },

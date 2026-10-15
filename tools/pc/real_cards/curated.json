@@ -1436,5 +1436,93 @@
   "defense": 900,
   "description": "A mass of magic\nenergy that flows\nlike water and\ndrifts about the\nbattlefield.",
   "date": "2003-03-01"
+ },
+ {
+  "password": "65240384",
+  "name": "Big Shield Gardna",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 100,
+  "defense": 2600,
+  "description": "A warrior who lives\nbehind his huge\nshield and stops\nalmost any attack.",
+  "date": "2004-10-12"
+ },
+ {
+  "password": "45894482",
+  "name": "Gilasaurus",
+  "type": "Dinosaur",
+  "attribute": "Earth",
+  "level": 3,
+  "attack": 1400,
+  "defense": 400,
+  "description": "A fast and fierce\ndinosaur that hunts\nin packs and strikes\nbefore its prey can\nmove.",
+  "date": "2003-03-01"
+ },
+ {
+  "password": "38369349",
+  "name": "Manga Ryu-Ran",
+  "type": "Dragon",
+  "attribute": "Fire",
+  "level": 7,
+  "attack": 2200,
+  "defense": 2600,
+  "description": "A dragon that feeds\non fire and burns\neverything in its\nway.",
+  "date": "2002-09-16"
+ },
+ {
+  "password": "95956346",
+  "name": "Shining Angel",
+  "type": "Fairy",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1400,
+  "defense": 800,
+  "description": "A small angel that\nglows with holy\nlight and calls\nfriends to the\nfight.",
+  "date": "2002-09-16"
+ },
+ {
+  "password": "57617178",
+  "name": "Sonic Bird",
+  "type": "Winged Beast",
+  "attribute": "Wind",
+  "level": 4,
+  "attack": 1400,
+  "defense": 1000,
+  "description": "A bird that flies\nfaster than sound\nand cuts the sky\nwith its song.",
+  "date": "2002-09-16"
+ },
+ {
+  "password": "77527210",
+  "name": "Soul of Purity and Light",
+  "type": "Fairy",
+  "attribute": "Light",
+  "level": 6,
+  "attack": 2000,
+  "defense": 1800,
+  "description": "A pure soul of light\nthat drives away the\ndark and all who\nserve it.",
+  "date": "2003-03-01"
+ },
+ {
+  "password": "76305638",
+  "name": "The Rock Spirit",
+  "type": "Rock",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 1700,
+  "defense": 1000,
+  "description": "A spirit of stone\nthat has stood for\nages and does not\nyield.",
+  "date": "2003-03-01"
+ },
+ {
+  "password": "65475294",
+  "name": "The Unfriendly Amazon",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 2000,
+  "defense": 1000,
+  "description": "A fierce amazon who\nshows no mercy and\ntrusts nobody on the\nfield.",
+  "date": "2003-03-01"
  }
 ]
