@@ -321,6 +321,10 @@ with a note, and a copy made a monster drops the ones its base had.
   "card_effects": [ { "do": "damage", "amount": 800 } ] }
 ```
 
+A `destroy` or `boost` may also say `"position": "attack"` or `"defense"` to reach only monsters in that
+position (a Mirror Force destroys the opponent's Attack Position monsters only), and a `heal` or `damage` may
+say `"lp_over": 3000` to happen only while the side it changes has more LP than that (Meteor of Destruction).
+
 `"card_effects_mode"` is `"add"` by default, which keeps the normal card
 effect (including one selected by `"effect"`) and then runs the listed
 effects.  `"replace"` takes the normal spell effect away and runs only the

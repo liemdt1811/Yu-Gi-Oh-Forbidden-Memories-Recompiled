@@ -17,7 +17,15 @@
  *    end of that battle on (state.shrink, by record, with the card's id as Slifer's loss has).
  *  - Elemental HERO Air / Aqua / Dark / Flare / Grand Neos: +500 ATK for each face-up WIND / WATER / DARK / FIRE /
  *    EARTH monster on the field, either side's and itself.
+ *  - Dark Magician of Destruction and The Dark Magicians: +300 ATK for each face-up Spellcaster on the field, either
+ *    side's and themselves.
+ *  - Dark Magician Girl the Dragon Knight: as Dark Magician Girl.
  *  - Dragon Master Knight: +500 ATK for each other face-up Dragon on its owner's side (not itself).
+ *  - United We Stand (an equip): the equipped monster gains 800 ATK and DEF for each face-up monster its owner controls
+ *    (the equip itself gives no fixed bonus). Burning Spear and Gust Fan: a FIRE / WIND monster equipped with them gains
+ *    400 ATK and loses 200 DEF (a monster of another attribute gains nothing). The equip is seen when the game puts it
+ *    on a monster (func_8001B170), remembered per record (state.equips, with the monster's id in state.equip_card, one
+ *    count for each time) and ends with the monster.
  *  - Jinzo: while it is face up on the field (either side's), no trap can be activated: an attack trap does not
  *    spring and Goblin Fan, Bad Reaction to Simochi and Reverse Trap stay set (hooks on Duel_SelectAttackTrap and
  *    Duel_SelectTrapByCardId, the two places a trap is picked).
@@ -44,6 +52,9 @@
 #include "game/duel_card_record_lifecycle.h"
 #include "game/duel_trap_resolution.h"
 #include "game/func_80025028.h"
+#include "game/duel_scene_state.h"
+#include "game/duel_scene_callbacks.h"
+#include "game/duel_scene_card_placement.h"
 #include "game/duel_battle_stats.h"
 #include "game/display_object.h"
 #include "game/display_object_work_slots.h"
@@ -63,19 +74,31 @@
 #define PER_WARRIOR 300
 #define ROCKET_LOSS 500
 #define PER_DRAGON 500
+#define PER_SPELLCASTER 300
 #define PER_OTHER_DRAGON 500
 #define PER_MAGICIAN 300
 #define PER_HAND_CARD 1000
 #define SLIFER_LOSS 2000
+#define PER_UNITED_MONSTER 800
+
+/* Equips whose bonus is worked out in the duel (calc_card_stats), not by the equips table: found by name. The attribute is
+ * card.h's order (Light, Dark, Earth, Water, Fire, Wind), -1 for any monster; a United We Stand has no fixed points. */
+enum { EQUIP_UNITED, EQUIP_BURNING_SPEAR, EQUIP_GUST_FAN, EQUIPS };
+static const char *const equip_identity[EQUIPS] = {"z:united-we-stand:1", "z:burning-spear:1", "z:gust-fan:1"};
+static const int equip_attribute[EQUIPS] = {-1, 4, 5};
+static const int equip_attack[EQUIPS] = {0, 400, 400};
+static const int equip_defense[EQUIPS] = {0, -200, -200};
+static int equip_id[EQUIPS];
 #define SIDE_RECORDS 15
 #define FIRST_MONSTER 5
 #define LAST_MONSTER 9
 
 /* The five Neos forms follow the others: neos_attribute[which - AIR_NEOS] is the attribute (card.h order: Light, Dark, Earth,
  * Water, Fire, Wind) they count. Slifer and Ra stay last of the first group, as the "which >= SLIFER_CARD" tests expect. */
-enum { BUSTER, GIRL, AIR_NEOS, AQUA_NEOS, DARK_NEOS, FLARE_NEOS, GRAND_NEOS, DARKNESS_DRAGON, DARKNESS_METAL, GILFORD,
+enum { BUSTER, GIRL, GIRL_KNIGHT, DESTRUCTION, DARK_MAGICIANS, AIR_NEOS, AQUA_NEOS, DARK_NEOS, FLARE_NEOS, GRAND_NEOS, DARKNESS_DRAGON, DARKNESS_METAL, GILFORD,
        ROCKET_WARRIOR, DRAGON_MASTER_KNIGHT, SLIFER_CARD, RA_CARD, CARDS };
 static const char *const identity[CARDS] = {BUSTER_BLADER, DARK_MAGICIAN_GIRL,
+    "z:dark-magician-girl-the-dragon-knight:1", "z:dark-magician-of-destruction:1", "z:the-dark-magicians:1",
     "z:elemental-hero-air-neos:1", "z:elemental-hero-aqua-neos:1", "z:elemental-hero-dark-neos:1",
     "z:elemental-hero-flare-neos:1", "z:elemental-hero-grand-neos:1",
     "z:red-eyes-darkness-dragon:1", "z:red-eyes-darkness-metal-dragon:1", "z:gilford-the-lightning:1",
@@ -114,14 +137,17 @@ static void (*original_init)(void);
 static int id[CARDS];       /* the cards' ids this run, 0 until the tables are built */
 static int logged[CARDS];
 static int jinzo_id, tyrant_id;   /* the trap cards' ids this run, 0 until the tables are built */
-static struct { int destroyed; short weak[2 * SIDE_RECORDS]; short shrink_card[2 * SIDE_RECORDS]; short shrink[2 * SIDE_RECORDS]; } state;     /* in save states: Magicians destroyed this duel; the cards Slifer weakened, by record */
+static struct { int destroyed; short weak[2 * SIDE_RECORDS]; short shrink_card[2 * SIDE_RECORDS]; short shrink[2 * SIDE_RECORDS]; short equip_card[2 * SIDE_RECORDS]; unsigned char equips[2 * SIDE_RECORDS][EQUIPS]; } state;     /* in save states: Magicians destroyed this duel; the cards Slifer weakened, by record */
 
 /* A fighter of the battle on screen. The battle takes both fighters' records off the field (DuelCard_DeactivateRecord
  * clears DUEL_CARD_FLAG_OCCUPIED, and the record keeps no display object either) and shows them as its own objects,
  * D_800E9EF0[0] (the attacker) and [1] (the defender): to the battle, a card is there by its id alone. */
 static int in_battle(int record)
 {
-    return (D_800E9EF0[0] && D_800E9EF0[0]->field_6A == record) || (D_800E9EF0[1] && D_800E9EF0[1]->field_6A == record);
+    /* The battle releases its two objects at its end (DisplayObject_Release clears their flags) and leaves the pointers
+     * where they were: a released object is no fighter, or a card the battle destroyed would count until the next one. */
+    return (D_800E9EF0[0] && D_800E9EF0[0]->flags && D_800E9EF0[0]->field_6A == record) ||
+           (D_800E9EF0[1] && D_800E9EF0[1]->flags && D_800E9EF0[1]->field_6A == record);
 }
 
 /* A monster is on the field when its record is occupied or has an object, or while it is fighting. */
@@ -156,6 +182,60 @@ static int attribute_monsters(int attribute)
     return n;
 }
 
+/* How many face-up monsters of a type are on the field, both sides'. */
+static int type_monsters(int type)
+{
+    int n = 0, side, zone;
+    for (side = 0; side < 2; side++)
+        for (zone = FIRST_MONSTER; zone <= LAST_MONSTER; zone++) {
+            int record = side * SIDE_RECORDS + zone;
+            const DuelCardRecord *other = &D_801A7AD8[record];
+            if (present(other, record) && face_up(other, record) && other->card_id > 0 &&
+                ((gDuel_adwCardStats[other->card_id - 1] >> CARD_STAT_TYPE_SHIFT) & CARD_STAT_TYPE_MASK) == type)
+                n++;
+        }
+    return n;
+}
+
+/* How many face-up monsters a side controls. */
+static int own_monsters(int side)
+{
+    int n = 0, zone;
+    for (zone = FIRST_MONSTER; zone <= LAST_MONSTER; zone++) {
+        int record = side * SIDE_RECORDS + zone;
+        const DuelCardRecord *other = &D_801A7AD8[record];
+        if (present(other, record) && face_up(other, record) && other->card_id > 0) n++;
+    }
+    return n;
+}
+
+/* What the equips this monster carries add to its ATK and DEF (state.equips): 0 when it carries none, else 1 with
+ * the points in *attack and *defense. */
+static int equip_points(const DuelCardRecord *card, int record, int *attack, int *defense)
+{
+    int k, carried = 0;
+    *attack = *defense = 0;
+    if (!state.equip_card[record] || state.equip_card[record] != card->card_id) return 0;
+    for (k = 0; k < EQUIPS; k++) {
+        int times = state.equips[record][k];
+        if (!times) continue;
+        if (k == EQUIP_UNITED) {
+            /* the monster it equips counts too, even before it stands on the field (a fusion in the hand) */
+            int monsters = own_monsters(record / SIDE_RECORDS), points;
+            if (monsters < 1) monsters = 1;
+            points = monsters * PER_UNITED_MONSTER * times;
+            *attack += points;
+            *defense += points;
+            carried = 1;
+        } else if ((gDuel_abCardLevelAttr[card->card_id] >> 4) == equip_attribute[k]) {
+            *attack += equip_attack[k] * times;
+            *defense += equip_defense[k] * times;
+            carried = 1;
+        }
+    }
+    return carried;
+}
+
 static int hand_cards(int side)
 {
     int n = 0, i;
@@ -186,7 +266,12 @@ static int effect_attack(const DuelCardRecord *card, int record, int now, int *w
         }
         return n ? now + n * PER_DRAGON : -1;
     case GIRL:
+    case GIRL_KNIGHT:
         return state.destroyed > 0 ? now + state.destroyed * PER_MAGICIAN : -1;
+    case DESTRUCTION:
+    case DARK_MAGICIANS:   /* 300 for each face-up Spellcaster on the field, either side's, itself too */
+        n = type_monsters(CARD_TYPE_SPELLCASTER);
+        return n ? now + n * PER_SPELLCASTER : -1;
     case AIR_NEOS:
     case AQUA_NEOS:
     case DARK_NEOS:
@@ -243,6 +328,12 @@ static void resolve_ids(void)
         jinzo_id = host->card_id(host, JINZO);
         if (jinzo_id < 0) jinzo_id = 0;
     }
+    for (which = 0; which < EQUIPS; which++) {
+        if (!equip_id[which]) {
+            equip_id[which] = host->card_id(host, equip_identity[which]);
+            if (equip_id[which] < 0) equip_id[which] = 0;
+        }
+    }
     if (!tyrant_id) {
         tyrant_id = host->card_id(host, BLUE_EYES_TYRANT_DRAGON);
         if (tyrant_id < 0) tyrant_id = 0;
@@ -281,7 +372,7 @@ static int slifer_weakened(const DuelCardRecord *card, int record)
 static s32 calc_card_stats(DuelCardRecord *card)
 {
     s32 packed = original(card);
-    int record = (int)(card - D_801A7AD8), attack, defense, cap, which, value, shrunk;
+    int record = (int)(card - D_801A7AD8), attack, defense, cap, which, value, shrunk, equipped, equip_attack_points, equip_defense_points;
 
     resolve_ids();
     if (card->card_id <= 0 || record < 0 || record >= 2 * SIDE_RECORDS || record % SIDE_RECORDS < FIRST_MONSTER ||
@@ -306,17 +397,29 @@ static s32 calc_card_stats(DuelCardRecord *card)
             if (defense > cap) defense = cap;
         }
     }
+    equipped = equip_points(card, record, &equip_attack_points, &equip_defense_points);
     shrunk = state.shrink_card[record] == card->card_id && state.shrink[record] > 0 && !in_battle(record);
     if (slifer_weakened(card, record)) {
         attack -= SLIFER_LOSS;
         if (attack < 0) attack = 0;
         if (which < 0) which = SLIFER_CARD;     /* only to log it once */
-    } else if (which < 0 && !shrunk) {
+    } else if (which < 0 && !shrunk && !equipped) {
         return packed;
     }
     if (shrunk) {                       /* Rocket Warrior's loss, from after the battle it came in */
         attack -= state.shrink[record];
         if (attack < 0) attack = 0;
+        if (which < 0) which = SLIFER_CARD;
+    }
+    if (equipped) {                     /* United We Stand, Burning Spear, Gust Fan */
+        attack += equip_attack_points;
+        if (attack < 0) attack = 0;
+        cap = (int)host->limit(host, "attack");
+        if (attack > cap) attack = cap;
+        defense += equip_defense_points;
+        if (defense < 0) defense = 0;
+        cap = (int)host->limit(host, "defense");
+        if (defense > cap) defense = cap;
         if (which < 0) which = SLIFER_CARD;
     }
     if (!logged[which]) {
@@ -334,7 +437,7 @@ static s32 battle_result(DisplayObject *left, DisplayObject *right)
 {
     s32 result = original_battle(left, right);
     if (left) {
-        const DuelCardRecord *card = &D_801A7AD8[left->field_6A];
+        DuelCardRecord *card = &D_801A7AD8[left->field_6A];
         if ((id[SLIFER_CARD] && card->card_id == id[SLIFER_CARD]) || (id[RA_CARD] && card->card_id == id[RA_CARD]))
             trace("battle result %d (%s) attacker record %d flags %04x stats %08x", (int)result, right ? "fight" : "direct",
                   (int)left->field_6A, card->flags, (unsigned)original(card));
@@ -387,9 +490,36 @@ static s32 trap_by_card_id(s32 card_id)
     return original_trap_by_id(card_id);
 }
 
+/* The game puts an equip on a monster in func_8001B170's state 4 (the monster's record gets its new modifiers and
+ * MonsterEffects_Placed runs). It is one of ours when that equip card is the one just played and the record keeps
+ * its card (a fusion onto a field monster changes it). */
+static void (*original_placement)(void);
+extern u8 D_8009B174;
+static void placement(void)
+{
+    int record = D_8009B19C, before_state = D_8009B174, card = -1;
+    if (record >= 0 && record < 2 * SIDE_RECORDS) card = D_801A7AD8[record].card_id;
+    original_placement();
+    resolve_ids();
+    if ((before_state & 0xF) == 4 && !(before_state & 0x40) && (D_8009B174 & 0x40) && (gDuel_wSceneStateFlags & 0x4000) &&
+        card > 0 && record >= 0 && record < 2 * SIDE_RECORDS && D_801A7AD8[record].card_id == card) {
+        int k, e;
+        for (k = 0; k < EQUIPS; k++) {
+            if (!equip_id[k] || D_8009B206 != equip_id[k]) continue;
+            if (state.equip_card[record] != card) {         /* another monster stood here: its equips are gone */
+                state.equip_card[record] = (short)card;
+                for (e = 0; e < EQUIPS; e++) state.equips[record][e] = 0;
+            }
+            if (state.equips[record][k] < 255) state.equips[record][k]++;
+            host->log(host, "z-effects: %s on card %d (record %d)", equip_identity[k], card, record);
+        }
+    }
+}
+
 static void reset(void)
 {
     int i;
+    for (i = 0; i < EQUIPS; i++) equip_id[i] = 0;
     jinzo_id = tyrant_id = 0;
     for (i = 0; i < CARDS; i++) id[i] = 0;     /* the card tables may differ in a loaded state */
 }
@@ -399,7 +529,8 @@ static void init_scene(void)
 {
     int i;
     state.destroyed = 0;
-    for (i = 0; i < 2 * SIDE_RECORDS; i++) state.weak[i] = state.shrink[i] = state.shrink_card[i] = 0;
+    memset(state.equips, 0, sizeof(state.equips));
+    for (i = 0; i < 2 * SIDE_RECORDS; i++) state.weak[i] = state.shrink[i] = state.shrink_card[i] = state.equip_card[i] = 0;
     original_init();
 }
 
@@ -424,6 +555,7 @@ static void monster_event(MemoriesModEvent *event)
         /* Slifer: a monster summoned in Attack Position whose ATK would drop to 0 is destroyed. */
         DuelCardRecord *card = &D_801A7AD8[event->b];
         state.weak[event->b] = 0;
+        state.equip_card[event->b] = 0;
         if (slifer_opposes(event->b) && !(card->flags & (DUEL_CARD_FLAG_FACE_DOWN | DUEL_CARD_FLAG_DEFENSE_POSITION))) {
             state.weak[event->b] = (short)card->card_id;
             if ((int)(original(card) & 0xFFFF) <= SLIFER_LOSS) {
@@ -447,11 +579,12 @@ int MemoriesModInit(const MemoriesModHost *from, MemoriesMod *mod)
     host->log(host, "z-effects: hooked Duel_CalcCardStats");
     if (!host->hook(host, (void *)Duel_InitScene, (void *)init_scene, (void **)&original_init) ||
         !host->subscribe(host, MEMORIES_EVENT_MONSTER, 0, monster_event) ||
-        !host->register_state(host, &state, sizeof(state), 3)) {
+        !host->register_state(host, &state, sizeof(state), 5)) {
         host->log(host, "z-effects: could not set up the Magician count");
         return 0;
     }
     host->hook(host, (void *)func_8001EFD4, (void *)battle_result, (void **)&original_battle);
+    host->hook(host, (void *)func_8001B170, (void *)placement, (void **)&original_placement);
     if (!host->hook(host, (void *)Duel_SelectAttackTrap, (void *)attack_trap, (void **)&original_attack_trap) ||
         !host->hook(host, (void *)Duel_SelectTrapByCardId, (void *)trap_by_card_id, (void **)&original_trap_by_id))
         host->log(host, "z-effects: could not hook the trap selection (Jinzo, Blue-Eyes Tyrant Dragon)");

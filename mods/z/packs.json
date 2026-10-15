@@ -125,6 +125,7 @@
      "Celtic Guardian": 1,
      "Dark Hole": 1,
      "Raigeki": 1,
+     "z:trap-hole:1": 1,
      "z:polymerization:1": 1,
      "Mystical Elf": 1,
      "Curse of Dragon": 1,
@@ -260,6 +261,8 @@
      "z:little-winguard:1": 4,
      "z:insect-queen:1": 4,
      "z:red-eyes-wyvern:1": 4,
+     "z:meteor-of-destruction:1": 4,
+     "z:trap-hole:1": 4,
      "Metalmorph": 4,
      "z:red-eyes-darkness-dragon:1": 4
     }
@@ -322,6 +325,7 @@
     "cards": {
      "z:red-eyes-darkness-metal-dragon:1": 1,
      "Raigeki": 1,
+     "z:bottomless-trap-hole:1": 1,
      "z:red-eyes-black-dragon-exceed:1": 1,
      "z:gilford-the-lightning:1": 1
     }

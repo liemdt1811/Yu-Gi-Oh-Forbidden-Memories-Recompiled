@@ -206,10 +206,10 @@ static int read_one(const char *mod, int index, int n, const JsonValue *entry, M
      * while it resolves, so own/opponent/all work just as they do for a
      * monster effect. */
     if (card_effect && (target == MONSTER_TARGET_SELF || target == MONSTER_TARGET_OTHERS ||
-                        target == MONSTER_TARGET_BATTLE ||
+                        (target == MONSTER_TARGET_BATTLE && action != MONSTER_DO_DESTROY) ||
                         ((action == MONSTER_DO_HEAL || action == MONSTER_DO_DAMAGE) &&
                          target == MONSTER_TARGET_ALL))) {
-        Mods_Note(mod, "cards[%d]: card_effects[%d]: a spell or trap target must be own, opponent or all", index, n);
+        Mods_Note(mod, "cards[%d]: card_effects[%d]: a spell or trap target must be own, opponent or all (a trap's destroy may also take battle: the attacker)", index, n);
         return 0;
     }
     out->when = (unsigned char)when;
@@ -240,6 +240,16 @@ static int read_one(const char *mod, int index, int n, const JsonValue *entry, M
         out->attack = (short)attack;
         out->defense = (short)defense;
         if (!filter(mod, index, n, "", entry, &out->type, &out->attribute)) return 0;
+        value = Json_Member(entry, "position");
+        if (value) {
+            const char *position = Json_String(value, NULL);
+            if (position && !strcmp(position, "attack")) out->position = 1;
+            else if (position && !strcmp(position, "defense")) out->position = 2;
+            else {
+                Mods_Note(mod, "cards[%d]: monster_effects[%d]: \"position\" must be attack or defense", index, n);
+                return 0;
+            }
+        }
         break;
     }
     default:
@@ -250,6 +260,9 @@ static int read_one(const char *mod, int index, int n, const JsonValue *entry, M
             return 0;
         }
         out->amount = v;
+        v = 0;
+        if (number(mod, index, n, entry, "lp_over", AMOUNT_MAX, &v) < 0) return 0;
+        out->lp_over = (unsigned short)(v > 0 ? v : 0);
         break;
     }
     value = Json_Member(entry, "for_each");

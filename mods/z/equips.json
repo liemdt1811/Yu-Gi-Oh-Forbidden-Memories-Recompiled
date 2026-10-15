@@ -32,7 +32,7 @@
    "Rock",
    "Plant"
   ],
-  "bonus": 600
+  "bonus": 0
  },
  {
   "card": "z:divine-sword-phoenix-blade:1",
@@ -50,11 +50,82 @@
   "card": "z:lightning-blade:1",
   "replace": true,
   "add": [
-   "Warrior",
-   "Thunder"
+   "Warrior"
   ],
   "bonus_attack": 800,
   "bonus_defense": 0
+ },
+ {
+  "card": "z:sword-of-dragon-s-soul:1",
+  "replace": true,
+  "add": [
+   "Warrior"
+  ],
+  "bonus_attack": 700,
+  "bonus_defense": 0
+ },
+ {
+  "card": "z:7-completed:1",
+  "replace": true,
+  "add": [
+   "Machine"
+  ],
+  "bonus_attack": 700,
+  "bonus_defense": 0
+ },
+ {
+  "card": "z:burning-spear:1",
+  "replace": true,
+  "add": [
+   "Dragon",
+   "Spellcaster",
+   "Zombie",
+   "Warrior",
+   "Beast-Warrior",
+   "Beast",
+   "Winged Beast",
+   "Fiend",
+   "Fairy",
+   "Insect",
+   "Dinosaur",
+   "Reptile",
+   "Fish",
+   "Sea Serpent",
+   "Machine",
+   "Thunder",
+   "Aqua",
+   "Pyro",
+   "Rock",
+   "Plant"
+  ],
+  "bonus": 0
+ },
+ {
+  "card": "z:gust-fan:1",
+  "replace": true,
+  "add": [
+   "Dragon",
+   "Spellcaster",
+   "Zombie",
+   "Warrior",
+   "Beast-Warrior",
+   "Beast",
+   "Winged Beast",
+   "Fiend",
+   "Fairy",
+   "Insect",
+   "Dinosaur",
+   "Reptile",
+   "Fish",
+   "Sea Serpent",
+   "Machine",
+   "Thunder",
+   "Aqua",
+   "Pyro",
+   "Rock",
+   "Plant"
+  ],
+  "bonus": 0
  },
  {
   "card": "z:rod-of-silence-kay-est:1",

@@ -22,14 +22,16 @@
     "Guardian Neku",
     "Labyrinth Mage"
    ]
-  }
+  },
+  "name_color": 3
  },
  {
   "kind": "equip",
   "name": "United We Stand",
+  "name_color": 3,
   "password": "56747793",
   "base": "Dark Energy",
-  "description": "The monster draws strength from its allies. Any monster may be equipped.",
+  "description": "The equipped monster gains 800 ATK/DEF for each face-up monster you control.",
   "date": "2003-03-01",
   "add": [
    "Dragon",
@@ -53,7 +55,7 @@
    "Rock",
    "Plant"
   ],
-  "bonus": 600,
+  "bonus": 0,
   "drop": {
    "weight": 24,
    "from": [
@@ -95,21 +97,166 @@
     "Guardian Neku",
     "Labyrinth Mage"
    ]
-  }
+  },
+  "name_color": 3
  },
  {
   "kind": "equip",
   "name": "Lightning Blade",
   "password": "55226821",
   "base": "Beast Fangs",
-  "description": "A blade that crackles with lightning. It adds to the attack of its wielder.",
+  "description": "This card can only be equipped to Warrior-Type monsters. Increases the ATK of the equipped monster by 800 points.",
   "date": "2003-03-01",
   "add": [
-   "Warrior",
-   "Thunder"
+   "Warrior"
   ],
   "bonus_attack": 800,
   "bonus_defense": 0,
+  "drop": {
+   "weight": 24,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  },
+  "name_color": 3
+ },
+ {
+  "kind": "equip",
+  "name": "Sword of Dragon's Soul",
+  "name_color": 3,
+  "password": "61405855",
+  "base": "Sword of Dark Destruction",
+  "description": "Equip only to a Warrior monster. It gains 700 ATK.",
+  "date": "2002-03-08",
+  "add": [
+   "Warrior"
+  ],
+  "bonus_attack": 700,
+  "bonus_defense": 0,
+  "drop": {
+   "weight": 24,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "equip",
+  "name": "7 Completed",
+  "name_color": 3,
+  "password": "86198326",
+  "base": "Machine Conversion Factory",
+  "description": "A Machine-Type monster equipped with this card increases either its ATK or DEF by 700 points.",
+  "date": "2002-03-08",
+  "add": [
+   "Machine"
+  ],
+  "bonus_attack": 700,
+  "bonus_defense": 0,
+  "drop": {
+   "weight": 24,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "equip",
+  "name": "Burning Spear",
+  "name_color": 3,
+  "password": "18937875",
+  "base": "Axe of Despair",
+  "description": "A FIRE monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.",
+  "date": "2002-03-08",
+  "add": [
+   "Dragon",
+   "Spellcaster",
+   "Zombie",
+   "Warrior",
+   "Beast-Warrior",
+   "Beast",
+   "Winged Beast",
+   "Fiend",
+   "Fairy",
+   "Insect",
+   "Dinosaur",
+   "Reptile",
+   "Fish",
+   "Sea Serpent",
+   "Machine",
+   "Thunder",
+   "Aqua",
+   "Pyro",
+   "Rock",
+   "Plant"
+  ],
+  "bonus": 0,
+  "drop": {
+   "weight": 24,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "equip",
+  "name": "Gust Fan",
+  "name_color": 3,
+  "password": "55321970",
+  "base": "Black Pendant",
+  "description": "A WIND monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.",
+  "date": "2002-03-08",
+  "add": [
+   "Dragon",
+   "Spellcaster",
+   "Zombie",
+   "Warrior",
+   "Beast-Warrior",
+   "Beast",
+   "Winged Beast",
+   "Fiend",
+   "Fairy",
+   "Insect",
+   "Dinosaur",
+   "Reptile",
+   "Fish",
+   "Sea Serpent",
+   "Machine",
+   "Thunder",
+   "Aqua",
+   "Pyro",
+   "Rock",
+   "Plant"
+  ],
+  "bonus": 0,
   "drop": {
    "weight": 24,
    "from": [
@@ -149,7 +296,8 @@
     "Guardian Neku",
     "Labyrinth Mage"
    ]
-  }
+  },
+  "name_color": 3
  },
  {
   "kind": "ritual",
@@ -349,5 +497,197 @@
     "result": "Gearfried the Swordmaster"
    }
   ]
+ },
+ {
+  "kind": "magic",
+  "name": "Blue Medicine",
+  "password": "20871001",
+  "base": "Red Medicine",
+  "description": "Increase your Life Points by 1000 points.",
+  "date": "2002-09-01",
+  "card_effects": [
+   {
+    "do": "heal",
+    "amount": 1000
+   }
+  ],
+  "drop": {
+   "weight": 16,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "magic",
+  "name": "Thunder Short",
+  "password": "20264508",
+  "base": "Sparks",
+  "description": "Inflict 400 damage to your opponent for each monster they control.",
+  "date": "2011-08-06",
+  "card_effects": [
+   {
+    "do": "damage",
+    "target": "opponent",
+    "amount": 400,
+    "for_each": {
+     "whose": "opponent"
+    }
+   }
+  ],
+  "drop": {
+   "weight": 16,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "magic",
+  "name": "Thunder Crash",
+  "password": "69196160",
+  "base": "Hinotama",
+  "description": "Inflict 300 damage to your opponent for each monster you control.",
+  "date": "2004-03-01",
+  "card_effects": [
+   {
+    "do": "damage",
+    "target": "opponent",
+    "amount": 300,
+    "for_each": {
+     "whose": "own"
+    }
+   }
+  ],
+  "drop": {
+   "weight": 16,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "magic",
+  "name": "Meteor of Destruction",
+  "password": "33767325",
+  "base": "Final Flame",
+  "description": "If your opponent's Life Points are higher than 3000: Inflict 1000 damage to your opponent.",
+  "date": "2005-02-26",
+  "card_effects": [
+   {
+    "do": "damage",
+    "target": "opponent",
+    "amount": 1000,
+    "lp_over": 3000
+   }
+  ],
+  "drop": {
+   "weight": 16,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "trap",
+  "name": "Mirror Force",
+  "password": "44095762",
+  "base": "Widespread Ruin",
+  "description": "When an opponent's monster declares an attack: Destroy all your opponent's Attack Position monsters.",
+  "date": "2002-06-26",
+  "card_effects": [
+   {
+    "do": "destroy",
+    "target": "opponent",
+    "position": "attack"
+   }
+  ],
+  "drop": {
+   "weight": 16,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "trap",
+  "name": "Trap Hole",
+  "password": "04206964",
+  "base": "Widespread Ruin",
+  "description": "When an opponent's monster with 1000 or more ATK attacks: Destroy that monster.",
+  "date": "2002-03-08",
+  "trap_threshold": 65535,
+  "trap_min_attack": 1000,
+  "drop": {
+   "weight": 16,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
+ },
+ {
+  "kind": "trap",
+  "name": "Bottomless Trap Hole",
+  "password": "29401950",
+  "base": "Widespread Ruin",
+  "description": "When an opponent's monster with 1500 or more ATK attacks: Destroy that monster.",
+  "date": "2003-06-06",
+  "trap_threshold": 65535,
+  "trap_min_attack": 1500,
+  "drop": {
+   "weight": 16,
+   "from": [
+    "Seto 3rd",
+    "Heishin 2nd",
+    "DarkNite",
+    "Nitemare",
+    "Duel Master K",
+    "Guardian Sebek",
+    "Guardian Neku",
+    "Labyrinth Mage"
+   ]
+  }
  }
 ]

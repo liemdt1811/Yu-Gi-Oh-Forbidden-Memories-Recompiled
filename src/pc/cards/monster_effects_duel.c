@@ -217,6 +217,11 @@ static int reaches(const MonsterEffect *effect, int source, int target, int card
     case MONSTER_TARGET_OPPONENT: if (owner(target) == owner(source)) return 0; break;
     case MONSTER_TARGET_ALL: break;
     case MONSTER_TARGET_BATTLE:
+        /* A trap that springs on an attack: the attacker. */
+        if (S.trap_pending) {
+            if (target != S.trap_battle_record[0]) return 0;
+            break;
+        }
         /* The monster that attacked the flipped one, if it is still there. */
         if (source != S.defender || target != S.attacker || D_801A7AD8[target].card_id != S.attacker_card) return 0;
         break;
@@ -225,6 +230,10 @@ static int reaches(const MonsterEffect *effect, int source, int target, int card
     /* A type past 127 is stored as a negative byte; only -1 (0xFF) is "any". */
     if (effect->type != -1 && Cards_Type(card) != (unsigned char)effect->type) return 0;
     if (effect->attribute >= 0 && Cards_Attribute(card) != effect->attribute) return 0;
+    if (effect->position) {
+        int defending = (D_801A7AD8[target].flags & DUEL_CARD_FLAG_DEFENSE_POSITION) != 0;
+        if (effect->position == 1 ? defending : !defending) return 0;
+    }
     return 1;
 }
 
@@ -420,9 +429,11 @@ static int resolve(void)
         SD_SEPlayFull(SE_BOOST);
         break;
     case MONSTER_DO_HEAL:
-        return count ? life_effect(life_side(effect, side, card_effect), effect->amount * count) : 0;
-    case MONSTER_DO_DAMAGE:
-        return count ? life_effect(life_side(effect, side, card_effect), -effect->amount * count) : 0;
+    case MONSTER_DO_DAMAGE: {
+        int changed = life_side(effect, side, card_effect);
+        if (!count || (effect->lp_over && D_800E9FF0[changed].life_points.signed_value <= (int)effect->lp_over)) return 0;
+        return life_effect(changed, (effect->action == MONSTER_DO_HEAL ? 1 : -1) * effect->amount * count);
+    }
     case MONSTER_DO_DESTROY:
         /* Crush Card's removal, on the monsters chosen here
          * (MonsterEffects_RemovalTakes): it takes the other side's, as

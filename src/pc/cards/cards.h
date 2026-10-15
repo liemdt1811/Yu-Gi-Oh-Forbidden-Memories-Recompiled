@@ -58,6 +58,8 @@ int Cards_TrapId(int id);
  * active for traps with one of the six retail attack-destruction effects.
  * Copies inherit their base's override; null clears it. */
 int Cards_TrapThreshold(int id, int fallback);
+/* The lowest attacker ATK an attack trap springs for ("trap_min_attack"), 0 for any. */
+int Cards_TrapMinAttack(int id);
 /* The type a card has on the disc, which is what its effect is; -1 past the disc. */
 int Cards_RetailType(int id);
 /* Nonzero for a card a mod's "replace" made another kind of card than its

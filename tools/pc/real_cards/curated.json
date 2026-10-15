@@ -1157,6 +1157,7 @@
  {
   "password": "77585513",
   "name": "Jinzo",
+  "name_color": 5,
   "type": "Machine",
   "attribute": "Dark",
   "level": 6,
@@ -1323,6 +1324,7 @@
  {
   "password": "96561011",
   "name": "Red-Eyes Darkness Dragon",
+  "name_color": 5,
   "type": "Dragon",
   "attribute": "Dark",
   "level": 9,
@@ -1346,6 +1348,7 @@
  {
   "password": "36354007",
   "name": "Gilford the Lightning",
+  "name_color": 5,
   "type": "Warrior",
   "attribute": "Light",
   "level": 8,
@@ -1358,6 +1361,7 @@
  {
   "password": "30860696",
   "name": "Rocket Warrior",
+  "name_color": 5,
   "type": "Warrior",
   "attribute": "Light",
   "level": 4,
@@ -1366,5 +1370,71 @@
   "description": "After a battle it\nfights in, its\nopponent loses 500\nATK.",
   "date": "2002-01-01",
   "frame": "Orange"
+ },
+ {
+  "password": "12493482",
+  "name": "Dunames Dark Witch",
+  "type": "Fairy",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1800,
+  "defense": 1050,
+  "description": "Even when all odds\nare against this\nbrave fairy, she\nwill press onwards\nin battle and never\nretreat.",
+  "date": "2006-04-28"
+ },
+ {
+  "password": "12883044",
+  "name": "Flame Dancer",
+  "type": "Pyro",
+  "attribute": "Fire",
+  "level": 2,
+  "attack": 550,
+  "defense": 450,
+  "description": "This monster moves\nwhile swinging its\nburning rope.",
+  "date": "2003-03-01"
+ },
+ {
+  "password": "27671321",
+  "name": "Lightning Conger",
+  "type": "Thunder",
+  "attribute": "Water",
+  "level": 3,
+  "attack": 350,
+  "defense": 750,
+  "description": "This massive eel\ngenerates huge\ncharges of\nelectricity and\nunleashes them as\nthunderbolts.",
+  "date": "2003-03-01"
+ },
+ {
+  "password": "52121290",
+  "name": "Spherous Lady",
+  "type": "Rock",
+  "attribute": "Earth",
+  "level": 3,
+  "attack": 400,
+  "defense": 1400,
+  "description": "Many have been\ndeceived by the\nbeauty of this\nvampire.",
+  "date": "2003-03-01"
+ },
+ {
+  "password": "88472456",
+  "name": "Zombyra the Dark",
+  "type": "Warrior",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 2100,
+  "defense": 500,
+  "description": "A dark warrior with\na deadly sword arm,\nbut too reckless to\nguard himself.",
+  "date": "2003-03-01"
+ },
+ {
+  "password": "71466592",
+  "name": "Maryokutai",
+  "type": "Aqua",
+  "attribute": "Water",
+  "level": 3,
+  "attack": 900,
+  "defense": 900,
+  "description": "A mass of magic\nenergy that flows\nlike water and\ndrifts about the\nbattlefield.",
+  "date": "2003-03-01"
  }
 ]

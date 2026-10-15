@@ -4,12 +4,12 @@
  "version": "0.1",
  "author": "community",
  "enabled": false,
- "description": "268 real Yu-Gi-Oh! cards the disc lacks, with fusions, packs and duelists. Study project; art is Konami's.",
+ "description": "288 real Yu-Gi-Oh! cards the disc lacks, with fusions, packs and duelists. Study project; art is Konami's.",
  "title": {
   "background": {
    "image": "art/title.png",
    "wide_image": "art/title-wide.png",
-   "dim": 128
+   "dim": 96
   },
   "logo": {
    "hide": true
@@ -211,6 +211,122 @@
   }
  ],
  "decks": "decks.json",
+ "card_text_colors": {
+  "cards": [
+   {
+    "card": "z:jinzo:1",
+    "name": 5
+   },
+   {
+    "card": "z:red-eyes-darkness-dragon:1",
+    "name": 5
+   },
+   {
+    "card": "z:gilford-the-lightning:1",
+    "name": 5
+   },
+   {
+    "card": "z:rocket-warrior:1",
+    "name": 5
+   },
+   {
+    "card": "z:buster-blader:1",
+    "name": 5
+   },
+   {
+    "card": "z:dark-magician-girl:1",
+    "name": 5
+   },
+   {
+    "card": "z:dark-magician-of-destruction:1",
+    "name": 5
+   },
+   {
+    "card": "z:slifer-the-sky-dragon:1",
+    "name": 5
+   },
+   {
+    "card": "z:the-winged-dragon-of-ra:1",
+    "name": 5
+   },
+   {
+    "card": "z:dragon-master-knight:1",
+    "name": 5
+   },
+   {
+    "card": "z:elemental-hero-air-neos:1",
+    "name": 5
+   },
+   {
+    "card": "z:elemental-hero-aqua-neos:1",
+    "name": 5
+   },
+   {
+    "card": "z:elemental-hero-dark-neos:1",
+    "name": 5
+   },
+   {
+    "card": "z:elemental-hero-flare-neos:1",
+    "name": 5
+   },
+   {
+    "card": "z:elemental-hero-grand-neos:1",
+    "name": 5
+   },
+   {
+    "card": "z:dark-magician-girl-the-dragon-knight:1",
+    "name": 5
+   },
+   {
+    "card": "z:the-dark-magicians:1",
+    "name": 5
+   },
+   {
+    "card": "z:blue-eyes-tyrant-dragon:1",
+    "name": 5
+   },
+   {
+    "card": "z:red-eyes-darkness-metal-dragon:1",
+    "name": 5
+   },
+   {
+    "card": "z:mage-power:1",
+    "name": 3
+   },
+   {
+    "card": "z:united-we-stand:1",
+    "name": 3
+   },
+   {
+    "card": "z:divine-sword-phoenix-blade:1",
+    "name": 3
+   },
+   {
+    "card": "z:lightning-blade:1",
+    "name": 3
+   },
+   {
+    "card": "z:sword-of-dragon-s-soul:1",
+    "name": 3
+   },
+   {
+    "card": "z:7-completed:1",
+    "name": 3
+   },
+   {
+    "card": "z:burning-spear:1",
+    "name": 3
+   },
+   {
+    "card": "z:gust-fan:1",
+    "name": 3
+   },
+   {
+    "card": "z:rod-of-silence-kay-est:1",
+    "name": 3
+   }
+  ]
+ },
  "packs": "packs.json",
  "equips": "equips.json",
  "rituals": "rituals.json"

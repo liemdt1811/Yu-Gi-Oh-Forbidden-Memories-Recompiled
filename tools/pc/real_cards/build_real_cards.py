@@ -127,6 +127,8 @@ def is_monster(r):
 
 
 def description(desc):
+    if "\n" in desc.strip():                  # already broken into lines by hand: kept as written
+        return fold(desc.strip())
     desc = re.sub(r"\s+", " ", desc.strip().strip("'\"").strip())
     desc = fold(desc)
     lines = textwrap.wrap(desc, 20, break_long_words=True)
@@ -281,6 +283,9 @@ def build():
     duelists = json.loads(DUELISTS.read_text(encoding="utf-8"))
     packs = mod_packs(monsters, cards, targets, spells)
     mod_duelists(mod, duelists, cards + targets + spells, packs)
+    colored = [{"card": f"{MOD_ID}:{slug(c['name'])}:1", "name": c["name_color"]} for c in cards + targets + spells if "name_color" in c]
+    if colored:                                  # card_text_colors: the ramp (0-7) a card's name is written in
+        mod["card_text_colors"] = {"cards": colored}
     if packs:
         mod["packs"] = packs
     if equips:
@@ -553,7 +558,13 @@ def spell_cards(spells, cat, entries, monsters):
              "password": s["password"], "drops": False, "opponents": False}
         if (MOD / "images" / f"{cid}.png").exists():
             e["art"] = f"images/{cid}.png"
+        if s["kind"] in ("magic", "trap"):      # a plain spell / trap: data-defined card_effects replace the base's work
+            e.update({k: s[k] for k in ("trap_threshold", "trap_min_attack") if k in s})
+            if "card_effects" in s:      # without them the card works as its base does (a Trap Hole is a Widespread Ruin with a minimum ATK)
+                e.update({"card_effects": s["card_effects"], "card_effects_mode": "replace", "ai_effect": s.get("ai_effect", s["base"])})
         entries.append(e)
+        if s["kind"] in ("magic", "trap"):
+            continue
         if s["kind"] == "equip":
             rule = {"card": ref[s["name"]], "replace": True, "add": s["add"]}
             for k in ("bonus", "bonus_if", "bonus_attack", "bonus_defense"):
@@ -573,7 +584,17 @@ def spell_cards(spells, cat, entries, monsters):
                                 **({"recipes": recipes} if recipes else {})})
             else:
                 rituals.append({"card": ref[s["name"]], "result": ref[s["result"]], "tributes": s["tributes"]})
+    for patch in PATCHES:       # a retail card whose work the mod changes
+        entries.append({**patch, "description": description(patch["description"])})
     return equips, rituals
+
+
+# Retail cards the mod rewrites (a "replace" entry of the mod's cards)
+PATCHES = [
+    {"id": "tremendous-fire", "replace": "Tremendous Fire", "description": "Inflicts 1000 points of damage to your opponent's Life Points and 500 points of damage to your Life Points.",
+     "card_effects_mode": "replace", "ai_effect": "Tremendous Fire",
+     "card_effects": [{"do": "damage", "target": "opponent", "amount": 1000}, {"do": "damage", "target": "own", "amount": 500}]},
+]
 
 
 def fusions(new, monsters, extra=()):
@@ -714,12 +735,17 @@ def check():
     refs = {f"{MOD_ID}:{e['id']}:1": e for e in mod["cards"]}
     for e in mod["cards"]:
         where = e["id"]
+        if "replace" in e:              # a retail card the mod rewrites: only its text is ours
+            lines = e["description"].split("\n")
+            if len(lines) > 8 or any(len(x) > 20 for x in lines):
+                errors.append(f"{where}: description")
+            continue
         if len(e["id"]) > 63 or e["id"] in names:
             errors.append(f"{where}: id")
         names.add(e["id"])
         monster = "attack" in e
         kind = ids[e["copy"]]["type"] if e["copy"] in ids else None
-        if kind is None or (monster and (kind not in TYPES or ids[e["copy"]]["atk"] is None))                 or (not monster and kind not in ("Equip", "Ritual")):
+        if kind is None or (monster and (kind not in TYPES or ids[e["copy"]]["atk"] is None))                 or (not monster and kind not in ("Equip", "Ritual", "Magic", "Trap")):
             errors.append(f"{where}: base")
         if any(ch not in FONT_OK for ch in e["name"]):
             errors.append(f"{where}: name has characters the font lacks")
@@ -736,8 +762,8 @@ def check():
         passwords.add(e["password"])
         if "art" in e and not (MOD / e["art"]).exists():
             errors.append(f"{where}: art missing")
-    equip_cards = {f"{MOD_ID}:{e['id']}:1" for e in mod["cards"] if "attack" not in e and ids[e["copy"]]["type"] == "Equip"}
-    ritual_cards = {f"{MOD_ID}:{e['id']}:1" for e in mod["cards"] if "attack" not in e and ids[e["copy"]]["type"] == "Ritual"}
+    equip_cards = {f"{MOD_ID}:{e['id']}:1" for e in mod["cards"] if "attack" not in e and "copy" in e and ids[e["copy"]]["type"] == "Equip"}
+    ritual_cards = {f"{MOD_ID}:{e['id']}:1" for e in mod["cards"] if "attack" not in e and "copy" in e and ids[e["copy"]]["type"] == "Ritual"}
     for r in mod.get("equips", []):
         if r["card"] not in equip_cards or not r.get("add") or any(t not in TYPES for t in r["add"]):
             errors.append(f"equips {r['card']}: card or types")

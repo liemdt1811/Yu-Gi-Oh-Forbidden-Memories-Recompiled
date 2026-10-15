@@ -81,7 +81,7 @@ static int select_custom_attack_trap(u8 *attacker)
         if ((unsigned)index >= DUEL_ATTACK_TRAP_COUNT) continue;
         threshold = Tables_TrapThreshold(index, gDuel_abTrapAttackThresholds[index] * DUEL_ATTACK_TRAP_THRESHOLD_SCALE);
         threshold = Cards_TrapThreshold(card->card_id, threshold);
-        if (attack <= threshold && (!chosen_effect || effect <= chosen_effect)) {
+        if (attack <= threshold && attack >= Cards_TrapMinAttack(card->card_id) && (!chosen_effect || effect <= chosen_effect)) {
             chosen_effect = effect;
             chosen_slot = ((DisplayObject *)card->object)->field_6A;
         }

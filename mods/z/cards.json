@@ -1864,6 +1864,96 @@
   "art": "images/rocket-warrior.png"
  },
  {
+  "id": "dunames-dark-witch",
+  "copy": 608,
+  "name": "Dunames Dark Witch",
+  "description": "Even when all odds\nare against this\nbrave fairy, she\nwill press onwards\nin battle and never\nretreat.",
+  "type": "Fairy",
+  "attribute": "Light",
+  "level": 4,
+  "attack": 1800,
+  "defense": 1050,
+  "password": "12493482",
+  "drops": true,
+  "opponents": true,
+  "art": "images/dunames-dark-witch.png"
+ },
+ {
+  "id": "flame-dancer",
+  "copy": 210,
+  "name": "Flame Dancer",
+  "description": "This monster moves\nwhile swinging its\nburning rope.",
+  "type": "Pyro",
+  "attribute": "Fire",
+  "level": 2,
+  "attack": 550,
+  "defense": 450,
+  "password": "12883044",
+  "drops": true,
+  "opponents": true,
+  "art": "images/flame-dancer.png"
+ },
+ {
+  "id": "lightning-conger",
+  "copy": 191,
+  "name": "Lightning Conger",
+  "description": "This massive eel\ngenerates huge\ncharges of\nelectricity and\nunleashes them as\nthunderbolts.",
+  "type": "Thunder",
+  "attribute": "Water",
+  "level": 3,
+  "attack": 350,
+  "defense": 750,
+  "password": "27671321",
+  "drops": true,
+  "opponents": true,
+  "art": "images/lightning-conger.png"
+ },
+ {
+  "id": "spherous-lady",
+  "copy": 263,
+  "name": "Spherous Lady",
+  "description": "Many have been\ndeceived by the\nbeauty of this\nvampire.",
+  "type": "Rock",
+  "attribute": "Earth",
+  "level": 3,
+  "attack": 400,
+  "defense": 1400,
+  "password": "52121290",
+  "drops": true,
+  "opponents": true,
+  "art": "images/spherous-lady.png"
+ },
+ {
+  "id": "zombyra-the-dark",
+  "copy": 234,
+  "name": "Zombyra the Dark",
+  "description": "A dark warrior with\na deadly sword arm,\nbut too reckless to\nguard himself.",
+  "type": "Warrior",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 2100,
+  "defense": 500,
+  "password": "88472456",
+  "drops": true,
+  "opponents": true,
+  "art": "images/zombyra-the-dark.png"
+ },
+ {
+  "id": "maryokutai",
+  "copy": 199,
+  "name": "Maryokutai",
+  "description": "A mass of magic\nenergy that flows\nlike water and\ndrifts about the\nbattlefield.",
+  "type": "Aqua",
+  "attribute": "Water",
+  "level": 3,
+  "attack": 900,
+  "defense": 900,
+  "password": "71466592",
+  "drops": true,
+  "opponents": true,
+  "art": "images/maryokutai.png"
+ },
+ {
   "id": "cyber-dragon",
   "copy": 441,
   "name": "Cyber Dragon",
@@ -2394,7 +2484,7 @@
   "id": "dark-magician-of-destruction",
   "copy": 722,
   "name": "Dark Magician of Destruction",
-  "description": "The Dark Magician\nreborn with a power\nof ruin.",
+  "description": "The Dark Magician\nreborn with a power\nof ruin. Gains 300\nATK for each\nSpellcaster on the\nfield.",
   "type": "Spellcaster",
   "attribute": "Dark",
   "level": 8,
@@ -2403,6 +2493,7 @@
   "password": "59400890",
   "drops": false,
   "opponents": false,
+  "frame": "Purple",
   "art": "images/dark-magician-of-destruction.png"
  },
  {
@@ -3490,7 +3581,7 @@
   "id": "dark-magician-girl-the-dragon-knight",
   "copy": 37,
   "name": "Dark Magician Girl the Dragon Knight",
-  "description": "The Dark Magician\nGirl in dragon\narmor, riding a\ngreat dragon.",
+  "description": "The Dark Magician\nGirl in dragon\narmor, riding a\ngreat dragon. Gains\n300 ATK for each\nDark Magician or\nMagician of Black\nChaos destroyed.",
   "type": "Dragon",
   "attribute": "Dark",
   "level": 7,
@@ -3499,13 +3590,14 @@
   "password": "43892408",
   "drops": false,
   "opponents": false,
+  "frame": "Orange",
   "art": "images/dark-magician-girl-the-dragon-knight.png"
  },
  {
   "id": "the-dark-magicians",
   "copy": 708,
   "name": "The Dark Magicians",
-  "description": "The master and his\napprentice cast side\nby side.",
+  "description": "The master and his\napprentice cast side\nby side. Gains 300\nATK for each\nSpellcaster on the\nfield.",
   "type": "Spellcaster",
   "attribute": "Dark",
   "level": 8,
@@ -3514,6 +3606,7 @@
   "password": "50237654",
   "drops": false,
   "opponents": false,
+  "frame": "Orange",
   "art": "images/the-dark-magicians.png"
  },
  {
@@ -3879,6 +3972,36 @@
   "art": "images/gearfried-the-swordmaster.png"
  },
  {
+  "id": "humanoid-worm-drake",
+  "copy": 223,
+  "name": "Humanoid Worm Drake",
+  "description": "A humanoid slime\nfused with a worm\ndrake. It strikes\nwith a body that\nflows like water.",
+  "type": "Aqua",
+  "attribute": "Water",
+  "level": 7,
+  "attack": 2200,
+  "defense": 2000,
+  "password": "05600127",
+  "drops": false,
+  "opponents": false,
+  "art": "images/humanoid-worm-drake.png"
+ },
+ {
+  "id": "the-last-warrior-from-another-planet",
+  "copy": 38,
+  "name": "The Last Warrior from Another Planet",
+  "description": "A lone warrior from\nanother planet, born\nwhen a dark warrior\nmeets a creature of\nwater.",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 7,
+  "attack": 2350,
+  "defense": 2300,
+  "password": "86099788",
+  "drops": false,
+  "opponents": false,
+  "art": "images/the-last-warrior-from-another-planet.png"
+ },
+ {
   "id": "mage-power",
   "copy": 323,
   "name": "Mage Power",
@@ -3892,7 +4015,7 @@
   "id": "united-we-stand",
   "copy": 303,
   "name": "United We Stand",
-  "description": "The monster draws\nstrength from its\nallies. Any monster\nmay be equipped.",
+  "description": "The equipped monster\ngains 800 ATK/DEF\nfor each face-up\nmonster you control.",
   "password": "56747793",
   "drops": false,
   "opponents": false,
@@ -3912,11 +4035,51 @@
   "id": "lightning-blade",
   "copy": 308,
   "name": "Lightning Blade",
-  "description": "A blade that\ncrackles with\nlightning. It adds\nto the attack of its\nwielder.",
+  "description": "This card can only\nbe equipped to\nWarrior-Type\nmonsters. Increases\nthe ATK of the\nequipped monster by\n800 points.",
   "password": "55226821",
   "drops": false,
   "opponents": false,
   "art": "images/lightning-blade.png"
+ },
+ {
+  "id": "sword-of-dragon-s-soul",
+  "copy": 302,
+  "name": "Sword of Dragon's Soul",
+  "description": "Equip only to a\nWarrior monster. It\ngains 700 ATK.",
+  "password": "61405855",
+  "drops": false,
+  "opponents": false,
+  "art": "images/sword-of-dragon-s-soul.png"
+ },
+ {
+  "id": "7-completed",
+  "copy": 325,
+  "name": "7 Completed",
+  "description": "A Machine-Type\nmonster equipped\nwith this card\nincreases either its\nATK or DEF by 700\npoints.",
+  "password": "86198326",
+  "drops": false,
+  "opponents": false,
+  "art": "images/7-completed.png"
+ },
+ {
+  "id": "burning-spear",
+  "copy": 304,
+  "name": "Burning Spear",
+  "description": "A FIRE monster\nequipped with this\ncard increases its\nATK by 400 points\nand decreases its\nDEF by 200 points.",
+  "password": "18937875",
+  "drops": false,
+  "opponents": false,
+  "art": "images/burning-spear.png"
+ },
+ {
+  "id": "gust-fan",
+  "copy": 311,
+  "name": "Gust Fan",
+  "description": "A WIND monster\nequipped with this\ncard increases its\nATK by 400 points\nand decreases its\nDEF by 200 points.",
+  "password": "55321970",
+  "drops": false,
+  "opponents": false,
+  "art": "images/gust-fan.png"
  },
  {
   "id": "rod-of-silence-kay-est",
@@ -3987,5 +4150,149 @@
   "drops": false,
   "opponents": false,
   "art": "images/release-restraint.png"
+ },
+ {
+  "id": "blue-medicine",
+  "copy": 339,
+  "name": "Blue Medicine",
+  "description": "Increase your Life\nPoints by 1000\npoints.",
+  "password": "20871001",
+  "drops": false,
+  "opponents": false,
+  "art": "images/blue-medicine.png",
+  "card_effects": [
+   {
+    "do": "heal",
+    "amount": 1000
+   }
+  ],
+  "card_effects_mode": "replace",
+  "ai_effect": "Red Medicine"
+ },
+ {
+  "id": "thunder-short",
+  "copy": 343,
+  "name": "Thunder Short",
+  "description": "Inflict 400 damage\nto your opponent for\neach monster they\ncontrol.",
+  "password": "20264508",
+  "drops": false,
+  "opponents": false,
+  "art": "images/thunder-short.png",
+  "card_effects": [
+   {
+    "do": "damage",
+    "target": "opponent",
+    "amount": 400,
+    "for_each": {
+     "whose": "opponent"
+    }
+   }
+  ],
+  "card_effects_mode": "replace",
+  "ai_effect": "Sparks"
+ },
+ {
+  "id": "thunder-crash",
+  "copy": 344,
+  "name": "Thunder Crash",
+  "description": "Inflict 300 damage\nto your opponent for\neach monster you\ncontrol.",
+  "password": "69196160",
+  "drops": false,
+  "opponents": false,
+  "art": "images/thunder-crash.png",
+  "card_effects": [
+   {
+    "do": "damage",
+    "target": "opponent",
+    "amount": 300,
+    "for_each": {
+     "whose": "own"
+    }
+   }
+  ],
+  "card_effects_mode": "replace",
+  "ai_effect": "Hinotama"
+ },
+ {
+  "id": "meteor-of-destruction",
+  "copy": 345,
+  "name": "Meteor of Destruction",
+  "description": "If your opponent's\nLife Points are\nhigher than 3000:\nInflict 1000 damage\nto your opponent.",
+  "password": "33767325",
+  "drops": false,
+  "opponents": false,
+  "art": "images/meteor-of-destruction.png",
+  "card_effects": [
+   {
+    "do": "damage",
+    "target": "opponent",
+    "amount": 1000,
+    "lp_over": 3000
+   }
+  ],
+  "card_effects_mode": "replace",
+  "ai_effect": "Final Flame"
+ },
+ {
+  "id": "mirror-force",
+  "copy": 686,
+  "name": "Mirror Force",
+  "description": "When an opponent's\nmonster declares an\nattack: Destroy all\nyour opponent's\nAttack Position\nmonsters.",
+  "password": "44095762",
+  "drops": false,
+  "opponents": false,
+  "art": "images/mirror-force.png",
+  "card_effects": [
+   {
+    "do": "destroy",
+    "target": "opponent",
+    "position": "attack"
+   }
+  ],
+  "card_effects_mode": "replace",
+  "ai_effect": "Widespread Ruin"
+ },
+ {
+  "id": "trap-hole",
+  "copy": 686,
+  "name": "Trap Hole",
+  "description": "When an opponent's\nmonster with 1000 or\nmore ATK attacks:\nDestroy that\nmonster.",
+  "password": "04206964",
+  "drops": false,
+  "opponents": false,
+  "art": "images/trap-hole.png",
+  "trap_threshold": 65535,
+  "trap_min_attack": 1000
+ },
+ {
+  "id": "bottomless-trap-hole",
+  "copy": 686,
+  "name": "Bottomless Trap Hole",
+  "description": "When an opponent's\nmonster with 1500 or\nmore ATK attacks:\nDestroy that\nmonster.",
+  "password": "29401950",
+  "drops": false,
+  "opponents": false,
+  "art": "images/bottomless-trap-hole.png",
+  "trap_threshold": 65535,
+  "trap_min_attack": 1500
+ },
+ {
+  "id": "tremendous-fire",
+  "replace": "Tremendous Fire",
+  "description": "Inflicts 1000 points\nof damage to your\nopponent's Life\nPoints and 500\npoints of damage to\nyour Life Points.",
+  "card_effects_mode": "replace",
+  "ai_effect": "Tremendous Fire",
+  "card_effects": [
+   {
+    "do": "damage",
+    "target": "opponent",
+    "amount": 1000
+   },
+   {
+    "do": "damage",
+    "target": "own",
+    "amount": 500
+   }
+  ]
  }
 ]

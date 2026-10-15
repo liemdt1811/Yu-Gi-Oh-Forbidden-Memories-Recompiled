@@ -1396,6 +1396,7 @@
  {
   "password": "78193831",
   "name": "Buster Blader",
+  "name_color": 5,
   "type": "Warrior",
   "attribute": "Earth",
   "level": 7,
@@ -1408,6 +1409,7 @@
  {
   "password": "38033121",
   "name": "Dark Magician Girl",
+  "name_color": 5,
   "type": "Spellcaster",
   "attribute": "Dark",
   "level": 6,
@@ -1420,12 +1422,14 @@
  {
   "password": "59400890",
   "name": "Dark Magician of Destruction",
+  "name_color": 5,
   "type": "Spellcaster",
   "attribute": "Dark",
   "level": 8,
   "attack": 2800,
   "defense": 2600,
-  "description": "The Dark Magician reborn with a power of ruin.",
+  "description": "The Dark Magician reborn with a power of ruin. Gains 300 ATK for each Spellcaster on the field.",
+  "frame": "Purple",
   "date": "2026-02-19",
   "fusions": [],
   "mass": [
@@ -1857,6 +1861,7 @@
  {
   "password": "10000020",
   "name": "Slifer the Sky Dragon",
+  "name_color": 5,
   "type": "Dragon",
   "attribute": "Wind",
   "level": 10,
@@ -1880,6 +1885,7 @@
  {
   "password": "10000010",
   "name": "The Winged Dragon of Ra",
+  "name_color": 5,
   "type": "Winged Beast",
   "attribute": "Fire",
   "level": 10,
@@ -2425,12 +2431,13 @@
  {
   "password": "62873545",
   "name": "Dragon Master Knight",
+  "name_color": 5,
   "type": "Dragon",
   "attribute": "Light",
   "level": 12,
   "attack": 5000,
   "defense": 5000,
-  "description": "\"Black Luster Soldier\" + \"Blue-Eyes Ultimate Dragon.\nThis card gains 500 ATK for each Dragon monster you control, except this card.",
+  "description": "\"Black Luster\nSoldier\" +\n\"Blue-Eyes Ultimate\nDragon.\nThis card gains 500\nATK for each Dragon\nmonster you control,\nexcept this card.",
   "date": "2006-11-11",
   "frame": "Purple",
   "fusions": [
@@ -2762,6 +2769,7 @@
  {
   "password": "11502550",
   "name": "Elemental HERO Air Neos",
+  "name_color": 5,
   "type": "Warrior",
   "attribute": "Wind",
   "level": 7,
@@ -2806,6 +2814,7 @@
  {
   "password": "55171412",
   "name": "Elemental HERO Aqua Neos",
+  "name_color": 5,
   "type": "Warrior",
   "attribute": "Water",
   "level": 7,
@@ -2850,6 +2859,7 @@
  {
   "password": "28677304",
   "name": "Elemental HERO Dark Neos",
+  "name_color": 5,
   "type": "Warrior",
   "attribute": "Dark",
   "level": 7,
@@ -2894,6 +2904,7 @@
  {
   "password": "81566151",
   "name": "Elemental HERO Flare Neos",
+  "name_color": 5,
   "type": "Warrior",
   "attribute": "Fire",
   "level": 7,
@@ -2938,6 +2949,7 @@
  {
   "password": "48996569",
   "name": "Elemental HERO Grand Neos",
+  "name_color": 5,
   "type": "Warrior",
   "attribute": "Earth",
   "level": 7,
@@ -3773,12 +3785,14 @@
  {
   "password": "43892408",
   "name": "Dark Magician Girl the Dragon Knight",
+  "name_color": 5,
   "type": "Dragon",
   "attribute": "Dark",
   "level": 7,
   "attack": 2600,
   "defense": 1700,
-  "description": "The Dark Magician Girl in dragon armor, riding a great dragon.",
+  "description": "The Dark Magician Girl in dragon armor, riding a great dragon. Gains 300 ATK for each Dark Magician or Magician of Black Chaos destroyed.",
+  "frame": "Orange",
   "date": "2014-04-25",
   "fusions": [],
   "mass": [
@@ -3809,12 +3823,14 @@
  {
   "password": "50237654",
   "name": "The Dark Magicians",
+  "name_color": 5,
   "type": "Spellcaster",
   "attribute": "Dark",
   "level": 8,
   "attack": 2800,
   "defense": 2300,
-  "description": "The master and his apprentice cast side by side.",
+  "description": "The master and his apprentice cast side by side. Gains 300 ATK for each Spellcaster on the field.",
+  "frame": "Orange",
   "date": "2020-01-16",
   "fusions": [],
   "mass": [
@@ -4129,6 +4145,7 @@
  {
   "password": "11443677",
   "name": "Blue-Eyes Tyrant Dragon",
+  "name_color": 5,
   "type": "Dragon",
   "attribute": "Light",
   "level": 8,
@@ -4278,6 +4295,7 @@
  {
   "password": "88264978",
   "name": "Red-Eyes Darkness Metal Dragon",
+  "name_color": 5,
   "type": "Dragon",
   "attribute": "Dark",
   "level": 10,
@@ -4307,6 +4325,67 @@
    [
     "Gearfried the Iron Knight",
     "Release Restraint"
+   ]
+  ]
+ },
+ {
+  "password": "05600127",
+  "name": "Humanoid Worm Drake",
+  "type": "Aqua",
+  "attribute": "Water",
+  "level": 7,
+  "attack": 2200,
+  "defense": 2000,
+  "description": "A humanoid slime\nfused with a worm\ndrake. It strikes\nwith a body that\nflows like water.",
+  "date": "2003-03-01",
+  "fusions": [
+   [
+    "Worm Drake",
+    "Humanoid Slime"
+   ]
+  ],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Reptile"
+     },
+     {
+      "type": "Aqua"
+     }
+    ],
+    "max_atk": 2000
+   }
+  ]
+ },
+ {
+  "password": "86099788",
+  "name": "The Last Warrior from Another Planet",
+  "type": "Warrior",
+  "attribute": "Earth",
+  "level": 7,
+  "attack": 2350,
+  "defense": 2300,
+  "description": "A lone warrior from\nanother planet, born\nwhen a dark warrior\nmeets a creature of\nwater.",
+  "date": "2003-03-01",
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Warrior",
+      "attribute": "Dark"
+     },
+     {
+      "type": "Aqua"
+     }
+    ],
+    "max_atk": 2100
+   }
+  ],
+  "fusions": [
+   [
+    "Zombyra the Dark",
+    "Maryokutai"
    ]
   ]
  }
