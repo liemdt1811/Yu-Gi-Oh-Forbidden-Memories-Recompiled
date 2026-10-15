@@ -17,9 +17,6 @@
 #include "duel_field_effect_steps.h"
 #include "duel_swords_effect.h"
 #ifdef MEMORIES_PC
-int DuelEffect_SpellImmune(const DuelCardRecord *record);   /* duel_card_effects.c */
-#endif
-#ifdef MEMORIES_PC
 #include "pc/cards/tables.h"
 #endif
 
@@ -58,7 +55,7 @@ void DuelEffect_ApplySwords(void)
                 if ((*(u32 *)&entry->terrain_modifier & 0x90000000) ==
                     0x90000000
 #ifdef MEMORIES_PC
-                    && !DuelEffect_SpellImmune(entry)
+                    && !DuelEffect_SpellImmune(entry->card_id, (int)(entry - D_801A7AD8))
 #endif
                     ) {
                     DuelFieldEffectObject *current;

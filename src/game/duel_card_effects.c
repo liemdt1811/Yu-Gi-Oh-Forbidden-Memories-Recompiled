@@ -200,12 +200,11 @@ apply:
 #ifdef MEMORIES_PC
 #include "pc/cards/cards.h"
 /* A "spell_immune" monster is left alone by the other side's magic card (duel_card_effects.h). */
-int DuelEffect_SpellImmune(const DuelCardRecord *record)
+int DuelEffect_SpellImmune(int card_id, int record)
 {
-    return Cards_SpellImmune(record->card_id) &&
-           (int)(record - D_801A7AD8) / DUEL_CARD_SIDE_RECORD_COUNT != D_8009B1D5;
+    return Cards_SpellImmune(card_id) && record / DUEL_CARD_SIDE_RECORD_COUNT != D_8009B1D5;
 }
-#define spell_immune(record) DuelEffect_SpellImmune(record)
+#define spell_immune(record) DuelEffect_SpellImmune((record)->card_id, (int)((record) - D_801A7AD8))
 #else
 #define spell_immune(record) 0
 #endif
