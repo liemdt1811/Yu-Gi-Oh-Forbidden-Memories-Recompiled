@@ -288,12 +288,38 @@ static FILE *host_open_data(const MemoriesModHost *host, const char *relative, c
     return fopen(path, mode);
 }
 
+#ifdef MEMORIES_RELEASE
+/* A release has no Mods window, so the settings of the mods it ships are the release's, whatever a settings file or the
+ * environment says. Compiled in: editing a mod's mod.json or the settings does not change them. */
+static const struct { const char *mod, *key; int value; } release_settings[] = {
+    {"ai-hard-mode", "deck_access", 1},     /* Five-card hand only */
+    {"ai-hard-mode", "hidden_cards", 1},    /* No hidden stats */
+};
+
+static int release_setting(const char *mod, const char *key, int *value)
+{
+    size_t i;
+    for (i = 0; i < sizeof(release_settings) / sizeof(release_settings[0]); i++)
+        if (!strcmp(mod, release_settings[i].mod) && !strcmp(key, release_settings[i].key)) {
+            *value = release_settings[i].value;
+            return 1;
+        }
+    return 0;
+}
+#endif
+
 static int host_setting(const MemoriesModHost *host, const char *key, int fallback)
 {
     Mod *mod = owner(host);
     char name[256];
     const char *text;
     if (!mod || !key || !*key) return fallback;
+#ifdef MEMORIES_RELEASE
+    {
+        int forced;
+        if (release_setting(mod->id, key, &forced)) return forced;
+    }
+#endif
     text = environment_name(name, sizeof(name), mod->id, key) ? getenv(name) : NULL;
     if (text && *text) return (int)strtol(text, NULL, 0);
     if (!setting_key(name, sizeof(name), mod->id, key)) return fallback;
@@ -1938,9 +1964,14 @@ void Mods_Load(void)
         char key[256];
         int want;
         want = mods[i].enabled;
+#ifdef MEMORIES_RELEASE
+        want = mods[i].default_enabled != 0;     /* a release's mods are the manifests' choice: no Mods window, and no setting or environment changes it */
+        (void)key; (void)all;
+#else
         if (setting_key(key, sizeof(key), mods[i].id, NULL)) want = Settings_GetNamed(key, want);
         want = environment_choice(mods[i].id, want) != 0;
         if (all && (!strcmp(all, "0") || !strcmp(all, "off"))) want = 0;
+#endif
         mods[i].enabled = want;
         enabled[i] = want;
     }
@@ -2127,6 +2158,12 @@ int Mods_Setting(const char *id, const char *key, int fallback)
     char name[256];
     const char *text;
     if (by_id(id) < 0 || !key || !*key) return fallback;
+#ifdef MEMORIES_RELEASE
+    {
+        int forced;
+        if (release_setting(id, key, &forced)) return forced;
+    }
+#endif
     text = environment_name(name, sizeof(name), id, key) ? getenv(name) : NULL;
     if (text && *text) return (int)strtol(text, NULL, 0);
     if (!setting_key(name, sizeof(name), id, key)) return fallback;

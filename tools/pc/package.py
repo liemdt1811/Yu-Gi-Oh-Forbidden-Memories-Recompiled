@@ -368,9 +368,11 @@ def main():
     parser.add_argument("--exports-from", action="append", default=[], metavar="BUILD",
                         help="another target's game build folder (its sdk/exports.<target>.txt and source) to take "
                              "that target's export list from for the SDK (repeatable; default: tmp/pc's builds)")
+    parser.add_argument("--name", default=NAME, help="the archives' and their folders' name before the version (default %(default)s)")
     parser.add_argument("--skip-sdk-target", action="append", default=[], choices=list(SDK_TARGETS), metavar="TARGET",
                         help="leave this target's export list out of the SDK (e.g. aarch64 without an Android build)")
     options = parser.parse_args()
+    globals()["NAME"] = options.name        # stage() and pack_apk() read it
     SDK_TARGETS[:] = [t for t in SDK_TARGETS if t not in options.skip_sdk_target]
     systems = options.systems or ["windows", "windows-x64", "linux"]
     if set(systems) - set(BUILDS):

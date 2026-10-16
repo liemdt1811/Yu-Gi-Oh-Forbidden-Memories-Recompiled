@@ -1,0 +1,119 @@
+YU-GI-OH! LEGENDARY DUELIST (ygo-infinite-fusion) - HƯỚNG DẪN CÀI ĐẶT VÀ CHƠI
+================================================================================
+
+Đây là bản mod fan-made của Yu-Gi-Oh! Forbidden Memories (PlayStation),
+chạy trên máy tính. Mod tập trung vào FUSION: thêm hàng chục nghìn công thức
+fusion, hơn 300 lá bài mới, Polymerization, Level Up!, card pack, duelist mới...
+
+Game KHÔNG kèm file game gốc. Bạn cần có bản sao đĩa game của riêng mình.
+Đây là dự án fan làm cho vui, không liên quan đến Konami.
+
+
+1. CHUẨN BỊ FILE GAME
+---------------------
+Bạn cần file ISO đĩa "Yu-Gi-Oh! Forbidden Memories (USA).bin" bản Mỹ
+(mã đĩa SLUS-01411): (google là ra)
+
+  - Định dạng: file .bin (cặp .bin/.cue), kiểu raw MODE2/2352.
+  - Chọn file .bin, KHÔNG chọn file .cue.
+  - Không hỗ trợ ISO, CHD, hay các bản khu vực khác (Châu Âu, Nhật).
+
+
+2. CÀI ĐẶT
+----------
+1) Chọn đúng bản cho máy của bạn:
+     ygo-infinite-fusion-v0.3.2-windows.zip      (32-bit, chạy trên mọi máy Windows)
+     ygo-infinite-fusion-v0.3.2-windows-x64.zip  (64-bit)
+   Không chắc thì dùng bản windows (32-bit).
+
+2) Giải nén TOÀN BỘ file zip vào một thư mục bất kỳ, ví dụ:
+     D:\Games\ygo-infinite-fusion-v0.3.2\
+   (Đừng chạy game trực tiếp trong file zip.)
+
+3) Đặt file game: có hai cách, chọn một trong hai.
+   Cách A: copy file .bin vào thư mục "game" nằm cạnh memories-pc.exe.
+           Game sẽ tự tìm thấy file này.
+   Cách B: để file .bin ở đâu cũng được. Lần đầu chạy game sẽ hỏi, bạn chọn
+           "Choose ROM..." rồi trỏ tới file .bin. Game nhớ vị trí này.
+
+
+3. KHỞI ĐỘNG GAME
+-----------------
+Chạy file  memories-pc.exe
+
+Nếu Windows hiện cảnh báo SmartScreen ("Windows protected your PC"): chọn
+"More info" rồi "Run anyway". Đây là game tự build, chưa có chữ ký số.
+
+
+4. CÀI GÓI ĐỒ HỌA HD (assets-hd) - KHÔNG BẮT BUỘC
+--------------------------------------------------
+Cách cài:
+1) Giải nén gói HD. Bạn sẽ có một thư mục tên "assets-hd" (bên trong có file
+   mod.json và thư mục textures).
+2) Copy cả thư mục "assets-hd" vào thư mục "mods" nằm cạnh memories-pc.exe,
+   sao cho đường dẫn cuối cùng là:
+
+     ...\ygo-infinite-fusion-v0.3.2\mods\assets-hd
+
+3) Khởi động lại game. Gói HD tự bật. 
+4) Để đẹp nhất, mở menu:
+     Video > Resolution > Internal 4x
+     Video > HD text  (tích bật)
+   Internal 4x đòi hỏi card đồ họa khỏe hơn. Nếu máy giật, thử Internal 2x.
+
+5. ĐIỀU KHIỂN (BÀN PHÍM)
+------------------------
+  Phím mũi tên    D-pad (di chuyển / chọn)
+  X               Cross (xác nhận)
+  S               Circle (hủy / quay lại)
+  Z               Square
+  A               Triangle
+  Enter           Start
+  Right Shift     Select
+  Q / W           L1 / R1
+  E / R           L2 / R2
+  T / Y           L3 / R3
+
+  Esc             đóng menu đang mở; nếu không có menu thì thoát game
+  F5 / F7         lưu / nạp trạng thái (save state)
+  F1, F2, F4      chọn ô save state
+
+Tay cầm (Xbox, PlayStation và hầu hết các loại khác) chạy được ngay, không cần
+cài gì. Muốn đổi phím hoặc cài tay cầm: menu Game > Controls.
+
+
+6. LƯU GAME VÀ FILE CỦA BẠN
+---------------------------
+Các file cài đặt, memory card (file save) và save state được lưu ở thư mục
+riêng của bạn, KHÔNG nằm cạnh game:
+
+  Documents\My Games\YFM Re-Decomp
+
+Nhờ vậy khi cập nhật game, bạn chỉ cần giải nén bản mới vào thư mục mới và chạy.
+Save trong game (memory card) vẫn còn. Save state có thể không dùng được giữa
+các bản, nên hãy lưu bằng chức năng save trong game trước khi cập nhật.
+
+8. LỖI THƯỜNG GẶP
+-----------------
+- Game báo không tìm thấy ROM / file không đọc được:
+  kiểm tra lại bạn đang chọn file .bin (không phải .cue) và đúng kiểu
+  MODE2/2352 của bản USA (SLUS-01411).
+- Không có âm thanh hoặc không nhận tay cầm: kiểm tra thiết bị âm thanh và
+  tay cầm của Windows, rồi khởi động lại game.
+- Gói HD không thấy hiệu lực: kiểm tra đường dẫn đúng là
+  mods\assets-hd\mod.json (không bị lồng thêm một thư mục "assets-hd" nữa),
+  rồi khởi động lại game.
+- Game bị treo hoặc đóng lại: game tự ghi báo cáo lỗi vào thư mục
+    Documents\My Games\YFM Re-Decomp\reports
+  (các file crash-*.txt, hang-*.txt, .dmp và last-session.log). Khi báo lỗi,
+  hãy gửi kèm các file này.
+- Muốn chơi lại từ đầu: xóa file memory card trong thư mục
+  Documents\My Games\YFM Re-Decomp (sao lưu trước nếu cần).
+
+
+9. GỠ CÀI ĐẶT
+-------------
+Xóa thư mục game đã giải nén là xong. Muốn xóa luôn file save và cài đặt,
+xóa thư mục Documents\My Games\YFM Re-Decomp.
+
+Chúc bạn chơi vui!
