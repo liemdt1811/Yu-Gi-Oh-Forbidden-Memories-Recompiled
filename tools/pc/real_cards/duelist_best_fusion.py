@@ -28,6 +28,8 @@ def main():
     ap.add_argument("--mod", action="store_true", help="include the z mod's cards, fusions and duelists")
     ap.add_argument("--md", action="store_true", help="print a Markdown table instead of plain columns")
     ap.add_argument("--sort-atk", action="store_true", help="strongest first instead of the game's duelist order")
+    ap.add_argument("--starter", action="store_true",
+                    help="only the new game's starter deck: the cards its pools can deal, from the game's disc (game/)")
     ap.add_argument("--hand", type=int, default=5, help="most cards one fusion chain may use")
     args = ap.parse_args()
 
@@ -65,6 +67,24 @@ def main():
                 if card != "replace":
                     pool[by_name.get(card, card)] = w      # a retail card by name, a Z card by "z:id:1"
             decks[names.get(did, did)] = pool
+
+    if args.starter:
+        # The disc's seven weighted pools (starter_pools.retail) deal the 40 cards of a new game: 16 + 16 + 4 + 1 monsters
+        # of rising strength, then Dark Hole or Raigeki, a terrain and an equip. What a deck can fuse into is bounded by the
+        # cards its pools can deal, so each group below is a pool of "any card these pools can deal".
+        import sys
+        sys.path.insert(0, str(ROOT / "tools" / "pc"))
+        from fm_editor import disc, starter_pools
+        files = disc.find_game()
+        if not files:
+            raise SystemExit("no game files found (game/ beside the repository)")
+        pools = starter_pools.retail((files[0] if isinstance(files, tuple) else files).wa)
+        decks = {}
+        for label, upto in (("Starter: weakest + weak monsters (32 of 40 cards)", 2), ("Starter: + middling monsters (36 of 40)", 3),
+                            ("Starter: every monster pool (37 of 40)", 4)):
+            decks[label] = {c: w for pool in pools[:upto] for c, w in pool.cards.items()}
+        for n, pool in enumerate(pools[:4]):
+            decks[f"Starter pool {n}: {pool.name} (draws {pool.draws})"] = dict(pool.cards)
 
     by_card = {}
     for pair, res in fuse.items():

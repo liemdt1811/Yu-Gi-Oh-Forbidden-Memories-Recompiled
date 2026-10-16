@@ -1557,5 +1557,38 @@
   "defense": 900,
   "description": "A young dragon with\nblades growing on\nits body. It grows\nwith Level Up!",
   "date": "2004-10-01"
+ },
+ {
+  "password": "08594079",
+  "name": "Jurrac Brachis",
+  "type": "Dinosaur",
+  "attribute": "Fire",
+  "level": 3,
+  "attack": 1000,
+  "defense": 1000,
+  "description": "A small dinosaur\nwith a hard head. It\nfights as a pack\nwith the others of\nits kind.",
+  "date": "2010-09-25"
+ },
+ {
+  "password": "45711266",
+  "name": "Jurrac Ptera",
+  "type": "Dinosaur",
+  "attribute": "Fire",
+  "level": 3,
+  "attack": 800,
+  "defense": 1500,
+  "description": "A flying dinosaur\nthat swoops from\nabove. It guards its\npack from the air.",
+  "date": "2010-09-25"
+ },
+ {
+  "password": "93170499",
+  "name": "Jurrac Megalo",
+  "type": "Dinosaur",
+  "attribute": "Fire",
+  "level": 1,
+  "attack": 500,
+  "defense": 1300,
+  "description": "A young dinosaur\nwith a hard hide. It\nstays close to the\nbig ones of its\npack.",
+  "date": "2025-06-13"
  }
 ]

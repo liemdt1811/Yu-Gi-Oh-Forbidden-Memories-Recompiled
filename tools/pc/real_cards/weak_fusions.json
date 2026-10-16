@@ -1,0 +1,153 @@
+{
+ "weak_below": 1500,
+ "max_atk": 1800,
+ "min_gap": 100,
+ "coverage": 0.4,
+ "exclude": [],
+ "include": [
+  "Beaver Warrior",
+  "Mountain Warrior"
+ ],
+ "min_atk": 1000,
+ "type_pairs": [
+  [
+   "Beast",
+   "Dinosaur"
+  ],
+  [
+   "Beast",
+   "Reptile"
+  ],
+  [
+   "Beast",
+   "Sea Serpent"
+  ],
+  [
+   "Beast-Warrior",
+   "Dinosaur"
+  ],
+  [
+   "Beast-Warrior",
+   "Fiend"
+  ],
+  [
+   "Beast-Warrior",
+   "Insect"
+  ],
+  [
+   "Beast-Warrior",
+   "Plant"
+  ],
+  [
+   "Beast-Warrior",
+   "Pyro"
+  ],
+  [
+   "Beast-Warrior",
+   "Zombie"
+  ],
+  [
+   "Dinosaur",
+   "Fiend"
+  ],
+  [
+   "Dinosaur",
+   "Insect"
+  ],
+  [
+   "Dragon",
+   "Sea Serpent"
+  ],
+  [
+   "Fairy",
+   "Insect"
+  ],
+  [
+   "Fiend",
+   "Insect"
+  ],
+  [
+   "Fiend",
+   "Pyro"
+  ],
+  [
+   "Fish",
+   "Reptile"
+  ],
+  [
+   "Fish",
+   "Sea Serpent"
+  ],
+  [
+   "Insect",
+   "Pyro"
+  ],
+  [
+   "Insect",
+   "Reptile"
+  ],
+  [
+   "Insect",
+   "Winged Beast"
+  ],
+  [
+   "Machine",
+   "Pyro"
+  ],
+  [
+   "Pyro",
+   "Spellcaster"
+  ],
+  [
+   "Reptile",
+   "Rock"
+  ],
+  [
+   "Reptile",
+   "Winged Beast"
+  ],
+  [
+   "Sea Serpent",
+   "Thunder"
+  ],
+  [
+   "Insect",
+   "Warrior"
+  ]
+ ],
+ "result_exclude": [
+  "Jurrac Dino"
+ ],
+ "fixed_results": [
+  [
+   "Machine",
+   "Pyro",
+   "Robotic Knight"
+  ],
+  [
+   "Insect",
+   "Pyro",
+   "Blazewing Butterfly"
+  ],
+  [
+   "Reptile",
+   "Rock",
+   "Worm Drake"
+  ],
+  [
+   "Dinosaur",
+   "Insect",
+   "Hercules Beetle"
+  ],
+  [
+   "Warrior",
+   "Insect",
+   "Insect Knight"
+  ],
+  [
+   "Beast-Warrior",
+   "Insect",
+   "Insect Knight"
+  ]
+ ]
+}

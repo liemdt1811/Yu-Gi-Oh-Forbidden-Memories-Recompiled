@@ -4525,5 +4525,190 @@
     "Level Up!"
    ]
   ]
+ },
+ {
+  "password": "03784434",
+  "name": "Rampaging Rhynos",
+  "type": "Beast-Warrior",
+  "attribute": "Earth",
+  "level": 3,
+  "attack": 1500,
+  "defense": 1500,
+  "description": "A beast warrior who\nfights with a wild\nstrength and no\nfear.",
+  "date": "2006-11-15",
+  "fusions": [],
+  "bridge": true
+ },
+ {
+  "password": "92755808",
+  "name": "Element Saurus",
+  "type": "Dinosaur",
+  "attribute": "Dark",
+  "level": 4,
+  "attack": 1500,
+  "defense": 1200,
+  "description": "A dinosaur from an\nage long gone. Its\npower has not faded.",
+  "date": "2004-11-20",
+  "fusions": [],
+  "bridge": true
+ },
+ {
+  "password": "09284723",
+  "name": "Venom Boa",
+  "type": "Reptile",
+  "attribute": "Earth",
+  "level": 5,
+  "attack": 1600,
+  "defense": 1200,
+  "description": "A reptile that hides\nin the dark and\nstrikes with deadly\nspeed.",
+  "date": "2007-08-15",
+  "fusions": [],
+  "bridge": true
+ },
+ {
+  "password": "04732017",
+  "name": "Molten Zombie",
+  "type": "Pyro",
+  "attribute": "Fire",
+  "level": 4,
+  "attack": 1600,
+  "defense": 400,
+  "description": "A creature of flame\nthat burns\neverything on the\nfield.",
+  "date": "2004-03-01",
+  "fusions": [],
+  "bridge": true
+ },
+ {
+  "password": "17948378",
+  "name": "Jurrac Dino",
+  "type": "Dinosaur",
+  "attribute": "Fire",
+  "level": 3,
+  "attack": 1700,
+  "defense": 800,
+  "description": "A fast dinosaur from\nthe Jurrac pack. A\ndinosaur and a flame\nmake it.",
+  "date": "2011-01-25",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Dinosaur"
+     },
+     {
+      "type": "Pyro"
+     }
+    ],
+    "max_atk": 1690,
+    "override": true
+   }
+  ]
+ },
+ {
+  "password": "62701967",
+  "name": "Jurrac Tyrannus",
+  "type": "Dinosaur",
+  "attribute": "Fire",
+  "level": 7,
+  "attack": 2500,
+  "defense": 1400,
+  "description": "The king of the\nJurrac pack. Made\nfrom Jurrac Dino and\nany other Jurrac.",
+  "date": "2010-05-25",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Jurrac Dino"
+     },
+     {
+      "name_has": "Jurrac"
+     }
+    ],
+    "max_atk": 2490,
+    "override": true
+   }
+  ]
+ },
+ {
+  "password": "80032567",
+  "name": "Jurrac Giganoto",
+  "type": "Dinosaur",
+  "attribute": "Fire",
+  "level": 7,
+  "attack": 2100,
+  "defense": 1800,
+  "description": "A giant of the\nJurrac pack. Made\nfrom Jurrac Dino and\na dinosaur that is\nnot a Jurrac.",
+  "date": "2010-05-25",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "name": "Jurrac Dino"
+     },
+     {
+      "type": "Dinosaur",
+      "not_name_has": "Jurrac"
+     }
+    ],
+    "max_atk": 2090,
+    "override": true
+   }
+  ]
+ },
+ {
+  "password": "37265642",
+  "name": "Sabersaurus",
+  "type": "Dinosaur",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 1900,
+  "defense": 500,
+  "description": "This normally gentle\ndinosaur enjoys\nrelaxing in its nest\nin the prairies. If\nit becomes angered,\nit turns terribly\nferocious.",
+  "date": "2006-08-16",
+  "fusions": [],
+  "mass": [
+   {
+    "groups": [
+     {
+      "type": "Dinosaur",
+      "min_atk": 1010
+     },
+     {
+      "type": "Rock",
+      "min_atk": 1010
+     }
+    ],
+    "max_atk": 1890,
+    "override": true
+   }
+  ]
+ },
+ {
+  "password": "16984449",
+  "name": "Blazewing Butterfly",
+  "type": "Insect",
+  "attribute": "Fire",
+  "level": 4,
+  "attack": 1500,
+  "defense": 1500,
+  "description": "A butterfly whose\nwings burn with a\nbright flame. It\nscatters fire\nwherever it flies.",
+  "date": "2007-08-15",
+  "fusions": [],
+  "bridge": true
+ },
+ {
+  "password": "35052053",
+  "name": "Insect Knight",
+  "type": "Insect",
+  "attribute": "Earth",
+  "level": 4,
+  "attack": 1900,
+  "defense": 1500,
+  "description": "An insect warrior\nwho fights with the\npride of a knight.",
+  "date": "2005-02-26",
+  "fusions": [],
+  "bridge": true
  }
 ]

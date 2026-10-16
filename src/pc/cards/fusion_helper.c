@@ -90,6 +90,9 @@ static void update(void)
     int prefix[FUSION_HAND] = {-1, -1, -1, -1, -1};
     int slot, picked = 0, count = 0, side = D_8009B1D5;
     memset(&view, 0, sizeof(view));
+#ifdef MEMORIES_RELEASE
+    return;      /* a release build has no View > Fusion helper, and a setting saved by another build does not turn it on */
+#endif
     if (!Settings_Get(SET_FUSION_HELPER) || (D_8009B26C & 31) != 3 || D_8009B26E != 0x81 ||
         (gDuel_wSceneStateFlags & DUEL_SCENE_PHASE_MASK) != 4 ||
         (D_8009B174 & 15) != 1 || side > 1 || D_8009B360[side] >= 0 || gDuel_bEffectState ||
@@ -126,8 +129,10 @@ static void update(void)
     view.unsupported = Mods_HasSubscribers(MEMORIES_EVENT_FUSION) || Mods_HasSubscribers(MEMORIES_EVENT_EQUIP) ||
         Hooks_IsHooked((const void *)Duel_CheckFusion) || Hooks_IsHooked((const void *)Duel_CheckEquip) ||
         Hooks_IsHooked((const void *)CardRules_Fusion) || Hooks_IsHooked((const void *)CardRules_Equip) ||
-        Hooks_IsHooked((const void *)DuelScene_UpdateCardPlacement) || Hooks_IsHooked((const void *)Duel_GetTerrainBoost) ||
-        Hooks_IsHooked((const void *)Duel_CalcCardStats);
+        Hooks_IsHooked((const void *)DuelScene_UpdateCardPlacement) || Hooks_IsHooked((const void *)Duel_GetTerrainBoost);
+    /* Duel_CalcCardStats is not on the list: the preview works the cards' stats out itself (Fusion_Attack and the
+     * record's modifiers) and never calls it, so a code mod that hooks it (the Z mod's effects: Neos, Slifer, equips)
+     * only makes the ATK of an effect monster, shown for the hand, a little off. */
     if (view.unsupported) return;
     {
         FusionLine none, ahead;

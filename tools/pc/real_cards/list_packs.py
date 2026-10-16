@@ -32,6 +32,8 @@ def main():
             if r["attack"]:
                 atk[r["name"]] = int(r["attack"])
     for c in mod["cards"]:
+        if "replace" in c:      # a retail card the mod rewrites
+            continue
         ref = f"{mod['id']}:{c['id']}:1"
         name[ref] = c["name"]
         if "attack" in c:

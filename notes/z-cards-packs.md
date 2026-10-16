@@ -114,7 +114,7 @@ Legend of Blue Eyes White Dragon: nine cards, one rare or better.
 - Goblin's Secret Remedy (0) - Rare
 - Stop Defense (0) - Rare
 
-### Super (9 cards)
+### Super (10 cards)
 
 - Curse of Dragon (2000) - Super Rare
 - Flame Swordsman (1800) - Super Rare
@@ -125,6 +125,7 @@ Legend of Blue Eyes White Dragon: nine cards, one rare or better.
 - Raigeki (0) - Super Rare
 - Swords of Revealing Light (0) - Super Rare
 - Polymerization - Super Rare
+- Trap Hole - Super Rare
 
 ### Ultra (9 cards)
 
@@ -143,11 +144,10 @@ Legend of Blue Eyes White Dragon: nine cards, one rare or better.
 - Tri-horned Dragon (2850) - Secret Rare
 - Gaia the Dragon Champion (2600) - Secret Rare
 
-### Left out: not in the disc or the mod (8)
+### Left out: not in the disc or the mod (7)
 
 - Fiend Reflection #2 - Common
 - Fissure - Rare
-- Trap Hole - Super Rare
 - Remove Trap - Common
 - Two-Pronged Attack - Rare
 - Gravedigger Ghoul - Rare
@@ -162,7 +162,7 @@ Joey's pack: Red-Eyes and the cards Jono and Jono 2nd play. Nine cards, one rare
 - Unlocks: beat **Jono** or beat **Jono 2nd** or beat **jonouchi**
 - Slots: 8 of the common tier, then one by the odds rare 76%, super 15%, ultra 8%, secret 1%
 
-### Common (69 cards)
+### Common (71 cards)
 
 - Cyber-Tech Alligator (2500) - Common
 - Sword Hunter (2450) - Common
@@ -233,6 +233,8 @@ Joey's pack: Red-Eyes and the cards Jono and Jono 2nd play. Nine cards, one rare
 - Dragon Piper (200) - Common
 - Metalmorph (0) - Common
 - Neko Mane King (0) - Common
+- Meteor of Destruction - Common
+- Trap Hole - Common
 
 ### Rare (16 cards)
 
@@ -273,12 +275,13 @@ Joey's pack: Red-Eyes and the cards Jono and Jono 2nd play. Nine cards, one rare
 - Gilford the Legend (2600) - Ultra Rare
 - Rocket Warrior (1500) - Ultra Rare
 
-### Secret (4 cards)
+### Secret (5 cards)
 
 - Red-Eyes Black Dragon Exceed (3400) - Secret Rare
 - Gilford the Lightning (2800) - Secret Rare
 - Red-Eyes Darkness Metal Dragon (2800) - Secret Rare
 - Raigeki (0) - Secret Rare
+- Bottomless Trap Hole - Secret Rare
 
 ### Left out: not in the disc or the mod (99)
 

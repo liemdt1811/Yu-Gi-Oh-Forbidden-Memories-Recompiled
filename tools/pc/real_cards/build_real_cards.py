@@ -49,6 +49,7 @@ MOD = ROOT / "mods" / "z"
 CATALOG = ROOT / "notes" / "card-catalog.csv"
 DISC = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions.csv"
 DISC = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions.csv"
+WEAK = HERE / "weak_fusions.json"
 BY_RESULT = ROOT / "notes" / "research" / "fusion-and-drop-tables" / "fusions_by_result.csv"
 CURATED = HERE / "curated.json"
 TARGETS = HERE / "targets.json"
@@ -281,7 +282,8 @@ def build():
            "description": f"{len(entries)} real Yu-Gi-Oh! cards the disc lacks, with fusions, packs and duelists. "
                           "Study project; art is Konami's.",
            "title": TITLE,
-           "cards": entries, "drops": target_drops(targets + spells), "fusions": target_fusions(targets, cards, monsters, fusions(nodes, monsters, extra), nodes + extra, inter, spells)}
+           "cards": entries, "drops": target_drops(targets + spells), "fusions": weak_fusions(target_fusions(targets, cards, monsters, fusions(nodes, monsters, extra), nodes + extra, inter, spells),
+                                    monsters, nodes + extra + inter, targets)}
     duelists = json.loads(DUELISTS.read_text(encoding="utf-8"))
     packs = mod_packs(monsters, cards, targets, spells)
     mod_duelists(mod, duelists, cards + targets + spells, packs)
@@ -304,6 +306,102 @@ def build():
         mod[key] = f"{key}.json"
     (MOD / "mod.json").write_text(json.dumps(mod, indent=1, ensure_ascii=True) + "\n", encoding="utf-8")
     print(f"{len(entries)} cards, {fusion_count} fusions -> {MOD / 'mod.json'}")
+
+
+def weak_fusions(rules, monsters, mods, targets):
+    """More recipes for the weak monsters (weak_fusions.json): a weak monster (ATK under "weak_below") is given partners among the
+    weak monsters of the types "type_pairs" names until "coverage" of its possible pairs have a recipe (the disc's, the mod's, or the retail
+    base's of a copy). Only the pairs of types in "type_pairs" get one, and never two monsters of one type. Each new pair fuses into the weakest of the disc's fusion
+    results of the mod's own cards, of "min_atk" to "max_atk" ATK, at least "min_gap" above both
+    materials, of a type, else an attribute, one of them has. Cards with fewest partners go first."""
+    cfg = json.loads(WEAK.read_text(encoding="utf-8"))
+    below, ceiling, gap, floor = cfg["weak_below"], cfg["max_atk"], cfg["min_gap"], cfg.get("min_atk", 0)
+    with open(DISC, encoding="utf-8", newline="") as f:
+        disc_rows = [(int(r["material_a_id"]), int(r["material_b_id"])) for r in csv.DictReader(f)]
+    disc = {frozenset(p) for p in disc_rows}
+    fuses = {a for p in disc_rows for a in p}            # a retail card with no disc recipe at all (Exodia, a god) is left alone, unless "include" names it
+    with open(BY_RESULT, encoding="utf-8", newline="") as f:
+        result_ids = {int(r["result_id"]) for r in csv.DictReader(f)}
+    mats = [{"key": m["id"], "base": m["id"], "name": m["name"], "type": m["type"], "attribute": m["attribute"], "atk": m["atk"]}
+            for m in monsters if (m["id"] in fuses or m["name"] in cfg["include"]) and m["name"] not in cfg["exclude"]]
+    mats += [{"key": n["ref"], "base": n["base"], "name": n["name"], "type": n["type"], "attribute": n["attribute"], "atk": n["atk"]}
+             for n in mods if n["name"] not in cfg["exclude"]]
+    bridge = {t["name"] for t in targets if t.get("bridge")}
+    # the results are the mod's own cards (not the disc's): the ones this mod adds, but not a Level Up! line's
+    results = sorted((m for m in mats if isinstance(m["key"], str) and floor <= m["atk"] <= ceiling and " LV" not in m["name"]
+                      and m["name"] not in cfg["result_exclude"]), key=lambda m: (m["atk"], str(m["key"])))
+    weak = [m for m in mats if m["atk"] < below]
+    taken = {frozenset(map(str, r["with"])) for r in rules}
+
+    def covered(a, b):
+        return frozenset((str(a["key"]), str(b["key"]))) in taken or frozenset((a["base"], b["base"])) in disc
+
+    fixed = {}                  # the one result of each pair of types, set below
+
+    def pick(a, b, turn):
+        made_by = fixed.get(tuple(sorted((a["type"], b["type"]))))
+        low = max(max(a["atk"], b["atk"]) + gap, floor)
+        return made_by if made_by and made_by["atk"] >= low and made_by["key"] not in (a["key"], b["key"]) else None
+
+    allowed = {tuple(sorted(pair)) for pair in cfg["type_pairs"]}       # only these pairs of types get recipes
+    others = {m["key"]: [o for o in weak if tuple(sorted((o["type"], m["type"]))) in allowed] for m in weak}     # the monsters it may be paired with
+    have = {m["key"]: sum(1 for o in others[m["key"]] if covered(m, o)) for m in weak}
+    goal = {m["key"]: int(cfg["coverage"] * len(others[m["key"]])) for m in weak}
+    # One result for each pair of types (Aqua + Beast always makes the same card): the weakest of three of a type of the pair
+    # that is strong enough for most (4 in 5) of the pairs that still have no recipe; a pair it is not strong enough for gets none.
+    for ta, tb in sorted({tuple(sorted((m["type"], o["type"]))) for m in weak for o in others[m["key"]]}):
+        needs = sorted(max(a["atk"], b["atk"]) + gap for a in weak if a["type"] == ta for b in weak if b["type"] == tb and not covered(a, b))
+        if not needs:
+            continue
+        cut = max(needs[min(len(needs) - 1, int(0.8 * len(needs)))], floor)
+        near = [r for r in results if cut <= r["atk"] and r["type"] in (ta, tb)][:3]
+        if near:
+            fixed[(ta, tb)] = near[sum(map(ord, ta + tb)) % len(near)]
+    for ta, tb, name in cfg.get("fixed_results", []):         # a pair of types whose card is named
+        named = next((m for m in mats if m["name"] == name), None)
+        if named is None:
+            raise SystemExit(f"weak_fusions.json: fixed_results: no card {name!r}")
+        fixed[tuple(sorted((ta, tb)))] = named
+    turn = added = 0
+    made = []
+    for m in sorted(weak, key=lambda m: (have[m["key"]] - goal[m["key"]], m["name"])):
+        need = goal[m["key"]] - have[m["key"]]
+        if need <= 0:
+            continue
+
+        def rank(o):
+            return (-(goal[o["key"]] - have[o["key"]]), 0 if o["attribute"] == m["attribute"] else 1, o["name"])
+        for o in sorted((o for o in others[m["key"]] if not covered(m, o)), key=rank):
+            if need <= 0:
+                break
+            if (result := pick(m, o, turn)) is None:
+                continue
+            turn += 1
+            rules.append({"with": [m["key"], o["key"]], "result": result["key"]})
+            made.append((result, m, o))
+            taken.add(frozenset((str(m["key"]), str(o["key"]))))
+            have[m["key"]] += 1
+            have[o["key"]] += 1
+            need -= 1
+            added += 1
+    by_types = {}
+    for result, a, b in made:
+        row = by_types.setdefault(tuple(sorted((a["type"], b["type"]))), {})
+        row[(result["atk"], result["name"])] = row.get((result["atk"], result["name"]), 0) + 1
+    lines = ["# Z mod: the fusions added for the weak monsters, by the types of the materials", "",
+             f"{added} recipes by tools/pc/real_cards/build_real_cards.py (weak_fusions(); see z-weak-fusions.md). Both materials have "
+             f"ATK under {below} and are of different types; a result is {floor}-{ceiling} ATK and at least {gap} above both. Per pair of "
+             "types: the one card they make and how many recipes that is.", "",
+             "| Type + type | Recipes | Makes |", "|---|---:|---|"]
+    for types, row in sorted(by_types.items()):
+        top = sorted(row.items(), key=lambda kv: (-kv[1], kv[0]))[:6]
+        lines.append(f"| {types[0]} + {types[1]} | {sum(row.values())} | " + ", ".join(f"{name} ({atk}) x{n}" for (atk, name), n in top) +
+                     (f", and {len(row) - 6} more" if len(row) > 6 else "") + " |")
+    (ROOT / "notes" / "z-weak-fusions-list.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    pairs = sum(len(v) for v in others.values()) // 2
+    print(f"weak fusions: {len(weak)} weak monsters, {added} recipes added; "
+          f"{sum(have.values()) // 2} of {pairs} weak pairs of different types covered ({100 * sum(have.values()) / 2 / pairs:.0f}%)")
+    return rules
 
 
 def pack_pool(pack, tier, monsters, cards, targets, spells):
